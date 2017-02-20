@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B30745DC-0D31-4F4C-B4A8-A3B08CBAEA86}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DesktopStation</RootNamespace>
+    <AssemblyName>DesktopStation</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ManifestCertificateThumbprint>47DCCD2BED1A8FAF6D0FF9A4B44699E5FB6FE1A2</ManifestCertificateThumbprint>
+    <ManifestKeyFile>DesktopStation_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>true</SignManifests>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ApplicationIcon>DSICON_multi.ico</ApplicationIcon>
+    <TargetZone>LocalIntranet</TargetZone>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ButtonEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ButtonEditForm.Designer.cs">
+      <DependentUpon>ButtonEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CameraS88Ipc.cs" />
+    <Compile Include="ConfigClock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigClock.Designer.cs">
+      <DependentUpon>ConfigClock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CraneControl.cs" />
+    <Compile Include="CVManager.cs" />
+    <Compile Include="DSCommon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DSServer.cs" />
+    <Compile Include="DSWebCtrl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExecuteCfgForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExecuteCfgForm.Designer.cs">
+      <DependentUpon>ExecuteCfgForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExecuteFile.cs" />
+    <Compile Include="Language.cs" />
+    <Compile Include="LeverEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeverEditForm.Designer.cs">
+      <DependentUpon>LeverEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocEditForm.Designer.cs">
+      <DependentUpon>LocEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocomotiveDB.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MeterDrawing.cs" />
+    <Compile Include="NumInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NumInputForm.Designer.cs">
+      <DependentUpon>NumInputForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paramters.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoteCtrlIpc.cs" />
+    <Compile Include="Route.cs" />
+    <Compile Include="RouteItemEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RouteItemEditForm.Designer.cs">
+      <DependentUpon>RouteItemEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RPNCalculator.cs" />
+    <Compile Include="ScriptTriggerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptTriggerForm.Designer.cs">
+      <DependentUpon>ScriptTriggerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SizeInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SizeInput.Designer.cs">
+      <DependentUpon>SizeInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrackBoxManager.cs" />
+    <Compile Include="TrackDiagramManager.cs" />
+    <Compile Include="UrlForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UrlForm.Designer.cs">
+      <DependentUpon>UrlForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VersionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VersionForm.Designer.cs">
+      <DependentUpon>VersionForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ButtonEditForm.resx">
+      <DependentUpon>ButtonEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigClock.resx">
+      <DependentUpon>ConfigClock.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExecuteCfgForm.resx">
+      <DependentUpon>ExecuteCfgForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeverEditForm.resx">
+      <DependentUpon>LeverEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocEditForm.resx">
+      <DependentUpon>LocEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NumInputForm.resx">
+      <DependentUpon>NumInputForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RouteItemEditForm.resx">
+      <DependentUpon>RouteItemEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditForm.resx">
+      <DependentUpon>ScriptEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptTriggerForm.resx">
+      <DependentUpon>ScriptTriggerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectAccessoryForm.resx">
+      <DependentUpon>SelectAccessoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectLocForm.resx">
+      <DependentUpon>SelectLocForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SerialConfigForm.resx">
+      <DependentUpon>SerialConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SizeInput.resx">
+      <DependentUpon>SizeInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UrlForm.resx">
+      <DependentUpon>UrlForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VersionForm.resx">
+      <DependentUpon>VersionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="DesktopStation_TemporaryKey.pfx" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="RailuinoSerial.cs" />
+    <Compile Include="S88Event.cs" />
+    <Compile Include="ScriptEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditForm.Designer.cs">
+      <DependentUpon>ScriptEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectAccessoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectAccessoryForm.Designer.cs">
+      <DependentUpon>SelectAccessoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectLocForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectLocForm.Designer.cs">
+      <DependentUpon>SelectLocForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SerialConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SerialConfigForm.Designer.cs">
+      <DependentUpon>SerialConfigForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DSICON_multi.ico" />
+    <None Include="Resources\EmergencyButton.png" />
+    <None Include="Resources\Clock.png" />
+    <None Include="Resources\Clock.bmp" />
+    <None Include="Resources\InitialLocIcon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
