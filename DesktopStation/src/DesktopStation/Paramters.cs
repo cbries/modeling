@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Microsoft.VisualBasic.FileIO;
 using System.Xml.Serialization;
 using System.IO;
 using System.Windows.Forms;

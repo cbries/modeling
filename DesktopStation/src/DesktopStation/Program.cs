@@ -1,29 +1,19 @@
-﻿
-
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Windows.Forms;
 
 namespace DesktopStation
 {
     static class Program
     {
-        /// <summary>
-        /// アプリケーションのメイン エントリ ポイントです。
-        /// </summary>
         [STAThread]
         static void Main()
         {
-
             bool createdNew;
-            //Mutexクラスの作成
-            //"MyName"の部分を適当な文字列に変える
+
             System.Threading.Mutex mutex =
                 new System.Threading.Mutex(true, "DesktopStaion20130501", out createdNew);
             if (createdNew == false)
             {
-                //ミューテックスの初期所有権が付与されなかったときは
-                //すでに起動していると判断して終了
                 MessageBox.Show("Do not run multiple starts!");
                 return;
             }
@@ -32,7 +22,6 @@ namespace DesktopStation
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
 
-            //ミューテックスを解放する
             mutex.ReleaseMutex();
         }
 
@@ -195,11 +184,11 @@ namespace DesktopStation
         public const int PANELUPDATE_LOC = 1;
         public const int PANELUPDATE_ACC = 2;
 
-        public const String FILE_S88EVENT = "\\S88Events.xml";
-        public const String FILE_LAYOUT = "\\Default.map";
-        public const String FILE_EXECUTE = "\\Execute.dat";
-        public const String FOLDER_ICON = "\\Icons\\";
-        public const String FOLDER_LANGUAGE = "\\language\\";
+        public const String FILE_S88EVENT = "\\Resources\\S88Events.xml";
+        public const String FILE_LAYOUT = "\\Resources\\Default.map";
+        public const String FILE_EXECUTE = "\\Resources\\Execute.dat";
+        public const String FOLDER_ICON = "\\Resources\\Icons\\";
+        public const String FOLDER_LANGUAGE = "\\Resources\\language\\";
 
         
 

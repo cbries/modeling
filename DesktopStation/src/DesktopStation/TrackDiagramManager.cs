@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Microsoft.VisualBasic.FileIO;
-using System.Xml.Serialization;
 using System.IO;
-using System.Drawing.Drawing2D;
-using System.Drawing.Text;
 using System.Drawing;
 
 namespace DesktopStation

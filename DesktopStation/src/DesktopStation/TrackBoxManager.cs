@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DesktopStation
 {
-
     public class TrackBoxItem
     {
         public String mTextTypes;

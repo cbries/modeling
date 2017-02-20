@@ -1,0 +1,602 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="DesktopStation.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="DSICON_multi.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="DesktopStation" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="DesktopStation.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet class="System.Security.PermissionSet" version="1" ID="Custom" SameSite="site" Unrestricted="true" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!-- UAC マニフェスト オプション
+             Windows のユーザー アカウント制御のレベルを変更するには、
+             requestedExecutionLevel ノードを以下のいずれかで置換します。
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+            下位互換性のためにファイルおよびレジストリの仮想化を
+            利用する場合は、requestedExecutionLevel ノードを削除してください。
+        -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="2.0.50727.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="System.Core" version="3.5.0.0" publicKeyToken="b77a5c561934e089" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="System.Data.Entity" version="3.5.0.0" publicKeyToken="b77a5c561934e089" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="WindowsBase" version="3.0.0.0" publicKeyToken="31bf3856ad364e35" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DesktopStation.exe" size="535040">
+      <assemblyIdentity name="DesktopStation" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>M2cmD75wqtRIcNah0+nKrhxVtzE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="DesktopStation.exe.config" size="121">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>wIPK3KQboDpuSiYG9cSXzYBiflQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="DSICON_multi.ico" size="7406">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>kwRAB0KfY8RL0GuxHUxgmdNN/LQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\Config\LocDB.xml" size="6580" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ub1UWz7k5DKr+yy1anxn6qS60YU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\Config\Routes.xml" size="198" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>NRVtuTjhrdi8pmVjSONnXHqliE8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\Config\S88Events.xml" size="15256" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>CBEC7HPWh5R52odjydw/4uPoWD0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\Config\settings.xml" size="67263" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>sS1SWTn4vWFe0Aj0EHaeVxywrDY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\icons\crane.gif" size="2182">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>JTtIYENWeF/zuY892OeJFl3rnDo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\icons\decoupling.gif" size="2298">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>SNDwtQYeqjjz9I1pW/2vWREkmp4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\icons\InertiaOff.png" size="959">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>aCheHaokdcmXHzp/fYy7IaNLkVw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\icons\piston.png" size="1041">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>b5yZlDR7ljF6CV8Biy00TWoMXZo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\icons\radio.png" size="977">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>GzK7vFpXhA5n+Rco3GK+4eNo1bo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\icons\signal.gif" size="1721">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>SJeTlMgqRVnpzIYH49UqEIw5UQs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\icons\signal_slo.gif" size="2110">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>RSfkPcUCrPix0W7sNGYqB2GhWqk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\icons\turnout_left.png" size="911">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>6ON6746/TVtnd0vpdT6zfwyTRpI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\icons\turnout_right.png" size="919">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ZeWXMijyRN7gl9lXhDo6ysXCB10=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\icons\watercrane.gif" size="2247">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>jkXRCF4f/AT0ZktcmbN4Y4RXobY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\Images\railmap\RAILMAP.png" size="4331">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>RA/HMtoqeBzSXWRKyvCYqZYV3C0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\acc\RAILMAP.png" size="4215">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>FcykijigbfbzdzHlHJn4ZIbXtwQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\acc\railmap_nucky.png" size="4508">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>+KmtuOhzZ7bSFfKSs9DCF4B7iPk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\acc\RAILMAP_tunnel_her.png" size="995">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>pAFejP9Oxt3sDEjS31PeZHSaJDo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\acc\RAILMAP_tunnel_ver.png" size="986">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>1aUf4rNGobit/T0hJ8XjTrO7wpU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\acc\RAILMAP2.png" size="1934">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>6oyAYy4yPm3D+lEHWhjHYs2yEKc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\acc\RAILMAP3.png" size="2309">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>clFas+yeHQAcf2BD8j6d6SfUk5E=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\acc\TURNOUT_LEFT_1.png" size="214">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>szV6Q0BunEVuHBW/DkdnoKnkfug=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\acc\TURNOUT_LEFT_2.png" size="390">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>uhUZeHqdX338H1UKtwElftoCZeU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\acc\TURNOUT_RIGHT_1.png" size="315">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>wxyKfumBQoXoZn3dveeas/2nMiQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\acc\TURNOUT_RIGHT_2.png" size="335">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>e+DzdeI0zbsUUEpwlVhIPtEXYAw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\apple-touch-icon.png" size="2793">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>xG2vBJe8E1YMw69ndy0Fou987cg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\favicon.ico" size="7406">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>kwRAB0KfY8RL0GuxHUxgmdNN/LQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-bg_flat_0_aaaaaa_40x100.png" size="212">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>mECfLQ7YVAXPjS9TULZ23po87Vo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-bg_flat_75_ffffff_40x100.png" size="208">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Kd7sDrZ7DQOTJj6TCe7Dw108DAE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-bg_glass_55_fbf9ee_1x400.png" size="335">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>WZouwviZzXRk7PR/P6dU0gOClyI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-bg_glass_65_ffffff_1x400.png" size="207">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>v5I0wKtZYIQV4dWmmkFQ7nWS2ss=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-bg_glass_75_dadada_1x400.png" size="262">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>gCpnXNXAC2eS0izpNmvkU+mgwKE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-bg_glass_75_e6e6e6_1x400.png" size="262">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>ervOJmctvv0IIl7rMAkTKCxs5xo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-bg_glass_95_fef1ec_1x400.png" size="332">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Jskk5Um+WPd2jn6+e0PZtORpF+M=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-bg_highlight-soft_75_cccccc_1x100.png" size="280">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>t8+qDxayS6eZ5UnP6xdx4AbXjbY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-icons_222222_256x240.png" size="6922">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>EK82qoQuqUiuSnwRhRuRBJ+jZNc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-icons_2e83ff_256x240.png" size="4549">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>TS4dfcLgYvEd8BRnWmmlKApeKtk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-icons_444444_256x240.png" size="7006">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>aQERBOhwcEz0WRDXS+1ZOPkGKJE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-icons_454545_256x240.png" size="6992">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>py8A1FvCNsJlaiNJNzbI5mx7Qx4=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-icons_555555_256x240.png" size="7074">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>JEvZt8OxxPfvct4x9ngE+v8hNxU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-icons_777620_256x240.png" size="4676">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>0gVn/UNpkVOer9ZcO9532CplYBI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-icons_777777_256x240.png" size="7013">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>T8axRJxz9dEEicEEIl6+MmpAFro=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-icons_888888_256x240.png" size="6999">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>1oqZcYHEmRh1LLtHqUychZh98yc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-icons_cc0000_256x240.png" size="4632">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>HH/Bq3HtDZ+gUfB8fo9DRnEh6/c=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-icons_cd0a0a_256x240.png" size="4549">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>Ex8O5yJRjuKZ9A1T8yDrcSinx6A=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\images\ui-icons_ffffff_256x240.png" size="6313">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>F2mqhBkTMumBJFFGBnCA7k+qWSo=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\jquery.js" size="92633">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>oc4L+lB/I8xBSpp2NL1zuZS7OzU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\jquery.keypad.alt.css" size="1553">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>GhLlP6iEai4M8nI9/LQIzB2X0NQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\jquery.keypad.css" size="1939">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>xtybSeWtw0HVZp8koPFHStA1wyI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\jquery.keypad.min.js" size="15461">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>CAav1l5+9ekEdPJFB7ytDCxwFzc=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\jquery.plugin.min.js" size="3205">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>bhHPuZNwpd+Mr3ITjJGNOfsT3hA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\jquery-ui.min.css" size="32061">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>iA2qml9DT/YDesKP00guBKtEl88=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\jquery-ui.min.js" size="253669">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>eEieWAra75MeblsTHatVbDl+Sho=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\jquery-ui.structure.min.css" size="15533">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>SJmPd8Mz8NvBqgZZBgwou8PGf1c=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\jquery-ui.theme.min.css" size="13849">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>o2QBWLYYQQsoCl835UZhqDN9a9A=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\css\logo.gif" size="1952">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>dDwVNZCXQWmFbCHpstvRI5rJ2sg=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\webapp\index.html" size="44485">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>aAQ0drgOQI+6lGaOoZ862PdYm0E=</dsig:DigestValue>
+    </hash>
+  </file>
+</asmv1:assembly>

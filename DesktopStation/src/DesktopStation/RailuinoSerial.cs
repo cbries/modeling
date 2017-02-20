@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO.Ports;
 
 namespace DesktopStation
 {
-
     public class RailuinoSerial
     {
         public delegate void TSetScriptData(String inCommand, int inParam1, int inParam2, int inParam3, int inParam4);
@@ -15,7 +11,6 @@ namespace DesktopStation
         TSetRecvText SetRecvText;
         TSendCommand SendCommand;
         getDCCmodee_delegate getDCCmode;
-
 
         public RailuinoSerial(TSendCommand inFuncSend, TSetScriptData inFuncSet, TSetRecvText inFuncRecv, getDCCmodee_delegate inDCCmode)
         {

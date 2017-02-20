@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Drawing;
-using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
-
 
 namespace DesktopStation
 {
     class MeterDrawing
     {
-
-
         public void DrawClockBox(Graphics inCanvas, DateTime inTime, int inScaleRatio)
         {
             int aX_hour, aY_hour;

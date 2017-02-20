@@ -5383,7 +5383,7 @@ namespace DesktopStation
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            String aConfigFilePath = Application.StartupPath + "\\config";
+            String aConfigFilePath = Application.StartupPath + "\\Resources\\config";
 
             /* 設定ファイルフォルダの存在チェック */
             if (Directory.Exists(aConfigFilePath) == false)
@@ -5423,35 +5423,24 @@ namespace DesktopStation
                 {
                     if (gControlMode == Program.POWER_ON)
                     {
-                        /* 停止。 */
-
-                        //スクリプト関連実行を停止する
                         if (ScriptMode != Program.SCRIPTMODE_STOP)
                         {
                             ExitScript();
                         }
 
-                        /* レールへの電源供給停止(1回目) */
                         gControlMode = SerialCmd.SetPower(Program.POWER_OFF);
-                        /* レールへの電源供給停止(2回目,タイムアウトで無効のときの対策用) */
                         gControlMode = SerialCmd.SetPower(Program.POWER_OFF);
 
-                        /* パワーオフ信号の送信処理完了まで待つ(100ms) */
                         DSCommon.WaitSleepTime(1);
-
                     }
                 }
 
-                /* サーバーを閉じる */
                 AppServer.Stop();
 
-
-                /* シリアルポートを閉じる */
                 serialPort.Close();
             }
             catch (Exception)
             {
-                /* シリアルポートが予期せぬ切断など */
                 return;
             }
         }
@@ -5465,7 +5454,6 @@ namespace DesktopStation
 
             RunFunctionButton(aTag, SelectedLocIndex, aButton);
 
-            /* 適当なところにフォーカスを逃がす */
             MeterBox.Focus();
         }
 
@@ -5678,7 +5666,7 @@ namespace DesktopStation
 
             /* マップを読み込み */
             LayoutMapData.LoadFromFile(aConfigFilePath + Program.FILE_LAYOUT);
-            LayoutMapData.LoadRailMap(Application.StartupPath + "\\railmap\\Railmap.png");
+            LayoutMapData.LoadRailMap(Application.StartupPath + "\\Resources\\Images\\railmap\\Railmap.png");
 
             /* イベント設定を読み込み */
             S88Manager.LoadFromFile(aConfigFilePath + Program.FILE_S88EVENT);

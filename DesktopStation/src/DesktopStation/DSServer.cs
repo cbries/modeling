@@ -1,8 +1,6 @@
 ﻿//参考：　http://printf.jp/blog/2013/03/18/sample-web-server-4/
 
-
 using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Net;
 using System.Net.Sockets;

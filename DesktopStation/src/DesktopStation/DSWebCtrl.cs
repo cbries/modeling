@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Net;
 
 namespace DesktopStation
 {
-
     class MyWebClient : WebClient
     {
         protected override WebRequest GetWebRequest(Uri address)

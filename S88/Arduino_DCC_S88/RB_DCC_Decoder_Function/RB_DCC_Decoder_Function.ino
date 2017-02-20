@@ -13,10 +13,10 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int decoderAddress = 1830; // This is the decoder address, change into the number you want.
-#define F0_pin 14 // Define the output pin for every Function number in use
+#define F0_pin  14 // Define the output pin for every Function number in use
 #define F0_pin2 15 // 2nd pin for same function is possible. Can use forward / reverse direction ... see line 97.
-#define F1_pin 13 // Available pin numbers: 3 - 19 (14-19 = A0-A5)
-#define F2_pin 0
+#define F1_pin  13 // Available pin numbers: 3 - 19 (14-19 = A0-A5)
+#define F2_pin  14
 #define F3_pin 0
 #define F4_pin 0
 #define F5_pin 0
@@ -42,7 +42,7 @@ int decoderAddress = 1830; // This is the decoder address, change into the numbe
 #define F24_pin 0
 */
 
-#include <DCC_Decoder.h>
+#include "DCC_Decoder.h"
 #define kDCC_INTERRUPT 0
 
 byte Func[4]; // 0=L F4-F1, 1=F9-F5, 2=F12-F9, 3=F20-F13, 4=F28-F21

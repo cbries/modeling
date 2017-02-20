@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DesktopStation
 {
     class RPNCalculator
     {
-
-        //テキストを比較演算子で分離する。
         public void SpritLeftRight(String inText, ref String outDelimiter, ref String outLeftTxt, ref String outRightTxt)
         {
 

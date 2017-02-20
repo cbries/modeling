@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Xml.Serialization;
 using System.IO;
-using System.IO.Ports;
 using System.Windows.Forms;
-
 
 namespace DesktopStation
 {
