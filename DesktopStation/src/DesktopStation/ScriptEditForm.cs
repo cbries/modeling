@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace DesktopStation
@@ -30,12 +25,10 @@ namespace DesktopStation
             panelRoute.Parent = panel_ScriptOuter;
 
             tabControl.Visible = false;
-            
         }
 
         private void button_Ok_Click(object sender, EventArgs e)
         {
-
         }
 
         private void cBox_AddrDefinedLocSpd_CheckedChanged(object sender, EventArgs e)
@@ -47,7 +40,6 @@ namespace DesktopStation
             {
                 cBox_LocAddressSpd.Text = "";
             }
-
         }
 
         private void cBox_AddrDefinedLocFnc_CheckedChanged(object sender, EventArgs e)
@@ -74,9 +66,9 @@ namespace DesktopStation
 
         public void SetFormLanguage(Language inLangManager)
         {
-            if (inLangManager.Loaded() == true)
+            if (inLangManager.Loaded())
             {
-                this.Text = inLangManager.SetText("TxtScrEditOption", this.Text);
+                Text = inLangManager.SetText("TxtScrEditOption", Text);
 
                 label_LocAddr.Text = inLangManager.SetText("TxtLocAddr", label_LocAddr.Text);
                 label_LocAddr2.Text = inLangManager.SetText("TxtLocAddr", label_LocAddr2.Text);
@@ -111,34 +103,27 @@ namespace DesktopStation
                 labeRouteLabel.Text = inLangManager.SetText("TxtScrEditLabelName", labeRouteLabel.Text);
                 label_RuteState.Text = inLangManager.SetText("TxtRouteState", label_RuteState.Text);
 
-                cBoxRouteState.Items[0] = inLangManager.SetText("TxtRouteOpen", (String)cBoxRouteState.Items[0]);
-                cBoxRouteState.Items[1] = inLangManager.SetText("TxtRouteClose", (String)cBoxRouteState.Items[1]);
+                cBoxRouteState.Items[0] = inLangManager.SetText("TxtRouteOpen", (string)cBoxRouteState.Items[0]);
+                cBoxRouteState.Items[1] = inLangManager.SetText("TxtRouteClose", (string)cBoxRouteState.Items[1]);
 
                 labelJumpRunLocAddr.Text = inLangManager.SetText("TxtLocAddr", labelJumpRunLocAddr.Text);
                 cBox_AddrReplacedLocJump.Text = inLangManager.SetText("TxtScrEditReplaced", cBox_AddrReplacedLocJump.Text);
                 labelJumpRunlabel.Text = inLangManager.SetText("TxtScrEditLabelName", labelJumpRunlabel.Text);
                 labelJumpRunEqualVal.Text = inLangManager.SetText("TxtScrEditEquivVal", labelJumpRunEqualVal.Text);
 
-
                 button_Ok.Text = inLangManager.SetText("TxtOk", button_Ok.Text);
                 button_Cancel.Text = inLangManager.SetText("TxtCancel", button_Cancel.Text);
-
-
             }
-
         }
 
         private void button_OpenTarget_Click(object sender, EventArgs e)
         {
             OpenFileDialog aForm = new OpenFileDialog();
             aForm.CheckFileExists = true;
-            aForm.Filter = "Sound files(*.mp3;*.wav;*.mp4;*.ogg;*.mid;)|*.*|All files(*.*)|*.*";
+            aForm.Filter = @"Sound files(*.mp3;*.wav;*.mp4;*.ogg;*.mid;)|*.*|All files(*.*)|*.*";
 
-            //押されたボタン別の処理 
-            if (aForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
+            if (aForm.ShowDialog() == DialogResult.OK)
                 textBox_TargetFile.Text = aForm.FileName;
-            }
 
             aForm.Dispose();
         }
@@ -147,7 +132,6 @@ namespace DesktopStation
         {
             cBox_JumpRunLocAddr.Enabled = !cBox_AddrReplacedLocJump.Checked;
             cBox_JumpRunLocProt.Enabled = !cBox_AddrReplacedLocJump.Checked;
-
         }
     }
 }

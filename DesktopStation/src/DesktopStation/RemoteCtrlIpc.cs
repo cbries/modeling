@@ -4,72 +4,50 @@ using System.Runtime.Remoting.Channels.Ipc;
 
 namespace DesktopStation
 {
-    public class DSRemoteClient
+    public class DsRemoteClient
     {
-        private DSIpcCommandObject m_msg = null;
+        private readonly DsIpcCommandObject _msg = null;
 
-        public DSRemoteClient()
+        public DsRemoteClient()
         {
-            // クライアントチャンネルの生成
             IpcClientChannel channel = new IpcClientChannel();
-
-            // チャンネルを登録
             ChannelServices.RegisterChannel(channel, true);
-
-            // リモートオブジェクトを取得
-            m_msg = Activator.GetObject(typeof(DSIpcCommandObject), "ipc://cameras88/cmddata") as DSIpcCommandObject;
-
-
+            _msg = Activator.GetObject(typeof(DsIpcCommandObject), "ipc://cameras88/cmddata") as DsIpcCommandObject;
         }
 
-        public void SendData(String inCommand)
+        public void SendData(string inCommand)
         {
-            m_msg.DataTrance(inCommand);
+            _msg.DataTrance(inCommand);
         }
 
-        public void ReceiveFromServer(String inCommand)
+        public void ReceiveFromServer(string inCommand)
         {
-        
         }
-
     }
 
-    public class DSIpcCommandObject : MarshalByRefObject
+    public class DsIpcCommandObject : MarshalByRefObject
     {
-
-        public class RemoteObjectEventArg : EventArgs            //情報を引き渡すイベント引数クラス
+        public class RemoteObjectEventArg : EventArgs
         {
-            private String m_command = "";                    //モード
+            public string Command { get; set; }
 
-            public String Command { get { return m_command; } set { m_command = value; } }
-
-            public RemoteObjectEventArg(String inCommand)
+            public RemoteObjectEventArg(string inCommand)
             {
-                m_command = inCommand;
+                Command = inCommand;
             }
         }
 
         public delegate void CallEventHandler(RemoteObjectEventArg e);
         public event CallEventHandler OnTrance;
 
-        public void DataTrance(String inCommand)
+        public void DataTrance(string inCommand)
         {
-            if (OnTrance != null)
-            {
-                OnTrance(new RemoteObjectEventArg(inCommand));
-            }
+            OnTrance?.Invoke(new RemoteObjectEventArg(inCommand));
         }
 
-        /// <summary>
-        /// 自動的に切断されるのを回避する
-        /// </summary>
         public override object InitializeLifetimeService()
         {
             return null;
         }
-
     }
-
-
-
 }

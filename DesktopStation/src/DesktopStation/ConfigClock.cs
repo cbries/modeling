@@ -37,7 +37,7 @@ namespace DesktopStation
             {
 
                 /* 時刻の算出 */
-                aTime = new DateTime(2013, 1, 1, Decimal.ToInt32(numUpDown_hour.Value), Decimal.ToInt32(numUpDown_min.Value), Decimal.ToInt32(numUpDown_sec.Value));
+                aTime = new DateTime(2013, 1, 1, decimal.ToInt32(numUpDown_hour.Value), decimal.ToInt32(numUpDown_min.Value), decimal.ToInt32(numUpDown_sec.Value));
 
             }
             else

@@ -88,9 +88,9 @@ namespace DesktopStation
 
         }
 
-        public String GetCVName(int inCVNo, int inProtcol)
+        public string GetCVName(int inCVNo, int inProtcol)
         {
-            String aResult;
+            string aResult;
 
             switch (inProtcol)
             {
@@ -115,9 +115,9 @@ namespace DesktopStation
 
         }
 
-        private String getCVName_MM2(int inCVNo)
+        private string getCVName_MM2(int inCVNo)
         {
-            String aResult;
+            string aResult;
 
             switch (inCVNo)
             {
@@ -154,9 +154,9 @@ namespace DesktopStation
 
         }
 
-        private String getCVName_mfx(int inCVNo)
+        private string getCVName_mfx(int inCVNo)
         {
-            String aResult;
+            string aResult;
 
             switch (inCVNo)
             {
@@ -192,9 +192,9 @@ namespace DesktopStation
             return aResult;
         }
 
-        private String getCVName_DCC(int inCVNo)
+        private string getCVName_DCC(int inCVNo)
         {
-            String aResult;
+            string aResult;
             
             switch (inCVNo)
             {

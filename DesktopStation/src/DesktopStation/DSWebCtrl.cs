@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Text;
 
 namespace DesktopStation
 {
@@ -16,67 +17,39 @@ namespace DesktopStation
         }
     }
 
-    public class DSWebCtrl : IDisposable
+    public class DsWebCtrl : IDisposable
     {
-        MyWebClient WClient;
+        private readonly MyWebClient _wClient;
 
-
-        public DSWebCtrl(System.Net.DownloadStringCompletedEventHandler inUploadedFunc)
+        public DsWebCtrl(DownloadStringCompletedEventHandler inUploadedFunc)
         {
-            //文字コードを指定する
-            System.Text.Encoding enc = System.Text.Encoding.GetEncoding("utf-8");
-
-
-            WClient = new MyWebClient();
-            //文字コードを指定する
-            WClient.Encoding = enc;
-
-            //ヘッダにContent-Typeを加える
-            WClient.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
-            //WClient.Headers.Add("Connnection", "Close");
-
-            //送信完了用の関数登録
-            WClient.DownloadStringCompleted += inUploadedFunc;
-
+            Encoding enc = Encoding.GetEncoding("utf-8");
+            _wClient = new MyWebClient {Encoding = enc};
+            _wClient.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
+            _wClient.DownloadStringCompleted += inUploadedFunc;
         }
 
         public void Dispose()
         {
-            WClient.CancelAsync();
-            WClient.Dispose();
+            _wClient.CancelAsync();
+            _wClient.Dispose();
 
         }
 
-
-        public void SendWithPOST(String inIPAddress, String inCommand)
+        public void SendWithPost(string inIpAddress, string inCommand)
         {
-
-            if ((inIPAddress == "") || (inCommand == ""))
-            {
+            if ((inIpAddress == "") || (inCommand == ""))
                 return;
-            }
 
-            if (WClient.IsBusy)
-            {
-                WClient.CancelAsync();
-            }
+            if (_wClient.IsBusy)
+                _wClient.CancelAsync();
 
-
-            //WebRequestの作成
-            String aUrl = "http://" + inIPAddress + "/";
-
-            //POST送信する文字列を作成
+            string aUrl = "http://" + inIpAddress + "/";
             string postData = "?CMD=" + inCommand;
-
             Uri aUri = new Uri(aUrl + postData);
-
             var servicePoint = ServicePointManager.FindServicePoint(aUri);
             servicePoint.Expect100Continue = false;
-
-            //データを送信し、また受信する
-            WClient.DownloadStringAsync(aUri);
-
+            _wClient.DownloadStringAsync(aUri);
         }
-
     }
 }

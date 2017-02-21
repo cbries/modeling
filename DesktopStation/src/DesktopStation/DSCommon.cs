@@ -31,9 +31,9 @@ namespace DesktopStation
     public static class DSCommon
     {
 
-        public static String ConvertSlotNo(String inText)
+        public static string ConvertSlotNo(string inText)
         {
-            String aText = "0";
+            string aText = "0";
 
             if (inText.ToUpper() == "A")
             {
@@ -71,7 +71,7 @@ namespace DesktopStation
             return aText;
         }
 
-        public static bool IsNumeric(String inNumText)
+        public static bool IsNumeric(string inNumText)
         {
             int j;
 
@@ -80,7 +80,7 @@ namespace DesktopStation
             return aResult;
         }
 
-        public static int ParseStrToIntHex(String inHexText)
+        public static int ParseStrToIntHex(string inHexText)
         {
             int aNum;
 
@@ -94,11 +94,11 @@ namespace DesktopStation
             }
         }
 
-        public static UInt32 ParseStrToUInt32Hex(String inHexText)
+        public static uint ParseStrToUInt32Hex(string inHexText)
         {
-            UInt32 aNum;
+            uint aNum;
 
-            if (UInt32.TryParse(inHexText, System.Globalization.NumberStyles.HexNumber, null, out aNum) == true)
+            if (uint.TryParse(inHexText, System.Globalization.NumberStyles.HexNumber, null, out aNum) == true)
             {
                 return aNum;
             }
@@ -121,17 +121,17 @@ namespace DesktopStation
             }
         }
 
-        public static int ParseStrToInt(String aText)
+        public static int ParseStrToInt(string aText)
         {
             int aRet;
 
-            Int32.TryParse(aText, out aRet);
+            int.TryParse(aText, out aRet);
 
             return aRet;
 
         }
 
-        public static int GetCSVFieldInt(String[] inFields, int inIndex, int inDefault)
+        public static int GetCSVFieldInt(string[] inFields, int inIndex, int inDefault)
         {
             int aResult;
 
@@ -146,9 +146,9 @@ namespace DesktopStation
             return aResult;
         }
 
-        public static String GetCSVFieldString(String[] inFields, int inIndex, String inDefault)
+        public static string GetCSVFieldString(string[] inFields, int inIndex, string inDefault)
         {
-            String aResult;
+            string aResult;
 
             if (inFields.Length > inIndex)
             {
@@ -177,9 +177,9 @@ namespace DesktopStation
             }
         }
 
-        public static String CopyImageFile(String inFileName, String inStoredPath)
+        public static string CopyImageFile(string inFileName, string inStoredPath)
         {
-            String aNewFileName = inStoredPath + "\\" + Path.GetFileName(inFileName);
+            string aNewFileName = inStoredPath + "\\" + Path.GetFileName(inFileName);
 
             if (File.Exists(aNewFileName) == true)
             {
@@ -200,7 +200,7 @@ namespace DesktopStation
 
         }
 
-        public static String SetOmitImageFilePathAndName(String inFileName, String inStoredPath)
+        public static string SetOmitImageFilePathAndName(string inFileName, string inStoredPath)
         {
             if (inFileName == "")
             {
@@ -217,7 +217,7 @@ namespace DesktopStation
             }
         }
 
-        public static String GetOmitImageFileName(String inFileName, String inOmitPath)
+        public static string GetOmitImageFileName(string inFileName, string inOmitPath)
         {
             if (inFileName == "")
             {
@@ -234,13 +234,13 @@ namespace DesktopStation
             }
         }
 
-        public static String ConvertToSerialCommand(String inText, bool inDCCMode)
+        public static string ConvertToSerialCommand(string inText, bool inDCCMode)
         {
-            String[] aParameters;
+            string[] aParameters;
             int aAddress;
             int aSpeed;
             int aCalcAddress;
-            String aResult = "";
+            string aResult = "";
             int aErrored = 0;
 
             if (inText == "")

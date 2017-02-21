@@ -4,9 +4,9 @@ namespace DesktopStation
 {
     public class RailuinoSerial
     {
-        public delegate void TSetScriptData(String inCommand, int inParam1, int inParam2, int inParam3, int inParam4);
-        public delegate void TSetRecvText(String inText);
-        public delegate void TSendCommand(String inCommandText);
+        public delegate void TSetScriptData(string inCommand, int inParam1, int inParam2, int inParam3, int inParam4);
+        public delegate void TSetRecvText(string inText);
+        public delegate void TSendCommand(string inCommandText);
         TSetScriptData SetScriptData;
         TSetRecvText SetRecvText;
         TSendCommand SendCommand;
@@ -22,7 +22,7 @@ namespace DesktopStation
 
         public void SetLocoSpeed(int inAddress, int inSpeed, int inSpeedstep)
         {
-            String aCommandText;
+            string aCommandText;
 
             int aSpeed = inSpeed;
 
@@ -83,7 +83,7 @@ namespace DesktopStation
 
         public void AccelerateLoco(int inAddress)
         {
-            String aCommandText;
+            string aCommandText;
 
             aCommandText = Program.SERIALCMD_LOCACCEL + "(" + inAddress.ToString() + ")";
 
@@ -92,7 +92,7 @@ namespace DesktopStation
 
         public void DecelerateLoco(int inAddress)
         {
-            String aCommandText;
+            string aCommandText;
 
             aCommandText = Program.SERIALCMD_LOCDEACCEL + "(" + inAddress.ToString() + ")";
 
@@ -101,7 +101,7 @@ namespace DesktopStation
 
         public void ToggleLocoDirection(int inAddress)
         {
-            String aCommandText;
+            string aCommandText;
 
             aCommandText = Program.SERIALCMD_TGLDIRECTION + "(" + inAddress.ToString() + ")";
 
@@ -110,7 +110,7 @@ namespace DesktopStation
 
         public void ToggleLocoFunction(int inAddress, int inFunction)
         {
-            String aCommandText;
+            string aCommandText;
 
             aCommandText = Program.SERIALCMD_TGLFUNCTION + "(" + inAddress.ToString() + "," + inFunction.ToString() + ")";
 
@@ -119,7 +119,7 @@ namespace DesktopStation
 
         public void SetLocoFunction(int inAddress, int inFunction, int inPower)
         {
-            String aCommandText;
+            string aCommandText;
 
             if (CheckLocAddress(inAddress))
             {
@@ -138,7 +138,7 @@ namespace DesktopStation
 
         public void SetLocoDirection(int inAddress, int inDirection)
         {
-            String aCommandText;
+            string aCommandText;
 
             if (CheckLocAddress(inAddress))
             {
@@ -157,7 +157,7 @@ namespace DesktopStation
 
         public void SetTurnout(int inAddress, int inDirection)
         {
-            String aCommandText;
+            string aCommandText;
             int aCalcAddress;
 
             //プロトコルをAccリストから参照して決定する
@@ -179,14 +179,14 @@ namespace DesktopStation
 
         public void SetPing()
         {
-            String aCommandText;
+            string aCommandText;
             aCommandText = Program.SERIALCMD_PING + "()";
             SendCommand(aCommandText);
         }
 
         public int SetPower(int inPower)
         {
-            String aCommandText;
+            string aCommandText;
             aCommandText = Program.SERIALCMD_POWER + "(" + inPower.ToString() + ")";
             SendCommand(aCommandText);
             SetScriptData(Program.SCRIPTCMD_POWER, inPower, 0, 0, 0);
@@ -195,14 +195,14 @@ namespace DesktopStation
 
         public void SetLocoConfig(int inAddress, int inCVNo, int inCVValue)
         {
-            String aCommandText;
+            string aCommandText;
             aCommandText = Program.SERIALCMD_SETCV + "(" + inAddress.ToString() + "," + inCVNo.ToString() + "," + inCVValue.ToString() + ")";
             SendCommand(aCommandText);
         }
 
         public void SetLocoConfigEx(int inAddress, int inCVNo, int inCVValue, int inMode)
         {
-            String aCommandText;
+            string aCommandText;
 
             aCommandText = Program.SERIALCMD_SETCV + "(" + inAddress.ToString() + "," + inCVNo.ToString() + "," + inCVValue.ToString() + "," + inMode.ToString() + ")";
 
@@ -211,7 +211,7 @@ namespace DesktopStation
 
         public int GetLocoConfig(int inAddress, int inCVNo)
         {
-            String aCommandText;
+            string aCommandText;
             int aResult = 0;
 
             aCommandText = Program.SERIALCMD_GETCV + "(" + inAddress.ToString() + "," + inCVNo.ToString() + ")";
@@ -229,14 +229,14 @@ namespace DesktopStation
         
         public void SetMfxDiscovery()
         {
-            String aCommandText;
+            string aCommandText;
             aCommandText = Program.SERIALCMD_MFXDISCOVERY + "()";
             SendCommand(aCommandText);
         }
 
-        public void SetMfxBind(UInt32 inUID, int inLocAddress)
+        public void SetMfxBind(uint inUID, int inLocAddress)
         {
-            String aCommandText;
+            string aCommandText;
 
             aCommandText = Program.SERIALCMD_MFXBIND + "(" + ((inUID >> 16) & 0xFFFF).ToString() + "," + (inUID & 0xFFFF).ToString() + "," + inLocAddress.ToString() + ")";
 
@@ -244,9 +244,9 @@ namespace DesktopStation
 
         }
 
-        public void SetMfxVerify(UInt32 inUID, int inLocAddress)
+        public void SetMfxVerify(uint inUID, int inLocAddress)
         {
-            String aCommandText;
+            string aCommandText;
 
             aCommandText = Program.SERIALCMD_MFXVERIFY + "(" + ((inUID >> 16) & 0xFFFF).ToString() + "," + (inUID & 0xFFFF).ToString() + "," + inLocAddress.ToString() + ")";
 

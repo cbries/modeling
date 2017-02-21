@@ -11,11 +11,11 @@ namespace DesktopStation
     public class S88EventWaitItem
     {
         public bool Enable;
-        public String Expression;
+        public string Expression;
 
-        public String LeftExpText;
-        public String RightExpText;
-        public String CenterExpText;
+        public string LeftExpText;
+        public string RightExpText;
+        public string CenterExpText;
         
         public int LeftExp;
         public int RightExp;
@@ -31,10 +31,10 @@ namespace DesktopStation
             Expression = "";
         }
 
-        public void SetExpression(String inExp)
+        public void SetExpression(string inExp)
         {
             Expression = inExp;
-            String[] aTexts = inExp.Split(new string[] { "==", "!=", ">=", "<=", ">", "<" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] aTexts = inExp.Split(new string[] { "==", "!=", ">=", "<=", ">", "<" }, StringSplitOptions.RemoveEmptyEntries);
             if (aTexts.Length < 2)
             {
                 MessageBox.Show("Error! Argument number is wrong. " + inExp);
@@ -50,7 +50,7 @@ namespace DesktopStation
             GetType(RightExpText, out RightExpType, out RightExp);
         }
 
-        public String GetExpCondition(String inExp, out int outExpCondition)
+        public string GetExpCondition(string inExp, out int outExpCondition)
         {
             if (inExp.Contains("==") == true)
             {
@@ -91,16 +91,16 @@ namespace DesktopStation
             }
         }
 
-        public void GetType(String inCmd, out int outType, out int outNo)
+        public void GetType(string inCmd, out int outType, out int outNo)
         {
             int aRet = 0;
 
-            String[] aTexts = inCmd.Split(new string[] { "." }, StringSplitOptions.RemoveEmptyEntries);
+            string[] aTexts = inCmd.Split(new string[] { "." }, StringSplitOptions.RemoveEmptyEntries);
 
             if (aTexts.Length <= 1)
             {
                 outType = 100;
-                Int32.TryParse(inCmd, out outNo);
+                int.TryParse(inCmd, out outNo);
             }
             else
             {
@@ -147,14 +147,14 @@ namespace DesktopStation
 
                 outType = aRet;
 
-                Int32.TryParse(aTexts[1], out outNo);
+                int.TryParse(aTexts[1], out outNo);
             }
         }
 
 
-        public String ConvertSlotNo(String inText)
+        public string ConvertSlotNo(string inText)
         {
-            String aText = "0";
+            string aText = "0";
 
             if (inText.ToUpper() == "A")
             {
@@ -253,7 +253,7 @@ namespace DesktopStation
     public class S88Event
     {
         public delegate void setScriptValues_delegate(int inNo, int inValue);
-        public delegate void writeS88ProcessLog_delegate(String inEventName, String inTrigger, int inLineNo, String inLog);
+        public delegate void writeS88ProcessLog_delegate(string inEventName, string inTrigger, int inLineNo, string inLog);
         
         public string EventName;
         public int mSensorAddress;
@@ -607,9 +607,9 @@ namespace DesktopStation
 
         }
 
-        private String getTriggerText()
+        private string getTriggerText()
         {
-            String aText = "";
+            string aText = "";
 
             switch (TriggerType)
             {
@@ -651,7 +651,7 @@ namespace DesktopStation
 
         
 
-        private int checkSlot(String inText)
+        private int checkSlot(string inText)
         {
 
             if (inText.Contains("SLOT.A") == true)
@@ -703,7 +703,7 @@ namespace DesktopStation
 
         }
 
-        private void setLocAddress(String inAddrText, out int outAddress, out int outProtcol, out int outSpeedRatio, out LocData outLocData)
+        private void setLocAddress(string inAddrText, out int outAddress, out int outProtcol, out int outSpeedRatio, out LocData outLocData)
         {
             int aSlotCheck;
             int aLocAddress;
@@ -845,7 +845,7 @@ namespace DesktopStation
                         {
                             if (getAddress(aLocData.mLocAddr_dbl) > 0)
                             {
-                                serialCmd.SetLocoSpeed(aLocData.mLocAddr_dbl, (convertParam(inData.mParam2) * aSpeedRatio) >> 10, aLocData.mDoubleLoc[0].mLocSpeedstep);
+                                serialCmd.SetLocoSpeed(aLocData.mLocAddr_dbl, (convertParam(inData.mParam2) * aSpeedRatio) >> 10, aLocData.mDoubleLoc[0].LocSpeedstep);
                                 /* 管理リストに反映 */
                                 updateLocList(aLocData.mLocAddr_dbl, (convertParam(inData.mParam2) * aSpeedRatio) >> 10, -1, -1, -1);
 
@@ -1257,7 +1257,7 @@ namespace DesktopStation
             throw new NotImplementedException();
         }
 
-        private int convertParam(String inText)
+        private int convertParam(string inText)
         {
             int aResult = 0;
 
@@ -1266,12 +1266,12 @@ namespace DesktopStation
                 return 0;
             }
 
-            Int32.TryParse(inText, out aResult);
+            int.TryParse(inText, out aResult);
 
             return aResult;
         }
 
-        private int searchLabel(String inLabelName)
+        private int searchLabel(string inLabelName)
         {
             int aResult = -1;
             int i;
@@ -1819,7 +1819,7 @@ namespace DesktopStation
             }
         }
 
-        public void SaveToFile(String inFilename)
+        public void SaveToFile(string inFilename)
         {
             int i, j;
 
@@ -1868,7 +1868,7 @@ namespace DesktopStation
             fs.Close();
         }
 
-        public bool LoadFromFile(String inFilename)
+        public bool LoadFromFile(string inFilename)
         {
             bool retVal = false;
             int i, j;
@@ -1965,7 +1965,7 @@ namespace DesktopStation
             return retVal;
         }
 
-        private void writeS88ProcessLog(String inEventName, String inTrigger, int inLineNo, String inLog)
+        private void writeS88ProcessLog(string inEventName, string inTrigger, int inLineNo, string inLog)
         {
             setS88RunText("[" + inEventName + "(" + inTrigger + "), " + inLineNo.ToString() + "] " + inLog);
         }

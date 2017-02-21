@@ -58,7 +58,7 @@ namespace DesktopStation
 
         }
 
-        private void DrawFuchiText(Graphics inCanvas, String inText, int inX, int inY)
+        private void DrawFuchiText(Graphics inCanvas, string inText, int inX, int inY)
         {
 
             System.Drawing.Drawing2D.GraphicsPath aPath = new System.Drawing.Drawing2D.GraphicsPath();
@@ -634,9 +634,9 @@ namespace DesktopStation
 
         }
 
-        public void DrawLocLabel(Graphics inCanvas, int inX, int inY, int Width, int inHeight, int inIndex, Brush inBrush, LocomotiveDB inLocDB, String inNotSelectLabel, int inScaleRatio)
+        public void DrawLocLabel(Graphics inCanvas, int inX, int inY, int Width, int inHeight, int inIndex, Brush inBrush, LocomotiveDB inLocDB, string inNotSelectLabel, int inScaleRatio)
         {
-            String aLocName;
+            string aLocName;
             int aLeft = 0;
 
             //(アンチエイリアス処理されたレタリング)を指定する
@@ -647,7 +647,7 @@ namespace DesktopStation
             {
 
 
-                String aName = inLocDB.GetProtcolName(inLocDB.GetAddressLocProtcol(inLocDB.Items[inIndex].mLocAddr));
+                string aName = inLocDB.GetProtcolName(inLocDB.GetAddressLocProtcol(inLocDB.Items[inIndex].mLocAddr));
                 drawLocComboBoxItem(inCanvas, inX, inY, inHeight, inLocDB.GetAddress(inLocDB.Items[inIndex].mLocAddr), aName, inScaleRatio);
 
                 /* 文字の表示位置調整 */
@@ -683,7 +683,7 @@ namespace DesktopStation
 
         }
 
-        private void drawLocComboBoxItem(Graphics inCanvas, int inX, int inY, int inHeight, int inLocAddr, String inProtcolName, int inScaleRatio)
+        private void drawLocComboBoxItem(Graphics inCanvas, int inX, int inY, int inHeight, int inLocAddr, string inProtcolName, int inScaleRatio)
         {
             int aAddrSize;
 
@@ -702,7 +702,7 @@ namespace DesktopStation
             inCanvas.DrawString(inProtcolName, aDrawFont, Brushes.White, inX, inY + aYPos);
 
             /* アドレス */
-            String aLocAddress = inLocAddr.ToString();
+            string aLocAddress = inLocAddr.ToString();
             aAddrSize = inLocAddr >= 1000 ? 7 : 10;
             System.Drawing.Font aDrawFont2 = new System.Drawing.Font("Arial", aAddrSize * inScaleRatio / 100, FontStyle.Bold);
 

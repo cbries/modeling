@@ -7,18 +7,15 @@ namespace DesktopStation
 {
     public class LanguageItem
     {
-        public String Label;
-        public String Text;
+        public string Label;
+        public string Text;
 
         public LanguageItem()
         {
             Label = "";
             Text = "";
         }
-
-
     }
-
 
     public class Language
     {
@@ -27,21 +24,18 @@ namespace DesktopStation
         public Language()
         {
             Items = new List<LanguageItem>();
-
             Clear();
-
         }
-
 
         public void Clear()
         {
             Items.Clear();
         }
 
-        public String Find(String inLabel)
+        public string Find(string inLabel)
         {
             int i = 0;
-            String aResult = "";
+            string aResult = "";
 
             for (i = 0; i < Items.Count; i++)
             {
@@ -53,13 +47,11 @@ namespace DesktopStation
             }
 
             return aResult;
-
         }
-
-
-        public static String GetCSVFieldString(String[] inFields, int inIndex, String inDefault)
+        
+        public static string GetCSVFieldString(string[] inFields, int inIndex, string inDefault)
         {
-            String aResult;
+            string aResult;
 
             if (inFields.Length > inIndex)
             {
@@ -77,7 +69,7 @@ namespace DesktopStation
             return Items.Count > 0 ? true : false;
         }
 
-        public String SetText(String inText, String inDefault)
+        public string SetText(string inText, string inDefault)
         {
 
             if ((inText == "") || (inText == null))
@@ -86,7 +78,7 @@ namespace DesktopStation
             }
             else
             {
-                String aFindData = Find(inText);
+                string aFindData = Find(inText);
 
                 if (aFindData == "")
                 {
@@ -99,33 +91,25 @@ namespace DesktopStation
             }
         }
 
-
-
-        public void LoadFromFile(String inFileName)
+        public void LoadFromFile(string inFileName)
         {
-            String[] aFields;
+            string[] aFields;
 
-            //設定ファイルがあるときのみ読み込みします。
             if (File.Exists(inFileName))
             {
-
-                TextFieldParser aParser = new TextFieldParser(inFileName);
-                aParser.TextFieldType = FieldType.Delimited;
+                TextFieldParser aParser = new TextFieldParser(inFileName)
+                {
+                    TextFieldType = FieldType.Delimited
+                };
                 aParser.SetDelimiters(",");
 
                 while (aParser.EndOfData == false)
                 {
-
-                    /* 分析処理する */
-                    ScriptData aItem = new ScriptData();
-
                     aFields = aParser.ReadFields();
-
-                    String aTitle = GetCSVFieldString(aFields, 0, "");
-                    String aData = GetCSVFieldString(aFields, 1, "");
+                    string aTitle = GetCSVFieldString(aFields, 0, "");
+                    string aData = GetCSVFieldString(aFields, 1, "");
 
                     SetLanguageItem(aTitle, aData);
-
                 }
 
                 aParser.Close();
@@ -136,16 +120,12 @@ namespace DesktopStation
             }
         }
 
-        private void SetLanguageItem(String inTitle, String inData)
+        private void SetLanguageItem(string inTitle, string inData)
         {
-
             LanguageItem aItem = new LanguageItem();
-
             aItem.Label = inTitle;
             aItem.Text = inData;
-
             Items.Add(aItem);
         }
-
     }
 }

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.FileIO;
 using System.Xml.Serialization;
@@ -13,10 +11,6 @@ using System.Drawing.Text;
 using System.Runtime.Remoting;
 using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Ipc;
-using System.Text.RegularExpressions;
-using System.Net;
-using System.Net.Sockets;
-using DesktopStation;
 using CameraS88;
 
 
@@ -24,21 +18,19 @@ namespace DesktopStation
 {
     public delegate bool UpdateAccList_delegate(int inAccAddr, int inDirection);
     public delegate bool UpdateLocList_delegate(int inLocAddr, int inSpeed, int inDirection, int inFunctionNo, int inFunctionValue);
-    public delegate void SetS88RunText_delegate(String inText);
-    public delegate void runFile_delegate(String inAppName, String inFileName);
+    public delegate void SetS88RunText_delegate(string inText);
+    public delegate void runFile_delegate(string inAppName, string inFileName);
     public delegate void setTransitionSpeed_delegate(int inAddress, int inTargetSpeed, int inTotalTime);
     public delegate LocData getLocItemFromIndex_delegate(int inLocIndex, int inSlotIndex, int inAddress);
     public delegate int getS88Value_delegate(int inNo);
     public delegate int getAccValue_delegate(int inNo);
     public delegate bool getDCCmodee_delegate(int inIndex);
 
-
-
     public partial class MainForm : Form
     {
-        delegate void SetRecvText_delegate(String inText);
+        delegate void SetRecvText_delegate(string inText);
         delegate void SetRecvOk_delegate(bool inOn);
-        delegate void SetRecvAnotherStation_delegate(String inText);
+        delegate void SetRecvAnotherStation_delegate(string inText);
 
         private MeterDrawing MeterDrawer;
         private AppSetting gAppSettings;
@@ -46,8 +38,8 @@ namespace DesktopStation
         private CVManager CVList;
         private TrackBoxManager TBoxManager;
         private List<ScriptData> ScriptList;
-        private List<String> SendingList;
-        private List<String> CheckingList;
+        private List<string> SendingList;
+        private List<string> CheckingList;
         private Language LangManager;
         private DSServer AppServer;
         private RouteManager Routes;
@@ -84,10 +76,10 @@ namespace DesktopStation
         private bool flagUpdateS88SensorView;
         public DateTime timeBoot;
         private int CurrentSelectedMultiLocIndex;
-        private String SerialBuftext;
+        private string SerialBuftext;
         public ExecuteManager ExecuteManager;
         public CraneControl CraneController;
-        public DSWebCtrl WebControl;
+        public DsWebCtrl WebControl;
         private IconList iconList;
         private int ScaleRation = 100;//120;
         private bool SerialCommunicated = false;
@@ -147,7 +139,7 @@ namespace DesktopStation
             TBoxManager = new TrackBoxManager();
             ExecuteManager = new ExecuteManager();
             CraneController = new CraneControl(SerialCmd);
-            WebControl = new DSWebCtrl(HttpUploadCompleted);
+            WebControl = new DsWebCtrl(HttpUploadCompleted);
             iconList = new IconList();
             S88Manager = new S88EventManager(SerialCmd, UpdateLocList, UpdateAccList, SetS88RunText, RunFile, SetTransition, getLocItemFromIndex, checkRoute_bridge, setRoute_bridge, getAccItem);
             AppServer = new DSServer(GetWebReceivedSerialCommand, GetWebStatus, 1192);
@@ -472,7 +464,7 @@ namespace DesktopStation
 
         }
 
-        private void SetRecvText(String inText)
+        private void SetRecvText(string inText)
         {
             listBox_Serial.BeginUpdate();
             listBox_Serial.Items.Add(inText + "\n");
@@ -486,7 +478,7 @@ namespace DesktopStation
             listBox_Serial.EndUpdate();
         }
 
-        private void SetS88RunText(String inText)
+        private void SetS88RunText(string inText)
         {
             listBox_S88Console.BeginUpdate();
             listBox_S88Console.Items.Add(inText + "\n");
@@ -500,7 +492,7 @@ namespace DesktopStation
             listBox_S88Console.EndUpdate();
         }
 
-        private void SetRecvConnectCheck(String inText)
+        private void SetRecvConnectCheck(string inText)
         {
             if (inText.IndexOf("200 Ok") >= 0)
             {
@@ -539,11 +531,11 @@ namespace DesktopStation
             }
         }
 
-        private void SetRecvAnotherStation(String inText)
+        private void SetRecvAnotherStation(string inText)
         {
-            String[] aParameters;
+            string[] aParameters;
             int aAddress;
-            UInt32 aMFXUID;
+            uint aMFXUID;
             int aSpeed;
             int aCalcAddress;
 
@@ -631,9 +623,9 @@ namespace DesktopStation
             }
             else if (aParameters[0] == "@PING")
             {
-                UInt32 aTBoxUID;
-                UInt32 aTBoxType;
-                UInt32 aTBoxVersion;
+                uint aTBoxUID;
+                uint aTBoxType;
+                uint aTBoxVersion;
 
                 aTBoxUID = (DSCommon.ParseStrToUInt32Hex(aParameters[1]) << 24) + (DSCommon.ParseStrToUInt32Hex(aParameters[2]) << 16) + (DSCommon.ParseStrToUInt32Hex(aParameters[3]) << 8) + DSCommon.ParseStrToUInt32Hex(aParameters[4]);
                 aTBoxVersion = (DSCommon.ParseStrToUInt32Hex(aParameters[5]) << 8) + DSCommon.ParseStrToUInt32Hex(aParameters[6]);
@@ -661,7 +653,7 @@ namespace DesktopStation
 
         }
 
-        private void RegisterMfxLoc(UInt32 inMFXUID)
+        private void RegisterMfxLoc(uint inMFXUID)
         {
 
             int aLocAddress;
@@ -680,8 +672,8 @@ namespace DesktopStation
                 aItem.mLocName = "Unidentified mfx loc";
                 aItem.mFunctionImageTable = new int[Program.MAX_FUNCTIONNUM];
                 aItem.mFunctionStatus = new int[Program.MAX_FUNCTIONNUM];
-                aItem.mExFunctionCommand = new String[Program.MAX_FUNCTIONNUM + 1];
-                aItem.mExFunctionData = new String[Program.MAX_FUNCTIONNUM + 1];
+                aItem.mExFunctionCommand = new string[Program.MAX_FUNCTIONNUM + 1];
+                aItem.mExFunctionData = new string[Program.MAX_FUNCTIONNUM + 1];
                 aItem.mFunctionExMethod = new int[Program.MAX_FUNCTIONNUM + 1];
                 aItem.mFunctionExAddress = new int[Program.MAX_FUNCTIONNUM + 1];
                 aItem.mFunctionExFuncNo = new int[Program.MAX_FUNCTIONNUM + 1];
@@ -707,7 +699,7 @@ namespace DesktopStation
             }
         }
 
-        private void UpdateMfxLoc(UInt32 inMFXUID, int inLocSID)
+        private void UpdateMfxLoc(uint inMFXUID, int inLocSID)
         {
 
             int aLocAddress = LocDB.AssignAddressProtcol(Program.PROTCOL_MFX, inLocSID);
@@ -724,11 +716,11 @@ namespace DesktopStation
         }
    
 
-        private void SetRecvS88Datas(String inText)
+        private void SetRecvS88Datas(string inText)
         {
-            String aFunctionName;
-            String aParameters;
-            String aParameter;
+            string aFunctionName;
+            string aParameters;
+            string aParameter;
             int i;
 
             if (inText == "")
@@ -803,7 +795,7 @@ namespace DesktopStation
             return aResult;
         }
 
-        private void SendCommand(String inCommandText)
+        private void SendCommand(string inCommandText)
         {
             /* 送信パケット詰まり防止のため、送信予約リストにコマンドを登録。 */
 
@@ -811,7 +803,7 @@ namespace DesktopStation
 
         }
 
-        void SetScriptData(String inCommand, int inParam1, int inParam2, int inParam3, int inParam4)
+        void SetScriptData(string inCommand, int inParam1, int inParam2, int inParam3, int inParam4)
         {
             if (ScriptMode != Program.SCRIPTMODE_TEACH)
             {
@@ -846,7 +838,7 @@ namespace DesktopStation
 
         }
 
-        public bool ReadXMLSetting(String inFileName)
+        public bool ReadXMLSetting(string inFileName)
         {
             bool retVal = false;
 
@@ -902,7 +894,7 @@ namespace DesktopStation
         }
 
 
-        private void SaveToFile_Script(String inFileName)
+        private void SaveToFile_Script(string inFileName)
         {
             int i;
 
@@ -919,10 +911,10 @@ namespace DesktopStation
             aStrWriter.Close();
         }
 
-        private void ReadFromFile_Script(String inFileName)
+        private void ReadFromFile_Script(string inFileName)
         {
 
-            String[] aFields;
+            string[] aFields;
 
             ScriptList.Clear();
 
@@ -1081,7 +1073,7 @@ namespace DesktopStation
         private void UpdateScriptDisplay()
         {
             int i;
-            String aParam1, aParam2, aParam3;
+            string aParam1, aParam2, aParam3;
 
             listScript.Items.Clear();
 
@@ -1383,7 +1375,7 @@ namespace DesktopStation
 
             if (aHighAddressExists > 0)
             {
-                SerialCmd.SetLocoSpeed(LocDB.Items[inIndex].mLocAddr_dbl, aLocSpeed, LocDB.Items[inIndex].mDoubleLoc[0].mLocSpeedstep);
+                SerialCmd.SetLocoSpeed(LocDB.Items[inIndex].mLocAddr_dbl, aLocSpeed, LocDB.Items[inIndex].mDoubleLoc[0].LocSpeedstep);
             }
 
         }
@@ -1649,11 +1641,11 @@ namespace DesktopStation
             return new Point((int)aX2, (int)aY2);
         }
 
-        private String GetLocTitle(int inIndex)
+        private string GetLocTitle(int inIndex)
         {
             int aLowAddress;
             int aHighAddress;
-            String aText;
+            string aText;
 
             if (inIndex >= LocDB.Items.Count)
             {
@@ -1678,7 +1670,7 @@ namespace DesktopStation
 
         }
 
-        private void SetPictureBox(PictureBox inPicBox, String inFilename, bool inDefault)
+        private void SetPictureBox(PictureBox inPicBox, string inFilename, bool inDefault)
         {
             if (File.Exists(inFilename) == true)
             {
@@ -1931,8 +1923,8 @@ namespace DesktopStation
                 aItem.mLocManufacture = aForm.cBox_Manufacture.Text;
                 aItem.mFunctionImageTable = new int[Program.MAX_FUNCTIONNUM];
                 aItem.mFunctionStatus = new int[Program.MAX_FUNCTIONNUM];
-                aItem.mExFunctionCommand = new String[Program.MAX_FUNCTIONNUM + 1];
-                aItem.mExFunctionData = new String[Program.MAX_FUNCTIONNUM + 1];
+                aItem.mExFunctionCommand = new string[Program.MAX_FUNCTIONNUM + 1];
+                aItem.mExFunctionData = new string[Program.MAX_FUNCTIONNUM + 1];
                 aItem.mFunctionExMethod = new int[Program.MAX_FUNCTIONNUM + 1];
                 aItem.mFunctionExAddress = new int[Program.MAX_FUNCTIONNUM + 1];
                 aItem.mFunctionExFuncNo = new int[Program.MAX_FUNCTIONNUM + 1];
@@ -1943,14 +1935,14 @@ namespace DesktopStation
 
                 aItem.mLocAddr = LocDB.AssignAddressProtcol(aForm.cBox_ProtcolLoc1.SelectedIndex, aLowNewAddress);
                 aItem.mLocAddr_dbl = LocDB.AssignAddressProtcol(aForm.cBox_ProtcolLoc2.SelectedIndex, aHighNewAddress);
-                aItem.mDisplayMaxSpeed = Decimal.ToInt32(aForm.numUpDown_MaxSpeed.Value);
-                aItem.mSpeedAccRatio = Decimal.ToInt32(aForm.numUpDown_AccRatio.Value);
-                aItem.mSpeedRedRatio = Decimal.ToInt32(aForm.numUpDown_ReduceRatio.Value);
-                aItem.mLocMaxSpeed = Decimal.ToInt32(aForm.numUpDown_LocMaxSpeed.Value);
+                aItem.mDisplayMaxSpeed = decimal.ToInt32(aForm.numUpDown_MaxSpeed.Value);
+                aItem.mSpeedAccRatio = decimal.ToInt32(aForm.numUpDown_AccRatio.Value);
+                aItem.mSpeedRedRatio = decimal.ToInt32(aForm.numUpDown_ReduceRatio.Value);
+                aItem.mLocMaxSpeed = decimal.ToInt32(aForm.numUpDown_LocMaxSpeed.Value);
                 aItem.mIconFile = DSCommon.GetOmitImageFileName(aForm.LocImageBox.ImageLocation, Application.StartupPath + "\\images");
                 aItem.mMFXUID = DSCommon.ParseStrToUInt32Hex(aForm.tBox_MfxUID.Text);
                 aItem.mLocSpeedstep = aForm.cBox_SpeedStep.SelectedIndex;
-                aItem.mDoubleLoc[0].mLocSpeedstep = aForm.cBox_Speedstep2.SelectedIndex;
+                aItem.mDoubleLoc[0].LocSpeedstep = aForm.cBox_Speedstep2.SelectedIndex;
 
                 LocDB.Items.Add(aItem);
 
@@ -1998,7 +1990,7 @@ namespace DesktopStation
 
             aForm.tBox_MfxUID.Text = LocDB.Items[SelectedLocIndex].mMFXUID.ToString("X8");
             aForm.cBox_SpeedStep.SelectedIndex = LocDB.Items[SelectedLocIndex].mLocSpeedstep;
-            aForm.cBox_Speedstep2.SelectedIndex = LocDB.Items[SelectedLocIndex].mDoubleLoc[0].mLocSpeedstep;
+            aForm.cBox_Speedstep2.SelectedIndex = LocDB.Items[SelectedLocIndex].mDoubleLoc[0].LocSpeedstep;
 
 
             aForm.ShowDialog(this);
@@ -2015,14 +2007,14 @@ namespace DesktopStation
 
                 LocDB.Items[SelectedLocIndex].mLocAddr = LocDB.AssignAddressProtcol(aForm.cBox_ProtcolLoc1.SelectedIndex, aLowNewAddress);
                 LocDB.Items[SelectedLocIndex].mLocAddr_dbl = LocDB.AssignAddressProtcol(aForm.cBox_ProtcolLoc2.SelectedIndex, aHighNewAddress);
-                LocDB.Items[SelectedLocIndex].mDisplayMaxSpeed = Decimal.ToInt32(aForm.numUpDown_MaxSpeed.Value);
-                LocDB.Items[SelectedLocIndex].mSpeedAccRatio = Decimal.ToInt32(aForm.numUpDown_AccRatio.Value);
-                LocDB.Items[SelectedLocIndex].mSpeedRedRatio = Decimal.ToInt32(aForm.numUpDown_ReduceRatio.Value);
-                LocDB.Items[SelectedLocIndex].mLocMaxSpeed = Decimal.ToInt32(aForm.numUpDown_LocMaxSpeed.Value);
+                LocDB.Items[SelectedLocIndex].mDisplayMaxSpeed = decimal.ToInt32(aForm.numUpDown_MaxSpeed.Value);
+                LocDB.Items[SelectedLocIndex].mSpeedAccRatio = decimal.ToInt32(aForm.numUpDown_AccRatio.Value);
+                LocDB.Items[SelectedLocIndex].mSpeedRedRatio = decimal.ToInt32(aForm.numUpDown_ReduceRatio.Value);
+                LocDB.Items[SelectedLocIndex].mLocMaxSpeed = decimal.ToInt32(aForm.numUpDown_LocMaxSpeed.Value);
                 LocDB.Items[SelectedLocIndex].mIconFile = DSCommon.GetOmitImageFileName(aForm.LocImageBox.ImageLocation, Application.StartupPath + "\\images");
                 LocDB.Items[SelectedLocIndex].mMFXUID = DSCommon.ParseStrToUInt32Hex(aForm.tBox_MfxUID.Text);
                 LocDB.Items[SelectedLocIndex].mLocSpeedstep = aForm.cBox_SpeedStep.SelectedIndex;
-                LocDB.Items[SelectedLocIndex].mDoubleLoc[0].mLocSpeedstep = aForm.cBox_Speedstep2.SelectedIndex;
+                LocDB.Items[SelectedLocIndex].mDoubleLoc[0].LocSpeedstep = aForm.cBox_Speedstep2.SelectedIndex;
 
                 /* 現在走行中の場合を想定してMAX超えの場合は自動的に変更する */
                 LocDB.CheckCurrentSpeed(SelectedLocIndex);
@@ -2066,7 +2058,7 @@ namespace DesktopStation
             LeverBox.Refresh();
         }
 
-        private void SetLocIconFileOnCab(String inFileName)
+        private void SetLocIconFileOnCab(string inFileName)
         {
             Image aImage;
 
@@ -2665,8 +2657,8 @@ namespace DesktopStation
 
             aTag = int.Parse(aButton.Tag.ToString());
 
-            aCVNo = Decimal.ToInt32(numUpDown_CVNo.Value);
-            aCVValue = Decimal.ToInt32(numUpDown_CVValue.Value);
+            aCVNo = decimal.ToInt32(numUpDown_CVNo.Value);
+            aCVValue = decimal.ToInt32(numUpDown_CVValue.Value);
 
             aLocAddress = LocDB.AssignAddressProtcol(cBox_CVProtcol.SelectedIndex, 0);
 
@@ -2693,7 +2685,7 @@ namespace DesktopStation
                         if (cBox_DecoderManufacture.SelectedIndex == 2)
                         {
                             /* コマンド送信  */
-                            SerialCmd.SetLocoConfigEx(aLocAddress + Decimal.ToInt32(numUpDown_CVLocAddr.Value), aCVNo + aAddrOffset, aCVValue, 1);
+                            SerialCmd.SetLocoConfigEx(aLocAddress + decimal.ToInt32(numUpDown_CVLocAddr.Value), aCVNo + aAddrOffset, aCVValue, 1);
                         }
                         else
                         {
@@ -3494,7 +3486,7 @@ namespace DesktopStation
                     //押されたボタン別の処理 
                     if (aForm.DialogResult == System.Windows.Forms.DialogResult.OK)
                     {
-                        aAccAddr = Decimal.ToInt32(aForm.addressUpDown.Value);
+                        aAccAddr = decimal.ToInt32(aForm.addressUpDown.Value);
 
                         //データを格納
                         LayoutMapData.UpdateLayoutAccNo(SelectedLayoutIndex, aAccAddr);
@@ -3502,7 +3494,7 @@ namespace DesktopStation
 
                         if (gAppSettings.mS88Sensor == true)
                         {
-                            aS88Addr = Decimal.ToInt32(aForm.S88sensorUpDown.Value);
+                            aS88Addr = decimal.ToInt32(aForm.S88sensorUpDown.Value);
                             LayoutMapData.UpdateLayoutS88Addr(SelectedLayoutIndex, aS88Addr);
                         }
 
@@ -3522,8 +3514,8 @@ namespace DesktopStation
                         else if (aDecoIndex >= 0)
                         {
                             LayoutMapData.SpecialItems[aDecoIndex].Enable = aForm.cBox_UseDeco.Checked;
-                            LayoutMapData.SpecialItems[aDecoIndex].X = Decimal.ToInt32(aForm.numUpDownX.Value);
-                            LayoutMapData.SpecialItems[aDecoIndex].Y = Decimal.ToInt32(aForm.numUpDownY.Value);
+                            LayoutMapData.SpecialItems[aDecoIndex].X = decimal.ToInt32(aForm.numUpDownX.Value);
+                            LayoutMapData.SpecialItems[aDecoIndex].Y = decimal.ToInt32(aForm.numUpDownY.Value);
                             LayoutMapData.SpecialItems[aDecoIndex].Text = aForm.textBoxDecoUserText.Text;
                             LayoutMapData.SpecialItems[aDecoIndex].ImageFile = aForm.labelDecoImageFile.Text;
                         }
@@ -3559,7 +3551,7 @@ namespace DesktopStation
             {
                 LayoutMapData.LoadFromFile(aForm.FileName);
 
-                String aTempRouteFile = System.IO.Path.ChangeExtension(aForm.FileName, "rte");
+                string aTempRouteFile = System.IO.Path.ChangeExtension(aForm.FileName, "rte");
 
                 if (System.IO.File.Exists(aTempRouteFile) == true)
                 {
@@ -3587,7 +3579,7 @@ namespace DesktopStation
             {
                 LayoutMapData.SaveToFile(aForm.FileName);
 
-                String aTempRouteFile = System.IO.Path.ChangeExtension(aForm.FileName, "rte");
+                string aTempRouteFile = System.IO.Path.ChangeExtension(aForm.FileName, "rte");
 
                 Routes.SaveToFile(aTempRouteFile);
             }
@@ -3610,8 +3602,8 @@ namespace DesktopStation
                 if (aForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
 
-                    LayoutMapData.Width = Decimal.ToInt32(aForm.numUpDown_Width.Value);
-                    LayoutMapData.Height = Decimal.ToInt32(aForm.numUpDown_Height.Value);
+                    LayoutMapData.Width = decimal.ToInt32(aForm.numUpDown_Width.Value);
+                    LayoutMapData.Height = decimal.ToInt32(aForm.numUpDown_Height.Value);
                     LayoutMapData.Clear();
 
                     Routes.Clear();
@@ -3875,7 +3867,7 @@ namespace DesktopStation
         private bool OpenScriptEdit(ScriptData inData, bool inLocAddrNotAutoReplaced)
         {
             bool aResult = false;
-            String aCommand;
+            string aCommand;
             int i;
 
             aCommand = inData.mCommand;
@@ -4198,8 +4190,8 @@ namespace DesktopStation
                         inData.mParam1 = GetLocAddressFromDialog(aForm.cBox_LocAddressSpd.Text, aForm.cBox_ProtcolLocSpd.SelectedIndex, aForm.cBox_AddrReplacedLocSpd.Checked).ToString();
                     }                    
                     
-                    inData.mParam2 = Decimal.ToInt32(aForm.numericSpeed.Value).ToString();
-                    inData.mParam3 = Decimal.ToInt32(aForm.numUpDown_TransitionTime.Value);
+                    inData.mParam2 = decimal.ToInt32(aForm.numericSpeed.Value).ToString();
+                    inData.mParam3 = decimal.ToInt32(aForm.numUpDown_TransitionTime.Value);
 
                 }
 
@@ -4243,7 +4235,7 @@ namespace DesktopStation
                 if (aCommand == Program.SCRIPTCMD_ACCESSORY)
                 {
 
-                    inData.mParam1 = Decimal.ToInt32(aForm.numericAccAddress.Value).ToString();
+                    inData.mParam1 = decimal.ToInt32(aForm.numericAccAddress.Value).ToString();
                     inData.mParam2 = aForm.cBox_AccPower.SelectedIndex.ToString();
                 }
 
@@ -4256,7 +4248,7 @@ namespace DesktopStation
                 if ( (aCommand == Program.SCRIPTCMD_WAIT) || (aCommand == Program.SCRIPTCMD_WAITRND))
                 {
 
-                    inData.mParam1 = Decimal.ToInt32(aForm.numericWaitTime.Value).ToString();
+                    inData.mParam1 = decimal.ToInt32(aForm.numericWaitTime.Value).ToString();
                 }
 
                 if (aCommand == Program.SCRIPTCMD_WAITIF)
@@ -4281,7 +4273,7 @@ namespace DesktopStation
                 {
                     inData.mParam1 = aForm.cBox_JumpLabelName.Text;
                     inData.mParam2 = aForm.tBox_JumpFlagNo.Text;
-                    inData.mParam3 = Decimal.ToInt32(aForm.numUpDown_JumpValue.Value);
+                    inData.mParam3 = decimal.ToInt32(aForm.numUpDown_JumpValue.Value);
                 }
 
 
@@ -4289,7 +4281,7 @@ namespace DesktopStation
                 {
                     inData.mParam1 = aForm.cBox_JumpLabelName.Text;
                     inData.mParam2 = (DSCommon.ParseStrToInt(aForm.tBox_JumpFlagNo.Text) - 1).ToString();
-                    inData.mParam3 = Decimal.ToInt32(aForm.numUpDown_JumpValue.Value);
+                    inData.mParam3 = decimal.ToInt32(aForm.numUpDown_JumpValue.Value);
                 }                
 
                 if ((aCommand == Program.SCRIPTCMD_SETFLAG) || (aCommand == Program.SCRIPTCMD_INCFLAG))
@@ -4330,7 +4322,7 @@ namespace DesktopStation
                 {
                     inData.mParam1 = aForm.cBox_JumpRunLabel.Text;
                     inData.mParam2 = GetLocAddressFromDialog(aForm.cBox_JumpRunLocAddr.Text, aForm.cBox_JumpRunLocProt.SelectedIndex, aForm.cBox_AddrReplacedLocJump.Checked).ToString();
-                    inData.mParam3 = Decimal.ToInt32(aForm.numUpDownJumpRun.Value);
+                    inData.mParam3 = decimal.ToInt32(aForm.numUpDownJumpRun.Value);
                 }
 
                 aResult = true;
@@ -4343,7 +4335,7 @@ namespace DesktopStation
         }
 
 
-        private int GetLocAddressFromDialog(String inLocAddress, int inProtocolIndex, bool inAutoReplaced)
+        private int GetLocAddressFromDialog(string inLocAddress, int inProtocolIndex, bool inAutoReplaced)
         {
             int aLocNewAddress;
 
@@ -4372,7 +4364,7 @@ namespace DesktopStation
             aData.mParam1 = "";
             aData.mParam2 = "";
 
-            switch (DSCommon.ParseStrToInt((String)aItem.Tag))
+            switch (DSCommon.ParseStrToInt((string)aItem.Tag))
             {
                 case 1: aData.mCommand = Program.SCRIPTCMD_SPEED;
                     break;
@@ -4428,13 +4420,13 @@ namespace DesktopStation
             aAccGears = gAppSettings.mSpeedGears;
 
             /* 最大最小チェック */
-            if (aAccGears <= Decimal.ToInt32(aForm.numUpDown_AccGears.Minimum))
+            if (aAccGears <= decimal.ToInt32(aForm.numUpDown_AccGears.Minimum))
             {
-                aAccGears = Decimal.ToInt32(aForm.numUpDown_AccGears.Minimum);
+                aAccGears = decimal.ToInt32(aForm.numUpDown_AccGears.Minimum);
             }
-            if (aAccGears >= Decimal.ToInt32(aForm.numUpDown_AccGears.Maximum))
+            if (aAccGears >= decimal.ToInt32(aForm.numUpDown_AccGears.Maximum))
             {
-                aAccGears = Decimal.ToInt32(aForm.numUpDown_AccGears.Maximum);
+                aAccGears = decimal.ToInt32(aForm.numUpDown_AccGears.Maximum);
             }
 
             aForm.cBox_LeverMode.SelectedIndex = gAppSettings.mSpeedLeverMode;
@@ -4443,7 +4435,7 @@ namespace DesktopStation
             if (aForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 gAppSettings.mSpeedLeverMode = aForm.cBox_LeverMode.SelectedIndex;
-                gAppSettings.mSpeedGears = Decimal.ToInt32(aForm.numUpDown_AccGears.Value);
+                gAppSettings.mSpeedGears = decimal.ToInt32(aForm.numUpDown_AccGears.Value);
 
                 /* 位置を初期化 */
                 LeverValue = 0;
@@ -4463,8 +4455,8 @@ namespace DesktopStation
 
         private void serialPort_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            String aRecvText = "";
-            String aSerialText = "";
+            string aRecvText = "";
+            string aSerialText = "";
             int i;
 
             System.IO.Ports.SerialPort sp = (System.IO.Ports.SerialPort)sender;
@@ -5260,7 +5252,7 @@ namespace DesktopStation
 
         private void MeterBox_Paint(object sender, PaintEventArgs e)
         {
-            String aTextNotch;
+            string aTextNotch;
             int aCurrentSpeed;
             int aLocMaxSpeed;
             Point[] pt = new Point[3];
@@ -5383,7 +5375,7 @@ namespace DesktopStation
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            String aConfigFilePath = Application.StartupPath + "\\Resources\\config";
+            string aConfigFilePath = Application.StartupPath + "\\Resources\\config";
 
             /* 設定ファイルフォルダの存在チェック */
             if (Directory.Exists(aConfigFilePath) == false)
@@ -5457,7 +5449,7 @@ namespace DesktopStation
             MeterBox.Focus();
         }
 
-        private bool IsNumeric(String inNumText)
+        private bool IsNumeric(string inNumText)
         {
             int j;
 
@@ -5471,7 +5463,7 @@ namespace DesktopStation
 
             bool aVisibleOption = gControlMode == Program.POWER_OFF ? true : false;
 
-            String[] aPorts = System.IO.Ports.SerialPort.GetPortNames();
+            string[] aPorts = System.IO.Ports.SerialPort.GetPortNames();
             int j;
 
             /* Microsoftによるポート名の後に不正文字がつくバグ対策 */
@@ -5541,7 +5533,7 @@ namespace DesktopStation
 
                 for (int i = 0; i < files.Length; i++)
                 {
-                    String aFilename = Path.GetFileName(files[i]);
+                    string aFilename = Path.GetFileName(files[i]);
                     aForm.cBox_LanguageFile.Items.Add(aFilename);
 
                     if (aFilename == gAppSettings.mLanguageFile)
@@ -5588,11 +5580,11 @@ namespace DesktopStation
                 gAppSettings.mMfxAutoRegister = aForm.cBox_MfxAutoRegister.Checked;
                 gAppSettings.mMfxAutoUpdate = aForm.cBox_MfxAutoUpdate.Checked;
                 gAppSettings.mS88Sensor = aForm.cBox_S88.Checked;
-                gAppSettings.mS88SendInterval = Decimal.ToInt32(aForm.numUpDown_S88DetectFreq.Value);
-                gAppSettings.mS88NumOfConnection = Decimal.ToInt32(aForm.numUpDown_S88SensorNums.Value);
+                gAppSettings.mS88SendInterval = decimal.ToInt32(aForm.numUpDown_S88DetectFreq.Value);
+                gAppSettings.mS88NumOfConnection = decimal.ToInt32(aForm.numUpDown_S88SensorNums.Value);
                 gAppSettings.mSideFuncRight = aForm.cBox_SideFuncRight.SelectedIndex;
                 gAppSettings.mSideFuncBottom = aForm.cBox_SideFuncBottom.SelectedIndex;
-                gAppSettings.mWindowZoom = Decimal.ToInt32(aForm.numUpDown_WindowZoom.Value);
+                gAppSettings.mWindowZoom = decimal.ToInt32(aForm.numUpDown_WindowZoom.Value);
 
                 gAppSettings.mStopAllLocWhenPowerOn = aForm.cBox_StopAllLocPon.Checked;
                 gAppSettings.mAutoCloseSerialport = aForm.cBox_AutoCloseSerial.Checked;
@@ -5638,7 +5630,7 @@ namespace DesktopStation
         private void MainForm_Load(object sender, EventArgs e)
         {
             int i;
-            String aConfigFilePath = Application.StartupPath + "\\config";
+            string aConfigFilePath = Application.StartupPath + "\\config";
 
             /* 設定ファイルフォルダの存在チェック */
             if (Directory.Exists(aConfigFilePath) == false)
@@ -6003,9 +5995,9 @@ namespace DesktopStation
 
         }
 
-        private String getSerialPortName()
+        private string getSerialPortName()
         {
-            String aResult;
+            string aResult;
             aResult = serialPort.PortName;
             return aResult;
         }
@@ -6017,7 +6009,7 @@ namespace DesktopStation
 
         private void ClickPower()
         {
-            String[] aSerialPorts;
+            string[] aSerialPorts;
             bool aPortNameCheckOk;
             int i;
             bool aPortOpenCheck = false;
@@ -7001,12 +6993,12 @@ namespace DesktopStation
                     if (SelectedAccessoryIndex == aCurrentIndex)
                     {
                         DrawIconRoundRectangle(aCanvas, aRectX, aRectY, aRectW, aRectH, 3, true, Color.FromArgb(240, 240, 240), Color.Silver, Color.Red);
-                        aCanvas.DrawString(String.Format("{0, 3}", aCurrentIndex + 1), aDrawFont, Brushes.Red, aTextX, aTextY);
+                        aCanvas.DrawString(string.Format("{0, 3}", aCurrentIndex + 1), aDrawFont, Brushes.Red, aTextX, aTextY);
                     }
                     else
                     {
                         DrawIconRoundRectangle(aCanvas, aRectX, aRectY, aRectW, aRectH, 3, true, Color.FromArgb(240, 240, 240), Color.Silver, Color.DimGray);
-                        aCanvas.DrawString(String.Format("{0, 3}", aCurrentIndex + 1), aDrawFont, Brushes.Black, aTextX, aTextY);
+                        aCanvas.DrawString(string.Format("{0, 3}", aCurrentIndex + 1), aDrawFont, Brushes.Black, aTextX, aTextY);
                     }
 
                     /* 描画 */
@@ -7440,7 +7432,7 @@ namespace DesktopStation
             }
         }
 
-        private String GetS88EventName(int inIndex, String inNameText)
+        private string GetS88EventName(int inIndex, string inNameText)
         {
             return ToAlphabet(inIndex) + ": " + inNameText;
         }
@@ -7518,7 +7510,7 @@ namespace DesktopStation
             aData.mParam2 = "";
             aData.mParam1 = "";
 
-            switch (DSCommon.ParseStrToInt((String)aItem.Tag))
+            switch (DSCommon.ParseStrToInt((string)aItem.Tag))
             {
                 case 1: aData.mCommand = Program.SCRIPTCMD_SPEED;
                     break;
@@ -7656,7 +7648,7 @@ namespace DesktopStation
         {
             int i;
             int aIndex;
-            String aParam1, aParam2,aParam3;
+            string aParam1, aParam2,aParam3;
 
             aIndex = lBox_S88Events.SelectedIndex;
 
@@ -7686,7 +7678,7 @@ namespace DesktopStation
 
         }
 
-        private void getScriptParamName(ScriptData inData, out String outParam1, out String outParam2, out String outParam3)
+        private void getScriptParamName(ScriptData inData, out string outParam1, out string outParam2, out string outParam3)
         {
             outParam1 = inData.mParam1;
             outParam2 = inData.mParam2;
@@ -8130,9 +8122,9 @@ namespace DesktopStation
 
         }
 
-        private void SendToGateway(String inCommand)
+        private void SendToGateway(string inCommand)
         {
-            String aReplyText = "";
+            string aReplyText = "";
 
             switch (gAppSettings.mSendMode)
             {
@@ -8142,7 +8134,7 @@ namespace DesktopStation
                     break;
             case    1:
                     /* HTTP Post送信 */
-                    WebControl.SendWithPOST(gAppSettings.mIPAddress, inCommand);
+                    WebControl.SendWithPost(gAppSettings.mIPAddress, inCommand);
                     break;
             case    2:
                     /* エミュレーション */
@@ -8165,7 +8157,7 @@ namespace DesktopStation
 
         }
 
-        private void HttpUploadCompleted(Object sender,	System.Net.DownloadStringCompletedEventArgs e)
+        private void HttpUploadCompleted(object sender,	System.Net.DownloadStringCompletedEventArgs e)
         {
 
             try
@@ -8179,7 +8171,7 @@ namespace DesktopStation
 
                 if (aIdx2 - aIdx1 > 0)
                 {
-                    String aReplyData = aReplyText.Substring(aIdx1 + 4, aIdx2 - aIdx1 - 4);
+                    string aReplyData = aReplyText.Substring(aIdx1 + 4, aIdx2 - aIdx1 - 4);
 
                     SetRecvText("[RECV]" + aReplyData);
                     SetRecvConnectCheck(aReplyData);
@@ -8207,7 +8199,7 @@ namespace DesktopStation
         private void updateS88ScriptView()
         {
             int i;
-            String aText;
+            string aText;
 
             /* Flag 表示 */
 
@@ -8366,7 +8358,7 @@ namespace DesktopStation
             int i;
             int aEventIndex;
             int aSelectedIndex = 0;
-            String aText = "";
+            string aText = "";
 
             ToolStripMenuItem aItem = sender as ToolStripMenuItem;
 
@@ -8379,7 +8371,7 @@ namespace DesktopStation
             }
 
 
-            if (Int32.Parse(aItem.Tag as String) == 1)
+            if (int.Parse(aItem.Tag as string) == 1)
             {
                 aText = "DESKTOPSTATION,SCRIPT,2013\r\n";
 
@@ -8412,7 +8404,7 @@ namespace DesktopStation
                 Clipboard.SetDataObject(aText);
 
             }
-            else if (Int32.Parse(aItem.Tag as String) == 2)
+            else if (int.Parse(aItem.Tag as string) == 2)
             {
 
                 /* クリップボードからデータ取得 */
@@ -8445,11 +8437,11 @@ namespace DesktopStation
                 }
 
                 /* 書き込む */
-                String[] aTextArray = aText.Split(new[] {"\r\n"}, StringSplitOptions.None);
+                string[] aTextArray = aText.Split(new[] {"\r\n"}, StringSplitOptions.None);
 
                 for( i = 1; i < aTextArray.Length; i++)
                 {
-                    String[] aParamArray = aTextArray[i].Split(',');
+                    string[] aParamArray = aTextArray[i].Split(',');
 
                     if (aParamArray.Length >= 2)
                     {
@@ -8506,7 +8498,7 @@ namespace DesktopStation
         {
             /* クリップボードにコピー */
             int i;
-            String aText = "";
+            string aText = "";
 
             for (i = 0; i < listBox_Serial.Items.Count; i++)
             {
@@ -8593,7 +8585,7 @@ namespace DesktopStation
 
                     aCanvas.DrawImage(Properties.Resources.EmergencyButton, 0, 0, Properties.Resources.EmergencyButton.Width * ScaleRation / 100, Properties.Resources.EmergencyButton.Height * ScaleRation / 100);
 
-                    String aEmgText = LangManager.SetText("TxtEmergency", "EMERGENCY STOP");
+                    string aEmgText = LangManager.SetText("TxtEmergency", "EMERGENCY STOP");
                     Font aFont = new Font("Arial", 14, FontStyle.Bold);
 
                     float aX = (pBox_Clock.Width - aCanvas.MeasureString(aEmgText, aFont).Width) / 2;
@@ -8720,7 +8712,7 @@ namespace DesktopStation
             if (aForm.DialogResult == System.Windows.Forms.DialogResult.OK)
             {
                 /* 時刻の算出 */
-                DateTime aTime = new DateTime(2013, 1, 1, Decimal.ToInt32(aForm.numUpDown_hour.Value), Decimal.ToInt32(aForm.numUpDown_min.Value), Decimal.ToInt32(aForm.numUpDown_sec.Value));
+                DateTime aTime = new DateTime(2013, 1, 1, decimal.ToInt32(aForm.numUpDown_hour.Value), decimal.ToInt32(aForm.numUpDown_min.Value), decimal.ToInt32(aForm.numUpDown_sec.Value));
 
                 gAppSettings.mVirtualClock = aTime;
                 gAppSettings.mUseVirtualClock = aForm.cBox_UseUserClock.Checked;
@@ -8832,11 +8824,11 @@ namespace DesktopStation
 
             int i;
             int aSelectedIndex = 0;
-            String aText = "";
+            string aText = "";
 
             ToolStripMenuItem aItem = sender as ToolStripMenuItem;
 
-            if (Int32.Parse(aItem.Tag as String) == 1)
+            if (int.Parse(aItem.Tag as string) == 1)
             {
                 aText = "DESKTOPSTATION,SCRIPT,2013\r\n";
 
@@ -8849,7 +8841,7 @@ namespace DesktopStation
                 Clipboard.SetDataObject(aText);
 
             }
-            else if (Int32.Parse(aItem.Tag as String) == 2)
+            else if (int.Parse(aItem.Tag as string) == 2)
             {
 
                 /* クリップボードからデータ取得 */
@@ -8882,11 +8874,11 @@ namespace DesktopStation
                 }
 
                 /* 書き込む */
-                String[] aTextArray = aText.Split(new[] { "\r\n" }, StringSplitOptions.None);
+                string[] aTextArray = aText.Split(new[] { "\r\n" }, StringSplitOptions.None);
 
                 for (i = 1; i < aTextArray.Length; i++)
                 {
-                    String[] aParamArray = aTextArray[i].Split(',');
+                    string[] aParamArray = aTextArray[i].Split(',');
 
                     if (aParamArray.Length >= 2)
                     {
@@ -8995,7 +8987,7 @@ namespace DesktopStation
 
             if ((gControlMode == Program.POWER_OFF) || (gAppSettings.mSideFuncBottom == Program.BOTTOMBAR_NONE))
             {
-                String aWelcomeText = LangManager.SetText("TxtMainWelcome", "Welcome aboard!");
+                string aWelcomeText = LangManager.SetText("TxtMainWelcome", "Welcome aboard!");
 
                 aCanvas.DrawString(aWelcomeText, aDrawFont, Brushes.Black, (MultiFunctionBox.Width - aCanvas.MeasureString(aWelcomeText, aDrawFont).Width) / 2, (MultiFunctionBox.Height - aCanvas.MeasureString(aWelcomeText, aDrawFont).Height) / 2);
 
@@ -9581,32 +9573,32 @@ namespace DesktopStation
                     case 1:
                     case 2:
                     case 3:
-                       S88Manager.mEvents[aIndex].mSensorAddress = Decimal.ToInt32(aForm.numBox_S88SensorAddr.Value);
+                       S88Manager.mEvents[aIndex].mSensorAddress = decimal.ToInt32(aForm.numBox_S88SensorAddr.Value);
                         break;
                     case 4:
                         /* Interval */
-                        S88Manager.mEvents[aIndex].mIntervalTime =  Decimal.ToInt32(aForm.numUpDown_hour.Value * (60 * 60) + (aForm.numUpDown_min.Value * 60) + aForm.numUpDown_sec.Value);
+                        S88Manager.mEvents[aIndex].mIntervalTime =  decimal.ToInt32(aForm.numUpDown_hour.Value * (60 * 60) + (aForm.numUpDown_min.Value * 60) + aForm.numUpDown_sec.Value);
                         break;
 
                     case 5:
                         /* Clock */
-                        S88Manager.mEvents[aIndex].mTriggerTime =  Decimal.ToInt32(aForm.numUpDown_hour.Value * (60 * 60) + (aForm.numUpDown_min.Value * 60) + aForm.numUpDown_sec.Value);
+                        S88Manager.mEvents[aIndex].mTriggerTime =  decimal.ToInt32(aForm.numUpDown_hour.Value * (60 * 60) + (aForm.numUpDown_min.Value * 60) + aForm.numUpDown_sec.Value);
 
                         break;
                     case 6:
                         /* Interval */
-                        S88Manager.mEvents[aIndex].mIntervalTime = Decimal.ToInt32(aForm.numUpDown_hour.Value * (60 * 60) + (aForm.numUpDown_min.Value * 60) + aForm.numUpDown_sec.Value);
+                        S88Manager.mEvents[aIndex].mIntervalTime = decimal.ToInt32(aForm.numUpDown_hour.Value * (60 * 60) + (aForm.numUpDown_min.Value * 60) + aForm.numUpDown_sec.Value);
                         break;
                     case 7:
-                        S88Manager.mEvents[aIndex].mTriggerSpeed_Run = Decimal.ToInt32(aForm.numUpDown_RunSpeed.Value);
+                        S88Manager.mEvents[aIndex].mTriggerSpeed_Run = decimal.ToInt32(aForm.numUpDown_RunSpeed.Value);
                         break;
                     case 8:
-                        S88Manager.mEvents[aIndex].mTriggerSpeed_Stop = Decimal.ToInt32(aForm.numUpDown_StopSpeed.Value);
+                        S88Manager.mEvents[aIndex].mTriggerSpeed_Stop = decimal.ToInt32(aForm.numUpDown_StopSpeed.Value);
                         break;
 
                     case 9:
-                        S88Manager.mEvents[aIndex].mFlagNo = Decimal.ToInt32(aForm.nuUpDown_FlagNo.Value);
-                        S88Manager.mEvents[aIndex].mFlagValue = Decimal.ToInt32(aForm.nuUpDown_FlagVal.Value);
+                        S88Manager.mEvents[aIndex].mFlagNo = decimal.ToInt32(aForm.nuUpDown_FlagNo.Value);
+                        S88Manager.mEvents[aIndex].mFlagValue = decimal.ToInt32(aForm.nuUpDown_FlagVal.Value);
 
                         break;
 
@@ -9683,7 +9675,7 @@ namespace DesktopStation
             }
         }
 
-        private void RunFile(String inAppName, String inFileName)
+        private void RunFile(string inAppName, string inFileName)
         {
             ExecuteManager.Run(inAppName, inFileName);
         }
@@ -9881,7 +9873,7 @@ namespace DesktopStation
 
         private void UpdateDCCCVLocAddr()
         {
-            int aLocAddress = Decimal.ToInt32(numUpDown_CVLocAddress.Value);
+            int aLocAddress = decimal.ToInt32(numUpDown_CVLocAddress.Value);
 
             if (aLocAddress <= 127)
             {
@@ -9980,7 +9972,7 @@ namespace DesktopStation
                     /* 警告表示 */
                     if (MessageBox.Show(LangManager.SetText("TxtCVAttention", "Write CV to your locomotive. Are you sure?"), LangManager.SetText("TxtCVAttentionTitle", "CV write attention"), MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                     {
-                        aDCCAddress = Decimal.ToInt32(numUpDown_CVLocAddress.Value);
+                        aDCCAddress = decimal.ToInt32(numUpDown_CVLocAddress.Value);
 
                         SerialCmd.SetLocoConfig(aLocAddress, 29 + aAddrOffset, GenerateCV29());
                         DSCommon.WaitSleepTime(30);
@@ -10101,7 +10093,7 @@ namespace DesktopStation
         {
             int aLocProtcol = LocDB.GetAddressLocProtcol(CraneController.CraneLocAddress);
 
-            CraneController.CraneLocAddress = LocDB.AssignAddressProtcol(aLocProtcol, Decimal.ToInt32(numUpDownCraneAddress.Value));
+            CraneController.CraneLocAddress = LocDB.AssignAddressProtcol(aLocProtcol, decimal.ToInt32(numUpDownCraneAddress.Value));
 
         }
 
@@ -10641,17 +10633,17 @@ namespace DesktopStation
 
         }
 
-        private void GetWebReceivedSerialCommand(String inCommandText)
+        private void GetWebReceivedSerialCommand(string inCommandText)
         {
             SendingList.Insert(0, inCommandText);
             CheckingList.Insert(0, inCommandText);
 
         }
 
-        private String GetWebStatus(int inMode)
+        private string GetWebStatus(int inMode)
         {
             /* Web経由で、状態をテキストにして応答するための処理(ajax用) */
-            String aRet = "";
+            string aRet = "";
 
             if (inMode == 0)
             {
@@ -10781,11 +10773,11 @@ namespace DesktopStation
 
 
 
-        private void SetRecvAnotherStationWeb(String inCommandText)
+        private void SetRecvAnotherStationWeb(string inCommandText)
             {
             /* Web経由で得た指令 */
 
-            String[] aParameters;
+            string[] aParameters;
             int aAddress;
             string[] aDelimiter = { "(", ",", ")" };
             int aSpeed;
@@ -10976,7 +10968,7 @@ namespace DesktopStation
             if (aForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
 
-                LayoutMapData.Resize(Decimal.ToInt32(aForm.numUpDown_Width.Value), Decimal.ToInt32(aForm.numUpDown_Height.Value));
+                LayoutMapData.Resize(decimal.ToInt32(aForm.numUpDown_Width.Value), decimal.ToInt32(aForm.numUpDown_Height.Value));
 
                 /* レイアウト更新 */
                 LayoutBox.Width = LayoutMapData.Width * Program.TILE32_SIZE * ScaleRation / 100;

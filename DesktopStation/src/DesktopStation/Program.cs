@@ -24,8 +24,7 @@ namespace DesktopStation
 
             mutex.ReleaseMutex();
         }
-
-
+        
         public const int POWER_ON = 1;
         public const int POWER_OFF = 0;
         public const int ACCESSORIES_MAX = 320 + 1;
@@ -93,8 +92,7 @@ namespace DesktopStation
         public const int BOTTOMBAR_NONE = 0;
         public const int BOTTOMBAR_ACC = 1;
         public const int BOTTOMBAR_S88 = 2;
-
- 
+        
         public const int KEYMAP_PPLUS = (int)Keys.Z;
         public const int KEYMAP_PMINUS = (int)Keys.A;
         public const int KEYMAP_FREE = (int)Keys.X;
@@ -129,49 +127,46 @@ namespace DesktopStation
         public const int SCRIPTMODE_RUN = 1;
         public const int SCRIPTMODE_STOP = 0;
         public const int SCRIPTMODE_TEACH = 2;
-        public const String SCRIPTCMD_WAIT = "WAIT";
-        public const String SCRIPTCMD_WAITIF = "WAITIF";
-        public const String SCRIPTCMD_WAITRND = "WAITRND";
-        public const String SCRIPTCMD_SPEED = "SPEED";
-        public const String SCRIPTCMD_DIRECTION = "DIRECTION";
-        public const String SCRIPTCMD_FUNCTION = "FUNCTION";
-        public const String SCRIPTCMD_ACCESSORY = "ACCESSORY";
-        public const String SCRIPTCMD_POWER = "POWER";
-        public const String SCRIPTCMD_EXIT = "EXIT";
-        public const String SCRIPTCMD_GOTO = "GOTO";
-        public const String SCRIPTCMD_SETFLAG = "SETFLAG";
-        public const String SCRIPTCMD_LABEL = "LABEL";
-        public const String SCRIPTCMD_INCFLAG = "INCFLAG";
-        public const String SCRIPTCMD_RUNFILE = "RUNFILE";
-        public const String SCRIPTCMD_SETROUTE = "SETROUTE";
-        public const String SCRIPTCMD_GOTOIF = "GOTOIF";
+        public const string SCRIPTCMD_WAIT = "WAIT";
+        public const string SCRIPTCMD_WAITIF = "WAITIF";
+        public const string SCRIPTCMD_WAITRND = "WAITRND";
+        public const string SCRIPTCMD_SPEED = "SPEED";
+        public const string SCRIPTCMD_DIRECTION = "DIRECTION";
+        public const string SCRIPTCMD_FUNCTION = "FUNCTION";
+        public const string SCRIPTCMD_ACCESSORY = "ACCESSORY";
+        public const string SCRIPTCMD_POWER = "POWER";
+        public const string SCRIPTCMD_EXIT = "EXIT";
+        public const string SCRIPTCMD_GOTO = "GOTO";
+        public const string SCRIPTCMD_SETFLAG = "SETFLAG";
+        public const string SCRIPTCMD_LABEL = "LABEL";
+        public const string SCRIPTCMD_INCFLAG = "INCFLAG";
+        public const string SCRIPTCMD_RUNFILE = "RUNFILE";
+        public const string SCRIPTCMD_SETROUTE = "SETROUTE";
+        public const string SCRIPTCMD_GOTOIF = "GOTOIF";
 
-        //今後、削除予定
-        public const String SCRIPTCMD_JUMPS88 = "JUMPS88";
-        public const String SCRIPTCMD_JUMPRUN = "JUMPRUN";
-        public const String SCRIPTCMD_JUMPSTOP = "JUMPSTOP";
-        public const String SCRIPTCMD_JUMPROUTE = "JUMPROUTE";
-        public const String SCRIPTCMD_JUMP = "JUMP";
+        public const string SCRIPTCMD_JUMPS88 = "JUMPS88";
+        public const string SCRIPTCMD_JUMPRUN = "JUMPRUN";
+        public const string SCRIPTCMD_JUMPSTOP = "JUMPSTOP";
+        public const string SCRIPTCMD_JUMPROUTE = "JUMPROUTE";
+        public const string SCRIPTCMD_JUMP = "JUMP";
 
-
-        public const String SERIALCMD_LOCSPEED = "setLocoSpeed";
-        public const String SERIALCMD_LOCDIRECTION = "setLocoDirection";
-        public const String SERIALCMD_LOCFUNCTION = "setLocoFunction";
-        public const String SERIALCMD_LOCACCEL = "accelerateLoco";
-        public const String SERIALCMD_LOCDEACCEL = "decelerateLoco";
-        public const String SERIALCMD_TGLDIRECTION = "toggleLocoDirection";
-        public const String SERIALCMD_TGLFUNCTION = "toggleLocoFunction";
-        public const String SERIALCMD_TURNOUT = "setTurnout";
-        public const String SERIALCMD_PING = "setPing";
-        public const String SERIALCMD_POWER = "setPower";
-        public const String SERIALCMD_SETCV = "setLocoConfig";
-        public const String SERIALCMD_GETCV = "getLocoConfig";
-        public const String SERIALCMD_GETS88 = "getS88";
-        public const String SERIALCMD_MFXDISCOVERY = "mfxDiscovery";
-        public const String SERIALCMD_MFXBIND = "mfxBind";
-        public const String SERIALCMD_MFXVERIFY = "mfxVerify";        
-
-
+        public const string SERIALCMD_LOCSPEED = "setLocoSpeed";
+        public const string SERIALCMD_LOCDIRECTION = "setLocoDirection";
+        public const string SERIALCMD_LOCFUNCTION = "setLocoFunction";
+        public const string SERIALCMD_LOCACCEL = "accelerateLoco";
+        public const string SERIALCMD_LOCDEACCEL = "decelerateLoco";
+        public const string SERIALCMD_TGLDIRECTION = "toggleLocoDirection";
+        public const string SERIALCMD_TGLFUNCTION = "toggleLocoFunction";
+        public const string SERIALCMD_TURNOUT = "setTurnout";
+        public const string SERIALCMD_PING = "setPing";
+        public const string SERIALCMD_POWER = "setPower";
+        public const string SERIALCMD_SETCV = "setLocoConfig";
+        public const string SERIALCMD_GETCV = "getLocoConfig";
+        public const string SERIALCMD_GETS88 = "getS88";
+        public const string SERIALCMD_MFXDISCOVERY = "mfxDiscovery";
+        public const string SERIALCMD_MFXBIND = "mfxBind";
+        public const string SERIALCMD_MFXVERIFY = "mfxVerify";        
+        
         public const int MULTICONTROL_MAX = 8;
 
         public const int DOUBLEHEADING_MAX = 4;
@@ -184,15 +179,10 @@ namespace DesktopStation
         public const int PANELUPDATE_LOC = 1;
         public const int PANELUPDATE_ACC = 2;
 
-        public const String FILE_S88EVENT = "\\Resources\\S88Events.xml";
-        public const String FILE_LAYOUT = "\\Resources\\Default.map";
-        public const String FILE_EXECUTE = "\\Resources\\Execute.dat";
-        public const String FOLDER_ICON = "\\Resources\\Icons\\";
-        public const String FOLDER_LANGUAGE = "\\Resources\\language\\";
-
-        
-
-        
-
+        public const string FILE_S88EVENT = "\\Resources\\S88Events.xml";
+        public const string FILE_LAYOUT = "\\Resources\\Default.map";
+        public const string FILE_EXECUTE = "\\Resources\\Execute.dat";
+        public const string FOLDER_ICON = "\\Resources\\Icons\\";
+        public const string FOLDER_LANGUAGE = "\\Resources\\language\\";
     }
 }

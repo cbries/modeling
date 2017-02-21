@@ -53,8 +53,8 @@ namespace DesktopStation
                 buttonDelRouteItem.Text = inLangManager.SetText("TxtMenuDelete", buttonDelRouteItem.Text);
                 buttonEditRouteItem.Text = inLangManager.SetText("TxtMenuEdit", buttonEditRouteItem.Text);
 
-                cBox_SigDir.Items[0] = inLangManager.SetText("TxtRouteRed", (String)cBox_SigDir.Items[0]);
-                cBox_SigDir.Items[1] = inLangManager.SetText("TxtRouteGreen", (String)cBox_SigDir.Items[1]);
+                cBox_SigDir.Items[0] = inLangManager.SetText("TxtRouteRed", (string)cBox_SigDir.Items[0]);
+                cBox_SigDir.Items[1] = inLangManager.SetText("TxtRouteGreen", (string)cBox_SigDir.Items[1]);
 
 
                 button_Ok.Text = inLangManager.SetText("TxtOk", button_Ok.Text);
@@ -120,7 +120,7 @@ namespace DesktopStation
                 return;
             }
 
-            RoutesData.ListItems[comboBox_Routes.SelectedIndex - 1].SignalAddr = Decimal.ToInt32(numUpDown_SigAddr.Value);
+            RoutesData.ListItems[comboBox_Routes.SelectedIndex - 1].SignalAddr = decimal.ToInt32(numUpDown_SigAddr.Value);
 
         }
 
@@ -169,7 +169,7 @@ namespace DesktopStation
 
         }
 
-        private void AvailabilityRouteEditor(Boolean inAvailability)
+        private void AvailabilityRouteEditor(bool inAvailability)
         {
             buttonAddRouteItem.Enabled = inAvailability;
             buttonEditRouteItem.Enabled = inAvailability;
@@ -184,9 +184,9 @@ namespace DesktopStation
         }
 
 
-        private String getLogicalOpe(int inOpeNo)
+        private string getLogicalOpe(int inOpeNo)
         {
-            String aRet = "";
+            string aRet = "";
 
             switch (inOpeNo)
             {
@@ -294,7 +294,7 @@ namespace DesktopStation
                 RouteItem aRItem = new RouteItem();
                 aRItem.No = RoutesData.ListItems[comboBox_Routes.SelectedIndex - 1].Items.Count;
                 aRItem.Type = aForm.comboBox_Type.SelectedIndex;
-                aRItem.Addr = Decimal.ToInt32(aForm.numUpDown_Addr.Value);
+                aRItem.Addr = decimal.ToInt32(aForm.numUpDown_Addr.Value);
                 aRItem.Direction = aForm.cBox_SigDir.SelectedIndex;
                 aRItem.Logical = aForm.cBox_LogicOpe.SelectedIndex;
 
@@ -344,7 +344,7 @@ namespace DesktopStation
             if (aForm.DialogResult == System.Windows.Forms.DialogResult.OK)
             {
                 aRItem.Type = aForm.comboBox_Type.SelectedIndex;
-                aRItem.Addr = Decimal.ToInt32(aForm.numUpDown_Addr.Value);
+                aRItem.Addr = decimal.ToInt32(aForm.numUpDown_Addr.Value);
                 aRItem.Direction = aForm.cBox_SigDir.SelectedIndex;
                 aRItem.Logical = aForm.cBox_LogicOpe.SelectedIndex;
 

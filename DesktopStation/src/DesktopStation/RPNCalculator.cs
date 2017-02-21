@@ -5,10 +5,10 @@ namespace DesktopStation
 {
     class RPNCalculator
     {
-        public void SpritLeftRight(String inText, ref String outDelimiter, ref String outLeftTxt, ref String outRightTxt)
+        public void SpritLeftRight(string inText, ref string outDelimiter, ref string outLeftTxt, ref string outRightTxt)
         {
 
-            String aDelimiter = "";
+            string aDelimiter = "";
             int aPos;
 
             FindDelimiter(inText, ref aDelimiter);
@@ -29,7 +29,7 @@ namespace DesktopStation
             }
         }
 
-        public bool IsOperator(String inWord)
+        public bool IsOperator(string inWord)
         {
             bool aResult;
 
@@ -55,7 +55,7 @@ namespace DesktopStation
             return aResult;
         }
 
-        public int GetPriority(String inWord)
+        public int GetPriority(string inWord)
         {
             int aResult;
 
@@ -85,7 +85,7 @@ namespace DesktopStation
             return aResult;
         }
 
-        public bool PriorityCheck(String inWord1, String inWord2)
+        public bool PriorityCheck(string inWord1, string inWord2)
         {
             int aPriority1 = GetPriority(inWord1);
             int aPriority2 = GetPriority(inWord2);
@@ -101,10 +101,10 @@ namespace DesktopStation
 
         }
 
-        public void GenerateXList(String inText, ref List<string> outXList)
+        public void GenerateXList(string inText, ref List<string> outXList)
         {
             int aPos = 0;
-            String aTempWord = "";
+            string aTempWord = "";
 
             outXList.Clear();
 
@@ -134,7 +134,7 @@ namespace DesktopStation
 
         }
 
-        public int Calculate(String inText)
+        public int Calculate(string inText)
         {
             List<string> aList = new List<string>();
             List<string> aBesideList = new List<string>();
@@ -146,7 +146,7 @@ namespace DesktopStation
             {
                 if (IsOperator(aList[i]) == true)
                 {
-                    String aOperator = aList[i];
+                    string aOperator = aList[i];
 
                     if (aBesideList.Count > 1)
                     {
@@ -188,7 +188,7 @@ namespace DesktopStation
 
 
 
-        public void FindDelimiter(String inText, ref String outDelimiterType)
+        public void FindDelimiter(string inText, ref string outDelimiterType)
 		{
 		
 			if (inText.Contains("=="))

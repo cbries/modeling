@@ -8,43 +8,39 @@ namespace DesktopStation
 {
     public class DoubleHeadingLocUnit
     {
-        public int mLocAddr;
-        public int mLocSpeedstep;
+        public int LocAddr { get; set; }
+        public int LocSpeedstep { get; set; }
 
         public void Initialize()
         {
-            mLocAddr = 0;
-            mLocSpeedstep = 0;
+            LocAddr = 0;
+            LocSpeedstep = 0;
         }
     }
 
-
     public class LocData
     {
-        /// <summary>
-        /// 機関車アイテム番号
-        /// </summary>
         public int mLocItemNo;
         public int mLocAddr;
         public int mLocAddr_dbl;
-        public String mLocName;
+        public string mLocName;
         public int[] mFunctionImageTable;
         public int[] mFunctionStatus;
         public int[] mFunctionExMethod;
         public int[] mFunctionExAddress;
         public int[] mFunctionExFuncNo;
-        public String[] mExFunctionData;
-        public String[] mExFunctionCommand;
-        public String mLocManufacture;
+        public string[] mExFunctionData;
+        public string[] mExFunctionCommand;
+        public string mLocManufacture;
         public double mCurrentSpeed;
         public int mCurrentDirection;
         public int mDisplayMaxSpeed;
         public int mSpeedAccRatio;
         public int mSpeedRedRatio;
-        public String mIconFile;
-        public String mComment;
+        public string mIconFile;
+        public string mComment;
         public int mLocMaxSpeed;
-        public UInt32 mMFXUID;
+        public uint mMFXUID;
         public int mLocSpeedstep;
         public DoubleHeadingLocUnit[] mDoubleLoc;
 
@@ -200,9 +196,9 @@ namespace DesktopStation
 
     public class ScriptData
     {
-        public String mCommand;
-        public String mParam1;
-        public String mParam2;
+        public string mCommand;
+        public string mParam1;
+        public string mParam2;
         public int mParam3;
         public int mParam4;
         public void Initialize()
@@ -218,7 +214,7 @@ namespace DesktopStation
 
     public class AccessoryData
     {
-        public String mComment;
+        public string mComment;
         public int mType;
         public int mDirection;
         public bool mReverse;
@@ -283,15 +279,15 @@ namespace DesktopStation
 
     public class AppSetting
     {
-        public String mPortName;
+        public string mPortName;
         public int mBaudrate;
         public bool mDtrEnable;
-        public String mKeyPowerOn;
-        public String mKeyPowerOff;
-        public String mKeyBreakOn;
-        public String mKeyBreakOff;
-        public String mKeyFreerun;
-        public String mKeyEmergency;
+        public string mKeyPowerOn;
+        public string mKeyPowerOff;
+        public string mKeyBreakOn;
+        public string mKeyBreakOff;
+        public string mKeyFreerun;
+        public string mKeyEmergency;
         public int mSpeedGears;
         public int mSpeedLeverMode;
         public int[] mLocCtrlList;
@@ -312,11 +308,11 @@ namespace DesktopStation
         public int mSideFuncRight;
         public int mSideFuncBottom;
         public bool mStopAllLocWhenPowerOn;
-        public String mLanguageFile;
+        public string mLanguageFile;
         public int mS88NumOfConnection;
         public bool mAutoCloseSerialport;
         public bool mClearAccessories;
-        public String mIPAddress;
+        public string mIPAddress;
         public int mSendMode;
         public int mSelectDCCDecoder;
         public int mWindowZoom;
@@ -363,7 +359,7 @@ namespace DesktopStation
 
         }
 
-        public void SaveToFile(String inFileName)
+        public void SaveToFile(string inFileName)
         {
             //XmlSerializerを呼び出す
             XmlSerializer serializer = new XmlSerializer(typeof(AppSetting));
@@ -455,7 +451,7 @@ namespace DesktopStation
 
         }
 
-        public void LoadFromFolder(String inFolderName, ImageList inImgList)
+        public void LoadFromFolder(string inFolderName, ImageList inImgList)
         {
 
             if (System.IO.Directory.Exists(inFolderName) == false)
@@ -463,11 +459,11 @@ namespace DesktopStation
                 return;
             }
 
-            String[] files = System.IO.Directory.GetFiles(inFolderName, "*", System.IO.SearchOption.AllDirectories);
+            string[] files = System.IO.Directory.GetFiles(inFolderName, "*", System.IO.SearchOption.AllDirectories);
 
-            foreach( String aFile in files )
+            foreach( string aFile in files )
             {
-                String aExt = System.IO.Path.GetExtension(aFile);
+                string aExt = System.IO.Path.GetExtension(aFile);
 
                 if ((aExt == ".jpg") || (aExt == ".png") || (aExt == ".gif") || (aExt == ".bmp"))
                 {

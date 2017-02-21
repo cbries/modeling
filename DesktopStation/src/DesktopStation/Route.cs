@@ -29,7 +29,7 @@ namespace DesktopStation
     public class RouteItems
     {
         public List<RouteItem> Items;
-        public String NameText;
+        public string NameText;
         public int SignalAddr; /* 対応信号機アドレス */
         public int SignalDir; /* 対応信号機状態(方向) */
         public bool IgnoreOpenStatus;
@@ -418,7 +418,7 @@ namespace DesktopStation
         }
 
 
-        public void SaveToFile(String inFilename)
+        public void SaveToFile(string inFilename)
         {
             int i, j;
 
@@ -466,7 +466,7 @@ namespace DesktopStation
             fs.Close();
         }
 
-        public bool LoadFromFile(String inFilename)
+        public bool LoadFromFile(string inFilename)
         {
             bool retVal = false;
             int i, j;

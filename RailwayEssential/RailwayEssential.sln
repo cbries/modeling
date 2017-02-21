@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RailwayEssential", "RailwayEssential\RailwayEssential.csproj", "{91DEFD46-D645-45F6-BEBA-8417A4E56A40}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{C8705CCB-F5B8-43F0-8510-E4AA93B3CCE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RailwayControl", "RailwayEssential\Templates\RailwayControl\RailwayControl.csproj", "{15405881-A35F-437E-9D2D-22DFDDBC3C11}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91DEFD46-D645-45F6-BEBA-8417A4E56A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91DEFD46-D645-45F6-BEBA-8417A4E56A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91DEFD46-D645-45F6-BEBA-8417A4E56A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91DEFD46-D645-45F6-BEBA-8417A4E56A40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15405881-A35F-437E-9D2D-22DFDDBC3C11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15405881-A35F-437E-9D2D-22DFDDBC3C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15405881-A35F-437E-9D2D-22DFDDBC3C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15405881-A35F-437E-9D2D-22DFDDBC3C11}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{15405881-A35F-437E-9D2D-22DFDDBC3C11} = {C8705CCB-F5B8-43F0-8510-E4AA93B3CCE2}
+	EndGlobalSection
+EndGlobal

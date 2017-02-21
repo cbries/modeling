@@ -9,9 +9,9 @@ namespace DesktopStation
     class TrackData
     {
         public int No;
-        public Int16 ImageNo;
-        public Int16 AccsessoryAddress;
-        public Int16 S88SensorAddress;
+        public short ImageNo;
+        public short AccsessoryAddress;
+        public short S88SensorAddress;
         public int RouteNo;
 
         public TrackData()
@@ -32,8 +32,8 @@ namespace DesktopStation
         public int X;
         public int Y;
         public int FontSize;
-        public String ImageFile;
-        public String Text;
+        public string ImageFile;
+        public string Text;
         public bool Enable;
 
         public SpecialData()
@@ -199,7 +199,7 @@ namespace DesktopStation
         {
 
             /* 値を更新 */
-            Items[inMapIndex].ImageNo = (Int16)inTileNo;
+            Items[inMapIndex].ImageNo = (short)inTileNo;
 
         }
 
@@ -207,7 +207,7 @@ namespace DesktopStation
         {
 
             /* 値を更新 */
-            Items[inMapIndex].AccsessoryAddress = (Int16)inAccAddr;
+            Items[inMapIndex].AccsessoryAddress = (short)inAccAddr;
 
         }
 
@@ -220,7 +220,7 @@ namespace DesktopStation
             }
 
             /* 値を更新 */
-            Items[inMapIndex].S88SensorAddress = (Int16)inS88Addr;
+            Items[inMapIndex].S88SensorAddress = (short)inS88Addr;
 
         }
 
@@ -356,7 +356,7 @@ namespace DesktopStation
 
 
 
-        public void SaveToFile(String inFileName)
+        public void SaveToFile(string inFileName)
         {
             int i;
 
@@ -381,10 +381,10 @@ namespace DesktopStation
             aStrWriter.Close();
         }
 
-        public void LoadFromFile(String inFileName)
+        public void LoadFromFile(string inFileName)
         {
 
-            String[] aFields;
+            string[] aFields;
             int i;
             int aTileNo;
             int aAccAddr;
@@ -454,9 +454,9 @@ namespace DesktopStation
                         {
                             TrackData aItem = new TrackData();
 
-                            aItem.ImageNo = (Int16)aTileNo;
-                            aItem.AccsessoryAddress = (Int16)aAccAddr;
-                            aItem.S88SensorAddress = (Int16)aS88Addr;
+                            aItem.ImageNo = (short)aTileNo;
+                            aItem.AccsessoryAddress = (short)aAccAddr;
+                            aItem.S88SensorAddress = (short)aS88Addr;
                             aItem.RouteNo = aRouteNo;
 
                             if (aS88Addr > 0)
@@ -497,7 +497,7 @@ namespace DesktopStation
 
         }
 
-        private static int GetCSVFieldInt(String[] inFields, int inIndex, int inDefault)
+        private static int GetCSVFieldInt(string[] inFields, int inIndex, int inDefault)
         {
             int aResult;
 
@@ -512,18 +512,18 @@ namespace DesktopStation
             return aResult;
         }
 
-        public static int ParseStrToInt(String aText)
+        public static int ParseStrToInt(string aText)
         {
             int aRet;
 
-            Int32.TryParse(aText, out aRet);
+            int.TryParse(aText, out aRet);
 
             return aRet;
 
         }
 
 
-        public void LoadRailMap(String inFilename)
+        public void LoadRailMap(string inFilename)
         {
             RailMapImage = new Bitmap(inFilename);
 

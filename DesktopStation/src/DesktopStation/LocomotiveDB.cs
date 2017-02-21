@@ -22,7 +22,7 @@ namespace DesktopStation
             Items = new List<LocData>();
         }
 
-        public void LoadFromFile_New(String inFileName)
+        public void LoadFromFile_New(string inFileName)
         {
 
             //設定ファイルがあるときのみ読み込みします。
@@ -62,11 +62,11 @@ namespace DesktopStation
                     /* NULLチェック */
                     if (aTempList[i].mExFunctionCommand == null)
                     {
-                        aTempList[i].mExFunctionCommand = new String[Program.MAX_FUNCTIONNUM + 1];
+                        aTempList[i].mExFunctionCommand = new string[Program.MAX_FUNCTIONNUM + 1];
                     }
                     if (aTempList[i].mExFunctionData == null)
                     {
-                        aTempList[i].mExFunctionData = new String[Program.MAX_FUNCTIONNUM + 1];
+                        aTempList[i].mExFunctionData = new string[Program.MAX_FUNCTIONNUM + 1];
                     }
                     if (aTempList[i].mFunctionExMethod == null)
                     {
@@ -120,8 +120,8 @@ namespace DesktopStation
                 aItem.mSpeedRedRatio = 3;
                 aItem.mFunctionImageTable = new int[Program.MAX_FUNCTIONNUM];
                 aItem.mFunctionStatus = new int[Program.MAX_FUNCTIONNUM];
-                aItem.mExFunctionData = new String[Program.MAX_FUNCTIONNUM + 1];
-                aItem.mExFunctionCommand = new String[Program.MAX_FUNCTIONNUM + 1];
+                aItem.mExFunctionData = new string[Program.MAX_FUNCTIONNUM + 1];
+                aItem.mExFunctionCommand = new string[Program.MAX_FUNCTIONNUM + 1];
                 aItem.mFunctionExMethod = new int[Program.MAX_FUNCTIONNUM + 1];
                 aItem.mFunctionExAddress = new int[Program.MAX_FUNCTIONNUM + 1];
                 aItem.mFunctionExFuncNo = new int[Program.MAX_FUNCTIONNUM + 1];
@@ -134,7 +134,7 @@ namespace DesktopStation
 
         }
 
-        public void SaveToFile_New(String inFilename)
+        public void SaveToFile_New(string inFilename)
         {
 
             //いったん保存領域に展開する
@@ -150,13 +150,13 @@ namespace DesktopStation
             fs.Close();
         }
 
-        public void LoadFromFile(String inFileName)
+        public void LoadFromFile(string inFileName)
         {
 
-            String[] aFields;
+            string[] aFields;
             int i, j;
-            String aGotFncTbl;
-            String aNum;
+            string aGotFncTbl;
+            string aNum;
 
             //設定ファイルがあるときのみ読み込みします。
             if (File.Exists(inFileName))
@@ -186,12 +186,12 @@ namespace DesktopStation
                     aItem.mLocMaxSpeed = GetCSVFieldInt(aFields, 9, Program.SPEED_MAX);
                     aItem.mComment = GetCSVFieldString(aFields, 10, "");
                     aItem.mIconFile = GetCSVFieldString(aFields, 11, "");
-                    aItem.mMFXUID = (UInt32)GetCSVFieldUInt(aFields, 12, 0);
+                    aItem.mMFXUID = (uint)GetCSVFieldUInt(aFields, 12, 0);
 
                     aItem.mFunctionImageTable = new int[Program.MAX_FUNCTIONNUM + 1];
                     aItem.mFunctionStatus = new int[Program.MAX_FUNCTIONNUM + 1];
-                    aItem.mExFunctionData = new String[Program.MAX_FUNCTIONNUM + 1];
-                    aItem.mExFunctionCommand = new String[Program.MAX_FUNCTIONNUM + 1];
+                    aItem.mExFunctionData = new string[Program.MAX_FUNCTIONNUM + 1];
+                    aItem.mExFunctionCommand = new string[Program.MAX_FUNCTIONNUM + 1];
                     aItem.mFunctionExMethod = new int[Program.MAX_FUNCTIONNUM + 1];
                     aItem.mFunctionExAddress = new int[Program.MAX_FUNCTIONNUM + 1];
                     aItem.mFunctionExFuncNo = new int[Program.MAX_FUNCTIONNUM + 1];
@@ -243,8 +243,8 @@ namespace DesktopStation
                 aItem.mSpeedRedRatio = 3;
                 aItem.mFunctionImageTable = new int[Program.MAX_FUNCTIONNUM];
                 aItem.mFunctionStatus = new int[Program.MAX_FUNCTIONNUM];
-                aItem.mExFunctionData = new String[Program.MAX_FUNCTIONNUM + 1];
-                aItem.mExFunctionCommand = new String[Program.MAX_FUNCTIONNUM + 1];
+                aItem.mExFunctionData = new string[Program.MAX_FUNCTIONNUM + 1];
+                aItem.mExFunctionCommand = new string[Program.MAX_FUNCTIONNUM + 1];
                 aItem.mFunctionExMethod = new int[Program.MAX_FUNCTIONNUM + 1];
                 aItem.mFunctionExAddress = new int[Program.MAX_FUNCTIONNUM + 1];
                 aItem.mFunctionExFuncNo = new int[Program.MAX_FUNCTIONNUM + 1];
@@ -256,11 +256,11 @@ namespace DesktopStation
             }
         }
 
-        public void SaveToFile(String inFileName)
+        public void SaveToFile(string inFileName)
         {
             int i;
             int j;
-            String aFncTbl;
+            string aFncTbl;
 
             //ファイルを作る
             StreamWriter aStrWriter = new StreamWriter(inFileName, false);
@@ -283,27 +283,27 @@ namespace DesktopStation
         }
 
 
-        private int ParseStrToInt(String aText)
+        private int ParseStrToInt(string aText)
         {
             int aRet;
 
-            Int32.TryParse(aText, out aRet);
+            int.TryParse(aText, out aRet);
 
             return aRet;
 
         }
 
-        private UInt32 ParseStrToUInt32(String aText)
+        private uint ParseStrToUInt32(string aText)
         {
-            UInt32 aRet;
+            uint aRet;
 
-            UInt32.TryParse(aText, out aRet);
+            uint.TryParse(aText, out aRet);
 
             return aRet;
 
         }
 
-        private int GetCSVFieldInt(String[] inFields, int inIndex, int inDefault)
+        private int GetCSVFieldInt(string[] inFields, int inIndex, int inDefault)
         {
             int aResult;
 
@@ -318,9 +318,9 @@ namespace DesktopStation
             return aResult;
         }
 
-        private UInt32 GetCSVFieldUInt(String[] inFields, int inIndex, UInt32 inDefault)
+        private uint GetCSVFieldUInt(string[] inFields, int inIndex, uint inDefault)
         {
-            UInt32 aResult;
+            uint aResult;
 
             if (inFields.Length > inIndex)
             {
@@ -333,9 +333,9 @@ namespace DesktopStation
             return aResult;
         }
 
-        private String GetCSVFieldString(String[] inFields, int inIndex, String inDefault)
+        private string GetCSVFieldString(string[] inFields, int inIndex, string inDefault)
         {
-            String aResult;
+            string aResult;
 
             if (inFields.Length > inIndex)
             {
@@ -503,9 +503,9 @@ namespace DesktopStation
 
         }
 
-        public String GetProtcolName(int inProtcol)
+        public string GetProtcolName(int inProtcol)
         {
-            String aName;
+            string aName;
 
             switch (inProtcol)
             {
@@ -527,9 +527,9 @@ namespace DesktopStation
 
         }
 
-        public String GetProtcolAddressDescription(int inAddress)
+        public string GetProtcolAddressDescription(int inAddress)
         {
-            String aName;
+            string aName;
 
             if (inAddress == 0)
             {

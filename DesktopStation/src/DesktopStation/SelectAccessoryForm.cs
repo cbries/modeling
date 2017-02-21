@@ -1,39 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.Drawing.Drawing2D;
 using System.Drawing.Text;
+using System.Windows.Forms;
 
 namespace DesktopStation
 {
     public partial class SelectAccessoryForm : Form
     {
         public int SelectedIndex;
-        private ImageList accImgList;
+        private readonly ImageList _accImgList;
 
 
         public SelectAccessoryForm(ImageList inImgList)
         {
             InitializeComponent();
-
-            accImgList = inImgList;
+            _accImgList = inImgList;
         }
 
         private bool checkEvenIndex(int inValue)
         {
-            if (inValue % 2 == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+            return (inValue % 2 == 1);
         }
 
         private void cBox_AccType_SelectedValueChanged(object sender, EventArgs e)
@@ -44,11 +30,9 @@ namespace DesktopStation
                 case 6:
                 case 8:
                 case 9:
-                    if (checkEvenIndex(SelectedIndex) == true)
+                    if (checkEvenIndex(SelectedIndex))
                     {
-                        /* 警告表示 */
-                        MessageBox.Show("This type is available in the odd address.", "Error", MessageBoxButtons.OK);
-
+                        MessageBox.Show(@"This type is available in the odd address.", @"Error", MessageBoxButtons.OK);
                         cBox_AccType.SelectedIndex = 0;
                     }
                     break;
@@ -76,30 +60,23 @@ namespace DesktopStation
             }
 
             e.Graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
-
-            /* 描画 */
             e.DrawBackground();
+            e.Graphics.DrawImage(_accImgList.Images[aIndex], e.Bounds.X, e.Bounds.Y, 16, 32);
 
-            e.Graphics.DrawImage(accImgList.Images[aIndex], e.Bounds.X, e.Bounds.Y, 16, 32);
+            string aText = (string)cBox_AccType.Items[e.Index];
 
-            String aText = (String)cBox_AccType.Items[e.Index];
-
-            System.Drawing.Font aDrawFont2 = new System.Drawing.Font("Arial", 16, FontStyle.Bold);
+            Font aDrawFont2 = new Font("Arial", 16, FontStyle.Bold);
             float aYPos = (e.Bounds.Height - e.Graphics.MeasureString(aText, aDrawFont2).Height) / 2;
             e.Graphics.DrawString(aText, aDrawFont2, Brushes.Black, e.Bounds.X + 18, e.Bounds.Y + aYPos);
-
-            /* 開放 */
             aDrawFont2.Dispose();
-
             e.DrawFocusRectangle();
-
         }
 
         public void SetFormLanguage(Language inLangManager)
         {
-            if (inLangManager.Loaded() == true)
+            if (inLangManager.Loaded())
             {
-                this.Text = inLangManager.SetText("TxtAccEditTitle", this.Text);
+                Text = inLangManager.SetText("TxtAccEditTitle", Text);
 
                 label_AccList.Text = inLangManager.SetText("TxtAccEditType", label_AccList.Text);
                 label_Comment.Text = inLangManager.SetText("TxtAccEditComment", label_Comment.Text);
@@ -119,9 +96,7 @@ namespace DesktopStation
 
                 button_Ok.Text = inLangManager.SetText("TxtOk", button_Ok.Text);
                 button_Cancel.Text = inLangManager.SetText("TxtCancel", button_Cancel.Text);
-
             }
         }
-
     }
 }

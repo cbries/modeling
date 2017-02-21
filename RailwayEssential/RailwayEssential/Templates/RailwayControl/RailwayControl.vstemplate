@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>RailwayControl</Name>
+    <Description>RailwayControl</Description>
+    <Icon>RailwayControl.ico</Icon>
+    <ProjectType>Railway Essential</ProjectType>
+    <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
+    <SortOrder>1000</SortOrder>
+    <TemplateID>61b42ecb-bfb6-4016-834f-b4baaafc7490</TemplateID>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>RailwayControl</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="ProjectTemplate.csproj" ReplaceParameters="true">
+      <Folder Name="Accessory" TargetFolderName="Accessory"/>
+      <Folder Name="Locomotives" TargetFolderName="Locomotives"/>
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true">Main.railway</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

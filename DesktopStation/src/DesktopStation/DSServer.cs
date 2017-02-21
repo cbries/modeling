@@ -10,21 +10,20 @@ using System.Net.NetworkInformation;
 
 namespace DesktopStation
 {
-    public delegate void TSendWebCommand(String inCommandText);
-    public delegate String TGetStatus(int inMode);
+    public delegate void TSendWebCommand(string inCommandText);
+    public delegate string TGetStatus(int inMode);
 
     class DSServer
     {
-
         private bool ContinuosCommand = true;
-        private String textIPaddress = "";
+        private string textIPaddress = "";
         private Socket server;
         private Thread thread;
-        public String ExePath;
+        public string ExePath;
         public int PortNo;
-        public String UrlPath;
-        public String HostnamePath;
-        public String DomainName;
+        public string UrlPath;
+        public string HostnamePath;
+        public string DomainName;
         TSendWebCommand SendCommand;
         TGetStatus GetStatus;
 
@@ -50,23 +49,17 @@ namespace DesktopStation
                     DomainName = ipProperties.DnsSuffix;
                 }
             }
- 
         }
-
 
         public void Start()
         {
             string hostname = Dns.GetHostName();
-
-
-            // サーバーソケット初期化
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPAddress[] ip = Dns.GetHostAddresses(hostname);
 
             foreach (IPAddress address in ip)
             {
-                // IPv4 のみを追加する
-                if (address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                if (address.AddressFamily == AddressFamily.InterNetwork)
                 {
                     textIPaddress = address.ToString();
 
@@ -102,16 +95,16 @@ namespace DesktopStation
 
         public void Stop()
         {
-
             ContinuosCommand = false;
-
-            /* ダミーを投げる(強制的に停止させるため） */
             try
             {
                 using (WebClient wc = new WebClient())
                     wc.DownloadString("http://" + textIPaddress + ":1192/");
             }
-            catch { }
+            catch
+            {
+                // ignore
+            }
 
             if (thread != null)
             {
@@ -121,17 +114,11 @@ namespace DesktopStation
 
             if (server != null)
             {
-
                 server.Close();
             }
         }
-
-
-
-
     }
 
-    // 応答クラス
     class Response
     {
          enum STATUS
@@ -141,14 +128,12 @@ namespace DesktopStation
              ERROR,      // ERROR
          };
 
-         public String ExePath;
+         public string ExePath;
          private Socket mClient;
          private STATUS  mStatus;
          TSendWebCommand SendCommand;
          TGetStatus GetStatus;
 
-
-        // コンストラクタ
          public Response(Socket client, TSendWebCommand inFuncSend, TGetStatus inFuncStatus)
         {
             mClient = client;
@@ -157,26 +142,24 @@ namespace DesktopStation
              GetStatus = new TGetStatus(inFuncStatus);
 
         }
-        // 応答開始
         public void Start()
         {
             Thread thread = new Thread(Run);
             thread.Start();
         }
-        // 応答実行
+
         public void Run()
         {
             int aPosCmd;
             int aPosEnd;
-            String aContentType = "text/html";
-            // 要求受信
+            string aContentType = "text/html";
             byte[] buffer = new byte[4096];
-            String aCssFile = "";
+            string aCssFile = "";
 
             int recvLen = mClient.Receive(buffer);
             if (recvLen <= 0)
                 return;
-            String message = Encoding.ASCII.GetString(buffer, 0, recvLen);
+            string message = Encoding.ASCII.GetString(buffer, 0, recvLen);
              Console.WriteLine(message);
             // 要求URL確認 ＆ 応答内容生成
              int pos = message.IndexOf("GET /");
@@ -196,7 +179,7 @@ namespace DesktopStation
 
                      if (aPosCmd > 0)
                      {
-                         String aCmd = message.Substring(aPosCmd + 5, aPosEnd - aPosCmd - 5);
+                         string aCmd = message.Substring(aPosCmd + 5, aPosEnd - aPosCmd - 5);
 
                          //アプリ側に通知する
                          SendCommand(aCmd);
@@ -210,7 +193,7 @@ namespace DesktopStation
                          {
                              aCssFile = message.Substring(aPosCmd + 4, aPosEnd - aPosCmd - 4);
 
-                             String aCssExt = System.IO.Path.GetExtension(aCssFile);
+                             string aCssExt = System.IO.Path.GetExtension(aCssFile);
 
                              switch (aCssExt.ToLower())
                              {
@@ -331,7 +314,7 @@ namespace DesktopStation
 
 
             // HTTPヘッダー生成
-            String httpHeader = String.Format(
+            string httpHeader = string.Format(
                 "HTTP/1.1 200 OK\n" +
                 "Content-type: " + aContentType + "; charset=UTF-8\n" +
                 "Content-length: {0}\n" +
@@ -351,7 +334,7 @@ namespace DesktopStation
         }
  
          // 応答内容取得
-         private String getContent()
+         private string getContent()
          {
 
              return System.IO.File.ReadAllText(ExePath + "\\webapp\\index.html");

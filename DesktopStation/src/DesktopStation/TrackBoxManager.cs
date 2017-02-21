@@ -5,12 +5,12 @@ namespace DesktopStation
 {
     public class TrackBoxItem
     {
-        public String mTextTypes;
-        public String mTextVersion;
-        public String mTextTrackBoxUID;
-        public UInt32 mTypes;
-        public UInt32 mVersion;
-        public UInt32 mTrackBoxUID;
+        public string mTextTypes;
+        public string mTextVersion;
+        public string mTextTrackBoxUID;
+        public uint mTypes;
+        public uint mVersion;
+        public uint mTrackBoxUID;
 
         public void Initialize()
         {
@@ -61,7 +61,7 @@ namespace DesktopStation
             return aResult;
         }
 
-        public void SearchAdd(UInt32 inUID, UInt32 inType, UInt32 inVersion)
+        public void SearchAdd(uint inUID, uint inType, uint inVersion)
         {
             int i;
             bool aResult = false;
@@ -85,7 +85,7 @@ namespace DesktopStation
 
         }
 
-        public void Add(UInt32 inUID, UInt32 inType, UInt32 inVersion)
+        public void Add(uint inUID, uint inType, uint inVersion)
         {
             TrackBoxItem aItem = new TrackBoxItem();
 
@@ -99,9 +99,9 @@ namespace DesktopStation
             Items.Add(aItem);
         }
 
-        private String getTypes(UInt32 inType)
+        private string getTypes(uint inType)
         {
-            String aResult = "";
+            string aResult = "";
 
             switch( inType & 0xFFF0)
             {
