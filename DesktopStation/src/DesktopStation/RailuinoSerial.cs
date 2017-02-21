@@ -172,57 +172,31 @@ namespace DesktopStation
                 aCalcAddress = Program.MM2ACCADDRESS + inAddress;
             }
 
-
-
             aCommandText = Program.SERIALCMD_TURNOUT + "(" + aCalcAddress.ToString() + "," + inDirection.ToString() + ")";
-
             SendCommand(aCommandText);
             SetScriptData(Program.SCRIPTCMD_ACCESSORY, inAddress, inDirection, 0, 0);
-
         }
-
-        /*
-        public void GetS88()
-        {
-            String aCommandText;
-
-            aCommandText = "getS88()";
-
-            SendCommand(aCommandText);
-
-        }
-         * */
 
         public void SetPing()
         {
             String aCommandText;
-
             aCommandText = Program.SERIALCMD_PING + "()";
-
             SendCommand(aCommandText);
-
         }
 
         public int SetPower(int inPower)
         {
             String aCommandText;
-
             aCommandText = Program.SERIALCMD_POWER + "(" + inPower.ToString() + ")";
-
             SendCommand(aCommandText);
-
             SetScriptData(Program.SCRIPTCMD_POWER, inPower, 0, 0, 0);
-
             return inPower;
-
         }
 
         public void SetLocoConfig(int inAddress, int inCVNo, int inCVValue)
         {
             String aCommandText;
-
             aCommandText = Program.SERIALCMD_SETCV + "(" + inAddress.ToString() + "," + inCVNo.ToString() + "," + inCVValue.ToString() + ")";
-
             SendCommand(aCommandText);
         }
 
@@ -256,11 +230,8 @@ namespace DesktopStation
         public void SetMfxDiscovery()
         {
             String aCommandText;
-
             aCommandText = Program.SERIALCMD_MFXDISCOVERY + "()";
-
             SendCommand(aCommandText);
-
         }
 
         public void SetMfxBind(UInt32 inUID, int inLocAddress)
@@ -280,7 +251,6 @@ namespace DesktopStation
             aCommandText = Program.SERIALCMD_MFXVERIFY + "(" + ((inUID >> 16) & 0xFFFF).ToString() + "," + (inUID & 0xFFFF).ToString() + "," + inLocAddress.ToString() + ")";
 
             SendCommand(aCommandText);
-
         }
 
     }

@@ -1,23 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Xml.Serialization;
 using System.IO;
-using System.IO.Ports;
 using System.Windows.Forms;
-
 
 namespace DesktopStation
 {
     public delegate int getScriptValue_delegate(int inNo);
 
-
-    /// <summary>
-    /// S88用構文解析
-    /// </summary>
-    /// <remarks>
-    /// S88用構文解析のクラス
-    /// </remarks>
     public class S88EventWaitItem
     {
         public bool Enable;
@@ -39,31 +29,17 @@ namespace DesktopStation
         {
             Enable = false;
             Expression = "";
-
         }
 
         public void SetExpression(String inExp)
         {
-            
-            
             Expression = inExp;
-
-            //演算子 ==, >, <, >=, <=, !=,
             String[] aTexts = inExp.Split(new string[] { "==", "!=", ">=", "<=", ">", "<" }, StringSplitOptions.RemoveEmptyEntries);
-            
-
-            //解析する
             if (aTexts.Length < 2)
             {
-                //エラー
-
                 MessageBox.Show("Error! Argument number is wrong. " + inExp);
-
-                //監視終了
                 Enable = false;
-
                 return;
-
             }
 
             LeftExpText = aTexts[0];
@@ -72,8 +48,6 @@ namespace DesktopStation
 
             GetType(LeftExpText, out LeftExpType, out LeftExp);
             GetType(RightExpText, out RightExpType, out RightExp);
-
-            
         }
 
         public String GetExpCondition(String inExp, out int outExpCondition)
@@ -110,18 +84,11 @@ namespace DesktopStation
             }
             else
             {
-                //エラー
                 outExpCondition = 0;
-
                 MessageBox.Show("Error! Argument condition is wrong. " + inExp);
-
-                //監視終了
                 Enable = false;
-
                 return "";
             }
-
-
         }
 
         public void GetType(String inCmd, out int outType, out int outNo)
@@ -137,7 +104,6 @@ namespace DesktopStation
             }
             else
             {
-
                 if (aTexts[0] == "FLAG")
                 {
                     aRet = 1;
@@ -176,8 +142,6 @@ namespace DesktopStation
                 {
                     MessageBox.Show("Wrong command: " + aTexts[0]);
                     aRet = 0;
-
-                    //監視終了
                     Enable = false;
                 }
 
@@ -228,24 +192,12 @@ namespace DesktopStation
             return aText;
         }
 
-
-
         public void Interval()
         {
-            //定周期実行
-
+			// ignore
         }
-
     }
 
-
-
-    /// <summary>
-    /// S88用イベントデータ
-    /// </summary>
-    /// <remarks>
-    /// S88用イベントデータのクラス
-    /// </remarks>
     public class S88EventCfgItem
     {
         public string mAreaName;
@@ -265,7 +217,6 @@ namespace DesktopStation
         public int mFlagOperator;
         public int mRouteNo;
 
-
         public S88EventCfgItem()
         {
             mAreaName = "";
@@ -282,18 +233,10 @@ namespace DesktopStation
             mFlagOperator = 0;
             mRouteNo = 0;
 
-
-
             Items = new List<ScriptData>();
         }
     } /* S88EventCfgItem */
 
-    /// <summary>
-    /// S88用イベントデータクラス
-    /// </summary>
-    /// <remarks>
-    /// S88用イベントデータの保持に関する機能を持ったクラス
-    /// </remarks>
     public class S88EventCfg
     {
         public S88EventCfgItem[] Events;
@@ -301,27 +244,12 @@ namespace DesktopStation
         public S88EventCfg()
         {
             int i;
-
             Events = new S88EventCfgItem[Program.S88EVENT_MAX];
-
             for (i = 0; i < Program.S88EVENT_MAX; i++)
-            {
                 Events[i] = new S88EventCfgItem();
-            }
         }
     } /* S88EventCfg */
 
-
-
-
-
-
-    /// <summary>
-    /// S88用イベントクラス
-    /// </summary>
-    /// <remarks>
-    /// S88用イベントデータの実行に関する機能を持ったクラス
-    /// </remarks>
     public class S88Event
     {
         public delegate void setScriptValues_delegate(int inNo, int inValue);
@@ -1393,14 +1321,6 @@ namespace DesktopStation
 
     } /* S88Event */
 
-
-    /// <summary>
-    /// S88用イベント管理クラス
-    /// </summary>
-    /// <remarks>
-    /// S88用イベント処理に関する管理機能を持ったクラス
-    /// </remarks>
-    /// 
     public class S88EventManager
     {
         public S88Event[] mEvents;
@@ -1415,12 +1335,6 @@ namespace DesktopStation
         private SetS88RunText_delegate setS88RunText;
         Random RandomFunc;
 
-        /// <summary>
-        /// コンストラクタ
-        /// </summary>
-        /// <param name="inSerialCmd">Railuinoシリアルコマンド出力クラス</param>
-        /// <param name="inUpdateLocList">機関車データ一覧更新関数</param>
-        /// <param name="inUpdateAccList">アクセサリデータ一覧更新関数</param>
         public S88EventManager(RailuinoSerial inSerialCmd, UpdateLocList_delegate inUpdateLocList, UpdateAccList_delegate inUpdateAccList, SetS88RunText_delegate inSetS88RunText, 
             runFile_delegate inRunFile, setTransitionSpeed_delegate inSetTransitionSpeed, getLocItemFromIndex_delegate inGetLocItemFromIndex,
             checkRoute_delegate inCheckRoute, setRoute_delegate inSetRoute, getAccValue_delegate inGetAccItem)
@@ -1452,10 +1366,6 @@ namespace DesktopStation
 
         }
 
-         /// <summary>
-         /// 初期化
-         /// </summary>
-
         public void Clear()
         {
             int i;
@@ -1474,10 +1384,6 @@ namespace DesktopStation
             }
 
         }
-
-        /// <summary>
-        /// イベント状態をリセット
-        /// </summary>
 
         public void ResetEvents()
         {
@@ -1499,21 +1405,11 @@ namespace DesktopStation
 
         }
 
-        /// <summary>
-        /// 前回センサ状態取得
-        /// </summary>
-        /// <param name="inNo">インデックス番号(0-16)</param>
-        /// 
         public int GetSensorLastFlag(int inNo)
         {
             return lastFlags[inNo];
         }
 
-        /// <summary>
-        /// フラグ値取得
-        /// </summary>
-        /// <param name="inNo">フラグ番号(0-9)</param>
-        /// 
         public int GetScriptValues(int inNo)
         {
             if ((inNo < Program.SCRIPTVALUE_MAX) && (inNo >= 0))
@@ -1535,11 +1431,6 @@ namespace DesktopStation
 
         }
 
-        /// <summary>
-        /// S88値取得
-        /// </summary>
-        /// <param name="inNo">S88番号(0-255)</param>
-        /// 
         public int GetS88Values(int inNo)
         {
             int aFlagHigh;
@@ -1564,13 +1455,7 @@ namespace DesktopStation
                 return 0;
             }
         }
-
-
-        /// <summary>
-        /// センサ更新チェック
-        /// </summary>
-        /// <param name="inFlags">S88センサ状態データ配列</param>
-        ///        
+      
         public bool UpdateCheck(int[] inFlags)
         {
             int i;
@@ -1588,11 +1473,7 @@ namespace DesktopStation
 
             return (aUpdateNums > 0 ? true : false);
         }
-        /// <summary>
-        /// センサチェックとスクリプト実行タイミングチェック(入線・退線の変化を検出)
-        /// </summary>
-        /// <param name="inFlags">S88センサ状態データ配列</param>
-        ///        
+       
         public bool IntervalCheck(int[] inFlags)
         {
             int i;
@@ -1656,13 +1537,7 @@ namespace DesktopStation
             /* 返す値は変化のあったイベントの数 */
             return (aUpdateNums > 0 ? true : false);
         }
-
-        /// <summary>
-        /// センサチェックとスクリプト実行タイミングチェック（1sec周期,その他の条件を監視）
-        /// </summary>
-        /// <param name="inFlags">S88センサ状態データ配列</param>
-        /// <param name="inCurrentTime">現在時刻</param>
-        ///        
+      
         public bool IntervalCheckTime(int[] inFlags, DateTime inCurrentTime, LocomotiveDB inLocDB, RouteList inRouteList)
         {
             int i;
@@ -1875,9 +1750,6 @@ namespace DesktopStation
             return (aUpdateNums > 0 ? true : false);
         }
 
-        /// <summary>
-        ///線路電源投入時にスクリプト実行
-        /// </summary>
         public void StartupRun()
         {
             int i;
@@ -1904,9 +1776,7 @@ namespace DesktopStation
 
         }
 
-        /// <summary>
-        /// 100ms周期スクリプト実行
-        /// </summary>
+        /// <summary> 100ms 周期スクリプト実行 </summary>
         public void IntervalRun()
         {
             int i;
@@ -2097,13 +1967,8 @@ namespace DesktopStation
 
         private void writeS88ProcessLog(String inEventName, String inTrigger, int inLineNo, String inLog)
         {
-
             setS88RunText("[" + inEventName + "(" + inTrigger + "), " + inLineNo.ToString() + "] " + inLog);
-
         }
-
-
-
     } /* S88EventManager */
 
 }

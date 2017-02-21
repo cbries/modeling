@@ -55,6 +55,7 @@
             this.label_slotH = new System.Windows.Forms.Label();
             this.pBox_DirectBox7 = new System.Windows.Forms.PictureBox();
             this.pBox_MLocName7 = new System.Windows.Forms.PictureBox();
+            this.buttonMLoc_Select7 = new DesktopStation.NotSelectableButton();
             this.SpeedCtrlBox7 = new System.Windows.Forms.PictureBox();
             this.LocImageBox7 = new System.Windows.Forms.PictureBox();
             this.panel_MultiLocs = new System.Windows.Forms.Panel();
@@ -62,45 +63,68 @@
             this.label_slotD = new System.Windows.Forms.Label();
             this.pBox_DirectBox3 = new System.Windows.Forms.PictureBox();
             this.pBox_MLocName3 = new System.Windows.Forms.PictureBox();
+            this.buttonMLoc_Select3 = new DesktopStation.NotSelectableButton();
             this.SpeedCtrlBox3 = new System.Windows.Forms.PictureBox();
             this.LocImageBox3 = new System.Windows.Forms.PictureBox();
             this.panelLocCtrl6 = new System.Windows.Forms.Panel();
             this.label_slotG = new System.Windows.Forms.Label();
             this.pBox_DirectBox6 = new System.Windows.Forms.PictureBox();
             this.pBox_MLocName6 = new System.Windows.Forms.PictureBox();
+            this.buttonMLoc_Select6 = new DesktopStation.NotSelectableButton();
             this.SpeedCtrlBox6 = new System.Windows.Forms.PictureBox();
             this.LocImageBox6 = new System.Windows.Forms.PictureBox();
             this.panelLocCtrl2 = new System.Windows.Forms.Panel();
             this.label_slotC = new System.Windows.Forms.Label();
             this.pBox_DirectBox2 = new System.Windows.Forms.PictureBox();
             this.pBox_MLocName2 = new System.Windows.Forms.PictureBox();
+            this.buttonMLoc_Select2 = new DesktopStation.NotSelectableButton();
             this.SpeedCtrlBox2 = new System.Windows.Forms.PictureBox();
             this.LocImageBox2 = new System.Windows.Forms.PictureBox();
             this.panelLocCtrl5 = new System.Windows.Forms.Panel();
             this.label_slotF = new System.Windows.Forms.Label();
             this.pBox_DirectBox5 = new System.Windows.Forms.PictureBox();
             this.pBox_MLocName5 = new System.Windows.Forms.PictureBox();
+            this.buttonMLoc_Select5 = new DesktopStation.NotSelectableButton();
             this.SpeedCtrlBox5 = new System.Windows.Forms.PictureBox();
             this.LocImageBox5 = new System.Windows.Forms.PictureBox();
             this.panelLocCtrl1 = new System.Windows.Forms.Panel();
             this.label_slotB = new System.Windows.Forms.Label();
             this.pBox_DirectBox1 = new System.Windows.Forms.PictureBox();
             this.pBox_MLocName1 = new System.Windows.Forms.PictureBox();
+            this.buttonMLoc_Select1 = new DesktopStation.NotSelectableButton();
             this.SpeedCtrlBox1 = new System.Windows.Forms.PictureBox();
             this.LocImageBox1 = new System.Windows.Forms.PictureBox();
             this.panelLocCtrl4 = new System.Windows.Forms.Panel();
             this.label_slotE = new System.Windows.Forms.Label();
             this.pBox_DirectBox4 = new System.Windows.Forms.PictureBox();
             this.pBox_MLocName4 = new System.Windows.Forms.PictureBox();
+            this.buttonMLoc_Select4 = new DesktopStation.NotSelectableButton();
             this.SpeedCtrlBox4 = new System.Windows.Forms.PictureBox();
             this.LocImageBox4 = new System.Windows.Forms.PictureBox();
             this.panelLocCtrl0 = new System.Windows.Forms.Panel();
             this.label_slotA = new System.Windows.Forms.Label();
             this.pBox_DirectBox0 = new System.Windows.Forms.PictureBox();
             this.pBox_MLocName0 = new System.Windows.Forms.PictureBox();
+            this.buttonMLoc_Select0 = new DesktopStation.NotSelectableButton();
             this.SpeedCtrlBox0 = new System.Windows.Forms.PictureBox();
             this.LocImageBox0 = new System.Windows.Forms.PictureBox();
+            this.buttonMultiF16 = new DesktopStation.NotSelectableCheckBox();
             this.FunctionImageList = new System.Windows.Forms.ImageList(this.components);
+            this.buttonMultiF15 = new DesktopStation.NotSelectableCheckBox();
+            this.buttonMultiF14 = new DesktopStation.NotSelectableCheckBox();
+            this.buttonMultiF13 = new DesktopStation.NotSelectableCheckBox();
+            this.buttonMultiF12 = new DesktopStation.NotSelectableCheckBox();
+            this.buttonMultiF11 = new DesktopStation.NotSelectableCheckBox();
+            this.buttonMultiF10 = new DesktopStation.NotSelectableCheckBox();
+            this.buttonMultiF9 = new DesktopStation.NotSelectableCheckBox();
+            this.buttonMultiF8 = new DesktopStation.NotSelectableCheckBox();
+            this.buttonMultiF7 = new DesktopStation.NotSelectableCheckBox();
+            this.buttonMultiF6 = new DesktopStation.NotSelectableCheckBox();
+            this.buttonMultiF5 = new DesktopStation.NotSelectableCheckBox();
+            this.buttonMultiF4 = new DesktopStation.NotSelectableCheckBox();
+            this.buttonMultiF3 = new DesktopStation.NotSelectableCheckBox();
+            this.buttonMultiF2 = new DesktopStation.NotSelectableCheckBox();
+            this.buttonMultiF1 = new DesktopStation.NotSelectableCheckBox();
             this.buttonMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editFunctionButtonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage8 = new System.Windows.Forms.TabPage();
@@ -119,6 +143,8 @@
             this.label_CVNo = new System.Windows.Forms.Label();
             this.numUpDown_CVValue = new System.Windows.Forms.NumericUpDown();
             this.label_CVValue = new System.Windows.Forms.Label();
+            this.buttonCVRead = new DesktopStation.NotSelectableButton();
+            this.buttonCVWrite = new DesktopStation.NotSelectableButton();
             this.label_CVProtcol = new System.Windows.Forms.Label();
             this.cBox_CVProtcol = new System.Windows.Forms.ComboBox();
             this.panel_CVEditor = new System.Windows.Forms.Panel();
@@ -130,15 +156,20 @@
             this.label_CV29Calc = new System.Windows.Forms.Label();
             this.gBox_CVLocAdrRelated = new System.Windows.Forms.GroupBox();
             this.label_CV_01 = new System.Windows.Forms.Label();
+            this.button_CVGenerate = new DesktopStation.NotSelectableButton();
             this.label_CV_17 = new System.Windows.Forms.Label();
             this.label_CV_29 = new System.Windows.Forms.Label();
             this.label_CV_18 = new System.Windows.Forms.Label();
+            this.button_DCCCVAdrRead = new DesktopStation.NotSelectableButton();
+            this.button_CVDCCAdrWrite = new DesktopStation.NotSelectableButton();
             this.chkListBox_CV29Calc = new System.Windows.Forms.CheckedListBox();
             this.numUpDown_CVLocAddress = new System.Windows.Forms.NumericUpDown();
             this.label_CVLocAdr = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.panel_SerialConsole = new System.Windows.Forms.Panel();
+            this.button_CopySerialConsole = new DesktopStation.NotSelectableButton();
             this.listBox_Serial = new System.Windows.Forms.ListBox();
+            this.button_ConsoleLogClear = new DesktopStation.NotSelectableButton();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.TileImgList = new System.Windows.Forms.ImageList(this.components);
             this.dIRECTIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -147,8 +178,35 @@
             this.tabPanels = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel_Loc = new System.Windows.Forms.Panel();
+            this.button_LocDBSave = new DesktopStation.NotSelectableButton();
+            this.button_LocDBLoad = new DesktopStation.NotSelectableButton();
+            this.Button_WebApp = new DesktopStation.NotSelectableButton();
+            this.button_MultiFunc1 = new DesktopStation.NotSelectableButton();
+            this.button_MultiFunc0 = new DesktopStation.NotSelectableButton();
             this.MultiFunctionBox = new System.Windows.Forms.PictureBox();
             this.pBox_Clock = new System.Windows.Forms.PictureBox();
+            this.button_F16 = new DesktopStation.NotSelectableCheckBox();
+            this.button_F15 = new DesktopStation.NotSelectableCheckBox();
+            this.button_F14 = new DesktopStation.NotSelectableCheckBox();
+            this.button_F13 = new DesktopStation.NotSelectableCheckBox();
+            this.button_F12 = new DesktopStation.NotSelectableCheckBox();
+            this.button_F11 = new DesktopStation.NotSelectableCheckBox();
+            this.button_F10 = new DesktopStation.NotSelectableCheckBox();
+            this.button_F9 = new DesktopStation.NotSelectableCheckBox();
+            this.button_F8 = new DesktopStation.NotSelectableCheckBox();
+            this.button_F7 = new DesktopStation.NotSelectableCheckBox();
+            this.button_F6 = new DesktopStation.NotSelectableCheckBox();
+            this.button_F5 = new DesktopStation.NotSelectableCheckBox();
+            this.button_F4 = new DesktopStation.NotSelectableCheckBox();
+            this.button_F3 = new DesktopStation.NotSelectableCheckBox();
+            this.button_F2 = new DesktopStation.NotSelectableCheckBox();
+            this.button_F1 = new DesktopStation.NotSelectableCheckBox();
+            this.button_DelLoc = new DesktopStation.NotSelectableButton();
+            this.button_NewLoc = new DesktopStation.NotSelectableButton();
+            this.cBox_LocChange = new DesktopStation.NotSelectableComboBox();
+            this.button_AnyLocs = new DesktopStation.NotSelectableButton();
+            this.button_REV = new DesktopStation.NotSelectableButton();
+            this.button_FWD = new DesktopStation.NotSelectableButton();
             this.MeterBox = new System.Windows.Forms.PictureBox();
             this.LeverBox = new System.Windows.Forms.PictureBox();
             this.leverMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -161,20 +219,46 @@
             this.pBox_AccList = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel6021 = new System.Windows.Forms.Panel();
+            this.button_CLR = new DesktopStation.NotSelectableButton();
             this.cBox_6021Protcol = new System.Windows.Forms.ComboBox();
+            this.button6021_REV = new DesktopStation.NotSelectableButton();
+            this.button6021_FWD = new DesktopStation.NotSelectableButton();
+            this.button6021_F4 = new DesktopStation.NotSelectableCheckBox();
+            this.button6021_F3 = new DesktopStation.NotSelectableCheckBox();
+            this.button6021_F2 = new DesktopStation.NotSelectableCheckBox();
+            this.button6021_F1 = new DesktopStation.NotSelectableCheckBox();
             this.Dial6021Box = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label_6021Direct = new System.Windows.Forms.Label();
             this.label_6021Protcol = new System.Windows.Forms.Label();
             this.label_Addr = new System.Windows.Forms.Label();
+            this.button6021_OFF = new DesktopStation.NotSelectableButton();
+            this.button6021_0 = new DesktopStation.NotSelectableButton();
+            this.button6021_9 = new DesktopStation.NotSelectableButton();
+            this.button6021_8 = new DesktopStation.NotSelectableButton();
+            this.button6021_7 = new DesktopStation.NotSelectableButton();
+            this.button6021_6 = new DesktopStation.NotSelectableButton();
+            this.button6021_5 = new DesktopStation.NotSelectableButton();
+            this.button6021_4 = new DesktopStation.NotSelectableButton();
+            this.button6021_3 = new DesktopStation.NotSelectableButton();
+            this.button6021_2 = new DesktopStation.NotSelectableButton();
+            this.button6021_1 = new DesktopStation.NotSelectableButton();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel_Layout = new System.Windows.Forms.Panel();
+            this.button_LayoutCfg = new DesktopStation.NotSelectableButton();
             this.panelLayout = new System.Windows.Forms.Panel();
             this.LayoutBox = new System.Windows.Forms.PictureBox();
+            this.button_LayoutSave = new DesktopStation.NotSelectableButton();
+            this.button_LayoutLoad = new DesktopStation.NotSelectableButton();
+            this.button_LayoutNew = new DesktopStation.NotSelectableButton();
             this.panelLayoutTool = new System.Windows.Forms.Panel();
             this.TileBox = new System.Windows.Forms.PictureBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.panel_Sequence = new System.Windows.Forms.Panel();
+            this.button_SeqScriptDown = new DesktopStation.NotSelectableButton();
+            this.button_SeqScriptUp = new DesktopStation.NotSelectableButton();
+            this.buttonScriptSave = new DesktopStation.NotSelectableButton();
+            this.buttonScriptLoad = new DesktopStation.NotSelectableButton();
             this.listScript = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -185,17 +269,28 @@
             this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripSeparator();
             this.MenuItem_Copy = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItem_Paste = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonScriptRun = new DesktopStation.NotSelectableButton();
+            this.buttonScriptTeach = new DesktopStation.NotSelectableButton();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.panel_S88 = new System.Windows.Forms.Panel();
             this.buttonEventInProcess = new System.Windows.Forms.Button();
+            this.button_S88EventsExport = new DesktopStation.NotSelectableButton();
+            this.button_S88EventsImport = new DesktopStation.NotSelectableButton();
             this.tabS88Events = new System.Windows.Forms.TabControl();
             this.tabS88_EventEdit = new System.Windows.Forms.TabPage();
+            this.cBox_SlotChangeEV = new DesktopStation.NotSelectableComboBox();
+            this.cBox_LocChangeEV = new DesktopStation.NotSelectableComboBox();
+            this.button_TriggerProperty = new DesktopStation.NotSelectableButton();
             this.label_S88TriggerData = new System.Windows.Forms.Label();
             this.label_S88TriggerCondition = new System.Windows.Forms.Label();
             this.label_S88StartTrigger = new System.Windows.Forms.Label();
             this.cBox_S88StartTrigger = new System.Windows.Forms.ComboBox();
+            this.button_S88EventClear = new DesktopStation.NotSelectableButton();
+            this.cBox_S88EventAvailable = new DesktopStation.NotSelectableCheckBox();
             this.tBox_S88EventName = new System.Windows.Forms.TextBox();
             this.label_S88EventName = new System.Windows.Forms.Label();
+            this.button_S88ScriptDown = new DesktopStation.NotSelectableButton();
+            this.button_S88ScriptUp = new DesktopStation.NotSelectableButton();
             this.label_S88LocAddr = new System.Windows.Forms.Label();
             this.label_S88EventScript = new System.Windows.Forms.Label();
             this.lView_S88Script = new System.Windows.Forms.ListView();
@@ -236,9 +331,11 @@
             this.tabS88_Sensor = new System.Windows.Forms.TabPage();
             this.pBox_S88SensorDisplay = new System.Windows.Forms.PictureBox();
             this.tabS88_ScriptInfo = new System.Windows.Forms.TabPage();
+            this.button_S88ScriptReset = new DesktopStation.NotSelectableButton();
             this.gBox_EventClock = new System.Windows.Forms.GroupBox();
             this.pBox_EventClock = new System.Windows.Forms.PictureBox();
             this.gBox_S88Log = new System.Windows.Forms.GroupBox();
+            this.button_S88ConsoleClear = new DesktopStation.NotSelectableButton();
             this.listBox_S88Console = new System.Windows.Forms.ListBox();
             this.gBox_S88RunChk = new System.Windows.Forms.GroupBox();
             this.panel_EVRunStatus = new System.Windows.Forms.Panel();
@@ -246,18 +343,32 @@
             this.gBox_S88Flag = new System.Windows.Forms.GroupBox();
             this.panel_EVFlagStatus = new System.Windows.Forms.Panel();
             this.label_S88ScrInfoFlagView = new System.Windows.Forms.Label();
+            this.button_S88ScriptViewUpdate = new DesktopStation.NotSelectableButton();
             this.lBox_S88Events = new System.Windows.Forms.ListBox();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.panel_Crane = new System.Windows.Forms.Panel();
             this.label_CraneSpeedMin = new System.Windows.Forms.Label();
             this.label_CraneSpeedMax = new System.Windows.Forms.Label();
+            this.Button_CraneCabRight = new DesktopStation.NotSelectableCheckBox();
+            this.Button_CraneCabLeft = new DesktopStation.NotSelectableCheckBox();
+            this.Button_CraneRunRight = new DesktopStation.NotSelectableCheckBox();
+            this.Button_CraneRunLeft = new DesktopStation.NotSelectableCheckBox();
             this.gBoxCraneType = new System.Windows.Forms.GroupBox();
+            this.cBox_CraneType = new DesktopStation.NotSelectableComboBox();
             this.tBar_CraneSpeed = new System.Windows.Forms.TrackBar();
+            this.Button_CraneStop = new DesktopStation.NotSelectableCheckBox();
             this.gBox_CraneLoc = new System.Windows.Forms.GroupBox();
             this.labelCraneProtcol = new System.Windows.Forms.Label();
             this.cBox_CraneProtcol = new System.Windows.Forms.ComboBox();
             this.labelCraneLocAddr = new System.Windows.Forms.Label();
             this.numUpDownCraneAddress = new System.Windows.Forms.NumericUpDown();
+            this.Button_CraneBoomDown = new DesktopStation.NotSelectableCheckBox();
+            this.Button_CraneHookDown = new DesktopStation.NotSelectableCheckBox();
+            this.Button_CraneBoomUp = new DesktopStation.NotSelectableCheckBox();
+            this.Button_CraneHookUp = new DesktopStation.NotSelectableCheckBox();
+            this.Button_CraneRabbit = new DesktopStation.NotSelectableCheckBox();
+            this.Button_CraneRight = new DesktopStation.NotSelectableCheckBox();
+            this.Button_CraneLeft = new DesktopStation.NotSelectableCheckBox();
             this.OuterPanel = new System.Windows.Forms.Panel();
             this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
@@ -272,117 +383,6 @@
             this.timerClock = new System.Windows.Forms.Timer(this.components);
             this.InfoTip = new System.Windows.Forms.ToolTip(this.components);
             this.timerUpdateAll = new System.Windows.Forms.Timer(this.components);
-            this.button_LocDBSave = new DesktopStation.NotSelectableButton();
-            this.button_LocDBLoad = new DesktopStation.NotSelectableButton();
-            this.Button_WebApp = new DesktopStation.NotSelectableButton();
-            this.button_MultiFunc1 = new DesktopStation.NotSelectableButton();
-            this.button_MultiFunc0 = new DesktopStation.NotSelectableButton();
-            this.button_F16 = new DesktopStation.NotSelectableCheckBox();
-            this.button_F15 = new DesktopStation.NotSelectableCheckBox();
-            this.button_F14 = new DesktopStation.NotSelectableCheckBox();
-            this.button_F13 = new DesktopStation.NotSelectableCheckBox();
-            this.button_F12 = new DesktopStation.NotSelectableCheckBox();
-            this.button_F11 = new DesktopStation.NotSelectableCheckBox();
-            this.button_F10 = new DesktopStation.NotSelectableCheckBox();
-            this.button_F9 = new DesktopStation.NotSelectableCheckBox();
-            this.button_F8 = new DesktopStation.NotSelectableCheckBox();
-            this.button_F7 = new DesktopStation.NotSelectableCheckBox();
-            this.button_F6 = new DesktopStation.NotSelectableCheckBox();
-            this.button_F5 = new DesktopStation.NotSelectableCheckBox();
-            this.button_F4 = new DesktopStation.NotSelectableCheckBox();
-            this.button_F3 = new DesktopStation.NotSelectableCheckBox();
-            this.button_F2 = new DesktopStation.NotSelectableCheckBox();
-            this.button_F1 = new DesktopStation.NotSelectableCheckBox();
-            this.button_DelLoc = new DesktopStation.NotSelectableButton();
-            this.button_NewLoc = new DesktopStation.NotSelectableButton();
-            this.cBox_LocChange = new DesktopStation.NotSelectableComboBox();
-            this.button_AnyLocs = new DesktopStation.NotSelectableButton();
-            this.button_REV = new DesktopStation.NotSelectableButton();
-            this.button_FWD = new DesktopStation.NotSelectableButton();
-            this.button_CLR = new DesktopStation.NotSelectableButton();
-            this.button6021_REV = new DesktopStation.NotSelectableButton();
-            this.button6021_FWD = new DesktopStation.NotSelectableButton();
-            this.button6021_F4 = new DesktopStation.NotSelectableCheckBox();
-            this.button6021_F3 = new DesktopStation.NotSelectableCheckBox();
-            this.button6021_F2 = new DesktopStation.NotSelectableCheckBox();
-            this.button6021_F1 = new DesktopStation.NotSelectableCheckBox();
-            this.button6021_OFF = new DesktopStation.NotSelectableButton();
-            this.button6021_0 = new DesktopStation.NotSelectableButton();
-            this.button6021_9 = new DesktopStation.NotSelectableButton();
-            this.button6021_8 = new DesktopStation.NotSelectableButton();
-            this.button6021_7 = new DesktopStation.NotSelectableButton();
-            this.button6021_6 = new DesktopStation.NotSelectableButton();
-            this.button6021_5 = new DesktopStation.NotSelectableButton();
-            this.button6021_4 = new DesktopStation.NotSelectableButton();
-            this.button6021_3 = new DesktopStation.NotSelectableButton();
-            this.button6021_2 = new DesktopStation.NotSelectableButton();
-            this.button6021_1 = new DesktopStation.NotSelectableButton();
-            this.button_LayoutCfg = new DesktopStation.NotSelectableButton();
-            this.button_LayoutSave = new DesktopStation.NotSelectableButton();
-            this.button_LayoutLoad = new DesktopStation.NotSelectableButton();
-            this.button_LayoutNew = new DesktopStation.NotSelectableButton();
-            this.button_SeqScriptDown = new DesktopStation.NotSelectableButton();
-            this.button_SeqScriptUp = new DesktopStation.NotSelectableButton();
-            this.buttonScriptSave = new DesktopStation.NotSelectableButton();
-            this.buttonScriptLoad = new DesktopStation.NotSelectableButton();
-            this.buttonScriptRun = new DesktopStation.NotSelectableButton();
-            this.buttonScriptTeach = new DesktopStation.NotSelectableButton();
-            this.button_CopySerialConsole = new DesktopStation.NotSelectableButton();
-            this.button_ConsoleLogClear = new DesktopStation.NotSelectableButton();
-            this.button_CVGenerate = new DesktopStation.NotSelectableButton();
-            this.button_DCCCVAdrRead = new DesktopStation.NotSelectableButton();
-            this.button_CVDCCAdrWrite = new DesktopStation.NotSelectableButton();
-            this.buttonCVRead = new DesktopStation.NotSelectableButton();
-            this.buttonCVWrite = new DesktopStation.NotSelectableButton();
-            this.buttonMLoc_Select7 = new DesktopStation.NotSelectableButton();
-            this.buttonMLoc_Select3 = new DesktopStation.NotSelectableButton();
-            this.buttonMLoc_Select6 = new DesktopStation.NotSelectableButton();
-            this.buttonMLoc_Select2 = new DesktopStation.NotSelectableButton();
-            this.buttonMLoc_Select5 = new DesktopStation.NotSelectableButton();
-            this.buttonMLoc_Select1 = new DesktopStation.NotSelectableButton();
-            this.buttonMLoc_Select4 = new DesktopStation.NotSelectableButton();
-            this.buttonMLoc_Select0 = new DesktopStation.NotSelectableButton();
-            this.buttonMultiF16 = new DesktopStation.NotSelectableCheckBox();
-            this.buttonMultiF15 = new DesktopStation.NotSelectableCheckBox();
-            this.buttonMultiF14 = new DesktopStation.NotSelectableCheckBox();
-            this.buttonMultiF13 = new DesktopStation.NotSelectableCheckBox();
-            this.buttonMultiF12 = new DesktopStation.NotSelectableCheckBox();
-            this.buttonMultiF11 = new DesktopStation.NotSelectableCheckBox();
-            this.buttonMultiF10 = new DesktopStation.NotSelectableCheckBox();
-            this.buttonMultiF9 = new DesktopStation.NotSelectableCheckBox();
-            this.buttonMultiF8 = new DesktopStation.NotSelectableCheckBox();
-            this.buttonMultiF7 = new DesktopStation.NotSelectableCheckBox();
-            this.buttonMultiF6 = new DesktopStation.NotSelectableCheckBox();
-            this.buttonMultiF5 = new DesktopStation.NotSelectableCheckBox();
-            this.buttonMultiF4 = new DesktopStation.NotSelectableCheckBox();
-            this.buttonMultiF3 = new DesktopStation.NotSelectableCheckBox();
-            this.buttonMultiF2 = new DesktopStation.NotSelectableCheckBox();
-            this.buttonMultiF1 = new DesktopStation.NotSelectableCheckBox();
-            this.button_S88EventsExport = new DesktopStation.NotSelectableButton();
-            this.button_S88EventsImport = new DesktopStation.NotSelectableButton();
-            this.cBox_SlotChangeEV = new DesktopStation.NotSelectableComboBox();
-            this.cBox_LocChangeEV = new DesktopStation.NotSelectableComboBox();
-            this.button_TriggerProperty = new DesktopStation.NotSelectableButton();
-            this.button_S88EventClear = new DesktopStation.NotSelectableButton();
-            this.cBox_S88EventAvailable = new DesktopStation.NotSelectableCheckBox();
-            this.button_S88ScriptDown = new DesktopStation.NotSelectableButton();
-            this.button_S88ScriptUp = new DesktopStation.NotSelectableButton();
-            this.button_S88ScriptReset = new DesktopStation.NotSelectableButton();
-            this.button_S88ConsoleClear = new DesktopStation.NotSelectableButton();
-            this.button_S88ScriptViewUpdate = new DesktopStation.NotSelectableButton();
-            this.Button_CraneCabRight = new DesktopStation.NotSelectableCheckBox();
-            this.Button_CraneCabLeft = new DesktopStation.NotSelectableCheckBox();
-            this.Button_CraneRunRight = new DesktopStation.NotSelectableCheckBox();
-            this.Button_CraneRunLeft = new DesktopStation.NotSelectableCheckBox();
-            this.cBox_CraneType = new DesktopStation.NotSelectableComboBox();
-            this.Button_CraneStop = new DesktopStation.NotSelectableCheckBox();
-            this.Button_CraneBoomDown = new DesktopStation.NotSelectableCheckBox();
-            this.Button_CraneHookDown = new DesktopStation.NotSelectableCheckBox();
-            this.Button_CraneBoomUp = new DesktopStation.NotSelectableCheckBox();
-            this.Button_CraneHookUp = new DesktopStation.NotSelectableCheckBox();
-            this.Button_CraneRabbit = new DesktopStation.NotSelectableCheckBox();
-            this.Button_CraneRight = new DesktopStation.NotSelectableCheckBox();
-            this.Button_CraneLeft = new DesktopStation.NotSelectableCheckBox();
             this.toolStrip.SuspendLayout();
             this.panelLocCtrl7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBox_DirectBox7)).BeginInit();
@@ -786,6 +786,19 @@
             this.pBox_MLocName7.Click += new System.EventHandler(this.label_MLocName0_Click);
             this.pBox_MLocName7.Paint += new System.Windows.Forms.PaintEventHandler(this.pBox_MLocName1_Paint);
             // 
+            // buttonMLoc_Select7
+            // 
+            this.buttonMLoc_Select7.ImageKey = "PICS_SELECTLOC32.bmp";
+            this.buttonMLoc_Select7.ImageList = this.checkimgList;
+            this.buttonMLoc_Select7.Location = new System.Drawing.Point(339, 3);
+            this.buttonMLoc_Select7.Name = "buttonMLoc_Select7";
+            this.buttonMLoc_Select7.Size = new System.Drawing.Size(38, 38);
+            this.buttonMLoc_Select7.TabIndex = 113;
+            this.buttonMLoc_Select7.TabStop = false;
+            this.buttonMLoc_Select7.Tag = "7";
+            this.buttonMLoc_Select7.UseVisualStyleBackColor = true;
+            this.buttonMLoc_Select7.Click += new System.EventHandler(this.buttonMLoc_Select0_Click);
+            // 
             // SpeedCtrlBox7
             // 
             this.SpeedCtrlBox7.Location = new System.Drawing.Point(137, 42);
@@ -892,6 +905,19 @@
             this.pBox_MLocName3.Click += new System.EventHandler(this.label_MLocName0_Click);
             this.pBox_MLocName3.Paint += new System.Windows.Forms.PaintEventHandler(this.pBox_MLocName1_Paint);
             // 
+            // buttonMLoc_Select3
+            // 
+            this.buttonMLoc_Select3.ImageKey = "PICS_SELECTLOC32.bmp";
+            this.buttonMLoc_Select3.ImageList = this.checkimgList;
+            this.buttonMLoc_Select3.Location = new System.Drawing.Point(339, 3);
+            this.buttonMLoc_Select3.Name = "buttonMLoc_Select3";
+            this.buttonMLoc_Select3.Size = new System.Drawing.Size(38, 38);
+            this.buttonMLoc_Select3.TabIndex = 113;
+            this.buttonMLoc_Select3.TabStop = false;
+            this.buttonMLoc_Select3.Tag = "3";
+            this.buttonMLoc_Select3.UseVisualStyleBackColor = true;
+            this.buttonMLoc_Select3.Click += new System.EventHandler(this.buttonMLoc_Select0_Click);
+            // 
             // SpeedCtrlBox3
             // 
             this.SpeedCtrlBox3.Location = new System.Drawing.Point(137, 42);
@@ -965,6 +991,19 @@
             this.pBox_MLocName6.Tag = "6";
             this.pBox_MLocName6.Click += new System.EventHandler(this.label_MLocName0_Click);
             this.pBox_MLocName6.Paint += new System.Windows.Forms.PaintEventHandler(this.pBox_MLocName1_Paint);
+            // 
+            // buttonMLoc_Select6
+            // 
+            this.buttonMLoc_Select6.ImageKey = "PICS_SELECTLOC32.bmp";
+            this.buttonMLoc_Select6.ImageList = this.checkimgList;
+            this.buttonMLoc_Select6.Location = new System.Drawing.Point(339, 3);
+            this.buttonMLoc_Select6.Name = "buttonMLoc_Select6";
+            this.buttonMLoc_Select6.Size = new System.Drawing.Size(38, 38);
+            this.buttonMLoc_Select6.TabIndex = 113;
+            this.buttonMLoc_Select6.TabStop = false;
+            this.buttonMLoc_Select6.Tag = "6";
+            this.buttonMLoc_Select6.UseVisualStyleBackColor = true;
+            this.buttonMLoc_Select6.Click += new System.EventHandler(this.buttonMLoc_Select0_Click);
             // 
             // SpeedCtrlBox6
             // 
@@ -1040,6 +1079,19 @@
             this.pBox_MLocName2.Click += new System.EventHandler(this.label_MLocName0_Click);
             this.pBox_MLocName2.Paint += new System.Windows.Forms.PaintEventHandler(this.pBox_MLocName1_Paint);
             // 
+            // buttonMLoc_Select2
+            // 
+            this.buttonMLoc_Select2.ImageKey = "PICS_SELECTLOC32.bmp";
+            this.buttonMLoc_Select2.ImageList = this.checkimgList;
+            this.buttonMLoc_Select2.Location = new System.Drawing.Point(339, 3);
+            this.buttonMLoc_Select2.Name = "buttonMLoc_Select2";
+            this.buttonMLoc_Select2.Size = new System.Drawing.Size(38, 38);
+            this.buttonMLoc_Select2.TabIndex = 113;
+            this.buttonMLoc_Select2.TabStop = false;
+            this.buttonMLoc_Select2.Tag = "2";
+            this.buttonMLoc_Select2.UseVisualStyleBackColor = true;
+            this.buttonMLoc_Select2.Click += new System.EventHandler(this.buttonMLoc_Select0_Click);
+            // 
             // SpeedCtrlBox2
             // 
             this.SpeedCtrlBox2.Location = new System.Drawing.Point(137, 43);
@@ -1113,6 +1165,19 @@
             this.pBox_MLocName5.Tag = "5";
             this.pBox_MLocName5.Click += new System.EventHandler(this.label_MLocName0_Click);
             this.pBox_MLocName5.Paint += new System.Windows.Forms.PaintEventHandler(this.pBox_MLocName1_Paint);
+            // 
+            // buttonMLoc_Select5
+            // 
+            this.buttonMLoc_Select5.ImageKey = "PICS_SELECTLOC32.bmp";
+            this.buttonMLoc_Select5.ImageList = this.checkimgList;
+            this.buttonMLoc_Select5.Location = new System.Drawing.Point(339, 3);
+            this.buttonMLoc_Select5.Name = "buttonMLoc_Select5";
+            this.buttonMLoc_Select5.Size = new System.Drawing.Size(38, 38);
+            this.buttonMLoc_Select5.TabIndex = 113;
+            this.buttonMLoc_Select5.TabStop = false;
+            this.buttonMLoc_Select5.Tag = "5";
+            this.buttonMLoc_Select5.UseVisualStyleBackColor = true;
+            this.buttonMLoc_Select5.Click += new System.EventHandler(this.buttonMLoc_Select0_Click);
             // 
             // SpeedCtrlBox5
             // 
@@ -1188,6 +1253,19 @@
             this.pBox_MLocName1.Click += new System.EventHandler(this.label_MLocName0_Click);
             this.pBox_MLocName1.Paint += new System.Windows.Forms.PaintEventHandler(this.pBox_MLocName1_Paint);
             // 
+            // buttonMLoc_Select1
+            // 
+            this.buttonMLoc_Select1.ImageKey = "PICS_SELECTLOC32.bmp";
+            this.buttonMLoc_Select1.ImageList = this.checkimgList;
+            this.buttonMLoc_Select1.Location = new System.Drawing.Point(339, 3);
+            this.buttonMLoc_Select1.Name = "buttonMLoc_Select1";
+            this.buttonMLoc_Select1.Size = new System.Drawing.Size(38, 38);
+            this.buttonMLoc_Select1.TabIndex = 113;
+            this.buttonMLoc_Select1.TabStop = false;
+            this.buttonMLoc_Select1.Tag = "1";
+            this.buttonMLoc_Select1.UseVisualStyleBackColor = true;
+            this.buttonMLoc_Select1.Click += new System.EventHandler(this.buttonMLoc_Select0_Click);
+            // 
             // SpeedCtrlBox1
             // 
             this.SpeedCtrlBox1.Location = new System.Drawing.Point(137, 43);
@@ -1261,6 +1339,19 @@
             this.pBox_MLocName4.Tag = "4";
             this.pBox_MLocName4.Click += new System.EventHandler(this.label_MLocName0_Click);
             this.pBox_MLocName4.Paint += new System.Windows.Forms.PaintEventHandler(this.pBox_MLocName1_Paint);
+            // 
+            // buttonMLoc_Select4
+            // 
+            this.buttonMLoc_Select4.ImageKey = "PICS_SELECTLOC32.bmp";
+            this.buttonMLoc_Select4.ImageList = this.checkimgList;
+            this.buttonMLoc_Select4.Location = new System.Drawing.Point(339, 3);
+            this.buttonMLoc_Select4.Name = "buttonMLoc_Select4";
+            this.buttonMLoc_Select4.Size = new System.Drawing.Size(38, 38);
+            this.buttonMLoc_Select4.TabIndex = 113;
+            this.buttonMLoc_Select4.TabStop = false;
+            this.buttonMLoc_Select4.Tag = "4";
+            this.buttonMLoc_Select4.UseVisualStyleBackColor = true;
+            this.buttonMLoc_Select4.Click += new System.EventHandler(this.buttonMLoc_Select0_Click);
             // 
             // SpeedCtrlBox4
             // 
@@ -1336,6 +1427,20 @@
             this.pBox_MLocName0.Click += new System.EventHandler(this.label_MLocName0_Click);
             this.pBox_MLocName0.Paint += new System.Windows.Forms.PaintEventHandler(this.pBox_MLocName1_Paint);
             // 
+            // buttonMLoc_Select0
+            // 
+            this.buttonMLoc_Select0.AutoSize = true;
+            this.buttonMLoc_Select0.ImageKey = "PICS_SELECTLOC32.bmp";
+            this.buttonMLoc_Select0.ImageList = this.checkimgList;
+            this.buttonMLoc_Select0.Location = new System.Drawing.Point(339, 3);
+            this.buttonMLoc_Select0.Name = "buttonMLoc_Select0";
+            this.buttonMLoc_Select0.Size = new System.Drawing.Size(38, 38);
+            this.buttonMLoc_Select0.TabIndex = 113;
+            this.buttonMLoc_Select0.TabStop = false;
+            this.buttonMLoc_Select0.Tag = "0";
+            this.buttonMLoc_Select0.UseVisualStyleBackColor = true;
+            this.buttonMLoc_Select0.Click += new System.EventHandler(this.buttonMLoc_Select0_Click);
+            // 
             // SpeedCtrlBox0
             // 
             this.SpeedCtrlBox0.Location = new System.Drawing.Point(137, 43);
@@ -1360,6 +1465,24 @@
             this.LocImageBox0.TabStop = false;
             this.LocImageBox0.Tag = "0";
             this.LocImageBox0.Click += new System.EventHandler(this.LocImageBox0_Click);
+            // 
+            // buttonMultiF16
+            // 
+            this.buttonMultiF16.Appearance = System.Windows.Forms.Appearance.Button;
+            this.buttonMultiF16.AutoCheck = false;
+            this.buttonMultiF16.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonMultiF16.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMultiF16.ImageList = this.FunctionImageList;
+            this.buttonMultiF16.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonMultiF16.Location = new System.Drawing.Point(854, 414);
+            this.buttonMultiF16.Name = "buttonMultiF16";
+            this.buttonMultiF16.Size = new System.Drawing.Size(70, 52);
+            this.buttonMultiF16.TabIndex = 134;
+            this.buttonMultiF16.TabStop = false;
+            this.buttonMultiF16.Tag = "15";
+            this.buttonMultiF16.Text = "F15";
+            this.buttonMultiF16.UseVisualStyleBackColor = true;
+            this.buttonMultiF16.Click += new System.EventHandler(this.buttonMultiF8_Click);
             // 
             // FunctionImageList
             // 
@@ -1401,17 +1524,286 @@
             this.FunctionImageList.Images.SetKeyName(33, "PICS_Signal.bmp");
             this.FunctionImageList.Images.SetKeyName(34, "PICS_SQSpeaker.bmp");
             // 
+            // buttonMultiF15
+            // 
+            this.buttonMultiF15.Appearance = System.Windows.Forms.Appearance.Button;
+            this.buttonMultiF15.AutoCheck = false;
+            this.buttonMultiF15.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonMultiF15.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMultiF15.ImageList = this.FunctionImageList;
+            this.buttonMultiF15.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonMultiF15.Location = new System.Drawing.Point(854, 356);
+            this.buttonMultiF15.Name = "buttonMultiF15";
+            this.buttonMultiF15.Size = new System.Drawing.Size(70, 52);
+            this.buttonMultiF15.TabIndex = 133;
+            this.buttonMultiF15.TabStop = false;
+            this.buttonMultiF15.Tag = "14";
+            this.buttonMultiF15.Text = "F14";
+            this.buttonMultiF15.UseVisualStyleBackColor = true;
+            this.buttonMultiF15.Click += new System.EventHandler(this.buttonMultiF8_Click);
+            // 
+            // buttonMultiF14
+            // 
+            this.buttonMultiF14.Appearance = System.Windows.Forms.Appearance.Button;
+            this.buttonMultiF14.AutoCheck = false;
+            this.buttonMultiF14.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonMultiF14.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMultiF14.ImageList = this.FunctionImageList;
+            this.buttonMultiF14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonMultiF14.Location = new System.Drawing.Point(854, 298);
+            this.buttonMultiF14.Name = "buttonMultiF14";
+            this.buttonMultiF14.Size = new System.Drawing.Size(70, 52);
+            this.buttonMultiF14.TabIndex = 132;
+            this.buttonMultiF14.TabStop = false;
+            this.buttonMultiF14.Tag = "13";
+            this.buttonMultiF14.Text = "F13";
+            this.buttonMultiF14.UseVisualStyleBackColor = true;
+            this.buttonMultiF14.Click += new System.EventHandler(this.buttonMultiF8_Click);
+            // 
+            // buttonMultiF13
+            // 
+            this.buttonMultiF13.Appearance = System.Windows.Forms.Appearance.Button;
+            this.buttonMultiF13.AutoCheck = false;
+            this.buttonMultiF13.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonMultiF13.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMultiF13.ImageList = this.FunctionImageList;
+            this.buttonMultiF13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonMultiF13.Location = new System.Drawing.Point(854, 240);
+            this.buttonMultiF13.Name = "buttonMultiF13";
+            this.buttonMultiF13.Size = new System.Drawing.Size(70, 52);
+            this.buttonMultiF13.TabIndex = 131;
+            this.buttonMultiF13.TabStop = false;
+            this.buttonMultiF13.Tag = "12";
+            this.buttonMultiF13.Text = "F12";
+            this.buttonMultiF13.UseVisualStyleBackColor = true;
+            this.buttonMultiF13.Click += new System.EventHandler(this.buttonMultiF8_Click);
+            // 
+            // buttonMultiF12
+            // 
+            this.buttonMultiF12.Appearance = System.Windows.Forms.Appearance.Button;
+            this.buttonMultiF12.AutoCheck = false;
+            this.buttonMultiF12.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonMultiF12.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMultiF12.ImageList = this.FunctionImageList;
+            this.buttonMultiF12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonMultiF12.Location = new System.Drawing.Point(854, 182);
+            this.buttonMultiF12.Name = "buttonMultiF12";
+            this.buttonMultiF12.Size = new System.Drawing.Size(70, 52);
+            this.buttonMultiF12.TabIndex = 130;
+            this.buttonMultiF12.TabStop = false;
+            this.buttonMultiF12.Tag = "11";
+            this.buttonMultiF12.Text = "F11";
+            this.buttonMultiF12.UseVisualStyleBackColor = true;
+            this.buttonMultiF12.Click += new System.EventHandler(this.buttonMultiF8_Click);
+            // 
+            // buttonMultiF11
+            // 
+            this.buttonMultiF11.Appearance = System.Windows.Forms.Appearance.Button;
+            this.buttonMultiF11.AutoCheck = false;
+            this.buttonMultiF11.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonMultiF11.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMultiF11.ImageList = this.FunctionImageList;
+            this.buttonMultiF11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonMultiF11.Location = new System.Drawing.Point(855, 124);
+            this.buttonMultiF11.Name = "buttonMultiF11";
+            this.buttonMultiF11.Size = new System.Drawing.Size(70, 52);
+            this.buttonMultiF11.TabIndex = 129;
+            this.buttonMultiF11.TabStop = false;
+            this.buttonMultiF11.Tag = "10";
+            this.buttonMultiF11.Text = "F10";
+            this.buttonMultiF11.UseVisualStyleBackColor = true;
+            this.buttonMultiF11.Click += new System.EventHandler(this.buttonMultiF8_Click);
+            // 
+            // buttonMultiF10
+            // 
+            this.buttonMultiF10.Appearance = System.Windows.Forms.Appearance.Button;
+            this.buttonMultiF10.AutoCheck = false;
+            this.buttonMultiF10.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonMultiF10.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMultiF10.ImageList = this.FunctionImageList;
+            this.buttonMultiF10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonMultiF10.Location = new System.Drawing.Point(854, 66);
+            this.buttonMultiF10.Name = "buttonMultiF10";
+            this.buttonMultiF10.Size = new System.Drawing.Size(70, 52);
+            this.buttonMultiF10.TabIndex = 128;
+            this.buttonMultiF10.TabStop = false;
+            this.buttonMultiF10.Tag = "9";
+            this.buttonMultiF10.Text = "F9";
+            this.buttonMultiF10.UseVisualStyleBackColor = true;
+            this.buttonMultiF10.Click += new System.EventHandler(this.buttonMultiF8_Click);
+            // 
+            // buttonMultiF9
+            // 
+            this.buttonMultiF9.Appearance = System.Windows.Forms.Appearance.Button;
+            this.buttonMultiF9.AutoCheck = false;
+            this.buttonMultiF9.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonMultiF9.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMultiF9.ImageList = this.FunctionImageList;
+            this.buttonMultiF9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonMultiF9.Location = new System.Drawing.Point(854, 8);
+            this.buttonMultiF9.Name = "buttonMultiF9";
+            this.buttonMultiF9.Size = new System.Drawing.Size(70, 52);
+            this.buttonMultiF9.TabIndex = 127;
+            this.buttonMultiF9.TabStop = false;
+            this.buttonMultiF9.Tag = "8";
+            this.buttonMultiF9.Text = "F8";
+            this.buttonMultiF9.UseVisualStyleBackColor = true;
+            this.buttonMultiF9.Click += new System.EventHandler(this.buttonMultiF8_Click);
+            // 
+            // buttonMultiF8
+            // 
+            this.buttonMultiF8.Appearance = System.Windows.Forms.Appearance.Button;
+            this.buttonMultiF8.AutoCheck = false;
+            this.buttonMultiF8.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonMultiF8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMultiF8.ImageList = this.FunctionImageList;
+            this.buttonMultiF8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonMultiF8.Location = new System.Drawing.Point(6, 414);
+            this.buttonMultiF8.Name = "buttonMultiF8";
+            this.buttonMultiF8.Size = new System.Drawing.Size(70, 52);
+            this.buttonMultiF8.TabIndex = 126;
+            this.buttonMultiF8.TabStop = false;
+            this.buttonMultiF8.Tag = "7";
+            this.buttonMultiF8.Text = "F7";
+            this.buttonMultiF8.UseVisualStyleBackColor = true;
+            this.buttonMultiF8.Click += new System.EventHandler(this.buttonMultiF8_Click);
+            // 
+            // buttonMultiF7
+            // 
+            this.buttonMultiF7.Appearance = System.Windows.Forms.Appearance.Button;
+            this.buttonMultiF7.AutoCheck = false;
+            this.buttonMultiF7.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonMultiF7.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMultiF7.ImageList = this.FunctionImageList;
+            this.buttonMultiF7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonMultiF7.Location = new System.Drawing.Point(6, 356);
+            this.buttonMultiF7.Name = "buttonMultiF7";
+            this.buttonMultiF7.Size = new System.Drawing.Size(70, 52);
+            this.buttonMultiF7.TabIndex = 125;
+            this.buttonMultiF7.TabStop = false;
+            this.buttonMultiF7.Tag = "6";
+            this.buttonMultiF7.Text = "F6";
+            this.buttonMultiF7.UseVisualStyleBackColor = true;
+            this.buttonMultiF7.Click += new System.EventHandler(this.buttonMultiF8_Click);
+            // 
+            // buttonMultiF6
+            // 
+            this.buttonMultiF6.Appearance = System.Windows.Forms.Appearance.Button;
+            this.buttonMultiF6.AutoCheck = false;
+            this.buttonMultiF6.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonMultiF6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMultiF6.ImageList = this.FunctionImageList;
+            this.buttonMultiF6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonMultiF6.Location = new System.Drawing.Point(6, 298);
+            this.buttonMultiF6.Name = "buttonMultiF6";
+            this.buttonMultiF6.Size = new System.Drawing.Size(70, 52);
+            this.buttonMultiF6.TabIndex = 124;
+            this.buttonMultiF6.TabStop = false;
+            this.buttonMultiF6.Tag = "5";
+            this.buttonMultiF6.Text = "F5";
+            this.buttonMultiF6.UseVisualStyleBackColor = true;
+            this.buttonMultiF6.Click += new System.EventHandler(this.buttonMultiF8_Click);
+            // 
+            // buttonMultiF5
+            // 
+            this.buttonMultiF5.Appearance = System.Windows.Forms.Appearance.Button;
+            this.buttonMultiF5.AutoCheck = false;
+            this.buttonMultiF5.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonMultiF5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMultiF5.ImageList = this.FunctionImageList;
+            this.buttonMultiF5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonMultiF5.Location = new System.Drawing.Point(6, 240);
+            this.buttonMultiF5.Name = "buttonMultiF5";
+            this.buttonMultiF5.Size = new System.Drawing.Size(70, 52);
+            this.buttonMultiF5.TabIndex = 123;
+            this.buttonMultiF5.TabStop = false;
+            this.buttonMultiF5.Tag = "4";
+            this.buttonMultiF5.Text = "F4";
+            this.buttonMultiF5.UseVisualStyleBackColor = true;
+            this.buttonMultiF5.Click += new System.EventHandler(this.buttonMultiF8_Click);
+            // 
+            // buttonMultiF4
+            // 
+            this.buttonMultiF4.Appearance = System.Windows.Forms.Appearance.Button;
+            this.buttonMultiF4.AutoCheck = false;
+            this.buttonMultiF4.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonMultiF4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMultiF4.ImageList = this.FunctionImageList;
+            this.buttonMultiF4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonMultiF4.Location = new System.Drawing.Point(6, 182);
+            this.buttonMultiF4.Name = "buttonMultiF4";
+            this.buttonMultiF4.Size = new System.Drawing.Size(70, 52);
+            this.buttonMultiF4.TabIndex = 122;
+            this.buttonMultiF4.TabStop = false;
+            this.buttonMultiF4.Tag = "3";
+            this.buttonMultiF4.Text = "F3";
+            this.buttonMultiF4.UseVisualStyleBackColor = true;
+            this.buttonMultiF4.Click += new System.EventHandler(this.buttonMultiF8_Click);
+            // 
+            // buttonMultiF3
+            // 
+            this.buttonMultiF3.Appearance = System.Windows.Forms.Appearance.Button;
+            this.buttonMultiF3.AutoCheck = false;
+            this.buttonMultiF3.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonMultiF3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMultiF3.ImageList = this.FunctionImageList;
+            this.buttonMultiF3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonMultiF3.Location = new System.Drawing.Point(6, 124);
+            this.buttonMultiF3.Name = "buttonMultiF3";
+            this.buttonMultiF3.Size = new System.Drawing.Size(70, 52);
+            this.buttonMultiF3.TabIndex = 121;
+            this.buttonMultiF3.TabStop = false;
+            this.buttonMultiF3.Tag = "2";
+            this.buttonMultiF3.Text = "F2";
+            this.buttonMultiF3.UseVisualStyleBackColor = true;
+            this.buttonMultiF3.Click += new System.EventHandler(this.buttonMultiF8_Click);
+            // 
+            // buttonMultiF2
+            // 
+            this.buttonMultiF2.Appearance = System.Windows.Forms.Appearance.Button;
+            this.buttonMultiF2.AutoCheck = false;
+            this.buttonMultiF2.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonMultiF2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMultiF2.ImageList = this.FunctionImageList;
+            this.buttonMultiF2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonMultiF2.Location = new System.Drawing.Point(6, 66);
+            this.buttonMultiF2.Name = "buttonMultiF2";
+            this.buttonMultiF2.Size = new System.Drawing.Size(70, 52);
+            this.buttonMultiF2.TabIndex = 120;
+            this.buttonMultiF2.TabStop = false;
+            this.buttonMultiF2.Tag = "1";
+            this.buttonMultiF2.Text = "F1";
+            this.buttonMultiF2.UseVisualStyleBackColor = true;
+            this.buttonMultiF2.Click += new System.EventHandler(this.buttonMultiF8_Click);
+            // 
+            // buttonMultiF1
+            // 
+            this.buttonMultiF1.Appearance = System.Windows.Forms.Appearance.Button;
+            this.buttonMultiF1.AutoCheck = false;
+            this.buttonMultiF1.Font = new System.Drawing.Font("Arial", 12F);
+            this.buttonMultiF1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonMultiF1.ImageList = this.FunctionImageList;
+            this.buttonMultiF1.Location = new System.Drawing.Point(6, 8);
+            this.buttonMultiF1.Name = "buttonMultiF1";
+            this.buttonMultiF1.Size = new System.Drawing.Size(70, 52);
+            this.buttonMultiF1.TabIndex = 119;
+            this.buttonMultiF1.TabStop = false;
+            this.buttonMultiF1.Tag = "0";
+            this.buttonMultiF1.Text = "F0";
+            this.buttonMultiF1.UseVisualStyleBackColor = true;
+            this.buttonMultiF1.Click += new System.EventHandler(this.buttonMultiF8_Click);
+            // 
             // buttonMenuStrip
             // 
             this.buttonMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editFunctionButtonToolStripMenuItem});
             this.buttonMenuStrip.Name = "buttonMenuStrip";
-            this.buttonMenuStrip.Size = new System.Drawing.Size(195, 26);
+            this.buttonMenuStrip.Size = new System.Drawing.Size(186, 26);
             // 
             // editFunctionButtonToolStripMenuItem
             // 
             this.editFunctionButtonToolStripMenuItem.Name = "editFunctionButtonToolStripMenuItem";
-            this.editFunctionButtonToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.editFunctionButtonToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.editFunctionButtonToolStripMenuItem.Text = "Edit function options";
             this.editFunctionButtonToolStripMenuItem.Click += new System.EventHandler(this.editFunctionButtonToolStripMenuItem_Click);
             // 
@@ -1429,14 +1821,14 @@
             // MenuItem_Edit
             // 
             this.MenuItem_Edit.Name = "MenuItem_Edit";
-            this.MenuItem_Edit.Size = new System.Drawing.Size(155, 22);
+            this.MenuItem_Edit.Size = new System.Drawing.Size(144, 22);
             this.MenuItem_Edit.Text = "Edit";
             this.MenuItem_Edit.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // gOTOToolStripMenuItem
             // 
             this.gOTOToolStripMenuItem.Name = "gOTOToolStripMenuItem";
-            this.gOTOToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.gOTOToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.gOTOToolStripMenuItem.Tag = "8";
             this.gOTOToolStripMenuItem.Text = "GOTO";
             this.gOTOToolStripMenuItem.Click += new System.EventHandler(this.sPEEDToolStripMenuItem_Click);
@@ -1444,7 +1836,7 @@
             // eXITToolStripMenuItem
             // 
             this.eXITToolStripMenuItem.Name = "eXITToolStripMenuItem";
-            this.eXITToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.eXITToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.eXITToolStripMenuItem.Tag = "7";
             this.eXITToolStripMenuItem.Text = "EXIT";
             this.eXITToolStripMenuItem.Click += new System.EventHandler(this.sPEEDToolStripMenuItem_Click);
@@ -1452,7 +1844,7 @@
             // fUNCTIONToolStripMenuItem
             // 
             this.fUNCTIONToolStripMenuItem.Name = "fUNCTIONToolStripMenuItem";
-            this.fUNCTIONToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.fUNCTIONToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.fUNCTIONToolStripMenuItem.Tag = "3";
             this.fUNCTIONToolStripMenuItem.Text = "FUNCTION";
             this.fUNCTIONToolStripMenuItem.Click += new System.EventHandler(this.sPEEDToolStripMenuItem_Click);
@@ -1460,7 +1852,7 @@
             // aCCESSORYToolStripMenuItem
             // 
             this.aCCESSORYToolStripMenuItem.Name = "aCCESSORYToolStripMenuItem";
-            this.aCCESSORYToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.aCCESSORYToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.aCCESSORYToolStripMenuItem.Tag = "4";
             this.aCCESSORYToolStripMenuItem.Text = "ACCESSORY";
             this.aCCESSORYToolStripMenuItem.Click += new System.EventHandler(this.sPEEDToolStripMenuItem_Click);
@@ -1468,7 +1860,7 @@
             // wAITToolStripMenuItem
             // 
             this.wAITToolStripMenuItem.Name = "wAITToolStripMenuItem";
-            this.wAITToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.wAITToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.wAITToolStripMenuItem.Tag = "5";
             this.wAITToolStripMenuItem.Text = "WAIT";
             this.wAITToolStripMenuItem.Click += new System.EventHandler(this.sPEEDToolStripMenuItem_Click);
@@ -1476,7 +1868,7 @@
             // pOWERToolStripMenuItem
             // 
             this.pOWERToolStripMenuItem.Name = "pOWERToolStripMenuItem";
-            this.pOWERToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.pOWERToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.pOWERToolStripMenuItem.Tag = "6";
             this.pOWERToolStripMenuItem.Text = "POWER";
             this.pOWERToolStripMenuItem.Click += new System.EventHandler(this.sPEEDToolStripMenuItem_Click);
@@ -1485,7 +1877,7 @@
             // 
             this.MenuItem_Del.Name = "MenuItem_Del";
             this.MenuItem_Del.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.MenuItem_Del.Size = new System.Drawing.Size(155, 22);
+            this.MenuItem_Del.Size = new System.Drawing.Size(144, 22);
             this.MenuItem_Del.Text = "Delete";
             this.MenuItem_Del.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -1596,6 +1988,28 @@
             this.label_CVValue.Size = new System.Drawing.Size(34, 12);
             this.label_CVValue.TabIndex = 17;
             this.label_CVValue.Text = "Value";
+            // 
+            // buttonCVRead
+            // 
+            this.buttonCVRead.Location = new System.Drawing.Point(26, 128);
+            this.buttonCVRead.Name = "buttonCVRead";
+            this.buttonCVRead.Size = new System.Drawing.Size(75, 25);
+            this.buttonCVRead.TabIndex = 12;
+            this.buttonCVRead.Tag = "2";
+            this.buttonCVRead.Text = "Read";
+            this.buttonCVRead.UseVisualStyleBackColor = true;
+            this.buttonCVRead.Click += new System.EventHandler(this.buttonCVRead_Click);
+            // 
+            // buttonCVWrite
+            // 
+            this.buttonCVWrite.Location = new System.Drawing.Point(111, 128);
+            this.buttonCVWrite.Name = "buttonCVWrite";
+            this.buttonCVWrite.Size = new System.Drawing.Size(75, 25);
+            this.buttonCVWrite.TabIndex = 11;
+            this.buttonCVWrite.Tag = "1";
+            this.buttonCVWrite.Text = "Write";
+            this.buttonCVWrite.UseVisualStyleBackColor = true;
+            this.buttonCVWrite.Click += new System.EventHandler(this.buttonCVRead_Click);
             // 
             // label_CVProtcol
             // 
@@ -1731,6 +2145,17 @@
             this.label_CV_01.TabIndex = 75;
             this.label_CV_01.Text = "CV01 ";
             // 
+            // button_CVGenerate
+            // 
+            this.button_CVGenerate.Location = new System.Drawing.Point(123, 110);
+            this.button_CVGenerate.Name = "button_CVGenerate";
+            this.button_CVGenerate.Size = new System.Drawing.Size(75, 25);
+            this.button_CVGenerate.TabIndex = 79;
+            this.button_CVGenerate.Tag = "2";
+            this.button_CVGenerate.Text = "Generate";
+            this.button_CVGenerate.UseVisualStyleBackColor = true;
+            this.button_CVGenerate.Click += new System.EventHandler(this.button_CVGenerate_Click);
+            // 
             // label_CV_17
             // 
             this.label_CV_17.AutoSize = true;
@@ -1757,6 +2182,28 @@
             this.label_CV_18.Size = new System.Drawing.Size(33, 12);
             this.label_CV_18.TabIndex = 77;
             this.label_CV_18.Text = "CV18";
+            // 
+            // button_DCCCVAdrRead
+            // 
+            this.button_DCCCVAdrRead.Location = new System.Drawing.Point(291, 183);
+            this.button_DCCCVAdrRead.Name = "button_DCCCVAdrRead";
+            this.button_DCCCVAdrRead.Size = new System.Drawing.Size(75, 25);
+            this.button_DCCCVAdrRead.TabIndex = 74;
+            this.button_DCCCVAdrRead.Tag = "2";
+            this.button_DCCCVAdrRead.Text = "Read";
+            this.button_DCCCVAdrRead.UseVisualStyleBackColor = true;
+            this.button_DCCCVAdrRead.Click += new System.EventHandler(this.button_DCCCVAdrRead_Click);
+            // 
+            // button_CVDCCAdrWrite
+            // 
+            this.button_CVDCCAdrWrite.Location = new System.Drawing.Point(388, 183);
+            this.button_CVDCCAdrWrite.Name = "button_CVDCCAdrWrite";
+            this.button_CVDCCAdrWrite.Size = new System.Drawing.Size(75, 25);
+            this.button_CVDCCAdrWrite.TabIndex = 73;
+            this.button_CVDCCAdrWrite.Tag = "1";
+            this.button_CVDCCAdrWrite.Text = "Write";
+            this.button_CVDCCAdrWrite.UseVisualStyleBackColor = true;
+            this.button_CVDCCAdrWrite.Click += new System.EventHandler(this.button_DCCCVAdrRead_Click);
             // 
             // chkListBox_CV29Calc
             // 
@@ -1830,6 +2277,19 @@
             this.panel_SerialConsole.Size = new System.Drawing.Size(930, 472);
             this.panel_SerialConsole.TabIndex = 0;
             // 
+            // button_CopySerialConsole
+            // 
+            this.button_CopySerialConsole.Font = new System.Drawing.Font("Arial", 14F);
+            this.button_CopySerialConsole.Location = new System.Drawing.Point(810, 3);
+            this.button_CopySerialConsole.Name = "button_CopySerialConsole";
+            this.button_CopySerialConsole.Size = new System.Drawing.Size(106, 35);
+            this.button_CopySerialConsole.TabIndex = 4;
+            this.button_CopySerialConsole.TabStop = false;
+            this.button_CopySerialConsole.Text = "Copy";
+            this.button_CopySerialConsole.UseVisualStyleBackColor = true;
+            this.button_CopySerialConsole.TextChanged += new System.EventHandler(this.button_ConsoleLogClear_TextChanged);
+            this.button_CopySerialConsole.Click += new System.EventHandler(this.button_CopySerialConsole_Click);
+            // 
             // listBox_Serial
             // 
             this.listBox_Serial.BackColor = System.Drawing.Color.Black;
@@ -1842,6 +2302,19 @@
             this.listBox_Serial.Size = new System.Drawing.Size(899, 424);
             this.listBox_Serial.TabIndex = 0;
             this.listBox_Serial.TabStop = false;
+            // 
+            // button_ConsoleLogClear
+            // 
+            this.button_ConsoleLogClear.Font = new System.Drawing.Font("Arial", 14F);
+            this.button_ConsoleLogClear.Location = new System.Drawing.Point(17, 3);
+            this.button_ConsoleLogClear.Name = "button_ConsoleLogClear";
+            this.button_ConsoleLogClear.Size = new System.Drawing.Size(106, 35);
+            this.button_ConsoleLogClear.TabIndex = 2;
+            this.button_ConsoleLogClear.TabStop = false;
+            this.button_ConsoleLogClear.Text = "Clear log";
+            this.button_ConsoleLogClear.UseVisualStyleBackColor = true;
+            this.button_ConsoleLogClear.TextChanged += new System.EventHandler(this.button_ConsoleLogClear_TextChanged);
+            this.button_ConsoleLogClear.Click += new System.EventHandler(this.button_ConsoleLogClear_Click);
             // 
             // tabPage7
             // 
@@ -1898,7 +2371,7 @@
             // dIRECTIONToolStripMenuItem
             // 
             this.dIRECTIONToolStripMenuItem.Name = "dIRECTIONToolStripMenuItem";
-            this.dIRECTIONToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.dIRECTIONToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.dIRECTIONToolStripMenuItem.Tag = "2";
             this.dIRECTIONToolStripMenuItem.Text = "DIRECTION";
             this.dIRECTIONToolStripMenuItem.Click += new System.EventHandler(this.sPEEDToolStripMenuItem_Click);
@@ -1906,7 +2379,7 @@
             // sPEEDToolStripMenuItem
             // 
             this.sPEEDToolStripMenuItem.Name = "sPEEDToolStripMenuItem";
-            this.sPEEDToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.sPEEDToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.sPEEDToolStripMenuItem.Tag = "1";
             this.sPEEDToolStripMenuItem.Text = "SPEED";
             this.sPEEDToolStripMenuItem.Click += new System.EventHandler(this.sPEEDToolStripMenuItem_Click);
@@ -1923,7 +2396,7 @@
             this.eXITToolStripMenuItem,
             this.gOTOToolStripMenuItem});
             this.MenuItem_Add.Name = "MenuItem_Add";
-            this.MenuItem_Add.Size = new System.Drawing.Size(155, 22);
+            this.MenuItem_Add.Size = new System.Drawing.Size(144, 22);
             this.MenuItem_Add.Text = "Add";
             // 
             // tabPanels
@@ -1942,7 +2415,7 @@
             this.tabPanels.Location = new System.Drawing.Point(0, 0);
             this.tabPanels.Name = "tabPanels";
             this.tabPanels.SelectedIndex = 0;
-            this.tabPanels.Size = new System.Drawing.Size(934, 498);
+            this.tabPanels.Size = new System.Drawing.Size(934, 499);
             this.tabPanels.TabIndex = 62;
             this.tabPanels.TabStop = false;
             this.tabPanels.SelectedIndexChanged += new System.EventHandler(this.tabPanels_SelectedIndexChanged);
@@ -1953,7 +2426,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(926, 472);
+            this.tabPage1.Size = new System.Drawing.Size(926, 473);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Loc";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1997,1339 +2470,6 @@
             this.panel_Loc.Name = "panel_Loc";
             this.panel_Loc.Size = new System.Drawing.Size(926, 472);
             this.panel_Loc.TabIndex = 0;
-            // 
-            // MultiFunctionBox
-            // 
-            this.MultiFunctionBox.Location = new System.Drawing.Point(269, 412);
-            this.MultiFunctionBox.Name = "MultiFunctionBox";
-            this.MultiFunctionBox.Size = new System.Drawing.Size(336, 56);
-            this.MultiFunctionBox.TabIndex = 107;
-            this.MultiFunctionBox.TabStop = false;
-            this.MultiFunctionBox.Paint += new System.Windows.Forms.PaintEventHandler(this.MultiFunctionBox_Paint);
-            this.MultiFunctionBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MultiFunctionBox_MouseDown);
-            // 
-            // pBox_Clock
-            // 
-            this.pBox_Clock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pBox_Clock.Location = new System.Drawing.Point(789, 128);
-            this.pBox_Clock.Name = "pBox_Clock";
-            this.pBox_Clock.Size = new System.Drawing.Size(114, 150);
-            this.pBox_Clock.TabIndex = 106;
-            this.pBox_Clock.TabStop = false;
-            this.pBox_Clock.Click += new System.EventHandler(this.pBox_Clock_Click);
-            this.pBox_Clock.Paint += new System.Windows.Forms.PaintEventHandler(this.pBox_Clock_Paint);
-            // 
-            // MeterBox
-            // 
-            this.MeterBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.MeterBox.Location = new System.Drawing.Point(237, 3);
-            this.MeterBox.Name = "MeterBox";
-            this.MeterBox.Size = new System.Drawing.Size(400, 400);
-            this.MeterBox.TabIndex = 77;
-            this.MeterBox.TabStop = false;
-            this.MeterBox.Paint += new System.Windows.Forms.PaintEventHandler(this.MeterBox_Paint);
-            this.MeterBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MeterBox_MouseDown);
-            this.MeterBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MeterBox_MouseDown);
-            // 
-            // LeverBox
-            // 
-            this.LeverBox.ContextMenuStrip = this.leverMenuStrip;
-            this.LeverBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.LeverBox.Location = new System.Drawing.Point(682, 98);
-            this.LeverBox.Name = "LeverBox";
-            this.LeverBox.Size = new System.Drawing.Size(80, 310);
-            this.LeverBox.TabIndex = 85;
-            this.LeverBox.TabStop = false;
-            this.LeverBox.Paint += new System.Windows.Forms.PaintEventHandler(this.LeverBox_Paint);
-            this.LeverBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LeverBox_MouseDown);
-            this.LeverBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LeverBox_MouseDown);
-            // 
-            // leverMenuStrip
-            // 
-            this.leverMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editLeverOptionsToolStripMenuItem});
-            this.leverMenuStrip.Name = "leverMenuStrip";
-            this.leverMenuStrip.Size = new System.Drawing.Size(178, 26);
-            // 
-            // editLeverOptionsToolStripMenuItem
-            // 
-            this.editLeverOptionsToolStripMenuItem.Name = "editLeverOptionsToolStripMenuItem";
-            this.editLeverOptionsToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-            this.editLeverOptionsToolStripMenuItem.Text = "Edit lever options";
-            this.editLeverOptionsToolStripMenuItem.Click += new System.EventHandler(this.editLeverOptionsToolStripMenuItem_Click);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.panel_AccList);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(926, 472);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Acc";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // panel_AccList
-            // 
-            this.panel_AccList.Controls.Add(this.buttonEditAccOption);
-            this.panel_AccList.Controls.Add(this.AccScrollBar);
-            this.panel_AccList.Controls.Add(this.cBox_AccFilter);
-            this.panel_AccList.Controls.Add(this.pBox_AccList);
-            this.panel_AccList.Location = new System.Drawing.Point(0, 0);
-            this.panel_AccList.Name = "panel_AccList";
-            this.panel_AccList.Size = new System.Drawing.Size(926, 472);
-            this.panel_AccList.TabIndex = 0;
-            // 
-            // buttonEditAccOption
-            // 
-            this.buttonEditAccOption.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonEditAccOption.Location = new System.Drawing.Point(742, 9);
-            this.buttonEditAccOption.Name = "buttonEditAccOption";
-            this.buttonEditAccOption.Size = new System.Drawing.Size(149, 28);
-            this.buttonEditAccOption.TabIndex = 63;
-            this.buttonEditAccOption.Text = "Edit properties";
-            this.buttonEditAccOption.UseVisualStyleBackColor = true;
-            this.buttonEditAccOption.Click += new System.EventHandler(this.buttonEditAccOption_Click);
-            // 
-            // AccScrollBar
-            // 
-            this.AccScrollBar.LargeChange = 1;
-            this.AccScrollBar.Location = new System.Drawing.Point(894, 39);
-            this.AccScrollBar.Maximum = 7;
-            this.AccScrollBar.Name = "AccScrollBar";
-            this.AccScrollBar.Size = new System.Drawing.Size(24, 424);
-            this.AccScrollBar.TabIndex = 62;
-            this.AccScrollBar.ValueChanged += new System.EventHandler(this.AccScrollBar_ValueChanged);
-            // 
-            // cBox_AccFilter
-            // 
-            this.cBox_AccFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBox_AccFilter.Font = new System.Drawing.Font("Arial", 12F);
-            this.cBox_AccFilter.FormattingEnabled = true;
-            this.cBox_AccFilter.Items.AddRange(new object[] {
-            "All",
-            "Check",
-            "Checked",
-            "Only turnouts",
-            "Only signals"});
-            this.cBox_AccFilter.Location = new System.Drawing.Point(12, 9);
-            this.cBox_AccFilter.Name = "cBox_AccFilter";
-            this.cBox_AccFilter.Size = new System.Drawing.Size(179, 26);
-            this.cBox_AccFilter.TabIndex = 60;
-            this.cBox_AccFilter.TabStop = false;
-            this.cBox_AccFilter.Visible = false;
-            // 
-            // pBox_AccList
-            // 
-            this.pBox_AccList.Location = new System.Drawing.Point(12, 39);
-            this.pBox_AccList.Name = "pBox_AccList";
-            this.pBox_AccList.Size = new System.Drawing.Size(879, 424);
-            this.pBox_AccList.TabIndex = 56;
-            this.pBox_AccList.TabStop = false;
-            this.pBox_AccList.Paint += new System.Windows.Forms.PaintEventHandler(this.pBox_AccList_Paint);
-            this.pBox_AccList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pBox_AccList_MouseDown);
-            this.pBox_AccList.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pBox_AccList_MouseMove);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.panel6021);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(926, 472);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "6021";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // panel6021
-            // 
-            this.panel6021.Controls.Add(this.button_CLR);
-            this.panel6021.Controls.Add(this.cBox_6021Protcol);
-            this.panel6021.Controls.Add(this.button6021_REV);
-            this.panel6021.Controls.Add(this.button6021_FWD);
-            this.panel6021.Controls.Add(this.button6021_F4);
-            this.panel6021.Controls.Add(this.button6021_F3);
-            this.panel6021.Controls.Add(this.button6021_F2);
-            this.panel6021.Controls.Add(this.button6021_F1);
-            this.panel6021.Controls.Add(this.Dial6021Box);
-            this.panel6021.Controls.Add(this.panel2);
-            this.panel6021.Controls.Add(this.button6021_OFF);
-            this.panel6021.Controls.Add(this.button6021_0);
-            this.panel6021.Controls.Add(this.button6021_9);
-            this.panel6021.Controls.Add(this.button6021_8);
-            this.panel6021.Controls.Add(this.button6021_7);
-            this.panel6021.Controls.Add(this.button6021_6);
-            this.panel6021.Controls.Add(this.button6021_5);
-            this.panel6021.Controls.Add(this.button6021_4);
-            this.panel6021.Controls.Add(this.button6021_3);
-            this.panel6021.Controls.Add(this.button6021_2);
-            this.panel6021.Controls.Add(this.button6021_1);
-            this.panel6021.Location = new System.Drawing.Point(0, 0);
-            this.panel6021.Margin = new System.Windows.Forms.Padding(0);
-            this.panel6021.Name = "panel6021";
-            this.panel6021.Size = new System.Drawing.Size(926, 472);
-            this.panel6021.TabIndex = 59;
-            // 
-            // cBox_6021Protcol
-            // 
-            this.cBox_6021Protcol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBox_6021Protcol.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.cBox_6021Protcol.FormattingEnabled = true;
-            this.cBox_6021Protcol.Items.AddRange(new object[] {
-            "MM2",
-            "mfx",
-            "DCC"});
-            this.cBox_6021Protcol.Location = new System.Drawing.Point(209, 337);
-            this.cBox_6021Protcol.Name = "cBox_6021Protcol";
-            this.cBox_6021Protcol.Size = new System.Drawing.Size(68, 28);
-            this.cBox_6021Protcol.TabIndex = 0;
-            this.cBox_6021Protcol.TabStop = false;
-            this.cBox_6021Protcol.SelectedIndexChanged += new System.EventHandler(this.cBox_6021Protcol_SelectedIndexChanged);
-            // 
-            // Dial6021Box
-            // 
-            this.Dial6021Box.Location = new System.Drawing.Point(465, 247);
-            this.Dial6021Box.Name = "Dial6021Box";
-            this.Dial6021Box.Size = new System.Drawing.Size(300, 225);
-            this.Dial6021Box.TabIndex = 53;
-            this.Dial6021Box.TabStop = false;
-            this.Dial6021Box.Paint += new System.Windows.Forms.PaintEventHandler(this.Dial6021Box_Paint);
-            this.Dial6021Box.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dial6021Box_MouseDown);
-            this.Dial6021Box.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Dial6021Box_MouseDown);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.label_6021Direct);
-            this.panel2.Controls.Add(this.label_6021Protcol);
-            this.panel2.Controls.Add(this.label_Addr);
-            this.panel2.Location = new System.Drawing.Point(209, 15);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(261, 73);
-            this.panel2.TabIndex = 52;
-            // 
-            // label_6021Direct
-            // 
-            this.label_6021Direct.AutoSize = true;
-            this.label_6021Direct.Font = new System.Drawing.Font("Arial Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.label_6021Direct.ForeColor = System.Drawing.Color.Red;
-            this.label_6021Direct.Location = new System.Drawing.Point(3, 32);
-            this.label_6021Direct.Name = "label_6021Direct";
-            this.label_6021Direct.Size = new System.Drawing.Size(49, 23);
-            this.label_6021Direct.TabIndex = 44;
-            this.label_6021Direct.Text = "FWD";
-            // 
-            // label_6021Protcol
-            // 
-            this.label_6021Protcol.AutoSize = true;
-            this.label_6021Protcol.Font = new System.Drawing.Font("Arial Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.label_6021Protcol.ForeColor = System.Drawing.Color.Red;
-            this.label_6021Protcol.Location = new System.Drawing.Point(3, 9);
-            this.label_6021Protcol.Name = "label_6021Protcol";
-            this.label_6021Protcol.Size = new System.Drawing.Size(51, 23);
-            this.label_6021Protcol.TabIndex = 43;
-            this.label_6021Protcol.Text = "MM2";
-            // 
-            // label_Addr
-            // 
-            this.label_Addr.BackColor = System.Drawing.Color.Black;
-            this.label_Addr.Font = new System.Drawing.Font("Arial", 50F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.label_Addr.ForeColor = System.Drawing.Color.Red;
-            this.label_Addr.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label_Addr.Location = new System.Drawing.Point(58, 0);
-            this.label_Addr.Name = "label_Addr";
-            this.label_Addr.Size = new System.Drawing.Size(193, 73);
-            this.label_Addr.TabIndex = 42;
-            this.label_Addr.Text = "0000";
-            this.label_Addr.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.panel_Layout);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(926, 472);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Layout";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // panel_Layout
-            // 
-            this.panel_Layout.Controls.Add(this.button_LayoutCfg);
-            this.panel_Layout.Controls.Add(this.panelLayout);
-            this.panel_Layout.Controls.Add(this.button_LayoutSave);
-            this.panel_Layout.Controls.Add(this.button_LayoutLoad);
-            this.panel_Layout.Controls.Add(this.button_LayoutNew);
-            this.panel_Layout.Controls.Add(this.panelLayoutTool);
-            this.panel_Layout.Location = new System.Drawing.Point(0, 0);
-            this.panel_Layout.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_Layout.Name = "panel_Layout";
-            this.panel_Layout.Size = new System.Drawing.Size(926, 472);
-            this.panel_Layout.TabIndex = 0;
-            // 
-            // panelLayout
-            // 
-            this.panelLayout.AutoScroll = true;
-            this.panelLayout.Controls.Add(this.LayoutBox);
-            this.panelLayout.Location = new System.Drawing.Point(96, 3);
-            this.panelLayout.Name = "panelLayout";
-            this.panelLayout.Size = new System.Drawing.Size(827, 466);
-            this.panelLayout.TabIndex = 10;
-            // 
-            // LayoutBox
-            // 
-            this.LayoutBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.LayoutBox.Location = new System.Drawing.Point(3, 3);
-            this.LayoutBox.Name = "LayoutBox";
-            this.LayoutBox.Size = new System.Drawing.Size(823, 437);
-            this.LayoutBox.TabIndex = 1;
-            this.LayoutBox.TabStop = false;
-            this.LayoutBox.Paint += new System.Windows.Forms.PaintEventHandler(this.LayoutBox_Paint);
-            this.LayoutBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LayoutBox_MouseDoubleClick);
-            this.LayoutBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LayoutBox_MouseDown);
-            this.LayoutBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LayoutBox_MouseMove);
-            // 
-            // panelLayoutTool
-            // 
-            this.panelLayoutTool.AutoScroll = true;
-            this.panelLayoutTool.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelLayoutTool.Controls.Add(this.TileBox);
-            this.panelLayoutTool.Location = new System.Drawing.Point(5, 3);
-            this.panelLayoutTool.Name = "panelLayoutTool";
-            this.panelLayoutTool.Size = new System.Drawing.Size(88, 332);
-            this.panelLayoutTool.TabIndex = 6;
-            // 
-            // TileBox
-            // 
-            this.TileBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.TileBox.Location = new System.Drawing.Point(2, 3);
-            this.TileBox.Name = "TileBox";
-            this.TileBox.Size = new System.Drawing.Size(64, 448);
-            this.TileBox.TabIndex = 1;
-            this.TileBox.TabStop = false;
-            this.TileBox.Paint += new System.Windows.Forms.PaintEventHandler(this.TileBox_Paint);
-            this.TileBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TileBox_MouseDown);
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.panel_Sequence);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(926, 472);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Sequence";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // panel_Sequence
-            // 
-            this.panel_Sequence.Controls.Add(this.button_SeqScriptDown);
-            this.panel_Sequence.Controls.Add(this.button_SeqScriptUp);
-            this.panel_Sequence.Controls.Add(this.buttonScriptSave);
-            this.panel_Sequence.Controls.Add(this.buttonScriptLoad);
-            this.panel_Sequence.Controls.Add(this.listScript);
-            this.panel_Sequence.Controls.Add(this.buttonScriptRun);
-            this.panel_Sequence.Controls.Add(this.buttonScriptTeach);
-            this.panel_Sequence.Location = new System.Drawing.Point(0, 0);
-            this.panel_Sequence.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_Sequence.Name = "panel_Sequence";
-            this.panel_Sequence.Size = new System.Drawing.Size(930, 472);
-            this.panel_Sequence.TabIndex = 0;
-            // 
-            // listScript
-            // 
-            this.listScript.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6});
-            this.listScript.ContextMenuStrip = this.contextMenuScript;
-            this.listScript.Font = new System.Drawing.Font("Arial", 9F);
-            this.listScript.FullRowSelect = true;
-            this.listScript.GridLines = true;
-            this.listScript.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listScript.HideSelection = false;
-            this.listScript.Location = new System.Drawing.Point(17, 39);
-            this.listScript.Name = "listScript";
-            this.listScript.Size = new System.Drawing.Size(804, 422);
-            this.listScript.TabIndex = 3;
-            this.listScript.TabStop = false;
-            this.listScript.UseCompatibleStateImageBehavior = false;
-            this.listScript.View = System.Windows.Forms.View.Details;
-            this.listScript.DoubleClick += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Line";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Command";
-            this.columnHeader3.Width = 100;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Param1";
-            this.columnHeader4.Width = 100;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Param2";
-            this.columnHeader5.Width = 100;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Param3";
-            this.columnHeader6.Width = 100;
-            // 
-            // contextMenuScript
-            // 
-            this.contextMenuScript.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuItem_Add,
-            this.MenuItem_Edit,
-            this.toolStripMenuItem15,
-            this.MenuItem_Copy,
-            this.MenuItem_Paste,
-            this.MenuItem_Del});
-            this.contextMenuScript.Name = "contextMenuScript";
-            this.contextMenuScript.Size = new System.Drawing.Size(156, 120);
-            // 
-            // toolStripMenuItem15
-            // 
-            this.toolStripMenuItem15.Name = "toolStripMenuItem15";
-            this.toolStripMenuItem15.Size = new System.Drawing.Size(152, 6);
-            // 
-            // MenuItem_Copy
-            // 
-            this.MenuItem_Copy.Name = "MenuItem_Copy";
-            this.MenuItem_Copy.ShortcutKeyDisplayString = "Ctrl+C";
-            this.MenuItem_Copy.Size = new System.Drawing.Size(155, 22);
-            this.MenuItem_Copy.Tag = "1";
-            this.MenuItem_Copy.Text = "Copy";
-            this.MenuItem_Copy.Click += new System.EventHandler(this.toolStripMenuItem12_Click);
-            // 
-            // MenuItem_Paste
-            // 
-            this.MenuItem_Paste.Name = "MenuItem_Paste";
-            this.MenuItem_Paste.ShortcutKeyDisplayString = "Ctrl+V";
-            this.MenuItem_Paste.Size = new System.Drawing.Size(155, 22);
-            this.MenuItem_Paste.Tag = "2";
-            this.MenuItem_Paste.Text = "Paste";
-            this.MenuItem_Paste.Click += new System.EventHandler(this.toolStripMenuItem12_Click);
-            // 
-            // tabPage9
-            // 
-            this.tabPage9.Controls.Add(this.panel_S88);
-            this.tabPage9.Location = new System.Drawing.Point(4, 22);
-            this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(926, 472);
-            this.tabPage9.TabIndex = 8;
-            this.tabPage9.Text = "Events";
-            this.tabPage9.UseVisualStyleBackColor = true;
-            // 
-            // panel_S88
-            // 
-            this.panel_S88.Controls.Add(this.buttonEventInProcess);
-            this.panel_S88.Controls.Add(this.button_S88EventsExport);
-            this.panel_S88.Controls.Add(this.button_S88EventsImport);
-            this.panel_S88.Controls.Add(this.tabS88Events);
-            this.panel_S88.Controls.Add(this.lBox_S88Events);
-            this.panel_S88.Location = new System.Drawing.Point(0, 0);
-            this.panel_S88.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_S88.Name = "panel_S88";
-            this.panel_S88.Size = new System.Drawing.Size(926, 472);
-            this.panel_S88.TabIndex = 0;
-            // 
-            // buttonEventInProcess
-            // 
-            this.buttonEventInProcess.Location = new System.Drawing.Point(11, 6);
-            this.buttonEventInProcess.Name = "buttonEventInProcess";
-            this.buttonEventInProcess.Size = new System.Drawing.Size(155, 31);
-            this.buttonEventInProcess.TabIndex = 6;
-            this.buttonEventInProcess.Text = "in process";
-            this.buttonEventInProcess.UseVisualStyleBackColor = true;
-            this.buttonEventInProcess.Click += new System.EventHandler(this.buttonEventInProcess_Click);
-            // 
-            // tabS88Events
-            // 
-            this.tabS88Events.Controls.Add(this.tabS88_EventEdit);
-            this.tabS88Events.Controls.Add(this.tabS88_Sensor);
-            this.tabS88Events.Controls.Add(this.tabS88_ScriptInfo);
-            this.tabS88Events.Location = new System.Drawing.Point(183, 6);
-            this.tabS88Events.Name = "tabS88Events";
-            this.tabS88Events.SelectedIndex = 0;
-            this.tabS88Events.Size = new System.Drawing.Size(745, 453);
-            this.tabS88Events.TabIndex = 3;
-            this.tabS88Events.SelectedIndexChanged += new System.EventHandler(this.tabS88Events_SelectedIndexChanged);
-            // 
-            // tabS88_EventEdit
-            // 
-            this.tabS88_EventEdit.Controls.Add(this.cBox_SlotChangeEV);
-            this.tabS88_EventEdit.Controls.Add(this.cBox_LocChangeEV);
-            this.tabS88_EventEdit.Controls.Add(this.button_TriggerProperty);
-            this.tabS88_EventEdit.Controls.Add(this.label_S88TriggerData);
-            this.tabS88_EventEdit.Controls.Add(this.label_S88TriggerCondition);
-            this.tabS88_EventEdit.Controls.Add(this.label_S88StartTrigger);
-            this.tabS88_EventEdit.Controls.Add(this.cBox_S88StartTrigger);
-            this.tabS88_EventEdit.Controls.Add(this.button_S88EventClear);
-            this.tabS88_EventEdit.Controls.Add(this.cBox_S88EventAvailable);
-            this.tabS88_EventEdit.Controls.Add(this.tBox_S88EventName);
-            this.tabS88_EventEdit.Controls.Add(this.label_S88EventName);
-            this.tabS88_EventEdit.Controls.Add(this.button_S88ScriptDown);
-            this.tabS88_EventEdit.Controls.Add(this.button_S88ScriptUp);
-            this.tabS88_EventEdit.Controls.Add(this.label_S88LocAddr);
-            this.tabS88_EventEdit.Controls.Add(this.label_S88EventScript);
-            this.tabS88_EventEdit.Controls.Add(this.lView_S88Script);
-            this.tabS88_EventEdit.Location = new System.Drawing.Point(4, 22);
-            this.tabS88_EventEdit.Name = "tabS88_EventEdit";
-            this.tabS88_EventEdit.Padding = new System.Windows.Forms.Padding(3);
-            this.tabS88_EventEdit.Size = new System.Drawing.Size(737, 427);
-            this.tabS88_EventEdit.TabIndex = 0;
-            this.tabS88_EventEdit.Text = "Event Editor";
-            this.tabS88_EventEdit.UseVisualStyleBackColor = true;
-            // 
-            // label_S88TriggerData
-            // 
-            this.label_S88TriggerData.AutoSize = true;
-            this.label_S88TriggerData.Location = new System.Drawing.Point(558, 71);
-            this.label_S88TriggerData.Name = "label_S88TriggerData";
-            this.label_S88TriggerData.Size = new System.Drawing.Size(11, 12);
-            this.label_S88TriggerData.TabIndex = 76;
-            this.label_S88TriggerData.Text = "-";
-            // 
-            // label_S88TriggerCondition
-            // 
-            this.label_S88TriggerCondition.AutoSize = true;
-            this.label_S88TriggerCondition.Location = new System.Drawing.Point(461, 71);
-            this.label_S88TriggerCondition.Name = "label_S88TriggerCondition";
-            this.label_S88TriggerCondition.Size = new System.Drawing.Size(91, 12);
-            this.label_S88TriggerCondition.TabIndex = 75;
-            this.label_S88TriggerCondition.Text = "Trigger condition";
-            // 
-            // label_S88StartTrigger
-            // 
-            this.label_S88StartTrigger.AutoSize = true;
-            this.label_S88StartTrigger.Location = new System.Drawing.Point(415, 37);
-            this.label_S88StartTrigger.Name = "label_S88StartTrigger";
-            this.label_S88StartTrigger.Size = new System.Drawing.Size(67, 12);
-            this.label_S88StartTrigger.TabIndex = 74;
-            this.label_S88StartTrigger.Text = "Start trigger";
-            this.label_S88StartTrigger.TextChanged += new System.EventHandler(this.label_S88EventName_TextChanged);
-            // 
-            // cBox_S88StartTrigger
-            // 
-            this.cBox_S88StartTrigger.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBox_S88StartTrigger.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.cBox_S88StartTrigger.FormattingEnabled = true;
-            this.cBox_S88StartTrigger.Items.AddRange(new object[] {
-            "Entering",
-            "Leaving",
-            "Existing",
-            "Not existing",
-            "Interval",
-            "Clock",
-            "Random",
-            "Running",
-            "Stopping",
-            "Flag",
-            "Route",
-            "Startup"});
-            this.cBox_S88StartTrigger.Location = new System.Drawing.Point(515, 31);
-            this.cBox_S88StartTrigger.Name = "cBox_S88StartTrigger";
-            this.cBox_S88StartTrigger.Size = new System.Drawing.Size(120, 23);
-            this.cBox_S88StartTrigger.TabIndex = 73;
-            this.cBox_S88StartTrigger.SelectedIndexChanged += new System.EventHandler(this.cBox_S88StartTrigger_SelectedIndexChanged);
-            // 
-            // tBox_S88EventName
-            // 
-            this.tBox_S88EventName.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tBox_S88EventName.Location = new System.Drawing.Point(142, 31);
-            this.tBox_S88EventName.Name = "tBox_S88EventName";
-            this.tBox_S88EventName.Size = new System.Drawing.Size(164, 24);
-            this.tBox_S88EventName.TabIndex = 69;
-            this.tBox_S88EventName.TextChanged += new System.EventHandler(this.tBox_S88EventName_TextChanged);
-            // 
-            // label_S88EventName
-            // 
-            this.label_S88EventName.AutoSize = true;
-            this.label_S88EventName.Location = new System.Drawing.Point(24, 37);
-            this.label_S88EventName.Name = "label_S88EventName";
-            this.label_S88EventName.Size = new System.Drawing.Size(65, 12);
-            this.label_S88EventName.TabIndex = 68;
-            this.label_S88EventName.Text = "Event name";
-            this.label_S88EventName.TextChanged += new System.EventHandler(this.label_S88EventName_TextChanged);
-            // 
-            // label_S88LocAddr
-            // 
-            this.label_S88LocAddr.AutoSize = true;
-            this.label_S88LocAddr.Location = new System.Drawing.Point(24, 71);
-            this.label_S88LocAddr.Name = "label_S88LocAddr";
-            this.label_S88LocAddr.Size = new System.Drawing.Size(107, 12);
-            this.label_S88LocAddr.TabIndex = 61;
-            this.label_S88LocAddr.Text = "Locomotive address";
-            this.label_S88LocAddr.TextChanged += new System.EventHandler(this.label_S88EventName_TextChanged);
-            // 
-            // label_S88EventScript
-            // 
-            this.label_S88EventScript.AutoSize = true;
-            this.label_S88EventScript.Location = new System.Drawing.Point(26, 108);
-            this.label_S88EventScript.Name = "label_S88EventScript";
-            this.label_S88EventScript.Size = new System.Drawing.Size(67, 12);
-            this.label_S88EventScript.TabIndex = 58;
-            this.label_S88EventScript.Text = "Event script";
-            this.label_S88EventScript.TextChanged += new System.EventHandler(this.label_S88EventName_TextChanged);
-            // 
-            // lView_S88Script
-            // 
-            this.lView_S88Script.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.cS88Header1,
-            this.cS88Header2,
-            this.cS88Header3,
-            this.cS88Header4,
-            this.cS88Header5});
-            this.lView_S88Script.ContextMenuStrip = this.contextMenu_S88Event;
-            this.lView_S88Script.Font = new System.Drawing.Font("Arial", 9F);
-            this.lView_S88Script.FullRowSelect = true;
-            this.lView_S88Script.GridLines = true;
-            this.lView_S88Script.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lView_S88Script.HideSelection = false;
-            this.lView_S88Script.Location = new System.Drawing.Point(142, 108);
-            this.lView_S88Script.Name = "lView_S88Script";
-            this.lView_S88Script.Size = new System.Drawing.Size(493, 305);
-            this.lView_S88Script.TabIndex = 57;
-            this.lView_S88Script.UseCompatibleStateImageBehavior = false;
-            this.lView_S88Script.View = System.Windows.Forms.View.Details;
-            this.lView_S88Script.DoubleClick += new System.EventHandler(this.toolStripMenuItem_EditS88Event_Click);
-            this.lView_S88Script.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
-            // 
-            // cS88Header1
-            // 
-            this.cS88Header1.Text = "Line";
-            this.cS88Header1.Width = 40;
-            // 
-            // cS88Header2
-            // 
-            this.cS88Header2.Text = "Command";
-            this.cS88Header2.Width = 149;
-            // 
-            // cS88Header3
-            // 
-            this.cS88Header3.Text = "Param1";
-            this.cS88Header3.Width = 88;
-            // 
-            // cS88Header4
-            // 
-            this.cS88Header4.Text = "Param2";
-            this.cS88Header4.Width = 82;
-            // 
-            // cS88Header5
-            // 
-            this.cS88Header5.Text = "Param3";
-            this.cS88Header5.Width = 96;
-            // 
-            // contextMenu_S88Event
-            // 
-            this.contextMenu_S88Event.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuItemS88_Add,
-            this.MenuItemS88_Edit,
-            this.toolStripMenuItem11,
-            this.MenuItemS88_Copy,
-            this.MenuItemS88_Paste,
-            this.MenuItemS88_Del});
-            this.contextMenu_S88Event.Name = "contextMenuScript";
-            this.contextMenu_S88Event.Size = new System.Drawing.Size(162, 120);
-            this.contextMenu_S88Event.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenu_S88Event_Opening);
-            // 
-            // MenuItemS88_Add
-            // 
-            this.MenuItemS88_Add.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5,
-            this.eNDIFToolStripMenuItem,
-            this.toolStripMenuItem6,
-            this.toolStripMenuItem1,
-            this.wAITRNDToolStripMenuItem,
-            this.toolStripMenuItem10,
-            this.toolStripMenuItem7,
-            this.toolStripMenuItem8,
-            this.lABELToolStripMenuItem,
-            this.toolStripMenuItem9,
-            this.jUMPIFToolStripMenuItem,
-            this.sETFLAGToolStripMenuItem,
-            this.iNCFLAGToolStripMenuItem,
-            this.rUNFILEToolStripMenuItem,
-            this.jUMPToolStripMenuItem,
-            this.jUMPS88ToolStripMenuItem,
-            this.dOToolStripMenuItem,
-            this.iFToolStripMenuItem,
-            this.eLSEIFToolStripMenuItem});
-            this.MenuItemS88_Add.Name = "MenuItemS88_Add";
-            this.MenuItemS88_Add.Size = new System.Drawing.Size(161, 22);
-            this.MenuItemS88_Add.Text = "Add";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(148, 22);
-            this.toolStripMenuItem2.Tag = "1";
-            this.toolStripMenuItem2.Text = "SPEED";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(148, 22);
-            this.toolStripMenuItem3.Tag = "2";
-            this.toolStripMenuItem3.Text = "DIRECTION";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(148, 22);
-            this.toolStripMenuItem4.Tag = "3";
-            this.toolStripMenuItem4.Text = "FUNCTION";
-            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(148, 22);
-            this.toolStripMenuItem5.Tag = "4";
-            this.toolStripMenuItem5.Text = "ACCESSORY";
-            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // eNDIFToolStripMenuItem
-            // 
-            this.eNDIFToolStripMenuItem.Name = "eNDIFToolStripMenuItem";
-            this.eNDIFToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.eNDIFToolStripMenuItem.Tag = "17";
-            this.eNDIFToolStripMenuItem.Text = "SETROUTE";
-            this.eNDIFToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(148, 22);
-            this.toolStripMenuItem6.Tag = "5";
-            this.toolStripMenuItem6.Text = "WAIT";
-            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
-            this.toolStripMenuItem1.Tag = "19";
-            this.toolStripMenuItem1.Text = "WAITRND";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // wAITRNDToolStripMenuItem
-            // 
-            this.wAITRNDToolStripMenuItem.Name = "wAITRNDToolStripMenuItem";
-            this.wAITRNDToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.wAITRNDToolStripMenuItem.Tag = "20";
-            this.wAITRNDToolStripMenuItem.Text = "WAITIF";
-            this.wAITRNDToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // toolStripMenuItem10
-            // 
-            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(145, 6);
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(148, 22);
-            this.toolStripMenuItem7.Tag = "6";
-            this.toolStripMenuItem7.Text = "POWER";
-            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // toolStripMenuItem8
-            // 
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(148, 22);
-            this.toolStripMenuItem8.Tag = "7";
-            this.toolStripMenuItem8.Text = "EXIT";
-            this.toolStripMenuItem8.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // lABELToolStripMenuItem
-            // 
-            this.lABELToolStripMenuItem.Name = "lABELToolStripMenuItem";
-            this.lABELToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.lABELToolStripMenuItem.Tag = "11";
-            this.lABELToolStripMenuItem.Text = "LABEL";
-            this.lABELToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // toolStripMenuItem9
-            // 
-            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(148, 22);
-            this.toolStripMenuItem9.Tag = "8";
-            this.toolStripMenuItem9.Text = "GOTO";
-            this.toolStripMenuItem9.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // jUMPIFToolStripMenuItem
-            // 
-            this.jUMPIFToolStripMenuItem.Name = "jUMPIFToolStripMenuItem";
-            this.jUMPIFToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.jUMPIFToolStripMenuItem.Tag = "21";
-            this.jUMPIFToolStripMenuItem.Text = "GOTOIF";
-            this.jUMPIFToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // sETFLAGToolStripMenuItem
-            // 
-            this.sETFLAGToolStripMenuItem.Name = "sETFLAGToolStripMenuItem";
-            this.sETFLAGToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.sETFLAGToolStripMenuItem.Tag = "10";
-            this.sETFLAGToolStripMenuItem.Text = "SETFLAG";
-            this.sETFLAGToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // iNCFLAGToolStripMenuItem
-            // 
-            this.iNCFLAGToolStripMenuItem.Name = "iNCFLAGToolStripMenuItem";
-            this.iNCFLAGToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.iNCFLAGToolStripMenuItem.Tag = "12";
-            this.iNCFLAGToolStripMenuItem.Text = "INCFLAG";
-            this.iNCFLAGToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // rUNFILEToolStripMenuItem
-            // 
-            this.rUNFILEToolStripMenuItem.Name = "rUNFILEToolStripMenuItem";
-            this.rUNFILEToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.rUNFILEToolStripMenuItem.Tag = "13";
-            this.rUNFILEToolStripMenuItem.Text = "RUNFILE";
-            this.rUNFILEToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // jUMPToolStripMenuItem
-            // 
-            this.jUMPToolStripMenuItem.Name = "jUMPToolStripMenuItem";
-            this.jUMPToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.jUMPToolStripMenuItem.Tag = "9";
-            this.jUMPToolStripMenuItem.Text = "JUMP";
-            this.jUMPToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // jUMPS88ToolStripMenuItem
-            // 
-            this.jUMPS88ToolStripMenuItem.Name = "jUMPS88ToolStripMenuItem";
-            this.jUMPS88ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.jUMPS88ToolStripMenuItem.Tag = "18";
-            this.jUMPS88ToolStripMenuItem.Text = "JUMPS88";
-            this.jUMPS88ToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // dOToolStripMenuItem
-            // 
-            this.dOToolStripMenuItem.Name = "dOToolStripMenuItem";
-            this.dOToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.dOToolStripMenuItem.Tag = "14";
-            this.dOToolStripMenuItem.Text = "JUMPRUN";
-            this.dOToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // iFToolStripMenuItem
-            // 
-            this.iFToolStripMenuItem.Name = "iFToolStripMenuItem";
-            this.iFToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.iFToolStripMenuItem.Tag = "15";
-            this.iFToolStripMenuItem.Text = "JUMPSTOP";
-            this.iFToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // eLSEIFToolStripMenuItem
-            // 
-            this.eLSEIFToolStripMenuItem.Name = "eLSEIFToolStripMenuItem";
-            this.eLSEIFToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.eLSEIFToolStripMenuItem.Tag = "16";
-            this.eLSEIFToolStripMenuItem.Text = "JUMPROUTE";
-            this.eLSEIFToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // MenuItemS88_Edit
-            // 
-            this.MenuItemS88_Edit.Name = "MenuItemS88_Edit";
-            this.MenuItemS88_Edit.Size = new System.Drawing.Size(161, 22);
-            this.MenuItemS88_Edit.Text = "Edit";
-            this.MenuItemS88_Edit.Click += new System.EventHandler(this.toolStripMenuItem_EditS88Event_Click);
-            // 
-            // toolStripMenuItem11
-            // 
-            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new System.Drawing.Size(158, 6);
-            // 
-            // MenuItemS88_Copy
-            // 
-            this.MenuItemS88_Copy.Name = "MenuItemS88_Copy";
-            this.MenuItemS88_Copy.ShortcutKeyDisplayString = "Ctrl+C";
-            this.MenuItemS88_Copy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.MenuItemS88_Copy.Size = new System.Drawing.Size(161, 22);
-            this.MenuItemS88_Copy.Tag = "1";
-            this.MenuItemS88_Copy.Text = "Copy";
-            this.MenuItemS88_Copy.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
-            // 
-            // MenuItemS88_Paste
-            // 
-            this.MenuItemS88_Paste.Name = "MenuItemS88_Paste";
-            this.MenuItemS88_Paste.ShortcutKeyDisplayString = "Ctrl+V";
-            this.MenuItemS88_Paste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.MenuItemS88_Paste.Size = new System.Drawing.Size(161, 22);
-            this.MenuItemS88_Paste.Tag = "2";
-            this.MenuItemS88_Paste.Text = "Paste";
-            this.MenuItemS88_Paste.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
-            // 
-            // MenuItemS88_Del
-            // 
-            this.MenuItemS88_Del.Name = "MenuItemS88_Del";
-            this.MenuItemS88_Del.ShortcutKeyDisplayString = "";
-            this.MenuItemS88_Del.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.MenuItemS88_Del.Size = new System.Drawing.Size(161, 22);
-            this.MenuItemS88_Del.Text = "Delete";
-            this.MenuItemS88_Del.Click += new System.EventHandler(this.toolStripMenuItem_S88EventDel_Click);
-            // 
-            // tabS88_Sensor
-            // 
-            this.tabS88_Sensor.Controls.Add(this.pBox_S88SensorDisplay);
-            this.tabS88_Sensor.Location = new System.Drawing.Point(4, 22);
-            this.tabS88_Sensor.Name = "tabS88_Sensor";
-            this.tabS88_Sensor.Padding = new System.Windows.Forms.Padding(3);
-            this.tabS88_Sensor.Size = new System.Drawing.Size(737, 427);
-            this.tabS88_Sensor.TabIndex = 1;
-            this.tabS88_Sensor.Text = "Sensors Info";
-            this.tabS88_Sensor.UseVisualStyleBackColor = true;
-            // 
-            // pBox_S88SensorDisplay
-            // 
-            this.pBox_S88SensorDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pBox_S88SensorDisplay.Location = new System.Drawing.Point(3, 3);
-            this.pBox_S88SensorDisplay.Name = "pBox_S88SensorDisplay";
-            this.pBox_S88SensorDisplay.Size = new System.Drawing.Size(731, 421);
-            this.pBox_S88SensorDisplay.TabIndex = 0;
-            this.pBox_S88SensorDisplay.TabStop = false;
-            this.pBox_S88SensorDisplay.Paint += new System.Windows.Forms.PaintEventHandler(this.pBox_S88SensorDisplay_Paint);
-            // 
-            // tabS88_ScriptInfo
-            // 
-            this.tabS88_ScriptInfo.Controls.Add(this.button_S88ScriptReset);
-            this.tabS88_ScriptInfo.Controls.Add(this.gBox_EventClock);
-            this.tabS88_ScriptInfo.Controls.Add(this.gBox_S88Log);
-            this.tabS88_ScriptInfo.Controls.Add(this.gBox_S88RunChk);
-            this.tabS88_ScriptInfo.Controls.Add(this.gBox_S88Flag);
-            this.tabS88_ScriptInfo.Controls.Add(this.button_S88ScriptViewUpdate);
-            this.tabS88_ScriptInfo.Location = new System.Drawing.Point(4, 22);
-            this.tabS88_ScriptInfo.Name = "tabS88_ScriptInfo";
-            this.tabS88_ScriptInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabS88_ScriptInfo.Size = new System.Drawing.Size(737, 427);
-            this.tabS88_ScriptInfo.TabIndex = 2;
-            this.tabS88_ScriptInfo.Text = "Script Info";
-            this.tabS88_ScriptInfo.UseVisualStyleBackColor = true;
-            this.tabS88_ScriptInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPage10_Paint);
-            // 
-            // gBox_EventClock
-            // 
-            this.gBox_EventClock.Controls.Add(this.pBox_EventClock);
-            this.gBox_EventClock.Location = new System.Drawing.Point(17, 241);
-            this.gBox_EventClock.Name = "gBox_EventClock";
-            this.gBox_EventClock.Size = new System.Drawing.Size(152, 180);
-            this.gBox_EventClock.TabIndex = 108;
-            this.gBox_EventClock.TabStop = false;
-            this.gBox_EventClock.Text = "Clock";
-            // 
-            // pBox_EventClock
-            // 
-            this.pBox_EventClock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pBox_EventClock.Location = new System.Drawing.Point(18, 20);
-            this.pBox_EventClock.Name = "pBox_EventClock";
-            this.pBox_EventClock.Size = new System.Drawing.Size(114, 150);
-            this.pBox_EventClock.TabIndex = 107;
-            this.pBox_EventClock.TabStop = false;
-            this.pBox_EventClock.Click += new System.EventHandler(this.pBox_EventClock_Click);
-            this.pBox_EventClock.Paint += new System.Windows.Forms.PaintEventHandler(this.pBox_EventClock_Paint);
-            // 
-            // gBox_S88Log
-            // 
-            this.gBox_S88Log.Controls.Add(this.button_S88ConsoleClear);
-            this.gBox_S88Log.Controls.Add(this.listBox_S88Console);
-            this.gBox_S88Log.Location = new System.Drawing.Point(384, 51);
-            this.gBox_S88Log.Name = "gBox_S88Log";
-            this.gBox_S88Log.Size = new System.Drawing.Size(349, 370);
-            this.gBox_S88Log.TabIndex = 3;
-            this.gBox_S88Log.TabStop = false;
-            this.gBox_S88Log.Text = "S88 process log";
-            // 
-            // listBox_S88Console
-            // 
-            this.listBox_S88Console.BackColor = System.Drawing.Color.Black;
-            this.listBox_S88Console.Font = new System.Drawing.Font("Arial", 9F);
-            this.listBox_S88Console.ForeColor = System.Drawing.Color.White;
-            this.listBox_S88Console.FormattingEnabled = true;
-            this.listBox_S88Console.HorizontalScrollbar = true;
-            this.listBox_S88Console.ItemHeight = 15;
-            this.listBox_S88Console.Location = new System.Drawing.Point(6, 49);
-            this.listBox_S88Console.Name = "listBox_S88Console";
-            this.listBox_S88Console.Size = new System.Drawing.Size(335, 304);
-            this.listBox_S88Console.TabIndex = 4;
-            // 
-            // gBox_S88RunChk
-            // 
-            this.gBox_S88RunChk.Controls.Add(this.panel_EVRunStatus);
-            this.gBox_S88RunChk.Location = new System.Drawing.Point(175, 51);
-            this.gBox_S88RunChk.Name = "gBox_S88RunChk";
-            this.gBox_S88RunChk.Size = new System.Drawing.Size(203, 370);
-            this.gBox_S88RunChk.TabIndex = 2;
-            this.gBox_S88RunChk.TabStop = false;
-            this.gBox_S88RunChk.Text = "Run check";
-            // 
-            // panel_EVRunStatus
-            // 
-            this.panel_EVRunStatus.AutoScroll = true;
-            this.panel_EVRunStatus.Controls.Add(this.label_S88ScrInfoRunChk);
-            this.panel_EVRunStatus.Location = new System.Drawing.Point(6, 20);
-            this.panel_EVRunStatus.Name = "panel_EVRunStatus";
-            this.panel_EVRunStatus.Size = new System.Drawing.Size(191, 340);
-            this.panel_EVRunStatus.TabIndex = 1;
-            // 
-            // label_S88ScrInfoRunChk
-            // 
-            this.label_S88ScrInfoRunChk.AutoSize = true;
-            this.label_S88ScrInfoRunChk.Location = new System.Drawing.Point(3, 5);
-            this.label_S88ScrInfoRunChk.Name = "label_S88ScrInfoRunChk";
-            this.label_S88ScrInfoRunChk.Size = new System.Drawing.Size(49, 12);
-            this.label_S88ScrInfoRunChk.TabIndex = 0;
-            this.label_S88ScrInfoRunChk.Text = "Flag 0: 0";
-            // 
-            // gBox_S88Flag
-            // 
-            this.gBox_S88Flag.Controls.Add(this.panel_EVFlagStatus);
-            this.gBox_S88Flag.Location = new System.Drawing.Point(17, 51);
-            this.gBox_S88Flag.Name = "gBox_S88Flag";
-            this.gBox_S88Flag.Size = new System.Drawing.Size(152, 180);
-            this.gBox_S88Flag.TabIndex = 0;
-            this.gBox_S88Flag.TabStop = false;
-            this.gBox_S88Flag.Text = "Flag view";
-            // 
-            // panel_EVFlagStatus
-            // 
-            this.panel_EVFlagStatus.AutoScroll = true;
-            this.panel_EVFlagStatus.Controls.Add(this.label_S88ScrInfoFlagView);
-            this.panel_EVFlagStatus.Location = new System.Drawing.Point(6, 20);
-            this.panel_EVFlagStatus.Name = "panel_EVFlagStatus";
-            this.panel_EVFlagStatus.Size = new System.Drawing.Size(140, 154);
-            this.panel_EVFlagStatus.TabIndex = 1;
-            // 
-            // label_S88ScrInfoFlagView
-            // 
-            this.label_S88ScrInfoFlagView.AutoSize = true;
-            this.label_S88ScrInfoFlagView.Location = new System.Drawing.Point(3, 5);
-            this.label_S88ScrInfoFlagView.Name = "label_S88ScrInfoFlagView";
-            this.label_S88ScrInfoFlagView.Size = new System.Drawing.Size(49, 12);
-            this.label_S88ScrInfoFlagView.TabIndex = 0;
-            this.label_S88ScrInfoFlagView.Text = "Flag 0: 0";
-            // 
-            // lBox_S88Events
-            // 
-            this.lBox_S88Events.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lBox_S88Events.FormattingEnabled = true;
-            this.lBox_S88Events.HorizontalScrollbar = true;
-            this.lBox_S88Events.ItemHeight = 16;
-            this.lBox_S88Events.Items.AddRange(new object[] {
-            "A:",
-            "B:",
-            "C:",
-            "D:",
-            "E:",
-            "F:",
-            "G:",
-            "H:",
-            "I:",
-            "J:",
-            "K:",
-            "L:",
-            "M:",
-            "N:",
-            "O:",
-            "P:",
-            "Q:",
-            "R:",
-            "S:",
-            "T:",
-            "U:",
-            "V:",
-            "W:",
-            "X:",
-            "Y:",
-            "Z:"});
-            this.lBox_S88Events.Location = new System.Drawing.Point(10, 42);
-            this.lBox_S88Events.Name = "lBox_S88Events";
-            this.lBox_S88Events.Size = new System.Drawing.Size(159, 388);
-            this.lBox_S88Events.TabIndex = 2;
-            this.lBox_S88Events.SelectedIndexChanged += new System.EventHandler(this.lBox_S88Events_SelectedIndexChanged);
-            // 
-            // tabPage10
-            // 
-            this.tabPage10.Controls.Add(this.panel_Crane);
-            this.tabPage10.Location = new System.Drawing.Point(4, 22);
-            this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(926, 472);
-            this.tabPage10.TabIndex = 9;
-            this.tabPage10.Text = "Crane";
-            this.tabPage10.UseVisualStyleBackColor = true;
-            // 
-            // panel_Crane
-            // 
-            this.panel_Crane.Controls.Add(this.label_CraneSpeedMin);
-            this.panel_Crane.Controls.Add(this.label_CraneSpeedMax);
-            this.panel_Crane.Controls.Add(this.Button_CraneCabRight);
-            this.panel_Crane.Controls.Add(this.Button_CraneCabLeft);
-            this.panel_Crane.Controls.Add(this.Button_CraneRunRight);
-            this.panel_Crane.Controls.Add(this.Button_CraneRunLeft);
-            this.panel_Crane.Controls.Add(this.gBoxCraneType);
-            this.panel_Crane.Controls.Add(this.tBar_CraneSpeed);
-            this.panel_Crane.Controls.Add(this.Button_CraneStop);
-            this.panel_Crane.Controls.Add(this.gBox_CraneLoc);
-            this.panel_Crane.Controls.Add(this.Button_CraneBoomDown);
-            this.panel_Crane.Controls.Add(this.Button_CraneHookDown);
-            this.panel_Crane.Controls.Add(this.Button_CraneBoomUp);
-            this.panel_Crane.Controls.Add(this.Button_CraneHookUp);
-            this.panel_Crane.Controls.Add(this.Button_CraneRabbit);
-            this.panel_Crane.Controls.Add(this.Button_CraneRight);
-            this.panel_Crane.Controls.Add(this.Button_CraneLeft);
-            this.panel_Crane.Location = new System.Drawing.Point(0, 0);
-            this.panel_Crane.Name = "panel_Crane";
-            this.panel_Crane.Size = new System.Drawing.Size(926, 472);
-            this.panel_Crane.TabIndex = 0;
-            // 
-            // label_CraneSpeedMin
-            // 
-            this.label_CraneSpeedMin.AutoSize = true;
-            this.label_CraneSpeedMin.Location = new System.Drawing.Point(37, 128);
-            this.label_CraneSpeedMin.Name = "label_CraneSpeedMin";
-            this.label_CraneSpeedMin.Size = new System.Drawing.Size(23, 12);
-            this.label_CraneSpeedMin.TabIndex = 84;
-            this.label_CraneSpeedMin.Text = "Min";
-            // 
-            // label_CraneSpeedMax
-            // 
-            this.label_CraneSpeedMax.AutoSize = true;
-            this.label_CraneSpeedMax.Location = new System.Drawing.Point(37, 36);
-            this.label_CraneSpeedMax.Name = "label_CraneSpeedMax";
-            this.label_CraneSpeedMax.Size = new System.Drawing.Size(26, 12);
-            this.label_CraneSpeedMax.TabIndex = 83;
-            this.label_CraneSpeedMax.Text = "Max";
-            // 
-            // gBoxCraneType
-            // 
-            this.gBoxCraneType.Controls.Add(this.cBox_CraneType);
-            this.gBoxCraneType.Location = new System.Drawing.Point(613, 197);
-            this.gBoxCraneType.Name = "gBoxCraneType";
-            this.gBoxCraneType.Size = new System.Drawing.Size(238, 100);
-            this.gBoxCraneType.TabIndex = 78;
-            this.gBoxCraneType.TabStop = false;
-            this.gBoxCraneType.Text = "Crane type";
-            // 
-            // tBar_CraneSpeed
-            // 
-            this.tBar_CraneSpeed.LargeChange = 128;
-            this.tBar_CraneSpeed.Location = new System.Drawing.Point(69, 36);
-            this.tBar_CraneSpeed.Maximum = 768;
-            this.tBar_CraneSpeed.Minimum = 1;
-            this.tBar_CraneSpeed.Name = "tBar_CraneSpeed";
-            this.tBar_CraneSpeed.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.tBar_CraneSpeed.Size = new System.Drawing.Size(45, 104);
-            this.tBar_CraneSpeed.SmallChange = 128;
-            this.tBar_CraneSpeed.TabIndex = 77;
-            this.tBar_CraneSpeed.TickFrequency = 128;
-            this.tBar_CraneSpeed.Value = 128;
-            this.tBar_CraneSpeed.ValueChanged += new System.EventHandler(this.tBar_CraneSpeed_ValueChanged);
-            // 
-            // gBox_CraneLoc
-            // 
-            this.gBox_CraneLoc.Controls.Add(this.labelCraneProtcol);
-            this.gBox_CraneLoc.Controls.Add(this.cBox_CraneProtcol);
-            this.gBox_CraneLoc.Controls.Add(this.labelCraneLocAddr);
-            this.gBox_CraneLoc.Controls.Add(this.numUpDownCraneAddress);
-            this.gBox_CraneLoc.Location = new System.Drawing.Point(611, 22);
-            this.gBox_CraneLoc.Name = "gBox_CraneLoc";
-            this.gBox_CraneLoc.Size = new System.Drawing.Size(240, 138);
-            this.gBox_CraneLoc.TabIndex = 75;
-            this.gBox_CraneLoc.TabStop = false;
-            this.gBox_CraneLoc.Text = "Lok address";
-            // 
-            // labelCraneProtcol
-            // 
-            this.labelCraneProtcol.AutoSize = true;
-            this.labelCraneProtcol.Location = new System.Drawing.Point(27, 37);
-            this.labelCraneProtcol.Name = "labelCraneProtcol";
-            this.labelCraneProtcol.Size = new System.Drawing.Size(47, 12);
-            this.labelCraneProtcol.TabIndex = 72;
-            this.labelCraneProtcol.Text = "Protocol";
-            // 
-            // cBox_CraneProtcol
-            // 
-            this.cBox_CraneProtcol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBox_CraneProtcol.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.cBox_CraneProtcol.FormattingEnabled = true;
-            this.cBox_CraneProtcol.Items.AddRange(new object[] {
-            "MM2",
-            "mfx",
-            "DCC"});
-            this.cBox_CraneProtcol.Location = new System.Drawing.Point(114, 31);
-            this.cBox_CraneProtcol.Name = "cBox_CraneProtcol";
-            this.cBox_CraneProtcol.Size = new System.Drawing.Size(105, 23);
-            this.cBox_CraneProtcol.TabIndex = 71;
-            this.cBox_CraneProtcol.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // labelCraneLocAddr
-            // 
-            this.labelCraneLocAddr.AutoSize = true;
-            this.labelCraneLocAddr.Location = new System.Drawing.Point(27, 78);
-            this.labelCraneLocAddr.Name = "labelCraneLocAddr";
-            this.labelCraneLocAddr.Size = new System.Drawing.Size(67, 12);
-            this.labelCraneLocAddr.TabIndex = 73;
-            this.labelCraneLocAddr.Text = "Loc address";
-            // 
-            // numUpDownCraneAddress
-            // 
-            this.numUpDownCraneAddress.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.numUpDownCraneAddress.Location = new System.Drawing.Point(114, 73);
-            this.numUpDownCraneAddress.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.numUpDownCraneAddress.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numUpDownCraneAddress.Name = "numUpDownCraneAddress";
-            this.numUpDownCraneAddress.Size = new System.Drawing.Size(105, 24);
-            this.numUpDownCraneAddress.TabIndex = 74;
-            this.numUpDownCraneAddress.Value = new decimal(new int[] {
-            77,
-            0,
-            0,
-            0});
-            this.numUpDownCraneAddress.ValueChanged += new System.EventHandler(this.numUpDownCraneAddress_ValueChanged);
-            // 
-            // OuterPanel
-            // 
-            this.OuterPanel.Controls.Add(this.tabPanels);
-            this.OuterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OuterPanel.Location = new System.Drawing.Point(0, 43);
-            this.OuterPanel.Name = "OuterPanel";
-            this.OuterPanel.Size = new System.Drawing.Size(934, 498);
-            this.OuterPanel.TabIndex = 66;
-            // 
-            // StatusLabel
-            // 
-            this.StatusLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.StatusLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(906, 18);
-            this.StatusLabel.Spring = true;
-            this.StatusLabel.Text = "Welcome aboard!";
-            this.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // serialPort
-            // 
-            this.serialPort.BaudRate = 115200;
-            this.serialPort.ReadTimeout = 100;
-            this.serialPort.WriteTimeout = 100;
-            this.serialPort.ErrorReceived += new System.IO.Ports.SerialErrorReceivedEventHandler(this.serialPort_ErrorReceived);
-            this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
-            // 
-            // timerSpeed
-            // 
-            this.timerSpeed.Interval = 500;
-            this.timerSpeed.Tick += new System.EventHandler(this.timerSpeed_Tick);
-            // 
-            // timerDraw
-            // 
-            this.timerDraw.Tick += new System.EventHandler(this.timerDraw_Tick);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.StatusLabel,
-            this.ConnectedStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 541);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(934, 23);
-            this.statusStrip1.SizingGrip = false;
-            this.statusStrip1.Stretch = false;
-            this.statusStrip1.TabIndex = 65;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // ConnectedStatusLabel
-            // 
-            this.ConnectedStatusLabel.Name = "ConnectedStatusLabel";
-            this.ConnectedStatusLabel.Size = new System.Drawing.Size(13, 18);
-            this.ConnectedStatusLabel.Text = "-";
-            // 
-            // timerScript
-            // 
-            this.timerScript.Tick += new System.EventHandler(this.timerScript_Tick);
-            // 
-            // AccessoryImageList
-            // 
-            this.AccessoryImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("AccessoryImageList.ImageStream")));
-            this.AccessoryImageList.TransparentColor = System.Drawing.Color.Lime;
-            this.AccessoryImageList.Images.SetKeyName(0, "SIGNAL_RED2.png");
-            this.AccessoryImageList.Images.SetKeyName(1, "SIGNAL_GREEN2.png");
-            this.AccessoryImageList.Images.SetKeyName(2, "TURNOUT_3WAY_0.png");
-            this.AccessoryImageList.Images.SetKeyName(3, "TURNOUT_3WAY_1.png");
-            this.AccessoryImageList.Images.SetKeyName(4, "TURNOUT_3WAY_2.png");
-            this.AccessoryImageList.Images.SetKeyName(5, "TURNOUT_3WAY_3.png");
-            this.AccessoryImageList.Images.SetKeyName(6, "TURNOUT_LEFT_0.png");
-            this.AccessoryImageList.Images.SetKeyName(7, "TURNOUT_LEFT_1.png");
-            this.AccessoryImageList.Images.SetKeyName(8, "TURNOUT_LEFT_2.png");
-            this.AccessoryImageList.Images.SetKeyName(9, "TURNOUT_RIGHT_0.png");
-            this.AccessoryImageList.Images.SetKeyName(10, "TURNOUT_RIGHT_1.png");
-            this.AccessoryImageList.Images.SetKeyName(11, "TURNOUT_RIGHT_2.png");
-            this.AccessoryImageList.Images.SetKeyName(12, "DBLSLIPSWITCH_1.png");
-            this.AccessoryImageList.Images.SetKeyName(13, "DBLSLIPSWITCH_2.png");
-            this.AccessoryImageList.Images.SetKeyName(14, "SIGNAL_76371_RED.png");
-            this.AccessoryImageList.Images.SetKeyName(15, "SIGNAL_76371_BLACK.png");
-            this.AccessoryImageList.Images.SetKeyName(16, "SIGNAL_76383_RED.png");
-            this.AccessoryImageList.Images.SetKeyName(17, "SIGNAL_76383_BLACK.png");
-            this.AccessoryImageList.Images.SetKeyName(18, "SIGNAL_76383_GREEN.png");
-            this.AccessoryImageList.Images.SetKeyName(19, "SIGNAL_76391_RED.png");
-            this.AccessoryImageList.Images.SetKeyName(20, "SIGNAL_76391_GREEN.png");
-            this.AccessoryImageList.Images.SetKeyName(21, "SIGNAL_76393_RED.png");
-            this.AccessoryImageList.Images.SetKeyName(22, "SIGNAL_76393_YELLOW.png");
-            this.AccessoryImageList.Images.SetKeyName(23, "SIGNAL_76393_GREEN.png");
-            this.AccessoryImageList.Images.SetKeyName(24, "SIGNAL_76394_RED.png");
-            this.AccessoryImageList.Images.SetKeyName(25, "SIGNAL_76394_RED_SW.png");
-            this.AccessoryImageList.Images.SetKeyName(26, "SIGNAL_76394_YELLOW.png");
-            this.AccessoryImageList.Images.SetKeyName(27, "SIGNAL_76394_GREEN.png");
-            // 
-            // timerS88
-            // 
-            this.timerS88.Enabled = true;
-            this.timerS88.Tick += new System.EventHandler(this.timerS88_Tick);
-            // 
-            // timerSerialSend
-            // 
-            this.timerSerialSend.Interval = 40;
-            this.timerSerialSend.Tick += new System.EventHandler(this.timerSerialSend_Tick);
-            // 
-            // timerClock
-            // 
-            this.timerClock.Enabled = true;
-            this.timerClock.Interval = 1000;
-            this.timerClock.Tick += new System.EventHandler(this.timerClock_Tick);
-            // 
-            // InfoTip
-            // 
-            this.InfoTip.UseAnimation = false;
-            this.InfoTip.UseFading = false;
-            // 
-            // timerUpdateAll
-            // 
-            this.timerUpdateAll.Interval = 500;
-            this.timerUpdateAll.Tick += new System.EventHandler(this.timerUpdateAll_Tick);
             // 
             // button_LocDBSave
             // 
@@ -3394,6 +2534,27 @@
             this.button_MultiFunc0.Tag = "0";
             this.button_MultiFunc0.UseVisualStyleBackColor = true;
             this.button_MultiFunc0.Click += new System.EventHandler(this.button_MultiFunc0_Click);
+            // 
+            // MultiFunctionBox
+            // 
+            this.MultiFunctionBox.Location = new System.Drawing.Point(269, 412);
+            this.MultiFunctionBox.Name = "MultiFunctionBox";
+            this.MultiFunctionBox.Size = new System.Drawing.Size(336, 56);
+            this.MultiFunctionBox.TabIndex = 107;
+            this.MultiFunctionBox.TabStop = false;
+            this.MultiFunctionBox.Paint += new System.Windows.Forms.PaintEventHandler(this.MultiFunctionBox_Paint);
+            this.MultiFunctionBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MultiFunctionBox_MouseDown);
+            // 
+            // pBox_Clock
+            // 
+            this.pBox_Clock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pBox_Clock.Location = new System.Drawing.Point(789, 128);
+            this.pBox_Clock.Name = "pBox_Clock";
+            this.pBox_Clock.Size = new System.Drawing.Size(114, 150);
+            this.pBox_Clock.TabIndex = 106;
+            this.pBox_Clock.TabStop = false;
+            this.pBox_Clock.Click += new System.EventHandler(this.pBox_Clock_Click);
+            this.pBox_Clock.Paint += new System.Windows.Forms.PaintEventHandler(this.pBox_Clock_Paint);
             // 
             // button_F16
             // 
@@ -3795,6 +2956,157 @@
             this.button_FWD.TextChanged += new System.EventHandler(this.button_FWD_TextChanged);
             this.button_FWD.Click += new System.EventHandler(this.button_FWD_Click);
             // 
+            // MeterBox
+            // 
+            this.MeterBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.MeterBox.Location = new System.Drawing.Point(237, 3);
+            this.MeterBox.Name = "MeterBox";
+            this.MeterBox.Size = new System.Drawing.Size(400, 400);
+            this.MeterBox.TabIndex = 77;
+            this.MeterBox.TabStop = false;
+            this.MeterBox.Paint += new System.Windows.Forms.PaintEventHandler(this.MeterBox_Paint);
+            this.MeterBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MeterBox_MouseDown);
+            this.MeterBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MeterBox_MouseDown);
+            // 
+            // LeverBox
+            // 
+            this.LeverBox.ContextMenuStrip = this.leverMenuStrip;
+            this.LeverBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.LeverBox.Location = new System.Drawing.Point(682, 98);
+            this.LeverBox.Name = "LeverBox";
+            this.LeverBox.Size = new System.Drawing.Size(80, 310);
+            this.LeverBox.TabIndex = 85;
+            this.LeverBox.TabStop = false;
+            this.LeverBox.Paint += new System.Windows.Forms.PaintEventHandler(this.LeverBox_Paint);
+            this.LeverBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LeverBox_MouseDown);
+            this.LeverBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LeverBox_MouseDown);
+            // 
+            // leverMenuStrip
+            // 
+            this.leverMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editLeverOptionsToolStripMenuItem});
+            this.leverMenuStrip.Name = "leverMenuStrip";
+            this.leverMenuStrip.Size = new System.Drawing.Size(166, 26);
+            // 
+            // editLeverOptionsToolStripMenuItem
+            // 
+            this.editLeverOptionsToolStripMenuItem.Name = "editLeverOptionsToolStripMenuItem";
+            this.editLeverOptionsToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.editLeverOptionsToolStripMenuItem.Text = "Edit lever options";
+            this.editLeverOptionsToolStripMenuItem.Click += new System.EventHandler(this.editLeverOptionsToolStripMenuItem_Click);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.panel_AccList);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(926, 472);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Acc";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // panel_AccList
+            // 
+            this.panel_AccList.Controls.Add(this.buttonEditAccOption);
+            this.panel_AccList.Controls.Add(this.AccScrollBar);
+            this.panel_AccList.Controls.Add(this.cBox_AccFilter);
+            this.panel_AccList.Controls.Add(this.pBox_AccList);
+            this.panel_AccList.Location = new System.Drawing.Point(0, 0);
+            this.panel_AccList.Name = "panel_AccList";
+            this.panel_AccList.Size = new System.Drawing.Size(926, 472);
+            this.panel_AccList.TabIndex = 0;
+            // 
+            // buttonEditAccOption
+            // 
+            this.buttonEditAccOption.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.buttonEditAccOption.Location = new System.Drawing.Point(742, 9);
+            this.buttonEditAccOption.Name = "buttonEditAccOption";
+            this.buttonEditAccOption.Size = new System.Drawing.Size(149, 28);
+            this.buttonEditAccOption.TabIndex = 63;
+            this.buttonEditAccOption.Text = "Edit properties";
+            this.buttonEditAccOption.UseVisualStyleBackColor = true;
+            this.buttonEditAccOption.Click += new System.EventHandler(this.buttonEditAccOption_Click);
+            // 
+            // AccScrollBar
+            // 
+            this.AccScrollBar.LargeChange = 1;
+            this.AccScrollBar.Location = new System.Drawing.Point(894, 39);
+            this.AccScrollBar.Maximum = 7;
+            this.AccScrollBar.Name = "AccScrollBar";
+            this.AccScrollBar.Size = new System.Drawing.Size(24, 424);
+            this.AccScrollBar.TabIndex = 62;
+            this.AccScrollBar.ValueChanged += new System.EventHandler(this.AccScrollBar_ValueChanged);
+            // 
+            // cBox_AccFilter
+            // 
+            this.cBox_AccFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBox_AccFilter.Font = new System.Drawing.Font("Arial", 12F);
+            this.cBox_AccFilter.FormattingEnabled = true;
+            this.cBox_AccFilter.Items.AddRange(new object[] {
+            "All",
+            "Check",
+            "Checked",
+            "Only turnouts",
+            "Only signals"});
+            this.cBox_AccFilter.Location = new System.Drawing.Point(12, 9);
+            this.cBox_AccFilter.Name = "cBox_AccFilter";
+            this.cBox_AccFilter.Size = new System.Drawing.Size(179, 26);
+            this.cBox_AccFilter.TabIndex = 60;
+            this.cBox_AccFilter.TabStop = false;
+            this.cBox_AccFilter.Visible = false;
+            // 
+            // pBox_AccList
+            // 
+            this.pBox_AccList.Location = new System.Drawing.Point(12, 39);
+            this.pBox_AccList.Name = "pBox_AccList";
+            this.pBox_AccList.Size = new System.Drawing.Size(879, 424);
+            this.pBox_AccList.TabIndex = 56;
+            this.pBox_AccList.TabStop = false;
+            this.pBox_AccList.Paint += new System.Windows.Forms.PaintEventHandler(this.pBox_AccList_Paint);
+            this.pBox_AccList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pBox_AccList_MouseDown);
+            this.pBox_AccList.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pBox_AccList_MouseMove);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.panel6021);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(926, 472);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "6021";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // panel6021
+            // 
+            this.panel6021.Controls.Add(this.button_CLR);
+            this.panel6021.Controls.Add(this.cBox_6021Protcol);
+            this.panel6021.Controls.Add(this.button6021_REV);
+            this.panel6021.Controls.Add(this.button6021_FWD);
+            this.panel6021.Controls.Add(this.button6021_F4);
+            this.panel6021.Controls.Add(this.button6021_F3);
+            this.panel6021.Controls.Add(this.button6021_F2);
+            this.panel6021.Controls.Add(this.button6021_F1);
+            this.panel6021.Controls.Add(this.Dial6021Box);
+            this.panel6021.Controls.Add(this.panel2);
+            this.panel6021.Controls.Add(this.button6021_OFF);
+            this.panel6021.Controls.Add(this.button6021_0);
+            this.panel6021.Controls.Add(this.button6021_9);
+            this.panel6021.Controls.Add(this.button6021_8);
+            this.panel6021.Controls.Add(this.button6021_7);
+            this.panel6021.Controls.Add(this.button6021_6);
+            this.panel6021.Controls.Add(this.button6021_5);
+            this.panel6021.Controls.Add(this.button6021_4);
+            this.panel6021.Controls.Add(this.button6021_3);
+            this.panel6021.Controls.Add(this.button6021_2);
+            this.panel6021.Controls.Add(this.button6021_1);
+            this.panel6021.Location = new System.Drawing.Point(0, 0);
+            this.panel6021.Margin = new System.Windows.Forms.Padding(0);
+            this.panel6021.Name = "panel6021";
+            this.panel6021.Size = new System.Drawing.Size(926, 472);
+            this.panel6021.TabIndex = 59;
+            // 
             // button_CLR
             // 
             this.button_CLR.BackColor = System.Drawing.Color.Green;
@@ -3809,6 +3121,22 @@
             this.button_CLR.Text = "C";
             this.button_CLR.UseVisualStyleBackColor = false;
             this.button_CLR.Click += new System.EventHandler(this.button_CLR_Click);
+            // 
+            // cBox_6021Protcol
+            // 
+            this.cBox_6021Protcol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBox_6021Protcol.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.cBox_6021Protcol.FormattingEnabled = true;
+            this.cBox_6021Protcol.Items.AddRange(new object[] {
+            "MM2",
+            "mfx",
+            "DCC"});
+            this.cBox_6021Protcol.Location = new System.Drawing.Point(209, 337);
+            this.cBox_6021Protcol.Name = "cBox_6021Protcol";
+            this.cBox_6021Protcol.Size = new System.Drawing.Size(68, 28);
+            this.cBox_6021Protcol.TabIndex = 0;
+            this.cBox_6021Protcol.TabStop = false;
+            this.cBox_6021Protcol.SelectedIndexChanged += new System.EventHandler(this.cBox_6021Protcol_SelectedIndexChanged);
             // 
             // button6021_REV
             // 
@@ -3901,6 +3229,64 @@
             this.button6021_F1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.button6021_F1.UseVisualStyleBackColor = false;
             this.button6021_F1.Click += new System.EventHandler(this.button6021_F1_Click);
+            // 
+            // Dial6021Box
+            // 
+            this.Dial6021Box.Location = new System.Drawing.Point(465, 247);
+            this.Dial6021Box.Name = "Dial6021Box";
+            this.Dial6021Box.Size = new System.Drawing.Size(300, 225);
+            this.Dial6021Box.TabIndex = 53;
+            this.Dial6021Box.TabStop = false;
+            this.Dial6021Box.Paint += new System.Windows.Forms.PaintEventHandler(this.Dial6021Box_Paint);
+            this.Dial6021Box.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dial6021Box_MouseDown);
+            this.Dial6021Box.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Dial6021Box_MouseDown);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label_6021Direct);
+            this.panel2.Controls.Add(this.label_6021Protcol);
+            this.panel2.Controls.Add(this.label_Addr);
+            this.panel2.Location = new System.Drawing.Point(209, 15);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(261, 73);
+            this.panel2.TabIndex = 52;
+            // 
+            // label_6021Direct
+            // 
+            this.label_6021Direct.AutoSize = true;
+            this.label_6021Direct.Font = new System.Drawing.Font("Arial Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.label_6021Direct.ForeColor = System.Drawing.Color.Red;
+            this.label_6021Direct.Location = new System.Drawing.Point(3, 32);
+            this.label_6021Direct.Name = "label_6021Direct";
+            this.label_6021Direct.Size = new System.Drawing.Size(49, 23);
+            this.label_6021Direct.TabIndex = 44;
+            this.label_6021Direct.Text = "FWD";
+            // 
+            // label_6021Protcol
+            // 
+            this.label_6021Protcol.AutoSize = true;
+            this.label_6021Protcol.Font = new System.Drawing.Font("Arial Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.label_6021Protcol.ForeColor = System.Drawing.Color.Red;
+            this.label_6021Protcol.Location = new System.Drawing.Point(3, 9);
+            this.label_6021Protcol.Name = "label_6021Protcol";
+            this.label_6021Protcol.Size = new System.Drawing.Size(51, 23);
+            this.label_6021Protcol.TabIndex = 43;
+            this.label_6021Protcol.Text = "MM2";
+            // 
+            // label_Addr
+            // 
+            this.label_Addr.BackColor = System.Drawing.Color.Black;
+            this.label_Addr.Font = new System.Drawing.Font("Arial", 50F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.label_Addr.ForeColor = System.Drawing.Color.Red;
+            this.label_Addr.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label_Addr.Location = new System.Drawing.Point(58, 0);
+            this.label_Addr.Name = "label_Addr";
+            this.label_Addr.Size = new System.Drawing.Size(193, 73);
+            this.label_Addr.TabIndex = 42;
+            this.label_Addr.Text = "0000";
+            this.label_Addr.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // button6021_OFF
             // 
@@ -4067,6 +3453,31 @@
             this.button6021_1.UseVisualStyleBackColor = false;
             this.button6021_1.Click += new System.EventHandler(this.button6021_1_Click);
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.panel_Layout);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(926, 472);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Layout";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // panel_Layout
+            // 
+            this.panel_Layout.Controls.Add(this.button_LayoutCfg);
+            this.panel_Layout.Controls.Add(this.panelLayout);
+            this.panel_Layout.Controls.Add(this.button_LayoutSave);
+            this.panel_Layout.Controls.Add(this.button_LayoutLoad);
+            this.panel_Layout.Controls.Add(this.button_LayoutNew);
+            this.panel_Layout.Controls.Add(this.panelLayoutTool);
+            this.panel_Layout.Location = new System.Drawing.Point(0, 0);
+            this.panel_Layout.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_Layout.Name = "panel_Layout";
+            this.panel_Layout.Size = new System.Drawing.Size(926, 472);
+            this.panel_Layout.TabIndex = 0;
+            // 
             // button_LayoutCfg
             // 
             this.button_LayoutCfg.Font = new System.Drawing.Font("Arial", 12F);
@@ -4079,6 +3490,28 @@
             this.button_LayoutCfg.Text = "Config";
             this.button_LayoutCfg.UseVisualStyleBackColor = true;
             this.button_LayoutCfg.Click += new System.EventHandler(this.button_LayoutCfg_Click);
+            // 
+            // panelLayout
+            // 
+            this.panelLayout.AutoScroll = true;
+            this.panelLayout.Controls.Add(this.LayoutBox);
+            this.panelLayout.Location = new System.Drawing.Point(96, 3);
+            this.panelLayout.Name = "panelLayout";
+            this.panelLayout.Size = new System.Drawing.Size(827, 466);
+            this.panelLayout.TabIndex = 10;
+            // 
+            // LayoutBox
+            // 
+            this.LayoutBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.LayoutBox.Location = new System.Drawing.Point(3, 3);
+            this.LayoutBox.Name = "LayoutBox";
+            this.LayoutBox.Size = new System.Drawing.Size(823, 437);
+            this.LayoutBox.TabIndex = 1;
+            this.LayoutBox.TabStop = false;
+            this.LayoutBox.Paint += new System.Windows.Forms.PaintEventHandler(this.LayoutBox_Paint);
+            this.LayoutBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LayoutBox_MouseDoubleClick);
+            this.LayoutBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LayoutBox_MouseDown);
+            this.LayoutBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LayoutBox_MouseMove);
             // 
             // button_LayoutSave
             // 
@@ -4120,6 +3553,53 @@
             this.button_LayoutNew.UseVisualStyleBackColor = true;
             this.button_LayoutNew.TextChanged += new System.EventHandler(this.button_ConsoleLogClear_TextChanged);
             this.button_LayoutNew.Click += new System.EventHandler(this.button_LayoutNew_Click);
+            // 
+            // panelLayoutTool
+            // 
+            this.panelLayoutTool.AutoScroll = true;
+            this.panelLayoutTool.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelLayoutTool.Controls.Add(this.TileBox);
+            this.panelLayoutTool.Location = new System.Drawing.Point(5, 3);
+            this.panelLayoutTool.Name = "panelLayoutTool";
+            this.panelLayoutTool.Size = new System.Drawing.Size(88, 332);
+            this.panelLayoutTool.TabIndex = 6;
+            // 
+            // TileBox
+            // 
+            this.TileBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.TileBox.Location = new System.Drawing.Point(2, 3);
+            this.TileBox.Name = "TileBox";
+            this.TileBox.Size = new System.Drawing.Size(64, 448);
+            this.TileBox.TabIndex = 1;
+            this.TileBox.TabStop = false;
+            this.TileBox.Paint += new System.Windows.Forms.PaintEventHandler(this.TileBox_Paint);
+            this.TileBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TileBox_MouseDown);
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.panel_Sequence);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(926, 472);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Sequence";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // panel_Sequence
+            // 
+            this.panel_Sequence.Controls.Add(this.button_SeqScriptDown);
+            this.panel_Sequence.Controls.Add(this.button_SeqScriptUp);
+            this.panel_Sequence.Controls.Add(this.buttonScriptSave);
+            this.panel_Sequence.Controls.Add(this.buttonScriptLoad);
+            this.panel_Sequence.Controls.Add(this.listScript);
+            this.panel_Sequence.Controls.Add(this.buttonScriptRun);
+            this.panel_Sequence.Controls.Add(this.buttonScriptTeach);
+            this.panel_Sequence.Location = new System.Drawing.Point(0, 0);
+            this.panel_Sequence.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_Sequence.Name = "panel_Sequence";
+            this.panel_Sequence.Size = new System.Drawing.Size(930, 472);
+            this.panel_Sequence.TabIndex = 0;
             // 
             // button_SeqScriptDown
             // 
@@ -4169,6 +3649,88 @@
             this.buttonScriptLoad.UseVisualStyleBackColor = true;
             this.buttonScriptLoad.Click += new System.EventHandler(this.buttonScriptLoad_Click);
             // 
+            // listScript
+            // 
+            this.listScript.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.listScript.ContextMenuStrip = this.contextMenuScript;
+            this.listScript.Font = new System.Drawing.Font("Arial", 9F);
+            this.listScript.FullRowSelect = true;
+            this.listScript.GridLines = true;
+            this.listScript.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listScript.HideSelection = false;
+            this.listScript.Location = new System.Drawing.Point(17, 39);
+            this.listScript.Name = "listScript";
+            this.listScript.Size = new System.Drawing.Size(804, 422);
+            this.listScript.TabIndex = 3;
+            this.listScript.TabStop = false;
+            this.listScript.UseCompatibleStateImageBehavior = false;
+            this.listScript.View = System.Windows.Forms.View.Details;
+            this.listScript.DoubleClick += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Line";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Command";
+            this.columnHeader3.Width = 100;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Param1";
+            this.columnHeader4.Width = 100;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Param2";
+            this.columnHeader5.Width = 100;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Param3";
+            this.columnHeader6.Width = 100;
+            // 
+            // contextMenuScript
+            // 
+            this.contextMenuScript.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItem_Add,
+            this.MenuItem_Edit,
+            this.toolStripMenuItem15,
+            this.MenuItem_Copy,
+            this.MenuItem_Paste,
+            this.MenuItem_Del});
+            this.contextMenuScript.Name = "contextMenuScript";
+            this.contextMenuScript.Size = new System.Drawing.Size(145, 120);
+            // 
+            // toolStripMenuItem15
+            // 
+            this.toolStripMenuItem15.Name = "toolStripMenuItem15";
+            this.toolStripMenuItem15.Size = new System.Drawing.Size(141, 6);
+            // 
+            // MenuItem_Copy
+            // 
+            this.MenuItem_Copy.Name = "MenuItem_Copy";
+            this.MenuItem_Copy.ShortcutKeyDisplayString = "Ctrl+C";
+            this.MenuItem_Copy.Size = new System.Drawing.Size(144, 22);
+            this.MenuItem_Copy.Tag = "1";
+            this.MenuItem_Copy.Text = "Copy";
+            this.MenuItem_Copy.Click += new System.EventHandler(this.toolStripMenuItem12_Click);
+            // 
+            // MenuItem_Paste
+            // 
+            this.MenuItem_Paste.Name = "MenuItem_Paste";
+            this.MenuItem_Paste.ShortcutKeyDisplayString = "Ctrl+V";
+            this.MenuItem_Paste.Size = new System.Drawing.Size(144, 22);
+            this.MenuItem_Paste.Tag = "2";
+            this.MenuItem_Paste.Text = "Paste";
+            this.MenuItem_Paste.Click += new System.EventHandler(this.toolStripMenuItem12_Click);
+            // 
             // buttonScriptRun
             // 
             this.buttonScriptRun.Font = new System.Drawing.Font("Arial", 9F);
@@ -4193,478 +3755,39 @@
             this.buttonScriptTeach.UseVisualStyleBackColor = true;
             this.buttonScriptTeach.Click += new System.EventHandler(this.buttonScriptTeach_Click);
             // 
-            // button_CopySerialConsole
+            // tabPage9
             // 
-            this.button_CopySerialConsole.Font = new System.Drawing.Font("Arial", 14F);
-            this.button_CopySerialConsole.Location = new System.Drawing.Point(810, 3);
-            this.button_CopySerialConsole.Name = "button_CopySerialConsole";
-            this.button_CopySerialConsole.Size = new System.Drawing.Size(106, 35);
-            this.button_CopySerialConsole.TabIndex = 4;
-            this.button_CopySerialConsole.TabStop = false;
-            this.button_CopySerialConsole.Text = "Copy";
-            this.button_CopySerialConsole.UseVisualStyleBackColor = true;
-            this.button_CopySerialConsole.TextChanged += new System.EventHandler(this.button_ConsoleLogClear_TextChanged);
-            this.button_CopySerialConsole.Click += new System.EventHandler(this.button_CopySerialConsole_Click);
+            this.tabPage9.Controls.Add(this.panel_S88);
+            this.tabPage9.Location = new System.Drawing.Point(4, 22);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage9.Size = new System.Drawing.Size(926, 472);
+            this.tabPage9.TabIndex = 8;
+            this.tabPage9.Text = "Events";
+            this.tabPage9.UseVisualStyleBackColor = true;
             // 
-            // button_ConsoleLogClear
+            // panel_S88
             // 
-            this.button_ConsoleLogClear.Font = new System.Drawing.Font("Arial", 14F);
-            this.button_ConsoleLogClear.Location = new System.Drawing.Point(17, 3);
-            this.button_ConsoleLogClear.Name = "button_ConsoleLogClear";
-            this.button_ConsoleLogClear.Size = new System.Drawing.Size(106, 35);
-            this.button_ConsoleLogClear.TabIndex = 2;
-            this.button_ConsoleLogClear.TabStop = false;
-            this.button_ConsoleLogClear.Text = "Clear log";
-            this.button_ConsoleLogClear.UseVisualStyleBackColor = true;
-            this.button_ConsoleLogClear.TextChanged += new System.EventHandler(this.button_ConsoleLogClear_TextChanged);
-            this.button_ConsoleLogClear.Click += new System.EventHandler(this.button_ConsoleLogClear_Click);
+            this.panel_S88.Controls.Add(this.buttonEventInProcess);
+            this.panel_S88.Controls.Add(this.button_S88EventsExport);
+            this.panel_S88.Controls.Add(this.button_S88EventsImport);
+            this.panel_S88.Controls.Add(this.tabS88Events);
+            this.panel_S88.Controls.Add(this.lBox_S88Events);
+            this.panel_S88.Location = new System.Drawing.Point(0, 0);
+            this.panel_S88.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_S88.Name = "panel_S88";
+            this.panel_S88.Size = new System.Drawing.Size(926, 472);
+            this.panel_S88.TabIndex = 0;
             // 
-            // button_CVGenerate
+            // buttonEventInProcess
             // 
-            this.button_CVGenerate.Location = new System.Drawing.Point(123, 110);
-            this.button_CVGenerate.Name = "button_CVGenerate";
-            this.button_CVGenerate.Size = new System.Drawing.Size(75, 25);
-            this.button_CVGenerate.TabIndex = 79;
-            this.button_CVGenerate.Tag = "2";
-            this.button_CVGenerate.Text = "Generate";
-            this.button_CVGenerate.UseVisualStyleBackColor = true;
-            this.button_CVGenerate.Click += new System.EventHandler(this.button_CVGenerate_Click);
-            // 
-            // button_DCCCVAdrRead
-            // 
-            this.button_DCCCVAdrRead.Location = new System.Drawing.Point(291, 183);
-            this.button_DCCCVAdrRead.Name = "button_DCCCVAdrRead";
-            this.button_DCCCVAdrRead.Size = new System.Drawing.Size(75, 25);
-            this.button_DCCCVAdrRead.TabIndex = 74;
-            this.button_DCCCVAdrRead.Tag = "2";
-            this.button_DCCCVAdrRead.Text = "Read";
-            this.button_DCCCVAdrRead.UseVisualStyleBackColor = true;
-            this.button_DCCCVAdrRead.Click += new System.EventHandler(this.button_DCCCVAdrRead_Click);
-            // 
-            // button_CVDCCAdrWrite
-            // 
-            this.button_CVDCCAdrWrite.Location = new System.Drawing.Point(388, 183);
-            this.button_CVDCCAdrWrite.Name = "button_CVDCCAdrWrite";
-            this.button_CVDCCAdrWrite.Size = new System.Drawing.Size(75, 25);
-            this.button_CVDCCAdrWrite.TabIndex = 73;
-            this.button_CVDCCAdrWrite.Tag = "1";
-            this.button_CVDCCAdrWrite.Text = "Write";
-            this.button_CVDCCAdrWrite.UseVisualStyleBackColor = true;
-            this.button_CVDCCAdrWrite.Click += new System.EventHandler(this.button_DCCCVAdrRead_Click);
-            // 
-            // buttonCVRead
-            // 
-            this.buttonCVRead.Location = new System.Drawing.Point(26, 128);
-            this.buttonCVRead.Name = "buttonCVRead";
-            this.buttonCVRead.Size = new System.Drawing.Size(75, 25);
-            this.buttonCVRead.TabIndex = 12;
-            this.buttonCVRead.Tag = "2";
-            this.buttonCVRead.Text = "Read";
-            this.buttonCVRead.UseVisualStyleBackColor = true;
-            this.buttonCVRead.Click += new System.EventHandler(this.buttonCVRead_Click);
-            // 
-            // buttonCVWrite
-            // 
-            this.buttonCVWrite.Location = new System.Drawing.Point(111, 128);
-            this.buttonCVWrite.Name = "buttonCVWrite";
-            this.buttonCVWrite.Size = new System.Drawing.Size(75, 25);
-            this.buttonCVWrite.TabIndex = 11;
-            this.buttonCVWrite.Tag = "1";
-            this.buttonCVWrite.Text = "Write";
-            this.buttonCVWrite.UseVisualStyleBackColor = true;
-            this.buttonCVWrite.Click += new System.EventHandler(this.buttonCVRead_Click);
-            // 
-            // buttonMLoc_Select7
-            // 
-            this.buttonMLoc_Select7.ImageKey = "PICS_SELECTLOC32.bmp";
-            this.buttonMLoc_Select7.ImageList = this.checkimgList;
-            this.buttonMLoc_Select7.Location = new System.Drawing.Point(339, 3);
-            this.buttonMLoc_Select7.Name = "buttonMLoc_Select7";
-            this.buttonMLoc_Select7.Size = new System.Drawing.Size(38, 38);
-            this.buttonMLoc_Select7.TabIndex = 113;
-            this.buttonMLoc_Select7.TabStop = false;
-            this.buttonMLoc_Select7.Tag = "7";
-            this.buttonMLoc_Select7.UseVisualStyleBackColor = true;
-            this.buttonMLoc_Select7.Click += new System.EventHandler(this.buttonMLoc_Select0_Click);
-            // 
-            // buttonMLoc_Select3
-            // 
-            this.buttonMLoc_Select3.ImageKey = "PICS_SELECTLOC32.bmp";
-            this.buttonMLoc_Select3.ImageList = this.checkimgList;
-            this.buttonMLoc_Select3.Location = new System.Drawing.Point(339, 3);
-            this.buttonMLoc_Select3.Name = "buttonMLoc_Select3";
-            this.buttonMLoc_Select3.Size = new System.Drawing.Size(38, 38);
-            this.buttonMLoc_Select3.TabIndex = 113;
-            this.buttonMLoc_Select3.TabStop = false;
-            this.buttonMLoc_Select3.Tag = "3";
-            this.buttonMLoc_Select3.UseVisualStyleBackColor = true;
-            this.buttonMLoc_Select3.Click += new System.EventHandler(this.buttonMLoc_Select0_Click);
-            // 
-            // buttonMLoc_Select6
-            // 
-            this.buttonMLoc_Select6.ImageKey = "PICS_SELECTLOC32.bmp";
-            this.buttonMLoc_Select6.ImageList = this.checkimgList;
-            this.buttonMLoc_Select6.Location = new System.Drawing.Point(339, 3);
-            this.buttonMLoc_Select6.Name = "buttonMLoc_Select6";
-            this.buttonMLoc_Select6.Size = new System.Drawing.Size(38, 38);
-            this.buttonMLoc_Select6.TabIndex = 113;
-            this.buttonMLoc_Select6.TabStop = false;
-            this.buttonMLoc_Select6.Tag = "6";
-            this.buttonMLoc_Select6.UseVisualStyleBackColor = true;
-            this.buttonMLoc_Select6.Click += new System.EventHandler(this.buttonMLoc_Select0_Click);
-            // 
-            // buttonMLoc_Select2
-            // 
-            this.buttonMLoc_Select2.ImageKey = "PICS_SELECTLOC32.bmp";
-            this.buttonMLoc_Select2.ImageList = this.checkimgList;
-            this.buttonMLoc_Select2.Location = new System.Drawing.Point(339, 3);
-            this.buttonMLoc_Select2.Name = "buttonMLoc_Select2";
-            this.buttonMLoc_Select2.Size = new System.Drawing.Size(38, 38);
-            this.buttonMLoc_Select2.TabIndex = 113;
-            this.buttonMLoc_Select2.TabStop = false;
-            this.buttonMLoc_Select2.Tag = "2";
-            this.buttonMLoc_Select2.UseVisualStyleBackColor = true;
-            this.buttonMLoc_Select2.Click += new System.EventHandler(this.buttonMLoc_Select0_Click);
-            // 
-            // buttonMLoc_Select5
-            // 
-            this.buttonMLoc_Select5.ImageKey = "PICS_SELECTLOC32.bmp";
-            this.buttonMLoc_Select5.ImageList = this.checkimgList;
-            this.buttonMLoc_Select5.Location = new System.Drawing.Point(339, 3);
-            this.buttonMLoc_Select5.Name = "buttonMLoc_Select5";
-            this.buttonMLoc_Select5.Size = new System.Drawing.Size(38, 38);
-            this.buttonMLoc_Select5.TabIndex = 113;
-            this.buttonMLoc_Select5.TabStop = false;
-            this.buttonMLoc_Select5.Tag = "5";
-            this.buttonMLoc_Select5.UseVisualStyleBackColor = true;
-            this.buttonMLoc_Select5.Click += new System.EventHandler(this.buttonMLoc_Select0_Click);
-            // 
-            // buttonMLoc_Select1
-            // 
-            this.buttonMLoc_Select1.ImageKey = "PICS_SELECTLOC32.bmp";
-            this.buttonMLoc_Select1.ImageList = this.checkimgList;
-            this.buttonMLoc_Select1.Location = new System.Drawing.Point(339, 3);
-            this.buttonMLoc_Select1.Name = "buttonMLoc_Select1";
-            this.buttonMLoc_Select1.Size = new System.Drawing.Size(38, 38);
-            this.buttonMLoc_Select1.TabIndex = 113;
-            this.buttonMLoc_Select1.TabStop = false;
-            this.buttonMLoc_Select1.Tag = "1";
-            this.buttonMLoc_Select1.UseVisualStyleBackColor = true;
-            this.buttonMLoc_Select1.Click += new System.EventHandler(this.buttonMLoc_Select0_Click);
-            // 
-            // buttonMLoc_Select4
-            // 
-            this.buttonMLoc_Select4.ImageKey = "PICS_SELECTLOC32.bmp";
-            this.buttonMLoc_Select4.ImageList = this.checkimgList;
-            this.buttonMLoc_Select4.Location = new System.Drawing.Point(339, 3);
-            this.buttonMLoc_Select4.Name = "buttonMLoc_Select4";
-            this.buttonMLoc_Select4.Size = new System.Drawing.Size(38, 38);
-            this.buttonMLoc_Select4.TabIndex = 113;
-            this.buttonMLoc_Select4.TabStop = false;
-            this.buttonMLoc_Select4.Tag = "4";
-            this.buttonMLoc_Select4.UseVisualStyleBackColor = true;
-            this.buttonMLoc_Select4.Click += new System.EventHandler(this.buttonMLoc_Select0_Click);
-            // 
-            // buttonMLoc_Select0
-            // 
-            this.buttonMLoc_Select0.AutoSize = true;
-            this.buttonMLoc_Select0.ImageKey = "PICS_SELECTLOC32.bmp";
-            this.buttonMLoc_Select0.ImageList = this.checkimgList;
-            this.buttonMLoc_Select0.Location = new System.Drawing.Point(339, 3);
-            this.buttonMLoc_Select0.Name = "buttonMLoc_Select0";
-            this.buttonMLoc_Select0.Size = new System.Drawing.Size(38, 38);
-            this.buttonMLoc_Select0.TabIndex = 113;
-            this.buttonMLoc_Select0.TabStop = false;
-            this.buttonMLoc_Select0.Tag = "0";
-            this.buttonMLoc_Select0.UseVisualStyleBackColor = true;
-            this.buttonMLoc_Select0.Click += new System.EventHandler(this.buttonMLoc_Select0_Click);
-            // 
-            // buttonMultiF16
-            // 
-            this.buttonMultiF16.Appearance = System.Windows.Forms.Appearance.Button;
-            this.buttonMultiF16.AutoCheck = false;
-            this.buttonMultiF16.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonMultiF16.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonMultiF16.ImageList = this.FunctionImageList;
-            this.buttonMultiF16.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonMultiF16.Location = new System.Drawing.Point(854, 414);
-            this.buttonMultiF16.Name = "buttonMultiF16";
-            this.buttonMultiF16.Size = new System.Drawing.Size(70, 52);
-            this.buttonMultiF16.TabIndex = 134;
-            this.buttonMultiF16.TabStop = false;
-            this.buttonMultiF16.Tag = "15";
-            this.buttonMultiF16.Text = "F15";
-            this.buttonMultiF16.UseVisualStyleBackColor = true;
-            this.buttonMultiF16.Click += new System.EventHandler(this.buttonMultiF8_Click);
-            // 
-            // buttonMultiF15
-            // 
-            this.buttonMultiF15.Appearance = System.Windows.Forms.Appearance.Button;
-            this.buttonMultiF15.AutoCheck = false;
-            this.buttonMultiF15.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonMultiF15.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonMultiF15.ImageList = this.FunctionImageList;
-            this.buttonMultiF15.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonMultiF15.Location = new System.Drawing.Point(854, 356);
-            this.buttonMultiF15.Name = "buttonMultiF15";
-            this.buttonMultiF15.Size = new System.Drawing.Size(70, 52);
-            this.buttonMultiF15.TabIndex = 133;
-            this.buttonMultiF15.TabStop = false;
-            this.buttonMultiF15.Tag = "14";
-            this.buttonMultiF15.Text = "F14";
-            this.buttonMultiF15.UseVisualStyleBackColor = true;
-            this.buttonMultiF15.Click += new System.EventHandler(this.buttonMultiF8_Click);
-            // 
-            // buttonMultiF14
-            // 
-            this.buttonMultiF14.Appearance = System.Windows.Forms.Appearance.Button;
-            this.buttonMultiF14.AutoCheck = false;
-            this.buttonMultiF14.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonMultiF14.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonMultiF14.ImageList = this.FunctionImageList;
-            this.buttonMultiF14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonMultiF14.Location = new System.Drawing.Point(854, 298);
-            this.buttonMultiF14.Name = "buttonMultiF14";
-            this.buttonMultiF14.Size = new System.Drawing.Size(70, 52);
-            this.buttonMultiF14.TabIndex = 132;
-            this.buttonMultiF14.TabStop = false;
-            this.buttonMultiF14.Tag = "13";
-            this.buttonMultiF14.Text = "F13";
-            this.buttonMultiF14.UseVisualStyleBackColor = true;
-            this.buttonMultiF14.Click += new System.EventHandler(this.buttonMultiF8_Click);
-            // 
-            // buttonMultiF13
-            // 
-            this.buttonMultiF13.Appearance = System.Windows.Forms.Appearance.Button;
-            this.buttonMultiF13.AutoCheck = false;
-            this.buttonMultiF13.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonMultiF13.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonMultiF13.ImageList = this.FunctionImageList;
-            this.buttonMultiF13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonMultiF13.Location = new System.Drawing.Point(854, 240);
-            this.buttonMultiF13.Name = "buttonMultiF13";
-            this.buttonMultiF13.Size = new System.Drawing.Size(70, 52);
-            this.buttonMultiF13.TabIndex = 131;
-            this.buttonMultiF13.TabStop = false;
-            this.buttonMultiF13.Tag = "12";
-            this.buttonMultiF13.Text = "F12";
-            this.buttonMultiF13.UseVisualStyleBackColor = true;
-            this.buttonMultiF13.Click += new System.EventHandler(this.buttonMultiF8_Click);
-            // 
-            // buttonMultiF12
-            // 
-            this.buttonMultiF12.Appearance = System.Windows.Forms.Appearance.Button;
-            this.buttonMultiF12.AutoCheck = false;
-            this.buttonMultiF12.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonMultiF12.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonMultiF12.ImageList = this.FunctionImageList;
-            this.buttonMultiF12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonMultiF12.Location = new System.Drawing.Point(854, 182);
-            this.buttonMultiF12.Name = "buttonMultiF12";
-            this.buttonMultiF12.Size = new System.Drawing.Size(70, 52);
-            this.buttonMultiF12.TabIndex = 130;
-            this.buttonMultiF12.TabStop = false;
-            this.buttonMultiF12.Tag = "11";
-            this.buttonMultiF12.Text = "F11";
-            this.buttonMultiF12.UseVisualStyleBackColor = true;
-            this.buttonMultiF12.Click += new System.EventHandler(this.buttonMultiF8_Click);
-            // 
-            // buttonMultiF11
-            // 
-            this.buttonMultiF11.Appearance = System.Windows.Forms.Appearance.Button;
-            this.buttonMultiF11.AutoCheck = false;
-            this.buttonMultiF11.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonMultiF11.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonMultiF11.ImageList = this.FunctionImageList;
-            this.buttonMultiF11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonMultiF11.Location = new System.Drawing.Point(855, 124);
-            this.buttonMultiF11.Name = "buttonMultiF11";
-            this.buttonMultiF11.Size = new System.Drawing.Size(70, 52);
-            this.buttonMultiF11.TabIndex = 129;
-            this.buttonMultiF11.TabStop = false;
-            this.buttonMultiF11.Tag = "10";
-            this.buttonMultiF11.Text = "F10";
-            this.buttonMultiF11.UseVisualStyleBackColor = true;
-            this.buttonMultiF11.Click += new System.EventHandler(this.buttonMultiF8_Click);
-            // 
-            // buttonMultiF10
-            // 
-            this.buttonMultiF10.Appearance = System.Windows.Forms.Appearance.Button;
-            this.buttonMultiF10.AutoCheck = false;
-            this.buttonMultiF10.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonMultiF10.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonMultiF10.ImageList = this.FunctionImageList;
-            this.buttonMultiF10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonMultiF10.Location = new System.Drawing.Point(854, 66);
-            this.buttonMultiF10.Name = "buttonMultiF10";
-            this.buttonMultiF10.Size = new System.Drawing.Size(70, 52);
-            this.buttonMultiF10.TabIndex = 128;
-            this.buttonMultiF10.TabStop = false;
-            this.buttonMultiF10.Tag = "9";
-            this.buttonMultiF10.Text = "F9";
-            this.buttonMultiF10.UseVisualStyleBackColor = true;
-            this.buttonMultiF10.Click += new System.EventHandler(this.buttonMultiF8_Click);
-            // 
-            // buttonMultiF9
-            // 
-            this.buttonMultiF9.Appearance = System.Windows.Forms.Appearance.Button;
-            this.buttonMultiF9.AutoCheck = false;
-            this.buttonMultiF9.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonMultiF9.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonMultiF9.ImageList = this.FunctionImageList;
-            this.buttonMultiF9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonMultiF9.Location = new System.Drawing.Point(854, 8);
-            this.buttonMultiF9.Name = "buttonMultiF9";
-            this.buttonMultiF9.Size = new System.Drawing.Size(70, 52);
-            this.buttonMultiF9.TabIndex = 127;
-            this.buttonMultiF9.TabStop = false;
-            this.buttonMultiF9.Tag = "8";
-            this.buttonMultiF9.Text = "F8";
-            this.buttonMultiF9.UseVisualStyleBackColor = true;
-            this.buttonMultiF9.Click += new System.EventHandler(this.buttonMultiF8_Click);
-            // 
-            // buttonMultiF8
-            // 
-            this.buttonMultiF8.Appearance = System.Windows.Forms.Appearance.Button;
-            this.buttonMultiF8.AutoCheck = false;
-            this.buttonMultiF8.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonMultiF8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonMultiF8.ImageList = this.FunctionImageList;
-            this.buttonMultiF8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonMultiF8.Location = new System.Drawing.Point(6, 414);
-            this.buttonMultiF8.Name = "buttonMultiF8";
-            this.buttonMultiF8.Size = new System.Drawing.Size(70, 52);
-            this.buttonMultiF8.TabIndex = 126;
-            this.buttonMultiF8.TabStop = false;
-            this.buttonMultiF8.Tag = "7";
-            this.buttonMultiF8.Text = "F7";
-            this.buttonMultiF8.UseVisualStyleBackColor = true;
-            this.buttonMultiF8.Click += new System.EventHandler(this.buttonMultiF8_Click);
-            // 
-            // buttonMultiF7
-            // 
-            this.buttonMultiF7.Appearance = System.Windows.Forms.Appearance.Button;
-            this.buttonMultiF7.AutoCheck = false;
-            this.buttonMultiF7.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonMultiF7.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonMultiF7.ImageList = this.FunctionImageList;
-            this.buttonMultiF7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonMultiF7.Location = new System.Drawing.Point(6, 356);
-            this.buttonMultiF7.Name = "buttonMultiF7";
-            this.buttonMultiF7.Size = new System.Drawing.Size(70, 52);
-            this.buttonMultiF7.TabIndex = 125;
-            this.buttonMultiF7.TabStop = false;
-            this.buttonMultiF7.Tag = "6";
-            this.buttonMultiF7.Text = "F6";
-            this.buttonMultiF7.UseVisualStyleBackColor = true;
-            this.buttonMultiF7.Click += new System.EventHandler(this.buttonMultiF8_Click);
-            // 
-            // buttonMultiF6
-            // 
-            this.buttonMultiF6.Appearance = System.Windows.Forms.Appearance.Button;
-            this.buttonMultiF6.AutoCheck = false;
-            this.buttonMultiF6.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonMultiF6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonMultiF6.ImageList = this.FunctionImageList;
-            this.buttonMultiF6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonMultiF6.Location = new System.Drawing.Point(6, 298);
-            this.buttonMultiF6.Name = "buttonMultiF6";
-            this.buttonMultiF6.Size = new System.Drawing.Size(70, 52);
-            this.buttonMultiF6.TabIndex = 124;
-            this.buttonMultiF6.TabStop = false;
-            this.buttonMultiF6.Tag = "5";
-            this.buttonMultiF6.Text = "F5";
-            this.buttonMultiF6.UseVisualStyleBackColor = true;
-            this.buttonMultiF6.Click += new System.EventHandler(this.buttonMultiF8_Click);
-            // 
-            // buttonMultiF5
-            // 
-            this.buttonMultiF5.Appearance = System.Windows.Forms.Appearance.Button;
-            this.buttonMultiF5.AutoCheck = false;
-            this.buttonMultiF5.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonMultiF5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonMultiF5.ImageList = this.FunctionImageList;
-            this.buttonMultiF5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonMultiF5.Location = new System.Drawing.Point(6, 240);
-            this.buttonMultiF5.Name = "buttonMultiF5";
-            this.buttonMultiF5.Size = new System.Drawing.Size(70, 52);
-            this.buttonMultiF5.TabIndex = 123;
-            this.buttonMultiF5.TabStop = false;
-            this.buttonMultiF5.Tag = "4";
-            this.buttonMultiF5.Text = "F4";
-            this.buttonMultiF5.UseVisualStyleBackColor = true;
-            this.buttonMultiF5.Click += new System.EventHandler(this.buttonMultiF8_Click);
-            // 
-            // buttonMultiF4
-            // 
-            this.buttonMultiF4.Appearance = System.Windows.Forms.Appearance.Button;
-            this.buttonMultiF4.AutoCheck = false;
-            this.buttonMultiF4.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonMultiF4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonMultiF4.ImageList = this.FunctionImageList;
-            this.buttonMultiF4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonMultiF4.Location = new System.Drawing.Point(6, 182);
-            this.buttonMultiF4.Name = "buttonMultiF4";
-            this.buttonMultiF4.Size = new System.Drawing.Size(70, 52);
-            this.buttonMultiF4.TabIndex = 122;
-            this.buttonMultiF4.TabStop = false;
-            this.buttonMultiF4.Tag = "3";
-            this.buttonMultiF4.Text = "F3";
-            this.buttonMultiF4.UseVisualStyleBackColor = true;
-            this.buttonMultiF4.Click += new System.EventHandler(this.buttonMultiF8_Click);
-            // 
-            // buttonMultiF3
-            // 
-            this.buttonMultiF3.Appearance = System.Windows.Forms.Appearance.Button;
-            this.buttonMultiF3.AutoCheck = false;
-            this.buttonMultiF3.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonMultiF3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonMultiF3.ImageList = this.FunctionImageList;
-            this.buttonMultiF3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonMultiF3.Location = new System.Drawing.Point(6, 124);
-            this.buttonMultiF3.Name = "buttonMultiF3";
-            this.buttonMultiF3.Size = new System.Drawing.Size(70, 52);
-            this.buttonMultiF3.TabIndex = 121;
-            this.buttonMultiF3.TabStop = false;
-            this.buttonMultiF3.Tag = "2";
-            this.buttonMultiF3.Text = "F2";
-            this.buttonMultiF3.UseVisualStyleBackColor = true;
-            this.buttonMultiF3.Click += new System.EventHandler(this.buttonMultiF8_Click);
-            // 
-            // buttonMultiF2
-            // 
-            this.buttonMultiF2.Appearance = System.Windows.Forms.Appearance.Button;
-            this.buttonMultiF2.AutoCheck = false;
-            this.buttonMultiF2.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonMultiF2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonMultiF2.ImageList = this.FunctionImageList;
-            this.buttonMultiF2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonMultiF2.Location = new System.Drawing.Point(6, 66);
-            this.buttonMultiF2.Name = "buttonMultiF2";
-            this.buttonMultiF2.Size = new System.Drawing.Size(70, 52);
-            this.buttonMultiF2.TabIndex = 120;
-            this.buttonMultiF2.TabStop = false;
-            this.buttonMultiF2.Tag = "1";
-            this.buttonMultiF2.Text = "F1";
-            this.buttonMultiF2.UseVisualStyleBackColor = true;
-            this.buttonMultiF2.Click += new System.EventHandler(this.buttonMultiF8_Click);
-            // 
-            // buttonMultiF1
-            // 
-            this.buttonMultiF1.Appearance = System.Windows.Forms.Appearance.Button;
-            this.buttonMultiF1.AutoCheck = false;
-            this.buttonMultiF1.Font = new System.Drawing.Font("Arial", 12F);
-            this.buttonMultiF1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonMultiF1.ImageList = this.FunctionImageList;
-            this.buttonMultiF1.Location = new System.Drawing.Point(6, 8);
-            this.buttonMultiF1.Name = "buttonMultiF1";
-            this.buttonMultiF1.Size = new System.Drawing.Size(70, 52);
-            this.buttonMultiF1.TabIndex = 119;
-            this.buttonMultiF1.TabStop = false;
-            this.buttonMultiF1.Tag = "0";
-            this.buttonMultiF1.Text = "F0";
-            this.buttonMultiF1.UseVisualStyleBackColor = true;
-            this.buttonMultiF1.Click += new System.EventHandler(this.buttonMultiF8_Click);
+            this.buttonEventInProcess.Location = new System.Drawing.Point(11, 6);
+            this.buttonEventInProcess.Name = "buttonEventInProcess";
+            this.buttonEventInProcess.Size = new System.Drawing.Size(155, 31);
+            this.buttonEventInProcess.TabIndex = 6;
+            this.buttonEventInProcess.Text = "in process";
+            this.buttonEventInProcess.UseVisualStyleBackColor = true;
+            this.buttonEventInProcess.Click += new System.EventHandler(this.buttonEventInProcess_Click);
             // 
             // button_S88EventsExport
             // 
@@ -4685,6 +3808,44 @@
             this.button_S88EventsImport.Text = "Import";
             this.button_S88EventsImport.UseVisualStyleBackColor = true;
             this.button_S88EventsImport.Click += new System.EventHandler(this.button_S88EventsImport_Click);
+            // 
+            // tabS88Events
+            // 
+            this.tabS88Events.Controls.Add(this.tabS88_EventEdit);
+            this.tabS88Events.Controls.Add(this.tabS88_Sensor);
+            this.tabS88Events.Controls.Add(this.tabS88_ScriptInfo);
+            this.tabS88Events.Location = new System.Drawing.Point(183, 6);
+            this.tabS88Events.Name = "tabS88Events";
+            this.tabS88Events.SelectedIndex = 0;
+            this.tabS88Events.Size = new System.Drawing.Size(745, 453);
+            this.tabS88Events.TabIndex = 3;
+            this.tabS88Events.SelectedIndexChanged += new System.EventHandler(this.tabS88Events_SelectedIndexChanged);
+            // 
+            // tabS88_EventEdit
+            // 
+            this.tabS88_EventEdit.Controls.Add(this.cBox_SlotChangeEV);
+            this.tabS88_EventEdit.Controls.Add(this.cBox_LocChangeEV);
+            this.tabS88_EventEdit.Controls.Add(this.button_TriggerProperty);
+            this.tabS88_EventEdit.Controls.Add(this.label_S88TriggerData);
+            this.tabS88_EventEdit.Controls.Add(this.label_S88TriggerCondition);
+            this.tabS88_EventEdit.Controls.Add(this.label_S88StartTrigger);
+            this.tabS88_EventEdit.Controls.Add(this.cBox_S88StartTrigger);
+            this.tabS88_EventEdit.Controls.Add(this.button_S88EventClear);
+            this.tabS88_EventEdit.Controls.Add(this.cBox_S88EventAvailable);
+            this.tabS88_EventEdit.Controls.Add(this.tBox_S88EventName);
+            this.tabS88_EventEdit.Controls.Add(this.label_S88EventName);
+            this.tabS88_EventEdit.Controls.Add(this.button_S88ScriptDown);
+            this.tabS88_EventEdit.Controls.Add(this.button_S88ScriptUp);
+            this.tabS88_EventEdit.Controls.Add(this.label_S88LocAddr);
+            this.tabS88_EventEdit.Controls.Add(this.label_S88EventScript);
+            this.tabS88_EventEdit.Controls.Add(this.lView_S88Script);
+            this.tabS88_EventEdit.Location = new System.Drawing.Point(4, 22);
+            this.tabS88_EventEdit.Name = "tabS88_EventEdit";
+            this.tabS88_EventEdit.Padding = new System.Windows.Forms.Padding(3);
+            this.tabS88_EventEdit.Size = new System.Drawing.Size(737, 427);
+            this.tabS88_EventEdit.TabIndex = 0;
+            this.tabS88_EventEdit.Text = "Event Editor";
+            this.tabS88_EventEdit.UseVisualStyleBackColor = true;
             // 
             // cBox_SlotChangeEV
             // 
@@ -4736,6 +3897,58 @@
             this.button_TriggerProperty.UseVisualStyleBackColor = true;
             this.button_TriggerProperty.Click += new System.EventHandler(this.button_TriggerProperty_Click);
             // 
+            // label_S88TriggerData
+            // 
+            this.label_S88TriggerData.AutoSize = true;
+            this.label_S88TriggerData.Location = new System.Drawing.Point(558, 71);
+            this.label_S88TriggerData.Name = "label_S88TriggerData";
+            this.label_S88TriggerData.Size = new System.Drawing.Size(11, 12);
+            this.label_S88TriggerData.TabIndex = 76;
+            this.label_S88TriggerData.Text = "-";
+            // 
+            // label_S88TriggerCondition
+            // 
+            this.label_S88TriggerCondition.AutoSize = true;
+            this.label_S88TriggerCondition.Location = new System.Drawing.Point(461, 71);
+            this.label_S88TriggerCondition.Name = "label_S88TriggerCondition";
+            this.label_S88TriggerCondition.Size = new System.Drawing.Size(91, 12);
+            this.label_S88TriggerCondition.TabIndex = 75;
+            this.label_S88TriggerCondition.Text = "Trigger condition";
+            // 
+            // label_S88StartTrigger
+            // 
+            this.label_S88StartTrigger.AutoSize = true;
+            this.label_S88StartTrigger.Location = new System.Drawing.Point(415, 37);
+            this.label_S88StartTrigger.Name = "label_S88StartTrigger";
+            this.label_S88StartTrigger.Size = new System.Drawing.Size(67, 12);
+            this.label_S88StartTrigger.TabIndex = 74;
+            this.label_S88StartTrigger.Text = "Start trigger";
+            this.label_S88StartTrigger.TextChanged += new System.EventHandler(this.label_S88EventName_TextChanged);
+            // 
+            // cBox_S88StartTrigger
+            // 
+            this.cBox_S88StartTrigger.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBox_S88StartTrigger.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.cBox_S88StartTrigger.FormattingEnabled = true;
+            this.cBox_S88StartTrigger.Items.AddRange(new object[] {
+            "Entering",
+            "Leaving",
+            "Existing",
+            "Not existing",
+            "Interval",
+            "Clock",
+            "Random",
+            "Running",
+            "Stopping",
+            "Flag",
+            "Route",
+            "Startup"});
+            this.cBox_S88StartTrigger.Location = new System.Drawing.Point(515, 31);
+            this.cBox_S88StartTrigger.Name = "cBox_S88StartTrigger";
+            this.cBox_S88StartTrigger.Size = new System.Drawing.Size(120, 23);
+            this.cBox_S88StartTrigger.TabIndex = 73;
+            this.cBox_S88StartTrigger.SelectedIndexChanged += new System.EventHandler(this.cBox_S88StartTrigger_SelectedIndexChanged);
+            // 
             // button_S88EventClear
             // 
             this.button_S88EventClear.Location = new System.Drawing.Point(26, 373);
@@ -4757,6 +3970,25 @@
             this.cBox_S88EventAvailable.UseVisualStyleBackColor = true;
             this.cBox_S88EventAvailable.CheckedChanged += new System.EventHandler(this.cBox_S88EventAvailable_CheckedChanged);
             this.cBox_S88EventAvailable.TextChanged += new System.EventHandler(this.label_S88EventName_TextChanged);
+            // 
+            // tBox_S88EventName
+            // 
+            this.tBox_S88EventName.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tBox_S88EventName.Location = new System.Drawing.Point(142, 31);
+            this.tBox_S88EventName.Name = "tBox_S88EventName";
+            this.tBox_S88EventName.Size = new System.Drawing.Size(164, 24);
+            this.tBox_S88EventName.TabIndex = 69;
+            this.tBox_S88EventName.TextChanged += new System.EventHandler(this.tBox_S88EventName_TextChanged);
+            // 
+            // label_S88EventName
+            // 
+            this.label_S88EventName.AutoSize = true;
+            this.label_S88EventName.Location = new System.Drawing.Point(24, 37);
+            this.label_S88EventName.Name = "label_S88EventName";
+            this.label_S88EventName.Size = new System.Drawing.Size(65, 12);
+            this.label_S88EventName.TabIndex = 68;
+            this.label_S88EventName.Text = "Event name";
+            this.label_S88EventName.TextChanged += new System.EventHandler(this.label_S88EventName_TextChanged);
             // 
             // button_S88ScriptDown
             // 
@@ -4780,6 +4012,368 @@
             this.button_S88ScriptUp.UseVisualStyleBackColor = true;
             this.button_S88ScriptUp.Click += new System.EventHandler(this.button_S88ScriptDown_Click);
             // 
+            // label_S88LocAddr
+            // 
+            this.label_S88LocAddr.AutoSize = true;
+            this.label_S88LocAddr.Location = new System.Drawing.Point(24, 71);
+            this.label_S88LocAddr.Name = "label_S88LocAddr";
+            this.label_S88LocAddr.Size = new System.Drawing.Size(107, 12);
+            this.label_S88LocAddr.TabIndex = 61;
+            this.label_S88LocAddr.Text = "Locomotive address";
+            this.label_S88LocAddr.TextChanged += new System.EventHandler(this.label_S88EventName_TextChanged);
+            // 
+            // label_S88EventScript
+            // 
+            this.label_S88EventScript.AutoSize = true;
+            this.label_S88EventScript.Location = new System.Drawing.Point(26, 108);
+            this.label_S88EventScript.Name = "label_S88EventScript";
+            this.label_S88EventScript.Size = new System.Drawing.Size(67, 12);
+            this.label_S88EventScript.TabIndex = 58;
+            this.label_S88EventScript.Text = "Event script";
+            this.label_S88EventScript.TextChanged += new System.EventHandler(this.label_S88EventName_TextChanged);
+            // 
+            // lView_S88Script
+            // 
+            this.lView_S88Script.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.cS88Header1,
+            this.cS88Header2,
+            this.cS88Header3,
+            this.cS88Header4,
+            this.cS88Header5});
+            this.lView_S88Script.ContextMenuStrip = this.contextMenu_S88Event;
+            this.lView_S88Script.Font = new System.Drawing.Font("Arial", 9F);
+            this.lView_S88Script.FullRowSelect = true;
+            this.lView_S88Script.GridLines = true;
+            this.lView_S88Script.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lView_S88Script.HideSelection = false;
+            this.lView_S88Script.Location = new System.Drawing.Point(142, 108);
+            this.lView_S88Script.Name = "lView_S88Script";
+            this.lView_S88Script.Size = new System.Drawing.Size(493, 305);
+            this.lView_S88Script.TabIndex = 57;
+            this.lView_S88Script.UseCompatibleStateImageBehavior = false;
+            this.lView_S88Script.View = System.Windows.Forms.View.Details;
+            this.lView_S88Script.DoubleClick += new System.EventHandler(this.toolStripMenuItem_EditS88Event_Click);
+            this.lView_S88Script.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
+            // 
+            // cS88Header1
+            // 
+            this.cS88Header1.Text = "Line";
+            this.cS88Header1.Width = 40;
+            // 
+            // cS88Header2
+            // 
+            this.cS88Header2.Text = "Command";
+            this.cS88Header2.Width = 149;
+            // 
+            // cS88Header3
+            // 
+            this.cS88Header3.Text = "Param1";
+            this.cS88Header3.Width = 88;
+            // 
+            // cS88Header4
+            // 
+            this.cS88Header4.Text = "Param2";
+            this.cS88Header4.Width = 82;
+            // 
+            // cS88Header5
+            // 
+            this.cS88Header5.Text = "Param3";
+            this.cS88Header5.Width = 96;
+            // 
+            // contextMenu_S88Event
+            // 
+            this.contextMenu_S88Event.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItemS88_Add,
+            this.MenuItemS88_Edit,
+            this.toolStripMenuItem11,
+            this.MenuItemS88_Copy,
+            this.MenuItemS88_Paste,
+            this.MenuItemS88_Del});
+            this.contextMenu_S88Event.Name = "contextMenuScript";
+            this.contextMenu_S88Event.Size = new System.Drawing.Size(149, 120);
+            this.contextMenu_S88Event.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenu_S88Event_Opening);
+            // 
+            // MenuItemS88_Add
+            // 
+            this.MenuItemS88_Add.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem5,
+            this.eNDIFToolStripMenuItem,
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem1,
+            this.wAITRNDToolStripMenuItem,
+            this.toolStripMenuItem10,
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem8,
+            this.lABELToolStripMenuItem,
+            this.toolStripMenuItem9,
+            this.jUMPIFToolStripMenuItem,
+            this.sETFLAGToolStripMenuItem,
+            this.iNCFLAGToolStripMenuItem,
+            this.rUNFILEToolStripMenuItem,
+            this.jUMPToolStripMenuItem,
+            this.jUMPS88ToolStripMenuItem,
+            this.dOToolStripMenuItem,
+            this.iFToolStripMenuItem,
+            this.eLSEIFToolStripMenuItem});
+            this.MenuItemS88_Add.Name = "MenuItemS88_Add";
+            this.MenuItemS88_Add.Size = new System.Drawing.Size(148, 22);
+            this.MenuItemS88_Add.Text = "Add";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(141, 22);
+            this.toolStripMenuItem2.Tag = "1";
+            this.toolStripMenuItem2.Text = "SPEED";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(141, 22);
+            this.toolStripMenuItem3.Tag = "2";
+            this.toolStripMenuItem3.Text = "DIRECTION";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(141, 22);
+            this.toolStripMenuItem4.Tag = "3";
+            this.toolStripMenuItem4.Text = "FUNCTION";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(141, 22);
+            this.toolStripMenuItem5.Tag = "4";
+            this.toolStripMenuItem5.Text = "ACCESSORY";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // eNDIFToolStripMenuItem
+            // 
+            this.eNDIFToolStripMenuItem.Name = "eNDIFToolStripMenuItem";
+            this.eNDIFToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.eNDIFToolStripMenuItem.Tag = "17";
+            this.eNDIFToolStripMenuItem.Text = "SETROUTE";
+            this.eNDIFToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(141, 22);
+            this.toolStripMenuItem6.Tag = "5";
+            this.toolStripMenuItem6.Text = "WAIT";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
+            this.toolStripMenuItem1.Tag = "19";
+            this.toolStripMenuItem1.Text = "WAITRND";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // wAITRNDToolStripMenuItem
+            // 
+            this.wAITRNDToolStripMenuItem.Name = "wAITRNDToolStripMenuItem";
+            this.wAITRNDToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.wAITRNDToolStripMenuItem.Tag = "20";
+            this.wAITRNDToolStripMenuItem.Text = "WAITIF";
+            this.wAITRNDToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem10
+            // 
+            this.toolStripMenuItem10.Name = "toolStripMenuItem10";
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(138, 6);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(141, 22);
+            this.toolStripMenuItem7.Tag = "6";
+            this.toolStripMenuItem7.Text = "POWER";
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(141, 22);
+            this.toolStripMenuItem8.Tag = "7";
+            this.toolStripMenuItem8.Text = "EXIT";
+            this.toolStripMenuItem8.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // lABELToolStripMenuItem
+            // 
+            this.lABELToolStripMenuItem.Name = "lABELToolStripMenuItem";
+            this.lABELToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.lABELToolStripMenuItem.Tag = "11";
+            this.lABELToolStripMenuItem.Text = "LABEL";
+            this.lABELToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(141, 22);
+            this.toolStripMenuItem9.Tag = "8";
+            this.toolStripMenuItem9.Text = "GOTO";
+            this.toolStripMenuItem9.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // jUMPIFToolStripMenuItem
+            // 
+            this.jUMPIFToolStripMenuItem.Name = "jUMPIFToolStripMenuItem";
+            this.jUMPIFToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.jUMPIFToolStripMenuItem.Tag = "21";
+            this.jUMPIFToolStripMenuItem.Text = "GOTOIF";
+            this.jUMPIFToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // sETFLAGToolStripMenuItem
+            // 
+            this.sETFLAGToolStripMenuItem.Name = "sETFLAGToolStripMenuItem";
+            this.sETFLAGToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.sETFLAGToolStripMenuItem.Tag = "10";
+            this.sETFLAGToolStripMenuItem.Text = "SETFLAG";
+            this.sETFLAGToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // iNCFLAGToolStripMenuItem
+            // 
+            this.iNCFLAGToolStripMenuItem.Name = "iNCFLAGToolStripMenuItem";
+            this.iNCFLAGToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.iNCFLAGToolStripMenuItem.Tag = "12";
+            this.iNCFLAGToolStripMenuItem.Text = "INCFLAG";
+            this.iNCFLAGToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // rUNFILEToolStripMenuItem
+            // 
+            this.rUNFILEToolStripMenuItem.Name = "rUNFILEToolStripMenuItem";
+            this.rUNFILEToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.rUNFILEToolStripMenuItem.Tag = "13";
+            this.rUNFILEToolStripMenuItem.Text = "RUNFILE";
+            this.rUNFILEToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // jUMPToolStripMenuItem
+            // 
+            this.jUMPToolStripMenuItem.Name = "jUMPToolStripMenuItem";
+            this.jUMPToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.jUMPToolStripMenuItem.Tag = "9";
+            this.jUMPToolStripMenuItem.Text = "JUMP";
+            this.jUMPToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // jUMPS88ToolStripMenuItem
+            // 
+            this.jUMPS88ToolStripMenuItem.Name = "jUMPS88ToolStripMenuItem";
+            this.jUMPS88ToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.jUMPS88ToolStripMenuItem.Tag = "18";
+            this.jUMPS88ToolStripMenuItem.Text = "JUMPS88";
+            this.jUMPS88ToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // dOToolStripMenuItem
+            // 
+            this.dOToolStripMenuItem.Name = "dOToolStripMenuItem";
+            this.dOToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.dOToolStripMenuItem.Tag = "14";
+            this.dOToolStripMenuItem.Text = "JUMPRUN";
+            this.dOToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // iFToolStripMenuItem
+            // 
+            this.iFToolStripMenuItem.Name = "iFToolStripMenuItem";
+            this.iFToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.iFToolStripMenuItem.Tag = "15";
+            this.iFToolStripMenuItem.Text = "JUMPSTOP";
+            this.iFToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // eLSEIFToolStripMenuItem
+            // 
+            this.eLSEIFToolStripMenuItem.Name = "eLSEIFToolStripMenuItem";
+            this.eLSEIFToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.eLSEIFToolStripMenuItem.Tag = "16";
+            this.eLSEIFToolStripMenuItem.Text = "JUMPROUTE";
+            this.eLSEIFToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // MenuItemS88_Edit
+            // 
+            this.MenuItemS88_Edit.Name = "MenuItemS88_Edit";
+            this.MenuItemS88_Edit.Size = new System.Drawing.Size(148, 22);
+            this.MenuItemS88_Edit.Text = "Edit";
+            this.MenuItemS88_Edit.Click += new System.EventHandler(this.toolStripMenuItem_EditS88Event_Click);
+            // 
+            // toolStripMenuItem11
+            // 
+            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(145, 6);
+            // 
+            // MenuItemS88_Copy
+            // 
+            this.MenuItemS88_Copy.Name = "MenuItemS88_Copy";
+            this.MenuItemS88_Copy.ShortcutKeyDisplayString = "Ctrl+C";
+            this.MenuItemS88_Copy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.MenuItemS88_Copy.Size = new System.Drawing.Size(148, 22);
+            this.MenuItemS88_Copy.Tag = "1";
+            this.MenuItemS88_Copy.Text = "Copy";
+            this.MenuItemS88_Copy.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
+            // MenuItemS88_Paste
+            // 
+            this.MenuItemS88_Paste.Name = "MenuItemS88_Paste";
+            this.MenuItemS88_Paste.ShortcutKeyDisplayString = "Ctrl+V";
+            this.MenuItemS88_Paste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.MenuItemS88_Paste.Size = new System.Drawing.Size(148, 22);
+            this.MenuItemS88_Paste.Tag = "2";
+            this.MenuItemS88_Paste.Text = "Paste";
+            this.MenuItemS88_Paste.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
+            // MenuItemS88_Del
+            // 
+            this.MenuItemS88_Del.Name = "MenuItemS88_Del";
+            this.MenuItemS88_Del.ShortcutKeyDisplayString = "";
+            this.MenuItemS88_Del.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.MenuItemS88_Del.Size = new System.Drawing.Size(148, 22);
+            this.MenuItemS88_Del.Text = "Delete";
+            this.MenuItemS88_Del.Click += new System.EventHandler(this.toolStripMenuItem_S88EventDel_Click);
+            // 
+            // tabS88_Sensor
+            // 
+            this.tabS88_Sensor.Controls.Add(this.pBox_S88SensorDisplay);
+            this.tabS88_Sensor.Location = new System.Drawing.Point(4, 22);
+            this.tabS88_Sensor.Name = "tabS88_Sensor";
+            this.tabS88_Sensor.Padding = new System.Windows.Forms.Padding(3);
+            this.tabS88_Sensor.Size = new System.Drawing.Size(737, 427);
+            this.tabS88_Sensor.TabIndex = 1;
+            this.tabS88_Sensor.Text = "Sensors Info";
+            this.tabS88_Sensor.UseVisualStyleBackColor = true;
+            // 
+            // pBox_S88SensorDisplay
+            // 
+            this.pBox_S88SensorDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pBox_S88SensorDisplay.Location = new System.Drawing.Point(3, 3);
+            this.pBox_S88SensorDisplay.Name = "pBox_S88SensorDisplay";
+            this.pBox_S88SensorDisplay.Size = new System.Drawing.Size(731, 421);
+            this.pBox_S88SensorDisplay.TabIndex = 0;
+            this.pBox_S88SensorDisplay.TabStop = false;
+            this.pBox_S88SensorDisplay.Paint += new System.Windows.Forms.PaintEventHandler(this.pBox_S88SensorDisplay_Paint);
+            // 
+            // tabS88_ScriptInfo
+            // 
+            this.tabS88_ScriptInfo.Controls.Add(this.button_S88ScriptReset);
+            this.tabS88_ScriptInfo.Controls.Add(this.gBox_EventClock);
+            this.tabS88_ScriptInfo.Controls.Add(this.gBox_S88Log);
+            this.tabS88_ScriptInfo.Controls.Add(this.gBox_S88RunChk);
+            this.tabS88_ScriptInfo.Controls.Add(this.gBox_S88Flag);
+            this.tabS88_ScriptInfo.Controls.Add(this.button_S88ScriptViewUpdate);
+            this.tabS88_ScriptInfo.Location = new System.Drawing.Point(4, 22);
+            this.tabS88_ScriptInfo.Name = "tabS88_ScriptInfo";
+            this.tabS88_ScriptInfo.Padding = new System.Windows.Forms.Padding(3);
+            this.tabS88_ScriptInfo.Size = new System.Drawing.Size(737, 427);
+            this.tabS88_ScriptInfo.TabIndex = 2;
+            this.tabS88_ScriptInfo.Text = "Script Info";
+            this.tabS88_ScriptInfo.UseVisualStyleBackColor = true;
+            this.tabS88_ScriptInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPage10_Paint);
+            // 
             // button_S88ScriptReset
             // 
             this.button_S88ScriptReset.Location = new System.Drawing.Point(650, 14);
@@ -4789,6 +4383,38 @@
             this.button_S88ScriptReset.Text = "Reset";
             this.button_S88ScriptReset.UseVisualStyleBackColor = true;
             this.button_S88ScriptReset.Click += new System.EventHandler(this.button_S88ScriptReset_Click);
+            // 
+            // gBox_EventClock
+            // 
+            this.gBox_EventClock.Controls.Add(this.pBox_EventClock);
+            this.gBox_EventClock.Location = new System.Drawing.Point(17, 241);
+            this.gBox_EventClock.Name = "gBox_EventClock";
+            this.gBox_EventClock.Size = new System.Drawing.Size(152, 180);
+            this.gBox_EventClock.TabIndex = 108;
+            this.gBox_EventClock.TabStop = false;
+            this.gBox_EventClock.Text = "Clock";
+            // 
+            // pBox_EventClock
+            // 
+            this.pBox_EventClock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pBox_EventClock.Location = new System.Drawing.Point(18, 20);
+            this.pBox_EventClock.Name = "pBox_EventClock";
+            this.pBox_EventClock.Size = new System.Drawing.Size(114, 150);
+            this.pBox_EventClock.TabIndex = 107;
+            this.pBox_EventClock.TabStop = false;
+            this.pBox_EventClock.Click += new System.EventHandler(this.pBox_EventClock_Click);
+            this.pBox_EventClock.Paint += new System.Windows.Forms.PaintEventHandler(this.pBox_EventClock_Paint);
+            // 
+            // gBox_S88Log
+            // 
+            this.gBox_S88Log.Controls.Add(this.button_S88ConsoleClear);
+            this.gBox_S88Log.Controls.Add(this.listBox_S88Console);
+            this.gBox_S88Log.Location = new System.Drawing.Point(384, 51);
+            this.gBox_S88Log.Name = "gBox_S88Log";
+            this.gBox_S88Log.Size = new System.Drawing.Size(349, 370);
+            this.gBox_S88Log.TabIndex = 3;
+            this.gBox_S88Log.TabStop = false;
+            this.gBox_S88Log.Text = "S88 process log";
             // 
             // button_S88ConsoleClear
             // 
@@ -4800,6 +4426,75 @@
             this.button_S88ConsoleClear.UseVisualStyleBackColor = true;
             this.button_S88ConsoleClear.Click += new System.EventHandler(this.button_S88ConsoleClear_Click);
             // 
+            // listBox_S88Console
+            // 
+            this.listBox_S88Console.BackColor = System.Drawing.Color.Black;
+            this.listBox_S88Console.Font = new System.Drawing.Font("Arial", 9F);
+            this.listBox_S88Console.ForeColor = System.Drawing.Color.White;
+            this.listBox_S88Console.FormattingEnabled = true;
+            this.listBox_S88Console.HorizontalScrollbar = true;
+            this.listBox_S88Console.ItemHeight = 15;
+            this.listBox_S88Console.Location = new System.Drawing.Point(6, 49);
+            this.listBox_S88Console.Name = "listBox_S88Console";
+            this.listBox_S88Console.Size = new System.Drawing.Size(335, 304);
+            this.listBox_S88Console.TabIndex = 4;
+            // 
+            // gBox_S88RunChk
+            // 
+            this.gBox_S88RunChk.Controls.Add(this.panel_EVRunStatus);
+            this.gBox_S88RunChk.Location = new System.Drawing.Point(175, 51);
+            this.gBox_S88RunChk.Name = "gBox_S88RunChk";
+            this.gBox_S88RunChk.Size = new System.Drawing.Size(203, 370);
+            this.gBox_S88RunChk.TabIndex = 2;
+            this.gBox_S88RunChk.TabStop = false;
+            this.gBox_S88RunChk.Text = "Run check";
+            // 
+            // panel_EVRunStatus
+            // 
+            this.panel_EVRunStatus.AutoScroll = true;
+            this.panel_EVRunStatus.Controls.Add(this.label_S88ScrInfoRunChk);
+            this.panel_EVRunStatus.Location = new System.Drawing.Point(6, 20);
+            this.panel_EVRunStatus.Name = "panel_EVRunStatus";
+            this.panel_EVRunStatus.Size = new System.Drawing.Size(191, 340);
+            this.panel_EVRunStatus.TabIndex = 1;
+            // 
+            // label_S88ScrInfoRunChk
+            // 
+            this.label_S88ScrInfoRunChk.AutoSize = true;
+            this.label_S88ScrInfoRunChk.Location = new System.Drawing.Point(3, 5);
+            this.label_S88ScrInfoRunChk.Name = "label_S88ScrInfoRunChk";
+            this.label_S88ScrInfoRunChk.Size = new System.Drawing.Size(49, 12);
+            this.label_S88ScrInfoRunChk.TabIndex = 0;
+            this.label_S88ScrInfoRunChk.Text = "Flag 0: 0";
+            // 
+            // gBox_S88Flag
+            // 
+            this.gBox_S88Flag.Controls.Add(this.panel_EVFlagStatus);
+            this.gBox_S88Flag.Location = new System.Drawing.Point(17, 51);
+            this.gBox_S88Flag.Name = "gBox_S88Flag";
+            this.gBox_S88Flag.Size = new System.Drawing.Size(152, 180);
+            this.gBox_S88Flag.TabIndex = 0;
+            this.gBox_S88Flag.TabStop = false;
+            this.gBox_S88Flag.Text = "Flag view";
+            // 
+            // panel_EVFlagStatus
+            // 
+            this.panel_EVFlagStatus.AutoScroll = true;
+            this.panel_EVFlagStatus.Controls.Add(this.label_S88ScrInfoFlagView);
+            this.panel_EVFlagStatus.Location = new System.Drawing.Point(6, 20);
+            this.panel_EVFlagStatus.Name = "panel_EVFlagStatus";
+            this.panel_EVFlagStatus.Size = new System.Drawing.Size(140, 154);
+            this.panel_EVFlagStatus.TabIndex = 1;
+            // 
+            // label_S88ScrInfoFlagView
+            // 
+            this.label_S88ScrInfoFlagView.AutoSize = true;
+            this.label_S88ScrInfoFlagView.Location = new System.Drawing.Point(3, 5);
+            this.label_S88ScrInfoFlagView.Name = "label_S88ScrInfoFlagView";
+            this.label_S88ScrInfoFlagView.Size = new System.Drawing.Size(49, 12);
+            this.label_S88ScrInfoFlagView.TabIndex = 0;
+            this.label_S88ScrInfoFlagView.Text = "Flag 0: 0";
+            // 
             // button_S88ScriptViewUpdate
             // 
             this.button_S88ScriptViewUpdate.Location = new System.Drawing.Point(17, 14);
@@ -4809,6 +4504,98 @@
             this.button_S88ScriptViewUpdate.Text = "Update";
             this.button_S88ScriptViewUpdate.UseVisualStyleBackColor = true;
             this.button_S88ScriptViewUpdate.Click += new System.EventHandler(this.button_S88ScriptViewUpdate_Click);
+            // 
+            // lBox_S88Events
+            // 
+            this.lBox_S88Events.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lBox_S88Events.FormattingEnabled = true;
+            this.lBox_S88Events.HorizontalScrollbar = true;
+            this.lBox_S88Events.ItemHeight = 16;
+            this.lBox_S88Events.Items.AddRange(new object[] {
+            "A:",
+            "B:",
+            "C:",
+            "D:",
+            "E:",
+            "F:",
+            "G:",
+            "H:",
+            "I:",
+            "J:",
+            "K:",
+            "L:",
+            "M:",
+            "N:",
+            "O:",
+            "P:",
+            "Q:",
+            "R:",
+            "S:",
+            "T:",
+            "U:",
+            "V:",
+            "W:",
+            "X:",
+            "Y:",
+            "Z:"});
+            this.lBox_S88Events.Location = new System.Drawing.Point(10, 42);
+            this.lBox_S88Events.Name = "lBox_S88Events";
+            this.lBox_S88Events.Size = new System.Drawing.Size(159, 388);
+            this.lBox_S88Events.TabIndex = 2;
+            this.lBox_S88Events.SelectedIndexChanged += new System.EventHandler(this.lBox_S88Events_SelectedIndexChanged);
+            // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.panel_Crane);
+            this.tabPage10.Location = new System.Drawing.Point(4, 22);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage10.Size = new System.Drawing.Size(926, 472);
+            this.tabPage10.TabIndex = 9;
+            this.tabPage10.Text = "Crane";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // panel_Crane
+            // 
+            this.panel_Crane.Controls.Add(this.label_CraneSpeedMin);
+            this.panel_Crane.Controls.Add(this.label_CraneSpeedMax);
+            this.panel_Crane.Controls.Add(this.Button_CraneCabRight);
+            this.panel_Crane.Controls.Add(this.Button_CraneCabLeft);
+            this.panel_Crane.Controls.Add(this.Button_CraneRunRight);
+            this.panel_Crane.Controls.Add(this.Button_CraneRunLeft);
+            this.panel_Crane.Controls.Add(this.gBoxCraneType);
+            this.panel_Crane.Controls.Add(this.tBar_CraneSpeed);
+            this.panel_Crane.Controls.Add(this.Button_CraneStop);
+            this.panel_Crane.Controls.Add(this.gBox_CraneLoc);
+            this.panel_Crane.Controls.Add(this.Button_CraneBoomDown);
+            this.panel_Crane.Controls.Add(this.Button_CraneHookDown);
+            this.panel_Crane.Controls.Add(this.Button_CraneBoomUp);
+            this.panel_Crane.Controls.Add(this.Button_CraneHookUp);
+            this.panel_Crane.Controls.Add(this.Button_CraneRabbit);
+            this.panel_Crane.Controls.Add(this.Button_CraneRight);
+            this.panel_Crane.Controls.Add(this.Button_CraneLeft);
+            this.panel_Crane.Location = new System.Drawing.Point(0, 0);
+            this.panel_Crane.Name = "panel_Crane";
+            this.panel_Crane.Size = new System.Drawing.Size(926, 472);
+            this.panel_Crane.TabIndex = 0;
+            // 
+            // label_CraneSpeedMin
+            // 
+            this.label_CraneSpeedMin.AutoSize = true;
+            this.label_CraneSpeedMin.Location = new System.Drawing.Point(37, 128);
+            this.label_CraneSpeedMin.Name = "label_CraneSpeedMin";
+            this.label_CraneSpeedMin.Size = new System.Drawing.Size(23, 12);
+            this.label_CraneSpeedMin.TabIndex = 84;
+            this.label_CraneSpeedMin.Text = "Min";
+            // 
+            // label_CraneSpeedMax
+            // 
+            this.label_CraneSpeedMax.AutoSize = true;
+            this.label_CraneSpeedMax.Location = new System.Drawing.Point(37, 36);
+            this.label_CraneSpeedMax.Name = "label_CraneSpeedMax";
+            this.label_CraneSpeedMax.Size = new System.Drawing.Size(26, 12);
+            this.label_CraneSpeedMax.TabIndex = 83;
+            this.label_CraneSpeedMax.Text = "Max";
             // 
             // Button_CraneCabRight
             // 
@@ -4872,6 +4659,16 @@
             this.Button_CraneRunLeft.UseVisualStyleBackColor = true;
             this.Button_CraneRunLeft.Click += new System.EventHandler(this.Button_CraneBoomUp_Click);
             // 
+            // gBoxCraneType
+            // 
+            this.gBoxCraneType.Controls.Add(this.cBox_CraneType);
+            this.gBoxCraneType.Location = new System.Drawing.Point(613, 197);
+            this.gBoxCraneType.Name = "gBoxCraneType";
+            this.gBoxCraneType.Size = new System.Drawing.Size(238, 100);
+            this.gBoxCraneType.TabIndex = 78;
+            this.gBoxCraneType.TabStop = false;
+            this.gBoxCraneType.Text = "Crane type";
+            // 
             // cBox_CraneType
             // 
             this.cBox_CraneType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -4885,6 +4682,21 @@
             this.cBox_CraneType.Size = new System.Drawing.Size(190, 20);
             this.cBox_CraneType.TabIndex = 0;
             this.cBox_CraneType.SelectedIndexChanged += new System.EventHandler(this.cBox_CraneType_SelectedIndexChanged);
+            // 
+            // tBar_CraneSpeed
+            // 
+            this.tBar_CraneSpeed.LargeChange = 128;
+            this.tBar_CraneSpeed.Location = new System.Drawing.Point(69, 36);
+            this.tBar_CraneSpeed.Maximum = 768;
+            this.tBar_CraneSpeed.Minimum = 1;
+            this.tBar_CraneSpeed.Name = "tBar_CraneSpeed";
+            this.tBar_CraneSpeed.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.tBar_CraneSpeed.Size = new System.Drawing.Size(45, 104);
+            this.tBar_CraneSpeed.SmallChange = 128;
+            this.tBar_CraneSpeed.TabIndex = 77;
+            this.tBar_CraneSpeed.TickFrequency = 128;
+            this.tBar_CraneSpeed.Value = 128;
+            this.tBar_CraneSpeed.ValueChanged += new System.EventHandler(this.tBar_CraneSpeed_ValueChanged);
             // 
             // Button_CraneStop
             // 
@@ -4901,6 +4713,76 @@
             this.Button_CraneStop.Tag = "0";
             this.Button_CraneStop.UseVisualStyleBackColor = true;
             this.Button_CraneStop.Click += new System.EventHandler(this.Button_CraneBoomUp_Click);
+            // 
+            // gBox_CraneLoc
+            // 
+            this.gBox_CraneLoc.Controls.Add(this.labelCraneProtcol);
+            this.gBox_CraneLoc.Controls.Add(this.cBox_CraneProtcol);
+            this.gBox_CraneLoc.Controls.Add(this.labelCraneLocAddr);
+            this.gBox_CraneLoc.Controls.Add(this.numUpDownCraneAddress);
+            this.gBox_CraneLoc.Location = new System.Drawing.Point(611, 22);
+            this.gBox_CraneLoc.Name = "gBox_CraneLoc";
+            this.gBox_CraneLoc.Size = new System.Drawing.Size(240, 138);
+            this.gBox_CraneLoc.TabIndex = 75;
+            this.gBox_CraneLoc.TabStop = false;
+            this.gBox_CraneLoc.Text = "Lok address";
+            // 
+            // labelCraneProtcol
+            // 
+            this.labelCraneProtcol.AutoSize = true;
+            this.labelCraneProtcol.Location = new System.Drawing.Point(27, 37);
+            this.labelCraneProtcol.Name = "labelCraneProtcol";
+            this.labelCraneProtcol.Size = new System.Drawing.Size(47, 12);
+            this.labelCraneProtcol.TabIndex = 72;
+            this.labelCraneProtcol.Text = "Protocol";
+            // 
+            // cBox_CraneProtcol
+            // 
+            this.cBox_CraneProtcol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBox_CraneProtcol.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.cBox_CraneProtcol.FormattingEnabled = true;
+            this.cBox_CraneProtcol.Items.AddRange(new object[] {
+            "MM2",
+            "mfx",
+            "DCC"});
+            this.cBox_CraneProtcol.Location = new System.Drawing.Point(114, 31);
+            this.cBox_CraneProtcol.Name = "cBox_CraneProtcol";
+            this.cBox_CraneProtcol.Size = new System.Drawing.Size(105, 23);
+            this.cBox_CraneProtcol.TabIndex = 71;
+            this.cBox_CraneProtcol.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // labelCraneLocAddr
+            // 
+            this.labelCraneLocAddr.AutoSize = true;
+            this.labelCraneLocAddr.Location = new System.Drawing.Point(27, 78);
+            this.labelCraneLocAddr.Name = "labelCraneLocAddr";
+            this.labelCraneLocAddr.Size = new System.Drawing.Size(67, 12);
+            this.labelCraneLocAddr.TabIndex = 73;
+            this.labelCraneLocAddr.Text = "Loc address";
+            // 
+            // numUpDownCraneAddress
+            // 
+            this.numUpDownCraneAddress.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.numUpDownCraneAddress.Location = new System.Drawing.Point(114, 73);
+            this.numUpDownCraneAddress.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numUpDownCraneAddress.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUpDownCraneAddress.Name = "numUpDownCraneAddress";
+            this.numUpDownCraneAddress.Size = new System.Drawing.Size(105, 24);
+            this.numUpDownCraneAddress.TabIndex = 74;
+            this.numUpDownCraneAddress.Value = new decimal(new int[] {
+            77,
+            0,
+            0,
+            0});
+            this.numUpDownCraneAddress.ValueChanged += new System.EventHandler(this.numUpDownCraneAddress_ValueChanged);
             // 
             // Button_CraneBoomDown
             // 
@@ -5013,6 +4895,124 @@
             this.Button_CraneLeft.Tag = "1";
             this.Button_CraneLeft.UseVisualStyleBackColor = true;
             this.Button_CraneLeft.Click += new System.EventHandler(this.Button_CraneBoomUp_Click);
+            // 
+            // OuterPanel
+            // 
+            this.OuterPanel.Controls.Add(this.tabPanels);
+            this.OuterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OuterPanel.Location = new System.Drawing.Point(0, 43);
+            this.OuterPanel.Name = "OuterPanel";
+            this.OuterPanel.Size = new System.Drawing.Size(934, 499);
+            this.OuterPanel.TabIndex = 66;
+            // 
+            // StatusLabel
+            // 
+            this.StatusLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.StatusLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusLabel.Name = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(907, 17);
+            this.StatusLabel.Spring = true;
+            this.StatusLabel.Text = "Welcome aboard!";
+            this.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // serialPort
+            // 
+            this.serialPort.BaudRate = 115200;
+            this.serialPort.ReadTimeout = 100;
+            this.serialPort.WriteTimeout = 100;
+            this.serialPort.ErrorReceived += new System.IO.Ports.SerialErrorReceivedEventHandler(this.serialPort_ErrorReceived);
+            this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
+            // 
+            // timerSpeed
+            // 
+            this.timerSpeed.Interval = 500;
+            this.timerSpeed.Tick += new System.EventHandler(this.timerSpeed_Tick);
+            // 
+            // timerDraw
+            // 
+            this.timerDraw.Tick += new System.EventHandler(this.timerDraw_Tick);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StatusLabel,
+            this.ConnectedStatusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 542);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(934, 22);
+            this.statusStrip1.SizingGrip = false;
+            this.statusStrip1.Stretch = false;
+            this.statusStrip1.TabIndex = 65;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // ConnectedStatusLabel
+            // 
+            this.ConnectedStatusLabel.Name = "ConnectedStatusLabel";
+            this.ConnectedStatusLabel.Size = new System.Drawing.Size(12, 17);
+            this.ConnectedStatusLabel.Text = "-";
+            // 
+            // timerScript
+            // 
+            this.timerScript.Tick += new System.EventHandler(this.timerScript_Tick);
+            // 
+            // AccessoryImageList
+            // 
+            this.AccessoryImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("AccessoryImageList.ImageStream")));
+            this.AccessoryImageList.TransparentColor = System.Drawing.Color.Lime;
+            this.AccessoryImageList.Images.SetKeyName(0, "SIGNAL_RED2.png");
+            this.AccessoryImageList.Images.SetKeyName(1, "SIGNAL_GREEN2.png");
+            this.AccessoryImageList.Images.SetKeyName(2, "TURNOUT_3WAY_0.png");
+            this.AccessoryImageList.Images.SetKeyName(3, "TURNOUT_3WAY_1.png");
+            this.AccessoryImageList.Images.SetKeyName(4, "TURNOUT_3WAY_2.png");
+            this.AccessoryImageList.Images.SetKeyName(5, "TURNOUT_3WAY_3.png");
+            this.AccessoryImageList.Images.SetKeyName(6, "TURNOUT_LEFT_0.png");
+            this.AccessoryImageList.Images.SetKeyName(7, "TURNOUT_LEFT_1.png");
+            this.AccessoryImageList.Images.SetKeyName(8, "TURNOUT_LEFT_2.png");
+            this.AccessoryImageList.Images.SetKeyName(9, "TURNOUT_RIGHT_0.png");
+            this.AccessoryImageList.Images.SetKeyName(10, "TURNOUT_RIGHT_1.png");
+            this.AccessoryImageList.Images.SetKeyName(11, "TURNOUT_RIGHT_2.png");
+            this.AccessoryImageList.Images.SetKeyName(12, "DBLSLIPSWITCH_1.png");
+            this.AccessoryImageList.Images.SetKeyName(13, "DBLSLIPSWITCH_2.png");
+            this.AccessoryImageList.Images.SetKeyName(14, "SIGNAL_76371_RED.png");
+            this.AccessoryImageList.Images.SetKeyName(15, "SIGNAL_76371_BLACK.png");
+            this.AccessoryImageList.Images.SetKeyName(16, "SIGNAL_76383_RED.png");
+            this.AccessoryImageList.Images.SetKeyName(17, "SIGNAL_76383_BLACK.png");
+            this.AccessoryImageList.Images.SetKeyName(18, "SIGNAL_76383_GREEN.png");
+            this.AccessoryImageList.Images.SetKeyName(19, "SIGNAL_76391_RED.png");
+            this.AccessoryImageList.Images.SetKeyName(20, "SIGNAL_76391_GREEN.png");
+            this.AccessoryImageList.Images.SetKeyName(21, "SIGNAL_76393_RED.png");
+            this.AccessoryImageList.Images.SetKeyName(22, "SIGNAL_76393_YELLOW.png");
+            this.AccessoryImageList.Images.SetKeyName(23, "SIGNAL_76393_GREEN.png");
+            this.AccessoryImageList.Images.SetKeyName(24, "SIGNAL_76394_RED.png");
+            this.AccessoryImageList.Images.SetKeyName(25, "SIGNAL_76394_RED_SW.png");
+            this.AccessoryImageList.Images.SetKeyName(26, "SIGNAL_76394_YELLOW.png");
+            this.AccessoryImageList.Images.SetKeyName(27, "SIGNAL_76394_GREEN.png");
+            // 
+            // timerS88
+            // 
+            this.timerS88.Enabled = true;
+            this.timerS88.Tick += new System.EventHandler(this.timerS88_Tick);
+            // 
+            // timerSerialSend
+            // 
+            this.timerSerialSend.Interval = 40;
+            this.timerSerialSend.Tick += new System.EventHandler(this.timerSerialSend_Tick);
+            // 
+            // timerClock
+            // 
+            this.timerClock.Enabled = true;
+            this.timerClock.Interval = 1000;
+            this.timerClock.Tick += new System.EventHandler(this.timerClock_Tick);
+            // 
+            // InfoTip
+            // 
+            this.InfoTip.UseAnimation = false;
+            this.InfoTip.UseFading = false;
+            // 
+            // timerUpdateAll
+            // 
+            this.timerUpdateAll.Interval = 500;
+            this.timerUpdateAll.Tick += new System.EventHandler(this.timerUpdateAll_Tick);
             // 
             // MainForm
             // 

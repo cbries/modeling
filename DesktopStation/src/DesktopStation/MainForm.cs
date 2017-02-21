@@ -6003,27 +6003,16 @@ namespace DesktopStation
 
         }
 
-
-        /// <summary>
-        /// シリアルポート名取得
-        /// </summary>
-        /// <returns>シリアルポート名のテキスト</returns>
-
         private String getSerialPortName()
         {
             String aResult;
-
             aResult = serialPort.PortName;
-
             return aResult;
-
         }
-
 
         private void SButton_Power_Click(object sender, EventArgs e)
         {
             ClickPower();
-
         }
 
         private void ClickPower()
@@ -6052,8 +6041,6 @@ namespace DesktopStation
                     //Emulation
                     aPortOpenCheck = true;
                     break;
-
-
             }
 
             if (aPortOpenCheck == false)
@@ -6155,29 +6142,22 @@ namespace DesktopStation
         {
             int aTimeoutCount = 0;
 
-            //待機中にボタンを押されないようにする
             SButton_Power.Enabled = false;
             SButton_Close.Enabled = false;
 
-            /* S88のフラグ変数＆センサバッファ＆DCC利用可否設定を初期化 */
             S88Manager.Clear();
 
-            /* 応答チェックを初期化 */
             CheckRailuinoResponse = 2;
             ConnectedStatusLabel.Text = "-";
 
-            /* トラックボックス状態クリア */
             TBoxManager.Clear();
 
-            /* レールへの電源供給 */
             if (inSendSerialCmd == true)
             {
-                /* ピング送信 */
                 SerialCmd.SetPing();
 
                 DSCommon.WaitSleepTime(2);
 
-                /* レールに電源供給 */
                 gControlMode = SerialCmd.SetPower(Program.POWER_ON);
 
                 StatusLabel.Text = StatusLabel.Text + " ";
@@ -6192,17 +6172,13 @@ namespace DesktopStation
                     // 5sec timeout
                     if (aTimeoutCount > 50)
                     {
-                        //操作系は戻す
                         SButton_Power.Enabled = true;
                         SButton_Close.Enabled = true;
 
                       
                         try
                         {
-                            //シリアルバッファクリア
                             serialPort.DiscardInBuffer();
-                            
-                            //シリアルポートを閉じる
                             serialPort.Close();
                         }
                         catch (ArgumentException ex)
@@ -6210,10 +6186,8 @@ namespace DesktopStation
                             StatusLabel.Text = ex.Message;
                         }
 
-                        //パワーオフ状態にする
                         gControlMode = Program.POWER_OFF;
 
-                        //強制終了
                         return false;
                     }
 
@@ -6224,7 +6198,6 @@ namespace DesktopStation
                 gControlMode = Program.POWER_ON;
             }
 
-            //UI系を変更＆戻す
             SButton_Power.Enabled = true;
             SButton_Close.Enabled = true;
             SButton_Power.Text = LangManager.SetText("TxtStop", "STOP");
@@ -6232,17 +6205,14 @@ namespace DesktopStation
 
             UpdateLocDisplay();
 
-            /* 全機関車を停止（KATO EM13用、デコーダに走行データが残っていたとき用） */
             if ((gAppSettings.mStopAllLocWhenPowerOn == true) && (inSendSerialCmd == true))
             {
                 StopAllLocs(false);
             }
 
-            /* 線路に電源投入時のみに動かすイベントを実行 */
             S88Manager.StartupRun();
 
             return true;
-
         }
 
 
