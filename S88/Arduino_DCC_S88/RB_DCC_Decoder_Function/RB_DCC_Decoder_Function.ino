@@ -12,14 +12,14 @@
 // IMPORTANT: GOTO lines 15 - 28 to configure some data!
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-int decoderAddress = 1830; // This is the decoder address, change into the number you want.
+int decoderAddress = 100; // This is the decoder address, change into the number you want.
 #define F0_pin  14 // Define the output pin for every Function number in use
 #define F0_pin2 15 // 2nd pin for same function is possible. Can use forward / reverse direction ... see line 97.
 #define F1_pin  13 // Available pin numbers: 3 - 19 (14-19 = A0-A5)
 #define F2_pin  14
-#define F3_pin 0
-#define F4_pin 0
-#define F5_pin 0
+#define F3_pin 10
+#define F4_pin 11
+#define F5_pin 12
 #define F6_pin 0
 #define F7_pin 0
 #define F8_pin 0
@@ -60,6 +60,9 @@ boolean RawPacket_Handler(byte pktByteCount, byte* dccPacket) {
     Address = 256 * (dccPacket[0] & B00000111) + dccPacket[1];
     instrByte1 = dccPacket[2];
   }
+
+  Serial.println(Address);
+  Serial.println(decoderAddress);
 
   if (Address==decoderAddress) {
     byte instructionType = instrByte1>>5;
@@ -109,20 +112,24 @@ boolean RawPacket_Handler(byte pktByteCount, byte* dccPacket) {
     if (Func[2]&B00000100) digitalWrite(F11_pin,LOW); else digitalWrite(F11_pin,HIGH);
     if (Func[2]&B00001000) digitalWrite(F12_pin,LOW); else digitalWrite(F12_pin,HIGH);
 
-    /*//Print DCC packet bytes for testing purposes
+    //Print DCC packet bytes for testing purposes
     for (byte n=0; n<5; n++) {
       Serial.print(Func[n],BIN);
       Serial.print(" ");
     }
     Serial.println(" ");
-    */
+    
   }
 }
 
 void setup() {
   DCC.SetRawPacketHandler(RawPacket_Handler);
   DCC.SetupMonitor( kDCC_INTERRUPT );
-  for (byte n=3; n<20; n++) pinMode(n,OUTPUT);
+  Serial.begin(38400);
+  for (byte n=3; n<20; n++){
+    Serial.println(n);
+    pinMode(n,OUTPUT);
+  }
 }
 
 void loop() {

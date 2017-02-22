@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <AppSetting xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <mPortName>COM4</mPortName>
+  <mPortName>COM6</mPortName>
   <mBaudrate>115200</mBaudrate>
   <mDtrEnable>true</mDtrEnable>
   <mSpeedGears>5</mSpeedGears>
@@ -17,11 +17,12 @@
   </mLocCtrlList>
   <mAccList>
     <AccessoryData>
+      <mComment />
       <mType>0</mType>
       <mDirection>0</mDirection>
       <mReverse>false</mReverse>
       <mInvisible>false</mInvisible>
-      <mProtocol>0</mProtocol>
+      <mProtocol>1</mProtocol>
     </AccessoryData>
     <AccessoryData>
       <mType>0</mType>
@@ -31,18 +32,20 @@
       <mProtocol>0</mProtocol>
     </AccessoryData>
     <AccessoryData>
+      <mComment />
       <mType>0</mType>
       <mDirection>0</mDirection>
       <mReverse>false</mReverse>
       <mInvisible>false</mInvisible>
-      <mProtocol>0</mProtocol>
+      <mProtocol>1</mProtocol>
     </AccessoryData>
     <AccessoryData>
-      <mType>0</mType>
-      <mDirection>0</mDirection>
+      <mComment />
+      <mType>1</mType>
+      <mDirection>1</mDirection>
       <mReverse>false</mReverse>
       <mInvisible>false</mInvisible>
-      <mProtocol>0</mProtocol>
+      <mProtocol>1</mProtocol>
     </AccessoryData>
     <AccessoryData>
       <mType>0</mType>
