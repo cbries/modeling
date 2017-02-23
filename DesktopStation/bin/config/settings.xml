@@ -20,7 +20,7 @@
       <mComment />
       <mType>0</mType>
       <mDirection>0</mDirection>
-      <mReverse>false</mReverse>
+      <mReverse>true</mReverse>
       <mInvisible>false</mInvisible>
       <mProtocol>1</mProtocol>
     </AccessoryData>
