@@ -14,10 +14,11 @@ Servo myservo;
 #define numberOfHours(_time_) (( _time_% SECS_PER_DAY) / SECS_PER_HOUR)
 #define elapsedDays(_time_) ( _time_ / SECS_PER_DAY)  
 
-byte minimumPos = 32;
-byte maximumPos = 45;
-int pos = 32;
-byte dt = 30;
+byte minimumPos = 27;
+byte maximumPos = 40; //45;
+int pos = (maximumPos - minimumPos) / 2.0f; //32;
+byte dt = 15;
+int waitNext = 500;
 
 int counter = 0;
 
@@ -75,18 +76,18 @@ void loop()
 #ifdef TEST
   ShowPosition();
 
-  for(pos = minimumPos; pos < maximumPos; ++pos)
+  for(pos = minimumPos; pos <= maximumPos; ++pos)
   {
       myservo.write(pos);
       delay(dt);
   }
-  delay(2000);
+  delay(waitNext);
   for(pos = maximumPos; pos >= minimumPos; --pos)
   {
     myservo.write(pos);
     delay(dt);  
   }
-  delay(2000);
+  delay(waitNext);
   
   ++counter;
 
