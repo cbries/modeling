@@ -6,11 +6,11 @@
   <mSpeedGears>5</mSpeedGears>
   <mSpeedLeverMode>0</mSpeedLeverMode>
   <mLocCtrlList>
+    <int>1</int>
     <int>0</int>
     <int>0</int>
     <int>0</int>
-    <int>0</int>
-    <int>0</int>
+    <int>2</int>
     <int>0</int>
     <int>0</int>
     <int>0</int>

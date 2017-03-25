@@ -37,7 +37,7 @@
       <int>0</int>
     </mFunctionImageTable>
     <mFunctionStatus>
-      <int>1</int>
+      <int>0</int>
       <int>0</int>
       <int>0</int>
       <int>0</int>
@@ -228,7 +228,7 @@
       <string xsi:nil="true" />
     </mExFunctionCommand>
     <mLocManufacture>marklin</mLocManufacture>
-    <mCurrentSpeed>0</mCurrentSpeed>
+    <mCurrentSpeed>227</mCurrentSpeed>
     <mCurrentDirection>1</mCurrentDirection>
     <mDisplayMaxSpeed>240</mDisplayMaxSpeed>
     <mSpeedAccRatio>3</mSpeedAccRatio>
@@ -257,10 +257,10 @@
     </mDoubleLoc>
   </LocData>
   <LocData>
-    <mLocItemNo>0</mLocItemNo>
-    <mLocAddr>49252</mLocAddr>
-    <mLocAddr_dbl>49163</mLocAddr_dbl>
-    <mLocName>Test</mLocName>
+    <mLocItemNo>83307</mLocItemNo>
+    <mLocAddr>78</mLocAddr>
+    <mLocAddr_dbl>16462</mLocAddr_dbl>
+    <mLocName>Dampflok</mLocName>
     <mFunctionImageTable>
       <int>0</int>
       <int>0</int>
@@ -483,10 +483,10 @@
       <string xsi:nil="true" />
       <string xsi:nil="true" />
     </mExFunctionCommand>
-    <mLocManufacture />
+    <mLocManufacture>marklin</mLocManufacture>
     <mCurrentSpeed>0</mCurrentSpeed>
-    <mCurrentDirection>1</mCurrentDirection>
-    <mDisplayMaxSpeed>180</mDisplayMaxSpeed>
+    <mCurrentDirection>2</mCurrentDirection>
+    <mDisplayMaxSpeed>100</mDisplayMaxSpeed>
     <mSpeedAccRatio>3</mSpeedAccRatio>
     <mSpeedRedRatio>3</mSpeedRedRatio>
     <mIconFile />
