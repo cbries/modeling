@@ -1,6 +1,6 @@
 #include <Servo.h>
 
-#define N 2
+Servo myservo;
 
 #define TEST
 
@@ -14,45 +14,24 @@
 #define numberOfHours(_time_) (( _time_% SECS_PER_DAY) / SECS_PER_HOUR)
 #define elapsedDays(_time_) ( _time_ / SECS_PER_DAY)  
 
+//// first version
+byte minimumPos = 27;
+byte maximumPos = 40;
+
+//// second version
+//byte minimumPos = 23;
+//byte maximumPos = 40;
+
+int pos = (maximumPos - minimumPos) / 2.0f; //32;
 byte dt = 15;
-int waitNext = 125;
+int waitNext = 500;
+
 int counter = 0;
 
-struct Data
-{
-  byte minimumPos;
-  byte maximumPos;
-  int pos;
-  byte portnr;
-  byte up;
-  Servo myservo;
-  Data(byte minimum, byte maximum, int pos, byte portnr) {
-    this->minimumPos = minimum;
-    this->maximumPos = maximum;
-    this->pos = pos;
-    this->portnr = portnr;
-    up = 1;
-    myservo.attach(portnr);
-    myservo.write(pos);
-  }
-
-  void Write()
-  {
-    myservo.write(pos);
-    delay(dt);
-  }  
-} *data[N];
-
 void setup() 
-{   
-// first version (Unterbau): min:=27, max:=40
-// second version (Seitenanschluss): min:=23, max:=40
-
-  //data[0] = new Data(23, 40, 23, 9);
-  //data[1] = new Data(27, 40, 27, 8);
-
-  data[0] = new Data(27, 40, 27, 8);
-  data[1] = new Data(23, 40, 23, 9);
+{
+  myservo.attach(8);
+  myservo.write(minimumPos);
 
   Serial.begin(9600);
 }
@@ -89,66 +68,27 @@ void printDigits(byte digits){
   Serial.print(digits,DEC);  
 }
 
-void ShowPosition2()
-{
-  for(byte i=0; i < N; ++i)
-  {
-    Serial.print(", P");
-    Serial.print(i);
-    Serial.print(": ");
-    Serial.print(data[i]->pos);    
-  }
-  Serial.println("");
-}
-
 void ShowPosition()
 {
   Serial.print("Run: ");
   Serial.print(counter);
   Serial.print(", Time: ");
   time(millis() / 1000);
-  ShowPosition2();
+  Serial.print(", Position: ");
+  Serial.println(pos);
+}
+
+void ShowPosition2()
+{
+  Serial.print("  Position: ");
+  Serial.println(pos);  
 }
 
 void loop() 
 {
 #ifdef TEST
-  //ShowPosition();
+  ShowPosition();
 
-  for(byte i=0; i < N; ++i)
-  {
-    if(data[i]->up)
-    {
-      if(data[i]->pos <= data[i]->maximumPos)
-      {
-        data[i]->pos += 1;
-      }
-      else
-      {
-        data[i]->up = 0;
-        data[i]->pos = data[i]->maximumPos;
-      }
-    }
-    else
-    {
-      if(data[i]->pos >= data[i]->minimumPos)
-      {
-        data[i]->pos -= 1;
-      }
-      else
-      {
-        data[i]->up = 1;
-        data[i]->pos = data[i]->minimumPos;  
-      }
-    } 
-
-    data[i]->Write();;
-  }
-  //ShowPosition2();
-
-  delay(waitNext);
-
-/*
   for(pos = minimumPos; pos <= maximumPos; ++pos)
   {
       myservo.write(pos);
@@ -164,12 +104,12 @@ void loop()
     ShowPosition2();
   }
   delay(waitNext);
-*/  
+  
   ++counter;
 
   return;
 #endif
-/*  
+  
   int v = 0;
   myservo.write(pos);
   delay(15);
@@ -180,6 +120,5 @@ void loop()
     pos = minimumPos;
   else if(pos >= maximumPos)
     pos = maximumPos;
-*/
 }
 
