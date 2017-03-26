@@ -14,8 +14,11 @@ Servo myservo;
 #define numberOfHours(_time_) (( _time_% SECS_PER_DAY) / SECS_PER_HOUR)
 #define elapsedDays(_time_) ( _time_ / SECS_PER_DAY)  
 
-byte minimumPos = 27;
-byte maximumPos = 40; //45;
+// first version (Unterbau): min:=27, max:=40
+// second version (Seitenanschluss): min:= , max:= 
+
+byte minimumPos = 23;
+byte maximumPos = 40;
 int pos = (maximumPos - minimumPos) / 2.0f; //32;
 byte dt = 15;
 int waitNext = 500;
@@ -25,6 +28,7 @@ int counter = 0;
 void setup() 
 {
   myservo.attach(9);
+  myservo.write(minimumPos);
 
   Serial.begin(9600);
 }
@@ -71,6 +75,12 @@ void ShowPosition()
   Serial.println(pos);
 }
 
+void ShowPosition2()
+{
+  Serial.print("  Position: ");
+  Serial.println(pos);  
+}
+
 void loop() 
 {
 #ifdef TEST
@@ -80,12 +90,15 @@ void loop()
   {
       myservo.write(pos);
       delay(dt);
+      ShowPosition2();
   }
   delay(waitNext);
+  Serial.println(" --- ");
   for(pos = maximumPos; pos >= minimumPos; --pos)
   {
     myservo.write(pos);
     delay(dt);  
+    ShowPosition2();
   }
   delay(waitNext);
   
