@@ -2270,7 +2270,7 @@
   <mDCCMode>true</mDCCMode>
   <mMfxAutoRegister>true</mMfxAutoRegister>
   <mMfxAutoUpdate>true</mMfxAutoUpdate>
-  <mS88Sensor>false</mS88Sensor>
+  <mS88Sensor>true</mS88Sensor>
   <mS88SendInterval>2</mS88SendInterval>
   <mPingSend>false</mPingSend>
   <mScreenNums>0</mScreenNums>

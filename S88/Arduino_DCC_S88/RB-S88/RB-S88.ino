@@ -33,6 +33,8 @@ const byte 	 dataOut		= 13; //data output pin=13
 boolean 	 loadSensors	= false; //flag that says to load sensor bits into dataOut bits
 
 void setup() {
+  Serial.begin(9600);
+  
   pinMode(2, INPUT_PULLUP);
   attachInterrupt(0,clock,RISING); //pin 2 = clock interrupt
   pinMode(3, INPUT_PULLUP);
@@ -83,6 +85,9 @@ void loop() {
   if (!digitalRead(9)) {bitSet(sensors,13);}
   if (!digitalRead(10)) {bitSet(sensors,14);}
   if (!digitalRead(11)) {bitSet(sensors,15);}
+
+  unsigned long v = (unsigned long) sensors;
+  Serial.println(v, BIN);
 }
 
 void PS() {

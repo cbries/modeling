@@ -228,7 +228,7 @@
       <string xsi:nil="true" />
     </mExFunctionCommand>
     <mLocManufacture>marklin</mLocManufacture>
-    <mCurrentSpeed>227</mCurrentSpeed>
+    <mCurrentSpeed>0</mCurrentSpeed>
     <mCurrentDirection>1</mCurrentDirection>
     <mDisplayMaxSpeed>240</mDisplayMaxSpeed>
     <mSpeedAccRatio>3</mSpeedAccRatio>
@@ -485,7 +485,7 @@
     </mExFunctionCommand>
     <mLocManufacture>marklin</mLocManufacture>
     <mCurrentSpeed>0</mCurrentSpeed>
-    <mCurrentDirection>2</mCurrentDirection>
+    <mCurrentDirection>1</mCurrentDirection>
     <mDisplayMaxSpeed>100</mDisplayMaxSpeed>
     <mSpeedAccRatio>3</mSpeedAccRatio>
     <mSpeedRedRatio>3</mSpeedRedRatio>
