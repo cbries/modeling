@@ -19,7 +19,7 @@
     <AccessoryData>
       <mComment />
       <mType>0</mType>
-      <mDirection>0</mDirection>
+      <mDirection>1</mDirection>
       <mReverse>true</mReverse>
       <mInvisible>false</mInvisible>
       <mProtocol>1</mProtocol>
@@ -34,7 +34,7 @@
     <AccessoryData>
       <mComment />
       <mType>0</mType>
-      <mDirection>0</mDirection>
+      <mDirection>1</mDirection>
       <mReverse>false</mReverse>
       <mInvisible>false</mInvisible>
       <mProtocol>1</mProtocol>
