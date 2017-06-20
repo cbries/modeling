@@ -24,8 +24,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Fill in the number of accessories and servos you want to control
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const byte maxaccessories = 5;
-const byte maxservos = 5;
+const byte maxaccessories = 6;
+const byte maxservos = 6;
 const byte servotimer = 60; //Servo angle change timer: 1 degree per ## ms. Lower value -> higher speed
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -74,7 +74,7 @@ void ConfigureDecoderFunctions() // The amount of accessories must be same as in
   accessory[0].address = 1;
   accessory[0].mode = 1;       // Continuous output
   accessory[0].outputPin = 13; // on board LED
-  accessory[1].dcc = 0;
+  accessory[0].dcc = 0;
   
   accessory[1].address = 2;
   accessory[1].mode = 1;
@@ -84,18 +84,22 @@ void ConfigureDecoderFunctions() // The amount of accessories must be same as in
   accessory[2].address = 3;
   accessory[2].mode = 1;
   accessory[2].outputPin = 13;
-  accessory[1].dcc = 0;
+  accessory[2].dcc = 0;
   
   accessory[3].address = 4;
   accessory[3].mode = 1;
   accessory[3].outputPin = 13;
-  accessory[1].dcc = 0;
+  accessory[3].dcc = 0;
   
   accessory[4].address = 5;
   accessory[4].mode = 1;
   accessory[4].outputPin = 13;
-  accessory[1].dcc = 0;
- 
+  accessory[4].dcc = 0;
+
+  accessory[5].address = 6;
+  accessory[5].mode = 1;
+  accessory[5].outputPin = 13;
+  accessory[5].dcc = 0;
 
 }  // END ConfigureDecoderFunctions
 
@@ -135,6 +139,12 @@ void ConfigureDecoderServos()
   servos[4].angle=56; //initial angle of servo. Make this the same as offangle to avoid startup jitter.
   servos[4].offangle=56; //Junction Bend angle. Do not use value too close to 0, servo may stutter at the extremes.
   servos[4].onangle=116; //Junction Straight angle. Do not use value too close to 180, servo may stutter at the extremes.
+
+  servos[5].functionnumber=4; // CONNECTION BETWEEN FUNCTION AND SERVO ()accessory[functionnumber])
+  servos[5].servo.attach(8); //Arduino pin number where servo is connected to
+  servos[5].angle=56; //initial angle of servo. Make this the same as offangle to avoid startup jitter.
+  servos[5].offangle=56; //Junction Bend angle. Do not use value too close to 0, servo may stutter at the extremes.
+  servos[5].onangle=116; //Junction Straight angle. Do not use value too close to 180, servo may stutter at the extremes.
 
   // A servo is coupled to an accessory[n]
   // It rotates to offangle if accessory[n].dcc = 0

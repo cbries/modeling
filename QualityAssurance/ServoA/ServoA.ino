@@ -2,7 +2,10 @@
 
 Servo myservo;
 
-#define TEST
+//#define TEST
+byte minimumPos = 10;
+byte maximumPos = 170;
+byte dt = 60;
 
 #define SECS_PER_MIN  (60UL)
 #define SECS_PER_HOUR (3600UL)
@@ -14,16 +17,7 @@ Servo myservo;
 #define numberOfHours(_time_) (( _time_% SECS_PER_DAY) / SECS_PER_HOUR)
 #define elapsedDays(_time_) ( _time_ / SECS_PER_DAY)  
 
-//// first version
-byte minimumPos = 27;
-byte maximumPos = 40;
-
-//// second version
-//byte minimumPos = 23;
-//byte maximumPos = 40;
-
-int pos = (maximumPos - minimumPos) / 2.0f; //32;
-byte dt = 15;
+int pos = minimumPos + (maximumPos - minimumPos) / 2.0f; //32;
 int waitNext = 500;
 
 int counter = 0;
@@ -31,7 +25,7 @@ int counter = 0;
 void setup() 
 {
   myservo.attach(8);
-  myservo.write(minimumPos);
+  myservo.write(pos);
 
   Serial.begin(9600);
 }

@@ -71,38 +71,38 @@ void ConfigureFunctionsAndServos()
   servos[0].address = 1; // DCC address for this accessory
   servos[0].outputPin = 13; // Arduino pin number for additional function output (not where servo is attached to)
   servos[0].servo.attach(3); //Arduino pin number where servo is connected to
-  servos[0].offangle = 25; //Angle for DCC=off. For ECoS turnout is DCC off, straight is DCC on.
-  servos[0].onangle = 160; //Angle for DCC=on. For ECoS turnout is DCC off, straight is DCC on.
+  servos[0].offangle = 110; //Angle for DCC=off. For ECoS turnout is DCC off, straight is DCC on.
+  servos[0].onangle = 90; //Angle for DCC=on. For ECoS turnout is DCC off, straight is DCC on.
  
   servos[1].address = 2;
   servos[1].outputPin = 13;
   servos[1].servo.attach(4);
-  servos[1].offangle = 25;
-  servos[1].onangle = 160;
+  servos[1].offangle = 105;
+  servos[1].onangle = 85;
 
   servos[2].address = 3;
   servos[2].outputPin = 13;
   servos[2].servo.attach(5);
-  servos[2].offangle = 26;
-  servos[2].onangle = 160;
+  servos[2].offangle = 68;
+  servos[2].onangle = 88;
 
   servos[3].address = 4;
   servos[3].outputPin = 13;
   servos[3].servo.attach(6);
-  servos[3].offangle = 25;
-  servos[3].onangle = 160;
+  servos[3].offangle = 90;
+  servos[3].onangle = 70;
 
   servos[4].address = 5;
   servos[4].outputPin = 13;
   servos[4].servo.attach(7);
-  servos[4].offangle = 25;
-  servos[4].onangle = 160;
+  servos[4].offangle = 100;
+  servos[4].onangle = 80;
 
   servos[5].address = 6;
   servos[5].outputPin = 13;
   servos[5].servo.attach(8);
-  servos[5].offangle = 25;
-  servos[5].onangle = 160;
+  servos[5].offangle = 120;
+  servos[5].onangle = 100;
 /*
   servos[6].address = 7;
   servos[6].outputPin = 13;
