@@ -34,7 +34,7 @@
     <AccessoryData>
       <mComment />
       <mType>0</mType>
-      <mDirection>1</mDirection>
+      <mDirection>0</mDirection>
       <mReverse>false</mReverse>
       <mInvisible>false</mInvisible>
       <mProtocol>1</mProtocol>
@@ -49,7 +49,7 @@
     </AccessoryData>
     <AccessoryData>
       <mType>0</mType>
-      <mDirection>1</mDirection>
+      <mDirection>0</mDirection>
       <mReverse>false</mReverse>
       <mInvisible>false</mInvisible>
       <mProtocol>0</mProtocol>
@@ -2284,7 +2284,7 @@
   <mSideFuncBottom>0</mSideFuncBottom>
   <mStopAllLocWhenPowerOn>false</mStopAllLocWhenPowerOn>
   <mLanguageFile />
-  <mS88NumOfConnection>1</mS88NumOfConnection>
+  <mS88NumOfConnection>10</mS88NumOfConnection>
   <mAutoCloseSerialport>false</mAutoCloseSerialport>
   <mClearAccessories>false</mClearAccessories>
   <mIPAddress />

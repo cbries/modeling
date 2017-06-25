@@ -18,7 +18,7 @@
 #include <avr/wdt.h>
 #include "TrackReporterS88_DS.h"
 
-#define MAX_S88DECODER 1
+#define MAX_S88DECODER 10
 #define RELPYERROR_300 "300 Command error"
 #define RELPYERROR_301 "301 Syntax error"
 #define RELPYERROR_302 "302 receive timeout"
