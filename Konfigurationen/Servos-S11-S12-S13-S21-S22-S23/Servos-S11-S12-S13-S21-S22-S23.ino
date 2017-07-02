@@ -41,7 +41,7 @@
 // Fill in these 2 values ...
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const byte maxservos = 6; //The number of servos you have connected to this Arduino
-const byte servotimer = 60; //Servo angle change timer. Lower value -> higher speed
+const byte servotimer = 30; //Servo angle change timer. Lower value -> higher speed
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 unsigned long timetoupdatesetpoint = millis() + servotimer;
@@ -71,38 +71,38 @@ void ConfigureFunctionsAndServos()
   servos[0].address = 7; // DCC address for this accessory
   servos[0].outputPin = 13; // Arduino pin number for additional function output (not where servo is attached to)
   servos[0].servo.attach(3); //Arduino pin number where servo is connected to
-  servos[0].offangle = 100; //Angle for DCC=off. For ECoS turnout is DCC off, straight is DCC on.
-  servos[0].onangle = 60; //Angle for DCC=on. For ECoS turnout is DCC off, straight is DCC on.
+  servos[0].offangle = 60; //Angle for DCC=off. For ECoS turnout is DCC off, straight is DCC on.
+  servos[0].onangle = 100; //Angle for DCC=on. For ECoS turnout is DCC off, straight is DCC on.
  
   servos[1].address = 8;
   servos[1].outputPin = 13;
   servos[1].servo.attach(4);
-  servos[1].offangle = 110;
-  servos[1].onangle = 80;
+  servos[1].offangle = 80;
+  servos[1].onangle = 110;
 
   servos[2].address = 9;
   servos[2].outputPin = 13;
   servos[2].servo.attach(5);
-  servos[2].offangle = 95;
-  servos[2].onangle = 55;
+  servos[2].offangle = 55;
+  servos[2].onangle = 95;
 
   servos[3].address = 10;
   servos[3].outputPin = 13;
   servos[3].servo.attach(6);
-  servos[3].offangle = 130;
-  servos[3].onangle = 90;
+  servos[3].offangle = 90;
+  servos[3].onangle = 130;
 
   servos[4].address = 11;
   servos[4].outputPin = 13;
   servos[4].servo.attach(7);
-  servos[4].offangle = 75;
-  servos[4].onangle = 100;
+  servos[4].offangle = 100;
+  servos[4].onangle = 75;
 
   servos[5].address = 12;
   servos[5].outputPin = 13;
   servos[5].servo.attach(8);
-  servos[5].offangle = 55;
-  servos[5].onangle = 80;
+  servos[5].offangle = 80;
+  servos[5].onangle = 55;
 /*
   servos[6].address = 7;
   servos[6].outputPin = 13;
