@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="1.27" unitdist="mm" unit="mm" style="dots" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="mm"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
@@ -11667,15 +11667,15 @@ Source: www.kingbright.com</description>
 </class>
 </classes>
 <parts>
-<part name="C1" library="rcl" deviceset="CPOL-EU" device="E1.8-4"/>
-<part name="R1" library="rcl" deviceset="R-EU_" device="0204/2V"/>
-<part name="R2" library="rcl" deviceset="R-EU_" device="0204/2V"/>
-<part name="R3" library="rcl" deviceset="R-EU_" device="0204/2V"/>
-<part name="D1" library="diode" deviceset="1N4148" device="DO35-7"/>
-<part name="LED1" library="led" deviceset="LED" device="5MM"/>
+<part name="C1" library="rcl" deviceset="CPOL-EU" device="E1.8-4" value="4,7µ"/>
+<part name="R1" library="rcl" deviceset="R-EU_" device="0204/2V" value="220"/>
+<part name="R2" library="rcl" deviceset="R-EU_" device="0204/2V" value="&gt;47k"/>
+<part name="R3" library="rcl" deviceset="R-EU_" device="0204/2V" value="47k"/>
+<part name="D1" library="diode" deviceset="1N4148" device="DO35-7" value="1N4148"/>
+<part name="LED1" library="led" deviceset="LED" device="5MM" value="IRLED"/>
 <part name="T1" library="opto-trans-siemens" deviceset="LPT80A" device=""/>
 <part name="T2" library="opto-trans-siemens" deviceset="LPT80A" device=""/>
-<part name="T3" library="transistor" deviceset="2N3904" device=""/>
+<part name="T3" library="transistor" deviceset="2N3904" device="" value="BC337-40"/>
 </parts>
 <sheets>
 <sheet>
