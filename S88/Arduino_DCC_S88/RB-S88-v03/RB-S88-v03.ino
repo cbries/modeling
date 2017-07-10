@@ -48,11 +48,20 @@ void setup() {
   pinMode(9, INPUT_PULLUP);  //sensor 14
   pinMode(10, INPUT_PULLUP); //sensor 15
   pinMode(11, INPUT_PULLUP); //sensor 16
-  //Serial.begin(9600);  // Used for test purposes only
 }
 
+bool initialized = false;
+
 void loop() {
-  if (loopCounter==20){bitSet(sensors,0);}
+  if(!initialized)
+  {
+    if (loopCounter <= 20)
+    {
+      bitSet(sensors,0);
+      initialized = true;
+      return;
+    }
+  }
   /*
   For an unknown reason the ECoS sets the first 8 bits to 1 after startup / reset of the S88 Arduino's.
   When one of the sensor inputs is changed, from there on everything goes well.
@@ -76,9 +85,6 @@ void loop() {
   if (!digitalRead(9)) {bitSet(sensors,13);}
   if (!digitalRead(10)) {bitSet(sensors,14);}
   if (!digitalRead(11)) {bitSet(sensors,15);}
-  //Serial.print(loopCounter); // Used for test purposes only
-  //Serial.print(" - ");
-  //Serial.println(sensors);
 }
 
 void PS() {
