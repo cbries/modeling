@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8C4A1922-3BAB-4F3E-B5A4-3FB906F97BC2}</ProjectGuid>
+    <ProjectGuid>{FCE9C986-412F-4781-9E14-898BA55039D2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Communicator</RootNamespace>
-    <AssemblyName>Communicator</AssemblyName>
+    <RootNamespace>TrackPlan</RootNamespace>
+    <AssemblyName>TrackPlan</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,12 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LiteGuard, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\LiteGuard.1.1.0\lib\net35\LiteGuard.dll</HintPath>
-    </Reference>
-    <Reference Include="PrimS.Telnet.NetStandard, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telnet.0.8.0\lib\net451\PrimS.Telnet.NetStandard.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,15 +40,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandStation.cs" />
-    <Compile Include="ICommandStation.cs" />
+    <Compile Include="Accessory.cs" />
+    <Compile Include="Address.cs" />
+    <Compile Include="Block.cs" />
+    <Compile Include="IAccessory.cs" />
+    <Compile Include="IAddress.cs" />
+    <Compile Include="IBlock.cs" />
+    <Compile Include="IRoutes.cs" />
+    <Compile Include="ISensor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Routes.cs" />
+    <Compile Include="Sensor.cs" />
+    <Compile Include="TrackPlan.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="License.txt" />
+    <ProjectReference Include="..\Communicator\Communicator.csproj">
+      <Project>{8c4a1922-3bab-4f3e-b5a4-3fb906f97bc2}</Project>
+      <Name>Communicator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ecos2Core\Ecos2Core.csproj">
+      <Project>{5e022579-45a1-4e6f-94db-1c88e089030d}</Project>
+      <Name>Ecos2Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
