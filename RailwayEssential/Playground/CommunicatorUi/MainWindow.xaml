@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CommunicatorUi"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525"
+        Title="MainWindow" Height="350" Width="1024"
         Initialized="MainWindow_OnInitialized">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
@@ -26,6 +26,21 @@
             <Button Name="CmdReq11" Content="Request: accessory-manager" Click="CmdReq11_OnClick"/>
 
             <Button Name="CmdReqAll" Content="Request: ALL" Click="CmdReqAll_OnClick" Margin="0,10,0,0"/>
+            
+            <DockPanel Margin="0,10,0,0" HorizontalAlignment="Stretch">
+                <Label Content="Addr:" VerticalAlignment="Center"/>
+                <TextBox Name="TxtLocAddr" Width="50" VerticalAlignment="Center"/>
+                <Slider Name="SliderSpeed" Maximum="100" SmallChange="1" VerticalAlignment="Center" ValueChanged="SliderSpeed_OnValueChanged"/>
+            </DockPanel>
+            <DockPanel HorizontalAlignment="Center">
+                <ToggleButton Content="F0" Name="CmdF0" Margin="1,1,1,1" Click="CmdF_OnClick"/>
+                <ToggleButton Content="F1" Name="CmdF1" Margin="1,1,1,1" Click="CmdF_OnClick"/>
+                <ToggleButton Content="F2" Name="CmdF2" Margin="1,1,1,1" Click="CmdF_OnClick"/>
+                <ToggleButton Content="F3" Name="CmdF3" Margin="1,1,1,1" Click="CmdF_OnClick"/>
+                <ToggleButton Content="F4" Name="CmdF4" Margin="1,1,1,1" Click="CmdF_OnClick"/>
+                <ToggleButton Content="F5" Name="CmdF5" Margin="1,1,1,1" Click="CmdF_OnClick"/>
+                <ToggleButton Content="F6" Name="CmdF6" Margin="1,1,1,1" Click="CmdF_OnClick"/>
+            </DockPanel>
         </StackPanel>
         
         <DockPanel Grid.Column="1">
