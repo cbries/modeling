@@ -17,6 +17,15 @@
             <TextBox Name="TxtCommand" KeyDown="TxtCommand_OnKeyDown"/>
             <Button Name="CmdSend" Content="Send" Click="CmdSend_OnClick"/>
             <Button Name="CmdClear" Click="CmdClear_OnClick"/>
+            
+            <Button Name="CmdReq1" Content="Request: baseobject" Click="CmdReq1_OnClick" Margin="0,10,0,0"/>
+            <Button Name="CmdReq26" Content="Request: feedback-manager (S88)" Click="CmdReq26_OnClick"/>
+            <Button Name="CmdReq5" Content="Request: programmingtrack" Click="CmdReq5_OnClick"/>
+            <Button Name="CmdReq100" Content="Request: feedback-module" Click="CmdReq100_OnClick"/>
+            <Button Name="CmdReq10" Content="Request: loco-manager" Click="CmdReq10_OnClick"/>
+            <Button Name="CmdReq11" Content="Request: accessory-manager" Click="CmdReq11_OnClick"/>
+
+            <Button Name="CmdReqAll" Content="Request: ALL" Click="CmdReqAll_OnClick" Margin="0,10,0,0"/>
         </StackPanel>
         
         <DockPanel Grid.Column="1">

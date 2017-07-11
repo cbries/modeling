@@ -4,19 +4,19 @@ using System.Linq;
 
 namespace Ecos2Core.Replies
 {
-    public class ReplyBlock : IBlock
-    {        
+    public class EventBlock : IBlock
+    {
         public string StartLine { get; private set; }
         public string EndLine { get; private set; }
 
-        public ICommand Command { get; private set; }
-        public int? ObjectId { get { return null; } }
+        public ICommand Command {  get { return null; } }
+        public int? ObjectId { get; private set; }
 
         public ReplyResult Result { get; private set; }
 
         public List<ListEntry> ListEntries { get; private set; }
 
-        public ReplyBlock()
+        public EventBlock()
         {
             ListEntries = new List<ListEntry>();
         }
@@ -28,7 +28,7 @@ namespace Ecos2Core.Replies
 
         public bool Parse(string block)
         {
-            if (block.IndexOf("<REPLY", StringComparison.OrdinalIgnoreCase) == -1)
+            if (block.IndexOf("<EVENT", StringComparison.OrdinalIgnoreCase) == -1)
                 return false;
             if (block.IndexOf("<END", StringComparison.OrdinalIgnoreCase) == -1)
                 return false;
@@ -75,9 +75,13 @@ namespace Ecos2Core.Replies
                     return;
 
                 string s = StartLine;
-                s = s.Replace("<REPLY ", "");
+                s = s.Replace("<EVENT ", "");
                 s = s.Trim().TrimEnd('\r', '\n', '>');
-                Command = CommandFactory.Create(s);
+                int oid;
+                if (int.TryParse(s, out oid))
+                    ObjectId = oid;
+                else
+                    ObjectId = null;
             }
             catch
             {

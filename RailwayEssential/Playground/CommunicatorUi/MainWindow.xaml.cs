@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Communicator;
+using Ecos2Core;
+using Ecos2Core.Replies;
 
 namespace CommunicatorUi
 {
@@ -45,28 +48,36 @@ namespace CommunicatorUi
 
         private void COnMessageReceived(object o, string msg)
         {
+            Trace.WriteLine("Message: " + msg);
+
             var line = msg.Trim();
 
-            if (Ecos2Core.Replies.ReplyBlock.HasReplyBlock(msg))
+            if (Utils.HasAnyBlock(msg))
             {
                 _lines.Clear();
                 _lines.AddRange(msg.Split(new[] {'\r'}, StringSplitOptions.RemoveEmptyEntries));
-
             }
             else
             {
                 _lines.Add(line);
             }
 
-            if (Ecos2Core.Replies.ReplyBlock.HasReplyBlock(_lines))
-            {
-                Log("REPLY RECEIVED !!!");
-                Log("++++++++++++++++++");
+            IReadOnlyList<IBlock> blocks = null;
 
-                var block = new Ecos2Core.Replies.ReplyBlock();
-                if (block.Parse(_lines))
+            if (Utils.HasAnyBlock(_lines))
+            {
+                blocks = Utils.GetBlocks(_lines);
+                _lines.Clear();
+            }
+            
+            if (blocks != null && blocks.Count > 0)
+            {
+                foreach (var block in blocks)
                 {
-                    Log("Command: " + block.Command.Name + " -> " + block.Command.NativeCommand.Trim());
+                    if(block.Command != null)
+                        Log("Command: " + block.Command.Name + " -> " + block.Command.NativeCommand.Trim());
+                    if(block.ObjectId != null)
+                        Log("ObjectId: " + block.ObjectId);
                     Log("Entries: ");
                     foreach (var e in block.ListEntries)
                     {
@@ -76,10 +87,8 @@ namespace CommunicatorUi
                         Log("E: " + e.ObjectId + " -> " + string.Join(", ", e.Arguments));
                     }
                 }
-                Log("++++++++++++++++++");
-
-                _lines.Clear();
             }
+
         }
 
         private void COnFailed(object o)
@@ -115,6 +124,14 @@ namespace CommunicatorUi
             _client.SendMessage(TxtCommand.Text.Trim());
         }
 
+        private void SendMessage(string msg)
+        {
+            if (!_isConnected)
+                return;
+
+            _client.SendMessage(msg.Trim());
+        }
+
         private void CmdSend_OnClick(object sender, RoutedEventArgs e)
         {
             Send();
@@ -137,6 +154,46 @@ namespace CommunicatorUi
         private void CmdClear_OnClick(object sender, RoutedEventArgs e)
         {
             TxtLogging.Clear();
+        }
+
+        private void CmdReq1_OnClick(object sender, RoutedEventArgs e)
+        {
+            SendMessage("request(1, view)");
+        }
+
+        private void CmdReq26_OnClick(object sender, RoutedEventArgs e)
+        {
+            SendMessage("request(26, view)");
+        }
+
+        private void CmdReq5_OnClick(object sender, RoutedEventArgs e)
+        {
+            SendMessage("request(5, view)");
+        }
+
+        private void CmdReq100_OnClick(object sender, RoutedEventArgs e)
+        {
+            SendMessage("request(100, view)");
+        }
+
+        private void CmdReq10_OnClick(object sender, RoutedEventArgs e)
+        {
+            SendMessage("request(10, view)");
+        }
+
+        private void CmdReq11_OnClick(object sender, RoutedEventArgs e)
+        {
+            SendMessage("request(11, view, viewswitch)");
+        }
+
+        private void CmdReqAll_OnClick(object sender, RoutedEventArgs e)
+        {
+            SendMessage("request(1, view)");
+            SendMessage("request(26, view)");
+            SendMessage("request(5, view)");
+            SendMessage("request(100, view)");
+            SendMessage("request(10, view)");
+            SendMessage("request(11, view, viewswitch)");
         }
     }
 }

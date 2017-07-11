@@ -25,6 +25,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackPlan", "TrackPlan\Trac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunicatorUi", "Playground\CommunicatorUi\CommunicatorUi.csproj", "{098B4F68-EFCC-4055-8BD8-A927D11BD8FE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{5050BCD2-2DB5-4B46-9798-E034F293C22E}"
+	ProjectSection(SolutionItems) = preProject
+		accessory-manager.txt = accessory-manager.txt
+		Documentation\Commands.txt = Documentation\Commands.txt
+		Documentation\ESU-ECOS-Command-Execution.odt = Documentation\ESU-ECOS-Command-Execution.odt
+		Documentation\ESU-ECOS-Commands.odt = Documentation\ESU-ECOS-Commands.odt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
