@@ -1,4 +1,5 @@
 ﻿using Ecos2Core;
+using Ecos2Core.Replies;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -68,6 +69,94 @@ namespace Ecos2CoreTest
             arg2.Parameter.Add("1010");
             arg2.Parameter.Add("1020");
             arg2.ToString().Should().BeEquivalentTo("addr[1000,1010,1020]");
+        }
+
+        [TestMethod]
+        public void TestListEntries()
+        {
+            var e0 = new ListEntry();
+            e0.Parse("1002 name[\"kleine Schwarze\"] addr[2] protocol[MM14]\r\n");
+            e0.ObjectId.Should().Be(1002);
+            e0.Arguments.Count.Should().Be(3);
+
+            var e1 = new ListEntry();
+            e1.Parse("1001 name[\"Kompressor\"] addr[78] protocol[MM14]\r\n");
+            e1.ObjectId.Should().Be(1001);
+            e1.Arguments.Count.Should().Be(3);
+
+            var e2 = new ListEntry();
+            e2.Parse("20001 addr[8] protocol[DCC]");
+            e2.ObjectId.Should().Be(20001);
+            e2.Arguments.Count.Should().Be(2);
+
+            var e3 = new ListEntry();
+            e3.Parse("101 view[objectclass,view,listview,control,ports,state,railcom]");
+            e3.ObjectId.Should().Be(101);
+            e3.Arguments.Count.Should().Be(1);
+            e3.Arguments[0].Parameter.Count.Should().Be(7);
+            e3.Arguments[0].Parameter.Contains("listview").Should().BeTrue();
+        }
+
+        [TestMethod]
+        public void TestReplies0()
+        {
+            string reply = "<REPLY queryObjects(10, addr, name, protocol)>\r\n";
+            reply += "1002 name[\"kleine Schwarze\"] addr[2] protocol[MM14]\r\n";
+            reply += "1005 name[\"Dampf #2\"] addr[20] protocol[MM14]\r\n";
+            reply += "1007 name[\"Kompressorlok\"] addr[78] protocol[MM14]\r\n";
+            reply += "1004 name[\"Schwarz Diesel\"] addr[2] protocol[MM14]\r\n";
+            reply += "1006 name[\"DIESEL rot\"] addr[21] protocol[MM14]\r\n";
+            reply += "1008 name[\"BR10\"] addr[10] protocol[MM14]\r\n";
+            reply += "1000 name[\"Ae3 /6II SBB\"] addr[1000] protocol[DCC28]\r\n";
+            reply += "1009 name[\"DAMPF2\"] addr[20] protocol[MM14]\r\n";
+            reply += "1001 name[\"Kompressor\"] addr[78] protocol[MM14]\r\n";
+            reply += "1003 name[\"kleine Schwarze\"] addr[2] protocol[MM14]\r\n";
+            reply += "<END 0 (OK)>\r\n";
+
+            var msg = new ReplyBlock();
+            bool r = msg.Parse(reply);
+            r.Should().BeTrue();
+            msg.ListEntries.Count.ShouldBeEquivalentTo(10);
+            msg.Result.ErrorCode.Should().Be(0);
+            msg.Result.ErrorMessage.ShouldBeEquivalentTo("OK");
+            msg.Command.Name.ShouldBeEquivalentTo("queryObjects");
+        }
+
+        [TestMethod]
+        public void TestReplies1()
+        {
+            string reply = "<REPLY get(100)>\r\n";
+            reply += "100 objectclass[feedback - module]\r\n";
+            reply += "100 view[objectclass, view, listview, control, ports, state, railcom]\r\n";
+            reply += "100 listview[none]\r\n";
+            reply += "100 control[none]\r\n";
+            reply += "100 ports[16]\r\n";
+            reply += "100 state[0x0]\r\n";
+            reply += "100 railcom[...]\r\n";
+            reply += "<END 0 (OK)>\r\n";
+
+            var msg = new ReplyBlock();
+            bool r = msg.Parse(reply);
+            r.Should().BeTrue();
+            msg.ListEntries.Count.ShouldBeEquivalentTo(7);
+            msg.Result.ErrorCode.Should().Be(0);
+            msg.Result.ErrorMessage.ShouldBeEquivalentTo("OK");
+            msg.Command.Name.ShouldBeEquivalentTo("get");
+        }
+
+        [TestMethod]
+        public void TestReplies2()
+        {
+            string reply = "<REPLY get(26, state)>\r\n";
+            reply  += "<END 11 (unknown option at 9)>\r\n";
+
+            var msg = new ReplyBlock();
+            bool r = msg.Parse(reply);
+            r.Should().BeTrue();
+            msg.ListEntries.Count.ShouldBeEquivalentTo(0);
+            msg.Result.ErrorCode.Should().Be(11);
+            msg.Result.ErrorMessage.ShouldBeEquivalentTo("unknown option at 9");
+            msg.Command.Name.ShouldBeEquivalentTo("get");
         }
     }
 }

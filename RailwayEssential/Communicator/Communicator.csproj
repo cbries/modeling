@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5E022579-45A1-4E6F-94DB-1C88E089030D}</ProjectGuid>
+    <ProjectGuid>{8C4A1922-3BAB-4F3E-B5A4-3FB906F97BC2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ecos2Core</RootNamespace>
-    <AssemblyName>Ecos2Core</AssemblyName>
+    <RootNamespace>Communicator</RootNamespace>
+    <AssemblyName>Communicator</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LiteGuard, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiteGuard.1.1.0\lib\net35\LiteGuard.dll</HintPath>
+    </Reference>
+    <Reference Include="PrimS.Telnet.NetStandard, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Telnet.0.8.0\lib\net451\PrimS.Telnet.NetStandard.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,23 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command.cs" />
-    <Compile Include="CommandArgument.cs" />
-    <Compile Include="CommandFactory.cs" />
-    <Compile Include="Commands\Create.cs" />
-    <Compile Include="Commands\Get.cs" />
-    <Compile Include="Commands\Test.cs" />
-    <Compile Include="Commands\QueryObjects.cs" />
-    <Compile Include="Commands\Release.cs" />
-    <Compile Include="Commands\Request.cs" />
-    <Compile Include="Commands\Unknown.cs" />
-    <Compile Include="ICommand.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Commands\Set.cs" />
-    <Compile Include="Replies\ListEntry.cs" />
-    <Compile Include="Replies\ReplyBlock.cs" />
-    <Compile Include="Replies\ReplyHandler.cs" />
-    <Compile Include="Replies\ReplyResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="License.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
