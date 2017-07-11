@@ -35,6 +35,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 		Documentation\ESU-ECOS-Commands.odt = Documentation\ESU-ECOS-Commands.odt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackInformation", "TrackInformation\TrackInformation.csproj", "{6925E932-7AD6-4AFA-A6BA-CBBF35014264}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{098B4F68-EFCC-4055-8BD8-A927D11BD8FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{098B4F68-EFCC-4055-8BD8-A927D11BD8FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{098B4F68-EFCC-4055-8BD8-A927D11BD8FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6925E932-7AD6-4AFA-A6BA-CBBF35014264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6925E932-7AD6-4AFA-A6BA-CBBF35014264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6925E932-7AD6-4AFA-A6BA-CBBF35014264}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6925E932-7AD6-4AFA-A6BA-CBBF35014264}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

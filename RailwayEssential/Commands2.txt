@@ -125,7 +125,6 @@ release(100, view)
 <REPLY release(100, view)>
 <END 0 (OK)>
 
-
 set(11, switch[DCC6r])
 <REPLY set(11, switch[DCC6r])>
 <END 0 (OK)>

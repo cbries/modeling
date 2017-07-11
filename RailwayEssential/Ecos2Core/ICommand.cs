@@ -7,6 +7,7 @@ namespace Ecos2Core
         CommandT Type { get; }
         string Name { get; }
         string NativeCommand { get; set; }
+        int ObjectId { get; }
         List<CommandArgument> Arguments { get; set; }
 
         bool Parse();

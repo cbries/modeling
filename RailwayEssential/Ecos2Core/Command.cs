@@ -14,6 +14,21 @@ namespace Ecos2Core
         public abstract string Name { get; }
         public string NativeCommand { get; set; }
 
+        public int ObjectId
+        {
+            get
+            {
+                if (Arguments.Count < 1)
+                    return -1;
+
+                int vid;
+                if (int.TryParse(Arguments[0].Name, out vid))
+                    return vid;
+
+                return -1;
+            }
+        }
+
         public List<CommandArgument> Arguments { get; set; } = new List<CommandArgument>();
 
         public virtual bool Parse()
