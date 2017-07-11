@@ -1,7 +1,7 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
-using FluentAssertions;
+using Communicator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CommunicatorTest
@@ -9,31 +9,50 @@ namespace CommunicatorTest
     [TestClass]
     public class UnitTest1
     {
-        [TestInitialize]
-        public void Initialize()
-        {
-        }
-
         [TestMethod]
         public async Task ReadmeExample()
         {
-            string ipaddr = "127.0.0.1";
-            int port = 23;
+            bool isConnected = false;
 
-            using (PrimS.Telnet.Client client = new PrimS.Telnet.Client(ipaddr, port, new System.Threading.CancellationToken()))
+            Connector c = new Connector()
             {
-                client.IsConnected.Should().Be(true);
-                (await client.TryLoginAsync("", "", 2500)).Should().Be(true);
-                await client.WriteLine("show statistic wan2");
-                string s = await client.TerminatedReadAsync(">", TimeSpan.FromMilliseconds(2500));
-                s.Should().Contain(">");
-                s.Should().Contain("WAN2");
-                Regex regEx = new Regex("(?!WAN2 total TX: )([0-9.]*)(?! GB ,RX: )([0-9.]*)(?= GB)");
-                regEx.IsMatch(s).Should().Be(true);
-                MatchCollection matches = regEx.Matches(s);
-                decimal tx = decimal.Parse(matches[0].Value);
-                decimal rx = decimal.Parse(matches[1].Value);
-                (tx + rx).Should().BeLessThan(50);
+                IpAddr = "192.168.178.61",
+                Port = 15471
+            };
+
+            c.Started += sender =>
+            {
+                Trace.WriteLine("Started");
+                isConnected = true;
+            };
+
+            c.Stopped += sender =>
+            {
+                Trace.WriteLine("Stopped");
+                isConnected = false;
+            };
+
+            c.Failed += sender =>
+            {
+                Trace.WriteLine("Failed");
+                isConnected = false;
+            };
+
+            c.MessageReceived += (sender, msg) =>
+            {
+                Trace.WriteLine("Message received: " + msg.Trim());
+
+                c.Stop();
+            };
+
+            c.Start();
+
+            for (int i = 0; i < 10; ++i)
+            {
+                if (isConnected)
+                    c.SendMessage("help()");
+
+                Thread.Sleep(1000);
             }
         }
     }

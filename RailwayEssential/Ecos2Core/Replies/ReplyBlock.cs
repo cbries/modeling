@@ -6,6 +6,41 @@ namespace Ecos2Core.Replies
 {
     public class ReplyBlock
     {
+        public static bool HasReplyBlock(string msg)
+        {
+            if (string.IsNullOrEmpty(msg))
+                return false;
+
+            var m = msg.Trim();
+
+            return m.StartsWith("<REPLY ", StringComparison.OrdinalIgnoreCase)
+                   && m.IndexOf("<END ", StringComparison.OrdinalIgnoreCase) != -1;
+        }
+
+        public static bool HasReplyBlock(IReadOnlyList<string> lines)
+        {
+            if (lines == null)
+                return false;
+            if (lines.Count < 2)
+                return false;
+
+            var firstLine = lines[0];
+            var lastLine = "";
+
+            foreach (var line in lines)
+            {
+                var l = line.Trim();
+
+                if (string.IsNullOrEmpty(l))
+                    continue;
+
+                lastLine = l;
+            }
+
+            return firstLine.Trim().StartsWith("<REPLY ", StringComparison.OrdinalIgnoreCase) 
+                && lastLine.Trim().StartsWith("<END ", StringComparison.OrdinalIgnoreCase);
+        }
+
         public string StartLine { get; private set; }
         public string EndLine { get; private set; }
 
@@ -18,6 +53,11 @@ namespace Ecos2Core.Replies
         public ReplyBlock()
         {
             ListEntries = new List<ListEntry>();
+        }
+
+        public bool Parse(IReadOnlyList<string> lines)
+        {
+            return Parse(string.Join("", lines));
         }
 
         public bool Parse(string block)

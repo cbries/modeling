@@ -1,0 +1,26 @@
+﻿<Window x:Class="CommunicatorUi.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CommunicatorUi"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525"
+        Initialized="MainWindow_OnInitialized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Column="0">
+            <TextBox Name="TxtCommand" KeyDown="TxtCommand_OnKeyDown"/>
+            <Button Name="CmdSend" Content="Send" Click="CmdSend_OnClick"/>
+            <Button Name="CmdClear" Click="CmdClear_OnClick"/>
+        </StackPanel>
+        
+        <DockPanel Grid.Column="1">
+            <TextBox Name="TxtLogging" TextWrapping="NoWrap" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" FontSize="14"></TextBox>
+        </DockPanel>
+    </Grid>
+</Window>

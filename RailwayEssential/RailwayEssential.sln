@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Canvas", "Playground\Canvas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackPlan", "TrackPlan\TrackPlan.csproj", "{FCE9C986-412F-4781-9E14-898BA55039D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunicatorUi", "Playground\CommunicatorUi\CommunicatorUi.csproj", "{098B4F68-EFCC-4055-8BD8-A927D11BD8FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{FCE9C986-412F-4781-9E14-898BA55039D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCE9C986-412F-4781-9E14-898BA55039D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCE9C986-412F-4781-9E14-898BA55039D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{098B4F68-EFCC-4055-8BD8-A927D11BD8FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{098B4F68-EFCC-4055-8BD8-A927D11BD8FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{098B4F68-EFCC-4055-8BD8-A927D11BD8FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{098B4F68-EFCC-4055-8BD8-A927D11BD8FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,5 +74,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{15405881-A35F-437E-9D2D-22DFDDBC3C11} = {C8705CCB-F5B8-43F0-8510-E4AA93B3CCE2}
 		{636EE6AE-E7ED-4A45-86FE-326B61213B2D} = {16A1512B-75B3-4543-81BD-F38624E2DEBB}
+		{098B4F68-EFCC-4055-8BD8-A927D11BD8FE} = {16A1512B-75B3-4543-81BD-F38624E2DEBB}
 	EndGlobalSection
 EndGlobal
