@@ -27,7 +27,7 @@ namespace TrackInformation
             return null;
         }
 
-        public bool Add(Ecos2Core.IBlock block)
+        public bool Add(IBlock block)
         {
             if (block == null)
                 return false;
