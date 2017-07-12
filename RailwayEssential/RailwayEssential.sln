@@ -43,6 +43,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RailwayEssentialCore", "Rai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RailwayEssentialUi", "RailwayEssentialUi\RailwayEssentialUi.csproj", "{CCD2DD05-639A-44CE-BAB6-2F0A78917E1D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RailwayEssentialWeb", "RailwayEssentialWeb\RailwayEssentialWeb.csproj", "{61271BCE-3976-43D9-B0FE-82970CBB1F0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RailwayEssentialWebTest", "RailwayEssentialWebTest\RailwayEssentialWebTest.csproj", "{80853F99-15E7-49E9-B014-C752071EFD67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +105,14 @@ Global
 		{CCD2DD05-639A-44CE-BAB6-2F0A78917E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCD2DD05-639A-44CE-BAB6-2F0A78917E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCD2DD05-639A-44CE-BAB6-2F0A78917E1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61271BCE-3976-43D9-B0FE-82970CBB1F0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61271BCE-3976-43D9-B0FE-82970CBB1F0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61271BCE-3976-43D9-B0FE-82970CBB1F0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61271BCE-3976-43D9-B0FE-82970CBB1F0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80853F99-15E7-49E9-B014-C752071EFD67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80853F99-15E7-49E9-B014-C752071EFD67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80853F99-15E7-49E9-B014-C752071EFD67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80853F99-15E7-49E9-B014-C752071EFD67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
