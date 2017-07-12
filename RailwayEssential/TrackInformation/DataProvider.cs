@@ -57,6 +57,10 @@ namespace TrackInformation
                 if (e == null)
                     continue;
 
+                // 1101 0000 1101 0110
+                //                   0
+                // 16
+
                 string hex = e.Arguments[0].Parameter[0];
 
                 Trace.WriteLine($"{e.ObjectId}: " + ToBinary(hex));
