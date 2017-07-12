@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Ecos2Core;
 using ThreadState = System.Threading.ThreadState;
 
 namespace Communicator
@@ -16,6 +17,8 @@ namespace Communicator
         public event FailedDelegator Failed;
         public event StoppedDelegator Stopped;
         public event MessageReceivedDelegator MessageReceived;
+
+        public ILogging Logger { get; set; }
 
         public RailwayEssentialCore.Configuration Cfg { get; set; }
 
@@ -88,11 +91,17 @@ namespace Communicator
             {
                 if (_clientConnection.IsConnected)
                 {
+                    if (Logger != null)
+                        Logger.Log("<Connector> Connection established");
+
                     if (Started != null)
                         Started(this);
                 }
                 else
                 {
+                    if (Logger != null)
+                        Logger.Log("<Connector> Connection failed");
+
                     if (Failed != null)
                         Failed(this);
                 }
@@ -103,6 +112,9 @@ namespace Communicator
 
                     if (!string.IsNullOrEmpty(msg))
                     {
+                        if (Logger != null)
+                            Logger.Log("<Connector> Message received, Length: " + msg.Length);
+
                         if (MessageReceived != null)
                             MessageReceived(this, msg);
                     }

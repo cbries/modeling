@@ -58,6 +58,10 @@
     <Content Include="License.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ecos2Core\Ecos2Core.csproj">
+      <Project>{5E022579-45A1-4E6F-94DB-1C88E089030D}</Project>
+      <Name>Ecos2Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RailwayEssentialCore\RailwayEssentialCore.csproj">
       <Project>{b80cfecd-db0b-4533-aa42-784b2ebe85ff}</Project>
       <Name>RailwayEssentialCore</Name>

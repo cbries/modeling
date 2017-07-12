@@ -13,10 +13,7 @@ namespace Dispatcher
         public event CommunicationStartedDelegator CommunicationStarted;
 
         private Connector _client;
-        private RailwayEssentialCore.Configuration _cfg;
-
-        public string IpAddress { get { return _cfg.IpAddress; } }
-        public ushort Port { get { return _cfg.Port; } }
+        public RailwayEssentialCore.Configuration Cfg { get; set; }
 
         public bool IsConnected { get; private set; }
 
@@ -24,9 +21,11 @@ namespace Dispatcher
 
         public string ErrorMessage { get; private set; }
 
+        public ILogging Logger { get; set; }
+
         public Communication(RailwayEssentialCore.Configuration cfg)
         {
-            _cfg = cfg;
+            Cfg = cfg;
 
             IsConnected = false;
             HasError = false;
@@ -36,6 +35,20 @@ namespace Dispatcher
         public bool Start()
         {
             return BringItUp();
+        }
+
+        public bool Shutdown()
+        {
+            try
+            {
+                return _client.Stop();
+            }
+            catch (Exception ex)
+            {
+                HasError = true;
+                ErrorMessage = ex.Message;
+                return false;
+            }
         }
 
         public async Task SendCommand(ICommand command)
@@ -66,7 +79,7 @@ namespace Dispatcher
                 HasError = false;
                 ErrorMessage = "";
 
-                _client = new Connector {Cfg = _cfg};
+                _client = new Connector {Cfg = Cfg};
                 _client.Started += COnStarted;
                 _client.Stopped += COnStopped;
                 _client.Failed += COnFailed;
@@ -90,6 +103,9 @@ namespace Dispatcher
         {
             var line = msg.Trim();
 
+            if (!string.IsNullOrEmpty(line))
+                Logger?.LogNetwork(line.Trim());
+
             if (Utils.HasAnyBlock(msg))
             {
                 _lines.Clear();
@@ -100,11 +116,9 @@ namespace Dispatcher
                 _lines.Add(line);
             }
 
-            IReadOnlyList<IBlock> blocks = null;
-
             if (Utils.HasAnyBlock(_lines))
             {
-                blocks = Utils.GetBlocks(_lines);
+                var blocks = Utils.GetBlocks(_lines);
 
                 if (BlocksReceived != null)
                     BlocksReceived(this, blocks);

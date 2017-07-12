@@ -4,28 +4,119 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RailwayEssentialUi"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="640" Width="800">
+        mc:Ignorable="d" Closing="MainWindow_OnClosing"
+        Title="MainWindow" Height="640" Width="1024">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            
+            <TreeView Name="TreeViewModel" Grid.Row="0" SelectedItemChanged="TreeViewModel_OnSelectedItemChanged">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type local:ModelItem}" ItemsSource="{Binding Items}">
+                        <DockPanel Margin="0,1,0,1">
+                            <Image Width="16" Height="16" Source="{Binding IconSource}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="NearestNeighbor" Margin="0,0,3,0">
+                                <!--
+                                <Image.ToolTip>
+                                    <ToolTip Content="{Binding Address}"/>
+                                </Image.ToolTip>
+                                -->
+                            </Image>
+                            <TextBlock Text="{Binding Title}" FontWeight="Bold" FontSize="12"/>
+                            <!--
+                            <TextBlock Text="{Binding Typename}" FontStyle="Italic" FontSize="11" Margin="5,0,0,0"/>
+                            -->
+                        </DockPanel>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+            
+            <DockPanel Grid.Row="1" HorizontalAlignment="Left">
+                <Button Name="CmdStart" Height="24" Content="Start" Width="55" Margin="2,1,1,1" Click="CmdStart_OnClick"/>
+                <Button Name="CmdStop" Height="24" Content="Stop" Width="55" Margin="2,1,1,1" Click="CmdStop_OnClick"/>
+            </DockPanel>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <TabControl>
+                <TabItem Header="Locomotive">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <DockPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" Margin="0,10,0,0">
+                            <ToggleButton Content="F0" Name="CmdF0" Margin="1,1,1,1" Width="25" Height="25" Click="CmdF_OnClick"/>
+                            <ToggleButton Content="F1" Name="CmdF1" Margin="1,1,1,1" Width="25" Height="25" Click="CmdF_OnClick"/>
+                            <ToggleButton Content="F2" Name="CmdF2" Margin="1,1,1,1" Width="25" Height="25" Click="CmdF_OnClick"/>
+                            <ToggleButton Content="F3" Name="CmdF3" Margin="1,1,1,1" Width="25" Height="25" Click="CmdF_OnClick"/>
+                            <ToggleButton Content="F4" Name="CmdF4" Margin="1,1,1,1" Width="25" Height="25" Click="CmdF_OnClick"/>
+                            <ToggleButton Content="F5" Name="CmdF5" Margin="1,1,1,1" Width="25" Height="25" Click="CmdF_OnClick"/>
+                            <ToggleButton Content="F6" Name="CmdF6" Margin="1,1,1,1" Width="25" Height="25" Click="CmdF_OnClick"/>
+                        </DockPanel>
+
+                        <DockPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Margin="0,0,0,0">
+                            <ToggleButton Content="&lt;&lt;" Name="CmdBackward" Margin="1,1,20,1" Width="50" Height="50" Click="CmdBackward_OnClick"/>
+                            <ToggleButton Content=">>" Name="CmdFoward" Margin="1,1,1,1" Width="50" Height="50" Click="CmdFoward_OnClick"/>
+                        </DockPanel>
+                        
+                        <TextBlock Name="TxtCurrentLocomotive" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold">
+                            -.-
+                        </TextBlock>
+                        
+                        <DockPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" HorizontalAlignment="Center" Margin="10,10,10,10">
+                            <Slider Name="SliderSpeed" Orientation="Vertical" Maximum="100" ValueChanged="SliderSpeed_OnValueChanged" TickPlacement="Both" LargeChange="10"/>
+                            <TextBox Width="50" VerticalAlignment="Center" Name="TxtCurrentSpeed" IsReadOnly="True"/>
+                        </DockPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Switches" Name="TabItemSwitches">
+                    <Grid>
+                        <DockPanel Name="DockSwitches">
+                        </DockPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="S88">
+                    <Grid>
+                        
+                    </Grid>
+                </TabItem>
+            </TabControl>
+            
+            <TextBlock Grid.Row="1" HorizontalAlignment="Center"> :: RESERVED FOR TRACK PLAN ::</TextBlock>
+        </Grid>
         
-        <TreeView Name="TreeViewModel" Grid.Column="0" SelectedItemChanged="TreeViewModel_OnSelectedItemChanged">
-            <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate DataType="{x:Type local:ModelItem}" ItemsSource="{Binding Items}">
-                    <DockPanel Margin="0,1,0,1">
-                        <Image Width="14" Height="14" Source="{Binding IconSource}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="NearestNeighbor" Margin="0,0,3,0">
-                            <Image.ToolTip>
-                                <ToolTip Content="{Binding Address}"/>
-                            </Image.ToolTip>
-                        </Image>
-                        <TextBlock Text="{Binding Title}" FontWeight="Bold" FontSize="12"/>
-                        <TextBlock Text="{Binding Typename}" FontStyle="Italic" FontSize="11" Margin="5,0,0,0"/>
-                    </DockPanel>
-                </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>
-        </TreeView>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBox Name="TxtLogging" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" FontSize="11" Grid.Row="0"/>
+
+            <TextBox Name="TxtLoggingNetwork" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" FontSize="11" Grid.Row="1"/>
+        </Grid>
     </Grid>
 </Window>
+
