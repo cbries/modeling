@@ -1,15 +1,13 @@
-﻿using Communicator;
-
-namespace TrackPlan
+﻿namespace TrackPlan
 {
     public class Address : IAddress
     {
-        public CommandStation Station { get; set; }
-        public int Index { get; set; }
+        //public CommandStation Station { get; set; }
+        //public int Index { get; set; }
 
-        public Address()
-        {
-            Index = -1;
-        }
+        //public Address()
+        //{
+        //    Index = -1;
+        //}
     }
 }

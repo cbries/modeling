@@ -50,6 +50,7 @@
     <Compile Include="Commands\Release.cs" />
     <Compile Include="Commands\Request.cs" />
     <Compile Include="Commands\Unknown.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="Replies\EventBlock.cs" />
     <Compile Include="IBlock.cs" />
     <Compile Include="ICommand.cs" />

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using ThreadState = System.Threading.ThreadState;
@@ -7,14 +6,10 @@ using ThreadState = System.Threading.ThreadState;
 namespace Communicator
 {
     public delegate void StartedDelegator(object sender);
-
     public delegate void FailedDelegator(object sender);
-
     public delegate void StoppedDelegator(object sender);
-
     public delegate void MessageReceivedDelegator(object sender, string msg);
     
-
     public class Connector
     {
         public event StartedDelegator Started;
@@ -22,27 +17,27 @@ namespace Communicator
         public event StoppedDelegator Stopped;
         public event MessageReceivedDelegator MessageReceived;
 
-        public string IpAddr { get; set; }
-        public UInt16 Port { get; set; }
+        public RailwayEssentialCore.Configuration Cfg { get; set; }
+
+        private string IpAddr { get { return Cfg.IpAddress; } }
+        private UInt16 Port { get { return Cfg.Port; } }
 
         private bool _run = false;
         private Thread _thread = null;
         private PrimS.Telnet.Client _clientConnection;
 
-        public async void SendMessage(string msg)
+        public async Task<bool> SendMessage(string msg)
         {
             if (string.IsNullOrEmpty(msg))
-                return;
+                return false;
 
             if (_clientConnection == null)
-                return;
+                return false;
 
             if (_clientConnection.IsConnected)
-            {
-                Trace.WriteLine("Send message: " + msg);
-
                 await _clientConnection.WriteLine(msg.Trim());
-            }
+
+            return false;
         }
 
         public bool Start()

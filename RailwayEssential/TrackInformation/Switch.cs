@@ -3,10 +3,8 @@ using Ecos2Core;
 
 namespace TrackInformation
 {
-    public class Switch : IItem
+    public class Switch : Item
     {
-        public int ObjectId { get; set; }
-
         public string Name1 { get; set; }
         public string Name2 { get; set; }
         public string Name3 { get; set; }
@@ -17,7 +15,7 @@ namespace TrackInformation
         public string Mode { get; set; }
         public bool SwitchState { get; set; } // Argument: "switch"
 
-        public void Parse(List<CommandArgument> arguments)
+        public override void Parse(List<CommandArgument> arguments)
         {
             
         }

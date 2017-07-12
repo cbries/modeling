@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Communicator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RailwayEssentialCore;
 
 namespace CommunicatorTest
 {
@@ -14,9 +15,11 @@ namespace CommunicatorTest
         {
             bool isConnected = false;
 
-            Connector c = new Connector()
+            Connector c = new Connector();
+
+            c.Cfg = new Configuration
             {
-                IpAddr = "192.168.178.61",
+                IpAddress = "192.168.178.61",
                 Port = 15471
             };
 

@@ -3,11 +3,9 @@ using Ecos2Core;
 
 namespace TrackInformation
 {
-    public class S88 : IItem
+    public class S88 : Item
     {
-        public int ObjectId { get; set; }
-
-        public void Parse(List<CommandArgument> arguments)
+        public override void Parse(List<CommandArgument> arguments)
         {
 
         }

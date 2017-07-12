@@ -57,5 +57,11 @@
   <ItemGroup>
     <Content Include="License.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RailwayEssentialCore\RailwayEssentialCore.csproj">
+      <Project>{b80cfecd-db0b-4533-aa42-784b2ebe85ff}</Project>
+      <Name>RailwayEssentialCore</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

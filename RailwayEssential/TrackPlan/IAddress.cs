@@ -1,10 +1,8 @@
-﻿using Communicator;
-
-namespace TrackPlan
+﻿namespace TrackPlan
 {
     public interface IAddress
     {
-        CommandStation Station { get; set; }
-        int Index { get; set; }
+        //CommandStation Station { get; set; }
+        //int Index { get; set; }
     }
 }

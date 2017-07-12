@@ -1,0 +1,31 @@
+﻿<Window x:Class="RailwayEssentialUi.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RailwayEssentialUi"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="640" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <TreeView Name="TreeViewModel" Grid.Column="0" SelectedItemChanged="TreeViewModel_OnSelectedItemChanged">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type local:ModelItem}" ItemsSource="{Binding Items}">
+                    <DockPanel Margin="0,1,0,1">
+                        <Image Width="14" Height="14" Source="{Binding IconSource}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="NearestNeighbor" Margin="0,0,3,0">
+                            <Image.ToolTip>
+                                <ToolTip Content="{Binding Address}"/>
+                            </Image.ToolTip>
+                        </Image>
+                        <TextBlock Text="{Binding Title}" FontWeight="Bold" FontSize="12"/>
+                        <TextBlock Text="{Binding Typename}" FontStyle="Italic" FontSize="11" Margin="5,0,0,0"/>
+                    </DockPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+    </Grid>
+</Window>

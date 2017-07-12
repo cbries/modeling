@@ -76,6 +76,10 @@
       <Project>{8c4a1922-3bab-4f3e-b5a4-3fb906f97bc2}</Project>
       <Name>Communicator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RailwayEssentialCore\RailwayEssentialCore.csproj">
+      <Project>{b80cfecd-db0b-4533-aa42-784b2ebe85ff}</Project>
+      <Name>RailwayEssentialCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

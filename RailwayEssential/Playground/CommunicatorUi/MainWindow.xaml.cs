@@ -35,10 +35,13 @@ namespace CommunicatorUi
 
         public async Task ConnectToEcos2()
         {
-            _client = new Connector()
+            _client = new Connector
             {
-                IpAddr = "192.168.178.61",
-                Port = 15471
+                Cfg = new RailwayEssentialCore.Configuration
+                {
+                    IpAddress = "192.168.178.61",
+                    Port = 15471
+                }
             };
             _client.Started += COnStarted;
             _client.Stopped += COnStopped;
@@ -51,8 +54,6 @@ namespace CommunicatorUi
 
         private void COnMessageReceived(object o, string msg)
         {
-            Trace.WriteLine("Message: " + msg);
-
             var line = msg.Trim();
 
             if (Utils.HasAnyBlock(msg))

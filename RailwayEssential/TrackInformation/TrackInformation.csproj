@@ -44,6 +44,7 @@
     <Compile Include="DataProvider.cs" />
     <Compile Include="IDataProvider.cs" />
     <Compile Include="IItem.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="Locomotive.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Route.cs" />
@@ -51,10 +52,6 @@
     <Compile Include="Switch.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Communicator\Communicator.csproj">
-      <Project>{8c4a1922-3bab-4f3e-b5a4-3fb906f97bc2}</Project>
-      <Name>Communicator</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Ecos2Core\Ecos2Core.csproj">
       <Project>{5e022579-45a1-4e6f-94db-1c88e089030d}</Project>
       <Name>Ecos2Core</Name>
