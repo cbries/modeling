@@ -85,7 +85,9 @@ namespace RailwayEssentialUi
                 var itemSwitches = new ModelItem { Title = "Switches" };
                 var itemRoutes = new ModelItem { Title = "Routes" };
 
-                foreach (var e in _dispatcher.GetDataProvider().Objects)
+                var dataProvider = _dispatcher.GetDataProvider();
+
+                foreach (var e in dataProvider.Objects)
                 {
                     if (e == null)
                         continue;
@@ -152,6 +154,7 @@ namespace RailwayEssentialUi
                     }
                 }
 
+                TreeViewModel.Items.Add(itemStatus);
                 TreeViewModel.Items.Add(itemLocomotives);
                 TreeViewModel.Items.Add(itemSwitches);
                 TreeViewModel.Items.Add(itemRoutes);

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Windows.Input;
+using System.Collections.ObjectModel;
 
 namespace TrackInformation
 {
@@ -10,7 +10,7 @@ namespace TrackInformation
         event DataChangedDelegator DataChanged;
         event CommandsReadyDelegator CommandsReady;
 
-        IReadOnlyList<IItem> Objects { get; }
+        ObservableCollection<IItem> Objects { get; }
 
         IItem GetObjectBy(int objectid);
 

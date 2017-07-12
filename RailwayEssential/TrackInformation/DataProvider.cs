@@ -1,6 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Ecos2Core;
 using Ecos2Core.Replies;
@@ -13,9 +15,11 @@ namespace TrackInformation
         public event DataChangedDelegator DataChanged;
         public event CommandsReadyDelegator CommandsReady;
 
-        private readonly List<IItem> _objects = new List<IItem>();
+        private readonly ObservableCollection<IItem> _objects = new ObservableCollection<IItem>();
 
-        public IReadOnlyList<IItem> Objects => _objects;
+        public ObservableCollection<IItem> Objects => _objects;
+
+        public Ecos2 Baseobject { get; set; }
 
         public IItem GetObjectBy(int objectid)
         {
@@ -34,21 +38,31 @@ namespace TrackInformation
             return null;
         }
 
-        private bool HandleEvent(IBlock block)
+        private string ToBinary(string hex)
         {
-            // TODO
-
-            return true;
+            return String.Join(String.Empty,
+                hex.Select(
+                    c => Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0')
+                )
+            );
         }
 
-        private bool HandleGet(IBlock block)
+        private bool HandleEvent(IBlock block)
         {
-            switch (block.Command.ObjectId)
-            {
+            if (block == null)
+                return false;
 
+            foreach (var e in block.ListEntries)
+            {
+                if (e == null)
+                    continue;
+
+                string hex = e.Arguments[0].Parameter[0];
+
+                Trace.WriteLine($"{e.ObjectId}: " + ToBinary(hex));
             }
 
-            return false;
+            return true;
         }
 
         public bool Add(IBlock block)
@@ -120,17 +134,13 @@ namespace TrackInformation
                 {
                     case 1:
                     {
-                        var status = new Ecos2 { ObjectId = e.ObjectId };
-                        status.Parse(e.Arguments);
+                        if (Baseobject == null)
+                            Baseobject = new Ecos2 {ObjectId = e.ObjectId};
+
+                        Baseobject.Parse(e.Arguments);
                         if (!DoesObjectIdExist((uint) e.ObjectId))
-                        {
-                            _objects.Add(status);
-                            DataChanged?.Invoke(this);
-                        }
-                        else
-                        {
-                            // update tree
-                        }
+                            _objects.Add(Baseobject);
+                        DataChanged?.Invoke(this);
                     }
                         break;
                 }
@@ -220,13 +230,14 @@ namespace TrackInformation
 
                 if (sid.StartsWith("10", StringComparison.OrdinalIgnoreCase))
                 {
-                    var l = new S88 {ObjectId = e.ObjectId};
-                    l.Parse(e.Arguments);
+                    var s88 = new S88 {ObjectId = e.ObjectId};
+                    s88.Parse(e.Arguments);
                     if (!DoesObjectIdExist((uint) e.ObjectId))
                     {
-                        l.CommandsReady += CommandsReady;
-                        _objects.Add(l);
+                        s88.CommandsReady += CommandsReady;
+                        _objects.Add(s88);
                         DataChanged?.Invoke(this);
+                        s88.EnableView();
                     }
                 }
             }

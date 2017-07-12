@@ -8,6 +8,26 @@ namespace TrackInformation
     {
         public int Ports { get; set; }
 
+        public void EnableView()
+        {
+            List<ICommand> ctrlCmds = new List<ICommand>
+            {
+                CommandFactory.Create($"request({ObjectId}, view)")
+            };
+
+            OnCommandsReady(this, ctrlCmds);
+        }
+
+        public void DisableView()
+        {
+            List<ICommand> ctrlCmds = new List<ICommand>
+            {
+                CommandFactory.Create($"release({ObjectId}, view)")
+            };
+
+            OnCommandsReady(this, ctrlCmds);
+        }
+
         public override void Parse(List<CommandArgument> arguments)
         {
             foreach (var arg in arguments)
