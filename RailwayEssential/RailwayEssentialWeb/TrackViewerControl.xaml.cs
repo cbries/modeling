@@ -1,25 +1,26 @@
 ﻿using System.IO;
+using RailwayEssentialCore;
 
 namespace RailwayEssentialWeb
 {
     public partial class TrackViewerControl
     {
-        private const string Testfile = @"C:\temp\trackplan.html";
-        private const string TargetDirectory = @"C:\temp\";
-
-        private const string ThemePath =
-            @"C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialUi\Resources\Theme\SpDrS60";
-
-        //private const string ThemePath =
-        //    @"C:\Users\cries\Source\Repos\modeling\RailwayEssential\RailwayEssentialUi\Resources\Theme\SpDrS60";
+        private const string ThemeName = @"\Themes\SpDrS60";
+        private const string TrackplansDirectory = @"\Trackplans";
 
         private FileSystemWatcher _watcher;
+
+        private readonly string _tmpTrackName;
 
         public TrackViewerControl()
         {
             InitializeComponent();
 
-            Viewer.WebGenerator = new WebGenerator { ThemeDirectory = ThemePath };
+            _tmpTrackName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName()) + "_track.html";
+            _tmpTrackName = Path.Combine(TrackplansDirectory, _tmpTrackName);
+            _tmpTrackName = _tmpTrackName.ExpandRailwayEssential();
+
+            Viewer.WebGenerator = new WebGenerator { ThemeDirectory = ThemeName.ExpandRailwayEssential() };
             GeneratePhysicalTrackViewHtml();
             StartWatcher();
             LoadTrackView();
@@ -30,20 +31,20 @@ namespace RailwayEssentialWeb
             if (Viewer.WebGenerator == null)
                 return;
 
-            Viewer.WebGenerator.Generate(TargetDirectory);
+            Viewer.WebGenerator.Generate(_tmpTrackName);
         }
 
         public bool StartWatcher()
         {
             try
             {
-                var dirname = Path.GetDirectoryName(Testfile);
+                var dirname = Path.GetDirectoryName(_tmpTrackName);
                 if (string.IsNullOrEmpty(dirname))
                     return false;
 
                 if (_watcher == null)
                 {
-                    _watcher = new FileSystemWatcher(dirname);
+                    _watcher = new FileSystemWatcher(dirname, "*_track.html");
                     _watcher.Deleted += WatcherOnDeleted;
                     _watcher.Created += WatcherOnCreated;
                     _watcher.Changed += WatcherOnChanged;
@@ -81,7 +82,7 @@ namespace RailwayEssentialWeb
 
         private void LoadTrackView()
         {
-            Viewer.Url = Testfile;
+            Viewer.Url = _tmpTrackName;
             Viewer.Reload();
         }
 

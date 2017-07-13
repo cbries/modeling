@@ -16,21 +16,18 @@ namespace RailwayEssentialWeb
 
         public string ThemeDirectory { get; set; }
 
-        private Random _randomNumberGenerator = new Random();
+        private readonly Random _randomNumberGenerator = new Random();
 
         public WebGenerator()
         {
             Rows = 20;
             Columns = 50;
 
-            TileWidth = 32;
-            TileHeight = 32;
+            TileWidth = 24;
+            TileHeight = 24;
         }
 
-        private List<string> ThemeFiles
-        {
-            get { return Directory.GetFiles(ThemeDirectory, "*.svg", SearchOption.TopDirectoryOnly).ToList(); }
-        }
+        private List<string> ThemeFiles => Directory.GetFiles(ThemeDirectory, "*.svg", SearchOption.TopDirectoryOnly).ToList();
 
         public string GetRandomSvg()
         {
@@ -38,7 +35,7 @@ namespace RailwayEssentialWeb
             return ThemeFiles[index];
         }
 
-        private int _currentIndex = 0;
+        private int _currentIndex;
         public string GetNextSvg()
         {
             if (_currentIndex >= ThemeFiles.Count)
@@ -75,13 +72,15 @@ function setCellImage(x, y, src) {
             return m;
         }
         
-        public bool Generate(string targetDirectory)
+        public bool Generate(string targetFilepath)
         {
-            string html = "<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" class=\"gridTrackPlan\">\r\n";
+            StringBuilder oSb = new StringBuilder();
+
+            oSb.Append("<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" class=\"gridTrackPlan\">\r\n");
 
             for (int y = 0; y < Rows; ++y)
             {
-                html += "  <tr>\r\n";
+                oSb.Append("  <tr>\r\n");
 
                 for (int x = 0; x < Columns; ++x)
                 {
@@ -89,22 +88,21 @@ function setCellImage(x, y, src) {
                     var id = "cell_" + x + "_" + y;
                     var title = id;
 
-                    html += "    <td id=\"" + id + "\" class=\"cell\" title=\"" + title + "\"";
-                    html += "style=\"background-image:url("+ new Uri(fname).AbsoluteUri + ");\"";
-                    html += "></td>\r\n";
+                    oSb.Append("<td id=\"" + id + "\" class=\"cell\" title=\"" + title + "\" ");
+                    oSb.Append("style=\"background-image:url(" + new Uri(fname).AbsoluteUri + ");\"></td>\r\n");
                 }
 
-                html += "  </tr>\r\n";
+                oSb.Append("</tr>\r\n");
             }
 
-            html += "</table>";
+            oSb.Append("</table>");
 
             try
             {
                 var b = CreateBase();
-                b = b.Replace("{{CONTENT}}", html);
+                b = b.Replace("{{CONTENT}}", oSb.ToString());
 
-                File.WriteAllText(Path.Combine(targetDirectory, "trackplan.html"), b, Encoding.UTF8);
+                File.WriteAllText(targetFilepath, b, Encoding.UTF8);
             }
             catch
             {

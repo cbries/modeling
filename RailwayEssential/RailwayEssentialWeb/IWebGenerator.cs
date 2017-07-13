@@ -2,7 +2,7 @@
 {
     public interface IWebGenerator
     {
-        bool Generate(string targetDirectory);
+        bool Generate(string targetFilepath);
         string GetRandomSvg();
         string GetNextSvg();
     }
