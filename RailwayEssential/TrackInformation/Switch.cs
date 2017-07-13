@@ -195,12 +195,54 @@ namespace TrackInformation
 
         public override JObject ToJson()
         {
-            return null;
+            JObject o = new JObject
+            {
+                ["name1"] = Name1,
+                ["name2"] = Name2,
+                ["name3"] = Name3
+            };
+            JArray a0 = new JArray();
+            foreach (var e in Addrext)
+                a0.Add(e);
+            o["addrext"] = a0;
+            o["addr"] = Addr;
+            o["protocol"] = Protocol;
+            o["type"] = Type;
+            o["mode"] = Mode;
+            o["state"] = State;
+            o["switching"] = Switching;
+            return o;
         }
 
-        public override void ParseJson(JObject obj)
+        public override void ParseJson(JObject o)
         {
-
+            if (o["name1"] != null)
+                Name1 = o["name1"].ToString();
+            if (o["name2"] != null)
+                Name2 = o["name2"].ToString();
+            if (o["name3"] != null)
+                Name3 = o["name3"].ToString();
+            if (o["addrext"] != null)
+            {
+                JArray a = o["addrext"] as JArray;
+                if (a != null)
+                {
+                    foreach (var e in a)
+                        Addrext.Add(e.ToString());
+                }
+            }
+            if (o["addr"] != null)
+                Addr = (int) o["addr"];
+            if (o["protocol"] != null)
+                Protocol = o["protocol"].ToString();
+            if (o["type"] != null)
+                Type = o["type"].ToString();
+            if (o["mode"] != null)
+                Mode = o["mode"].ToString();
+            if (o["state"] != null)
+                State = (int) o["state"];
+            if (o["switching"] != null)
+                Switching = (int) o["switching"];
         }
 
         public void ChangeDirection(int index)

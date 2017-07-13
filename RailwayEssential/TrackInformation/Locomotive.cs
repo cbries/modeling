@@ -22,6 +22,7 @@ namespace TrackInformation
 
         private string _protocol;
 
+        // MM14, MM27, MM28, DCC14, DCC28, DCC128, SX32, MMFKT
         public string Protocol
         {
             get => _protocol;
@@ -209,12 +210,36 @@ namespace TrackInformation
 
         public override JObject ToJson()
         {
-            return null;
+            JObject o = new JObject
+            {
+                ["name"] = Name,
+                ["protocol"] = Protocol,
+                ["addr"] = Addr,
+                ["speed"] = Speed,
+                ["speedstep"] = Speedstep,
+                ["direction"] = Direction,
+                ["funcset"] = Funcset
+            };
+
+            return o;
         }
 
         public override void ParseJson(JObject obj)
         {
-
+            if (obj["name"] != null)
+                Name = obj["name"].ToString();
+            if (obj["protocol"] != null)
+                Protocol = obj["protocol"].ToString();
+            if (obj["addr"] != null)
+                Addr = (int) obj["addr"];
+            if (obj["speed"] != null)
+                Speed = (int) obj["speed"];
+            if (obj["speedstep"] != null)
+                Speedstep = (int) obj["speedstep"];
+            if (obj["direction"] != null)
+                Direction = (int) obj["direction"];
+            if (obj["funcset"] != null)
+                Funcset = obj["funcset"].ToString();
         }
     }
 }

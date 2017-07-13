@@ -92,12 +92,23 @@ namespace TrackInformation
 
         public override JObject ToJson()
         {
-            return null;
+            JObject o = new JObject
+            {
+                ["index"] = Index,
+                ["ports"] = Ports,
+                ["stateOriginal"] = StateOriginal
+            };
+            return o;
         }
 
-        public override void ParseJson(JObject obj)
+        public override void ParseJson(JObject o)
         {
-
+            if (o["index"] != null)
+                Index = (int) o["index"];
+            if (o["ports"] != null)
+                Ports = (int) o["ports"];
+            if (o["stateOriginal"] != null)
+                StateOriginal = o["stateOriginal"].ToString();
         }
     }
 }

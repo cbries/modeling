@@ -76,12 +76,26 @@ namespace TrackInformation
 
         public override JObject ToJson()
         {
-            return null;
+            JObject o = new JObject
+            {
+                ["name1"] = Name1,
+                ["name2"] = Name2,
+                ["name3"] = Name3,
+                ["type"] = Type
+            };
+            return o;
         }
 
         public override void ParseJson(JObject obj)
         {
-
+            if (obj["name1"] != null)
+                Name1 = obj["name1"].ToString();
+            if (obj["name2"] != null)
+                Name1 = obj["name2"].ToString();
+            if (obj["name3"] != null)
+                Name1 = obj["name3"].ToString();
+            if (obj["type"] != null)
+                Type = obj["type"].ToString();
         }
     }
 }
