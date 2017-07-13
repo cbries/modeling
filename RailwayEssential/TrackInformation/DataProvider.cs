@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text;
 using Ecos2Core;
 using Ecos2Core.Replies;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using TrackInformation.Annotations;
 
 namespace TrackInformation
@@ -19,6 +24,71 @@ namespace TrackInformation
         public ObservableCollection<IItem> Objects => _objects;
 
         public Ecos2 Baseobject { get; set; }
+
+        public bool SaveObjects(string sessionDirectory)
+        {
+            try
+            {
+                lock (_objects)
+                {
+                    JArray arLocomotives = new JArray();
+                    JArray arSwitches = new JArray();
+                    JArray arRoutes = new JArray();
+                    JArray arS88 = new JArray();
+
+                    foreach (var item in _objects)
+                    {
+                        if (item == null)
+                            continue;
+
+                        if(item is Locomotive)
+                            arLocomotives.Add(item.ToJson());
+                        else if (item is Switch)
+                            arSwitches.Add(item.ToJson());
+                        else if (item is Route)
+                            arRoutes.Add(item.ToJson());
+                        else if (item is S88)
+                            arS88.Add(item.ToJson());
+                        else
+                        {
+                            // ignore
+                        }
+                    }
+
+                    var o = new JObject
+                    {
+                        ["locomotives"] = arLocomotives,
+                        ["switches"] = arSwitches,
+                        ["routes"] = arRoutes,
+                        ["s88"] = arS88
+                    };
+
+                    var targetPath = Path.Combine(sessionDirectory, "TrackObjects.json");
+                    File.WriteAllText(targetPath, o.ToString(Formatting.Indented), Encoding.UTF8);
+                }
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                Trace.WriteLine("<DataProvider> " + ex.Message);
+                return false;
+            }
+        }
+
+        public bool LoadObjects(string sessionDirectory)
+        {
+            try
+            {
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine("<DataProvider> " + ex.Message);
+                return false;
+            }
+        }
 
         public IItem GetObjectBy(int objectid)
         {
@@ -129,10 +199,21 @@ namespace TrackInformation
             if (block.Command == null)
                 return false;
 
+            Trace.WriteLine("Type: " + block.Command.Type);
+
             if (block.Command.Type != CommandT.QueryObjects && block.Command.Type != CommandT.Get)
                 return false;
 
-            switch(block.Command.ObjectId)
+            var objectId = block.Command.ObjectId;
+
+            var sid = $"{block.Command.ObjectId}";
+            if (sid.Length >= 3)
+            {
+                if (sid.StartsWith("10", StringComparison.OrdinalIgnoreCase))
+                    objectId = 10;
+            }
+
+            switch(objectId)
             {
                 case 1: // baseobject
                     return HandleBaseobject(block);
@@ -264,6 +345,7 @@ namespace TrackInformation
                         _objects.Add(l);
                         DataChanged?.Invoke(this);
                         l.EnableView();
+                        l.QueryState();
                     }
                 }
             }

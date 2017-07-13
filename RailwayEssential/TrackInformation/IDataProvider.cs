@@ -15,5 +15,8 @@ namespace TrackInformation
         IItem GetObjectBy(int objectid);
 
         bool Add(Ecos2Core.IBlock block);
+
+        bool SaveObjects(string sessionDirectory);
+        bool LoadObjects(string sessionDirectory);
     }
 }

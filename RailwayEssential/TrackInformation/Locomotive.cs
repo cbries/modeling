@@ -142,7 +142,7 @@ namespace TrackInformation
         {
             List<ICommand> ctrlCmds = new List<ICommand>
             {
-                CommandFactory.Create($"get({ObjectId}, speed, profile, protocol, name, addr, dir)"),
+                CommandFactory.Create($"get({ObjectId}, speed, profile, protocol, name, addr, dir, funcset)"),
             };
 
             OnCommandsReady(this, ctrlCmds);
@@ -212,13 +212,13 @@ namespace TrackInformation
         {
             JObject o = new JObject
             {
-                ["name"] = Name,
-                ["protocol"] = Protocol,
-                ["addr"] = Addr,
-                ["speed"] = Speed,
-                ["speedstep"] = Speedstep,
-                ["direction"] = Direction,
-                ["funcset"] = Funcset
+                ["name"] = _name,
+                ["protocol"] = _protocol,
+                ["addr"] = _addr,
+                ["speed"] = _speed,
+                ["speedstep"] = _speedstep,
+                ["direction"] = _directon,
+                ["funcset"] = _funcset
             };
 
             return o;

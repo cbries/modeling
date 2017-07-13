@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Ecos2Core;
+using RailwayEssentialCore;
 using TrackInformation;
 
 namespace Dispatcher
@@ -41,6 +42,9 @@ namespace Dispatcher
             }
             else
             {
+                // save objects
+                _dataProvider.SaveObjects(@"Sessions\0".ExpandRailwayEssential());
+
                 await UnloadViews();
 
                 _communication.Shutdown();

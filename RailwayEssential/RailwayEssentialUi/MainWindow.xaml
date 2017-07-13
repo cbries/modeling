@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RailwayEssentialUi"
         xmlns:trackInformation="clr-namespace:TrackInformation;assembly=TrackInformation"
         mc:Ignorable="d" Closing="MainWindow_OnClosing"
-        Title="MainWindow" Height="640" Width="1024">
+        Title="RailwayEssential" Height="640" Width="1024">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
