@@ -6,11 +6,51 @@ namespace TrackInformation
 {
     public class Ecos2 : Item
     {
-        public string Name { get { return "ECoS2"; } }
-        public string ProtocolVersion { get; set; }
-        public string ApplicationVersion { get; set; }
-        public string HardwareVersion { get; set; }
-        public string Status { get; set; }
+        public string Name => "ECoS2";
+
+        private readonly string[] _fields = new string[4];
+
+        public string ProtocolVersion
+        {
+            get => _fields[0];
+            set
+            {
+                _fields[0] = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ApplicationVersion
+        {
+            get => _fields[1];
+            set
+            {
+                _fields[1] = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string HardwareVersion
+        {
+            get => _fields[2];
+            set
+            {
+                _fields[2] = value;
+                OnPropertyChanged();
+            }
+
+        }
+
+        public string Status
+        {
+            get => _fields[3];
+            set
+            {
+                _fields[3] = value;
+                OnPropertyChanged();
+            }
+
+        }
 
         public override void Parse(List<CommandArgument> arguments)
         {

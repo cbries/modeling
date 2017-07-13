@@ -1,12 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Ecos2Core;
 
 namespace TrackInformation
 {
     public class S88 : Item
     {
-        public int Ports { get; set; }
+        private int _index;
+
+        /// <summary> the position within the S88 bus </summary>
+        public int Index
+        {
+            get => _index;
+            set
+            {
+                _index = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _ports;
+
+        public int Ports
+        {
+            get => _ports;
+            set
+            {
+                _ports = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _stateOriginal;
+
+        public string StateOriginal
+        {
+            get => _stateOriginal;
+            set
+            {
+                _stateOriginal = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string StateBinary => ToBinary(StateOriginal);
+
+        private string ToBinary(string hex)
+        {
+            return String.Join(String.Empty,
+                hex.Select(
+                    c => Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0')
+                )
+            );
+        }
 
         public void EnableView()
         {

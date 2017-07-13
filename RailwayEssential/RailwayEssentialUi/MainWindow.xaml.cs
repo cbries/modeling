@@ -121,7 +121,7 @@ namespace RailwayEssentialUi
                         var item = new ModelItem
                         {
                             Object = ee,
-                            Title = $"{ee.ObjectId} {ee.Ports}"
+                            Title = $"{ee.ObjectId} {ee.Index}:{ee.Ports}"
                         };
 
                         itemS88.Items.Add(item);

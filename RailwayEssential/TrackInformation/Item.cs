@@ -10,7 +10,17 @@ namespace TrackInformation
     {
         public event CommandsReadyDelegator CommandsReady;
 
-        public int ObjectId { get; set; }
+        private int _objectId;
+
+        public int ObjectId
+        {
+            get => _objectId;
+            set
+            {
+                _objectId = value;
+                OnPropertyChanged();
+            }
+        }
 
         public virtual void Parse(List<CommandArgument> arguments)
         {

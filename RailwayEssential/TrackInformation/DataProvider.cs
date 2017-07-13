@@ -38,15 +38,6 @@ namespace TrackInformation
             return null;
         }
 
-        private string ToBinary(string hex)
-        {
-            return String.Join(String.Empty,
-                hex.Select(
-                    c => Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0')
-                )
-            );
-        }
-
         private bool HandleEvent(IBlock block)
         {
             if (block == null)
@@ -63,7 +54,9 @@ namespace TrackInformation
 
                 string hex = e.Arguments[0].Parameter[0];
 
-                Trace.WriteLine($"{e.ObjectId}: " + ToBinary(hex));
+                var item = GetObjectBy(e.ObjectId) as S88;
+                if (item != null)
+                    item.StateOriginal = hex;
             }
 
             return true;
@@ -234,7 +227,9 @@ namespace TrackInformation
 
                 if (sid.StartsWith("10", StringComparison.OrdinalIgnoreCase))
                 {
-                    var s88 = new S88 {ObjectId = e.ObjectId};
+                    int n = _objects.Count(x => x is S88);
+
+                    var s88 = new S88 {ObjectId = e.ObjectId, Index = n};
                     s88.Parse(e.Arguments);
                     if (!DoesObjectIdExist((uint) e.ObjectId))
                     {

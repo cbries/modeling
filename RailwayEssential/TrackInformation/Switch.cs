@@ -6,15 +6,109 @@ namespace TrackInformation
 {
     public class Switch : Item
     {
-        public string Name1 { get; set; }
-        public string Name2 { get; set; }
-        public string Name3 { get; set; }
-        public List<string> Addrext { get; set; }
-        public int Addr { get; set; }
-        public string Protocol { get; set; }
-        public string Type { get; set; }
-        public string Mode { get; set; }
-        public bool SwitchState { get; set; } // Argument: "switch"
+        private readonly string[] _names = new string[3];
+
+        public string Name1
+        {
+            get => _names[0];
+            set
+            {
+                _names[0] = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Name2
+        {
+            get => _names[1];
+            set
+            {
+                _names[1] = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Name3
+        {
+            get => _names[2];
+            set
+            {
+                _names[2] = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private List<string> _addrext = new List<string>();
+
+        public List<string> Addrext
+        {
+            get => _addrext;
+            set
+            {
+                _addrext = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _addr;
+
+        public int Addr
+        {
+            get => _addr;
+            set
+            {
+                _addr = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _protocol;
+
+        public string Protocol
+        {
+            get => _protocol;
+            set
+            {
+                _protocol = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _type;
+
+        public string Type
+        {
+            get => _type;
+            set
+            {
+                _type = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _mode;
+
+        public string Mode
+        {
+            get => _mode;
+            set
+            {
+                _mode = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _switchState;
+
+        public bool SwitchState
+        {
+            get => _switchState;
+            set
+            {
+                _switchState = value;
+                OnPropertyChanged();
+            }
+        } // Argument: "switch"
 
         public override void Parse(List<CommandArgument> arguments)
         {

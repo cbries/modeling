@@ -6,9 +6,41 @@ namespace TrackInformation
 {
     public class Locomotive : Item
     {
-        public string Name { get; set; }
-        public string Protocol { get; set; }
-        public int Addr { get; set; }
+        private string _name;
+
+        public string Name
+        {
+            get => _name;
+            set
+            {
+                _name = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _protocol;
+
+        public string Protocol
+        {
+            get => _protocol;
+            set
+            {
+                _protocol = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _addr;
+
+        public int Addr
+        {
+            get => _addr;
+            set
+            {
+                _addr = value;
+                OnPropertyChanged();
+            }
+        }
 
         public void ToggleFunction(uint nr, bool state)
         {
