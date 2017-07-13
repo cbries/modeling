@@ -7,6 +7,8 @@ namespace Ecos2Core.Replies
     {
         private List<CommandArgument> _arguments = new List<CommandArgument>();
 
+        public string OriginalLine { get; private set; }
+
         public int ObjectId { get; set; }
 
         public List<CommandArgument> Arguments
@@ -17,6 +19,8 @@ namespace Ecos2Core.Replies
 
         public bool Parse(string line)
         {
+            OriginalLine = line;
+
             int n = line.IndexOf(" ", StringComparison.OrdinalIgnoreCase);
             if (n == -1)
                 return false;

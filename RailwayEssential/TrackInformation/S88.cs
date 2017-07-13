@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Ecos2Core;
+using Newtonsoft.Json.Linq;
 
 namespace TrackInformation
 {
     public class S88 : Item
     {
+        #region Properties
+
         private int _index;
 
         /// <summary> the position within the S88 bus </summary>
@@ -17,6 +19,7 @@ namespace TrackInformation
             {
                 _index = value;
                 OnPropertyChanged();
+                OnPropertyChanged("Title");
             }
         }
 
@@ -29,6 +32,7 @@ namespace TrackInformation
             {
                 _ports = value;
                 OnPropertyChanged();
+                OnPropertyChanged("Title");
             }
         }
 
@@ -41,6 +45,7 @@ namespace TrackInformation
             {
                 _stateOriginal = value;
                 OnPropertyChanged();
+                OnPropertyChanged("Title");
             }
         }
 
@@ -48,32 +53,24 @@ namespace TrackInformation
 
         private string ToBinary(string hex)
         {
-            return String.Join(String.Empty,
-                hex.Select(
-                    c => Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0')
-                )
-            );
-        }
-
-        public void EnableView()
-        {
-            List<ICommand> ctrlCmds = new List<ICommand>
+            if (string.IsNullOrEmpty(hex))
             {
-                CommandFactory.Create($"request({ObjectId}, view)")
-            };
+                string m = "";
+                for (int i = 0; i < _ports; ++i)
+                    m += "0";
+                return m;
+            }
 
-            OnCommandsReady(this, ctrlCmds);
+            return Convert.ToString(Convert.ToInt64(hex, 16), 2).PadLeft(16, '0');
         }
 
-        public void DisableView()
+        public override void UpdateTitle()
         {
-            List<ICommand> ctrlCmds = new List<ICommand>
-            {
-                CommandFactory.Create($"release({ObjectId}, view)")
-            };
-
-            OnCommandsReady(this, ctrlCmds);
+            Title = $"{ObjectId} {Index}:{Ports} {StateBinary}";
+            OnPropertyChanged("Title");
         }
+
+        #endregion
 
         public override void Parse(List<CommandArgument> arguments)
         {
@@ -91,6 +88,16 @@ namespace TrackInformation
                         Ports = -1;
                 }
             }
+        }
+
+        public override JObject ToJson()
+        {
+            return null;
+        }
+
+        public override void ParseJson(JObject obj)
+        {
+
         }
     }
 }

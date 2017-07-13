@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using Ecos2Core;
+using TrackInformation;
 
 namespace RailwayEssentialUi
 {
-    public partial class MainWindow : Window, Ecos2Core.ILogging
+    public partial class MainWindow : Window, ILogging
     {
         private readonly RailwayEssentialCore.Configuration _cfg;
         private readonly Dispatcher.Dispatcher _dispatcher;
@@ -42,7 +44,7 @@ namespace RailwayEssentialUi
             }, null);
         }
 
-        private TrackInformation.Locomotive _currentLocomotive = null;
+        private Locomotive _currentLocomotive = null;
         private TrackInformation.Switch _currentSwitch = null;
 
         public MainWindow()
@@ -51,7 +53,7 @@ namespace RailwayEssentialUi
 
             _ctx = SynchronizationContext.Current;
 
-            _cfg = new RailwayEssentialCore.Configuration()
+            _cfg = new RailwayEssentialCore.Configuration
             {
                 IpAddress = "192.168.178.61"
             };
@@ -63,9 +65,10 @@ namespace RailwayEssentialUi
             };
 
             var dataProvider = _dispatcher.GetDataProvider();
-
             dataProvider.DataChanged += OnDataChanged;
             dataProvider.CommandsReady += DataProviderOnCommandsReady;
+
+            InitializeTreeView();
         }
 
         private void DataProviderOnCommandsReady(object sender, IReadOnlyList<ICommand> commands)
@@ -73,18 +76,31 @@ namespace RailwayEssentialUi
             _dispatcher.ForwardCommands(commands);
         }
 
+        private Category _itemStatus;
+        private Category _itemLocomotives;
+        private Category _itemS88;
+        private Category _itemSwitches;
+        private Category _itemRoutes;
+
+        private void InitializeTreeView()
+        {
+            _itemStatus = new Category { Title = "Status" };
+            _itemLocomotives = new Category { Title = "Locomotives" };
+            _itemS88 = new Category { Title = "S88 Ports" };
+            _itemSwitches = new Category { Title = "Switches" };
+            _itemRoutes = new Category { Title = "Routes" };
+
+            TreeViewModel.Items.Add(_itemStatus);
+            TreeViewModel.Items.Add(_itemLocomotives);
+            TreeViewModel.Items.Add(_itemS88);
+            TreeViewModel.Items.Add(_itemSwitches);
+            TreeViewModel.Items.Add(_itemRoutes);
+        }
+
         private void OnDataChanged(object sender)
         {
             _ctx.Send(state =>
             {
-                TreeViewModel.Items.Clear();
-
-                var itemStatus = new ModelItem {Title = "Status"};
-                var itemLocomotives = new ModelItem { Title = "Locomotives" };
-                var itemS88 = new ModelItem { Title = "S88 Ports" };
-                var itemSwitches = new ModelItem { Title = "Switches" };
-                var itemRoutes = new ModelItem { Title = "Routes" };
-
                 var dataProvider = _dispatcher.GetDataProvider();
 
                 foreach (var e in dataProvider.Objects)
@@ -92,93 +108,96 @@ namespace RailwayEssentialUi
                     if (e == null)
                         continue;
 
-                    if (e is TrackInformation.Ecos2)
+                    if (e is Ecos2)
                     {
-                        var ee = e as TrackInformation.Ecos2;
+                        var ee = e as Ecos2;
 
-                        itemStatus.Title = $"{ee.Name}: {ee.Status}";
-                        itemStatus.Items.Add(new ModelItem() { Object = ee, Title = $"{ee.Name}"});
-                        itemStatus.Items.Add(new ModelItem() { Object = ee, Title = $"Application Version: {ee.ApplicationVersion}" });
-                        itemStatus.Items.Add(new ModelItem() { Object = ee, Title = $"Protocol Version: {ee.ProtocolVersion}" });
-                        itemStatus.Items.Add(new ModelItem() { Object = ee, Title = $"Hardware Version: {ee.HardwareVersion}" });
-                    }
-                    else if (e is TrackInformation.Locomotive)
-                    {
-                        var ee = e as TrackInformation.Locomotive;
+                        _itemStatus.Title = $"{ee.Name}: {ee.Status}";
 
-                        var item = new ModelItem
+                        if (_itemStatus.Items.Count < 4)
                         {
-                            Object = ee,
-                            Title = $"{ee.ObjectId} {ee.Name} ({ee.Protocol} : {ee.Addr}"
-                        };
-
-                        itemLocomotives.Items.Add(item);
-                    }
-                    else if (e is TrackInformation.S88)
-                    {
-                        var ee = e as TrackInformation.S88;
-
-                        var item = new ModelItem
+                            _itemStatus.Items.Add(new Item { Title = $"{ee.Name}" });
+                            _itemStatus.Items.Add(new Item { Title = $"Application Version: {ee.ApplicationVersion}" });
+                            _itemStatus.Items.Add(new Item { Title = $"Protocol Version: {ee.ProtocolVersion}" });
+                            _itemStatus.Items.Add(new Item { Title = $"Hardware Version: {ee.HardwareVersion}" });
+                        }
+                        else
                         {
-                            Object = ee,
-                            Title = $"{ee.ObjectId} {ee.Index}:{ee.Ports}"
-                        };
+                            _itemStatus.Items[0].Title = $"{ee.Name}";
+                            _itemStatus.Items[1].Title = $"Application Version: {ee.ApplicationVersion}";
+                            _itemStatus.Items[2].Title = $"Protocol Version: {ee.ProtocolVersion}";
+                            _itemStatus.Items[3].Title = $"Hardware Version: {ee.HardwareVersion}";
+                        }
+                    }
+                    else if (e is Locomotive)
+                    {
+                        var ee = e as Locomotive;
 
-                        itemS88.Items.Add(item);
+                        if (_itemLocomotives.Items.Any(x => x.ObjectId == ee.ObjectId))
+                            ee.UpdateTitle();
+                        else
+                        {
+                            ee.UpdateTitle();
+                            _itemLocomotives.Items.Add(ee);
+                        }
+                    }
+                    else if (e is S88)
+                    {
+                        var ee = e as S88;
+
+                        if (_itemS88.Items.Any(x => x.ObjectId == ee.ObjectId))
+                            ee.UpdateTitle();
+                        else
+                        {
+                            ee.UpdateTitle();
+                            _itemS88.Items.Add(ee);
+                        }
                     }
                     else if (e is TrackInformation.Switch)
                     {
                         var ee = e as TrackInformation.Switch;
 
-                        var ext = string.Join(", ", ee.Addrext);
-
-                        var item = new ModelItem
+                        if (_itemSwitches.Items.Any(x => x.ObjectId == ee.ObjectId))
+                            ee.UpdateTitle();
+                        else
                         {
-                            Object = ee,
-                            Title = $"{ee.ObjectId} {ee.Name1}[{ext}] {ee.SwitchState}"
-                        };
-
-                        itemSwitches.Items.Add(item);
+                            ee.UpdateTitle();
+                            _itemSwitches.Items.Add(ee);
+                        }
                     }
-                    else if (e is TrackInformation.Route)
+                    else if (e is Route)
                     {
-                        var ee = e as TrackInformation.Route;
+                        var ee = e as Route;
 
-                        var item = new ModelItem
+                        if (_itemRoutes.Items.Any(x => x.ObjectId == ee.ObjectId))
+                            ee.UpdateTitle();
+                        else
                         {
-                            Object = ee,
-                            Title = $"{ee.ObjectId} {ee.Name1}"
-                        };
-
-                        itemRoutes.Items.Add(item);
+                            ee.UpdateTitle();
+                            _itemRoutes.Items.Add(ee);
+                        }
                     }
                 }
-
-                TreeViewModel.Items.Add(itemStatus);
-                TreeViewModel.Items.Add(itemLocomotives);
-                TreeViewModel.Items.Add(itemSwitches);
-                TreeViewModel.Items.Add(itemRoutes);
-                TreeViewModel.Items.Add(itemS88);
             }, null);
         }
 
         private void TreeViewModel_OnSelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            var item = TreeViewModel.SelectedItem as ModelItem;
+            var item = TreeViewModel.SelectedItem as Item;
             if (item != null)
             {
-                if (item.Object is TrackInformation.Locomotive)
+                if (item is Locomotive)
                 {
-                    _currentLocomotive = item.Object as TrackInformation.Locomotive;
+                    _currentLocomotive = item as Locomotive;
 
                     if (_currentLocomotive != null)
                     {
                         var o = _currentLocomotive;
                         TxtCurrentLocomotive.Text = $"{o.ObjectId} {o.Name} ({o.Addr})";
                     }
-                } else if (item.Object is TrackInformation.Switch)
+                } else if (item is TrackInformation.Switch)
                 {
-                    var newswitch = item.Object as TrackInformation.Switch;
+                    var newswitch = item as TrackInformation.Switch;
 
                     if (_currentSwitch != newswitch)
                     {

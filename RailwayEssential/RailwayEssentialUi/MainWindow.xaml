@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RailwayEssentialUi"
+        xmlns:trackInformation="clr-namespace:TrackInformation;assembly=TrackInformation"
         mc:Ignorable="d" Closing="MainWindow_OnClosing"
         Title="MainWindow" Height="640" Width="1024">
     <Grid>
@@ -18,27 +19,19 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
-            
-            <TreeView Name="TreeViewModel" Grid.Row="0" SelectedItemChanged="TreeViewModel_OnSelectedItemChanged">
+
+            <TreeView x:Name="TreeViewModel" SelectedItemChanged="TreeViewModel_OnSelectedItemChanged">
                 <TreeView.ItemTemplate>
-                    <HierarchicalDataTemplate DataType="{x:Type local:ModelItem}" ItemsSource="{Binding Items}">
+                    <HierarchicalDataTemplate DataType="{x:Type trackInformation:Item}" ItemsSource="{Binding Items}">
                         <DockPanel Margin="0,1,0,1">
                             <Image Width="16" Height="16" Source="{Binding IconSource}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="NearestNeighbor" Margin="0,0,3,0">
-                                <!--
-                                <Image.ToolTip>
-                                    <ToolTip Content="{Binding Address}"/>
-                                </Image.ToolTip>
-                                -->
                             </Image>
                             <TextBlock Text="{Binding Title}" FontWeight="Bold" FontSize="12"/>
-                            <!--
-                            <TextBlock Text="{Binding Typename}" FontStyle="Italic" FontSize="11" Margin="5,0,0,0"/>
-                            -->
                         </DockPanel>
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>
-            
+
             <DockPanel Grid.Row="1" HorizontalAlignment="Left">
                 <Button Name="CmdStart" Height="24" Content="Start" Width="55" Margin="2,1,1,1" Click="CmdStart_OnClick"/>
                 <Button Name="CmdStop" Height="24" Content="Stop" Width="55" Margin="2,1,1,1" Click="CmdStop_OnClick"/>

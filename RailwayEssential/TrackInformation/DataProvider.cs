@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Ecos2Core;
@@ -48,15 +47,72 @@ namespace TrackInformation
                 if (e == null)
                     continue;
 
-                // 1101 0000 1101 0110
-                //                   0
-                // 16
+                IItem item = GetObjectBy(e.ObjectId);
 
-                string hex = e.Arguments[0].Parameter[0];
+                if (HandleEventS88(item, e))
+                    continue;
 
-                var item = GetObjectBy(e.ObjectId) as S88;
-                if (item != null)
-                    item.StateOriginal = hex;
+                if (HandleEventSwitch(item, e))
+                    continue;
+
+                if (HandleEventLocomotive(item, e))
+                    continue;
+            }
+
+            return true;
+        }
+
+        private bool HandleEventLocomotive(IItem item, ListEntry listEntry)
+        {
+            Locomotive e = item as Locomotive;
+            if (e == null)
+                return false;
+
+            var itemLocomotive = GetObjectBy(e.ObjectId) as Locomotive;
+
+            if (itemLocomotive != null)
+            {
+                itemLocomotive.Parse(listEntry.Arguments);
+                itemLocomotive.UpdateTitle();
+            }
+
+            return true;
+        }
+
+        private bool HandleEventSwitch(IItem item, ListEntry listEntry)
+        {
+            Switch e = item as Switch;
+            if (e == null)
+                return false;
+
+            var itemSwitch = GetObjectBy(e.ObjectId) as Switch;
+
+            if (itemSwitch != null)
+            {
+                itemSwitch.Parse(listEntry.Arguments);
+                itemSwitch.UpdateTitle();
+            }
+
+            return true;
+        }
+
+        private bool HandleEventS88(IItem item, ListEntry listEntry)
+        {
+            S88 e = item as S88;
+            if (e == null)
+                return false;
+
+            // 1101 0000 1101 0110
+            //                   0
+            // 16
+
+            string hex = listEntry.Arguments[0].Parameter[0];
+
+            var itemS88 = GetObjectBy(e.ObjectId) as S88;
+            if (itemS88 != null)
+            {
+                itemS88.StateOriginal = hex;
+                itemS88.UpdateTitle();
             }
 
             return true;
@@ -167,6 +223,7 @@ namespace TrackInformation
                         sw.CommandsReady += CommandsReady;
                         _objects.Add(sw);
                         DataChanged?.Invoke(this);
+                        sw.EnableView();
                     }
                 }
                 else if (sid.StartsWith("30", StringComparison.OrdinalIgnoreCase))
@@ -206,6 +263,7 @@ namespace TrackInformation
                         l.CommandsReady += CommandsReady;
                         _objects.Add(l);
                         DataChanged?.Invoke(this);
+                        l.EnableView();
                     }
                 }
             }

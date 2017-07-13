@@ -49,7 +49,13 @@ namespace Dispatcher
 
         private async Task UnloadViews()
         {
-            List<ICommand> initialCommands = new List<ICommand>()
+            if (_dataProvider != null)
+            {
+                foreach (var data in _dataProvider.Objects)
+                    data?.DisableView();
+            }
+
+            List<ICommand> initialCommands = new List<ICommand>
             {
                 CommandFactory.Create("release(1, view)"),
                 CommandFactory.Create("release(26, view)"),

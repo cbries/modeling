@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Ecos2Core;
+using Newtonsoft.Json.Linq;
 
 namespace TrackInformation
 {
@@ -12,5 +13,11 @@ namespace TrackInformation
         int ObjectId { get; set; }
 
         void Parse(List<CommandArgument> arguments);
+
+        void EnableView();
+        void DisableView();
+
+        JObject ToJson();
+        void ParseJson(JObject obj);
     }
 }

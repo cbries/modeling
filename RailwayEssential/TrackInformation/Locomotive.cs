@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Ecos2Core;
+using Newtonsoft.Json.Linq;
 
 namespace TrackInformation
 {
@@ -42,6 +44,61 @@ namespace TrackInformation
             }
         }
 
+        private int _speed; // percentage
+
+        public int Speed
+        {
+            get => _speed;
+            set
+            {
+                _speed = value;
+                OnPropertyChanged();
+            }
+        }
+        
+        private int _speedstep;
+
+        public int Speedstep
+        {
+            get => _speedstep;
+            set
+            {
+                _speedstep = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _directon;
+
+        public int Direction
+        {
+            get => _directon;
+            set
+            {
+                _directon = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _funcset;
+
+        public string Funcset
+        {
+            get => _funcset;
+            set
+            {
+                _funcset = value;
+                OnPropertyChanged();
+            }
+        }
+        
+        public override void UpdateTitle()
+        {
+            string v = Direction == 1 ? "Backward" : "Forward";
+            
+            Title = $"{ObjectId} {Name} Speed[{Speed}]->{v} ({Protocol} : {Addr})";
+        }
+
         public void ToggleFunction(uint nr, bool state)
         {
             int v = state ? 1 : 0;
@@ -80,6 +137,16 @@ namespace TrackInformation
             OnCommandsReady(this, ctrlCmds);
         }
 
+        public void QueryState()
+        {
+            List<ICommand> ctrlCmds = new List<ICommand>
+            {
+                CommandFactory.Create($"get({ObjectId}, speed, profile, protocol, name, addr, dir)"),
+            };
+
+            OnCommandsReady(this, ctrlCmds);
+        }
+        
         public override void Parse(List<CommandArgument> arguments)
         {
             foreach (var arg in arguments)
@@ -99,7 +166,55 @@ namespace TrackInformation
                     else
                         Addr = -1;
                 }
+                else if (arg.Name.Equals("speed", StringComparison.OrdinalIgnoreCase))
+                {
+                    int v;
+                    if (int.TryParse(arg.Parameter[0], out v))
+                        Speed = v;
+                    else
+                        Speed = -1;
+                }
+                else if (arg.Name.Equals("speedstep", StringComparison.OrdinalIgnoreCase))
+                {
+                    int v;
+                    if (int.TryParse(arg.Parameter[0], out v))
+                        Speedstep = v;
+                    else
+                        Speedstep = -1;
+                }
+                else if (arg.Name.Equals("dir", StringComparison.OrdinalIgnoreCase))
+                {
+                    int v;
+                    if (int.TryParse(arg.Parameter[0], out v))
+                        Direction = v;
+                    else
+                        Direction = -1;
+                }
+                else if (arg.Name.Equals("funcset", StringComparison.OrdinalIgnoreCase))
+                {
+                    Funcset = arg.Parameter[0].Trim();
+                }
+                else if (arg.Name.Equals("func", StringComparison.OrdinalIgnoreCase))
+                {
+                    Trace.WriteLine($"Func {arg.Parameter[0]} to {arg.Parameter[1]}");
+                }
+                else
+                {
+                    Trace.WriteLine("Unknown argument: " + arg.Name + " -> " + string.Join(", ", arg.Parameter));
+                }
             }
+
+            OnPropertyChanged();
+        }
+
+        public override JObject ToJson()
+        {
+            return null;
+        }
+
+        public override void ParseJson(JObject obj)
+        {
+
         }
     }
 }

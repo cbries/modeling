@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Ecos2Core;
+using Newtonsoft.Json.Linq;
 
 namespace TrackInformation
 {
@@ -98,17 +100,40 @@ namespace TrackInformation
             }
         }
 
-        private bool _switchState;
+        private int _state;
 
-        public bool SwitchState
+        public int State
         {
-            get => _switchState;
+            get => _state;
             set
             {
-                _switchState = value;
+                _state = value;
                 OnPropertyChanged();
             }
-        } // Argument: "switch"
+        }
+
+        private int _switching;
+
+        public int Switching
+        {
+            get => _switching;
+            set
+            {
+                _switching = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public override void UpdateTitle()
+        {
+            var ext = string.Join(", ", Addrext);
+            var direction = "Turn";
+            if (State == 0)
+                direction = "Straight";
+            else
+                direction = "Turn";
+            Title = $"{ObjectId} {Name1}[{ext}] {direction}";
+        }
 
         public override void Parse(List<CommandArgument> arguments)
         {
@@ -139,15 +164,43 @@ namespace TrackInformation
                     Type = arg.Parameter[0];
                 else if (arg.Name.Equals("mode", StringComparison.OrdinalIgnoreCase))
                     Mode = arg.Parameter[0];
+                else if (arg.Name.Equals("state", StringComparison.OrdinalIgnoreCase))
+                {
+                    int v;
+                    if (int.TryParse(arg.Parameter[0], out v))
+                        State = v;
+                    else
+                        State = -1;
+                }
+                else if (arg.Name.Equals("switching", StringComparison.OrdinalIgnoreCase))
+                {
+                    int v;
+                    if (int.TryParse(arg.Parameter[0], out v))
+                        Switching = v;
+                    else
+                        Switching = -1;
+                }
                 else if (arg.Name.Equals("symbol", StringComparison.OrdinalIgnoreCase))
                 {
-                    bool v;
-                    if (bool.TryParse(arg.Parameter[0], out v))
-                        SwitchState = v;
-                    else
-                        SwitchState = false;
+                    Trace.WriteLine($"Handled, but purpose is unknown for: {arg.Name} -> {arg.Parameter[0]}");
+                }
+                else
+                {
+                    Trace.WriteLine("Unknown argument: " + arg.Name + " -> " + string.Join(", ", arg.Parameter));
                 }
             }
+
+            OnPropertyChanged();
+        }
+
+        public override JObject ToJson()
+        {
+            return null;
+        }
+
+        public override void ParseJson(JObject obj)
+        {
+
         }
 
         public void ChangeDirection(int index)

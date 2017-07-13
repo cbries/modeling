@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Ecos2Core;
+using Newtonsoft.Json.Linq;
 
 namespace TrackInformation
 {
@@ -50,6 +51,11 @@ namespace TrackInformation
             }
         }
 
+        public override void UpdateTitle()
+        {
+            Title = $"{ObjectId} {Name1}";
+        }
+
         public override void Parse(List<CommandArgument> arguments)
         {
             foreach (var arg in arguments)
@@ -66,6 +72,16 @@ namespace TrackInformation
                 else if (arg.Name.Equals("type", StringComparison.OrdinalIgnoreCase))
                     Type = arg.Parameter[0];
             }
+        }
+
+        public override JObject ToJson()
+        {
+            return null;
+        }
+
+        public override void ParseJson(JObject obj)
+        {
+
         }
     }
 }
