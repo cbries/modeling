@@ -6,7 +6,7 @@ using System.Text;
 
 namespace RailwayEssentialWeb
 {
-    public class WebTableGenerator
+    public partial class WebGenerator : IWebGenerator
     {
         public int Rows { get; set; }
         public int Columns { get; set; }
@@ -16,9 +16,9 @@ namespace RailwayEssentialWeb
 
         public string ThemeDirectory { get; set; }
 
-        public Random _randomNumberGenerator = new Random();
+        private Random _randomNumberGenerator = new Random();
 
-        public WebTableGenerator()
+        public WebGenerator()
         {
             Rows = 20;
             Columns = 50;
@@ -32,14 +32,14 @@ namespace RailwayEssentialWeb
             get { return Directory.GetFiles(ThemeDirectory, "*.svg", SearchOption.TopDirectoryOnly).ToList(); }
         }
 
-        private string GetRandomSvg()
+        public string GetRandomSvg()
         {
             int index = _randomNumberGenerator.Next(0, ThemeFiles.Count - 1);
             return ThemeFiles[index];
         }
 
         private int _currentIndex = 0;
-        private string GetNextSvg()
+        public string GetNextSvg()
         {
             if (_currentIndex >= ThemeFiles.Count)
                 _currentIndex = 0;
@@ -51,21 +51,32 @@ namespace RailwayEssentialWeb
         private string CreateBase()
         {
             string m = "<html><head>";
-            m += "<link rel=\"stylesheet\" type=\"text/css\" href=\"theme.css\">";
+            m += "<style>" + CssCode + "</style>";
+            m += @"<script type=""text/javascript"">" + JqueryCode + @"</script>";
+            m += @"
+<script type=""text/javascript"">
+$(document).ready(function(){
+    $('td').click(function(){
+            var col = $(this).parent().children().index($(this));
+            var row = $(this).parent().parent().children().index($(this).parent());
+            //railwayEssentialCallback.message('Row: ' + row + ', Column: ' + col);
+            railwayEssentialCallback.cellClicked(col, row);
+        });
+    });
+
+function setCellImage(x, y, src) {
+    var selector = '#cell_' + x + '_' + y;
+    $(selector).css('background-image','url(' + src + ')');
+    railwayEssentialCallback.message('x: ' + x + ', y: ' + y);
+    railwayEssentialCallback.message('src: ' + src);
+}
+</script>";
             m += "<body>\r\n{{CONTENT}}\r\n</body></html>";
             return m;
         }
         
         public bool Generate(string targetDirectory)
         {
-            string css = @".gridTrackPlan { border: 1px solid black; }
-.cell { border: 1px solid lightgray; background-repeat:no-repeat; background-size: "+TileWidth+ @"px " + TileHeight + @"px; width: " + TileWidth + @"px; height: " + TileHeight + @"px; }
-html, body { height: 100%;  }
-html { display: table; margin: auto; }
-body { display: table-cell; vertical-align: middle; }";
-
-            File.WriteAllText(Path.Combine(targetDirectory, "theme.css"), css, Encoding.UTF8);
-
             string html = "<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" class=\"gridTrackPlan\">\r\n";
 
             for (int y = 0; y < Rows; ++y)
@@ -75,14 +86,11 @@ body { display: table-cell; vertical-align: middle; }";
                 for (int x = 0; x < Columns; ++x)
                 {
                     var fname = GetNextSvg();
-                    if (File.Exists(fname))
-                    {
-                        var targetPath = Path.Combine(targetDirectory, Path.GetFileName(fname));
-                        File.Copy(fname, targetPath, true);
-                    }
+                    var id = "cell_" + x + "_" + y;
+                    var title = id;
 
-                    html += "    <td id=\"cell_" + x + "_" + y + "\" class=\"cell\" ";
-                    html += "style=\"background-image:url("+ Path.GetFileName(fname) + ");\"";
+                    html += "    <td id=\"" + id + "\" class=\"cell\" title=\"" + title + "\"";
+                    html += "style=\"background-image:url("+ new Uri(fname).AbsoluteUri + ");\"";
                     html += "></td>\r\n";
                 }
 
