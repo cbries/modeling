@@ -121,73 +121,15 @@ namespace RailwayEssentialWeb
         {
             StringBuilder oSb = new StringBuilder();
 
-            oSb.Append("<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" class=\"gridTrackPlan\">\r\n");
-
+            oSb.Append("<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border: 1px solid red;\">");
             for (int y = 0; y < Rows; ++y)
             {
-                oSb.Append("  <tr>\r\n");
-
                 for (int x = 0; x < Columns; ++x)
                 {
-                    //var fname = GetNextSvg();
-                    var id = "cell_" + x + "_" + y;
-                    var title = id;
-                    var colspan = " colspan=\"1\" class=\"cell\" ";
-
-                    var trackinfo = _trackinfo.Get(x + 1, y + 1);
-
-                    if (trackinfo != null)
-                    {
-                        if(trackinfo.LengthX() == 4)
-                            colspan = " colspan=\"4\" class=\"cell4x\" ";
-                    }
-
-                    // title=\"" + title + "\""
-                    oSb.Append("<td id=\"" + id + "\"" + colspan);
-
-                    var svgpath = "";
-                    if (trackinfo != null)
-                    {
-                        string styleRotate = "";
-                        switch (trackinfo.Orientation)
-                        {
-                                case Orientation.North:
-                                    break;
-                                case Orientation.East:
-                                    styleRotate = "transform: rotate(90deg);";
-                                    break;
-                                case Orientation.South:
-                                    styleRotate = "transform: rotate(180deg);";
-                                    break;
-                                case Orientation.West:
-                                    styleRotate = "transform: rotate(-90deg);";
-                                    break;
-                        }
-
-                        svgpath = GetSvg(trackinfo.IconName);
-                        if (string.IsNullOrEmpty(svgpath))
-                            oSb.Append("style=\"\"");
-                        else
-                            oSb.Append("style=\"background-repeat: no-repeat; background-position: center; background-image:url(" + new Uri(svgpath).AbsoluteUri + ");" + styleRotate + "\"");
-                    }
-                    else
-                    {
-                        oSb.Append("style=\"\"");
-                    }
-
-                    // ({x+1},{y+1})
-                    var coordInfo =
-                        $"<div style=\"color: black; font-weight: bold; text-align: center; font-size: 0.6em;  padding: 1px; vertical-align: middle;\"></div>";
-
-                    oSb.Append(">" + coordInfo + "</td>\r\n");
-
-                    if(trackinfo != null)
-                        x += trackinfo.LengthX() - 1;
+                    oSb.Append("<td></td>");
                 }
-
                 oSb.Append("</tr>\r\n");
             }
-
             oSb.Append("</table>");
 
             try

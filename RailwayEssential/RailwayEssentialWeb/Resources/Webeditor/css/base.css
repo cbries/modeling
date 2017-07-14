@@ -4,29 +4,132 @@ html { display: table; margin: auto; }
 body { display: table-cell; vertical-align: middle; }
 
 .cell {
- width: 32px; height: 32px;
- position: relative;
- overflow: hidden;
+    width: 32px; height: 32px;
+    position: relative;
+    overflow: hidden;
 }
 
 .cell:before {
-  content: "";
-  width: 32px; height: 32px;
-  background-size: 32px 32px;
-  position: absolute;
-  left: 0px; top: 0px;
+    content: "";
+    width: 32px; height: 32px;
+    background-size: 32px 32px;
+    position: absolute;
+    left: 0px; top: 0px;
 }
 
 .cell4x {
- width: 128px; height: 32px;
- position: relative;
- overflow: hidden;
+    width: 128px; height: 32px;
+    position: relative;
+    overflow: hidden;
 }
 
 .cell4x:before {
-  content: "";
-  width: 128px; height: 32px;
-  background-size: 128px 32px;
-  position: absolute;
-  left: 0px; top: 0px;
+    content: "";
+    width: 128px; height: 32px;
+    background-size: 128px 32px;
+    position: absolute;
+    left: 0px; top: 0px;
+}
+
+td {
+    height: 32px;
+    width: 32px;
+    border: 1px solid lightgrey;
+}
+
+.highlight { 
+    background: #fff;
+}
+
+.rot90 {
+    -webkit-transform: translateY(-100%) rotate(90deg); /* Safari */
+    -moz-transform: translateY(-100%) rotate(90deg); /* Firefox 3.6 Firefox 4 */
+    /*-moz-transform-origin: right top; */
+    -ms-transform: translateY(-100%) rotate(90deg); /* IE9 */
+    -o-transform: translateY(-100%) rotate(90deg); /* Opera */
+    transform: translateY(-100%) rotate(90deg); /* W3C */  
+    -webkit-transform-origin: left bottom;
+    -moz-transform-origin: left bottom;
+    -ms-transform-origin: left bottom;
+    -o-transform-origin: left bottom;
+    transform-origin: left bottom;
+}
+
+.rot180 {
+    -webkit-transform: translateY(-100%) rotate(180deg); /* Safari */
+    -moz-transform: translateY(-100%) rotate(180deg); /* Firefox 3.6 Firefox 4 */
+    /*-moz-transform-origin: right top; */
+    -ms-transform: translateY(-100%) rotate(180deg); /* IE9 */
+    -o-transform: translateY(-100%) rotate(180deg); /* Opera */
+    transform: translateY(-100%) rotate(180deg); /* W3C */  
+    -webkit-transform-origin: left bottom;
+    -moz-transform-origin: left bottom;
+    -ms-transform-origin: left bottom;
+    -o-transform-origin: left bottom;
+    transform-origin: left bottom;
+}
+
+.rot270 {
+    -webkit-transform: translateY(-100%) rotate(270deg); /* Safari */
+    -moz-transform: translateY(-100%) rotate(270deg); /* Firefox 3.6 Firefox 4 */
+    /*-moz-transform-origin: right top; */
+    -ms-transform: translateY(-100%) rotate(270deg); /* IE9 */
+    -o-transform: translateY(-100%) rotate(270deg); /* Opera */
+    transform: translateY(-100%) rotate(270deg); /* W3C */  
+    -webkit-transform-origin: left bottom;
+    -moz-transform-origin: left bottom;
+    -ms-transform-origin: left bottom;
+    -o-transform-origin: left bottom;
+    transform-origin: left bottom;
+}
+
+.rot-90 {
+    -webkit-transform: translateY(-100%) rotate(-90deg); /* Safari */
+    -moz-transform: translateY(-100%) rotate(-90deg); /* Firefox 3.6 Firefox 4 */
+    /*-moz-transform-origin: right top; */
+    -ms-transform: translateY(-100%) rotate(-90deg); /* IE9 */
+    -o-transform: translateY(-100%) rotate(-90deg); /* Opera */
+    transform: translateY(-100%) rotate(-90deg); /* W3C */  
+    -webkit-transform-origin: left bottom;
+    -moz-transform-origin: left bottom;
+    -ms-transform-origin: left bottom;
+    -o-transform-origin: left bottom;
+    transform-origin: left bottom;
+}
+
+.rot-180 {
+    -webkit-transform: translateY(-100%) rotate(-180deg); /* Safari */
+    -moz-transform: translateY(-100%) rotate(-180deg); /* Firefox 3.6 Firefox 4 */
+    /*-moz-transform-origin: right top; */
+    -ms-transform: translateY(-100%) rotate(-180deg); /* IE9 */
+    -o-transform: translateY(-100%) rotate(-180deg); /* Opera */
+    transform: translateY(-100%) rotate(-180deg); /* W3C */  
+    -webkit-transform-origin: left bottom;
+    -moz-transform-origin: left bottom;
+    -ms-transform-origin: left bottom;
+    -o-transform-origin: left bottom;
+    transform-origin: left bottom;
+}
+
+.rot-270 {
+    -webkit-transform: translateY(-100%) rotate(-270deg); /* Safari */
+    -moz-transform: translateY(-100%) rotate(-270deg); /* Firefox 3.6 Firefox 4 */
+    /*-moz-transform-origin: right top; */
+    -ms-transform: translateY(-100%) rotate(-270deg); /* IE9 */
+    -o-transform: translateY(-100%) rotate(-270deg); /* Opera */
+    transform: translateY(-100%) rotate(-270deg); /* W3C */  
+    -webkit-transform-origin: left bottom;
+    -moz-transform-origin: left bottom;
+    -ms-transform-origin: left bottom;
+    -o-transform-origin: left bottom;
+    transform-origin: left bottom;
+}
+
+.imgflip {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
 }

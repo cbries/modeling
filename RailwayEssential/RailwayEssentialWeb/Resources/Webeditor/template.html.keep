@@ -19,11 +19,16 @@
 <div>
   <select name="webmenu" id="webmenu" style="width: 400px; vertical-align: middle;">
 	{{TRACKSYMBOLS}}
-  </select>  
+  </select>
+  <!--
   <img id="ccw" src="arrow_ccw.png" width="24" height="24" style="vertical-align: middle;"> &nbsp; <img id="cw" src="arrow_cw.png" width="24" height="24" style="vertical-align: middle;">
+  -->
 </div>
 
 {{TRACKTABLE}}
     
+<div class="childDiv" style="position: absolute; top: 0px; left: 0px; display: inline; overflow: visible;">
+</div>
+
 </body>
 </html>
