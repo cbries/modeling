@@ -41,95 +41,18 @@ td {
     background: #fff;
 }
 
-.rot90 {
-    -webkit-transform: translateY(-100%) rotate(90deg); /* Safari */
-    -moz-transform: translateY(-100%) rotate(90deg); /* Firefox 3.6 Firefox 4 */
-    /*-moz-transform-origin: right top; */
-    -ms-transform: translateY(-100%) rotate(90deg); /* IE9 */
-    -o-transform: translateY(-100%) rotate(90deg); /* Opera */
-    transform: translateY(-100%) rotate(90deg); /* W3C */  
-    -webkit-transform-origin: left bottom;
-    -moz-transform-origin: left bottom;
-    -ms-transform-origin: left bottom;
-    -o-transform-origin: left bottom;
-    transform-origin: left bottom;
-}
-
-.rot180 {
-    -webkit-transform: translateY(-100%) rotate(180deg); /* Safari */
-    -moz-transform: translateY(-100%) rotate(180deg); /* Firefox 3.6 Firefox 4 */
-    /*-moz-transform-origin: right top; */
-    -ms-transform: translateY(-100%) rotate(180deg); /* IE9 */
-    -o-transform: translateY(-100%) rotate(180deg); /* Opera */
-    transform: translateY(-100%) rotate(180deg); /* W3C */  
-    -webkit-transform-origin: left bottom;
-    -moz-transform-origin: left bottom;
-    -ms-transform-origin: left bottom;
-    -o-transform-origin: left bottom;
-    transform-origin: left bottom;
-}
-
-.rot270 {
-    -webkit-transform: translateY(-100%) rotate(270deg); /* Safari */
-    -moz-transform: translateY(-100%) rotate(270deg); /* Firefox 3.6 Firefox 4 */
-    /*-moz-transform-origin: right top; */
-    -ms-transform: translateY(-100%) rotate(270deg); /* IE9 */
-    -o-transform: translateY(-100%) rotate(270deg); /* Opera */
-    transform: translateY(-100%) rotate(270deg); /* W3C */  
-    -webkit-transform-origin: left bottom;
-    -moz-transform-origin: left bottom;
-    -ms-transform-origin: left bottom;
-    -o-transform-origin: left bottom;
-    transform-origin: left bottom;
-}
-
-.rot-90 {
-    -webkit-transform: translateY(-100%) rotate(-90deg); /* Safari */
-    -moz-transform: translateY(-100%) rotate(-90deg); /* Firefox 3.6 Firefox 4 */
-    /*-moz-transform-origin: right top; */
-    -ms-transform: translateY(-100%) rotate(-90deg); /* IE9 */
-    -o-transform: translateY(-100%) rotate(-90deg); /* Opera */
-    transform: translateY(-100%) rotate(-90deg); /* W3C */  
-    -webkit-transform-origin: left bottom;
-    -moz-transform-origin: left bottom;
-    -ms-transform-origin: left bottom;
-    -o-transform-origin: left bottom;
-    transform-origin: left bottom;
-}
-
-.rot-180 {
-    -webkit-transform: translateY(-100%) rotate(-180deg); /* Safari */
-    -moz-transform: translateY(-100%) rotate(-180deg); /* Firefox 3.6 Firefox 4 */
-    /*-moz-transform-origin: right top; */
-    -ms-transform: translateY(-100%) rotate(-180deg); /* IE9 */
-    -o-transform: translateY(-100%) rotate(-180deg); /* Opera */
-    transform: translateY(-100%) rotate(-180deg); /* W3C */  
-    -webkit-transform-origin: left bottom;
-    -moz-transform-origin: left bottom;
-    -ms-transform-origin: left bottom;
-    -o-transform-origin: left bottom;
-    transform-origin: left bottom;
-}
-
-.rot-270 {
-    -webkit-transform: translateY(-100%) rotate(-270deg); /* Safari */
-    -moz-transform: translateY(-100%) rotate(-270deg); /* Firefox 3.6 Firefox 4 */
-    /*-moz-transform-origin: right top; */
-    -ms-transform: translateY(-100%) rotate(-270deg); /* IE9 */
-    -o-transform: translateY(-100%) rotate(-270deg); /* Opera */
-    transform: translateY(-100%) rotate(-270deg); /* W3C */  
-    -webkit-transform-origin: left bottom;
-    -moz-transform-origin: left bottom;
-    -ms-transform-origin: left bottom;
-    -o-transform-origin: left bottom;
-    transform-origin: left bottom;
-}
-
 .imgflip {
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
     filter: FlipH;
     -ms-filter: "FlipH";
+}
+
+.imgflip2 {
+    transform: scaleY(-1);
+    filter: FlipV;
+    -ms-filter: "FlipV";
+}
+
+.imgflip.imgflip2 {
+    transform: scale(-1, -1);
 }

@@ -57,31 +57,38 @@ $(document).ready(function (e) {
             $(".childDiv").append(
                     "<div style=\"width: 32px: height: 32px;\"><img src=\"" + v + "\" style=\"text-align: middle; position: absolute; top: "
                     + (p.top + 1) + "px; left: " + (p.left + 1)
-                    + "px; z-index: 10; height: 33px; border: 0; overflow:visible;\" class=\"\"></div>")
+                + "px; z-index: 10; height: 33px; border: 0; overflow:visible;\" class=\"rot0\"></div>")
                 .find('img').click(function (evt) {
                     if (evt.altKey) {
                         $(this).remove();
                     } else if (evt.ctrlKey) {
                         var o = $(this);
+
+                        function ss(name) {
+                            railwayEssentialCallback.message(name);
+                        }
+
                         if (o.hasClass('rot0')) {
                             o.removeClass('rot0');
-                            o.addClass('rot90');
-                        } else if (o.hasClass('rot90')) {
-                            o.removeClass('rot90');
                             o.addClass('imgflip');
-                        } else if (o.hasClass('imgflip')) {
+                            ss('1');
+                        } else if (o.hasClass('imgflip') && !o.hasClass('imgflip2')) {
                             o.removeClass('imgflip');
+                            o.addClass('imgflip2');
+                            ss('2');
+                        } else if (o.hasClass('imgflip2') && !o.hasClass('imgflip')) {
+                            o.removeClass('imgflip2');
+                            o.removeClass('imgflip');
+                            o.addClass('imgflip imgflip2');
+                            ss('3');
+                        } else if (o.hasClass('imgflip') && o.hasClass('imgflip2')) {
+                            o.removeClass('imgflip');
+                            o.removeClass('imgflip2');
                             o.addClass('rot0');
-                            //    o.addClass('rot-90');
-                            //    o.addClass('imgflip');
-                            //} else if (o.hasClass('rot-90') && o.hasClass('imgflip')) {
-                            //    o.removeClass('rot-90');
-                            //    o.removeClass('imgflip');
-                            //    o.addClass('rot0');
-                        } else {
-                            o.addClass('rot90');
+                            ss('0');
                         }
                     }
+                    railwayEssentialCallback.cellRotated(currentColumn, currentRow, currentValue);
                 });
 
             railwayEssentialCallback.cellClicked(col, row, o);
