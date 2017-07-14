@@ -72,9 +72,12 @@ $(document).ready(function (e) {
                         } else if (o.hasClass('imgflip')) {
                             o.removeClass('imgflip');
                             o.addClass('rot0');
-                        //} else if (o.hasClass('rot270')) {
-                        //    o.removeClass('rot270');
-                        //    o.addClass('rot0');
+                            //    o.addClass('rot-90');
+                            //    o.addClass('imgflip');
+                            //} else if (o.hasClass('rot-90') && o.hasClass('imgflip')) {
+                            //    o.removeClass('rot-90');
+                            //    o.removeClass('imgflip');
+                            //    o.addClass('rot0');
                         } else {
                             o.addClass('rot90');
                         }
