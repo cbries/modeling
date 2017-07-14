@@ -6,7 +6,7 @@ namespace RailwayEssentialWeb
     public partial class TrackViewerControl
     {
         private const string ThemeName = @"\Themes\SpDrS60";
-        private const string TrackplansDirectory = @"\Trackplans";
+        private const string TrackplansDirectory = @"\Trackplans\Webeditor";
 
         private FileSystemWatcher _watcher;
 

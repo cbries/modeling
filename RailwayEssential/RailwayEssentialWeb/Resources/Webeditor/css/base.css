@@ -1,0 +1,32 @@
+.gridTrackPlan { border: 1px solid black; margin-top: 10px; }
+html, body { height: 100%;  }
+html { display: table; margin: auto; }
+body { display: table-cell; vertical-align: middle; }
+
+.cell {
+ width: 32px; height: 32px;
+ position: relative;
+ overflow: hidden;
+}
+
+.cell:before {
+  content: "";
+  width: 32px; height: 32px;
+  background-size: 32px 32px;
+  position: absolute;
+  left: 0px; top: 0px;
+}
+
+.cell4x {
+ width: 128px; height: 32px;
+ position: relative;
+ overflow: hidden;
+}
+
+.cell4x:before {
+  content: "";
+  width: 128px; height: 32px;
+  background-size: 128px 32px;
+  position: absolute;
+  left: 0px; top: 0px;
+}

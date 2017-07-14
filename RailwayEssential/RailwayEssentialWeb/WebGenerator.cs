@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using RailwayEssentialCore;
 using TrackPlanParser;
 
 namespace RailwayEssentialWeb
@@ -54,31 +55,53 @@ namespace RailwayEssentialWeb
             return Path.Combine(ThemeDirectory, name + ".svg");
         }
 
+        private string CreateSymbolSelection()
+        {
+            List<string> ignore = new List<string>()
+            {
+                "-off", "-on", "-on-occ", "-off-occ", "-on-route", "-off-route", "-occ", "-route",
+                "traverser", "-bridge", "-bridge-res"
+            };
+
+            string m = "";
+            foreach (var e in ThemeFiles)
+            {
+                if (e == null)
+                    continue;
+
+                var symbolName = Path.GetFileNameWithoutExtension(e);
+                if (string.IsNullOrEmpty(symbolName))
+                    continue;
+
+                bool doIgnore = false;
+                foreach (var ignoreE in ignore)
+                {
+                    if (symbolName.EndsWith(ignoreE, StringComparison.OrdinalIgnoreCase))
+                    {
+                        doIgnore = true;
+                        break;
+                    }
+                }
+
+                if (doIgnore)
+                    continue;
+
+                m += "<option value=\"" + symbolName + "\" data-image=\""+new Uri(e).AbsoluteUri+"\">" + symbolName + "</option>";
+            }
+            return m;
+        }
+
         private string CreateBase()
         {
-            string m = "<html><head>";
-            m += "<style>" + CssCode + "</style>";
-            m += @"<script type=""text/javascript"">" + JqueryCode + @"</script>";
-            m += @"
-<script type=""text/javascript"">
-$(document).ready(function(){
-    $('td').click(function(){
-            var col = $(this).parent().children().index($(this));
-            var row = $(this).parent().parent().children().index($(this).parent());
-            //railwayEssentialCallback.message('Row: ' + row + ', Column: ' + col);
-            railwayEssentialCallback.cellClicked(col, row);
-        });
-    });
-
-function setCellImage(x, y, src) {
-    var selector = '#cell_' + x + '_' + y;
-    $(selector).css('background-image','url(' + src + ')');
-    railwayEssentialCallback.message('x: ' + x + ', y: ' + y);
-    railwayEssentialCallback.message('src: ' + src);
-}
-</script>";
-            m += "<body>\r\n{{CONTENT}}\r\n</body></html>";
-            return m;
+            var fname = @"Trackplans\Webeditor\template.html.keep".ExpandRailwayEssential();
+            try
+            {
+                return File.ReadAllText(fname, Encoding.UTF8);
+            }
+            catch
+            {
+                return "";
+            }
         }
 
         public void SetTrackInfo(Track info)
@@ -119,7 +142,8 @@ function setCellImage(x, y, src) {
                             colspan = " colspan=\"4\" class=\"cell4x\" ";
                     }
 
-                    oSb.Append("<td id=\"" + id + "\" title=\"" + title + "\"" + colspan);
+                    // title=\"" + title + "\""
+                    oSb.Append("<td id=\"" + id + "\"" + colspan);
 
                     var svgpath = "";
                     if (trackinfo != null)
@@ -151,8 +175,9 @@ function setCellImage(x, y, src) {
                         oSb.Append("style=\"\"");
                     }
 
+                    // ({x+1},{y+1})
                     var coordInfo =
-                        $"<div style=\"color: black; font-weight: bold; text-align: center; font-size: 0.6em;  padding: 1px; vertical-align: middle;\">({x+1},{y+1})</div>";
+                        $"<div style=\"color: black; font-weight: bold; text-align: center; font-size: 0.6em;  padding: 1px; vertical-align: middle;\"></div>";
 
                     oSb.Append(">" + coordInfo + "</td>\r\n");
 
@@ -168,7 +193,9 @@ function setCellImage(x, y, src) {
             try
             {
                 var b = CreateBase();
-                b = b.Replace("{{CONTENT}}", oSb.ToString());
+                    b = b.Replace("{{GLOBALJS}}", "var themeDirectory='"+new Uri(ThemeDirectory.Replace("\\", "/")).AbsoluteUri+"';");
+                    b = b.Replace("{{TRACKTABLE}}", oSb.ToString());
+                    b = b.Replace("{{TRACKSYMBOLS}}", CreateSymbolSelection());
 
                 // remove old plans
                 var files = Directory.GetFiles(Path.GetDirectoryName(targetFilepath), "*.html");
