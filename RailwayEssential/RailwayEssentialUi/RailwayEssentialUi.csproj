@@ -143,6 +143,10 @@
       <Project>{6925e932-7ad6-4afa-a6ba-cbbf35014264}</Project>
       <Name>TrackInformation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TrackPlanParser\TrackPlanParser.csproj">
+      <Project>{f7751558-8d8b-4ae2-a1ee-22d80889d73d}</Project>
+      <Name>TrackPlanParser</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\route.png" />

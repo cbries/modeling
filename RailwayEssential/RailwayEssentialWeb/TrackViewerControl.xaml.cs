@@ -31,6 +31,12 @@ namespace RailwayEssentialWeb
             if (Viewer.WebGenerator == null)
                 return;
 
+            //var trackplan = @"Trackplans\Schattenbahnhof-unten.track".ExpandRailwayEssential();
+            var trackplan = @"C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\Documentation\Schattenbahnhof-unten.track";
+            TrackPlanParser.TrackPlanParser parser = new TrackPlanParser.TrackPlanParser(trackplan);
+            parser.Parse();
+
+            Viewer.WebGenerator.SetTrackInfo(parser.Track);
             Viewer.WebGenerator.Generate(_tmpTrackName);
         }
 
