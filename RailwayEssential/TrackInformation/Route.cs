@@ -51,6 +51,10 @@ namespace TrackInformation
             }
         }
 
+        public Route() : base()
+        {
+        }
+
         public override void UpdateTitle()
         {
             Title = $"{ObjectId} {Name1}";
@@ -78,6 +82,7 @@ namespace TrackInformation
         {
             JObject o = new JObject
             {
+                ["objectId"] = ObjectId,
                 ["name1"] = Name1,
                 ["name2"] = Name2,
                 ["name3"] = Name3,
@@ -86,16 +91,21 @@ namespace TrackInformation
             return o;
         }
 
-        public override void ParseJson(JObject obj)
+        public override void ParseJson(JObject o)
         {
-            if (obj["name1"] != null)
-                Name1 = obj["name1"].ToString();
-            if (obj["name2"] != null)
-                Name1 = obj["name2"].ToString();
-            if (obj["name3"] != null)
-                Name1 = obj["name3"].ToString();
-            if (obj["type"] != null)
-                Type = obj["type"].ToString();
+            if (o == null)
+                return;
+
+            if (o["objectId"] != null)
+                ObjectId = (int)o["objectId"];
+            if (o["name1"] != null)
+                Name1 = o["name1"].ToString();
+            if (o["name2"] != null)
+                Name1 = o["name2"].ToString();
+            if (o["name3"] != null)
+                Name1 = o["name3"].ToString();
+            if (o["type"] != null)
+                Type = o["type"].ToString();
         }
     }
 }

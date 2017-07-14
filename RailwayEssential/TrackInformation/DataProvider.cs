@@ -1,4 +1,5 @@
-﻿using System;
+﻿#define TESTRUN
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -16,6 +17,8 @@ namespace TrackInformation
 {    
     public class DataProvider : IDataProvider, INotifyPropertyChanged
     {
+        private const string SessionTrackFilename = @"TrackObjects.json";
+
         public event DataChangedDelegator DataChanged;
         public event CommandsReadyDelegator CommandsReady;
 
@@ -41,14 +44,16 @@ namespace TrackInformation
                         if (item == null)
                             continue;
 
-                        if(item is Locomotive)
-                            arLocomotives.Add(item.ToJson());
-                        else if (item is Switch)
-                            arSwitches.Add(item.ToJson());
-                        else if (item is Route)
-                            arRoutes.Add(item.ToJson());
-                        else if (item is S88)
-                            arS88.Add(item.ToJson());
+                        JObject jsonO = item.ToJson();
+
+                        if (item is Locomotive && jsonO != null)
+                            arLocomotives.Add(jsonO);
+                        else if (item is Switch && jsonO != null)
+                            arSwitches.Add(jsonO);
+                        else if (item is Route && jsonO != null)
+                            arRoutes.Add(jsonO);
+                        else if (item is S88 && jsonO != null)
+                            arS88.Add(jsonO);
                         else
                         {
                             // ignore
@@ -63,7 +68,7 @@ namespace TrackInformation
                         ["s88"] = arS88
                     };
 
-                    var targetPath = Path.Combine(sessionDirectory, "TrackObjects.json");
+                    var targetPath = Path.Combine(sessionDirectory, SessionTrackFilename);
                     File.WriteAllText(targetPath, o.ToString(Formatting.Indented), Encoding.UTF8);
                 }
 
@@ -76,10 +81,115 @@ namespace TrackInformation
             }
         }
 
+#if TESTRUN
+        // FOR TESTS; REMOVE!!!
+        private Random _random = new Random((int)DateTime.Now.Ticks);
+#endif
+
         public bool LoadObjects(string sessionDirectory)
         {
             try
             {
+                var targetPath = Path.Combine(sessionDirectory, SessionTrackFilename);
+                if (!File.Exists(targetPath))
+                    return false;
+
+                var cnt = File.ReadAllText(targetPath, Encoding.UTF8);
+                JObject o = JObject.Parse(cnt);
+                if (o == null)
+                    return false;
+
+                if (o["locomotives"] != null)
+                {
+                    JArray ar = o["locomotives"] as JArray;
+                    if (ar != null)
+                    {
+                        foreach (var arItem in ar)
+                        {
+                            if (arItem == null)
+                                continue;
+
+                            var e = new Locomotive();
+                            e.ParseJson(arItem as JObject);
+#if TESTRUN
+                            if (e.ObjectId == -1) // FOR TESTS; REMOVE!!!
+                                e.ObjectId = _random.Next(1000, 1099);
+#endif
+                            e.CommandsReady += CommandsReady;
+                            _objects.Add(e);
+                            DataChanged?.Invoke(this);
+                        }
+                    }
+                }
+
+                if (o["switches"] != null)
+                {
+                    JArray ar = o["switches"] as JArray;
+                    if (ar != null)
+                    {
+                        foreach (var arItem in ar)
+                        {
+                            if (arItem == null)
+                                continue;
+
+                            var e = new Switch();
+                            e.ParseJson(arItem as JObject);
+#if TESTRUN
+                            if (e.ObjectId == -1) // FOR TESTS; REMOVE!!!
+                                e.ObjectId = Int32.Parse($"10" + _random.Next(99));
+#endif
+                            e.CommandsReady += CommandsReady;
+                            _objects.Add(e);
+                            DataChanged?.Invoke(this);
+                        }
+                    }
+                }
+
+                if (o["routes"] != null)
+                {
+                    JArray ar = o["routes"] as JArray;
+                    if (ar != null)
+                    {
+                        foreach (var arItem in ar)
+                        {
+                            if (arItem == null)
+                                continue;
+
+                            var e = new Route();
+                            e.ParseJson(arItem as JObject);
+#if TESTRUN
+                            if (e.ObjectId == -1) // FOR TESTS; REMOVE!!!
+                                e.ObjectId = Int32.Parse($"11" + _random.Next(99));
+#endif
+                            e.CommandsReady += CommandsReady;
+                            _objects.Add(e);
+                            DataChanged?.Invoke(this);
+                        }
+                    }
+                }
+
+                if (o["s88"] != null)
+                {
+                    JArray ar = o["s88"] as JArray;
+                    if (ar != null)
+                    {
+                        foreach (var arItem in ar)
+                        {
+                            if (arItem == null)
+                                continue;
+
+                            var e = new S88();
+                            e.ParseJson(arItem as JObject);
+#if TESTRUN
+                            if (e.ObjectId == -1) // FOR TESTS; REMOVE!!!
+                                e.ObjectId = Int32.Parse($"100" + _random.Next(99));
+#endif
+                            e.CommandsReady += CommandsReady;
+                            _objects.Add(e);
+                            DataChanged?.Invoke(this);
+                        }
+                    }
+                }
 
                 return true;
             }
@@ -306,6 +416,12 @@ namespace TrackInformation
                         DataChanged?.Invoke(this);
                         sw.EnableView();
                     }
+                    else
+                    {
+                        DataChanged?.Invoke(this);
+                        if(!sw.HasView)
+                            sw.EnableView();
+                    }
                 }
                 else if (sid.StartsWith("30", StringComparison.OrdinalIgnoreCase))
                 {
@@ -316,6 +432,12 @@ namespace TrackInformation
                         r.CommandsReady += CommandsReady;
                         _objects.Add(r);
                         DataChanged?.Invoke(this);
+                    }
+                    else
+                    {
+                        DataChanged?.Invoke(this);
+                        if(!r.HasView)
+                            r.EnableView();
                     }
                 }
             }
@@ -347,6 +469,12 @@ namespace TrackInformation
                         l.EnableView();
                         l.QueryState();
                     }
+                    else
+                    {
+                        DataChanged?.Invoke(this);
+                        if(!l.HasView)
+                            l.EnableView();
+                    }
                 }
             }
 
@@ -377,6 +505,12 @@ namespace TrackInformation
                         _objects.Add(s88);
                         DataChanged?.Invoke(this);
                         s88.EnableView();
+                    }
+                    else
+                    {
+                        DataChanged?.Invoke(this);
+                        if(!s88.HasView)
+                            s88.EnableView();
                     }
                 }
             }

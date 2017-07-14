@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using Ecos2Core;
+using RailwayEssentialCore;
 using TrackInformation;
 
 namespace RailwayEssentialUi
@@ -45,7 +46,7 @@ namespace RailwayEssentialUi
         }
 
         private Locomotive _currentLocomotive = null;
-        private TrackInformation.Switch _currentSwitch = null;
+        private Switch _currentSwitch = null;
 
         public MainWindow()
         {
@@ -95,6 +96,8 @@ namespace RailwayEssentialUi
             TreeViewModel.Items.Add(_itemS88);
             TreeViewModel.Items.Add(_itemSwitches);
             TreeViewModel.Items.Add(_itemRoutes);
+
+            _dispatcher?.GetDataProvider().LoadObjects(@"Sessions\0".ExpandRailwayEssential());
         }
 
         private void OnDataChanged(object sender)
@@ -153,9 +156,9 @@ namespace RailwayEssentialUi
                             _itemS88.Items.Add(ee);
                         }
                     }
-                    else if (e is TrackInformation.Switch)
+                    else if (e is Switch)
                     {
-                        var ee = e as TrackInformation.Switch;
+                        var ee = e as Switch;
 
                         if (_itemSwitches.Items.Any(x => x.ObjectId == ee.ObjectId))
                             ee.UpdateTitle();
@@ -195,9 +198,10 @@ namespace RailwayEssentialUi
                         var o = _currentLocomotive;
                         TxtCurrentLocomotive.Text = $"{o.ObjectId} {o.Name} ({o.Addr})";
                     }
-                } else if (item is TrackInformation.Switch)
+                }
+                else if (item is Switch)
                 {
-                    var newswitch = item as TrackInformation.Switch;
+                    var newswitch = item as Switch;
 
                     if (_currentSwitch != newswitch)
                     {
@@ -303,6 +307,11 @@ namespace RailwayEssentialUi
         private void CmdBackward_OnClick(object sender, RoutedEventArgs e)
         {
             _currentLocomotive?.ChangeDirection((uint)_currentLocomotive.ObjectId, true);
+        }
+
+        private void CmdSave_OnClick(object sender, RoutedEventArgs e)
+        {
+            _dispatcher?.GetDataProvider().SaveObjects(@"Sessions\0".ExpandRailwayEssential());
         }
     }
 }

@@ -29,7 +29,18 @@ namespace Dispatcher
 
         public async Task ForwardCommands(IReadOnlyList<ICommand> commands)
         {
-            await _communication.SendCommands(commands);
+            if (!_communication.IsConnected)
+            {
+                if (Logger != null)
+                {
+                    foreach(var cmd in commands)
+                        Logger.Log($"<DryRun> " + cmd);
+                }
+            }
+            else
+            {
+                await _communication.SendCommands(commands);
+            }
         }
 
         public async void SetRunMode(bool state)
@@ -42,9 +53,6 @@ namespace Dispatcher
             }
             else
             {
-                // save objects
-                _dataProvider.SaveObjects(@"Sessions\0".ExpandRailwayEssential());
-
                 await UnloadViews();
 
                 _communication.Shutdown();

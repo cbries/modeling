@@ -19,7 +19,7 @@
         -->
         
         <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="0,1">
-            <wpf:ChromiumWebBrowser x:Name="Browser" Address="{Binding Text, ElementName=txtBoxAddress}"/>
+            <wpf:ChromiumWebBrowser x:Name="Browser"/>
         </Border>
         
         <!--

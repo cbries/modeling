@@ -16,9 +16,37 @@ namespace TrackInformation
 
         public ObservableCollection<Item> Items { get; set; }
 
+        public bool HasView { get; private set; }
+
+        private string _title;
+
+        public string Title
+        {
+            get => _title;
+            set
+            {
+                _title = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _objectId;
+
+        public int ObjectId
+        {
+            get => _objectId;
+            set
+            {
+                _objectId = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         public Item()
         {
             Items = new ObservableCollection<Item>();
+            ObjectId = -1;
         }
 
         #region Icon stuff
@@ -61,36 +89,12 @@ namespace TrackInformation
         }
 
         #endregion
-
-        private string _title;
-
-        public string Title
-        {
-            get => _title;
-            set
-            {
-                _title = value;
-                OnPropertyChanged();
-            }
-        }
-
+        
         public virtual void UpdateTitle()
         {
             OnPropertyChanged("Title");
         }
-
-        private int _objectId;
-
-        public int ObjectId
-        {
-            get => _objectId;
-            set
-            {
-                _objectId = value;
-                OnPropertyChanged();
-            }
-        }
-
+        
         public void EnableView()
         {
             List<ICommand> ctrlCmds = new List<ICommand>
@@ -99,6 +103,8 @@ namespace TrackInformation
             };
 
             OnCommandsReady(this, ctrlCmds);
+
+            HasView = true;
         }
 
         public void DisableView()
@@ -109,6 +115,8 @@ namespace TrackInformation
             };
 
             OnCommandsReady(this, ctrlCmds);
+
+            HasView = false;
         }
 
         public virtual void Parse(List<CommandArgument> arguments)

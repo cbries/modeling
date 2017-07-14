@@ -3,15 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RailwayEssentialUi"
         xmlns:trackInformation="clr-namespace:TrackInformation;assembly=TrackInformation"
+        xmlns:railwayEssentialWeb="clr-namespace:RailwayEssentialWeb;assembly=RailwayEssentialWeb"
         mc:Ignorable="d" Closing="MainWindow_OnClosing"
         Title="RailwayEssential" Height="640" Width="1024">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="375"/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
@@ -32,9 +32,11 @@
                 </TreeView.ItemTemplate>
             </TreeView>
 
-            <DockPanel Grid.Row="1" HorizontalAlignment="Left">
+            <DockPanel Grid.Row="1">
                 <Button Name="CmdStart" Height="24" Content="Start" Width="55" Margin="2,1,1,1" Click="CmdStart_OnClick"/>
                 <Button Name="CmdStop" Height="24" Content="Stop" Width="55" Margin="2,1,1,1" Click="CmdStop_OnClick"/>
+                
+                <Button Name="CmdSave" Height="24" Content="Save" Width="55" Margin="2,1,1,1" Click="CmdSave_OnClick" HorizontalAlignment="Right"/>
             </DockPanel>
         </Grid>
 
@@ -85,19 +87,23 @@
 
                 <TabItem Header="Switches" Name="TabItemSwitches">
                     <Grid>
-                        <DockPanel Name="DockSwitches">
+                        <DockPanel Name="DockSwitches" HorizontalAlignment="Center">
                         </DockPanel>
                     </Grid>
                 </TabItem>
 
+                <!--
                 <TabItem Header="S88">
                     <Grid>
                         
                     </Grid>
                 </TabItem>
+                -->
             </TabControl>
-            
-            <TextBlock Grid.Row="1" HorizontalAlignment="Center"> :: RESERVED FOR TRACK PLAN ::</TextBlock>
+
+            <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="AliceBlue">
+                <railwayEssentialWeb:TrackViewerControl/>
+            </Grid>
         </Grid>
         
         <Grid Grid.Column="2">

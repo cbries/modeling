@@ -12,6 +12,8 @@ namespace TrackInformation
 
         int ObjectId { get; set; }
 
+        bool HasView { get; }
+
         void Parse(List<CommandArgument> arguments);
 
         void EnableView();

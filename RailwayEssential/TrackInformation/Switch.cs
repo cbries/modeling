@@ -124,6 +124,10 @@ namespace TrackInformation
             }
         }
 
+        public Switch() : base()
+        {
+        }
+
         public override void UpdateTitle()
         {
             var ext = string.Join(", ", Addrext);
@@ -204,6 +208,7 @@ namespace TrackInformation
             JArray a0 = new JArray();
             foreach (var e in Addrext)
                 a0.Add(e);
+            o["objectId"] = ObjectId;
             o["addrext"] = a0;
             o["addr"] = Addr;
             o["protocol"] = Protocol;
@@ -216,6 +221,9 @@ namespace TrackInformation
 
         public override void ParseJson(JObject o)
         {
+            if (o == null)
+                return;
+
             if (o["name1"] != null)
                 Name1 = o["name1"].ToString();
             if (o["name2"] != null)
@@ -231,6 +239,8 @@ namespace TrackInformation
                         Addrext.Add(e.ToString());
                 }
             }
+            if (o["objectId"] != null)
+                ObjectId = (int) o["objectId"];
             if (o["addr"] != null)
                 Addr = (int) o["addr"];
             if (o["protocol"] != null)

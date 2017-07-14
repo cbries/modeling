@@ -92,7 +92,11 @@ namespace TrackInformation
                 OnPropertyChanged();
             }
         }
-        
+
+        public Locomotive() : base()
+        {
+        }
+
         public override void UpdateTitle()
         {
             string v = Direction == 1 ? "Backward" : "Forward";
@@ -212,6 +216,7 @@ namespace TrackInformation
         {
             JObject o = new JObject
             {
+                ["objectId"] = ObjectId,
                 ["name"] = _name,
                 ["protocol"] = _protocol,
                 ["addr"] = _addr,
@@ -226,6 +231,11 @@ namespace TrackInformation
 
         public override void ParseJson(JObject obj)
         {
+            if (obj == null)
+                return;
+
+            if (obj["objectId"] != null)
+                ObjectId = (int)obj["objectId"];
             if (obj["name"] != null)
                 Name = obj["name"].ToString();
             if (obj["protocol"] != null)

@@ -72,6 +72,10 @@ namespace TrackInformation
 
         #endregion
 
+        public S88() : base()
+        {
+        }
+
         public override void Parse(List<CommandArgument> arguments)
         {
             foreach (var arg in arguments)
@@ -94,15 +98,21 @@ namespace TrackInformation
         {
             JObject o = new JObject
             {
-                ["index"] = Index,
-                ["ports"] = Ports,
-                ["stateOriginal"] = StateOriginal
+                ["objectId"] = ObjectId,
+                ["index"] = _index,
+                ["ports"] = _ports,
+                ["stateOriginal"] = _stateOriginal
             };
             return o;
         }
 
         public override void ParseJson(JObject o)
         {
+            if (o == null)
+                return;
+
+            if (o["objectId"] != null)
+                ObjectId = (int)o["objectId"];
             if (o["index"] != null)
                 Index = (int) o["index"];
             if (o["ports"] != null)
