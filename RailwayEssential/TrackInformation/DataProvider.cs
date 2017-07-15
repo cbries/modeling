@@ -1,5 +1,4 @@
-﻿#define TESTRUN
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -17,8 +16,6 @@ namespace TrackInformation
 {    
     public class DataProvider : IDataProvider, INotifyPropertyChanged
     {
-        private const string SessionTrackFilename = @"TrackObjects.json";
-
         public event DataChangedDelegator DataChanged;
         public event CommandsReadyDelegator CommandsReady;
 
@@ -28,7 +25,7 @@ namespace TrackInformation
 
         public Ecos2 Baseobject { get; set; }
 
-        public bool SaveObjects(string sessionDirectory)
+        public bool SaveObjects(string targetFilepath)
         {
             try
             {
@@ -68,8 +65,7 @@ namespace TrackInformation
                         ["s88"] = arS88
                     };
 
-                    var targetPath = Path.Combine(sessionDirectory, SessionTrackFilename);
-                    File.WriteAllText(targetPath, o.ToString(Formatting.Indented), Encoding.UTF8);
+                    File.WriteAllText(targetFilepath, o.ToString(Formatting.Indented), Encoding.UTF8);
                 }
 
                 return true;
@@ -81,16 +77,10 @@ namespace TrackInformation
             }
         }
 
-#if TESTRUN
-        // FOR TESTS; REMOVE!!!
-        private Random _random = new Random((int)DateTime.Now.Ticks);
-#endif
-
-        public bool LoadObjects(string sessionDirectory)
+        public bool LoadObjects(string targetPath)
         {
             try
             {
-                var targetPath = Path.Combine(sessionDirectory, SessionTrackFilename);
                 if (!File.Exists(targetPath))
                     return false;
 
@@ -111,10 +101,6 @@ namespace TrackInformation
 
                             var e = new Locomotive();
                             e.ParseJson(arItem as JObject);
-#if TESTRUN
-                            if (e.ObjectId == -1) // FOR TESTS; REMOVE!!!
-                                e.ObjectId = _random.Next(1000, 1099);
-#endif
                             e.CommandsReady += CommandsReady;
                             _objects.Add(e);
                             DataChanged?.Invoke(this);
@@ -134,10 +120,6 @@ namespace TrackInformation
 
                             var e = new Switch();
                             e.ParseJson(arItem as JObject);
-#if TESTRUN
-                            if (e.ObjectId == -1) // FOR TESTS; REMOVE!!!
-                                e.ObjectId = Int32.Parse($"10" + _random.Next(99));
-#endif
                             e.CommandsReady += CommandsReady;
                             _objects.Add(e);
                             DataChanged?.Invoke(this);
@@ -157,10 +139,6 @@ namespace TrackInformation
 
                             var e = new Route();
                             e.ParseJson(arItem as JObject);
-#if TESTRUN
-                            if (e.ObjectId == -1) // FOR TESTS; REMOVE!!!
-                                e.ObjectId = Int32.Parse($"11" + _random.Next(99));
-#endif
                             e.CommandsReady += CommandsReady;
                             _objects.Add(e);
                             DataChanged?.Invoke(this);
@@ -180,10 +158,6 @@ namespace TrackInformation
 
                             var e = new S88();
                             e.ParseJson(arItem as JObject);
-#if TESTRUN
-                            if (e.ObjectId == -1) // FOR TESTS; REMOVE!!!
-                                e.ObjectId = Int32.Parse($"100" + _random.Next(99));
-#endif
                             e.CommandsReady += CommandsReady;
                             _objects.Add(e);
                             DataChanged?.Invoke(this);

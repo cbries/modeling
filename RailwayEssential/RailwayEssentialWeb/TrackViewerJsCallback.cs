@@ -9,7 +9,7 @@ namespace RailwayEssentialWeb
 
         public void message(string msg)
         {
-           Trace.WriteLine("Message: " + msg.Trim()); 
+           //Trace.WriteLine("Message: " + msg.Trim());
         }
 
         public void cellClicked(int x, int y, string symbol)
@@ -18,7 +18,7 @@ namespace RailwayEssentialWeb
                 TrackEdit.ChangeSymbol(x, y, symbol);
         }
 
-        public void cellRotated(int x, int y, int orientation)
+        public void cellRotated(int x, int y, string orientation)
         {
             if (TrackEdit != null)
                 TrackEdit.RotateSymbol(x, y, orientation);

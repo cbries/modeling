@@ -80,31 +80,31 @@ function rotateElement(col, row, el) {
     function ss(col, row, orientation) {
         console.log("vs: cellRotated(" + col + ", " + row + ", " + orientation + ")");
         try {
-            railwayEssentialCallback.cellRotated(name);
+            railwayEssentialCallback.cellRotated(col, row, orientation);
         } catch (ex) { /* ignore */ }
     }
 
     if (o.hasClass('rot0')) {
         o.removeClass('rot0');
         o.addClass('imgflip');
-        ss(col, row, 1);
+        ss(col, row, "imgflip");
     } else if (o.hasClass('imgflip') && !o.hasClass('imgflip2')) {
         o.removeClass('imgflip');
         o.addClass('imgflip2');
-        ss(col, row, 2);
+        ss(col, row, "imgflip2");
     } else if (o.hasClass('imgflip2') && !o.hasClass('imgflip')) {
         o.removeClass('imgflip2');
         o.removeClass('imgflip');
         o.addClass('imgflip imgflip2');
-        ss(col, row, 3);
+        ss(col, row, "imgflip imgflip2");
     } else if (o.hasClass('imgflip') && o.hasClass('imgflip2')) {
         o.removeClass('imgflip');
         o.removeClass('imgflip2');
         o.addClass('rot0');
-        ss(col, row, 0);
+        ss(col, row, "rot0");
     } else {
         o.addClass('imgflip');
-        ss(col, row, 1);
+        ss(col, row, "imgflip");
     }
 }
 
@@ -112,7 +112,7 @@ function test(col, row) {
     console.log(col + ", " + row);
 }
 
-function simulateClick(col, row, symbol) {
+function simulateClick(col, row, symbol, orientation) {
 
     $('td').each(function (index, el) {
         var oel = $(el);
@@ -128,7 +128,14 @@ function simulateClick(col, row, symbol) {
             var o = $('#webmenu').val();
             var v = themeDirectory + '/' + symbol + '.svg';
 
-            var newChild = cdiv.append("<img class=\"overflow\" src=\""
+            try {
+                var m = "";
+                m += "Coord(" + col + ", " + row + "): " + symbol + ", " + orientation + ", " + orientation;
+                railwayEssentialCallback.message(m);
+            } catch (e) {
+            }
+
+            var newChild = cdiv.append("<img class=\"overflow " + orientation + "\" src=\""
                 + v + "\" border=\"0\" data-railway-symbol=\""
                 + o + "\">");
 
@@ -137,7 +144,7 @@ function simulateClick(col, row, symbol) {
                     rotateElement(col, row, $(this));
                 } else if (evt.ctrlKey) {
                     //selectElement($(this));
-                    rotateElement(col, row, $(this))
+                    rotateElement(col, row, $(this));
                 } else if (evt.altKey) {
                     $(this).remove();
                     resetSelection();
@@ -206,7 +213,7 @@ $(document).ready(function (e) {
                             rotateElement(col, row, $(this));
                         } else if (evt.ctrlKey) {
                             //selectElement($(this));
-                            rotateElement(col, row, $(this))
+                            rotateElement(col, row, $(this));
                         } else if (evt.altKey) {
                             $(this).remove();
                             resetSelection();

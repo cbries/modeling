@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json.Linq;
 using RailwayEssentialCore;
 
 namespace RailwayEssentialWeb
@@ -55,37 +56,35 @@ namespace RailwayEssentialWeb
 
         private string CreateSymbolSelection()
         {
-            List<string> ignore = new List<string>()
+            JArray arOrder = null;
+
+            var orderJson = @"\Themes\SpDr560.json".ExpandRailwayEssential();
+            if (File.Exists(orderJson))
             {
-                "-off", "-on", "-on-occ", "-off-occ", "-on-route", "-off-route", "-occ", "-route",
-                "traverser", "-bridge", "-bridge-res"
-            };
+                string cnt = File.ReadAllText(orderJson, Encoding.UTF8);
+                if (!string.IsNullOrEmpty(cnt))
+                    arOrder = JArray.Parse(cnt);
+            }
 
             string m = "";
-            foreach (var e in ThemeFiles)
+            foreach (var symbol in arOrder)
             {
-                if (e == null)
-                    continue;
-
-                var symbolName = Path.GetFileNameWithoutExtension(e);
-                if (string.IsNullOrEmpty(symbolName))
-                    continue;
-
-                bool doIgnore = false;
-                foreach (var ignoreE in ignore)
+                foreach (var e in ThemeFiles)
                 {
-                    if (symbolName.EndsWith(ignoreE, StringComparison.OrdinalIgnoreCase))
+
+                    if (e.EndsWith(symbol.ToString(), StringComparison.OrdinalIgnoreCase))
                     {
-                        doIgnore = true;
+                        var symbolName = Path.GetFileNameWithoutExtension(e);
+                        if (string.IsNullOrEmpty(symbolName))
+                            continue;
+
+                        m += "<option value=\"" + symbolName + "\" data-image=\"" + new Uri(e).AbsoluteUri + "\">" + symbolName + "</option>";
+
                         break;
                     }
                 }
-
-                if (doIgnore)
-                    continue;
-
-                m += "<option value=\"" + symbolName + "\" data-image=\""+new Uri(e).AbsoluteUri+"\">" + symbolName + "</option>";
             }
+
             return m;
         }
 

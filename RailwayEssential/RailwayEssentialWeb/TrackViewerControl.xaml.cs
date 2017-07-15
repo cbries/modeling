@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using RailwayEssentialCore;
 
@@ -8,27 +7,13 @@ namespace RailwayEssentialWeb
     public partial class TrackViewerControl
     {
         private const string ThemeName = @"\Themes\SpDrS60";
-        private const string TrackplansDirectory = @"\Trackplans";
         private const string TrackplansEditor = @"\Trackplans\Webeditor";
 
-        private TrackPlanParser.Track _track = null;
+        private TrackPlanParser.Track _track;
 
         public TrackPlanParser.Track Track => _track;
 
-        public string Trackname { get; set; }
-
-        public string Trackpath
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(Trackname))
-                    return null;
-
-                return Path.Combine(TrackplansDirectory.ExpandRailwayEssential(), Trackname);
-            }
-        }
-
-        private FileSystemWatcher _watcher;
+        public string FilePath { get; set; }
 
         private readonly string _tmpTrackName;
 
@@ -42,7 +27,7 @@ namespace RailwayEssentialWeb
                 if (trackViewer == null)
                     return;
 
-                TrackPlanParser.TrackPlanParser parser = new TrackPlanParser.TrackPlanParser(Trackpath);
+                TrackPlanParser.TrackPlanParser parser = new TrackPlanParser.TrackPlanParser(FilePath);
                 parser.Parse();
 
                 _track = parser.Track;
@@ -58,8 +43,9 @@ namespace RailwayEssentialWeb
                     var col = item.X;
                     var row = item.Y;
                     var symbol = item.IconName;
+                    var orientation = item.Orientation;
 
-                    Viewer.ExecuteJs($"simulateClick({col}, {row}, \"{symbol}\");");
+                    Viewer.ExecuteJs($"simulateClick({col}, {row}, \"{symbol}\", \"{orientation}\");");
                 }
             };
 
@@ -69,7 +55,6 @@ namespace RailwayEssentialWeb
 
             Viewer.WebGenerator = new WebGenerator { ThemeDirectory = ThemeName.ExpandRailwayEssential() };
             GeneratePhysicalTrackViewHtml();
-            StartWatcher();
             LoadTrackView();
         }
 
@@ -81,71 +66,10 @@ namespace RailwayEssentialWeb
             Viewer.WebGenerator.Generate(_tmpTrackName);
         }
 
-        public bool StartWatcher()
-        {
-            try
-            {
-                var dirname = Path.GetDirectoryName(_tmpTrackName);
-                if (string.IsNullOrEmpty(dirname))
-                    return false;
-
-                if (_watcher == null)
-                {
-                    _watcher = new FileSystemWatcher(dirname, "*_track.html");
-                    _watcher.Deleted += WatcherOnDeleted;
-                    _watcher.Created += WatcherOnCreated;
-                    _watcher.Changed += WatcherOnChanged;
-                }
-
-                _watcher.EnableRaisingEvents = true;
-
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        public bool StopWatcher()
-        {
-            try
-            {
-                if (_watcher != null)
-                {
-                    _watcher.EnableRaisingEvents = false;
-                    _watcher.Deleted -= WatcherOnDeleted;
-                    _watcher.Created -= WatcherOnCreated;
-                    _watcher.Changed -= WatcherOnChanged;
-                }
-
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         private void LoadTrackView()
         {
             Viewer.Url = _tmpTrackName;
             Viewer.Reload();
-        }
-
-        private void WatcherOnDeleted(object sender, FileSystemEventArgs fileSystemEventArgs)
-        {
-            LoadTrackView();
-        }
-
-        private void WatcherOnCreated(object sender, FileSystemEventArgs fileSystemEventArgs)
-        {
-            LoadTrackView();
-        }
-
-        private void WatcherOnChanged(object sender, FileSystemEventArgs fileSystemEventArgs)
-        {
-            LoadTrackView();
         }
     }
 }

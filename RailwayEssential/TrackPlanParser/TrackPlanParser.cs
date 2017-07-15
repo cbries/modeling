@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using Microsoft.VisualBasic.FileIO;
+using Newtonsoft.Json.Linq;
 
 namespace TrackPlanParser
 {
@@ -28,33 +28,23 @@ namespace TrackPlanParser
 
             try
             {
-                using (TextFieldParser parser = new TextFieldParser(_trackFilepath))
+                string cnt = File.ReadAllText(_trackFilepath);
+                if (string.IsNullOrEmpty(cnt))
+                    return false;
+
+                JArray ar = JArray.Parse(cnt);
+                if (ar == null || ar.Count <= 0)
+                    return true;
+
+                foreach (var o in ar)
                 {
-                    int lineNumber = 0;
+                    JObject oo = o as JObject;
+                    if (oo == null)
+                        continue;
 
-                    parser.TextFieldType = FieldType.Delimited;
-                    parser.SetDelimiters(";");
-                    while (!parser.EndOfData)
-                    {
-                        string[] fields = parser.ReadFields();
-
-                        if (fields == null || fields.Length <= 0)
-                            continue;
-
-                        if (lineNumber == 0)
-                        {
-                            foreach (var name in fields)
-                                Heads.Add(name);
-                            ++lineNumber;
-                            continue;
-                        }
-
-                        var info = new TrackInfo();
-                        info.Parse(fields);
-                        Track.Add(info);
-
-                        ++lineNumber;
-                    }
+                    var info = new TrackInfo();
+                    info.Parse(oo);
+                    Track.Add(info);
                 }
             }
             catch (Exception ex)

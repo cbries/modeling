@@ -8,20 +8,16 @@ namespace TrackPlanParser
     {
         public void ChangeSymbol(int x, int y, string symbol)
         {
-            Trace.WriteLine($"Change symbol: {x}, {y}, {symbol}");
-
             var item = Get(x, y);
             if (item != null)
                 item.IconName = symbol;
         }
 
-        public void RotateSymbol(int x, int y, int orientation)
+        public void RotateSymbol(int x, int y, string orientation)
         {
-            Trace.WriteLine($"Change symbol: {x}, {y}, {orientation}");
-
             var item = Get(x, y);
             if (item != null)
-                item.Orientation = (Orientation) orientation;
+                item.Orientation = orientation;
         }
 
         public JArray GetJson()

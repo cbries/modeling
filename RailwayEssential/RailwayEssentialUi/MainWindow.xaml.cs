@@ -16,6 +16,30 @@ namespace RailwayEssentialUi
 {
     public partial class MainWindow : Window, ILogging
     {
+        public const int SessionNumber = 0;
+
+        public string TrackObjectFile
+        {
+            get
+            {
+                var dirPath = $@"Sessions\{SessionNumber}".ExpandRailwayEssential();
+                if (!string.IsNullOrEmpty(dirPath))
+                    return Path.Combine(dirPath, "TrackPlan.json");
+                return null;
+            }
+        }
+
+        public string TrackGlobalFile
+        {
+            get
+            {
+                var dirPath = $@"Sessions\{SessionNumber}".ExpandRailwayEssential();
+                if (!string.IsNullOrEmpty(dirPath))
+                    return Path.Combine(dirPath, "TrackObjects.json");
+                return null;
+            }
+        }
+
         private readonly RailwayEssentialCore.Configuration _cfg;
         private readonly Dispatcher.Dispatcher _dispatcher;
 
@@ -55,14 +79,9 @@ namespace RailwayEssentialUi
             InitializeComponent();
 
             _ctx = SynchronizationContext.Current;
+            _cfg = new RailwayEssentialCore.Configuration { IpAddress = "192.168.178.61" };
 
-            _cfg = new RailwayEssentialCore.Configuration
-            {
-                IpAddress = "192.168.178.61"
-            };
-
-            _dispatcher = new Dispatcher.Dispatcher
-            {
+            _dispatcher = new Dispatcher.Dispatcher {
                 Configuration = _cfg,
                 Logger = this
             };
@@ -71,14 +90,9 @@ namespace RailwayEssentialUi
             dataProvider.DataChanged += OnDataChanged;
             dataProvider.CommandsReady += DataProviderOnCommandsReady;
 
-            TrackViewer.Trackname = "Schattenbahnhof-unten.track";
+            TrackViewer.FilePath = TrackObjectFile;
 
             InitializeTreeView();
-        }
-
-        private void DataProviderOnCommandsReady(object sender, IReadOnlyList<ICommand> commands)
-        {
-            _dispatcher.ForwardCommands(commands);
         }
 
         private Category _itemStatus;
@@ -101,7 +115,12 @@ namespace RailwayEssentialUi
             TreeViewModel.Items.Add(_itemSwitches);
             TreeViewModel.Items.Add(_itemRoutes);
 
-            _dispatcher?.GetDataProvider().LoadObjects(@"Sessions\0".ExpandRailwayEssential());
+            _dispatcher?.GetDataProvider().LoadObjects(TrackGlobalFile);
+        }
+
+        private void DataProviderOnCommandsReady(object sender, IReadOnlyList<ICommand> commands)
+        {
+            _dispatcher.ForwardCommands(commands);
         }
 
         private void OnDataChanged(object sender)
@@ -315,24 +334,17 @@ namespace RailwayEssentialUi
 
         private void CmdSave_OnClick(object sender, RoutedEventArgs e)
         {
-            _dispatcher?.GetDataProvider().SaveObjects(@"Sessions\0".ExpandRailwayEssential());
+            _dispatcher?.GetDataProvider().SaveObjects(TrackGlobalFile);
 
-            var trackObject = TrackViewer.Track.GetJson();
-            if (trackObject != null)
+            try
             {
-                try
-                {
-                    var dirPath = @"Sessions\0".ExpandRailwayEssential();
-                    if (!string.IsNullOrEmpty(dirPath))
-                    {
-                        var targetName = Path.Combine(dirPath, "TrackPlan.json");
-                        File.WriteAllText(targetName, trackObject.ToString(Formatting.Indented));
-                    }
-                }
-                catch
-                {
-                    // ignore
-                }
+                var trackObject = TrackViewer.Track.GetJson();
+                if (trackObject != null)
+                    File.WriteAllText(TrackObjectFile, trackObject.ToString(Formatting.Indented));
+            }
+            catch (Exception ex)
+            {
+                // ignore
             }
         }
     }
