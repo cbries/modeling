@@ -1,28 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace TrackPlanParser
 {
     public enum Orientation
     {
-        West,
         North,
         East,
+        West,
         South
     }
 
     public class TrackInfo
     {
-        public List<int> X { get; set; }
-        public List<int> Y { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
         public string IconName { get; set; }
         public Orientation Orientation { get; set; }
         public string Description { get; set; }
 
         public TrackInfo()
         {
-            X = new List<int>();
-            Y = new List<int>();
+            X = -1;
+            Y = -1;
             IconName = "blockstate";
             Orientation = Orientation.North;
         }
@@ -50,44 +50,51 @@ namespace TrackPlanParser
             {
                 int v;
                 if (int.TryParse(p, out v))
-                    X.Add(v);
+                    X = v;
                 else
-                    X.Clear();
+                    X = -1;
             }
 
             foreach (var p in yparts)
             {
                 int v;
                 if (int.TryParse(p, out v))
-                    Y.Add(v);
+                    Y = v;
                 else
-                    Y.Clear();
+                    Y = -1;
             }
 
             Description = fields[4].Trim().TrimStart('"').TrimEnd('"');
         }
 
-        public int LengthX()
+        public JObject ToObject()
         {
-            if (X.Count != 1)
+            JObject o = new JObject
             {
-                if (X.Count > 1)
-                    return Math.Abs(X[0] - X[1]) + 1;
-            }
-
-            return 1;
+                ["x"] = X,
+                ["y"] = Y,
+                ["iconName"] = IconName,
+                ["orientation"] = (int) Orientation,
+                ["description"] = Description
+            };
+            return o;
         }
 
-        public int LengthY()
+        public void Parse(JObject o)
         {
-            if (Y.Count != 1)
-            {
-                if (Y.Count > 1)
-                    return Math.Abs(Y[0] - Y[1]) + 1;
-            }
+            if (o == null)
+                return;
 
-            return 1;
+            if (o["x"] != null)
+                X = (int) o["x"];
+            if (o["y"] != null)
+                Y = (int) o["y"];
+            if (o["iconName"] != null)
+                IconName = o["iconName"].ToString();
+            if (o["orientation"] != null)
+                Orientation = (Orientation) (int) o["orientation"];
+            if (o["description"] != null)
+                Description = o["description"].ToString();
         }
-
     }
 }

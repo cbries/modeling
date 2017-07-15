@@ -16,6 +16,12 @@ $(document).keyup(function (e) {
 function rebuildTable() {
     $('td').each(function (index, el) {
         if ($(el).find('img').length == 0) {
+            var col = $(el).parent().children().index($(el));
+            var row = $(el).parent().parent().children().index($(el).parent());
+            console.log("vs: cellClicked(" + col + ", " + row + ", \"\")");
+            try {
+                railwayEssentialCallback.cellClicked(col, row, "null");
+            } catch (ex) { /* ignore */ }
             $(el).html("<div class=\"overflow\"></div>");
         }
     });
@@ -102,6 +108,48 @@ function rotateElement(col, row, el) {
     }
 }
 
+function test(col, row) {
+    console.log(col + ", " + row);
+}
+
+function simulateClick(col, row, symbol) {
+
+    $('td').each(function (index, el) {
+        var oel = $(el);
+        var c = oel.parent().children().index(oel);
+        var r = oel.parent().parent().children().index(oel.parent());
+
+        if (col === c && row === r) {
+
+            var cdiv = oel.find("div");
+            if (cdiv.find("img").length === 1)
+                return;
+
+            var o = $('#webmenu').val();
+            var v = themeDirectory + '/' + symbol + '.svg';
+
+            var newChild = cdiv.append("<img class=\"overflow\" src=\""
+                + v + "\" border=\"0\" data-railway-symbol=\""
+                + o + "\">");
+
+            newChild.click(function (evt) {
+                if (evt.ctrlKey && evt.altKey) {
+                    rotateElement(col, row, $(this));
+                } else if (evt.ctrlKey) {
+                    //selectElement($(this));
+                    rotateElement(col, row, $(this))
+                } else if (evt.altKey) {
+                    $(this).remove();
+                    resetSelection();
+                    rebuildTable();
+                }
+            });
+
+            newChild.draggable();
+        }
+    });
+}
+
 $(document).ready(function (e) {
 
     var isMouseDown = false;
@@ -152,13 +200,13 @@ $(document).ready(function (e) {
                     if (c.find("img").length == 1)
                         return;
 
-                    var newChild = c.append("<img class=\"overflow\" src=\"" + src + "\" border=\"0\" data-railway-symbol=\""
-                        + symbol + "\">");
+                    var newChild = c.append("<img class=\"overflow\" src=\"" + src + "\" border=\"0\" data-railway-symbol=\"" + symbol + "\">");
                     newChild.click(function (evt) {
                         if (evt.ctrlKey && evt.altKey) {
                             rotateElement(col, row, $(this));
                         } else if (evt.ctrlKey) {
-                            selectElement($(this));
+                            //selectElement($(this));
+                            rotateElement(col, row, $(this))
                         } else if (evt.altKey) {
                             $(this).remove();
                             resetSelection();

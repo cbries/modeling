@@ -1,11 +1,11 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using TrackPlanParser;
 
 namespace RailwayEssentialWeb
 {
     public class TrackViewerJsCallback : ITrackViewerJsCallback
     {
-        public ITrackViewer Viewer { get; set; }
+        public ITrackEdit TrackEdit { get; set; }
 
         public void message(string msg)
         {
@@ -14,21 +14,14 @@ namespace RailwayEssentialWeb
 
         public void cellClicked(int x, int y, string symbol)
         {
-            var instance = Viewer as TrackViewer;
-            if (instance != null)
-            {
-                //var nextSvg = instance.WebGenerator.GetNextSvg();
-                //var nextSvgUrl = new Uri(nextSvg);
-                //var script = $"setCellImage({x}, {y}, '{nextSvgUrl.AbsoluteUri}');";
-                //instance.ExecuteJs(script);
-
-                Trace.WriteLine($"Cell({x}, {y}) {symbol}");
-            }
+            if (TrackEdit != null)
+                TrackEdit.ChangeSymbol(x, y, symbol);
         }
 
         public void cellRotated(int x, int y, int orientation)
         {
-            Trace.WriteLine($"Cell({x}, {y}) {orientation}");
+            if (TrackEdit != null)
+                TrackEdit.RotateSymbol(x, y, orientation);
         }
     }
 }

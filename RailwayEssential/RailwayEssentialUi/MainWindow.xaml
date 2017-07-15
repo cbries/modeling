@@ -101,8 +101,8 @@
                 -->
             </TabControl>
 
-            <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="AliceBlue">
-                <railwayEssentialWeb:TrackViewerControl/>
+            <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <railwayEssentialWeb:TrackViewerControl Name="TrackViewer"/>
             </Grid>
         </Grid>
         

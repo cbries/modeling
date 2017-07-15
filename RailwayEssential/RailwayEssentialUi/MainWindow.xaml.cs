@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using Ecos2Core;
+using Newtonsoft.Json;
 using RailwayEssentialCore;
 using TrackInformation;
 
@@ -68,6 +70,8 @@ namespace RailwayEssentialUi
             var dataProvider = _dispatcher.GetDataProvider();
             dataProvider.DataChanged += OnDataChanged;
             dataProvider.CommandsReady += DataProviderOnCommandsReady;
+
+            TrackViewer.Trackname = "Schattenbahnhof-unten.track";
 
             InitializeTreeView();
         }
@@ -312,6 +316,24 @@ namespace RailwayEssentialUi
         private void CmdSave_OnClick(object sender, RoutedEventArgs e)
         {
             _dispatcher?.GetDataProvider().SaveObjects(@"Sessions\0".ExpandRailwayEssential());
+
+            var trackObject = TrackViewer.Track.GetJson();
+            if (trackObject != null)
+            {
+                try
+                {
+                    var dirPath = @"Sessions\0".ExpandRailwayEssential();
+                    if (!string.IsNullOrEmpty(dirPath))
+                    {
+                        var targetName = Path.Combine(dirPath, "TrackPlan.json");
+                        File.WriteAllText(targetName, trackObject.ToString(Formatting.Indented));
+                    }
+                }
+                catch
+                {
+                    // ignore
+                }
+            }
         }
     }
 }

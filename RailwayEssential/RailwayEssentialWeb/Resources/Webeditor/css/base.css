@@ -16,48 +16,8 @@ body {
     display: table-cell;
     vertical-align: middle;
 }
-/*
-.cell {
-    width: 32px; height: 32px;
-    position: relative;
-    overflow: hidden;
-}
-
-.cell:before {
-    content: "";
-    width: 32px; height: 32px;
-    background-size: 32px 32px;
-    position: absolute;
-    left: 0px; top: 0px;
-}
-
-.cell4x {
-    width: 128px; height: 32px;
-    position: relative;
-    overflow: hidden;
-}
-
-.cell4x:before {
-    content: "";
-    width: 128px; height: 32px;
-    background-size: 128px 32px;
-    position: absolute;
-    left: 0px; top: 0px;
-}
-
-td {
-    height: 32px;
-    width: 32px;
-    border: 1px solid lightgrey;
-}
-
-.highlight { 
-    background: #fff;
-}
-*/
 
 table {
-    border: 1px solid red;
     border-spacing: 0;
     border-collapse: separate;
 }
@@ -72,7 +32,6 @@ div {
     border: 0;
     margin: 0;
     padding: 0;
-    /*border: 1px solid yellow;*/
     height: 32px !important;
     overflow: visible;
 }
@@ -81,7 +40,7 @@ div {
     border: 0;
     margin: 0;
     padding: 0;
-    border: 1px solid blue;
+    /*border: 1px solid rgb(178, 179, 179);*/
     overflow: visible;
     max-height: 32px !important;
     max-width: 32px !important;

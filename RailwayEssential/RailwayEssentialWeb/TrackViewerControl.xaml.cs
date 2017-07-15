@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
 using RailwayEssentialCore;
 
 namespace RailwayEssentialWeb
@@ -6,7 +8,25 @@ namespace RailwayEssentialWeb
     public partial class TrackViewerControl
     {
         private const string ThemeName = @"\Themes\SpDrS60";
-        private const string TrackplansDirectory = @"\Trackplans\Webeditor";
+        private const string TrackplansDirectory = @"\Trackplans";
+        private const string TrackplansEditor = @"\Trackplans\Webeditor";
+
+        private TrackPlanParser.Track _track = null;
+
+        public TrackPlanParser.Track Track => _track;
+
+        public string Trackname { get; set; }
+
+        public string Trackpath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Trackname))
+                    return null;
+
+                return Path.Combine(TrackplansDirectory.ExpandRailwayEssential(), Trackname);
+            }
+        }
 
         private FileSystemWatcher _watcher;
 
@@ -15,9 +35,36 @@ namespace RailwayEssentialWeb
         public TrackViewerControl()
         {
             InitializeComponent();
+            
+            Viewer.ViewerReady += delegate(object sender)
+            {
+                ITrackViewer trackViewer = sender as ITrackViewer;
+                if (trackViewer == null)
+                    return;
+
+                TrackPlanParser.TrackPlanParser parser = new TrackPlanParser.TrackPlanParser(Trackpath);
+                parser.Parse();
+
+                _track = parser.Track;
+
+                trackViewer.JsCallback.TrackEdit = _track;
+
+                // load current track
+                foreach (var item in _track)
+                {
+                    if (item == null)
+                        continue;
+
+                    var col = item.X;
+                    var row = item.Y;
+                    var symbol = item.IconName;
+
+                    Viewer.ExecuteJs($"simulateClick({col}, {row}, \"{symbol}\");");
+                }
+            };
 
             _tmpTrackName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName()) + "_track.html";
-            _tmpTrackName = Path.Combine(TrackplansDirectory, _tmpTrackName);
+            _tmpTrackName = Path.Combine(TrackplansEditor, _tmpTrackName);
             _tmpTrackName = _tmpTrackName.ExpandRailwayEssential();
 
             Viewer.WebGenerator = new WebGenerator { ThemeDirectory = ThemeName.ExpandRailwayEssential() };
@@ -31,12 +78,6 @@ namespace RailwayEssentialWeb
             if (Viewer.WebGenerator == null)
                 return;
 
-            //var trackplan = @"Trackplans\Schattenbahnhof-unten.track".ExpandRailwayEssential();
-            var trackplan = @"C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\Documentation\Schattenbahnhof-unten.track";
-            TrackPlanParser.TrackPlanParser parser = new TrackPlanParser.TrackPlanParser(trackplan);
-            parser.Parse();
-
-            Viewer.WebGenerator.SetTrackInfo(parser.Track);
             Viewer.WebGenerator.Generate(_tmpTrackName);
         }
 

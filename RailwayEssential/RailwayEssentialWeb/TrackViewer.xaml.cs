@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,6 +10,8 @@ namespace RailwayEssentialWeb
 {
     public partial class TrackViewer : UserControl, ITrackViewer
     {
+        public event ViewerReadyDelegate ViewerReady;
+
         private string _url;
         private SynchronizationContext _ctx;
 
@@ -24,15 +27,17 @@ namespace RailwayEssentialWeb
             }
         }
 
-        public ITrackViewerJsCallback JsCallback { get; set; }
+        private ITrackViewerJsCallback _jsCallback;
+
+        public ITrackViewerJsCallback JsCallback
+        {
+            get => _jsCallback;            
+        }
 
         public IWebGenerator WebGenerator { get; set; }
 
         public TrackViewer()
         {
-            // for tests
-            JsCallback = new TrackViewerJsCallback();
-
             var settings = new CefSharp.CefSettings { RemoteDebuggingPort = 1234 };
             // for some reason, performance sucks w/ the gpu enabled
             //settings.CefCommandLineArgs.Add("disable-gpu", "1");
@@ -52,9 +57,34 @@ namespace RailwayEssentialWeb
 
             Browser.IsBrowserInitializedChanged += BrowserOnIsBrowserInitializedChanged;
             Browser.LoadError += BrowserOnLoadError;
+            //Browser.ConsoleMessage += BrowserOnConsoleMessage;
+            Browser.LoadingStateChanged += BrowserOnLoadingStateChanged;
+            Browser.FrameLoadEnd += BrowserOnFrameLoadEnd;
 
-            Browser.RegisterJsObject("railwayEssentialCallback", JsCallback);
-            (JsCallback as TrackViewerJsCallback).Viewer = this;
+            _jsCallback = new TrackViewerJsCallback();
+            Browser.RegisterJsObject("railwayEssentialCallback", _jsCallback);
+        }
+
+        private void BrowserOnConsoleMessage(object sender, ConsoleMessageEventArgs arg)
+        {
+            Trace.WriteLine($"<TackViewer> {arg.Line}: {arg.Message}");
+        }
+
+        private void BrowserOnFrameLoadEnd(object sender, FrameLoadEndEventArgs args)
+        {
+            _ctx.Send(state =>
+            {
+                if (args.Frame.IsMain)
+                {
+                    if (Browser.IsBrowserInitialized && ViewerReady != null)
+                        ViewerReady(this);
+                }
+            }, null);
+        }
+
+        private void BrowserOnLoadingStateChanged(object sender, LoadingStateChangedEventArgs args)
+        {
+            
         }
 
         public void Reload()
@@ -90,8 +120,10 @@ namespace RailwayEssentialWeb
             {
                 if (string.IsNullOrEmpty(scriptCode))
                     return;
+
                 if (Browser == null || !Browser.IsBrowserInitialized)
                     return;
+
                 Browser.ExecuteScriptAsync(scriptCode.Trim());
             }, null);
         }

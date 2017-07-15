@@ -4,13 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using RailwayEssentialCore;
-using TrackPlanParser;
 
 namespace RailwayEssentialWeb
 {
     public partial class WebGenerator : IWebGenerator
     {
-        private Track _trackinfo;
         private string _targetFilepath;
 
         public int Rows { get; set; }
@@ -102,11 +100,6 @@ namespace RailwayEssentialWeb
             {
                 return "";
             }
-        }
-
-        public void SetTrackInfo(Track info)
-        {
-            _trackinfo = info;
         }
 
         public bool Update()
