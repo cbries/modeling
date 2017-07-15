@@ -7,6 +7,12 @@ var isDrag = false;
 var objDrag = null;
 var objPosition = null; // top, left
 
+$(document).keyup(function (e) {
+    if (e.keyCode == 27) {
+        resetSelection();
+    }
+});
+
 function rebuildTable() {
     $('td').each(function (index, el) {
         if ($(el).find('img').length == 0) {
@@ -51,6 +57,51 @@ function findTargetTd(evt, callback) {
     return null;
 }
 
+function resetSelection() {
+    $('td').each(function () {
+        $(this).css("background-color", "");
+    });
+}
+
+function selectElement(el) {
+    resetSelection();
+    el.parent().css("background-color", "red");
+}
+
+function rotateElement(col, row, el) {
+    var o = el;
+
+    function ss(col, row, orientation) {
+        console.log("vs: cellRotated(" + col + ", " + row + ", " + orientation + ")");
+        try {
+            railwayEssentialCallback.cellRotated(name);
+        } catch (ex) { /* ignore */ }
+    }
+
+    if (o.hasClass('rot0')) {
+        o.removeClass('rot0');
+        o.addClass('imgflip');
+        ss(col, row, 1);
+    } else if (o.hasClass('imgflip') && !o.hasClass('imgflip2')) {
+        o.removeClass('imgflip');
+        o.addClass('imgflip2');
+        ss(col, row, 2);
+    } else if (o.hasClass('imgflip2') && !o.hasClass('imgflip')) {
+        o.removeClass('imgflip2');
+        o.removeClass('imgflip');
+        o.addClass('imgflip imgflip2');
+        ss(col, row, 3);
+    } else if (o.hasClass('imgflip') && o.hasClass('imgflip2')) {
+        o.removeClass('imgflip');
+        o.removeClass('imgflip2');
+        o.addClass('rot0');
+        ss(col, row, 0);
+    } else {
+        o.addClass('imgflip');
+        ss(col, row, 1);
+    }
+}
+
 $(document).ready(function (e) {
 
     var isMouseDown = false;
@@ -81,6 +132,10 @@ $(document).ready(function (e) {
 
             if (isDragging && objDrag !== null) {
 
+                // ###################
+                //        DROP
+                // ###################
+
                 var targetObject = findTargetTd(evt, function (col, row, target) {
                     var src = objDrag.attr("src");
                     if (src === 'undefined' || src == null)
@@ -90,13 +145,26 @@ $(document).ready(function (e) {
                     objDrag.remove();
                     objDrag = null;
 
+                    resetSelection();
                     rebuildTable();
 
                     var c = target.find("div");
                     if (c.find("img").length == 1)
                         return;
 
-                    var newChild = c.append("<img class=\"overflow\" src=\"" + src + "\" border=\"0\">");
+                    var newChild = c.append("<img class=\"overflow\" src=\"" + src + "\" border=\"0\" data-railway-symbol=\""
+                        + symbol + "\">");
+                    newChild.click(function (evt) {
+                        if (evt.ctrlKey && evt.altKey) {
+                            rotateElement(col, row, $(this));
+                        } else if (evt.ctrlKey) {
+                            selectElement($(this));
+                        } else if (evt.altKey) {
+                            $(this).remove();
+                            resetSelection();
+                            rebuildTable();
+                        }
+                    });
                     newChild.draggable();
 
                     console.log("vs: cellClicked(" + col + ", " + row + ", " + symbol + ")");
@@ -107,27 +175,42 @@ $(document).ready(function (e) {
 
             } else {
 
-                objDrag = null;
+                // ###################
+                //        CLICK
+                // ###################
 
-                /******/
+                objDrag = null;
 
                 var c = $(this).find("div");
                 if (c.find("img").length == 1)
                     return;
 
-                //console.log("Click offset: " + $(this).offset().top + ", " + $(this).offset().left);
-
                 var o = $('#webmenu').val();
                 var v = themeDirectory + '/' + o + '.svg';
 
-                var newChild = c.append("<img class=\"overflow\" src=\"" + v + "\" border=\"0\" data-railway-symbol=\"" + o + "\">");
+                var newChild = c.append("<img class=\"overflow\" src=\""
+                    + v + "\" border=\"0\" data-railway-symbol=\""
+                    + o + "\">");
+
+                newChild.click(function (evt) {
+
+                    if (evt.ctrlKey && evt.altKey) {
+                        rotateElement(col, row, $(this));
+                    } else if (evt.ctrlKey) {
+                        selectElement($(this));
+                    } else if (evt.altKey) {
+                        $(this).remove();
+                        resetSelection();
+                        rebuildTable();
+                    }
+                });
+
                 newChild.draggable();
 
                 console.log("vs: cellClicked(" + col + ", " + row + ", " + o + ")");
                 try {
                     railwayEssentialCallback.cellClicked(col, row, o);
                 } catch (ex) { /* ignore */ }
-
             }
             isDragging = false;
             startingPos = [];

@@ -26,9 +26,9 @@ namespace RailwayEssentialWeb
             }
         }
 
-        public void cellRotated(int x, int y, int degrees)
+        public void cellRotated(int x, int y, int orientation)
         {
-            Trace.WriteLine($"Cell({x}, {y}) {degrees}");
+            Trace.WriteLine($"Cell({x}, {y}) {orientation}");
         }
     }
 }

@@ -127,7 +127,7 @@ namespace RailwayEssentialWeb
                 oSb.Append("<tr class=\"row\">");
                 for (int x = 0; x < Columns; ++x)
                 {
-                    oSb.Append("<td class=\"cell\"></></td>");
+                    oSb.Append("<td class=\"cell\"><div class=\"overflow\"></div></td></td>");
                 }
                 oSb.Append("</tr>\r\n");
             }

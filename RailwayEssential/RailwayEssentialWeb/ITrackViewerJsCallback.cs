@@ -5,6 +5,6 @@ namespace RailwayEssentialWeb
     {
         void message(string msg);
         void cellClicked(int x, int y, string symbol);
-        void cellRotated(int x, int y, int degrees);
+        void cellRotated(int x, int y, int orientation);
     }
 }
