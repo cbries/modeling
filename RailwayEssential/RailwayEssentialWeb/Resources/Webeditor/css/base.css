@@ -1,8 +1,22 @@
-.gridTrackPlan { border: 1px solid black; margin-top: 10px; }
-html, body { height: 100%;  }
-html { display: table; margin: auto; }
-body { display: table-cell; vertical-align: middle; }
+.gridTrackPlan {
+    border: 1px solid black;
+    margin-top: 10px;
+}
 
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+/*
 .cell {
     width: 32px; height: 32px;
     position: relative;
@@ -39,6 +53,51 @@ td {
 
 .highlight { 
     background: #fff;
+}
+*/
+
+table {
+    border: 1px solid red;
+    border-spacing: 0;
+    border-collapse: separate;
+}
+
+div {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.row {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    /*border: 1px solid yellow;*/
+    height: 32px !important;
+    overflow: visible;
+}
+
+.cell {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    border: 1px solid blue;
+    overflow: visible;
+    max-height: 32px !important;
+    max-width: 32px !important;
+    width: 32px;
+    height: 32px;
+}
+
+.overflow {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    height: 32px;
+    line-height: 32px;
+    position: relative;
 }
 
 .imgflip {

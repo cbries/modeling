@@ -121,12 +121,13 @@ namespace RailwayEssentialWeb
         {
             StringBuilder oSb = new StringBuilder();
 
-            oSb.Append("<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border: 1px solid red;\">");
+            oSb.Append("<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border: 0;\">");
             for (int y = 0; y < Rows; ++y)
             {
+                oSb.Append("<tr class=\"row\">");
                 for (int x = 0; x < Columns; ++x)
                 {
-                    oSb.Append("<td></td>");
+                    oSb.Append("<td class=\"cell\"></></td>");
                 }
                 oSb.Append("</tr>\r\n");
             }
