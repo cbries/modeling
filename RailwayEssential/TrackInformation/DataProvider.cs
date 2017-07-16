@@ -394,7 +394,9 @@ namespace TrackInformation
                     else
                     {
                         DataChanged?.Invoke(this);
-                        if(!sw.HasView)
+                        sw.CommandsReady -= CommandsReady;
+                        sw.CommandsReady += CommandsReady;
+                        if (!sw.HasView)
                             sw.EnableView();
                     }
                 }
@@ -411,7 +413,9 @@ namespace TrackInformation
                     else
                     {
                         DataChanged?.Invoke(this);
-                        if(!r.HasView)
+                        r.CommandsReady -= CommandsReady;
+                        r.CommandsReady += CommandsReady;
+                        if (!r.HasView)
                             r.EnableView();
                     }
                 }
@@ -447,7 +451,9 @@ namespace TrackInformation
                     else
                     {
                         DataChanged?.Invoke(this);
-                        if(!l.HasView)
+                        l.CommandsReady -= CommandsReady;
+                        l.CommandsReady += CommandsReady;
+                        if (!l.HasView)
                             l.EnableView();
                     }
                 }
@@ -484,7 +490,9 @@ namespace TrackInformation
                     else
                     {
                         DataChanged?.Invoke(this);
-                        if(!s88.HasView)
+                        s88.CommandsReady -= CommandsReady;
+                        s88.CommandsReady += CommandsReady;
+                        if (!s88.HasView)
                             s88.EnableView();
                     }
                 }

@@ -78,6 +78,9 @@ namespace RailwayEssentialUi
         {
             InitializeComponent();
 
+            TrackViewer.FilePath = TrackObjectFile;
+            TrackViewer.Initialize();
+
             _ctx = SynchronizationContext.Current;
             _cfg = new RailwayEssentialCore.Configuration { IpAddress = "192.168.178.61" };
 
@@ -86,13 +89,23 @@ namespace RailwayEssentialUi
                 Logger = this
             };
 
+            _dispatcher.UpdateUi += DispatcherOnUpdateUi;
+
             var dataProvider = _dispatcher.GetDataProvider();
             dataProvider.DataChanged += OnDataChanged;
             dataProvider.CommandsReady += DataProviderOnCommandsReady;
 
-            TrackViewer.FilePath = TrackObjectFile;
-
             InitializeTreeView();
+
+            dataProvider.LoadObjects(TrackGlobalFile);
+
+            _dispatcher.InitializeWeaving(TrackViewer.Track);
+        }
+
+        private void DispatcherOnUpdateUi(object sender, TrackWeaver.TrackWeaver trackWeaver)
+        {
+            if (TrackViewer != null)
+                TrackViewer.UpdateUi(trackWeaver);
         }
 
         private Category _itemStatus;
@@ -114,8 +127,6 @@ namespace RailwayEssentialUi
             TreeViewModel.Items.Add(_itemS88);
             TreeViewModel.Items.Add(_itemSwitches);
             TreeViewModel.Items.Add(_itemRoutes);
-
-            _dispatcher?.GetDataProvider().LoadObjects(TrackGlobalFile);
         }
 
         private void DataProviderOnCommandsReady(object sender, IReadOnlyList<ICommand> commands)

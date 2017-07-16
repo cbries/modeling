@@ -112,6 +112,40 @@ function test(col, row) {
     console.log(col + ", " + row);
 }
 
+function changeSymbol(col, row, symbol, orientation) {
+    $('td').each(function (index, el) {
+        var oel = $(el);
+        var c = oel.parent().children().index(oel);
+        var r = oel.parent().parent().children().index(oel.parent());
+
+        if (col === c && row === r) {
+            var cdiv = oel.find("div");
+            if (cdiv.find("img").length === 0)
+                return;
+
+            var o = $('#webmenu').val();
+            var v = themeDirectory + '/' + symbol + '.svg';
+
+            try {
+                var m = "";
+                m += "Change Coord(" + col + ", " + row + "): " + symbol + ", " + orientation + ", " + orientation;
+                railwayEssentialCallback.message(m);
+            } catch (e) {
+                console.log(e);
+            }
+
+            var img = cdiv.find("img");
+            img.removeClass("rot0");
+            img.removeClass("imgflip");
+            img.removeClass("imgflip2");
+            img.addClass(orientation);
+            img.removeData("railway-symbol");
+            img.data("railway-symbol", symbol);
+            img.attr("src", v);
+        }
+    });    
+}
+
 function simulateClick(col, row, symbol, orientation) {
 
     $('td').each(function (index, el) {
@@ -120,7 +154,6 @@ function simulateClick(col, row, symbol, orientation) {
         var r = oel.parent().parent().children().index(oel.parent());
 
         if (col === c && row === r) {
-
             var cdiv = oel.find("div");
             if (cdiv.find("img").length === 1)
                 return;
@@ -133,6 +166,7 @@ function simulateClick(col, row, symbol, orientation) {
                 m += "Coord(" + col + ", " + row + "): " + symbol + ", " + orientation + ", " + orientation;
                 railwayEssentialCallback.message(m);
             } catch (e) {
+                console.log(e);
             }
 
             var newChild = cdiv.append("<img class=\"overflow " + orientation + "\" src=\""

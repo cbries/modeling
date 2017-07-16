@@ -76,6 +76,26 @@ namespace TrackInformation
         {
         }
 
+        public bool Pin(uint nr)
+        {
+            if (_ports < nr)
+                return false;
+
+            try
+            {
+                var p = StateBinary[(int) _ports - (int) nr];
+
+                if (p.Equals('0'))
+                    return false;
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public override void Parse(List<CommandArgument> arguments)
         {
             foreach (var arg in arguments)

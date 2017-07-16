@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Diagnostics;
 using System.IO;
 using RailwayEssentialCore;
 
@@ -15,22 +15,25 @@ namespace RailwayEssentialWeb
 
         public string FilePath { get; set; }
 
-        private readonly string _tmpTrackName;
+        private string _tmpTrackName;
 
         public TrackViewerControl()
         {
             InitializeComponent();
-            
-            Viewer.ViewerReady += delegate(object sender)
+        }
+
+        public void Initialize()
+        {
+            TrackPlanParser.TrackPlanParser parser = new TrackPlanParser.TrackPlanParser(FilePath);
+            parser.Parse();
+
+            _track = parser.Track;
+
+            Viewer.ViewerReady += delegate (object sender)
             {
                 ITrackViewer trackViewer = sender as ITrackViewer;
                 if (trackViewer == null)
                     return;
-
-                TrackPlanParser.TrackPlanParser parser = new TrackPlanParser.TrackPlanParser(FilePath);
-                parser.Parse();
-
-                _track = parser.Track;
 
                 trackViewer.JsCallback.TrackEdit = _track;
 
@@ -70,6 +73,50 @@ namespace RailwayEssentialWeb
         {
             Viewer.Url = _tmpTrackName;
             Viewer.Reload();
+        }
+
+        public bool UpdateUi(TrackWeaver.TrackWeaver weaver)
+        {
+            Trace.WriteLine(" ** UpdateUi() ** ");
+            if (weaver == null)
+                return false;
+
+            var ws = weaver.WovenSeam;
+            if (ws == null)
+                return false;
+
+            foreach (var seam in ws)
+            {
+                if (seam == null)
+                    continue;
+
+                if (seam.TrackObjects.Count == 0)
+                    continue;
+
+                foreach (var trackItem in seam.TrackObjects.Keys)
+                {
+                    if (trackItem == null)
+                        continue;
+
+                    var checkState = seam.TrackObjects[trackItem];
+
+                    var state = false;
+                    if (checkState != null)
+                        state = checkState();
+
+                    var x = trackItem.X;
+                    var y = trackItem.Y;
+                    var icon = state ? "sensor-on" : "sensor-off";
+                    var orientation = trackItem.Orientation;
+
+                    Viewer.JsCallback.TrackEdit.ChangeSymbol(x, y, icon);
+                    Viewer.ExecuteJs($"changeSymbol({x}, {y}, \"{icon}\", \"{orientation}\");");
+
+                    Trace.WriteLine($"CHANGE: {x},{y} -> {icon}");
+                }
+            }
+
+            return true;
         }
     }
 }

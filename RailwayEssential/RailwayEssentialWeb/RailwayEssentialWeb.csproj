@@ -108,9 +108,17 @@
       <Project>{b80cfecd-db0b-4533-aa42-784b2ebe85ff}</Project>
       <Name>RailwayEssentialCore</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TrackInformationCore\TrackInformationCore.csproj">
+      <Project>{B839732A-5C4A-4501-8B5E-990D12627C56}</Project>
+      <Name>TrackInformationCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TrackPlanParser\TrackPlanParser.csproj">
       <Project>{f7751558-8d8b-4ae2-a1ee-22d80889d73d}</Project>
       <Name>TrackPlanParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackWeaver\TrackWeaver.csproj">
+      <Project>{bc3eaefc-cd4d-4a9e-870e-918685c49c3d}</Project>
+      <Name>TrackWeaver</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

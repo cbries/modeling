@@ -42,8 +42,7 @@ namespace TrackInformation
                 OnPropertyChanged();
             }
         }
-
-
+        
         public Item()
         {
             Items = new ObservableCollection<Item>();

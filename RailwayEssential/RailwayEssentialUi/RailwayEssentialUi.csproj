@@ -155,6 +155,10 @@
       <Project>{f7751558-8d8b-4ae2-a1ee-22d80889d73d}</Project>
       <Name>TrackPlanParser</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TrackWeaver\TrackWeaver.csproj">
+      <Project>{bc3eaefc-cd4d-4a9e-870e-918685c49c3d}</Project>
+      <Name>TrackWeaver</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\route.png" />

@@ -1,9 +1,12 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System;
+using Newtonsoft.Json.Linq;
 
 namespace TrackPlanParser
 {
     public class TrackInfo
     {
+        public Func<bool> CheckState { get; set; }
+
         public int X { get; set; }
         public int Y { get; set; }
         public string IconName { get; set; }
@@ -46,6 +49,11 @@ namespace TrackPlanParser
                 Orientation = o["orientation"].ToString();
             if (o["description"] != null)
                 Description = o["description"].ToString();
+        }
+
+        public override string ToString()
+        {
+            return $"{X}:{Y} -> {IconName}";
         }
     }
 }
