@@ -11,7 +11,7 @@ using TrackInformationCore;
 
 namespace TrackInformation
 {
-    public class Item : IItem, IItemState, INotifyPropertyChanged
+    public class Item : IItem, INotifyPropertyChanged
     {
         public event CommandsReadyDelegator CommandsReady;
 

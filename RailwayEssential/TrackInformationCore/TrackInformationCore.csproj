@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="IDataProvider.cs" />
     <Compile Include="IItem.cs" />
-    <Compile Include="IItemState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
