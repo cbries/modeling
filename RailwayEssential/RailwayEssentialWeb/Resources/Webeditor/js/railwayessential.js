@@ -113,7 +113,42 @@ function selectElement(el) {
     el.parent().css("background-color", "red");
 }
 
+function rotateElement2(col, row, el) {
+    var o = el;
+
+    function ss(col, row, orientation) {
+        console.log("vs: cellRotated(" + col + ", " + row + ", " + orientation + ")");
+        try {
+            railwayEssentialCallback.cellRotated(col, row, orientation);
+        } catch (ex) { /* ignore */ }
+    }
+
+    if (o.hasClass('imgflip')) {
+        o.removeClass('imgflip');
+        o.addClass('rot90');
+        ss(col, row, "rot90");
+    } else if (o.hasClass('rot90')) {
+        o.removeClass('rot90');
+        o.addClass('rot-90');
+        ss(col, row, "rot-90");
+    } else if (o.hasClass('rot-90')) {
+        o.removeClass('rot-90');
+        o.addClass('rot0');
+        ss(col, row, "rot0");
+    } else if (o.hasClass('rot0')) {
+        o.removeClass('rot0');
+        o.addClass('imgflip');
+        ss(col, row, "imgflip");
+    } else {
+        o.addClass('rot90');
+        ss(col, row, "rot90");
+    }
+}
+
 function rotateElement(col, row, el) {
+    rotateElement2(col, row, el);
+    return;
+
     var o = el;
 
     function ss(col, row, orientation) {
@@ -348,6 +383,8 @@ $(document).ready(function (e) {
 
                     if (evt.ctrlKey && evt.altKey) {
                         rotateElement(col, row, $(this));
+                    } else if (evt.ctrlKey && evt.shiftKey) {
+                        rotateElement2(col, row, $(this));;
                     } else if (evt.ctrlKey) {
                         selectElement($(this));
                     } else if (evt.altKey) {
