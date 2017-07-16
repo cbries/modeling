@@ -1,0 +1,989 @@
+[
+  {
+    "x": 20,
+    "y": 4,
+    "iconName": "straight",
+    "orientation": "imgflip2",
+    "description": ""
+  },
+  {
+    "x": 6,
+    "y": 5,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 6,
+    "y": 6,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 6,
+    "y": 7,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 6,
+    "y": 8,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 5,
+    "y": 5,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 5,
+    "y": 6,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 5,
+    "y": 7,
+    "iconName": "turnoutleft",
+    "orientation": "imgflip",
+    "description": ""
+  },
+  {
+    "x": 4,
+    "y": 5,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 4,
+    "y": 6,
+    "iconName": "turnoutleft",
+    "orientation": "imgflip",
+    "description": ""
+  },
+  {
+    "x": 8,
+    "y": 5,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 8,
+    "y": 6,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 8,
+    "y": 7,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 8,
+    "y": 8,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 9,
+    "y": 5,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 9,
+    "y": 6,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 9,
+    "y": 7,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 9,
+    "y": 8,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 15,
+    "y": 5,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 15,
+    "y": 6,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 15,
+    "y": 7,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 15,
+    "y": 8,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 16,
+    "y": 5,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 16,
+    "y": 6,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 16,
+    "y": 7,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 16,
+    "y": 8,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 18,
+    "y": 5,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 18,
+    "y": 6,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 18,
+    "y": 7,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 18,
+    "y": 8,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 19,
+    "y": 5,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 19,
+    "y": 6,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 19,
+    "y": 7,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 19,
+    "y": 8,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 6,
+    "y": 1,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 8,
+    "y": 1,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 9,
+    "y": 1,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 15,
+    "y": 1,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 16,
+    "y": 1,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 18,
+    "y": 1,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 19,
+    "y": 1,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 20,
+    "y": 1,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 21,
+    "y": 1,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 22,
+    "y": 1,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 6,
+    "y": 2,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 8,
+    "y": 2,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 9,
+    "y": 2,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 15,
+    "y": 2,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 16,
+    "y": 2,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 18,
+    "y": 2,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 19,
+    "y": 2,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 20,
+    "y": 2,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 21,
+    "y": 2,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 5,
+    "y": 3,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 6,
+    "y": 3,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 8,
+    "y": 3,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 9,
+    "y": 3,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 15,
+    "y": 3,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 16,
+    "y": 3,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 18,
+    "y": 3,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 19,
+    "y": 3,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 20,
+    "y": 3,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 4,
+    "y": 4,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 5,
+    "y": 4,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 6,
+    "y": 4,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 8,
+    "y": 4,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 9,
+    "y": 4,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 15,
+    "y": 4,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 16,
+    "y": 4,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 18,
+    "y": 4,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 19,
+    "y": 4,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 25,
+    "y": 1,
+    "iconName": "curve",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 24,
+    "y": 1,
+    "iconName": "dir",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 23,
+    "y": 1,
+    "iconName": "turnoutleft-route",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 22,
+    "y": 2,
+    "iconName": "turnoutright-route",
+    "orientation": "imgflip",
+    "description": ""
+  },
+  {
+    "x": 21,
+    "y": 3,
+    "iconName": "turnoutright-route",
+    "orientation": "imgflip",
+    "description": ""
+  },
+  {
+    "x": 5,
+    "y": 2,
+    "iconName": "turnoutright-route",
+    "orientation": "imgflip2",
+    "description": ""
+  },
+  {
+    "x": 4,
+    "y": 3,
+    "iconName": "turnoutright-route",
+    "orientation": "imgflip2",
+    "description": ""
+  },
+  {
+    "x": 3,
+    "y": 4,
+    "iconName": "turnoutleft-route",
+    "orientation": "imgflip imgflip2",
+    "description": ""
+  },
+  {
+    "x": 11,
+    "y": 2,
+    "iconName": "block",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 11,
+    "y": 3,
+    "iconName": "block",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 11,
+    "y": 4,
+    "iconName": "block",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 11,
+    "y": 5,
+    "iconName": "block",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 11,
+    "y": 6,
+    "iconName": "block",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 11,
+    "y": 7,
+    "iconName": "block",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 10,
+    "y": 1,
+    "iconName": "dir",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 10,
+    "y": 2,
+    "iconName": "dir",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 10,
+    "y": 3,
+    "iconName": "dir",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 10,
+    "y": 4,
+    "iconName": "dir",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 10,
+    "y": 5,
+    "iconName": "dir",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 10,
+    "y": 6,
+    "iconName": "dir",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 10,
+    "y": 7,
+    "iconName": "dir",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 10,
+    "y": 8,
+    "iconName": "dir",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 7,
+    "y": 1,
+    "iconName": "sensor-off",
+    "orientation": "rot0",
+    "description": "Sensor A"
+  },
+  {
+    "x": 7,
+    "y": 2,
+    "iconName": "sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 7,
+    "y": 3,
+    "iconName": "sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 7,
+    "y": 4,
+    "iconName": "sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 7,
+    "y": 5,
+    "iconName": "sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 7,
+    "y": 6,
+    "iconName": "sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 7,
+    "y": 7,
+    "iconName": "sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 7,
+    "y": 8,
+    "iconName": "sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 17,
+    "y": 1,
+    "iconName": "sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 17,
+    "y": 2,
+    "iconName": "sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 17,
+    "y": 3,
+    "iconName": "sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 17,
+    "y": 4,
+    "iconName": "sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 17,
+    "y": 5,
+    "iconName": "sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 17,
+    "y": 6,
+    "iconName": "sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 17,
+    "y": 7,
+    "iconName": "sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 17,
+    "y": 8,
+    "iconName": "sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 0,
+    "y": 4,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 1,
+    "y": 4,
+    "iconName": "turnoutright",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 2,
+    "y": 4,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 1,
+    "y": 5,
+    "iconName": "curve",
+    "orientation": "imgflip imgflip2",
+    "description": ""
+  },
+  {
+    "x": 2,
+    "y": 5,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 3,
+    "y": 5,
+    "iconName": "turnoutright",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 11,
+    "y": 1,
+    "iconName": "block",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 11,
+    "y": 8,
+    "iconName": "block",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 23,
+    "y": 8,
+    "iconName": "turnoutright",
+    "orientation": "imgflip imgflip2",
+    "description": ""
+  },
+  {
+    "x": 22,
+    "y": 7,
+    "iconName": "turnoutright",
+    "orientation": "imgflip imgflip2",
+    "description": ""
+  },
+  {
+    "x": 21,
+    "y": 6,
+    "iconName": "turnoutright",
+    "orientation": "imgflip imgflip2",
+    "description": ""
+  },
+  {
+    "x": 20,
+    "y": 5,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 20,
+    "y": 6,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 20,
+    "y": 7,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 21,
+    "y": 7,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 21,
+    "y": 8,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 20,
+    "y": 8,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 22,
+    "y": 8,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 24,
+    "y": 8,
+    "iconName": "straight",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 21,
+    "y": 5,
+    "iconName": "curve-sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 22,
+    "y": 6,
+    "iconName": "curve-sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 23,
+    "y": 7,
+    "iconName": "curve-sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 23,
+    "y": 2,
+    "iconName": "curve-sensor-off",
+    "orientation": "rot90",
+    "description": ""
+  },
+  {
+    "x": 22,
+    "y": 3,
+    "iconName": "curve-sensor-off",
+    "orientation": "rot90",
+    "description": ""
+  },
+  {
+    "x": 21,
+    "y": 4,
+    "iconName": "curve-sensor-off",
+    "orientation": "rot90",
+    "description": ""
+  },
+  {
+    "x": 4,
+    "y": 2,
+    "iconName": "curve-sensor-off",
+    "orientation": "rot-90",
+    "description": ""
+  },
+  {
+    "x": 3,
+    "y": 3,
+    "iconName": "curve-sensor-off",
+    "orientation": "rot-90",
+    "description": ""
+  },
+  {
+    "x": 5,
+    "y": 1,
+    "iconName": "curve-sensor-off",
+    "orientation": "rot-90",
+    "description": ""
+  },
+  {
+    "x": 3,
+    "y": 6,
+    "iconName": "curve-sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 4,
+    "y": 7,
+    "iconName": "curve-sensor-off",
+    "orientation": "rot0",
+    "description": ""
+  },
+  {
+    "x": 5,
+    "y": 8,
+    "iconName": "curve-sensor-off",
+    "orientation": "imgflip",
+    "description": ""
+  },
+  {
+    "x": 1,
+    "y": 10,
+    "iconName": "dcrossingleft-r-t",
+    "orientation": "rot0",
+    "description": ""
+  }
+]

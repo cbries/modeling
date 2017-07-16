@@ -58,6 +58,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackInformationCore", "Tra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackWeaver", "TrackWeaver\TrackWeaver.csproj", "{BC3EAEFC-CD4D-4A9E-870E-918685C49C3D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testdata", "Testdata", "{C15A7336-4B35-4BD3-9C31-7F7C8DD65E6B}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation\Testdata\TrackObjects.json = Documentation\Testdata\TrackObjects.json
+		Documentation\Testdata\TrackPlan.json = Documentation\Testdata\TrackPlan.json
+		Documentation\Testdata\TrackWeaving.json = Documentation\Testdata\TrackWeaving.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -224,5 +231,6 @@ Global
 		{15405881-A35F-437E-9D2D-22DFDDBC3C11} = {C8705CCB-F5B8-43F0-8510-E4AA93B3CCE2}
 		{636EE6AE-E7ED-4A45-86FE-326B61213B2D} = {16A1512B-75B3-4543-81BD-F38624E2DEBB}
 		{098B4F68-EFCC-4055-8BD8-A927D11BD8FE} = {16A1512B-75B3-4543-81BD-F38624E2DEBB}
+		{C15A7336-4B35-4BD3-9C31-7F7C8DD65E6B} = {5050BCD2-2DB5-4B46-9798-E034F293C22E}
 	EndGlobalSection
 EndGlobal

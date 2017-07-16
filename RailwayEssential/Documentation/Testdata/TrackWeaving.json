@@ -1,0 +1,98 @@
+[
+  {
+    "type": "s88",
+    "setup": {
+      "objectId": 100, "pin": 9, "visuX": 17, "visuY": 1
+    }
+  },
+  {
+    "type": "s88",
+    "setup": {
+      "objectId": 100, "pin": 10, "visuX": 17, "visuY": 2
+    }
+  },
+  {
+    "type": "s88",
+    "setup": {
+      "objectId": 100, "pin": 11, "visuX": 17, "visuY": 3
+    }
+  },
+  {
+    "type": "s88",
+    "setup": {
+      "objectId": 100, "pin": 12, "visuX": 17, "visuY": 4
+    }
+  },
+  {
+    "type": "s88",
+    "setup": {
+      "objectId": 100, "pin": 13, "visuX": 17, "visuY": 5
+    }
+  },
+  {
+    "type": "s88",
+    "setup": {
+      "objectId": 100, "pin": 14, "visuX": 17, "visuY": 6
+    }
+  },
+  {
+    "type": "s88",
+    "setup": {
+      "objectId": 100, "pin": 15, "visuX": 17, "visuY": 7
+    }
+  },
+  {
+    "type": "s88",
+    "setup": {
+      "objectId": 100, "pin": 16, "visuX": 17, "visuY": 8
+    }
+  },
+  {
+    "type": "s88",
+    "setup": {
+      "objectId": 101, "pin": 9, "visuX": 7, "visuY": 1
+    }
+  },
+  {
+    "type": "s88",
+    "setup": {
+      "objectId": 101, "pin": 10, "visuX": 7, "visuY": 2
+    }
+  },
+  {
+    "type": "s88",
+    "setup": {
+      "objectId": 101, "pin": 11, "visuX": 7, "visuY": 3
+    }
+  },
+  {
+    "type": "s88",
+    "setup": {
+      "objectId": 101, "pin": 12, "visuX": 7, "visuY": 4
+    }
+  },
+  {
+    "type": "s88",
+    "setup": {
+      "objectId": 101, "pin": 13, "visuX": 7, "visuY": 5
+    }
+  },
+  {
+    "type": "s88",
+    "setup": {
+      "objectId": 101, "pin": 14, "visuX": 7, "visuY": 6
+    }
+  },
+  {
+    "type": "s88",
+    "setup": {
+      "objectId": 101, "pin": 15, "visuX": 7, "visuY": 7
+    }
+  },
+  {
+    "type": "s88",
+    "setup": {
+      "objectId": 101, "pin": 16, "visuX": 7, "visuY": 8
+    }
+  }
+]

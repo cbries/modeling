@@ -57,6 +57,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -641,6 +644,7 @@
   <PropertyGroup>
     <PostBuildEvent>md "%25RAILWAYESSENTIAL%25\Themes"
 xcopy /S /C /Y /J /R "$(ProjectDir)\Resources\Theme" "%25RAILWAYESSENTIAL%25\Themes"
-</PostBuildEvent>
+
+xcopy /S /C /Y /J /R "$(ProjectDir)\..\Documentation\Testdata\*" "%25RAILWAYESSENTIAL%25\Sessions\0\"</PostBuildEvent>
   </PropertyGroup>
 </Project>
