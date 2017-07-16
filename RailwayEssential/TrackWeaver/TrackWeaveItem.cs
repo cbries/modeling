@@ -5,7 +5,7 @@ namespace TrackWeaver
 {
     public enum WeaveItemT
     {
-        Unknown, S88
+        Unknown, S88, Switch, Accessory, RouteActivator
     }
 
     public class TrackWeaveItem
