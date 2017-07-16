@@ -5,6 +5,9 @@ namespace RailwayEssentialWeb
 {
     public class TrackViewerJsCallback : ITrackViewerJsCallback
     {
+        public event EditModeChangedDelegator EditModeChanged;
+        public event CellClickedDelegator CellClicked;
+
         public ITrackEdit TrackEdit { get; set; }
 
         public void message(string msg)
@@ -12,9 +15,14 @@ namespace RailwayEssentialWeb
            //Trace.WriteLine("Message: " + msg.Trim());
         }
 
-        public void cellClicked(int x, int y, string symbol)
+        public void cellClicked(int x, int y)
         {
-            //Trace.WriteLine("Clicked: " + x + ", " + y + ", " + symbol);
+            if (CellClicked != null)
+                CellClicked(this, x, y);
+        }
+
+        public void cellEdited(int x, int y, string symbol)
+        {            
             if (TrackEdit != null)
                 TrackEdit.ChangeSymbol(x, y, symbol);
         }
@@ -24,6 +32,12 @@ namespace RailwayEssentialWeb
             //Trace.WriteLine("Rotated: " + x + ", " + y + ", " + orientation);
             if (TrackEdit != null)
                 TrackEdit.RotateSymbol(x, y, orientation);
+        }
+
+        public void editModeChanged(bool state)
+        {
+            if (EditModeChanged != null)
+                EditModeChanged(this, state);
         }
     }
 }

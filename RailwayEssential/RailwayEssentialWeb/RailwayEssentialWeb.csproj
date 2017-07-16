@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Cef\LocalResourceHandler.cs" />
     <Compile Include="Cef\LocalResourceHandlerFactory.cs" />
+    <Compile Include="Cef\MenuHandler.cs" />
     <Compile Include="ITrackViewer.cs" />
     <Compile Include="ITrackViewerJsCallback.cs" />
     <Compile Include="IWebGenerator.cs" />

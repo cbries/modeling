@@ -1,4 +1,6 @@
-﻿namespace Dispatcher
+﻿using System.Runtime.InteropServices;
+
+namespace Dispatcher
 {
     public delegate void UpdateUiDelegate(object sender, TrackWeaver.TrackWeaver trackWeaver);
 

@@ -9,6 +9,8 @@ namespace RailwayEssentialWeb
         private const string ThemeName = @"\Themes\SpDrS60";
         private const string TrackplansEditor = @"\Trackplans\Webeditor";
 
+        public ITrackViewerJsCallback JsCallback => Viewer.JsCallback;
+
         private TrackPlanParser.Track _track;
 
         public TrackPlanParser.Track Track => _track;

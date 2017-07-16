@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -11,6 +12,7 @@ using Ecos2Core;
 using Newtonsoft.Json;
 using RailwayEssentialCore;
 using TrackInformation;
+using Switch = TrackInformation.Switch;
 
 namespace RailwayEssentialUi
 {
@@ -80,6 +82,20 @@ namespace RailwayEssentialUi
 
             TrackViewer.FilePath = TrackObjectFile;
             TrackViewer.Initialize();
+
+            var jsCallback = TrackViewer.JsCallback;
+            if (jsCallback != null)
+            {
+                jsCallback.EditModeChanged += (sender, state) =>
+                {
+                    Trace.WriteLine("jsCallback: " + state);
+                };
+
+                jsCallback.CellClicked += (sender, x, y) =>
+                {
+                    Trace.WriteLine("Cell clicked: " + x + ", " + y);
+                };
+            }
 
             _ctx = SynchronizationContext.Current;
             _cfg = new RailwayEssentialCore.Configuration { IpAddress = "192.168.178.61" };

@@ -33,27 +33,6 @@ namespace RailwayEssentialWeb
 
         private List<string> ThemeFiles => Directory.GetFiles(ThemeDirectory, "*.svg", SearchOption.TopDirectoryOnly).ToList();
 
-        public string GetRandomSvg()
-        {
-            int index = _randomNumberGenerator.Next(0, ThemeFiles.Count - 1);
-            return ThemeFiles[index];
-        }
-
-        private int _currentIndex;
-        public string GetNextSvg()
-        {
-            if (_currentIndex >= ThemeFiles.Count)
-                _currentIndex = 0;
-            var n = ThemeFiles[_currentIndex];
-            ++_currentIndex;
-            return n;
-        }
-
-        public string GetSvg(string name)
-        {
-            return Path.Combine(ThemeDirectory, name + ".svg");
-        }
-
         private string CreateSymbolSelection()
         {
             JArray arOrder = null;
@@ -125,26 +104,15 @@ namespace RailwayEssentialWeb
             }
             oSb.Append("</table>");
 
+            string css = string.Format("table {{width:{0}px; height:{1}px;}}", Columns * 32, Rows * 32);
+
             try
             {
                 var b = CreateBase();
                     b = b.Replace("{{GLOBALJS}}", "var themeDirectory='"+new Uri(ThemeDirectory.Replace("\\", "/")).AbsoluteUri+"';");
+                    b = b.Replace("{{GLOBALCSS}}", css);
                     b = b.Replace("{{TRACKTABLE}}", oSb.ToString());
                     b = b.Replace("{{TRACKSYMBOLS}}", CreateSymbolSelection());
-
-                // remove old plans
-                var files = Directory.GetFiles(Path.GetDirectoryName(targetFilepath), "*.html");
-                foreach (var n in files)
-                {
-                    try
-                    {
-                        File.Delete(n);
-                    }
-                    catch
-                    {
-                        // ignore
-                    }
-                }
 
                 File.WriteAllText(targetFilepath, b, Encoding.UTF8);
             }

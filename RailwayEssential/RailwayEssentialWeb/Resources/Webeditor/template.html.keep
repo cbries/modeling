@@ -14,6 +14,9 @@
 	<script>
 	  {{GLOBALJS}}
 	</script>
+	<style>
+	  {{GLOBALCSS}}
+	</style>
 </head>
 <body>
 

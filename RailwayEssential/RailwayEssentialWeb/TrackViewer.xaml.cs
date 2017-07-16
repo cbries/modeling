@@ -13,6 +13,7 @@ namespace RailwayEssentialWeb
         public event ViewerReadyDelegate ViewerReady;
 
         private string _url;
+
         private SynchronizationContext _ctx;
 
         public string Url
@@ -27,7 +28,7 @@ namespace RailwayEssentialWeb
             }
         }
 
-        private ITrackViewerJsCallback _jsCallback;
+        private readonly ITrackViewerJsCallback _jsCallback;
 
         public ITrackViewerJsCallback JsCallback
         {
@@ -49,6 +50,7 @@ namespace RailwayEssentialWeb
             _ctx = SynchronizationContext.Current;
 
             Browser.ResourceHandlerFactory = new LocalResourceHandlerFactory();
+            Browser.MenuHandler = new MenuHandler();
 
             Browser.BrowserSettings.FileAccessFromFileUrls = CefSharp.CefState.Enabled;
             Browser.BrowserSettings.UniversalAccessFromFileUrls = CefSharp.CefState.Enabled;
@@ -62,6 +64,7 @@ namespace RailwayEssentialWeb
             Browser.FrameLoadEnd += BrowserOnFrameLoadEnd;
 
             _jsCallback = new TrackViewerJsCallback();
+
             Browser.RegisterJsObject("railwayEssentialCallback", _jsCallback);
         }
 

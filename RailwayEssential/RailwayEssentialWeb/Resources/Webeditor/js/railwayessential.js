@@ -57,9 +57,9 @@ function rebuildTable() {
         if ($(el).find('img').length == 0) {
             var col = $(el).parent().children().index($(el));
             var row = $(el).parent().parent().children().index($(el).parent());
-            console.log("vs: cellClicked(" + col + ", " + row + ", \"\")");
+            console.log("vs: cellEdited(" + col + ", " + row + ", \"\")");
             try {
-                railwayEssentialCallback.cellClicked(col, row, "null");
+                railwayEssentialCallback.cellEdited(col, row, "null");
             } catch (ex) { /* ignore */ }
             $(el).html("<div class=\"overflow\"></div>");
         }
@@ -114,6 +114,10 @@ function selectElement(el) {
 }
 
 function rotateElement2(col, row, el) {
+
+    if (!isEdit)
+        return;
+
     var o = el;
 
     function ss(col, row, orientation) {
@@ -149,37 +153,37 @@ function rotateElement(col, row, el) {
     rotateElement2(col, row, el);
     return;
 
-    var o = el;
+    //var o = el;
 
-    function ss(col, row, orientation) {
-        console.log("vs: cellRotated(" + col + ", " + row + ", " + orientation + ")");
-        try {
-            railwayEssentialCallback.cellRotated(col, row, orientation);
-        } catch (ex) { /* ignore */ }
-    }
+    //function ss(col, row, orientation) {
+    //    console.log("vs: cellRotated(" + col + ", " + row + ", " + orientation + ")");
+    //    try {
+    //        railwayEssentialCallback.cellRotated(col, row, orientation);
+    //    } catch (ex) { /* ignore */ }
+    //}
 
-    if (o.hasClass('rot0')) {
-        o.removeClass('rot0');
-        o.addClass('imgflip');
-        ss(col, row, "imgflip");
-    } else if (o.hasClass('imgflip') && !o.hasClass('imgflip2')) {
-        o.removeClass('imgflip');
-        o.addClass('imgflip2');
-        ss(col, row, "imgflip2");
-    } else if (o.hasClass('imgflip2') && !o.hasClass('imgflip')) {
-        o.removeClass('imgflip2');
-        o.removeClass('imgflip');
-        o.addClass('imgflip imgflip2');
-        ss(col, row, "imgflip imgflip2");
-    } else if (o.hasClass('imgflip') && o.hasClass('imgflip2')) {
-        o.removeClass('imgflip');
-        o.removeClass('imgflip2');
-        o.addClass('rot0');
-        ss(col, row, "rot0");
-    } else {
-        o.addClass('imgflip');
-        ss(col, row, "imgflip");
-    }
+    //if (o.hasClass('rot0')) {
+    //    o.removeClass('rot0');
+    //    o.addClass('imgflip');
+    //    ss(col, row, "imgflip");
+    //} else if (o.hasClass('imgflip') && !o.hasClass('imgflip2')) {
+    //    o.removeClass('imgflip');
+    //    o.addClass('imgflip2');
+    //    ss(col, row, "imgflip2");
+    //} else if (o.hasClass('imgflip2') && !o.hasClass('imgflip')) {
+    //    o.removeClass('imgflip2');
+    //    o.removeClass('imgflip');
+    //    o.addClass('imgflip imgflip2');
+    //    ss(col, row, "imgflip imgflip2");
+    //} else if (o.hasClass('imgflip') && o.hasClass('imgflip2')) {
+    //    o.removeClass('imgflip');
+    //    o.removeClass('imgflip2');
+    //    o.addClass('rot0');
+    //    ss(col, row, "rot0");
+    //} else {
+    //    o.addClass('imgflip');
+    //    ss(col, row, "imgflip");
+    //}
 }
 
 function test(col, row) {
@@ -266,8 +270,10 @@ function simulateClick(col, row, symbol, orientation) {
 }
 
 function handleUserClick(col, row) {
-    // TODO add click handler
-    alert("clicked: " + col + ", " + row);
+    console.log("vs: cellClicked(" + col + ", " + row+")");
+    try {
+        railwayEssentialCallback.cellClicked(col, row);
+    } catch (ex) { /* ignore */ }
 }
 
 $(document).ready(function (e) {
@@ -278,6 +284,11 @@ $(document).ready(function (e) {
 
     $('#cmdEdit').click(function () {
         isEdit = !isEdit;
+
+        console.log("vs: editModeChanged(" + isEdit + ")");
+        try {
+            railwayEssentialCallback.editModeChanged(isEdit);
+        } catch (ex) { /* ignore */ }
 
         updateUi();
     });
@@ -344,9 +355,9 @@ $(document).ready(function (e) {
                     });
                     newChild.draggable();
 
-                    console.log("vs: cellClicked(" + col + ", " + row + ", " + symbol + ")");
+                    console.log("vs: cellEdited(" + col + ", " + row + ", " + symbol + ")");
                     try {
-                        railwayEssentialCallback.cellClicked(col, row, symbol);
+                        railwayEssentialCallback.cellEdited(col, row, symbol);
                     } catch (ex) { /* ignore */ }
                 });
 
@@ -396,9 +407,9 @@ $(document).ready(function (e) {
 
                 newChild.draggable();
 
-                console.log("vs: cellClicked(" + col + ", " + row + ", " + o + ")");
+                console.log("vs: cellEdited(" + col + ", " + row + ", " + o + ")");
                 try {
-                    railwayEssentialCallback.cellClicked(col, row, o);
+                    railwayEssentialCallback.cellEdited(col, row, o);
                 } catch (ex) { /* ignore */ }
             }
             isDragging = false;
