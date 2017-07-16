@@ -74,3 +74,21 @@ div {
 .imgflip.imgflip2 {
     transform: scale(-1, -1);
 }
+
+.container {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    vertical-align: middle;
+}
+.container > div {
+    flex: 1; /*grow*/
+}
+
+.statusLeft {
+}
+
+.statusRight {
+    text-align: right;
+    font-weight: bold;
+}

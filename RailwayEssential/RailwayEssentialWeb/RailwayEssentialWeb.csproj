@@ -131,6 +131,7 @@
     <Content Include="Resources\Webeditor\css\msdropdown\skin2.css" />
     <Content Include="Resources\Webeditor\css\msdropdown\sprite.css" />
     <Content Include="Resources\Webeditor\css\reset.css" />
+    <Content Include="Resources\Webeditor\edit.png" />
     <Content Include="Resources\Webeditor\images\msdropdown\icons\1273404841_tick_16.png" />
     <Content Include="Resources\Webeditor\images\msdropdown\icons\Amex-56.png" />
     <Content Include="Resources\Webeditor\images\msdropdown\icons\blank.gif" />

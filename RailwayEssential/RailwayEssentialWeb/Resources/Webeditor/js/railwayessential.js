@@ -1,4 +1,6 @@
 
+var isEdit = false;
+
 var currentSelection = "";
 var currentRow = -1;
 var currentColumn = -1;
@@ -12,6 +14,19 @@ $(document).keyup(function (e) {
         resetSelection();
     }
 });
+
+function updateUi() {
+    console.log("Edit:" + isEdit);
+
+    var o = $('#editMenu');
+
+    if (isEdit) {
+        o.show();
+    }
+    else {
+        o.hide();
+    }
+}
 
 function rebuildTable() {
     $('td').each(function (index, el) {
@@ -143,7 +158,7 @@ function changeSymbol(col, row, symbol, orientation) {
             img.data("railway-symbol", symbol);
             img.attr("src", v);
         }
-    });    
+    });
 }
 
 function simulateClick(col, row, symbol, orientation) {
@@ -191,11 +206,22 @@ function simulateClick(col, row, symbol, orientation) {
     });
 }
 
+function handleUserClick(col, row) {
+    // TODO add click handler
+    alert("clicked: " + col + ", " + row);
+}
+
 $(document).ready(function (e) {
 
     var isMouseDown = false;
     var isDragging = false;
     var startingPos = [];
+
+    $('#cmdEdit').click(function () {
+        isEdit = !isEdit;
+
+        updateUi();
+    });
 
     $("td")
         .mousedown(function (evt) {
@@ -224,6 +250,9 @@ $(document).ready(function (e) {
                 // ###################
                 //        DROP
                 // ###################
+
+                if (!isEdit)
+                    return;
 
                 var targetObject = findTargetTd(evt, function (col, row, target) {
                     var src = objDrag.attr("src");
@@ -271,8 +300,18 @@ $(document).ready(function (e) {
                 objDrag = null;
 
                 var c = $(this).find("div");
-                if (c.find("img").length == 1)
+                if (c.find("img").length == 1) {
+                    if (isEdit)
+                        return;
+
+                    handleUserClick(col, row);
                     return;
+                }
+
+                if (!isEdit) {
+                    handleUserClick(col, row);
+                    return;
+                }
 
                 var o = $('#webmenu').val();
                 var v = themeDirectory + '/' + o + '.svg';

@@ -17,18 +17,19 @@
 </head>
 <body>
 
-<div>
+<div id="editMenu" style="display: none; margin-top: 10px; margin-bottom: 10px;">
   <select name="webmenu" id="webmenu" style="width: 400px; vertical-align: middle;">
 	{{TRACKSYMBOLS}}
   </select>
-  <!--
-  <img id="ccw" src="arrow_ccw.png" width="24" height="24" style="vertical-align: middle;"> 
-      &nbsp; 
-  <img id="cw" src="arrow_cw.png" width="24" height="24" style="vertical-align: middle;">
-  -->
 </div>
 
 {{TRACKTABLE}}
+
+<div class="container">
+  <div class="statusLeft"><img id="cmdEdit" width="24" height="24" style="vertical-align: middle;" border="0" src="edit.png"></div>
+  <div>&nbsp;</div>  
+  <div class="statusRight">ECOS2</div>
+</div>
     
 <div class="childDiv" style="position: absolute; top: 0px; left: 0px; display: inline; overflow: visible;">
 </div>
