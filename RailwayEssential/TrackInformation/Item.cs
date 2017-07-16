@@ -7,10 +7,11 @@ using System.Windows.Media.Imaging;
 using Ecos2Core;
 using Newtonsoft.Json.Linq;
 using TrackInformation.Annotations;
+using TrackInformationCore;
 
 namespace TrackInformation
 {
-    public class Item : IItem, INotifyPropertyChanged
+    public class Item : IItem, IItemState, INotifyPropertyChanged
     {
         public event CommandsReadyDelegator CommandsReady;
 

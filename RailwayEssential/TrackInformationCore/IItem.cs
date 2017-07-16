@@ -2,7 +2,7 @@
 using Ecos2Core;
 using Newtonsoft.Json.Linq;
 
-namespace TrackInformation
+namespace TrackInformationCore
 {
     public delegate void CommandsReadyDelegator(object sender, IReadOnlyList<ICommand> commands);
 

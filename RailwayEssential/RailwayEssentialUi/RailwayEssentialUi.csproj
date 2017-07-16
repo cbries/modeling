@@ -143,6 +143,10 @@
       <Project>{61271bce-3976-43d9-b0fe-82970cbb1f0b}</Project>
       <Name>RailwayEssentialWeb</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TrackInformationCore\TrackInformationCore.csproj">
+      <Project>{b839732a-5c4a-4501-8b5e-990d12627c56}</Project>
+      <Name>TrackInformationCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TrackInformation\TrackInformation.csproj">
       <Project>{6925e932-7ad6-4afa-a6ba-cbbf35014264}</Project>
       <Name>TrackInformation</Name>

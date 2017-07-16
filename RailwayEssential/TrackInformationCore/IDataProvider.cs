@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
-namespace TrackInformation
+namespace TrackInformationCore
 {
     public delegate void DataChangedDelegator(object sender);
 

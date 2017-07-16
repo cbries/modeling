@@ -41,7 +41,9 @@ namespace Dispatcher
         {
             try
             {
-                return _client.Stop();
+                if(_client != null)
+                    return _client.Stop();
+                return true;
             }
             catch (Exception ex)
             {

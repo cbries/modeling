@@ -11,6 +11,7 @@ using Ecos2Core.Replies;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using TrackInformation.Annotations;
+using TrackInformationCore;
 
 namespace TrackInformation
 {    

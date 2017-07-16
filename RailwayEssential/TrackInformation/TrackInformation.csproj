@@ -69,8 +69,6 @@
     <Compile Include="Category.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="Ecos2.cs" />
-    <Compile Include="IDataProvider.cs" />
-    <Compile Include="IItem.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Locomotive.cs" />
     <Compile Include="Properties\Annotations.cs" />
@@ -83,6 +81,10 @@
     <ProjectReference Include="..\Ecos2Core\Ecos2Core.csproj">
       <Project>{5e022579-45a1-4e6f-94db-1c88e089030d}</Project>
       <Name>Ecos2Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackInformationCore\TrackInformationCore.csproj">
+      <Project>{b839732a-5c4a-4501-8b5e-990d12627c56}</Project>
+      <Name>TrackInformationCore</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

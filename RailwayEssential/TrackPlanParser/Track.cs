@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Newtonsoft.Json.Linq;
 
@@ -6,11 +7,42 @@ namespace TrackPlanParser
 {
     public class Track : List<TrackInfo>, ITrackEdit
     {
-        public void ChangeSymbol(int x, int y, string symbol)
+        public void Remove(int x, int y)
         {
             var item = Get(x, y);
-            if (item != null)
+            base.Remove(item);
+        }
+
+        public void ChangeSymbol(int x, int y, string symbol)
+        {
+            if (!string.IsNullOrEmpty(symbol) && symbol.Equals("null", StringComparison.OrdinalIgnoreCase))
+                symbol = null;
+
+            var item = Get(x, y);
+            if (item != null && !string.IsNullOrEmpty(symbol))
                 item.IconName = symbol;
+            else
+            {
+                if (string.IsNullOrEmpty(symbol))
+                {
+                    Remove(x, y);
+                    return;
+                }
+                if (x < 0 || y < 0)
+                {
+                    Remove(x, y);
+                    return;
+                }
+
+                Add(new TrackInfo()
+                {
+                    Description = "",
+                    IconName = symbol,
+                    Orientation = "rot0",
+                    X = x,
+                    Y = y
+                });
+            }
         }
 
         public void RotateSymbol(int x, int y, string orientation)
