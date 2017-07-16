@@ -5,7 +5,7 @@ namespace TrackWeaver
 {
     public enum WeaveItemT
     {
-        S88
+        Unknown, S88
     }
 
     public class TrackWeaveItem
@@ -15,6 +15,14 @@ namespace TrackWeaver
         public int Pin { get; set; }
         public int VisuX { get; set; }
         public int VisuY { get; set; }
+
+        public TrackWeaveItem()
+        {
+            Type = WeaveItemT.Unknown;
+            ObjectId = -1;
+            VisuX = -1;
+            VisuY = -1;
+        }
 
         public bool Parse(JObject o)
         {
@@ -42,7 +50,7 @@ namespace TrackWeaver
                     return false;
 
                 if (os["objectId"] != null)
-                    ObjectId = (int) o["objectOd"];
+                    ObjectId = (int) os["objectId"];
                 if (os["pin"] != null)
                     Pin = (int) os["pin"];
                 if (os["visuX"] != null)

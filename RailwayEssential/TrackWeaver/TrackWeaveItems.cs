@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using Newtonsoft.Json.Linq;
@@ -45,8 +47,9 @@ namespace TrackWeaver
 
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
+                Trace.WriteLine("<Exception> " + ex.Message);
                 return false;
             }
         }
