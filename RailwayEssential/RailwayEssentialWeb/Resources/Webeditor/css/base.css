@@ -40,7 +40,6 @@ div {
     border: 0;
     margin: 0;
     padding: 0;
-    border: 1px solid rgba(178, 179, 179, 0.2);
     overflow: visible;
     max-height: 32px !important;
     max-width: 32px !important;
@@ -81,6 +80,7 @@ div {
     display: flex;
     vertical-align: middle;
 }
+
 .container > div {
     flex: 1; /*grow*/
 }
@@ -91,4 +91,8 @@ div {
 .statusRight {
     text-align: right;
     font-weight: bold;
+}
+
+#cmdEdit {
+    cursor: pointer;
 }

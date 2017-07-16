@@ -16,15 +16,39 @@ $(document).keyup(function (e) {
 });
 
 function updateUi() {
-    console.log("Edit:" + isEdit);
 
+    var cmdEdit = $('#cmdEdit');
     var o = $('#editMenu');
 
     if (isEdit) {
+        cmdEdit.css("border", "2px dashed green");
+
         o.show();
+
+        $('td').each(function () {
+            var img = $(this).find('img');
+            if (img.length == 1)
+                img.parent().draggable({ disabled: false });
+        });
+
+        $('.cell').each(function () {
+            $(this).css("border", "1px solid rgba(178, 179, 179, 0.2)");
+        });
     }
     else {
+        cmdEdit.css("border", "");
+
         o.hide();
+
+        $('td').each(function () {
+            var img = $(this).find('img');
+            if (img.length == 1)
+                img.parent().draggable({ disabled: true });
+        });
+
+        $('.cell').each(function () {
+            $(this).css("border", "");
+        });
     }
 }
 
