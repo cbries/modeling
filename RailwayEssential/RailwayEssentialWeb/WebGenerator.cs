@@ -33,6 +33,8 @@ namespace RailwayEssentialWeb
 
         private List<string> ThemeFiles => Directory.GetFiles(ThemeDirectory, "*.svg", SearchOption.TopDirectoryOnly).ToList();
 
+        private Dictionary<string, List<string>> _symbols = new Dictionary<string, List<string>>();
+
         private string CreateSymbolSelection()
         {
             JArray arOrder = null;
@@ -45,12 +47,48 @@ namespace RailwayEssentialWeb
                     arOrder = JArray.Parse(cnt);
             }
 
+            foreach (var arLine in arOrder)
+            {
+                if (arLine == null)
+                    continue;
+
+                var o = arLine as JObject;
+                if (o == null)
+                    continue;
+
+                if (o["category"] != null)
+                {
+                    string categoryName = o["category"].ToString();
+                    if (string.IsNullOrEmpty(categoryName))
+                        continue;
+
+                    if (o["items"] != null)
+                    {
+                        JArray arr = o["items"] as JArray;
+                        if (arr == null)
+                            continue;
+
+                        foreach(var arSymbol in arr)
+                        {
+                            if(arSymbol != null)
+                            {
+                                if (_symbols.ContainsKey(categoryName))
+                                    _symbols[categoryName].Add(arSymbol.ToString());
+                                else
+                                    _symbols.Add(categoryName, new List<string>() {arSymbol.ToString()});
+                            }
+                        }
+                    }
+                }
+            }
+
+            // TODO TODO
+
             string m = "";
             foreach (var symbol in arOrder)
-            {
+            {                
                 foreach (var e in ThemeFiles)
                 {
-
                     if (e.EndsWith(symbol.ToString(), StringComparison.OrdinalIgnoreCase))
                     {
                         var symbolName = Path.GetFileNameWithoutExtension(e);

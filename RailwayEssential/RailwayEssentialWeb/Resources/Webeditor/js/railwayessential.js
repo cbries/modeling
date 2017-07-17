@@ -70,7 +70,7 @@ function findTargetTd(evt, callback) {
 
     var clientX = evt.clientX;
     var clientY = evt.clientY;
-
+    
     $('td').each(function (index, el) {
 
         if (objDrag == null)
@@ -220,7 +220,7 @@ function changeSymbol(col, row, symbol, orientation) {
             img.removeData("railway-symbol");
             img.data("railway-symbol", symbol);
             img.attr("src", v);
-        }
+        }       
     });
 }
 

@@ -59,7 +59,7 @@ namespace RailwayEssentialWeb
 
             Browser.IsBrowserInitializedChanged += BrowserOnIsBrowserInitializedChanged;
             Browser.LoadError += BrowserOnLoadError;
-            //Browser.ConsoleMessage += BrowserOnConsoleMessage;
+            Browser.ConsoleMessage += BrowserOnConsoleMessage;
             Browser.LoadingStateChanged += BrowserOnLoadingStateChanged;
             Browser.FrameLoadEnd += BrowserOnFrameLoadEnd;
 
