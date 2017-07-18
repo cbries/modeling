@@ -201,7 +201,6 @@ function changeSymbol(col, row, symbol, orientation) {
             if (cdiv.find("img").length === 0)
                 return;
 
-            var o = $('#webmenu').val();
             var v = themeDirectory + '/' + symbol + '.svg';
 
             try {
@@ -236,7 +235,6 @@ function simulateClick(col, row, symbol, orientation) {
             if (cdiv.find("img").length === 1)
                 return;
 
-            var o = $('#webmenu').val();
             var v = themeDirectory + '/' + symbol + '.svg';
 
             try {
@@ -249,7 +247,7 @@ function simulateClick(col, row, symbol, orientation) {
 
             var newChild = cdiv.append("<img class=\"overflow " + orientation + "\" src=\""
                 + v + "\" border=\"0\" data-railway-symbol=\""
-                + o + "\">");
+                + symbol + "\">");
 
             newChild.click(function (evt) {
                 if (evt.ctrlKey && evt.altKey) {
@@ -291,6 +289,31 @@ $(document).ready(function (e) {
         } catch (ex) { /* ignore */ }
 
         updateUi();
+    });
+
+    var currentCategory = "Track";
+
+    //$('#webmenuDivTrack').hide();
+    $('#webmenuDivSwitch').hide();
+    $('#webmenuDivSignal').hide();
+    $('#webmenuDivBlock').hide();
+    $('#webmenuDivSensor').hide();
+    $('#webmenuDivAccessory').hide();
+
+    $('#webmenuCategories').change(function() {
+        $('#webmenuDivTrack').hide();
+        $('#webmenuDivSwitch').hide();
+        $('#webmenuDivSignal').hide();
+        $('#webmenuDivBlock').hide();
+        $('#webmenuDivSensor').hide();
+        $('#webmenuDivAccessory').hide();
+
+        var cname = $(this).val();
+
+        var sel = "#webmenuDiv" + cname;
+        var oo = $(sel);
+        currentCategory = oo.val();
+        oo.show();
     });
 
     $("td")
@@ -383,7 +406,8 @@ $(document).ready(function (e) {
                     return;
                 }
 
-                var o = $('#webmenu').val();
+                var cname = $('#webmenuCategories').val();
+                var o = $('#webmenu' + cname).val();
                 var v = themeDirectory + '/' + o + '.svg';
 
                 var newChild = c.append("<img class=\"overflow\" src=\""
@@ -417,7 +441,13 @@ $(document).ready(function (e) {
         });
 
     try {
-        $("body select").msDropDown({ visibleRows: 20, roundedCorner: false });
+        $('#webmenuCategories').msDropDown({ visibleRows: 20, rowHeight: 10, roundedCorner: false });
+        $('#webmenuTrack').msDropDown({ visibleRows: 20, rowHeight: 10, roundedCorner: false });
+        $('#webmenuSwitch').msDropDown({ visibleRows: 20, rowHeight: 10, roundedCorner: false });
+        $('#webmenuSignal').msDropDown({ visibleRows: 20, rowHeight: 10, roundedCorner: false });
+        $('#webmenuBlock').msDropDown({ visibleRows: 20, rowHeight: 10, roundedCorner: false });
+        $('#webmenuSensor').msDropDown({ visibleRows: 20, rowHeight: 10, roundedCorner: false });
+        $('#webmenuAccessory').msDropDown({ visibleRows: 20, rowHeight: 10, roundedCorner: false });
     } catch (e) {
         railwayEssentialCallback.message(e.message);
     }

@@ -21,13 +21,28 @@
 <body>
 
 <div id="editMenu" style="display: none; margin-top: 10px; margin-bottom: 10px;">
-  <select name="webmenuCategories" id="webmenuCategories" style="width: 400px; vertical-align: middle;">
-	{{TRACKSYMBOLCATEGORIES}}
-  </select>
 
-  <select name="webmenu" id="webmenu" style="width: 400px; vertical-align: middle;">
-	{{TRACKSYMBOLS}}
-  </select>
+<div style="width: 100%; display: table;">
+    <div style="display: table-row">
+        <div style="display: table-cell;"> 
+			<div style="vertical-align: middle; width: 120px;">
+			  <select name="webmenuCategories" id="webmenuCategories" style="width: 100px; vertical-align: middle;">
+				{{TRACKSYMBOLCATEGORIES}}
+			  </select>
+			</div>
+		</div>
+        
+		<div style="display: table-cell;">
+		  {{TRACKSYMBOLS_Track}}
+		  {{TRACKSYMBOLS_Switch}}
+		  {{TRACKSYMBOLS_Signal}}
+		  {{TRACKSYMBOLS_Block}}
+		  {{TRACKSYMBOLS_Sensor}}
+		  {{TRACKSYMBOLS_Accessory}}
+		</div>
+    </div>
+</div>
+
 </div>
 
 {{TRACKTABLE}}

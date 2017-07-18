@@ -34,8 +34,10 @@ namespace RailwayEssentialWeb
         private List<string> ThemeFiles => Directory.GetFiles(ThemeDirectory, "*.svg", SearchOption.TopDirectoryOnly).ToList();
 
         private Dictionary<string, List<string>> _symbols = new Dictionary<string, List<string>>();
+        private string _selectCategory = "";
+        private Dictionary<string, string> _selectHtml = new Dictionary<string, string>();
 
-        private string CreateSymbolSelection()
+        private void CreateSymbolSelection()
         {
             JArray arOrder = null;
 
@@ -82,27 +84,42 @@ namespace RailwayEssentialWeb
                 }
             }
 
-            // TODO TODO
+            // categories
+            // [key:=category name, value:=selector list entries]
+            string mhtmlCategories = "";
+            foreach (var k in _symbols.Keys)
+                mhtmlCategories += "<option value=\"" + k + "\">" + k + "</option>\r\n";
+            _selectCategory = mhtmlCategories;
 
-            string m = "";
-            foreach (var symbol in arOrder)
-            {                
-                foreach (var e in ThemeFiles)
-                {
-                    if (e.EndsWith(symbol.ToString(), StringComparison.OrdinalIgnoreCase))
+            foreach (var k in _symbols.Keys)
+            {
+                string html = $"<div id=\"webmenuDiv{k}\" style=\"width: 400px; vertical-align: middle;\">\r\n<select name=\"webmenu{k}\" id=\"webmenu{k}\" style=\"width: 400px; vertical-align: middle;\">\r\n";
+
+                foreach (var symbol in _symbols[k])
+                {                   
+                    foreach (var e in ThemeFiles)
                     {
-                        var symbolName = Path.GetFileNameWithoutExtension(e);
-                        if (string.IsNullOrEmpty(symbolName))
-                            continue;
+                        if (e.EndsWith("\\" + symbol, StringComparison.OrdinalIgnoreCase))
+                        {
+                            var symbolName = Path.GetFileNameWithoutExtension(e);
+                            if (string.IsNullOrEmpty(symbolName))
+                                continue;
 
-                        m += "<option value=\"" + symbolName + "\" data-image=\"" + new Uri(e).AbsoluteUri + "\">" + symbolName + "</option>";
+                            html += "<option value=\"" + symbolName + "\" data-image=\"" + new Uri(e).AbsoluteUri + "\">" + symbolName + "</option>\r\n";
 
-                        break;
+                            break;
+                        }
                     }
-                }
-            }
 
-            return m;
+                }
+
+                html += "</select>\r\n</div>\r\n";
+
+                if (_selectHtml.ContainsKey(k))
+                    _selectHtml[k] = html;
+                else
+                    _selectHtml.Add(k, html);
+            }
         }
 
         private string CreateBase()
@@ -146,11 +163,29 @@ namespace RailwayEssentialWeb
 
             try
             {
+                CreateSymbolSelection();
+
                 var b = CreateBase();
                     b = b.Replace("{{GLOBALJS}}", "var themeDirectory='"+new Uri(ThemeDirectory.Replace("\\", "/")).AbsoluteUri+"';");
                     b = b.Replace("{{GLOBALCSS}}", css);
                     b = b.Replace("{{TRACKTABLE}}", oSb.ToString());
-                    b = b.Replace("{{TRACKSYMBOLS}}", CreateSymbolSelection());
+                    b = b.Replace("{{TRACKSYMBOLCATEGORIES}}", _selectCategory);
+                    b = b.Replace("{{TRACKSYMBOLS_Track}}", _selectHtml["Track"]);
+                    b = b.Replace("{{TRACKSYMBOLS_Switch}}", _selectHtml["Switch"]);
+                    b = b.Replace("{{TRACKSYMBOLS_Signal}}", _selectHtml["Signal"]);
+                    b = b.Replace("{{TRACKSYMBOLS_Block}}", _selectHtml["Block"]);
+                    b = b.Replace("{{TRACKSYMBOLS_Sensor}}", _selectHtml["Sensor"]);
+                    b = b.Replace("{{TRACKSYMBOLS_Accessory}}", _selectHtml["Accessory"]);
+
+                var filesToRemove = Directory.GetFiles(Path.GetDirectoryName(targetFilepath), "*_track.html", SearchOption.TopDirectoryOnly);
+                try
+                {
+                    foreach (var fname in filesToRemove)
+                        File.Delete(fname);
+                }
+                catch { 
+                    // ignore
+                }
 
                 File.WriteAllText(targetFilepath, b, Encoding.UTF8);
             }

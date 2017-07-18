@@ -4,108 +4,73 @@
     "items": [
       "straight.svg",
       "curve.svg",
-      "buffer.svg",
       "dcurve.svg",
-      "decoupler.svg",
+      "buffer.svg",
       "dir.svg",
       "dirall.svg",
-      "ccrossing.svg",
+      "decoupler.svg",
       "connector.svg",
-      "connector-curve-left.svg",
       "connector-curve-right.svg",
-      "crossing.svg",
-      "crossingleft0m.svg",
-      "crossingleft-r-0m.svg",
-      "crossingright0m.svg",
-      "crossingright-r-0m.svg",
-      "dcrossingleft-r-t.svg",
-      "route-deselected.svg",
-      "twoway-tl.svg",
-      "twoway-tr.svg"
+      "connector-curve-left.svg"
     ]
   },
   {
     "category": "Switch",
     "items": [
-      "threeway.svg",
       "turnoutleft.svg",
-      "turnoutleft-t.svg",
       "turnoutright.svg",
-      "turnoutright-t.svg"
+      "threeway.svg",
+      "twoway-tr.svg",
+      "ccrossing.svg",
+      "crossing.svg",
+      "crossingright0m.svg",
+      "crossingleft0m.svg",
+      "dcrossingright-sr-route.svg",
+      "dcrossingleft-sr-route.svg",
+      "decoupler.svg"
     ]
   },
   {
     "category": "Signal",
     "items": [
-      "semaphoredistant-2-g.svg",
-      "semaphoredistant-2-r.svg",
-      "semaphoredistant-2-y.svg",
-      "semaphoredistant-g.svg",
-      "semaphoredistant-r.svg",
-      "semaphoredistant-y.svg",
-      "semaphoremain-2-g.svg",
-      "semaphoremain-2-r.svg",
-      "semaphoremain-2-y.svg",
-      "semaphoremain-g.svg",
-      "semaphoremain-r.svg",
-      "semaphoremain-y.svg",
-      "semaphoreshunting-2.svg",
-      "semaphoreshunting-2-r.svg",
-      "semaphoreshunting-2-w.svg",
-      "semaphoreshunting-r.svg",
-      "semaphoreshunting-w.svg",
-      "signaldistant.svg",
-      "signaldistant-2-g.svg",
       "signaldistant-2-r.svg",
-      "signaldistant-2-y.svg",
-      "signaldistant-b.svg",
-      "signaldistant-g.svg",
-      "signaldistant-r.svg",
-      "signaldistant-w.svg",
-      "signaldistant-y.svg",
-      "signalmain-2-g.svg",
-      "signalmain-2-r.svg",
-      "signalmain-2-y.svg",
-      "signalmain-b.svg",
-      "signalmain-dwarf-g.svg",
-      "signalmain-dwarf-r.svg",
-      "signalmain-dwarf-y.svg",
-      "signalmain-g.svg",
       "signalmain-r.svg",
-      "signalmain-w.svg",
-      "signalmain-y.svg",
-      "signalshunting-2.svg",
+      "signalmain-2-r.svg",
+      "signalmain-dwarf-r.svg",
       "signalshunting-2-r.svg",
-      "signalshunting-2-w.svg",
-      "stage-closed.svg"
+      "semaphoredistant-r.svg",
+      "semaphoremain-r.svg",
+      "semaphoremain-2-r.svg",
+      "semaphoreshunting-r.svg",
+      "blockstate.svg"
     ]
   },
   {
     "category": "Block",
     "items": [
       "block.svg",
-      "block-aident.svg",
-      "block-closed.svg",
-      "block-ghost.svg"
+      "block-s.svg",
+      "stage.svg"
     ]
   },
   {
     "category": "Sensor",
     "items": [
+      "sensor-off.svg",
       "curve-sensor-off.svg",
-      "sensor-off.svg"
+      "accessory-4-off.svg"
     ]
   },
   {
     "category": "Accessory",
     "items": [
-      "accessory-4-off.svg",
+      "button-0-off.svg",
+      "button-1-off.svg",
+      "button-4-on.svg",
+      "decoupler.svg",
       "accessory-10-off.svg",
       "accessory-11-off.svg",
-      "accessory-12-off.svg",
-      "button-0-on.svg",
-      "button-1-on.svg",
-      "button-4-on.svg"
+      "accessory-12-off.svg"
     ]
   }
 ]
