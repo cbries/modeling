@@ -28,6 +28,7 @@ namespace Theme
 
     public class ThemeItem
     {
+        public int UniqueIdentifier { get; set; }
         public string Name { get; set; }
         public bool Clickable { get; set; }
         public ThemeItemState Active { get; set; }
@@ -47,6 +48,8 @@ namespace Theme
             if (o == null)
                 return false;
 
+            if (o["id"] != null)
+                UniqueIdentifier = (int) o["id"];
             if (o["name"] != null)
                 Name = o["name"].ToString();
             if (o["clickable"] != null)

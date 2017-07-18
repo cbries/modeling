@@ -39,18 +39,28 @@ namespace RailwayEssentialWeb
 
                 trackViewer.JsCallback.TrackEdit = _track;
 
+                // test must be put somewhere else, i.e. global
+                var themePath = ThemeName.ExpandRailwayEssential();
+                var themeDescription = themePath + ".json";
+                Theme.Theme theme = new Theme.Theme();
+                theme.Load(themeDescription);
+                
                 // load current track
                 foreach (var item in _track)
                 {
                     if (item == null)
                         continue;
 
-                    var col = item.X;
-                    var row = item.Y;
-                    var symbol = item.IconName;
-                    var orientation = item.Orientation;
+                    var themeItem = theme.Get(item.ThemeId);
+                    if (themeItem != null)
+                    {
+                        var col = item.X;
+                        var row = item.Y;
+                        var symbol = Path.GetFileNameWithoutExtension(themeItem.Off.Default);
+                        var orientation = item.Orientation;
 
-                    Viewer.ExecuteJs($"simulateClick({col}, {row}, \"{symbol}\", \"{orientation}\");");
+                        Viewer.ExecuteJs($"simulateClick({col}, {row}, {item.ThemeId}, \"{symbol}\", \"{orientation}\");");
+                    }
                 }
             };
 
@@ -111,8 +121,10 @@ namespace RailwayEssentialWeb
                     var icon = state ? "sensor-on" : "sensor-off";
                     var orientation = trackItem.Orientation;
 
-                    Viewer.JsCallback.TrackEdit.ChangeSymbol(x, y, icon);
-                    Viewer.ExecuteJs($"changeSymbol({x}, {y}, \"{icon}\", \"{orientation}\");");
+                    int themeId = -1; // TODO
+
+                    Viewer.JsCallback.TrackEdit.ChangeSymbol(x, y, themeId);
+                    Viewer.ExecuteJs($"changeSymbol({x}, {y}, {themeId}, \"{orientation}\");");
 
                     Trace.WriteLine($"CHANGE: {x},{y} -> {icon}");
                 }

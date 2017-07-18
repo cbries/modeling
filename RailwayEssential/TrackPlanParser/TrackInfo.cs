@@ -9,7 +9,7 @@ namespace TrackPlanParser
 
         public int X { get; set; }
         public int Y { get; set; }
-        public string IconName { get; set; }
+        public int ThemeId { get; set; }
         public string Orientation { get; set; }
         public string Description { get; set; }
 
@@ -17,7 +17,7 @@ namespace TrackPlanParser
         {
             X = -1;
             Y = -1;
-            IconName = "blockstate";
+            ThemeId = -1;
             Orientation = "rot0";
         }
 
@@ -27,7 +27,7 @@ namespace TrackPlanParser
             {
                 ["x"] = X,
                 ["y"] = Y,
-                ["iconName"] = IconName,
+                ["themeId"] = ThemeId,
                 ["orientation"] = Orientation,
                 ["description"] = Description
             };
@@ -43,8 +43,8 @@ namespace TrackPlanParser
                 X = (int) o["x"];
             if (o["y"] != null)
                 Y = (int) o["y"];
-            if (o["iconName"] != null)
-                IconName = o["iconName"].ToString();
+            if (o["themeId"] != null)
+                ThemeId = (int) o["themeId"];
             if (o["orientation"] != null)
                 Orientation = o["orientation"].ToString();
             if (o["description"] != null)
@@ -53,7 +53,7 @@ namespace TrackPlanParser
 
         public override string ToString()
         {
-            return $"{X}:{Y} -> {IconName}";
+            return $"{X}:{Y} -> {ThemeId}";
         }
     }
 }

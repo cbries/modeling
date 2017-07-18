@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
 namespace TrackPlanParser
@@ -13,21 +11,21 @@ namespace TrackPlanParser
             base.Remove(item);
         }
 
-        public void ChangeSymbol(int x, int y, string symbol)
+        public void ChangeSymbol(int x, int y, int themeId)
         {
-            if (!string.IsNullOrEmpty(symbol) && symbol.Equals("null", StringComparison.OrdinalIgnoreCase))
-                symbol = null;
-
             var item = Get(x, y);
-            if (item != null && !string.IsNullOrEmpty(symbol))
-                item.IconName = symbol;
+            if (item != null)
+            {
+                item.ThemeId = themeId;
+            }
             else
             {
-                if (string.IsNullOrEmpty(symbol))
+                if (themeId <= 0)
                 {
                     Remove(x, y);
                     return;
                 }
+
                 if (x < 0 || y < 0)
                 {
                     Remove(x, y);
@@ -37,7 +35,7 @@ namespace TrackPlanParser
                 Add(new TrackInfo()
                 {
                     Description = "",
-                    IconName = symbol,
+                    ThemeId = themeId,
                     Orientation = "rot0",
                     X = x,
                     Y = y
@@ -61,7 +59,7 @@ namespace TrackPlanParser
                 if (info == null)
                     continue;
 
-                if (string.IsNullOrEmpty(item.IconName))
+                if (item.ThemeId <= 0)
                     continue;
 
                 if (info.X < 0 || info.Y < 0)

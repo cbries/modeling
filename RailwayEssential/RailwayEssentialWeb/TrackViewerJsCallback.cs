@@ -21,10 +21,10 @@ namespace RailwayEssentialWeb
                 CellClicked(this, x, y);
         }
 
-        public void cellEdited(int x, int y, string symbol)
+        public void cellEdited(int x, int y, int themeId)
         {            
             if (TrackEdit != null)
-                TrackEdit.ChangeSymbol(x, y, symbol);
+                TrackEdit.ChangeSymbol(x, y, themeId);
         }
 
         public void cellRotated(int x, int y, string orientation)

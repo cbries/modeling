@@ -17,7 +17,7 @@ namespace RailwayEssentialWeb
 
         void message(string msg);
         void cellClicked(int x, int y);
-        void cellEdited(int x, int y, string symbol);
+        void cellEdited(int x, int y, int themeId);
         void cellRotated(int x, int y, string orientation);
         void editModeChanged(bool state);
     }

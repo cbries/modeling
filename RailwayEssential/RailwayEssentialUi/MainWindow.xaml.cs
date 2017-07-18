@@ -42,8 +42,6 @@ namespace RailwayEssentialUi
             }
         }
 
-
-
         private readonly RailwayEssentialCore.Configuration _cfg;
         private readonly Dispatcher.Dispatcher _dispatcher;
 

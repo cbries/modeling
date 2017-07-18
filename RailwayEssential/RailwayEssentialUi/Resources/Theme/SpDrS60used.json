@@ -3,6 +3,7 @@
     "category": "Track",
     "objects": [
       {
+        "id": 10,
         "name": "Straight",
         "active": {
           "default": "straight.svg",
@@ -10,13 +11,14 @@
           "route": "straight-route.svg"
         },
         "off": {
-          "default": "straight-off.svg",
-          "occ": "straight-occ-off.svg",
-          "route": "straight-route-off.svg"
+          "default": "straight.svg",
+          "occ": "straight-occ.svg",
+          "route": "straight-route.svg"
         },
         "clickable": false
       },
       {
+        "id": 11,
         "name": "Curve",
         "active": {
           "default": "curve.svg",
@@ -31,6 +33,7 @@
         "clickable": false
       },
       {
+        "id": 12,
         "name": "dcurve",
         "active": {
           "default": "dcurve.svg",
@@ -45,6 +48,7 @@
         "clickable": false
       },
       {
+        "id": 13,
         "name": "Buffer",
         "active": {
           "default": "buffer.svg",
@@ -59,6 +63,7 @@
         "clickable": false
       },
       {
+        "id": 14,
         "name": "Direction",
         "active": {
           "default": "dir.svg",
@@ -73,6 +78,7 @@
         "clickable": false
       },
       {
+        "id": 15,
         "name": "Direction (all)",
         "active": {
           "default": "dirall.svg",
@@ -87,6 +93,7 @@
         "clickable": false
       },
       {
+        "id": 16,
         "name": "Decoupler",
         "active": {
           "default": "decoupler-on.svg",
@@ -101,6 +108,7 @@
         "clickable": false
       },
       {
+        "id": 17,
         "name": "Connector",
         "active": {
           "default": "connector.svg",
@@ -115,6 +123,7 @@
         "clickable": false
       },
       {
+        "id": 18,
         "name": "Connector Curve Right",
         "active": {
           "default": "connector-curve-right.svg",
@@ -129,6 +138,7 @@
         "clickable": false
       },
       {
+        "id": 19,
         "name": "Connector Curve Left",
         "active": {
           "default": "connector-curve-left.svg",
@@ -142,12 +152,13 @@
         },
         "clickable": false
       }
-    ] 
+    ]
   },
   {
     "category": "Switch",
     "objects": [
       {
+        "id": 50,
         "name": "Turnout Left",
         "active": {
           "default": "turnoutleft.svg",
@@ -162,6 +173,7 @@
         "clickable": false
       },
       {
+        "id": 51,
         "name": "Turnout Right",
         "active": {
           "default": "turnoutright.svg",
@@ -176,6 +188,7 @@
         "clickable": false
       },
       {
+        "id": 52,
         "name": "Threeway",
         "active": {
           "default": "threeway.svg",
@@ -190,6 +203,7 @@
         "clickable": false
       },
       {
+        "id": 53,
         "name": "Twoway",
         "active": {
           "default": "twoway-tr.svg",
@@ -204,6 +218,7 @@
         "clickable": false
       },
       {
+        "id": 54,
         "name": "Crossing A",
         "active": {
           "default": "ccrossing.svg",
@@ -218,6 +233,7 @@
         "clickable": false
       },
       {
+        "id": 55,
         "name": "Crossing B",
         "active": {
           "default": "crossing.svg",
@@ -232,6 +248,7 @@
         "clickable": false
       },
       {
+        "id": 56,
         "name": "Crossing Right 0m",
         "active": {
           "default": "crossingright0m.svg",
@@ -246,6 +263,7 @@
         "clickable": false
       },
       {
+        "id": 57,
         "name": "Crossing Left 0m",
         "active": {
           "default": "crossingleft0m.svg",
@@ -260,6 +278,7 @@
         "clickable": false
       },
       {
+        "id": 58,
         "name": "Crossing Right sr",
         "active": {
           "default": "dcrossingright-sr.svg",
@@ -274,6 +293,7 @@
         "clickable": false
       },
       {
+        "id": 59,
         "name": "Crossing Left sr",
         "active": {
           "default": "dcrossingleft-sr.svg",
@@ -286,13 +306,14 @@
           "route": "dcrossingleft-sr-route.svg"
         },
         "clickable": false
-      }      
-    ] 
+      }
+    ]
   },
   {
     "category": "Signal",
     "objects": [
       {
+        "id": 100,
         "name": "Distant Signal",
         "active": {
           "default": "signaldistant-2-r.svg",
@@ -307,6 +328,7 @@
         "clickable": false
       },
       {
+        "id": 101,
         "name": "Main Signal A",
         "active": {
           "default": "signalmain-r.svg",
@@ -321,6 +343,7 @@
         "clickable": false
       },
       {
+        "id": 102,
         "name": "Main Signal B",
         "active": {
           "default": "signalmain-2-r.svg",
@@ -335,6 +358,7 @@
         "clickable": false
       },
       {
+        "id": 103,
         "name": "Dwarf Signal",
         "active": {
           "default": "signalmain-dwarf-r.svg",
@@ -349,6 +373,7 @@
         "clickable": false
       },
       {
+        "id": 104,
         "name": "Shunting Signal",
         "active": {
           "default": "signalshunting-2-r.svg",
@@ -363,6 +388,7 @@
         "clickable": false
       },
       {
+        "id": 105,
         "name": "Distant Semaphore",
         "active": {
           "default": "semaphoredistant-r.svg",
@@ -377,6 +403,7 @@
         "clickable": false
       },
       {
+        "id": 106,
         "name": "Main Semaphore A",
         "active": {
           "default": "semaphoremain-r.svg",
@@ -391,6 +418,7 @@
         "clickable": false
       },
       {
+        "id": 107,
         "name": "Main Semaphore B",
         "active": {
           "default": "semaphoremain-2-r.svg",
@@ -405,6 +433,7 @@
         "clickable": false
       },
       {
+        "id": 108,
         "name": "Shunting Semaphore",
         "active": {
           "default": "semaphoreshunting-r.svg",
@@ -419,6 +448,7 @@
         "clickable": false
       },
       {
+        "id": 109,
         "name": "Block State",
         "active": {
           "default": "blockstate.svg",
@@ -438,6 +468,7 @@
     "category": "Block",
     "objects": [
       {
+        "id": 150,
         "name": "Block",
         "active": {
           "default": "block.svg",
@@ -452,6 +483,7 @@
         "clickable": false
       },
       {
+        "id": 151,
         "name": "Short Block",
         "active": {
           "default": "block-s.svg",
@@ -466,6 +498,7 @@
         "clickable": false
       },
       {
+        "id": 152,
         "name": "Stage",
         "active": {
           "default": "stage.svg",
@@ -485,6 +518,7 @@
     "category": "Sensor",
     "objects": [
       {
+        "id": 200,
         "name": "Sensor",
         "active": {
           "default": "sensor-on.svg",
@@ -499,6 +533,7 @@
         "clickable": false
       },
       {
+        "id": 201,
         "name": "Curve Sensor",
         "active": {
           "default": "curve-sensor-on.svg",
@@ -513,6 +548,7 @@
         "clickable": false
       },
       {
+        "id": 202,
         "name": "General Sensor",
         "active": {
           "default": "accessory-4-on.svg",
@@ -532,6 +568,7 @@
     "category": "Accessory",
     "objects": [
       {
+        "id": 250,
         "name": "Output A",
         "active": {
           "default": "button-0-on.svg",
@@ -546,6 +583,7 @@
         "clickable": true
       },
       {
+        "id": 251,
         "name": "Output B",
         "active": {
           "default": "button-1-on.svg",
@@ -560,6 +598,7 @@
         "clickable": true
       },
       {
+        "id": 252,
         "name": "Output C",
         "active": {
           "default": "button-4-on.svg",
@@ -574,6 +613,7 @@
         "clickable": true
       },
       {
+        "id": 253,
         "name": "Level Crossing A",
         "active": {
           "default": "accessory-10-on.svg",
@@ -588,6 +628,7 @@
         "clickable": true
       },
       {
+        "id": 254,
         "name": "Level Crossing B",
         "active": {
           "default": "accessory-11-on.svg",
@@ -602,6 +643,7 @@
         "clickable": true
       },
       {
+        "id": 255,
         "name": "Level Crossing C",
         "active": {
           "default": "accessory-12-on.svg",

@@ -74,6 +74,28 @@ namespace Theme
 
         public List<ThemeCategory> Categories { get; set; }
 
+        public ThemeItem Get(int themeItemId)
+        {
+            if (themeItemId <= 0)
+                return null;
+
+            foreach (var e in Categories)
+            {
+                if (e == null)
+                    continue;
+                foreach (var ee in e.Objects)
+                {
+                    if (ee == null)
+                        continue;
+
+                    if (ee.UniqueIdentifier == themeItemId)
+                        return ee;
+                }
+            }
+
+            return null;
+        }
+        
         public Theme()
         {
             Categories = new List<ThemeCategory>();
