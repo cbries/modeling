@@ -9,6 +9,8 @@ namespace TrackInformation
     {
         private readonly string[] _names = new string[3];
 
+        public override int TypeId() { return 3; }
+
         public string Name1
         {
             get => _names[0];

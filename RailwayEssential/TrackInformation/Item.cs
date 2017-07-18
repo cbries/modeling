@@ -17,7 +17,24 @@ namespace TrackInformation
 
         public ObservableCollection<Item> Items { get; set; }
 
+        public virtual int TypeId()
+        {
+            return -1;
+        }
+
         public bool HasView { get; private set; }
+
+        private bool _isRouted;
+
+        public bool IsRouted
+        {
+            get => _isRouted;
+            set
+            {
+                _isRouted = value;
+                OnPropertyChanged();
+            }
+        }
 
         private string _title;
 
@@ -42,7 +59,7 @@ namespace TrackInformation
                 OnPropertyChanged();
             }
         }
-        
+
         public Item()
         {
             Items = new ObservableCollection<Item>();
@@ -89,12 +106,12 @@ namespace TrackInformation
         }
 
         #endregion
-        
+
         public virtual void UpdateTitle()
         {
             OnPropertyChanged("Title");
         }
-        
+
         public void EnableView()
         {
             List<ICommand> ctrlCmds = new List<ICommand>
@@ -130,7 +147,7 @@ namespace TrackInformation
 
         public virtual void ParseJson(JObject obj)
         {
-            
+
         }
 
         protected virtual void OnCommandsReady(object sender, IReadOnlyList<ICommand> commands)

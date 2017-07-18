@@ -10,7 +10,11 @@ namespace TrackInformationCore
     {
         event CommandsReadyDelegator CommandsReady;
 
+        int TypeId();
+
         int ObjectId { get; set; }
+
+        bool IsRouted { get; set; }
 
         bool HasView { get; }
 

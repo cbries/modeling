@@ -19,11 +19,13 @@ namespace Dispatcher
         private TrackWeaver.TrackWeaver _trackWeaver;
         private TrackPlanParser.Track _track;
 
+        public TrackWeaver.TrackWeaver Weaver => _trackWeaver;
+
         public DataProvider GetDataProvider()
         {
             return _dataProvider;
         }
-
+        
         public Dispatcher()
         {
             Configuration = new RailwayEssentialCore.Configuration();
@@ -56,17 +58,45 @@ namespace Dispatcher
                 {
                     case WeaveItemT.S88:
                     {
-                        var s88item = _dataProvider.GetObjectBy(item.ObjectId) as S88;
+                        var s88Item = _dataProvider.GetObjectBy(item.ObjectId) as S88;
 
-                        if (s88item != null)
+                        if (s88Item != null)
                         {
                             var trackObject = _track.Get(item.VisuX, item.VisuY);
 
                             if (trackObject != null)
                             {
-                                _trackWeaver.Link(s88item, trackObject, 
-                                    () => s88item != null && s88item.Pin((uint)item.Pin));
+                                _trackWeaver.Link(s88Item, trackObject,
+                                    () =>
+                                    {
+                                        var res = s88Item.Pin((uint) item.Pin);
+                                        return new TrackCheckResult {State = res};
+                                    });
                                 }
+                        }
+                    }
+                        break;
+
+                    case WeaveItemT.Switch:
+                    {
+                        var switchItem = _dataProvider.GetObjectBy(item.ObjectId) as Switch;
+
+                        if (switchItem != null)
+                        {
+                            var trackObject = _track.Get(item.VisuX, item.VisuY);
+
+                            _trackWeaver.Link(switchItem, trackObject,
+                                () => {
+
+                                    TrackCheckResult.SwitchDirection direction = TrackCheckResult.SwitchDirection.Straight;
+
+                                    if (switchItem.State == 0)
+                                        direction = TrackCheckResult.SwitchDirection.Straight;
+                                    else
+                                        direction = TrackCheckResult.SwitchDirection.Turn;
+
+                                    return new TrackCheckResult { Direction = direction };
+                                });
                         }
                     }
                         break;

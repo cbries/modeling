@@ -161,9 +161,9 @@
         "id": 50,
         "name": "Turnout Left",
         "active": {
-          "default": "turnoutleft",
-          "occ": "turnoutleft-occ",
-          "route": "turnoutleft-route"
+          "default": "turnoutleft-t",
+          "occ": "turnoutleft-t-occ",
+          "route": "turnoutleft-t-route"
         },
         "off": {
           "default": "turnoutleft",
@@ -176,9 +176,9 @@
         "id": 51,
         "name": "Turnout Right",
         "active": {
-          "default": "turnoutright",
-          "occ": "turnoutright-occ",
-          "route": "turnoutright-route"
+          "default": "turnoutright-t",
+          "occ": "turnoutright-t-occ",
+          "route": "turnoutright-t-route"
         },
         "off": {
           "default": "turnoutright",

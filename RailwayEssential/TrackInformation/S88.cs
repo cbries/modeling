@@ -7,6 +7,8 @@ namespace TrackInformation
 {
     public class S88 : Item
     {
+        public override int TypeId() { return 4; }
+
         #region Properties
 
         private int _index;

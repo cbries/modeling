@@ -429,9 +429,9 @@ $(document).ready(function (e) {
 
                 newChild.draggable();
 
-                console.log("vs: cellEdited(" + col + ", " + row + ", " + o + ")");
+                console.log("vs: cellEdited(" + col + ", " + row + ", " + o.data("railway-themeid") + ")");
                 try {
-                    railwayEssentialCallback.cellEdited(col, row, o);
+                    railwayEssentialCallback.cellEdited(col, row, o.data("railway-themeid"));
                 } catch (ex) { /* ignore */ }
             }
             isDragging = false;

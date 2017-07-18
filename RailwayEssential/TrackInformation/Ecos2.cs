@@ -8,6 +8,8 @@ namespace TrackInformation
     {
         public string Name => "ECoS2";
 
+        public override int TypeId() { return 2; }
+
         private readonly string[] _fields = new string[4];
 
         public string ProtocolVersion

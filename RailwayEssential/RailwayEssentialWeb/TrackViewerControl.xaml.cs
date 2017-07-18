@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using RailwayEssentialCore;
+using TrackWeaver;
 
 namespace RailwayEssentialWeb
 {
@@ -124,21 +125,89 @@ namespace RailwayEssentialWeb
 
                     var checkState = seam.TrackObjects[trackItem];
 
-                    var state = false;
+                    TrackWeaver.TrackCheckResult checkResult = null;
                     if (checkState != null)
-                        state = checkState();
+                        checkResult = checkState();
 
                     var x = trackItem.X;
                     var y = trackItem.Y;
                     var orientation = trackItem.Orientation;
-
+                    
                     int themeId = trackItem.ThemeId;
                     var themeObject = _theme.Get(themeId);
                     string symbol = "";
-                    if (state)
-                        symbol = themeObject.Active.Default;
-                    else
-                        symbol = themeObject.Off.Default;
+
+                    switch (seam.ObjectItem.TypeId())
+                    {
+                        case 1: // Locomotive
+                        {
+                        }
+                            break;
+
+                        case 2: // Ecos2
+                        {
+                        }
+                            break;
+
+                        case 3: // Route
+                        {
+                        }
+                            break;
+
+                        case 4: // S88
+                        {
+                            bool rS88 = checkResult?.State != null && checkResult.State.Value;
+
+                            if (rS88)
+                            {
+                                if (seam.ObjectItem.IsRouted)
+                                    symbol = themeObject.Active.Route;
+                                else
+                                    symbol = themeObject.Active.Default;
+                            }
+                            else
+                            {
+                                if (seam.ObjectItem.IsRouted)
+                                    symbol = themeObject.Off.Route;
+                                else
+                                    symbol = themeObject.Off.Default;
+                            }
+                        }
+                            break;
+
+                        case 5: // Switch
+                        {
+                            if (checkResult != null && checkResult.Direction.HasValue)
+                            {
+                                var direction = checkResult.Direction.Value;
+
+                                if (direction == TrackCheckResult.SwitchDirection.Straight)
+                                {
+                                    if (seam.ObjectItem.IsRouted)
+                                        symbol = themeObject.Active.Route;
+                                    else
+                                        symbol = themeObject.Active.Default;
+                                }
+                                    else if (direction == TrackCheckResult.SwitchDirection.Turn)
+                                {
+                                    if (seam.ObjectItem.IsRouted)
+                                        symbol = themeObject.Off.Route;
+                                    else
+                                        symbol = themeObject.Off.Default;
+                                    }
+                                else
+                                {
+                                    Trace.WriteLine("<Switch> Unknown direction: " + direction);
+                                }
+                            }
+                        }
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    
 
                     Viewer.JsCallback.TrackEdit.ChangeSymbol(x, y, themeId);
                     Viewer.ExecuteJs($"changeSymbol({x}, {y}, {themeId}, \"{orientation}\", \"{symbol}\");");

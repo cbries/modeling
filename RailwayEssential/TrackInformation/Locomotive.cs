@@ -8,6 +8,8 @@ namespace TrackInformation
 {
     public class Locomotive : Item
     {
+        public override int TypeId() { return 1; }
+
         private string _name;
 
         public string Name

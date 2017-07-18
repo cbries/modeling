@@ -96,6 +96,32 @@ namespace Theme
             return null;
         }
 
+        public ThemeItem Get(string catname, string symbolname)
+        {
+            if (string.IsNullOrEmpty(catname) || string.IsNullOrEmpty(symbolname))
+                return null;
+
+            foreach (var e in Categories)
+            {
+                if (e == null)
+                    continue;
+
+                if (!e.Name.Equals(catname, StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                foreach (var ee in e.Objects)
+                {
+                    if (ee == null)
+                        continue;
+
+                    if (ee.Off.Default.Equals(symbolname, StringComparison.OrdinalIgnoreCase))
+                        return ee;
+                }
+            }
+
+            return null;
+        }
+
         public Theme()
         {
             Categories = new List<ThemeCategory>();

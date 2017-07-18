@@ -5,10 +5,18 @@ using TrackPlanParser;
 
 namespace TrackWeaver
 {
+    public class TrackCheckResult
+    {
+        public enum SwitchDirection { Straight, Turn }
+        public SwitchDirection? Direction { get; set; }
+
+        public bool? State { get; set; }
+    }
+
     public class TrackWeaverItem
     {
         public IItem ObjectItem { get; set; }
-        public Dictionary<TrackInfo, Func<bool>> TrackObjects { get; set; }
+        public Dictionary<TrackInfo, Func<TrackCheckResult>> TrackObjects { get; set; }
     }
 
     public class TrackWeaver
@@ -16,9 +24,6 @@ namespace TrackWeaver
         private readonly List<TrackWeaverItem> _associations = new List<TrackWeaverItem>();
 
         public List<TrackWeaverItem> WovenSeam => _associations;
-
-        public TrackWeaver()
-        { }
 
         private TrackWeaverItem GetItem(IItem item)
         {
@@ -34,7 +39,7 @@ namespace TrackWeaver
             return null;
         }
 
-        public void Link(IItem item, TrackInfo trackObject, Func<bool> fncCheckState)
+        public void Link(IItem item, TrackInfo trackObject, Func<TrackCheckResult> fncCheckState)
         {
             if (item == null || trackObject == null)
                 return;
@@ -43,7 +48,7 @@ namespace TrackWeaver
             if (e != null)
             {
                 if (e.TrackObjects == null)
-                    e.TrackObjects = new Dictionary<TrackInfo, Func<bool>>();
+                    e.TrackObjects = new Dictionary<TrackInfo, Func<TrackCheckResult>>();
 
                 if (e.TrackObjects.ContainsKey(trackObject))
                     e.TrackObjects[trackObject] = fncCheckState;
@@ -55,7 +60,7 @@ namespace TrackWeaver
                 e = new TrackWeaverItem
                 {
                     ObjectItem = item,
-                    TrackObjects = new Dictionary<TrackInfo, Func<bool>>
+                    TrackObjects = new Dictionary<TrackInfo, Func<TrackCheckResult>>
                     {
                         {trackObject, fncCheckState}
                     }

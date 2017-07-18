@@ -147,6 +147,10 @@
       <Project>{61271bce-3976-43d9-b0fe-82970cbb1f0b}</Project>
       <Name>RailwayEssentialWeb</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Theme\Theme.csproj">
+      <Project>{F4CAD622-048A-4BC3-9B60-06BDFE0D6EE6}</Project>
+      <Name>Theme</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TrackInformationCore\TrackInformationCore.csproj">
       <Project>{b839732a-5c4a-4501-8b5e-990d12627c56}</Project>
       <Name>TrackInformationCore</Name>
@@ -301,9 +305,15 @@
     <Content Include="Resources\Theme\SpDrS60used\threeway.svg" />
     <Content Include="Resources\Theme\SpDrS60used\turnoutleft-occ.svg" />
     <Content Include="Resources\Theme\SpDrS60used\turnoutleft-route.svg" />
+    <Content Include="Resources\Theme\SpDrS60used\turnoutleft-t-occ.svg" />
+    <Content Include="Resources\Theme\SpDrS60used\turnoutleft-t-route.svg" />
+    <Content Include="Resources\Theme\SpDrS60used\turnoutleft-t.svg" />
     <Content Include="Resources\Theme\SpDrS60used\turnoutleft.svg" />
     <Content Include="Resources\Theme\SpDrS60used\turnoutright-occ.svg" />
     <Content Include="Resources\Theme\SpDrS60used\turnoutright-route.svg" />
+    <Content Include="Resources\Theme\SpDrS60used\turnoutright-t-occ.svg" />
+    <Content Include="Resources\Theme\SpDrS60used\turnoutright-t-route.svg" />
+    <Content Include="Resources\Theme\SpDrS60used\turnoutright-t.svg" />
     <Content Include="Resources\Theme\SpDrS60used\turnoutright.svg" />
     <Content Include="Resources\Theme\SpDrS60used\twoway-tr-occ.svg" />
     <Content Include="Resources\Theme\SpDrS60used\twoway-tr-route.svg" />

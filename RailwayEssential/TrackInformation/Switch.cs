@@ -8,6 +8,8 @@ namespace TrackInformation
 {
     public class Switch : Item
     {
+        public override int TypeId() { return 5; }
+
         private readonly string[] _names = new string[3];
 
         public string Name1
@@ -263,6 +265,16 @@ namespace TrackInformation
                 CommandFactory.Create($"request(11, control, force)"),
                 CommandFactory.Create($"set(11, switch[{Protocol}{s}])"),
                 CommandFactory.Create($"release(11, control)")
+            };
+
+            OnCommandsReady(this, ctrlCmds);
+
+            // get update
+            ctrlCmds.Clear();
+
+            ctrlCmds = new List<ICommand>
+            {
+                CommandFactory.Create($"get({ObjectId}, state)"),
             };
 
             OnCommandsReady(this, ctrlCmds);

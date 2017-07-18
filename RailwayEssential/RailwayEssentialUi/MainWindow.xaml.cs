@@ -94,6 +94,50 @@ namespace RailwayEssentialUi
                 jsCallback.CellClicked += (sender, x, y) =>
                 {
                     Trace.WriteLine("Cell clicked: " + x + ", " + y);
+
+                    var track = TrackViewer.Track;
+                    var trackInfo = track.Get(x, y);
+
+                    if (trackInfo == null)
+                        return;
+
+                    var weaver = _dispatcher.Weaver;
+                    if (weaver != null)
+                    {
+                        var ws = weaver.WovenSeam;
+                        if (ws != null)
+                        {
+                            foreach (var seam in ws)
+                            {
+                                if (seam == null)
+                                    continue;
+
+                                if (seam.TrackObjects.ContainsKey(trackInfo))
+                                {
+                                    var objItem = seam.ObjectItem;
+
+                                    if (objItem != null)
+                                    {
+                                        switch (objItem.TypeId())
+                                        {
+                                            case 5:
+                                            {
+                                                var switchItem = objItem as Switch;
+                                                if (switchItem != null)
+                                                {
+                                                    if (switchItem.State == 0)
+                                                        switchItem.ChangeDirection(1);
+                                                    else
+                                                        switchItem.ChangeDirection(0);
+                                                }
+                                            }
+                                                break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 };
             }
 

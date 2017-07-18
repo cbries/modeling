@@ -37,6 +37,8 @@ namespace TrackWeaver
 
                 if (v.Equals("s88", StringComparison.OrdinalIgnoreCase))
                     Type = WeaveItemT.S88;
+                else if(v.Equals("switch", StringComparison.OrdinalIgnoreCase))
+                    Type = WeaveItemT.Switch;
                 else
                 {
                     // TODO

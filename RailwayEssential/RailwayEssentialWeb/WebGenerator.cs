@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Newtonsoft.Json.Linq;
 using RailwayEssentialCore;
 
 namespace RailwayEssentialWeb
@@ -77,13 +76,20 @@ namespace RailwayEssentialWeb
                 {                   
                     foreach (var e in ThemeFiles)
                     {
-                        if (e.EndsWith("\\" + symbol.Value, StringComparison.OrdinalIgnoreCase))
+                        if(string.IsNullOrEmpty(e))
+                            continue;
+
+                        var checkE = Path.GetFileNameWithoutExtension(e);
+
+                        if (checkE.EndsWith(symbol.Value, StringComparison.OrdinalIgnoreCase))
                         {
                             var symbolName = Path.GetFileNameWithoutExtension(e);
                             if (string.IsNullOrEmpty(symbolName))
                                 continue;
 
-                            html += "<option value=\"" + symbolName + "\" data-image=\"" + new Uri(e).AbsoluteUri + "\">" + symbol.Key + "</option>\r\n";
+                            var themeItem = theme.Get(k, symbol.Value);
+
+                            html += "<option value=\"" + symbolName + "\" data-railway-themeid=\""+ themeItem.UniqueIdentifier + "\" data-image=\"" + new Uri(e).AbsoluteUri + "\">" + symbol.Key + "</option>\r\n";
 
                             break;
                         }
@@ -131,7 +137,9 @@ namespace RailwayEssentialWeb
                 oSb.Append("<tr class=\"row\">");
                 for (int x = 0; x < Columns; ++x)
                 {
-                    oSb.Append("<td class=\"cell\"><div class=\"overflow\"></div></td></td>");
+                    var cellInfo = $"title=\"X={x}, Y={y}\"";
+
+                    oSb.Append($"<td class=\"cell\" {cellInfo}><div class=\"overflow\"></div></td></td>");
                 }
                 oSb.Append("</tr>\r\n");
             }
