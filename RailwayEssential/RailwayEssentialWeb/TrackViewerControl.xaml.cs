@@ -19,6 +19,24 @@ namespace RailwayEssentialWeb
 
         private string _tmpTrackName;
 
+        private Theme.Theme _theme;
+
+        public Theme.Theme Theme
+        {
+            get
+            {
+                if (_theme == null)
+                {
+                    var themePath = ThemeName.ExpandRailwayEssential();
+                    var themeDescription = themePath + ".json";
+                    _theme = new Theme.Theme();
+                    _theme.Load(themeDescription);
+                }
+
+                return _theme;
+            }
+        }
+
         public TrackViewerControl()
         {
             InitializeComponent();
@@ -39,19 +57,13 @@ namespace RailwayEssentialWeb
 
                 trackViewer.JsCallback.TrackEdit = _track;
 
-                // test must be put somewhere else, i.e. global
-                var themePath = ThemeName.ExpandRailwayEssential();
-                var themeDescription = themePath + ".json";
-                Theme.Theme theme = new Theme.Theme();
-                theme.Load(themeDescription);
-                
                 // load current track
                 foreach (var item in _track)
                 {
                     if (item == null)
                         continue;
 
-                    var themeItem = theme.Get(item.ThemeId);
+                    var themeItem = Theme.Get(item.ThemeId);
                     if (themeItem != null)
                     {
                         var col = item.X;
@@ -118,15 +130,20 @@ namespace RailwayEssentialWeb
 
                     var x = trackItem.X;
                     var y = trackItem.Y;
-                    var icon = state ? "sensor-on" : "sensor-off";
                     var orientation = trackItem.Orientation;
 
-                    int themeId = -1; // TODO
+                    int themeId = trackItem.ThemeId;
+                    var themeObject = _theme.Get(themeId);
+                    string symbol = "";
+                    if (state)
+                        symbol = themeObject.Active.Default;
+                    else
+                        symbol = themeObject.Off.Default;
 
                     Viewer.JsCallback.TrackEdit.ChangeSymbol(x, y, themeId);
-                    Viewer.ExecuteJs($"changeSymbol({x}, {y}, {themeId}, \"{orientation}\");");
+                    Viewer.ExecuteJs($"changeSymbol({x}, {y}, {themeId}, \"{orientation}\", \"{symbol}\");");
 
-                    Trace.WriteLine($"CHANGE: {x},{y} -> {icon}");
+                    Trace.WriteLine($"CHANGE: {x},{y} -> {symbol}");
                 }
             }
 

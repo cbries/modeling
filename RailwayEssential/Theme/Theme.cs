@@ -95,7 +95,7 @@ namespace Theme
 
             return null;
         }
-        
+
         public Theme()
         {
             Categories = new List<ThemeCategory>();

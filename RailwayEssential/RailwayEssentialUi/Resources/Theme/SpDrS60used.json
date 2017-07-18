@@ -6,14 +6,14 @@
         "id": 10,
         "name": "Straight",
         "active": {
-          "default": "straight.svg",
-          "occ": "straight-occ.svg",
-          "route": "straight-route.svg"
+          "default": "straight",
+          "occ": "straight-occ",
+          "route": "straight-route"
         },
         "off": {
-          "default": "straight.svg",
-          "occ": "straight-occ.svg",
-          "route": "straight-route.svg"
+          "default": "straight",
+          "occ": "straight-occ",
+          "route": "straight-route"
         },
         "clickable": false
       },
@@ -21,14 +21,14 @@
         "id": 11,
         "name": "Curve",
         "active": {
-          "default": "curve.svg",
-          "occ": "curve-occ.svg",
-          "route": "curve-router.svg"
+          "default": "curve",
+          "occ": "curve-occ",
+          "route": "curve-router"
         },
         "off": {
-          "default": "curve.svg",
-          "occ": "curve-occ.svg",
-          "route": "curve-router.svg"
+          "default": "curve",
+          "occ": "curve-occ",
+          "route": "curve-router"
         },
         "clickable": false
       },
@@ -36,14 +36,14 @@
         "id": 12,
         "name": "dcurve",
         "active": {
-          "default": "dcurve.svg",
-          "occ": "dcurve.svg",
-          "route": "dcurve.svg"
+          "default": "dcurve",
+          "occ": "dcurve",
+          "route": "dcurve"
         },
         "off": {
-          "default": "dcurve.svg",
-          "occ": "dcurve.svg",
-          "route": "dcurve.svg"
+          "default": "dcurve",
+          "occ": "dcurve",
+          "route": "dcurve"
         },
         "clickable": false
       },
@@ -51,14 +51,14 @@
         "id": 13,
         "name": "Buffer",
         "active": {
-          "default": "buffer.svg",
-          "occ": "buffer-occ.svg",
-          "route": "buffer-route.svg"
+          "default": "buffer",
+          "occ": "buffer-occ",
+          "route": "buffer-route"
         },
         "off": {
-          "default": "buffer.svg",
-          "occ": "buffer-occ.svg",
-          "route": "buffer-route.svg"
+          "default": "buffer",
+          "occ": "buffer-occ",
+          "route": "buffer-route"
         },
         "clickable": false
       },
@@ -66,14 +66,14 @@
         "id": 14,
         "name": "Direction",
         "active": {
-          "default": "dir.svg",
-          "occ": "dir-occ.svg",
-          "route": "dir-route.svg"
+          "default": "dir",
+          "occ": "dir-occ",
+          "route": "dir-route"
         },
         "off": {
-          "default": "dir.svg",
-          "occ": "dir-occ.svg",
-          "route": "dir-route.svg"
+          "default": "dir",
+          "occ": "dir-occ",
+          "route": "dir-route"
         },
         "clickable": false
       },
@@ -81,14 +81,14 @@
         "id": 15,
         "name": "Direction (all)",
         "active": {
-          "default": "dirall.svg",
-          "occ": "dirall-occ.svg",
-          "route": "dirall-route.svg"
+          "default": "dirall",
+          "occ": "dirall-occ",
+          "route": "dirall-route"
         },
         "off": {
-          "default": "dirall.svg",
-          "occ": "dirall-occ.svg",
-          "route": "dirall-route.svg"
+          "default": "dirall",
+          "occ": "dirall-occ",
+          "route": "dirall-route"
         },
         "clickable": false
       },
@@ -96,14 +96,14 @@
         "id": 16,
         "name": "Decoupler",
         "active": {
-          "default": "decoupler-on.svg",
-          "occ": "decoupler-on-occ.svg",
-          "route": "decoupler-on-route.svg"
+          "default": "decoupler-on",
+          "occ": "decoupler-on-occ",
+          "route": "decoupler-on-route"
         },
         "off": {
-          "default": "decoupler.svg",
-          "occ": "decoupler-occ.svg",
-          "route": "decoupler-route.svg"
+          "default": "decoupler",
+          "occ": "decoupler-occ",
+          "route": "decoupler-route"
         },
         "clickable": false
       },
@@ -111,14 +111,14 @@
         "id": 17,
         "name": "Connector",
         "active": {
-          "default": "connector.svg",
-          "occ": "connector-occ.svg",
-          "route": "connector-route.svg"
+          "default": "connector",
+          "occ": "connector-occ",
+          "route": "connector-route"
         },
         "off": {
-          "default": "connector.svg",
-          "occ": "connector-occ.svg",
-          "route": "connector-route.svg"
+          "default": "connector",
+          "occ": "connector-occ",
+          "route": "connector-route"
         },
         "clickable": false
       },
@@ -126,14 +126,14 @@
         "id": 18,
         "name": "Connector Curve Right",
         "active": {
-          "default": "connector-curve-right.svg",
-          "occ": "connector-curve-right-occ.svg",
-          "route": "connector-curve-right-route.svg"
+          "default": "connector-curve-right",
+          "occ": "connector-curve-right-occ",
+          "route": "connector-curve-right-route"
         },
         "off": {
-          "default": "connector-curve-right.svg",
-          "occ": "connector-curve-right-occ.svg",
-          "route": "connector-curve-right-route.svg"
+          "default": "connector-curve-right",
+          "occ": "connector-curve-right-occ",
+          "route": "connector-curve-right-route"
         },
         "clickable": false
       },
@@ -141,14 +141,14 @@
         "id": 19,
         "name": "Connector Curve Left",
         "active": {
-          "default": "connector-curve-left.svg",
-          "occ": "connector-curve-left-occ.svg",
-          "route": "connector-curve-left-route.svg"
+          "default": "connector-curve-left",
+          "occ": "connector-curve-left-occ",
+          "route": "connector-curve-left-route"
         },
         "off": {
-          "default": "connector-curve-left.svg",
-          "occ": "connector-curve-left-occ.svg",
-          "route": "connector-curve-left-route.svg"
+          "default": "connector-curve-left",
+          "occ": "connector-curve-left-occ",
+          "route": "connector-curve-left-route"
         },
         "clickable": false
       }
@@ -161,14 +161,14 @@
         "id": 50,
         "name": "Turnout Left",
         "active": {
-          "default": "turnoutleft.svg",
-          "occ": "turnoutleft-occ.svg",
-          "route": "turnoutleft-route.svg"
+          "default": "turnoutleft",
+          "occ": "turnoutleft-occ",
+          "route": "turnoutleft-route"
         },
         "off": {
-          "default": "turnoutleft.svg",
-          "occ": "turnoutleft-occ.svg",
-          "route": "turnoutleft-route.svg"
+          "default": "turnoutleft",
+          "occ": "turnoutleft-occ",
+          "route": "turnoutleft-route"
         },
         "clickable": false
       },
@@ -176,14 +176,14 @@
         "id": 51,
         "name": "Turnout Right",
         "active": {
-          "default": "turnoutright.svg",
-          "occ": "turnoutright-occ.svg",
-          "route": "turnoutright-route.svg"
+          "default": "turnoutright",
+          "occ": "turnoutright-occ",
+          "route": "turnoutright-route"
         },
         "off": {
-          "default": "turnoutright.svg",
-          "occ": "turnoutright-occ.svg",
-          "route": "turnoutright-route.svg"
+          "default": "turnoutright",
+          "occ": "turnoutright-occ",
+          "route": "turnoutright-route"
         },
         "clickable": false
       },
@@ -191,14 +191,14 @@
         "id": 52,
         "name": "Threeway",
         "active": {
-          "default": "threeway.svg",
-          "occ": "threeway-occ.svg",
-          "route": "threeway-route.svg"
+          "default": "threeway",
+          "occ": "threeway-occ",
+          "route": "threeway-route"
         },
         "off": {
-          "default": "threeway.svg",
-          "occ": "threeway-occ.svg",
-          "route": "threeway-route.svg"
+          "default": "threeway",
+          "occ": "threeway-occ",
+          "route": "threeway-route"
         },
         "clickable": false
       },
@@ -206,14 +206,14 @@
         "id": 53,
         "name": "Twoway",
         "active": {
-          "default": "twoway-tr.svg",
-          "occ": "twoway-tr-occ.svg",
-          "route": "twoway-tr-route.svg"
+          "default": "twoway-tr",
+          "occ": "twoway-tr-occ",
+          "route": "twoway-tr-route"
         },
         "off": {
-          "default": "twoway-tr.svg",
-          "occ": "twoway-tr-occ.svg",
-          "route": "twoway-tr-route.svg"
+          "default": "twoway-tr",
+          "occ": "twoway-tr-occ",
+          "route": "twoway-tr-route"
         },
         "clickable": false
       },
@@ -221,14 +221,14 @@
         "id": 54,
         "name": "Crossing A",
         "active": {
-          "default": "ccrossing.svg",
-          "occ": "ccrossing-occ.svg",
-          "route": "ccrossing-route.svg"
+          "default": "ccrossing",
+          "occ": "ccrossing-occ",
+          "route": "ccrossing-route"
         },
         "off": {
-          "default": "ccrossing.svg",
-          "occ": "ccrossing-occ.svg",
-          "route": "ccrossing-route.svg"
+          "default": "ccrossing",
+          "occ": "ccrossing-occ",
+          "route": "ccrossing-route"
         },
         "clickable": false
       },
@@ -236,14 +236,14 @@
         "id": 55,
         "name": "Crossing B",
         "active": {
-          "default": "crossing.svg",
-          "occ": "crossing-occ.svg",
-          "route": "crossing-route.svg"
+          "default": "crossing",
+          "occ": "crossing-occ",
+          "route": "crossing-route"
         },
         "off": {
-          "default": "crossing.svg",
-          "occ": "crossing-occ.svg",
-          "route": "crossing-route.svg"
+          "default": "crossing",
+          "occ": "crossing-occ",
+          "route": "crossing-route"
         },
         "clickable": false
       },
@@ -251,14 +251,14 @@
         "id": 56,
         "name": "Crossing Right 0m",
         "active": {
-          "default": "crossingright0m.svg",
-          "occ": "crossingright0m-occ.svg",
-          "route": "crossingright0m-route.svg"
+          "default": "crossingright0m",
+          "occ": "crossingright0m-occ",
+          "route": "crossingright0m-route"
         },
         "off": {
-          "default": "crossingright0m.svg",
-          "occ": "crossingright0m-occ.svg",
-          "route": "crossingright0m-route.svg"
+          "default": "crossingright0m",
+          "occ": "crossingright0m-occ",
+          "route": "crossingright0m-route"
         },
         "clickable": false
       },
@@ -266,14 +266,14 @@
         "id": 57,
         "name": "Crossing Left 0m",
         "active": {
-          "default": "crossingleft0m.svg",
-          "occ": "crossingleft0m-occ.svg",
-          "route": "crossingleft0m-route.svg"
+          "default": "crossingleft0m",
+          "occ": "crossingleft0m-occ",
+          "route": "crossingleft0m-route"
         },
         "off": {
-          "default": "crossingleft0m.svg",
-          "occ": "crossingleft0m-occ.svg",
-          "route": "crossingleft0m-route.svg"
+          "default": "crossingleft0m",
+          "occ": "crossingleft0m-occ",
+          "route": "crossingleft0m-route"
         },
         "clickable": false
       },
@@ -281,14 +281,14 @@
         "id": 58,
         "name": "Crossing Right sr",
         "active": {
-          "default": "dcrossingright-sr.svg",
-          "occ": "dcrossingright-srocc.svg",
-          "route": "dcrossingright-sr-route.svg"
+          "default": "dcrossingright-sr",
+          "occ": "dcrossingright-srocc",
+          "route": "dcrossingright-sr-route"
         },
         "off": {
-          "default": "dcrossingright-sr.svg",
-          "occ": "dcrossingright-srocc.svg",
-          "route": "dcrossingright-sr-route.svg"
+          "default": "dcrossingright-sr",
+          "occ": "dcrossingright-srocc",
+          "route": "dcrossingright-sr-route"
         },
         "clickable": false
       },
@@ -296,14 +296,14 @@
         "id": 59,
         "name": "Crossing Left sr",
         "active": {
-          "default": "dcrossingleft-sr.svg",
-          "occ": "dcrossingleft-sr-occ.svg",
-          "route": "dcrossingleft-sr-route.svg"
+          "default": "dcrossingleft-sr",
+          "occ": "dcrossingleft-sr-occ",
+          "route": "dcrossingleft-sr-route"
         },
         "off": {
-          "default": "dcrossingleft-sr.svg",
-          "occ": "dcrossingleft-sr-occ.svg",
-          "route": "dcrossingleft-sr-route.svg"
+          "default": "dcrossingleft-sr",
+          "occ": "dcrossingleft-sr-occ",
+          "route": "dcrossingleft-sr-route"
         },
         "clickable": false
       }
@@ -316,14 +316,14 @@
         "id": 100,
         "name": "Distant Signal",
         "active": {
-          "default": "signaldistant-2-r.svg",
-          "occ": "signaldistant-2-occ.svg",
-          "route": "signaldistant-2-r-route.svg"
+          "default": "signaldistant-2-r",
+          "occ": "signaldistant-2-occ",
+          "route": "signaldistant-2-r-route"
         },
         "off": {
-          "default": "signaldistant-2-r.svg",
-          "occ": "signaldistant-2-occ.svg",
-          "route": "signaldistant-2-r-route.svg"
+          "default": "signaldistant-2-r",
+          "occ": "signaldistant-2-occ",
+          "route": "signaldistant-2-r-route"
         },
         "clickable": false
       },
@@ -331,14 +331,14 @@
         "id": 101,
         "name": "Main Signal A",
         "active": {
-          "default": "signalmain-r.svg",
-          "occ": "signalmain-r-occ.svg",
-          "route": "signalmain-r-route.svg"
+          "default": "signalmain-r",
+          "occ": "signalmain-r-occ",
+          "route": "signalmain-r-route"
         },
         "off": {
-          "default": "signalmain-r.svg",
-          "occ": "signalmain-r-occ.svg",
-          "route": "signalmain-r-route.svg"
+          "default": "signalmain-r",
+          "occ": "signalmain-r-occ",
+          "route": "signalmain-r-route"
         },
         "clickable": false
       },
@@ -346,14 +346,14 @@
         "id": 102,
         "name": "Main Signal B",
         "active": {
-          "default": "signalmain-2-r.svg",
-          "occ": "signalmain-2-r-occ.svg",
-          "route": "signalmain-2-r-occ.svg"
+          "default": "signalmain-2-r",
+          "occ": "signalmain-2-r-occ",
+          "route": "signalmain-2-r-occ"
         },
         "off": {
-          "default": "signalmain-2-r.svg",
-          "occ": "signalmain-2-r-occ.svg",
-          "route": "signalmain-2-r-occ.svg"
+          "default": "signalmain-2-r",
+          "occ": "signalmain-2-r-occ",
+          "route": "signalmain-2-r-occ"
         },
         "clickable": false
       },
@@ -361,14 +361,14 @@
         "id": 103,
         "name": "Dwarf Signal",
         "active": {
-          "default": "signalmain-dwarf-r.svg",
-          "occ": "signalmain-dwarf-r-occ.svg",
-          "route": "signalmain-dwarf-r-route.svg"
+          "default": "signalmain-dwarf-r",
+          "occ": "signalmain-dwarf-r-occ",
+          "route": "signalmain-dwarf-r-route"
         },
         "off": {
-          "default": "signalmain-dwarf-r.svg",
-          "occ": "signalmain-dwarf-r-occ.svg",
-          "route": "signalmain-dwarf-r-route.svg"
+          "default": "signalmain-dwarf-r",
+          "occ": "signalmain-dwarf-r-occ",
+          "route": "signalmain-dwarf-r-route"
         },
         "clickable": false
       },
@@ -376,14 +376,14 @@
         "id": 104,
         "name": "Shunting Signal",
         "active": {
-          "default": "signalshunting-2-r.svg",
-          "occ": "signalshunting-2-r-occ.svg",
-          "route": "signalshunting-2-r-route.svg"
+          "default": "signalshunting-2-r",
+          "occ": "signalshunting-2-r-occ",
+          "route": "signalshunting-2-r-route"
         },
         "off": {
-          "default": "signalshunting-2-r.svg",
-          "occ": "signalshunting-2-r-occ.svg",
-          "route": "signalshunting-2-r-route.svg"
+          "default": "signalshunting-2-r",
+          "occ": "signalshunting-2-r-occ",
+          "route": "signalshunting-2-r-route"
         },
         "clickable": false
       },
@@ -391,14 +391,14 @@
         "id": 105,
         "name": "Distant Semaphore",
         "active": {
-          "default": "semaphoredistant-r.svg",
-          "occ": "semaphoredistant-r-occ.svg",
-          "route": "semaphoredistant-r-route.svg"
+          "default": "semaphoredistant-r",
+          "occ": "semaphoredistant-r-occ",
+          "route": "semaphoredistant-r-route"
         },
         "off": {
-          "default": "semaphoredistant-r.svg",
-          "occ": "semaphoredistant-r-occ.svg",
-          "route": "semaphoredistant-r-route.svg"
+          "default": "semaphoredistant-r",
+          "occ": "semaphoredistant-r-occ",
+          "route": "semaphoredistant-r-route"
         },
         "clickable": false
       },
@@ -406,14 +406,14 @@
         "id": 106,
         "name": "Main Semaphore A",
         "active": {
-          "default": "semaphoremain-r.svg",
-          "occ": "semaphoremain-r-occ.svg",
-          "route": "semaphoremain-r-route.svg"
+          "default": "semaphoremain-r",
+          "occ": "semaphoremain-r-occ",
+          "route": "semaphoremain-r-route"
         },
         "off": {
-          "default": "semaphoremain-r.svg",
-          "occ": "semaphoremain-r-occ.svg",
-          "route": "semaphoremain-r-route.svg"
+          "default": "semaphoremain-r",
+          "occ": "semaphoremain-r-occ",
+          "route": "semaphoremain-r-route"
         },
         "clickable": false
       },
@@ -421,14 +421,14 @@
         "id": 107,
         "name": "Main Semaphore B",
         "active": {
-          "default": "semaphoremain-2-r.svg",
-          "occ": "semaphoremain-2-r-occ.svg",
-          "route": "semaphoremain-2-r-route.svg"
+          "default": "semaphoremain-2-r",
+          "occ": "semaphoremain-2-r-occ",
+          "route": "semaphoremain-2-r-route"
         },
         "off": {
-          "default": "semaphoremain-2-r.svg",
-          "occ": "semaphoremain-2-r-occ.svg",
-          "route": "semaphoremain-2-r-route.svg"
+          "default": "semaphoremain-2-r",
+          "occ": "semaphoremain-2-r-occ",
+          "route": "semaphoremain-2-r-route"
         },
         "clickable": false
       },
@@ -436,14 +436,14 @@
         "id": 108,
         "name": "Shunting Semaphore",
         "active": {
-          "default": "semaphoreshunting-r.svg",
-          "occ": "semaphoreshunting-r-occ.svg",
-          "route": "semaphoreshunting-r-route.svg"
+          "default": "semaphoreshunting-r",
+          "occ": "semaphoreshunting-r-occ",
+          "route": "semaphoreshunting-r-route"
         },
         "off": {
-          "default": "semaphoreshunting-r.svg",
-          "occ": "semaphoreshunting-r-occ.svg",
-          "route": "semaphoreshunting-r-route.svg"
+          "default": "semaphoreshunting-r",
+          "occ": "semaphoreshunting-r-occ",
+          "route": "semaphoreshunting-r-route"
         },
         "clickable": false
       },
@@ -451,14 +451,14 @@
         "id": 109,
         "name": "Block State",
         "active": {
-          "default": "blockstate.svg",
-          "occ": "blockstate.svg",
-          "route": "blockstate.svg"
+          "default": "blockstate",
+          "occ": "blockstate",
+          "route": "blockstate"
         },
         "off": {
-          "default": "blockstate.svg",
-          "occ": "blockstate.svg",
-          "route": "blockstate.svg"
+          "default": "blockstate",
+          "occ": "blockstate",
+          "route": "blockstate"
         },
         "clickable": false
       }
@@ -471,14 +471,14 @@
         "id": 150,
         "name": "Block",
         "active": {
-          "default": "block.svg",
-          "occ": "block.svg",
-          "route": "block.svg"
+          "default": "block",
+          "occ": "block",
+          "route": "block"
         },
         "off": {
-          "default": "block.svg",
-          "occ": "block.svg",
-          "route": "block.svg"
+          "default": "block",
+          "occ": "block",
+          "route": "block"
         },
         "clickable": false
       },
@@ -486,14 +486,14 @@
         "id": 151,
         "name": "Short Block",
         "active": {
-          "default": "block-s.svg",
-          "occ": "block-s.svg",
-          "route": "block-s.svg"
+          "default": "block-s",
+          "occ": "block-s",
+          "route": "block-s"
         },
         "off": {
-          "default": "block-s.svg",
-          "occ": "block-s.svg",
-          "route": "block-s.svg"
+          "default": "block-s",
+          "occ": "block-s",
+          "route": "block-s"
         },
         "clickable": false
       },
@@ -501,14 +501,14 @@
         "id": 152,
         "name": "Stage",
         "active": {
-          "default": "stage.svg",
-          "occ": "stage.svg",
-          "route": "stage.svg"
+          "default": "stage",
+          "occ": "stage",
+          "route": "stage"
         },
         "off": {
-          "default": "stage.svg",
-          "occ": "stage.svg",
-          "route": "stage.svg"
+          "default": "stage",
+          "occ": "stage",
+          "route": "stage"
         },
         "clickable": false
       }
@@ -521,14 +521,14 @@
         "id": 200,
         "name": "Sensor",
         "active": {
-          "default": "sensor-on.svg",
-          "occ": "sensor-on-occ.svg",
-          "route": "sensor-on-route.svg"
+          "default": "sensor-on",
+          "occ": "sensor-on-occ",
+          "route": "sensor-on-route"
         },
         "off": {
-          "default": "sensor-off.svg",
-          "occ": "sensor-off-occ.svg",
-          "route": "sensor-off-route.svg"
+          "default": "sensor-off",
+          "occ": "sensor-off-occ",
+          "route": "sensor-off-route"
         },
         "clickable": false
       },
@@ -536,14 +536,14 @@
         "id": 201,
         "name": "Curve Sensor",
         "active": {
-          "default": "curve-sensor-on.svg",
-          "occ": "curve-sensor-on-occ.svg",
-          "route": "curve-sensor-on-route.svg"
+          "default": "curve-sensor-on",
+          "occ": "curve-sensor-on-occ",
+          "route": "curve-sensor-on-route"
         },
         "off": {
-          "default": "curve-sensor-off.svg",
-          "occ": "curve-sensor-off-occ.svg",
-          "route": "curve-sensor-off-route.svg"
+          "default": "curve-sensor-off",
+          "occ": "curve-sensor-off-occ",
+          "route": "curve-sensor-off-route"
         },
         "clickable": false
       },
@@ -551,14 +551,14 @@
         "id": 202,
         "name": "General Sensor",
         "active": {
-          "default": "accessory-4-on.svg",
-          "occ": "accessory-4-on-occ.svg",
-          "route": "accessory-4-n-route.svg"
+          "default": "accessory-4-on",
+          "occ": "accessory-4-on-occ",
+          "route": "accessory-4-n-route"
         },
         "off": {
-          "default": "accessory-4-off.svg",
-          "occ": "accessory-4-off-occ.svg",
-          "route": "accessory-4-off-route.svg"
+          "default": "accessory-4-off",
+          "occ": "accessory-4-off-occ",
+          "route": "accessory-4-off-route"
         },
         "clickable": true
       }
@@ -571,14 +571,14 @@
         "id": 250,
         "name": "Output A",
         "active": {
-          "default": "button-0-on.svg",
-          "occ": "button-0-on-occ.svg",
-          "route": "button-0-on-route.svg"
+          "default": "button-0-on",
+          "occ": "button-0-on-occ",
+          "route": "button-0-on-route"
         },
         "off": {
-          "default": "button-0-off.svg",
-          "occ": "button-0-off-occ.svg",
-          "route": "button-0-off-route.svg"
+          "default": "button-0-off",
+          "occ": "button-0-off-occ",
+          "route": "button-0-off-route"
         },
         "clickable": true
       },
@@ -586,14 +586,14 @@
         "id": 251,
         "name": "Output B",
         "active": {
-          "default": "button-1-on.svg",
-          "occ": "button-1-on-occ.svg",
-          "route": "button-1-on-route.svg"
+          "default": "button-1-on",
+          "occ": "button-1-on-occ",
+          "route": "button-1-on-route"
         },
         "off": {
-          "default": "button-1-off.svg",
-          "occ": "button-1-off-occ.svg",
-          "route": "button-1-off-route.svg"
+          "default": "button-1-off",
+          "occ": "button-1-off-occ",
+          "route": "button-1-off-route"
         },
         "clickable": true
       },
@@ -601,14 +601,14 @@
         "id": 252,
         "name": "Output C",
         "active": {
-          "default": "button-4-on.svg",
-          "occ": "button-4-on-occ.svg",
-          "route": "button-4-on-route.svg"
+          "default": "button-4-on",
+          "occ": "button-4-on-occ",
+          "route": "button-4-on-route"
         },
         "off": {
-          "default": "button-4-off.svg",
-          "occ": "button-4-off-occ.svg",
-          "route": "button-4-off-route.svg"
+          "default": "button-4-off",
+          "occ": "button-4-off-occ",
+          "route": "button-4-off-route"
         },
         "clickable": true
       },
@@ -616,14 +616,14 @@
         "id": 253,
         "name": "Level Crossing A",
         "active": {
-          "default": "accessory-10-on.svg",
-          "occ": "accessory-10-on-occ.svg",
-          "route": "accessory-10-on-route.svg"
+          "default": "accessory-10-on",
+          "occ": "accessory-10-on-occ",
+          "route": "accessory-10-on-route"
         },
         "off": {
-          "default": "accessory-10-off.svg",
-          "occ": "accessory-10-off-occ.svg",
-          "route": "accessory-10-off-route.svg"
+          "default": "accessory-10-off",
+          "occ": "accessory-10-off-occ",
+          "route": "accessory-10-off-route"
         },
         "clickable": true
       },
@@ -631,14 +631,14 @@
         "id": 254,
         "name": "Level Crossing B",
         "active": {
-          "default": "accessory-11-on.svg",
-          "occ": "accessory-11-on-occ.svg",
-          "route": "accessory-11-on-route.svg"
+          "default": "accessory-11-on",
+          "occ": "accessory-11-on-occ",
+          "route": "accessory-11-on-route"
         },
         "off": {
-          "default": "accessory-11-off.svg",
-          "occ": "accessory-11-off-occ.svg",
-          "route": "accessory-11-off-route.svg"
+          "default": "accessory-11-off",
+          "occ": "accessory-11-off-occ",
+          "route": "accessory-11-off-route"
         },
         "clickable": true
       },
@@ -646,14 +646,14 @@
         "id": 255,
         "name": "Level Crossing C",
         "active": {
-          "default": "accessory-12-on.svg",
-          "occ": "accessory-12-on-occ.svg",
-          "route": "accessory-12-on-route.svg"
+          "default": "accessory-12-on",
+          "occ": "accessory-12-on-occ",
+          "route": "accessory-12-on-route"
         },
         "off": {
-          "default": "accessory-12-off.svg",
-          "occ": "accessory-12-off-occ.svg",
-          "route": "accessory-12-off-route.svg"
+          "default": "accessory-12-off",
+          "occ": "accessory-12-off-occ",
+          "route": "accessory-12-off-route"
         },
         "clickable": true
       }
