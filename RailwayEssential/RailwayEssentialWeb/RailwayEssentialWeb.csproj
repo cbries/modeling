@@ -109,6 +109,10 @@
       <Project>{b80cfecd-db0b-4533-aa42-784b2ebe85ff}</Project>
       <Name>RailwayEssentialCore</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Theme\Theme.csproj">
+      <Project>{f4cad622-048a-4bc3-9b60-06bdfe0d6ee6}</Project>
+      <Name>Theme</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TrackInformationCore\TrackInformationCore.csproj">
       <Project>{B839732A-5C4A-4501-8B5E-990D12627C56}</Project>
       <Name>TrackInformationCore</Name>

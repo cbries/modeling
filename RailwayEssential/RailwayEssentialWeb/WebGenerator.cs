@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,18 @@ namespace RailwayEssentialWeb
 
         public string ThemeDirectory { get; set; }
 
+        public string ThemeName
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(ThemeDirectory))
+                    return null;
+
+                var parts = ThemeDirectory.Replace("\\", "/").Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
+                return parts[parts.Length - 1].Trim();
+            }
+        }
+
         private readonly Random _randomNumberGenerator = new Random();
 
         public WebGenerator()
@@ -33,79 +46,44 @@ namespace RailwayEssentialWeb
 
         private List<string> ThemeFiles => Directory.GetFiles(ThemeDirectory, "*.svg", SearchOption.TopDirectoryOnly).ToList();
 
-        private Dictionary<string, List<string>> _symbols = new Dictionary<string, List<string>>();
         private string _selectCategory = "";
         private Dictionary<string, string> _selectHtml = new Dictionary<string, string>();
 
         private void CreateSymbolSelection()
         {
-            JArray arOrder = null;
+            var themeJson = $@"\Themes\{ThemeName}.json".ExpandRailwayEssential();
 
-            var orderJson = @"\Themes\SpDr560.json".ExpandRailwayEssential();
-            if (File.Exists(orderJson))
+            Theme.Theme theme = new Theme.Theme();
+            if (!theme.Load(themeJson))
             {
-                string cnt = File.ReadAllText(orderJson, Encoding.UTF8);
-                if (!string.IsNullOrEmpty(cnt))
-                    arOrder = JArray.Parse(cnt);
-            }
-
-            foreach (var arLine in arOrder)
-            {
-                if (arLine == null)
-                    continue;
-
-                var o = arLine as JObject;
-                if (o == null)
-                    continue;
-
-                if (o["category"] != null)
-                {
-                    string categoryName = o["category"].ToString();
-                    if (string.IsNullOrEmpty(categoryName))
-                        continue;
-
-                    if (o["items"] != null)
-                    {
-                        JArray arr = o["items"] as JArray;
-                        if (arr == null)
-                            continue;
-
-                        foreach(var arSymbol in arr)
-                        {
-                            if(arSymbol != null)
-                            {
-                                if (_symbols.ContainsKey(categoryName))
-                                    _symbols[categoryName].Add(arSymbol.ToString());
-                                else
-                                    _symbols.Add(categoryName, new List<string>() {arSymbol.ToString()});
-                            }
-                        }
-                    }
-                }
+                Trace.WriteLine("<Theme> Loading of theme failed: " + ThemeName);
+                throw new Exception("<Theme> Loading of theme failed: " + ThemeName);
             }
 
             // categories
             // [key:=category name, value:=selector list entries]
             string mhtmlCategories = "";
-            foreach (var k in _symbols.Keys)
+            foreach (var k in theme.CategoryNames)
                 mhtmlCategories += "<option value=\"" + k + "\">" + k + "</option>\r\n";
             _selectCategory = mhtmlCategories;
 
-            foreach (var k in _symbols.Keys)
+            foreach (var k in theme.CategoryNames)
             {
                 string html = $"<div id=\"webmenuDiv{k}\" style=\"width: 400px; vertical-align: middle;\">\r\n<select name=\"webmenu{k}\" id=\"webmenu{k}\" style=\"width: 400px; vertical-align: middle;\">\r\n";
 
-                foreach (var symbol in _symbols[k])
+                var symbolsOfCategory = theme.GetDefaultForCategory(k);
+
+                foreach (var symbol in symbolsOfCategory)
                 {                   
                     foreach (var e in ThemeFiles)
                     {
-                        if (e.EndsWith("\\" + symbol, StringComparison.OrdinalIgnoreCase))
+                        if (e.EndsWith("\\" + symbol.Value, StringComparison.OrdinalIgnoreCase))
                         {
                             var symbolName = Path.GetFileNameWithoutExtension(e);
                             if (string.IsNullOrEmpty(symbolName))
                                 continue;
 
-                            html += "<option value=\"" + symbolName + "\" data-image=\"" + new Uri(e).AbsoluteUri + "\">" + symbolName + "</option>\r\n";
+                            html += "<option value=\"" + symbolName + "\" data-image=\"" + new Uri(e).AbsoluteUri + "\">" + symbol.Key + "</option>\r\n";
 
                             break;
                         }

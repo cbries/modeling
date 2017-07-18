@@ -120,8 +120,8 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Resources\Theme\SpDr560.json" />
-    <None Include="Resources\Theme\SpDr560used.json" />
+    <None Include="Resources\Theme\SpDrS60.json" />
+    <None Include="Resources\Theme\SpDrS60used.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -192,6 +192,7 @@
     <Content Include="Resources\Theme\SpDrS60used\accessory-12-on.svg" />
     <Content Include="Resources\Theme\SpDrS60used\accessory-4-off.svg" />
     <Content Include="Resources\Theme\SpDrS60used\accessory-4-on.svg" />
+    <Content Include="Resources\Theme\SpDrS60used\block-s.svg" />
     <Content Include="Resources\Theme\SpDrS60used\block.svg" />
     <Content Include="Resources\Theme\SpDrS60used\blockstate.svg" />
     <Content Include="Resources\Theme\SpDrS60used\buffer-occ.svg" />
