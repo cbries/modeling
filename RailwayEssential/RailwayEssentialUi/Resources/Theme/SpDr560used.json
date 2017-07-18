@@ -1,0 +1,76 @@
+﻿[
+  {
+    "category": "Track",
+    "items": [
+      "straight.svg",
+      "curve.svg",
+      "dcurve.svg",
+      "buffer.svg",
+      "dir.svg",
+      "dirall.svg",
+      "decoupler.svg",
+      "connector.svg",
+      "connector-curve-right.svg",
+      "connector-curve-left.svg"
+    ]
+  },
+  {
+    "category": "Switch",
+    "items": [
+      "turnoutleft.svg",
+      "turnoutright.svg",
+      "threeway.svg",
+      "twoway-tr.svg",
+      "ccrossing.svg",
+      "crossing.svg",
+      "crossingright0m.svg",
+      "crossingleft0m.svg",
+      "dcrossingright-sr-route.svg",
+      "dcrossingleft-sr-route.svg",
+      "decoupler.svg"
+    ]
+  },
+  {
+    "category": "Signal",
+    "items": [
+      "signaldistant-2-r.svg",
+      "signalmain-r.svg",
+      "signalmain-2-r.svg",
+      "signalmain-dwarf-r.svg",
+      "signalshunting-2-r.svg",
+      "semaphoredistant-r.svg",
+      "semaphoremain-r.svg",
+      "semaphoremain-2-r.svg",
+      "semaphoreshunting-r.svg",
+      "blockstate.svg"
+    ]
+  },
+  {
+    "category": "Block",
+    "items": [
+      "block.svg",
+      "block-s.svg",
+      "stage.svg"
+    ]
+  },
+  {
+    "category": "Sensor",
+    "items": [
+      "sensor-off.svg",
+      "curve-sensor-off.svg",
+      "accessory-4-off.svg"
+    ]
+  },
+  {
+    "category": "Accessory",
+    "items": [
+      "button-0-off.svg",
+      "button-1-off.svg",
+      "button-4-on.svg",
+      "decoupler.svg",
+      "accessory-10-off.svg",
+      "accessory-11-off.svg",
+      "accessory-12-off.svg"
+    ]
+  }
+]
