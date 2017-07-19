@@ -4,7 +4,7 @@
     <Name>RailwayControl</Name>
     <Description>RailwayControl</Description>
     <Icon>RailwayControl.ico</Icon>
-    <ProjectType>RailwayEssential</ProjectType>
+    <ProjectType>RailwayEssential17</ProjectType>
     <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
     <SortOrder>1000</SortOrder>
     <TemplateID>61b42ecb-bfb6-4016-834f-b4baaafc7490</TemplateID>

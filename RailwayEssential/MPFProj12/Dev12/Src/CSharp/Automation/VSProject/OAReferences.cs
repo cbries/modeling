@@ -53,7 +53,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.Shell.Interop;
 using VSLangProj;
-using ErrorHandler = Microsoft.VisualStudio.ErrorHandler;
 
 namespace Microsoft.VisualStudio.Project.Automation
 {

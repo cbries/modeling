@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
 		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <AvailablePlatforms>Railway Essential</AvailablePlatforms>
+    <AvailablePlatforms>RailwayEssential17</AvailablePlatforms>
 		<ProductVersion>8.0.30703</ProductVersion>
 		<SchemaVersion>2.0</SchemaVersion>
 		<ProjectGuid>$guid1$</ProjectGuid>
@@ -19,7 +19,7 @@
 		<DefineConstants>DEBUG;TRACE</DefineConstants>
 		<ErrorReport>prompt</ErrorReport>
 		<WarningLevel>4</WarningLevel>
-    <PlatformTarget>Railway Essential</PlatformTarget>
+    <PlatformTarget>RailwayEssential17</PlatformTarget>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
 		<DebugType>pdbonly</DebugType>
@@ -28,13 +28,13 @@
 		<DefineConstants>TRACE</DefineConstants>
 		<ErrorReport>prompt</ErrorReport>
 		<WarningLevel>4</WarningLevel>
-    <PlatformTarget>Railway Essential</PlatformTarget>
+    <PlatformTarget>RailwayEssential17</PlatformTarget>
 	</PropertyGroup>
 	<ItemGroup>
 	</ItemGroup>
 	<ItemGroup>
     <Folder Include="Accessory" />
     <Folder Include="Locomotives" />
-		<Content Include="Main.railway" />    
+		<Content Include="Main.track" />    
 	</ItemGroup>
  </Project>
