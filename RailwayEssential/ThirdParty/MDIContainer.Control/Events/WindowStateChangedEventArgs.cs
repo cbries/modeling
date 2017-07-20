@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 
 namespace MDIContainer.Control.Events
 {
    public sealed class WindowStateChangedEventArgs : RoutedEventArgs
    {
-      public WindowState OldValue { get; private set; }
-      public WindowState NewValue { get; private set; }
+      public WindowState OldValue { get; }
+      public WindowState NewValue { get; }
 
       public WindowStateChangedEventArgs(RoutedEvent routedEvent, WindowState oldValue, WindowState newValue)
          : base(routedEvent)
       {
-         this.NewValue = newValue;
-         this.OldValue = oldValue;                  
+         NewValue = newValue;
+         OldValue = oldValue;                  
       }
    }
 }

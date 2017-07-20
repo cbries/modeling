@@ -21,8 +21,9 @@
         <MDI:MDIContainer Grid.Column="1" Margin="4" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedWindow, Mode=TwoWay}">
             <MDI:MDIContainer.Resources>
                 <Style TargetType="{x:Type MDI:MDIWindow}">
+                    <Setter Property="HasDropShadow" Value="False"/>
                     <Setter Property="Title" Value="{Binding Title}" />
-                    <Setter Property="CanClose" Value="{Binding CanClose, UpdateSourceTrigger=PropertyChanged}" />                 
+                    <Setter Property="CanClose" Value="{Binding CanClose, UpdateSourceTrigger=PropertyChanged}" />                
                 </Style>
             </MDI:MDIContainer.Resources>
         </MDI:MDIContainer>

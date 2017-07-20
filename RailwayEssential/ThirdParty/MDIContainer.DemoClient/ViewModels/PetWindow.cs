@@ -4,7 +4,7 @@
    using Entities;
    using Interfaces;
 
-   public class PetWindow : ViewModelBase, IContent
+    internal class PetWindow : ViewModelBase, IContent
    {
       public string Title => string.Format("{0} - {1}", Pet.Name, Pet.Owner);
 

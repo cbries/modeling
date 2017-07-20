@@ -4,9 +4,30 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RailwayEssentialMdi"
+        xmlns:control="clr-namespace:MDIContainer.Control;assembly=MDIContainer.Control"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical"  >
+            <Button Content="Show Log" Command="{Binding ShowLogCommand}"/>
+            <Button Content="Show Command Log" Command="{Binding ShowCommandLogCommand}"/>
+        </StackPanel>
+
+        <control:MDIContainer Grid.Column="1" Margin="4" ItemsSource="{Binding Windows}" SelectedItem="{Binding SelectedWindow, Mode=TwoWay}">
+            <control:MDIContainer.Resources>
+                <Style TargetType="{x:Type control:MDIWindow}">
+                    <Setter Property="Title" Value="{Binding Title}" />
+                    <!--
+                    <Setter Property="CanClose" Value="{Binding CanClose, UpdateSourceTrigger=PropertyChanged}" />
+                    -->
+                </Style>
+            </control:MDIContainer.Resources>
+        </control:MDIContainer>
     </Grid>
 </Window>
+

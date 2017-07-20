@@ -11,7 +11,7 @@ namespace MDIContainer.Control.WindowControls
    {
       public ResizeThumb()
       {         
-         this.DragDelta += this.OnResizing;
+         DragDelta += OnResizing;
       }
 
       private void OnResizing(object sender, DragDeltaEventArgs e)
@@ -28,7 +28,7 @@ namespace MDIContainer.Control.WindowControls
             window.Height = window.ActualHeight;
             window.Width = window.ActualWidth;
 
-            switch (this.VerticalAlignment)
+            switch (VerticalAlignment)
             {
                case VerticalAlignment.Bottom:
                   var deltaVertical = Math.Min(-e.VerticalChange, window.ActualHeight - window.MinHeight);
@@ -43,7 +43,7 @@ namespace MDIContainer.Control.WindowControls
                   break;
             }
 
-            switch (this.HorizontalAlignment)
+            switch (HorizontalAlignment)
             {
                case HorizontalAlignment.Left:
                   var deltaHorizontal = Math.Min(e.HorizontalChange, window.ActualWidth - window.MinWidth);

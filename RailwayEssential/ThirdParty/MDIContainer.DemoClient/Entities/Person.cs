@@ -3,7 +3,7 @@
     using System;
     using Bases;
 
-    public class Person : ViewModelBase
+    internal class Person : ViewModelBase
     {
         public event EventHandler Changed;
 

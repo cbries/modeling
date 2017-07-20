@@ -6,7 +6,7 @@
     using Entities;
     using Interfaces;
 
-    public class MainWindowViewModel : ViewModelBase
+    internal class MainWindowViewModel : ViewModelBase
     {
         public ObservableCollection<IContent> Items { get; }
 

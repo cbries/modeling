@@ -1,8 +1,8 @@
-﻿namespace MDIContainer.DemoClient.Bases
-{
-    using System.ComponentModel;
+﻿using System.ComponentModel;
 
-    internal abstract class ViewModelBase : INotifyPropertyChanged
+namespace RailwayEssentialMdi.Bases
+{
+    public abstract class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

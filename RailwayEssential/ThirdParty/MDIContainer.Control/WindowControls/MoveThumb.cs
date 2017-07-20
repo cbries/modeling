@@ -17,7 +17,7 @@ namespace MDIContainer.Control.WindowControls
 
       public MoveThumb()
       {
-         this.DragDelta += this.OnMoveThumbDragDelta;
+         DragDelta += OnMoveThumbDragDelta;
       }
 
       protected override void OnMouseDown(MouseButtonEventArgs e)

@@ -2,7 +2,7 @@
 {
     using Bases;
 
-    public class Pet : ViewModelBase
+    internal class Pet : ViewModelBase
     {
         public Pet(string name, string owner)
         {

@@ -1,93 +1,94 @@
 ﻿using System.Collections;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
 using MDIContainer.Control.Events;
 
 namespace MDIContainer.Control
-{   
-   public sealed class MDIContainer : System.Windows.Controls.Primitives.Selector
-   {
-      private IList InternalItemSource { get; set; }
-      internal int MinimizedWindowsCount { get; private set; }
+{
+    public sealed class MDIContainer : System.Windows.Controls.Primitives.Selector
+    {
+        private IList InternalItemSource { get; set; }
+        internal int MinimizedWindowsCount { get; private set; }
 
-      static MDIContainer()
-      {
-         DefaultStyleKeyProperty.OverrideMetadata(typeof(MDIContainer), new FrameworkPropertyMetadata(typeof(MDIContainer)));
-      }
+        static MDIContainer()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(MDIContainer), new FrameworkPropertyMetadata(typeof(MDIContainer)));
+        }
 
-      protected override DependencyObject GetContainerForItemOverride()
-      {
-         return new MDIWindow();
-      }
+        protected override DependencyObject GetContainerForItemOverride()
+        {
+            var win = new MDIWindow();
 
-      protected override void PrepareContainerForItemOverride(DependencyObject element, object item)
-      {
-         var window = element as MDIWindow;
-         if (window != null)
-         {
-            window.IsCloseButtonEnabled = this.InternalItemSource != null;
-            window.FocusChanged += OnWindowFocusChanged;
-            window.Closing += OnWindowClosing;
-            window.WindowStateChanged += OnWindowStateChanged;
-            window.Initialize(this);
+            return win;
+        }
 
-            Canvas.SetTop(window, 32);
-            Canvas.SetLeft(window, 32);
-
-            window.Focus();
-         }
-
-         base.PrepareContainerForItemOverride(element, item);
-      }      
-
-      private void OnWindowStateChanged(object sender, WindowStateChangedEventArgs e)
-      {
-         if (e.NewValue == WindowState.Minimized)
-         {
-            this.MinimizedWindowsCount++;
-         }
-         else if (e.OldValue == WindowState.Minimized)
-         {
-            this.MinimizedWindowsCount--;
-         }
-      }      
-
-      private void OnWindowClosing(object sender, RoutedEventArgs e)
-      {
-         var window = sender as MDIWindow;
-         if (window != null && window.DataContext != null)
-         {
-            if (this.InternalItemSource != null)
+        protected override void PrepareContainerForItemOverride(DependencyObject element, object item)
+        {
+            var window = element as MDIWindow;
+            if (window != null)
             {
-               this.InternalItemSource.Remove(window.DataContext);
+                window.IsCloseButtonEnabled = InternalItemSource != null;
+                window.FocusChanged += OnWindowFocusChanged;
+                window.Closing += OnWindowClosing;
+                window.WindowStateChanged += OnWindowStateChanged;
+                window.Initialize(this);
+
+                Canvas.SetTop(window, 32);
+                Canvas.SetLeft(window, 32);
+
+                window.Focus();
             }
 
-            // clear
-            window.FocusChanged -= OnWindowFocusChanged;
-            window.Closing -= OnWindowClosing;
-            window.WindowStateChanged -= OnWindowStateChanged;
-            window.DataContext = null;
-         }
-      }
+            base.PrepareContainerForItemOverride(element, item);
+        }
 
-      protected override void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue)
-      {
-         base.OnItemsSourceChanged(oldValue, newValue);
+        private void OnWindowStateChanged(object sender, WindowStateChangedEventArgs e)
+        {
+            if (e.NewValue == WindowState.Minimized)
+            {
+                MinimizedWindowsCount++;
+            }
+            else if (e.OldValue == WindowState.Minimized)
+            {
+                MinimizedWindowsCount--;
+            }
+        }
 
-         if (newValue != null && newValue is IList)
-         {
-            this.InternalItemSource = newValue as IList;
-         }
-      }
+        private void OnWindowClosing(object sender, RoutedEventArgs e)
+        {
+            var window = sender as MDIWindow;
+            if (window != null && window.DataContext != null)
+            {
+                if (InternalItemSource != null)
+                {
+                    InternalItemSource.Remove(window.DataContext);
+                }
 
-      private void OnWindowFocusChanged(object sender, RoutedEventArgs e)
-      {
-         if (((MDIWindow)sender).IsFocused)
-         {
-            this.SelectedItem = e.OriginalSource;
-         }       
-      }
-   }
+                // clear
+                window.FocusChanged -= OnWindowFocusChanged;
+                window.Closing -= OnWindowClosing;
+                window.WindowStateChanged -= OnWindowStateChanged;
+                window.DataContext = null;
+            }
+        }
+
+        protected override void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue)
+        {
+            base.OnItemsSourceChanged(oldValue, newValue);
+
+            if (newValue != null && newValue is IList)
+            {
+                InternalItemSource = newValue as IList;
+            }
+        }
+
+        private void OnWindowFocusChanged(object sender, RoutedEventArgs e)
+        {
+            if (((MDIWindow)sender).IsFocused)
+            {
+                SelectedItem = e.OriginalSource;
+            }
+        }
+    }
 }
