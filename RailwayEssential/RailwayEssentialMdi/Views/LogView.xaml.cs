@@ -16,7 +16,7 @@ namespace RailwayEssentialMdi.Views
 
         private void ScrollToEnd()
         {
-            Log.Focus();
+            //Log.Focus();
             Log.CaretIndex = Log.Text.Length;
             Log.ScrollToEnd();
         }

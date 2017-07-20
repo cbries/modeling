@@ -20,7 +20,11 @@
                     <MenuItem Header="Open"/>
                     <MenuItem Header="Save" IsEnabled="False"/>
                     <Separator/>
-                    <MenuItem Header="Exit"/>
+                    <MenuItem Header="Exit" Command="{Binding ExitCommand}"/>
+                </MenuItem>
+                <MenuItem Header="View">
+                    <MenuItem Header="General Log" Command="{Binding ShowLogCommand}"/>
+                    <MenuItem Header="Command Log" Command="{Binding ShowCommandLogCommand}"/>
                 </MenuItem>
                 <MenuItem Header="Help">
                     <MenuItem Header="About RailwayEssential" />
@@ -30,14 +34,8 @@
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
-            <StackPanel Orientation="Vertical"  >
-                <Button Content="Show Log" Command="{Binding ShowLogCommand}"/>
-                <Button Content="Show Command Log" Command="{Binding ShowCommandLogCommand}"/>
-            </StackPanel>
 
             <control:MDIContainer Grid.Column="1" Margin="4" ItemsSource="{Binding Windows}" SelectedItem="{Binding SelectedWindow, Mode=TwoWay}">
                 <control:MDIContainer.Resources>

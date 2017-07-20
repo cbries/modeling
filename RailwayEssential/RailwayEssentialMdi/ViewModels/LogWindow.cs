@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using MDIContainer.DemoClient.Commands;
 using RailwayEssentialMdi.Entities;
 
@@ -59,7 +61,28 @@ namespace RailwayEssentialMdi.ViewModels
 
         private void SaveCmd(object p)
         {
-            
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog
+            {
+                FileName = $"{LogMode}_log",
+                DefaultExt = ".txt",
+                Filter = "Text documents (.txt)|*.txt"
+            };
+
+            Nullable<bool> result = dlg.ShowDialog();
+
+            if (result == true)
+            {
+                string filename = dlg.FileName;
+
+                try
+                {
+                    File.WriteAllText(filename, Log.Message, Encoding.UTF8);
+                }
+                catch
+                {
+                    // ignore
+                }
+            }
         }
     }
 }

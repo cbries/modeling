@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Net.Mime;
 using System.Threading;
 using MDIContainer.DemoClient.Commands;
 using RailwayEssentialMdi.Bases;
@@ -11,6 +12,7 @@ namespace RailwayEssentialMdi.ViewModels
     {
         public ObservableCollection<IContent> Windows { get; }
 
+        public RelayCommand ExitCommand { get; }
         public RelayCommand ShowLogCommand { get; }
         public RelayCommand ShowCommandLogCommand { get; }
 
@@ -23,6 +25,7 @@ namespace RailwayEssentialMdi.ViewModels
         {
             Windows = new ObservableCollection<IContent>();
 
+            ExitCommand = new RelayCommand(Exit);
             ShowLogCommand = new RelayCommand(ShowLog);
             ShowCommandLogCommand = new RelayCommand(ShowCommandLog);
 
@@ -42,6 +45,11 @@ namespace RailwayEssentialMdi.ViewModels
             }) { IsBackground = true }.Start();
 
             _logMessagesGeneral.Add("Test\r\n");
+        }
+
+        public void Exit(object p)
+        {
+            System.Windows.Application.Current.Shutdown();
         }
 
         public void ShowLog(object p)
