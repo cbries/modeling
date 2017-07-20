@@ -29,7 +29,7 @@
                      HorizontalScrollBarVisibility="Auto" 
                      TextChanged="Log_OnTextChanged" 
                      IsReadOnly="True" 
-                     Background="GhostWhite"></TextBox>
+                     Background="WhiteSmoke"></TextBox>
         </DockPanel>
 
     </Grid>

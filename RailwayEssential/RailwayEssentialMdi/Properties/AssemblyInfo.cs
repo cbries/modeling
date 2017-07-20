@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RailwayEssentialMdi")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("RailwayEssential")]
+[assembly: AssemblyDescription("A software controler for ESU's ECoS2 modelrailway station.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("RailwayEssentialMdi")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCompany("Dr. C.B.Ries")]
+[assembly: AssemblyProduct("RailwayEssential")]
+[assembly: AssemblyCopyright("Copyright © 2017 Dr. C.B.Ries")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

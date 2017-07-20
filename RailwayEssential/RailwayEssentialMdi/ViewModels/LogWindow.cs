@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using MDIContainer.DemoClient.Commands;
 using RailwayEssentialMdi.Entities;
 
@@ -47,9 +46,7 @@ namespace RailwayEssentialMdi.ViewModels
         public LogWindow(LogMessages logMsgs)
         {
             LogMode = Mode.General;
-
             Log = logMsgs;
-
             CloseCommand = new RelayCommand(CloseWindow);
             SaveCommand = new RelayCommand(SaveCmd);
         }
@@ -62,7 +59,7 @@ namespace RailwayEssentialMdi.ViewModels
 
         private void SaveCmd(object p)
         {
-            Trace.WriteLine("Save()");
+            
         }
     }
 }
