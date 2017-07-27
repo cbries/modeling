@@ -57,7 +57,7 @@ function rebuildTable() {
         if ($(el).find('img').length == 0) {
             var col = $(el).parent().children().index($(el));
             var row = $(el).parent().parent().children().index($(el).parent());
-            console.log("vs: cellEdited(" + col + ", " + row + ", -1)");
+            console.log("vs #3 cellEdited(" + col + ", " + row + ", -1)");
             try {
                 railwayEssentialCallback.cellEdited(col, row, -1);
             } catch (ex) { /* ignore */ }
@@ -377,7 +377,7 @@ $(document).ready(function (e) {
                     });
                     newChild.draggable();
 
-                    console.log("vs: cellEdited(" + col + ", " + row + ", " + themeId + ")");
+                    console.log("vs: #1 cellEdited(" + col + ", " + row + ", " + themeId + ")");
                     try {
                         railwayEssentialCallback.cellEdited(col, row, themeId);
                     } catch (ex) { /* ignore */ }
@@ -406,8 +406,9 @@ $(document).ready(function (e) {
                 }
 
                 var cname = $('#webmenuCategories').val();
-                var o = $('#webmenu' + cname).val();
-                var o2 = $('#webmenu' + cname).data("railway-themeid");
+                var sel = $('#webmenu' + cname);
+                var o = sel.val();
+                var o2 = sel.find(':selected').data("railway-themeid");
                 var v = themeDirectory + '/' + o + '.svg';
 
                 var newChild = c.append("<img class=\"overflow\" src=\"" + v + "\" border=\"0\" data-railway-themeid=\"" + o2 + "\">");
@@ -429,9 +430,9 @@ $(document).ready(function (e) {
 
                 newChild.draggable();
 
-                console.log("vs: cellEdited(" + col + ", " + row + ", " + o.data("railway-themeid") + ")");
+                console.log("vs: #2 cellEdited(" + col + ", " + row + ", " + o2 + ")");
                 try {
-                    railwayEssentialCallback.cellEdited(col, row, o.data("railway-themeid"));
+                    railwayEssentialCallback.cellEdited(col, row, o2);
                 } catch (ex) { /* ignore */ }
             }
             isDragging = false;

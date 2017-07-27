@@ -91,18 +91,10 @@
                         </DockPanel>
                     </Grid>
                 </TabItem>
-
-                <!--
-                <TabItem Header="S88">
-                    <Grid>
-                        
-                    </Grid>
-                </TabItem>
-                -->
             </TabControl>
 
             <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <railwayEssentialWeb:TrackViewerControl Name="TrackViewer"/>
+                <railwayEssentialWeb:TrackViewer Name="TrackViewer"/>
             </Grid>
         </Grid>
         

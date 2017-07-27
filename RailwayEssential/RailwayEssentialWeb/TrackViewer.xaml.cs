@@ -2,19 +2,17 @@
 using System.Diagnostics;
 using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
 using CefSharp;
+using RailwayEssentialCore;
 using RailwayEssentialWeb.Cef;
 
 namespace RailwayEssentialWeb
 {
-    public partial class TrackViewer : UserControl, ITrackViewer
+    public partial class TrackViewer : ITrackViewer
     {
-        public event ViewerReadyDelegate ViewerReady;
-
         private string _url;
 
-        private SynchronizationContext _ctx;
+        private readonly SynchronizationContext _ctx;
 
         public string Url
         {
@@ -28,22 +26,16 @@ namespace RailwayEssentialWeb
             }
         }
 
-        private readonly ITrackViewerJsCallback _jsCallback;
-
-        public ITrackViewerJsCallback JsCallback
-        {
-            get => _jsCallback;            
-        }
-
         public IWebGenerator WebGenerator { get; set; }
 
         public TrackViewer()
         {
-            var settings = new CefSharp.CefSettings { RemoteDebuggingPort = 1234 };
+            var settings = new CefSettings { RemoteDebuggingPort = 1234 };
             // for some reason, performance sucks w/ the gpu enabled
             //settings.CefCommandLineArgs.Add("disable-gpu", "1");
             //settings.CefCommandLineArgs.Add("disable-gpu-vsync", "1");
-            CefSharp.Cef.Initialize(settings);
+            if(!CefSharp.Cef.IsInitialized)
+                CefSharp.Cef.Initialize(settings);
 
             InitializeComponent();
 
@@ -52,9 +44,9 @@ namespace RailwayEssentialWeb
             Browser.ResourceHandlerFactory = new LocalResourceHandlerFactory();
             Browser.MenuHandler = new MenuHandler();
 
-            Browser.BrowserSettings.FileAccessFromFileUrls = CefSharp.CefState.Enabled;
-            Browser.BrowserSettings.UniversalAccessFromFileUrls = CefSharp.CefState.Enabled;
-            Browser.BrowserSettings.WebSecurity = CefSharp.CefState.Disabled;
+            Browser.BrowserSettings.FileAccessFromFileUrls = CefState.Enabled;
+            Browser.BrowserSettings.UniversalAccessFromFileUrls = CefState.Enabled;
+            Browser.BrowserSettings.WebSecurity = CefState.Disabled;
             //Browser.BrowserSettings.WebGl = CefSharp.CefState.Disabled;
 
             Browser.IsBrowserInitializedChanged += BrowserOnIsBrowserInitializedChanged;
@@ -79,8 +71,12 @@ namespace RailwayEssentialWeb
             {
                 if (args.Frame.IsMain)
                 {
-                    if (Browser.IsBrowserInitialized && ViewerReady != null)
-                        ViewerReady(this);
+                    if (Browser.IsBrowserInitialized)
+                    {
+                        var vm = DataContext as ITrackWindow;
+                        if (vm != null)
+                            vm.ViewerReady();
+                    }
                 }
             }, null);
         }
@@ -115,7 +111,26 @@ namespace RailwayEssentialWeb
             Trace.WriteLine("<error> " + loadErrorEventArgs.FailedUrl);
         }
 
+        private void Browser_OnInitialized(object sender, EventArgs e)
+        {
+        }
+
+        private void TrackViewer_OnInitialized(object sender, EventArgs e)
+        {
+        }
+
+        private void TrackViewer_OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var vm = DataContext as ITrackWindow;
+            if (vm != null)
+                vm.PromoteViewer(this);
+        }
+
         #region ITrackViewer
+
+        private readonly ITrackViewerJsCallback _jsCallback;
+
+        public ITrackViewerJsCallback JsCallback => _jsCallback;
 
         public void ExecuteJs(string scriptCode)
         {
@@ -131,6 +146,18 @@ namespace RailwayEssentialWeb
             }, null);
         }
 
+        public void SetUrl(string url)
+        {
+            Url = url;
+        }
+
+        public void Load()
+        {
+            Browser.Address = Url;
+            Browser.Reload();
+        }
+
         #endregion
+
     }
 }

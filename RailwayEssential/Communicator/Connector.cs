@@ -7,7 +7,7 @@ using ThreadState = System.Threading.ThreadState;
 namespace Communicator
 {
     public delegate void StartedDelegator(object sender);
-    public delegate void FailedDelegator(object sender);
+    public delegate void FailedDelegator(object sender, string message);
     public delegate void StoppedDelegator(object sender);
     public delegate void MessageReceivedDelegator(object sender, string msg);
     
@@ -87,41 +87,50 @@ namespace Communicator
             string ipaddr = IpAddr;
             int port = Port;
 
-            using (_clientConnection = new PrimS.Telnet.Client(ipaddr, port, new System.Threading.CancellationToken()))
+            try
             {
-                if (_clientConnection.IsConnected)
+
+                using (_clientConnection = new PrimS.Telnet.Client(ipaddr, port, new CancellationToken()))
                 {
-                    if (Logger != null)
-                        Logger.Log("<Connector> Connection established");
-
-                    if (Started != null)
-                        Started(this);
-                }
-                else
-                {
-                    if (Logger != null)
-                        Logger.Log("<Connector> Connection failed");
-
-                    if (Failed != null)
-                        Failed(this);
-                }
-
-                while (_run)
-                {
-                    var msg = await _clientConnection.TerminatedReadAsync("\r\n", TimeSpan.FromMilliseconds(2500));
-
-                    if (!string.IsNullOrEmpty(msg))
+                    if (_clientConnection.IsConnected)
                     {
                         if (Logger != null)
-                            Logger.Log("<Connector> Message received, Length: " + msg.Length);
+                            Logger.Log("<Connector> Connection established");
 
-                        if (MessageReceived != null)
-                            MessageReceived(this, msg);
+                        if (Started != null)
+                            Started(this);
                     }
-                }
+                    else
+                    {
+                        if (Logger != null)
+                            Logger.Log("<Connector> Connection failed");
 
-                if (Stopped != null)
-                    Stopped(this);
+                        if (Failed != null)
+                            Failed(this, "Connection failed");
+                    }
+
+                    while (_run)
+                    {
+                        var msg = await _clientConnection.TerminatedReadAsync("\r\n", TimeSpan.FromMilliseconds(2500));
+
+                        if (!string.IsNullOrEmpty(msg))
+                        {
+                            if (Logger != null)
+                                Logger.Log("<Connector> Message received, Length: " + msg.Length);
+
+                            if (MessageReceived != null)
+                                MessageReceived(this, msg);
+                        }
+                    }
+
+                    if (Stopped != null)
+                        Stopped(this);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (Failed != null)
+                    Failed(this, ex.Message);
             }
         }
     }

@@ -37,8 +37,13 @@
     <ApplicationIcon>Resources\Main.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -58,14 +63,38 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bases\ViewModelBase.cs" />
-    <Compile Include="Entities\LogMessages.cs" />
+    <Compile Include="DataObjects\ProjectFile.cs" />
+    <Compile Include="DataObjects\ProjectTrack.cs" />
+    <Compile Include="Entities\ItemEntity.cs" />
+    <Compile Include="Entities\LogEntity.cs" />
+    <Compile Include="Entities\ObjectEntity.cs" />
+    <Compile Include="Entities\TrackEntity.cs" />
     <Compile Include="Interfaces\IContent.cs" />
+    <Compile Include="ViewModels\BaseWindow.cs" />
     <Compile Include="ViewModels\LocomotiveControlWindow.cs" />
     <Compile Include="ViewModels\LogWindow.cs" />
+    <Compile Include="ViewModels\TrackWindow.cs" />
+    <Compile Include="Views\LocomotiveControlView.xaml.cs">
+      <DependentUpon>LocomotiveControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LocomotivesView.xaml.cs">
+      <DependentUpon>LocomotivesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LogView.xaml.cs">
       <DependentUpon>LogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\RailwayEssentialModel.cs" />
+    <Compile Include="Views\TrackView.xaml.cs">
+      <DependentUpon>TrackView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\LocomotiveControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LocomotivesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -82,6 +111,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\TrackView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -101,15 +134,235 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Testprojekte\Schattenbahnhof1\Schattenbahnhof.railwayprj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Testprojekte\Schattenbahnhof1\TrackObjects.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Testprojekte\Schattenbahnhof1\TrackPlan.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Testprojekte\Schattenbahnhof1\TrackWeaving.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\cef.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\cef_100_percent.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\cef_200_percent.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\cef_extensions.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\devtools_resources.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\icudtl.dat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\am.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\ar.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\bg.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\bn.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\ca.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\cs.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\da.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\de.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\el.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\en-GB.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\en-US.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\es-419.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\es.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\et.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\fa.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\fi.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\fil.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\fr.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\gu.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\he.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\hi.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\hr.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\hu.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\id.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\it.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\ja.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\kn.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\ko.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\lt.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\lv.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\ml.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\mr.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\ms.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\nb.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\nl.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\pl.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\pt-BR.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\pt-PT.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\ro.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\ru.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\sk.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\sl.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\sr.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\sv.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\sw.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\ta.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\te.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\th.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\tr.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\uk.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\vi.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\zh-CN.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\locales\zh-TW.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\natives_blob.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ThirdParty\CefLib\snapshot_blob.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Communicator\Communicator.csproj">
+      <Project>{8c4a1922-3bab-4f3e-b5a4-3fb906f97bc2}</Project>
+      <Name>Communicator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dispatcher\Dispatcher.csproj">
+      <Project>{2c9cdad8-8cac-463a-8b6d-b08290fb65fe}</Project>
+      <Name>Dispatcher</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ecos2Core\Ecos2Core.csproj">
+      <Project>{5e022579-45a1-4e6f-94db-1c88e089030d}</Project>
+      <Name>Ecos2Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RailwayEssentialCore\RailwayEssentialCore.csproj">
+      <Project>{b80cfecd-db0b-4533-aa42-784b2ebe85ff}</Project>
+      <Name>RailwayEssentialCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RailwayEssentialWeb\RailwayEssentialWeb.csproj">
+      <Project>{61271bce-3976-43d9-b0fe-82970cbb1f0b}</Project>
+      <Name>RailwayEssentialWeb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Theme\Theme.csproj">
+      <Project>{f4cad622-048a-4bc3-9b60-06bdfe0d6ee6}</Project>
+      <Name>Theme</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ThirdParty\MDIContainer.Control\MDIContainer.Control.csproj">
       <Project>{b68f597b-b085-4b0e-8db9-2de0420306fc}</Project>
       <Name>MDIContainer.Control</Name>
@@ -118,9 +371,87 @@
       <Project>{F2639493-589C-4F56-9680-A65A5263212B}</Project>
       <Name>MDIContainer.DemoClient</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TrackInformationCore\TrackInformationCore.csproj">
+      <Project>{b839732a-5c4a-4501-8b5e-990d12627c56}</Project>
+      <Name>TrackInformationCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackInformation\TrackInformation.csproj">
+      <Project>{6925e932-7ad6-4afa-a6ba-cbbf35014264}</Project>
+      <Name>TrackInformation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackPlanParser\TrackPlanParser.csproj">
+      <Project>{f7751558-8d8b-4ae2-a1ee-22d80889d73d}</Project>
+      <Name>TrackPlanParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackWeaver\TrackWeaver.csproj">
+      <Project>{bc3eaefc-cd4d-4a9e-870e-918685c49c3d}</Project>
+      <Name>TrackWeaver</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Main.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.pdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.pdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="ThirdParty\CefLib\CefSharp.Core.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="ThirdParty\CefLib\CefSharp.Core.pdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="ThirdParty\CefLib\CefSharp.Core.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="ThirdParty\CefLib\CefSharp.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ThirdParty\CefLib\CefSharp.pdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ThirdParty\CefLib\CefSharp.Wpf.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ThirdParty\CefLib\CefSharp.Wpf.pdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="ThirdParty\CefLib\CefSharp.Wpf.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ThirdParty\CefLib\CefSharp.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="ThirdParty\CefLib\chrome_elf.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ThirdParty\CefLib\d3dcompiler_47.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ThirdParty\CefLib\libcef.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ThirdParty\CefLib\libEGL.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ThirdParty\CefLib\libGLESv2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ThirdParty\CefLib\widevinecdmadapter.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /S /C /Y /J /R "$(TargetDir)ThirdParty\CefLib\*" "$(TargetDir)"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

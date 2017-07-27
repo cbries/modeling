@@ -6,7 +6,7 @@ using RailwayEssentialMdi.Entities;
 
 namespace RailwayEssentialMdi.ViewModels
 {
-    public class LogWindow : Bases.ViewModelBase, Interfaces.IContent
+    public class LogWindow : BaseWindow
     {
         public enum Mode
         {
@@ -16,7 +16,7 @@ namespace RailwayEssentialMdi.ViewModels
 
         public Mode LogMode { get; set; }
 
-        public string Title
+        public override string Title
         {
             get
             {
@@ -26,12 +26,9 @@ namespace RailwayEssentialMdi.ViewModels
             }
         }
 
-        public event EventHandler Closing;
-
-        public RelayCommand CloseCommand { get; }
         public RelayCommand SaveCommand { get; }
 
-        public LogMessages Log { get; }
+        public LogEntity Log { get; }
 
         private bool _autoscroll;
 
@@ -45,18 +42,12 @@ namespace RailwayEssentialMdi.ViewModels
             }
         }
 
-        public LogWindow(LogMessages logMsgs)
+        public LogWindow(LogEntity logMsgs)
         {
             LogMode = Mode.General;
             Log = logMsgs;
-            CloseCommand = new RelayCommand(CloseWindow);
+            
             SaveCommand = new RelayCommand(SaveCmd);
-        }
-
-        private void CloseWindow(object p)
-        {
-            var hander = Closing;
-            hander?.Invoke(this, EventArgs.Empty);
         }
 
         private void SaveCmd(object p)

@@ -2,7 +2,7 @@
 {
     public interface ILogging
     {
-        void Log(string msg);
-        void LogNetwork(string msg);
+        void Log(string msg, params object[] args);
+        void LogNetwork(string msg, params object[] args);
     }
 }

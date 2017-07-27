@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,24 +17,12 @@ namespace RailwayEssentialWeb
         public int TileWidth { get; set; }
         public int TileHeight { get; set; }
 
-        public string ThemeDirectory { get; set; }
+        public Theme.Theme Theme { get; }
 
-        public string ThemeName
+        public WebGenerator(Theme.Theme theme)
         {
-            get
-            {
-                if (string.IsNullOrEmpty(ThemeDirectory))
-                    return null;
+            Theme = theme;
 
-                var parts = ThemeDirectory.Replace("\\", "/").Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
-                return parts[parts.Length - 1].Trim();
-            }
-        }
-
-        private readonly Random _randomNumberGenerator = new Random();
-
-        public WebGenerator()
-        {
             Rows = 15;
             Columns = 25;
 
@@ -43,34 +30,27 @@ namespace RailwayEssentialWeb
             TileHeight = 24;
         }
 
-        private List<string> ThemeFiles => Directory.GetFiles(ThemeDirectory, "*.svg", SearchOption.TopDirectoryOnly).ToList();
+        private string AbsoluteThemeDirname => Path.Combine(Theme.ThemeDirectory, Theme.ThemeName);
+
+        private List<string> ThemeFiles => Directory.GetFiles(AbsoluteThemeDirname, "*.svg", SearchOption.TopDirectoryOnly).ToList();
 
         private string _selectCategory = "";
         private Dictionary<string, string> _selectHtml = new Dictionary<string, string>();
 
         private void CreateSymbolSelection()
         {
-            var themeJson = $@"\Themes\{ThemeName}.json".ExpandRailwayEssential();
-
-            Theme.Theme theme = new Theme.Theme();
-            if (!theme.Load(themeJson))
-            {
-                Trace.WriteLine("<Theme> Loading of theme failed: " + ThemeName);
-                throw new Exception("<Theme> Loading of theme failed: " + ThemeName);
-            }
-
             // categories
             // [key:=category name, value:=selector list entries]
             string mhtmlCategories = "";
-            foreach (var k in theme.CategoryNames)
+            foreach (var k in Theme.CategoryNames)
                 mhtmlCategories += "<option value=\"" + k + "\">" + k + "</option>\r\n";
             _selectCategory = mhtmlCategories;
 
-            foreach (var k in theme.CategoryNames)
+            foreach (var k in Theme.CategoryNames)
             {
                 string html = $"<div id=\"webmenuDiv{k}\" style=\"width: 400px; vertical-align: middle;\">\r\n<select name=\"webmenu{k}\" id=\"webmenu{k}\" style=\"width: 400px; vertical-align: middle;\">\r\n";
 
-                var symbolsOfCategory = theme.GetDefaultForCategory(k);
+                var symbolsOfCategory = Theme.GetDefaultForCategory(k);
 
                 foreach (var symbol in symbolsOfCategory)
                 {                   
@@ -87,7 +67,7 @@ namespace RailwayEssentialWeb
                             if (string.IsNullOrEmpty(symbolName))
                                 continue;
 
-                            var themeItem = theme.Get(k, symbol.Value);
+                            var themeItem = Theme.Get(k, symbol.Value);
 
                             html += "<option value=\"" + symbolName + "\" data-railway-themeid=\""+ themeItem.UniqueIdentifier + "\" data-image=\"" + new Uri(e).AbsoluteUri + "\">" + symbol.Key + "</option>\r\n";
 
@@ -152,7 +132,7 @@ namespace RailwayEssentialWeb
                 CreateSymbolSelection();
 
                 var b = CreateBase();
-                    b = b.Replace("{{GLOBALJS}}", "var themeDirectory='"+new Uri(ThemeDirectory.Replace("\\", "/")).AbsoluteUri+"';");
+                    b = b.Replace("{{GLOBALJS}}", "var themeDirectory='"+new Uri(AbsoluteThemeDirname.Replace("\\", "/")).AbsoluteUri+"';");
                     b = b.Replace("{{GLOBALCSS}}", css);
                     b = b.Replace("{{TRACKTABLE}}", oSb.ToString());
                     b = b.Replace("{{TRACKSYMBOLCATEGORIES}}", _selectCategory);
@@ -163,16 +143,21 @@ namespace RailwayEssentialWeb
                     b = b.Replace("{{TRACKSYMBOLS_Sensor}}", _selectHtml["Sensor"]);
                     b = b.Replace("{{TRACKSYMBOLS_Accessory}}", _selectHtml["Accessory"]);
 
-                var filesToRemove = Directory.GetFiles(Path.GetDirectoryName(targetFilepath), "*_track.html", SearchOption.TopDirectoryOnly);
-                try
+                var dname = Path.GetDirectoryName(targetFilepath);
+                if (!string.IsNullOrEmpty(dname))
                 {
-                    foreach (var fname in filesToRemove)
-                        File.Delete(fname);
-                }
-                catch { 
-                    // ignore
-                }
+                    var filesToRemove = Directory.GetFiles(dname, "*_track.html", SearchOption.TopDirectoryOnly);
+                    try
+                    {
+                        foreach (var fname in filesToRemove)
+                            File.Delete(fname);
+                    }
+                    catch
+                    {
+                        // ignore
+                    }
 
+                }
                 File.WriteAllText(targetFilepath, b, Encoding.UTF8);
             }
             catch

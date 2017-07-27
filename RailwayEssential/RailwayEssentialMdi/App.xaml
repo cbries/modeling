@@ -8,5 +8,13 @@
         <DataTemplate DataType="{x:Type viewModels:LogWindow}">
             <views:LogView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:TrackWindow}">
+            <views:TrackView/>
+        </DataTemplate>
+        <!--
+        <DataTemplate DataType="{x:Type viewModels:LocomotiveControlWindow}">
+            <views:LocomotiveControlView/>
+        </DataTemplate>
+        -->
     </Application.Resources>
 </Application>

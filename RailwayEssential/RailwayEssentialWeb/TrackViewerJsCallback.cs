@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using TrackPlanParser;
+﻿using RailwayEssentialCore;
 
 namespace RailwayEssentialWeb
 {
@@ -29,7 +28,6 @@ namespace RailwayEssentialWeb
 
         public void cellRotated(int x, int y, string orientation)
         {
-            //Trace.WriteLine("Rotated: " + x + ", " + y + ", " + orientation);
             if (TrackEdit != null)
                 TrackEdit.RotateSymbol(x, y, orientation);
         }

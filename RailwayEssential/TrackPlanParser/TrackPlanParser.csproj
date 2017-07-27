@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ITrackEdit.cs" />
     <Compile Include="Track.cs" />
     <Compile Include="TrackInfo.cs" />
     <Compile Include="TrackPlanParser.cs" />
@@ -51,6 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RailwayEssentialCore\RailwayEssentialCore.csproj">
+      <Project>{B80CFECD-DB0B-4533-AA42-784B2EBE85FF}</Project>
+      <Name>RailwayEssentialCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

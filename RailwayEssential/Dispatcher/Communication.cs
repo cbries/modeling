@@ -10,7 +10,8 @@ namespace Dispatcher
     public class Communication : ICommunication
     {
         public event BlocksReceivedDelegator BlocksReceived;
-        public event CommunicationStartedDelegator CommunicationStarted;
+        public event EventHandler CommunicationStarted;
+        public event EventHandler CommunicationFailed;
 
         private Connector _client;
         public RailwayEssentialCore.Configuration Cfg { get; set; }
@@ -86,9 +87,9 @@ namespace Dispatcher
                 _client.Stopped += COnStopped;
                 _client.Failed += COnFailed;
                 _client.MessageReceived += COnMessageReceived;
-                _client.Start();
+                bool r = _client.Start();
 
-                return true;
+                return r;
             }
             catch(Exception ex)
             {
@@ -129,11 +130,14 @@ namespace Dispatcher
             }           
         }
 
-        private void COnFailed(object o)
+        private void COnFailed(object o, string errmsg)
         {
             IsConnected = false;
             HasError = true;
-            ErrorMessage = "Connection failed";
+            ErrorMessage = errmsg;
+
+            if (CommunicationFailed != null)
+                CommunicationFailed(this, EventArgs.Empty);
         }
 
         private void COnStopped(object o)
@@ -141,6 +145,8 @@ namespace Dispatcher
             IsConnected = false;
             HasError = false;
             ErrorMessage = "";
+
+            Logger?.Log("Communication stopped");
         }
 
         private void COnStarted(object sender)
@@ -150,7 +156,9 @@ namespace Dispatcher
             ErrorMessage = "";
 
             if (CommunicationStarted != null)
-                CommunicationStarted(this);
+                CommunicationStarted(this, EventArgs.Empty);
+
+            Logger?.Log("Communication started");
         }
     }
 }

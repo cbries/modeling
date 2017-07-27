@@ -75,14 +75,9 @@
     <Compile Include="Cef\LocalResourceHandler.cs" />
     <Compile Include="Cef\LocalResourceHandlerFactory.cs" />
     <Compile Include="Cef\MenuHandler.cs" />
-    <Compile Include="ITrackViewer.cs" />
-    <Compile Include="ITrackViewerJsCallback.cs" />
     <Compile Include="IWebGenerator.cs" />
     <Compile Include="TrackViewer.xaml.cs">
       <DependentUpon>TrackViewer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TrackViewerControl.xaml.cs">
-      <DependentUpon>TrackViewerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="TrackViewerJsCallback.cs" />
     <Compile Include="WebGenerator.cs" />
@@ -99,10 +94,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TrackViewerControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RailwayEssentialCore\RailwayEssentialCore.csproj">
@@ -112,6 +103,14 @@
     <ProjectReference Include="..\Theme\Theme.csproj">
       <Project>{f4cad622-048a-4bc3-9b60-06bdfe0d6ee6}</Project>
       <Name>Theme</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ThirdParty\MDIContainer.Control\MDIContainer.Control.csproj">
+      <Project>{b68f597b-b085-4b0e-8db9-2de0420306fc}</Project>
+      <Name>MDIContainer.Control</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ThirdParty\MDIContainer.DemoClient\MDIContainer.DemoClient.csproj">
+      <Project>{F2639493-589C-4F56-9680-A65A5263212B}</Project>
+      <Name>MDIContainer.DemoClient</Name>
     </ProjectReference>
     <ProjectReference Include="..\TrackInformationCore\TrackInformationCore.csproj">
       <Project>{B839732A-5C4A-4501-8B5E-990D12627C56}</Project>

@@ -9,8 +9,10 @@ namespace Theme
 {
     public class Theme
     {
+        public string ThemeName { get; private set; }
+        public string ThemeDirectory { get; private set; }
 
-        private List<string> _categoryNames = null;
+        private List<string> _categoryNames;
 
         public List<string> CategoryNames
         {
@@ -129,6 +131,9 @@ namespace Theme
 
         public bool Load(string themeJsonFilePath)
         {
+            ThemeName = null;
+            ThemeDirectory = null;
+
             if (string.IsNullOrEmpty(themeJsonFilePath))
                 return false;
             if (!File.Exists(themeJsonFilePath))
@@ -156,6 +161,9 @@ namespace Theme
                 Trace.WriteLine("<Theme> " + ex.Message);
                 return false;
             }
+
+            ThemeName = Path.GetFileNameWithoutExtension(themeJsonFilePath);
+            ThemeDirectory = Path.GetDirectoryName(themeJsonFilePath);
 
             return true;
         }

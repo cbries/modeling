@@ -47,7 +47,7 @@ namespace RailwayEssentialUi
 
         private SynchronizationContext _ctx = null;
 
-        public void Log(string msg)
+        public void Log(string msg, params object[] args)
         {
             if (_ctx == null)
                 return;
@@ -60,7 +60,7 @@ namespace RailwayEssentialUi
             }, null);
         }
 
-        public void LogNetwork(string msg)
+        public void LogNetwork(string msg, params object[] args)
         {
             if (_ctx == null)
                 return;
@@ -80,10 +80,10 @@ namespace RailwayEssentialUi
         {
             InitializeComponent();
 
-            TrackViewer.FilePath = TrackObjectFile;
-            TrackViewer.Initialize();
+            FilePath = TrackObjectFile;
+            InitializeTrackViewerUi();
 
-            var jsCallback = TrackViewer.JsCallback;
+            var jsCallback = JsCallback;
             if (jsCallback != null)
             {
                 jsCallback.EditModeChanged += (sender, state) =>
@@ -95,7 +95,7 @@ namespace RailwayEssentialUi
                 {
                     Trace.WriteLine("Cell clicked: " + x + ", " + y);
 
-                    var track = TrackViewer.Track;
+                    var track = Track;
                     var trackInfo = track.Get(x, y);
 
                     if (trackInfo == null)
@@ -159,13 +159,13 @@ namespace RailwayEssentialUi
 
             dataProvider.LoadObjects(TrackGlobalFile);
 
-            _dispatcher.InitializeWeaving(TrackViewer.Track);
+            //_dispatcher.InitializeWeaving(Track);
         }
 
         private void DispatcherOnUpdateUi(object sender, TrackWeaver.TrackWeaver trackWeaver)
         {
-            if (TrackViewer != null)
-                TrackViewer.UpdateUi(trackWeaver);
+            //if (TrackViewer != null)
+            //    UpdateTrackViewerUi(trackWeaver);
         }
 
         private Category _itemStatus;
@@ -409,7 +409,7 @@ namespace RailwayEssentialUi
 
             try
             {
-                var trackObject = TrackViewer.Track.GetJson();
+                var trackObject = Track.GetJson();
                 if (trackObject != null)
                     File.WriteAllText(TrackObjectFile, trackObject.ToString(Formatting.Indented));
             }

@@ -3,9 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RailwayEssentialMdi"
         xmlns:control="clr-namespace:MDIContainer.Control;assembly=MDIContainer.Control"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Name="app"
         Title="RailwayEssential" Height="350" Width="525">
     <Grid>
         <Grid.RowDefinitions>
@@ -17,14 +16,27 @@
         <Grid Grid.Row="0">
             <Menu Grid.Row="0" Name="Menu">
                 <MenuItem Header="File">
-                    <MenuItem Header="Open"/>
-                    <MenuItem Header="Save" IsEnabled="False"/>
+                    <MenuItem Header="New project..." Command="{Binding NewProjectCommand}"/>
+                    <Separator/>
+                    <MenuItem Header="Open" Command="{Binding OpenCommand}" CommandParameter="{Binding ElementName=app, Path=DataContext}"/>
+                    <MenuItem Header="Close" Command="{Binding CloseCommand}" CommandParameter="{Binding ElementName=app, Path=DataContext}"/>
+                    <MenuItem Header="Save" Command="{Binding SaveCommand}" CommandParameter="{Binding ElementName=app, Path=DataContext}"/>
                     <Separator/>
                     <MenuItem Header="Exit" Command="{Binding ExitCommand}"/>
+                </MenuItem>
+                <MenuItem Header="Command Station">
+                    <MenuItem Header="Connect" Command="{Binding ConnectCommand}" CommandParameter="{Binding ElementName=app, Path=DataContext}"/>
+                    <MenuItem Header="Disconnect" Command="{Binding DisconnectCommand}" CommandParameter="{Binding ElementName=app, Path=DataContext}"/>
+                    <Separator/>
+                    <MenuItem Header="Properties" Command="{Binding CmdStationsPropertiesCommand}"/>
                 </MenuItem>
                 <MenuItem Header="View">
                     <MenuItem Header="General Log" Command="{Binding ShowLogCommand}"/>
                     <MenuItem Header="Command Log" Command="{Binding ShowCommandLogCommand}"/>
+                </MenuItem>
+                <MenuItem Header="Project">
+                    <MenuItem Header="Add Track" Command="{Binding AddTrackCommand}"></MenuItem>
+                    <MenuItem Header="Remove Track" Command="{Binding RemoveTrackCommand}"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Help">
                     <MenuItem Header="About RailwayEssential" />
@@ -42,8 +54,8 @@
                     <Style TargetType="{x:Type control:MDIWindow}">
                         <Setter Property="Title" Value="{Binding Title}" />
                         <!--
-                    <Setter Property="CanClose" Value="{Binding CanClose, UpdateSourceTrigger=PropertyChanged}" />
-                    -->
+                        <Setter Property="CanClose" Value="{Binding CanClose, UpdateSourceTrigger=PropertyChanged}" />
+                        -->
                     </Style>
                 </control:MDIContainer.Resources>
             </control:MDIContainer>
@@ -58,21 +70,32 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="150" />
                         </Grid.ColumnDefinitions>
                     </Grid>
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
             <StatusBarItem>
-                <TextBlock Name="LblCursorPosition" />
+                <DockPanel>
+                    <TextBlock Text="{Binding Project.Name}" />
+                    <TextBlock Text="{Binding IsDirtyMessage, Mode=OneWay}" />
+                </DockPanel>
             </StatusBarItem>
             <Separator Grid.Column="1" />
             <StatusBarItem Grid.Column="2">
-                <TextBlock Text="c:\path\of\current\file.txt" />
+                <!--
+                TODO
+                -->
             </StatusBarItem>
             <Separator Grid.Column="3" />
             <StatusBarItem Grid.Column="4">
-                <ProgressBar Value="50" Width="90" Height="16" />
+<!--
+                <TextBlock Text=""/>
+-->
+                <DockPanel>
+                    <Image Width="16" Height="16" Source="Resources/Main.ico"/>
+                    <TextBlock Text="{Binding ConnectionState, Mode=OneWay}" Margin="2,0,0,0"/>
+                </DockPanel>
             </StatusBarItem>
         </StatusBar>
 

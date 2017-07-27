@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using Ecos2Core;
 using RailwayEssentialCore;
 using TrackInformation;
 using TrackWeaver;
+using Switch = TrackInformation.Switch;
 
 namespace Dispatcher
 {
@@ -14,12 +17,15 @@ namespace Dispatcher
 
         public RailwayEssentialCore.Configuration Configuration { get; set; }
         public ILogging Logger { get; set; }
+        public IRailwayEssentialModel Model { get; set; }
         private readonly Communication _communication = null;
         private readonly DataProvider _dataProvider = new DataProvider();
         private TrackWeaver.TrackWeaver _trackWeaver;
         private TrackPlanParser.Track _track;
 
         public TrackWeaver.TrackWeaver Weaver => _trackWeaver;
+
+        public Communication Communication => _communication;
 
         public DataProvider GetDataProvider()
         {
@@ -32,6 +38,7 @@ namespace Dispatcher
 
             _communication = new Communication(Configuration);
             _communication.CommunicationStarted += CommunicationOnCommunicationStarted;
+            _communication.CommunicationFailed += CommunicationOnCommunicationFailed;
             _communication.BlocksReceived += CommunicationOnBlocksReceived;
         }
 
@@ -128,9 +135,16 @@ namespace Dispatcher
         {
             if (state)
             {
-                _communication.Cfg = Configuration;
-                _communication.Logger = Logger;
-                _communication.Start();
+                try
+                {
+                    _communication.Cfg = Configuration;
+                    _communication.Logger = Logger;
+                    _communication.Start();
+                }
+                catch (Exception ex)
+                {
+                    Trace.WriteLine("<Dispatcher> {0}", ex.Message);
+                }
             }
             else
             {
@@ -138,6 +152,14 @@ namespace Dispatcher
 
                 _communication.Shutdown();
             }
+        }
+
+        public bool GetRunMode()
+        {
+            if (_communication == null)
+                return false;
+
+            return _communication.IsConnected;
         }
 
         private async Task UnloadViews()
@@ -161,7 +183,7 @@ namespace Dispatcher
             await _communication.SendCommands(initialCommands);
         }
 
-        private void CommunicationOnCommunicationStarted(object sender)
+        private void CommunicationOnCommunicationStarted(object sender, EventArgs args)
         {
             // send initial commands
             List<ICommand> initialCommands = new List<ICommand>()
@@ -178,12 +200,23 @@ namespace Dispatcher
             };
 
             _communication.SendCommands(initialCommands);
+
+            if (Model != null)
+                Model.TriggerPropertyChanged("ConnectionState");
         }
 
+        private void CommunicationOnCommunicationFailed(object sender, EventArgs eventArgs)
+        {
+            var c = sender as Communication;
+            if (c != null && c.HasError)
+                Logger?.Log("<Dispatcher> Communication failed: {0}\r\n", c.ErrorMessage);
+            if(Model != null)
+                Model.TriggerPropertyChanged("ConnectionState");
+        }
         private void CommunicationOnBlocksReceived(object sender, IReadOnlyList<IBlock> blocks)
         {
             if (Logger != null)
-                Logger.Log("<Dispatcher> Blocks received: " + blocks.Count);
+                Logger.Log("<Dispatcher> Blocks received: " + blocks.Count + "\r\n");
 
             foreach (var blk in blocks)
             {
