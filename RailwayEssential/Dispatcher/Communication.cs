@@ -11,10 +11,11 @@ namespace Dispatcher
     {
         public event BlocksReceivedDelegator BlocksReceived;
         public event EventHandler CommunicationStarted;
+        public event EventHandler CommunicationStopped;
         public event EventHandler CommunicationFailed;
 
         private Connector _client;
-        public RailwayEssentialCore.Configuration Cfg { get; set; }
+        public RailwayEssentialCore.IConfiguration Cfg { get; set; }
 
         public bool IsConnected { get; private set; }
 
@@ -24,7 +25,7 @@ namespace Dispatcher
 
         public ILogging Logger { get; set; }
 
-        public Communication(RailwayEssentialCore.Configuration cfg)
+        public Communication(RailwayEssentialCore.IConfiguration cfg)
         {
             Cfg = cfg;
 
@@ -145,6 +146,9 @@ namespace Dispatcher
             IsConnected = false;
             HasError = false;
             ErrorMessage = "";
+
+            if(CommunicationStopped != null)
+                CommunicationStopped(this, EventArgs.Empty);
 
             Logger?.Log("Communication stopped");
         }

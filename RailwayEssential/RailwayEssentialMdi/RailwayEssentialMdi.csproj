@@ -63,6 +63,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bases\ViewModelBase.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="DataObjects\ProjectFile.cs" />
     <Compile Include="DataObjects\ProjectTrack.cs" />
     <Compile Include="Entities\ItemEntity.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="ViewModels\BaseWindow.cs" />
     <Compile Include="ViewModels\LocomotiveControlWindow.cs" />
     <Compile Include="ViewModels\LogWindow.cs" />
+    <Compile Include="ViewModels\PropertiesWindow.cs" />
     <Compile Include="ViewModels\TrackWindow.cs" />
     <Compile Include="Views\LocomotiveControlView.xaml.cs">
       <DependentUpon>LocomotiveControlView.xaml</DependentUpon>
@@ -84,6 +86,12 @@
       <DependentUpon>LogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\RailwayEssentialModel.cs" />
+    <Compile Include="Views\ProjectView.xaml.cs">
+      <DependentUpon>ProjectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PropertiesView.xaml.cs">
+      <DependentUpon>PropertiesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TrackView.xaml.cs">
       <DependentUpon>TrackView.xaml</DependentUpon>
     </Compile>
@@ -111,6 +119,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ProjectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PropertiesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TrackView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -392,6 +408,8 @@
     <Resource Include="Resources\Main.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\offline.png" />
+    <Resource Include="Resources\online.png" />
     <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

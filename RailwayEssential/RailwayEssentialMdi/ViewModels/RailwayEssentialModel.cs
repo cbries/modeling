@@ -51,7 +51,7 @@ namespace RailwayEssentialMdi.ViewModels
         }
 
         private Theme.Theme _theme;
-        private RailwayEssentialCore.Configuration _cfg;
+        private Configuration _cfg;
         private Dispatcher.Dispatcher _dispatcher;
 
         private SynchronizationContext _ctx = null;
@@ -131,11 +131,15 @@ namespace RailwayEssentialMdi.ViewModels
         {
             Windows = new ObservableCollection<IContent>();
 
+            _ctx = SynchronizationContext.Current;
+
             _commandStations = new ObservableCollection<Item>();
             _locomotives = new ObservableCollection<Locomotive>();
             _switches = new ObservableCollection<Switch>();
             _s88s = new ObservableCollection<S88>();
             _routes = new ObservableCollection<Route>();
+
+            _cfg = new Configuration();
 
             NewProjectCommand = new RelayCommand(NewProject, CheckNewProject);
             OpenCommand = new RelayCommand(Open, CheckOpen);
@@ -174,7 +178,7 @@ namespace RailwayEssentialMdi.ViewModels
             if (!_theme.Load(themePath))
             {
                 Trace.WriteLine("<Theme> Loading of theme failed: " + themePath);
-                throw new Exception("<Theme> Loading of theme failed: " + themePath);
+                Log("<Theme> Loading of theme failed: " + themePath);
             }
         }
 
@@ -305,10 +309,13 @@ namespace RailwayEssentialMdi.ViewModels
                 }
             }
 
-            _cfg = new RailwayEssentialCore.Configuration();
-            _dispatcher = new Dispatcher.Dispatcher()
+            _cfg.IpAddress = Project.TargetHost;
+            _cfg.Port = Project.TargetPort;
+
+            _dispatcher = new Dispatcher.Dispatcher(_cfg)
             {
                 Configuration = _cfg,
+                Model = this,
                 Logger = this
             };
             _dispatcher.UpdateUi += DispatcherOnUpdateUi;
@@ -454,17 +461,18 @@ namespace RailwayEssentialMdi.ViewModels
 
                 bool r = ee.Save();
                 if (!r)
-                {
-                    throw new Exception("<Save> Failure storing file: " + e.TrackObjectFilepath);
-                }
+                    Log("<Save> Failure storing file: " + e.TrackObjectFilepath);
             }
+
+            Project.TargetHost = _cfg.IpAddress;
+            Project.TargetPort = _cfg.Port;
 
             Project.Save();
 
             var globalFilepath = Path.Combine(_project.Dirpath, "TrackObjects.json");
             var r3 = _dispatcher?.GetDataProvider().SaveObjects(globalFilepath);
             if (r3.HasValue)
-                throw new Exception("Storing failed: " + globalFilepath);
+                Log("Storing failed: " + globalFilepath);
         }
 
         public void Exit(object p)
@@ -488,12 +496,21 @@ namespace RailwayEssentialMdi.ViewModels
         public void DisconnectFromCommandStation(object p)
         {
             if (_dispatcher != null)
-                _dispatcher.SetRunMode(true);
+                _dispatcher.SetRunMode(false);
         }
      
         public void PropertiesCommandStation(object p)
         {
-            throw new NotImplementedException();
+            foreach (var item in Windows)
+            {
+                var e = item as PropertiesWindow;
+                if (e != null)
+                    return;
+            }
+
+            var item2 = new PropertiesWindow(_cfg);
+            item2.Closing += (s, e) => Windows.Remove(item2);
+            Windows.Add(item2);
         }
 
         public void ShowLog(object p)

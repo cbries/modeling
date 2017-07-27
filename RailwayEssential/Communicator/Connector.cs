@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Ecos2Core;
+using RailwayEssentialCore;
 using ThreadState = System.Threading.ThreadState;
 
 namespace Communicator
@@ -20,7 +21,7 @@ namespace Communicator
 
         public ILogging Logger { get; set; }
 
-        public RailwayEssentialCore.Configuration Cfg { get; set; }
+        public IConfiguration Cfg { get; set; }
 
         private string IpAddr { get { return Cfg.IpAddress; } }
         private UInt16 Port { get { return Cfg.Port; } }

@@ -15,7 +15,7 @@ namespace Dispatcher
     {
         public event UpdateUiDelegate UpdateUi;
 
-        public RailwayEssentialCore.Configuration Configuration { get; set; }
+        public IConfiguration Configuration { get; set; }
         public ILogging Logger { get; set; }
         public IRailwayEssentialModel Model { get; set; }
         private readonly Communication _communication = null;
@@ -32,12 +32,13 @@ namespace Dispatcher
             return _dataProvider;
         }
         
-        public Dispatcher()
+        public Dispatcher(IConfiguration cfg)
         {
-            Configuration = new RailwayEssentialCore.Configuration();
+            Configuration = cfg;
 
             _communication = new Communication(Configuration);
             _communication.CommunicationStarted += CommunicationOnCommunicationStarted;
+            _communication.CommunicationStopped += CommunicationOnCommunicationStopped;
             _communication.CommunicationFailed += CommunicationOnCommunicationFailed;
             _communication.BlocksReceived += CommunicationOnBlocksReceived;
         }
@@ -205,6 +206,12 @@ namespace Dispatcher
                 Model.TriggerPropertyChanged("ConnectionState");
         }
 
+        private void CommunicationOnCommunicationStopped(object sender, EventArgs eventArgs)
+        {
+            if (Model != null)
+                Model.TriggerPropertyChanged("ConnectionState");
+        }
+
         private void CommunicationOnCommunicationFailed(object sender, EventArgs eventArgs)
         {
             var c = sender as Communication;
@@ -213,6 +220,7 @@ namespace Dispatcher
             if(Model != null)
                 Model.TriggerPropertyChanged("ConnectionState");
         }
+
         private void CommunicationOnBlocksReceived(object sender, IReadOnlyList<IBlock> blocks)
         {
             if (Logger != null)

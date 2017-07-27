@@ -16,5 +16,8 @@
             <views:LocomotiveControlView/>
         </DataTemplate>
         -->
+        <DataTemplate DataType="{x:Type viewModels:PropertiesWindow}">
+            <views:PropertiesView/>
+        </DataTemplate>
     </Application.Resources>
 </Application>
