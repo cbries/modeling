@@ -101,9 +101,9 @@ namespace CommunicatorUi
 
         }
 
-        private void COnFailed(object o)
+        private void COnFailed(object o, string message)
         {
-            Log("Failed");
+            Log("Failed: " + message.Trim() + "\r\n");
             _isConnected = false;
         }
 
