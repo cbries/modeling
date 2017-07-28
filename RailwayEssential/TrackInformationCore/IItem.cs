@@ -10,6 +10,8 @@ namespace TrackInformationCore
     {
         event CommandsReadyDelegator CommandsReady;
 
+        string IconName { get; set; }
+
         int TypeId();
 
         int ObjectId { get; set; }

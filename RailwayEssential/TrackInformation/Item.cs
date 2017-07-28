@@ -15,6 +15,8 @@ namespace TrackInformation
     {
         public event CommandsReadyDelegator CommandsReady;
 
+        public string IconName { get; set; }
+
         public ObservableCollection<Item> Items { get; set; }
 
         public virtual int TypeId()
@@ -85,23 +87,31 @@ namespace TrackInformation
 
         private void UpdateIconPath()
         {
-            string BasePackUrlsPath = @"pack://application:,,,/RailwayEssentialUi;component/Resources/";
+            string BasePackUrlsPath = @"pack://application:,,,/RailwayEssentialMdi;component/Resources/";
 
             var item = this as IItem;
+
             if (item == null)
+            {
                 _iconSource = new BitmapImage(new Uri(BasePackUrlsPath + "unknown.png"));
+            }
             else
             {
-                if (item is Locomotive)
-                    _iconSource = new BitmapImage(new Uri(BasePackUrlsPath + "train.png"));
-                else if (item is Switch)
-                    _iconSource = new BitmapImage(new Uri(BasePackUrlsPath + "switch.png"));
-                else if (item is Route)
-                    _iconSource = new BitmapImage(new Uri(BasePackUrlsPath + "route.png"));
-                else if (item is S88)
-                    _iconSource = new BitmapImage(new Uri(BasePackUrlsPath + "s88.png"));
+                if (!string.IsNullOrEmpty(IconName))
+                    _iconSource = new BitmapImage(new Uri(BasePackUrlsPath + IconName));
                 else
-                    _iconSource = new BitmapImage(new Uri(BasePackUrlsPath + "unknown.png"));
+                {
+                    if (item is Locomotive)
+                        _iconSource = new BitmapImage(new Uri(BasePackUrlsPath + "train.png"));
+                    else if (item is Switch)
+                        _iconSource = new BitmapImage(new Uri(BasePackUrlsPath + "switch.png"));
+                    else if (item is Route)
+                        _iconSource = new BitmapImage(new Uri(BasePackUrlsPath + "route.png"));
+                    else if (item is S88)
+                        _iconSource = new BitmapImage(new Uri(BasePackUrlsPath + "s88.png"));
+                    else
+                        _iconSource = new BitmapImage(new Uri(BasePackUrlsPath + "unknown.png"));
+                }
             }
         }
 

@@ -3,13 +3,15 @@
   "version": 1.0,
   "targetHost": "192.168.178.61",
   "targetPort": 15471,
-  "objects": [ "TrackObjects.json" ],
-  "tracks": [
+  "objects": [
+    "TrackObjects.json"
+  ],
+  "track": 
     {
       "name": "S#1",
       "path": "TrackPlan.json",
       "weave": "TrackWeaving.json",
       "show": true
     }
-  ]
+  
 }

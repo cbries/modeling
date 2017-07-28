@@ -1,5 +1,5 @@
 ﻿using System;
-using MDIContainer.DemoClient.Commands;
+using RailwayEssentialMdi.Commands;
 
 namespace RailwayEssentialMdi.ViewModels
 {
@@ -7,7 +7,7 @@ namespace RailwayEssentialMdi.ViewModels
     {
         public event EventHandler Closing;
 
-        public virtual string Title => "";
+        public virtual string Title { get; set; }
 
         public virtual RelayCommand CloseCommand { get; }
 

@@ -52,6 +52,8 @@ namespace MDIContainer.Control
 
         internal void Initialize(MDIContainer container)
         {
+            this.Initialized += MDIWindow_Initialized;
+
             Container = container;
             Container.SizeChanged += OnContainerSizeChanged;
 
@@ -59,8 +61,15 @@ namespace MDIContainer.Control
             LastWidth = ActualWidth;           
         }
 
+        private void MDIWindow_Initialized(object sender, System.EventArgs e)
+        {
+            Trace.WriteLine(" *** Initialized *** ");
+        }
+
         private void OnContainerSizeChanged(object sender, SizeChangedEventArgs e)
         {
+            Trace.WriteLine("Size changed: " + e.NewSize.Width + "x" + e.NewSize.Height);
+
             if (WindowState == WindowState.Maximized)
             {
                 Width += e.NewSize.Width - e.PreviousSize.Width;
@@ -195,6 +204,8 @@ namespace MDIContainer.Control
 
         private static void OnWindowStateChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
+            Trace.WriteLine("OnWindowStateChanged()");
+
             var window = obj as MDIWindow;
             if (window != null)
             {
@@ -208,7 +219,7 @@ namespace MDIContainer.Control
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
-
+            
             Focus();
         }
 
@@ -216,6 +227,7 @@ namespace MDIContainer.Control
         {
             base.OnLostKeyboardFocus(e);
 
+            IsResizable = true;
             IsSelected = false;
             Panel.SetZIndex(this, 0);
 
@@ -226,6 +238,7 @@ namespace MDIContainer.Control
         {
             base.OnGotKeyboardFocus(e);
 
+            IsResizable = true;
             IsSelected = true;
             Panel.SetZIndex(this, 1);
 

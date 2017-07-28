@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Media;
-
-namespace MDIContainer.Control.Extensions
+﻿namespace MDIContainer.Control.Extensions
 {
+    using System.Windows;
+    using System.Windows.Media;
+
    internal static class VisualTreeExtension
    {
       public static TParent FindSpecificParent<TParent>(FrameworkElement sender)

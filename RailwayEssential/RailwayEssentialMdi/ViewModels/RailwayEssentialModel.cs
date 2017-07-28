@@ -6,12 +6,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Ecos2Core;
-using MDIContainer.DemoClient.Commands;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RailwayEssentialCore;
 using RailwayEssentialMdi.Bases;
+using RailwayEssentialMdi.Commands;
 using RailwayEssentialMdi.DataObjects;
 using RailwayEssentialMdi.Entities;
 using RailwayEssentialMdi.Interfaces;
@@ -24,17 +26,7 @@ namespace RailwayEssentialMdi.ViewModels
     {
         public ObservableCollection<IContent> Windows { get; private set; }
 
-        private ObservableCollection<Item> _commandStations;
-        private ObservableCollection<Locomotive> _locomotives;
-        private ObservableCollection<Switch> _switches;
-        private ObservableCollection<S88> _s88s;
-        private ObservableCollection<Route> _routes;
-
-        public ObservableCollection<Item> CommandStations => _commandStations;
-        public ObservableCollection<Locomotive> Locomotices => _locomotives;
-        public ObservableCollection<Switch> Switches => _switches;
-        public ObservableCollection<S88> S88 => _s88s;
-        public ObservableCollection<Route> Routes => _routes;
+        public IMainView MainView { get; set; }
 
         private Random _random = new Random(DateTime.Now.Millisecond);
         private ProjectFile _project;
@@ -50,13 +42,31 @@ namespace RailwayEssentialMdi.ViewModels
             }
         }
 
-        private Theme.Theme _theme;
-        private Configuration _cfg;
+        private readonly Theme.Theme _theme;
+        private readonly Configuration _cfg;
         private Dispatcher.Dispatcher _dispatcher;
 
-        private SynchronizationContext _ctx = null;
+        private readonly SynchronizationContext _ctx = null;
 
         public Dispatcher.Dispatcher Dispatcher => _dispatcher;
+
+        private readonly Category _itemStatus = new Category { Title = "Status", IconName = "cat_status.png" };
+        private readonly Category _itemLocomotives = new Category { Title = "Locomotives", IconName = "cat_locomotive.png" };
+        private readonly Category _itemS88 = new Category { Title = "S88 Ports", IconName = "cat_s88.png" };
+        private readonly Category _itemSwitches = new Category { Title = "Switches", IconName = "cat_switch.png" };
+        private readonly Category _itemRoutes = new Category { Title = "Routes", IconName = "cat_route.png" };
+
+        private ObservableCollection<Item> _rootItems = new ObservableCollection<Item>();
+
+        public ObservableCollection<Item> RootItems
+        {
+            get => _rootItems;
+            set
+            {
+                _rootItems = value;
+                RaisePropertyChanged("RootItems");
+            }
+        }
 
         public void Log(string text, params object[] args)
         {
@@ -91,17 +101,27 @@ namespace RailwayEssentialMdi.ViewModels
             }
         }
 
+        public ImageSource ConnectionStateIcon
+        {
+            get
+            {
+                if (_dispatcher == null || _cfg == null)
+                    return new BitmapImage(new Uri("/RailwayEssentialMdi;component/Resources/offline.png", UriKind.Relative));
+                if (!_dispatcher.GetRunMode())
+                    return new BitmapImage(new Uri("/RailwayEssentialMdi;component/Resources/offline.png", UriKind.Relative));
+                return new BitmapImage(new Uri("/RailwayEssentialMdi;component/Resources/online.png", UriKind.Relative));
+            }
+        }
+
         public string ConnectionState
         {
             get
             {
-                if (_dispatcher == null)
+                if (_dispatcher == null || _cfg == null)
                     return "No connection";
-                if (_cfg == null)
+                if (!_dispatcher.GetRunMode())
                     return "No connection";
-                if (_dispatcher.GetRunMode())
-                    return $"{_cfg.IpAddress}:{_cfg.Port}";
-                return "No connection";
+                return $"{_cfg.IpAddress}:{_cfg.Port}";
             }
         }
 
@@ -111,21 +131,20 @@ namespace RailwayEssentialMdi.ViewModels
         public RelayCommand SaveCommand { get; }
         public RelayCommand ExitCommand { get; }
 
+        public RelayCommand ShowLocomotiveCommand { get; }
         public RelayCommand ConnectCommand { get; }
         public RelayCommand DisconnectCommand { get; }
         public RelayCommand CmdStationsPropertiesCommand { get; }
 
         public RelayCommand ShowLogCommand { get; }
         public RelayCommand ShowCommandLogCommand { get; }
+
         public RelayCommand AddTrackCommand { get; }
         public RelayCommand RemoveTrackCommand { get; }
 
         private readonly LogEntity _logMessagesGeneral = new LogEntity();
         private readonly LogEntity _logMessagesCommands = new LogEntity();
-
-        private readonly List<TrackEntity> _trackEntities = new List<TrackEntity>();
-
-        private static int _counter = 0;
+        private TrackEntity _trackEntity = null;
 
         public RailwayEssentialModel()
         {
@@ -133,19 +152,14 @@ namespace RailwayEssentialMdi.ViewModels
 
             _ctx = SynchronizationContext.Current;
 
-            _commandStations = new ObservableCollection<Item>();
-            _locomotives = new ObservableCollection<Locomotive>();
-            _switches = new ObservableCollection<Switch>();
-            _s88s = new ObservableCollection<S88>();
-            _routes = new ObservableCollection<Route>();
-
             _cfg = new Configuration();
-
+            
             NewProjectCommand = new RelayCommand(NewProject, CheckNewProject);
             OpenCommand = new RelayCommand(Open, CheckOpen);
             CloseCommand = new RelayCommand(Close, CheckClose);
             SaveCommand = new RelayCommand(Save, CheckSave);
             ExitCommand = new RelayCommand(Exit, CheckExit);
+            ShowLocomotiveCommand = new RelayCommand(ShowLocomotive, CheckShowLocomotive);
             ConnectCommand = new RelayCommand(ConnectToCommandStation, CheckConnectToCommandStation);
             DisconnectCommand = new RelayCommand(DisconnectFromCommandStation, CheckDisconnectFromCommandStation);
             CmdStationsPropertiesCommand = new RelayCommand(PropertiesCommandStation);
@@ -155,6 +169,7 @@ namespace RailwayEssentialMdi.ViewModels
             RemoveTrackCommand = new RelayCommand(RemoveTrack, CheckRemoveTrack);
 
             // TEST
+            //int _counter = 0;
             //new Thread(() =>
             //{
             //    for (;;)
@@ -163,13 +178,24 @@ namespace RailwayEssentialMdi.ViewModels
             //        {
             //            _logMessagesGeneral.Add("Message: {0}\r\n", _counter);
 
+            //            if (_itemStatus != null)
+            //            {
+            //                if (_ctx != null)
+            //                {
+            //                    _ctx.Send(state =>
+            //                    {
+            //                        // ...
+            //                    }, null);
+            //                }
+            //            }
+
             //            ++_counter;
 
             //            Thread.Sleep(1000);
             //        }
             //    }
-            //}) { IsBackground = true }.Start();
-            //_logMessagesGeneral.Add("Test\r\n");
+            //})
+            //{ IsBackground = true }.Start();
 
             _theme = new Theme.Theme();
             var themePath = Utils.ThemeName.ExpandRailwayEssential();
@@ -217,12 +243,12 @@ namespace RailwayEssentialMdi.ViewModels
                         ["version"] = 1.0,
                         ["targetHost"] = "192.168.178.61",
                         ["targetPort"] = 15471,
-                        ["objects"] = new JArray() {"TrackObjects.json"},
+                        ["objects"] = new JArray() { "TrackObjects.json" },
                         ["tracks"] = new JArray()
                     };
 
                     File.WriteAllText(
-                        Path.Combine(Path.GetDirectoryName(fname), "TrackObjects.json"), 
+                        Path.Combine(Path.GetDirectoryName(fname), "TrackObjects.json"),
                         new JObject().ToString(Formatting.Indented), Encoding.UTF8);
 
                     File.WriteAllText(fname, o.ToString(Formatting.Indented), Encoding.UTF8);
@@ -282,32 +308,11 @@ namespace RailwayEssentialMdi.ViewModels
             if (_project == null)
                 return;
 
-            // load tracks
-            foreach (var prjTrack in _project.Tracks)
-            {
-                if (prjTrack == null)
-                    continue;
-                
-                // ...
-
-                TrackEntity e = new TrackEntity(_dispatcher)
-                {
-                    TrackObjectFilepath = Path.Combine(_project.Dirpath, prjTrack.Path),
-                    Theme = _theme, 
-                    Ctx = _ctx
-                };
-
-                e.Initialize();
-
-                _trackEntities.Add(e);
-
-                if (prjTrack.Show)
-                {
-                    var item = new TrackWindow(e);
-                    item.Closing += (s, ev) => Windows.Remove(item);
-                    Windows.Add(item);
-                }
-            }
+            RootItems.Add(_itemStatus);
+            RootItems.Add(_itemLocomotives);
+            RootItems.Add(_itemS88);
+            RootItems.Add(_itemSwitches);
+            RootItems.Add(_itemRoutes);
 
             _cfg.IpAddress = Project.TargetHost;
             _cfg.Port = Project.TargetPort;
@@ -318,11 +323,49 @@ namespace RailwayEssentialMdi.ViewModels
                 Model = this,
                 Logger = this
             };
+
+            var prjTrack = Project.Track;
+
+            _trackEntity = new TrackEntity(_dispatcher)
+            {
+                TrackObjectFilepath = Path.Combine(_project.Dirpath, prjTrack.Path),
+                Theme = _theme,
+                Ctx = _ctx,
+                ProjectTrack = prjTrack
+            };
+
+            _trackEntity.Initialize();
+
+            if (prjTrack.Show)
+            {
+                var item = new TrackWindow(_trackEntity);
+                item.Closing += (s, ev) => Windows.Remove(item);
+                Windows.Add(item);
+            }
+
             _dispatcher.UpdateUi += DispatcherOnUpdateUi;
+            _dispatcher.ReadyToPlay += DispatcherOnReadyToPlay;
 
             var dataProvider = _dispatcher.GetDataProvider();
             dataProvider.DataChanged += OnDataChanged;
             dataProvider.CommandsReady += DataProviderOnCommandsReady;
+
+            foreach (var objFilename in Project.Objects)
+            {
+                string absolutePath = Path.Combine(Project.Dirpath, objFilename);
+                if (!File.Exists(absolutePath))
+                    continue;
+
+                dataProvider.LoadObjects(absolutePath);
+            }
+
+            //if (MainView != null)
+            //    MainView.LoadLayout();
+        }
+
+        private void DispatcherOnReadyToPlay(object sender, EventArgs eventArgs)
+        {
+            _dispatcher.InitializeWeaving(_trackEntity.Track);
         }
 
         private void DispatcherOnUpdateUi(object sender, TrackWeaver.TrackWeaver trackWeaver)
@@ -339,7 +382,7 @@ namespace RailwayEssentialMdi.ViewModels
 
         private void DataProviderOnCommandsReady(object sender, IReadOnlyList<ICommand> commands)
         {
-            if(_dispatcher != null)
+            if (_dispatcher != null)
                 _dispatcher.ForwardCommands(commands);
         }
 
@@ -358,18 +401,18 @@ namespace RailwayEssentialMdi.ViewModels
                     {
                         var ee = e as Ecos2;
 
-                        if (_commandStations.Count == 0)
-                            _commandStations.Add(new Ecos2());
+                        if (_itemStatus.Items.Count == 0)
+                            _itemStatus.Items.Add(new Ecos2());
 
-                        var ecos2 = _commandStations[0] as Ecos2;
+                        var ecos2 = _itemStatus.Items[0] as Ecos2;
 
                         if (ecos2 != null && ecos2.Items.Count < 4)
                         {
                             ecos2.Items.Clear();
-                            ecos2.Items.Add(new Item {Title = $"{ee.Name}"});
-                            ecos2.Items.Add(new Item {Title = $"Application Version: {ee.ApplicationVersion}"});
-                            ecos2.Items.Add(new Item {Title = $"Protocol Version: {ee.ProtocolVersion}"});
-                            ecos2.Items.Add(new Item {Title = $"Hardware Version: {ee.HardwareVersion}"});
+                            ecos2.Items.Add(new Item { Title = $"{ee.Name}" });
+                            ecos2.Items.Add(new Item { Title = $"Application Version: {ee.ApplicationVersion}" });
+                            ecos2.Items.Add(new Item { Title = $"Protocol Version: {ee.ProtocolVersion}" });
+                            ecos2.Items.Add(new Item { Title = $"Hardware Version: {ee.HardwareVersion}" });
                         }
                         else
                         {
@@ -386,54 +429,56 @@ namespace RailwayEssentialMdi.ViewModels
                     {
                         var ee = e as Locomotive;
 
-                        if (_locomotives.Any(x => x.ObjectId == ee.ObjectId))
+                        if (_itemLocomotives.Items.Any(x => x.ObjectId == ee.ObjectId))
                             ee.UpdateTitle();
                         else
                         {
                             ee.UpdateTitle();
-                            _locomotives.Add(ee);
+                            _itemLocomotives.Items.Add(ee);
                         }
+
+                        Log($"Locomotive {ee.Addr}, {ee.Name}");
                     }
                     else if (e is S88)
                     {
                         var ee = e as S88;
 
-                        if (_s88s.Any(x => x.ObjectId == ee.ObjectId))
+                        if (_itemS88.Items.Any(x => x.ObjectId == ee.ObjectId))
                             ee.UpdateTitle();
                         else
                         {
                             ee.UpdateTitle();
-                            _s88s.Add(ee);
+                            _itemS88.Items.Add(ee);
                         }
                     }
                     else if (e is Switch)
                     {
                         var ee = e as Switch;
 
-                        if (_switches.Any(x => x.ObjectId == ee.ObjectId))
+                        if (_itemSwitches.Items.Any(x => x.ObjectId == ee.ObjectId))
                             ee.UpdateTitle();
                         else
                         {
                             ee.UpdateTitle();
-                            _switches.Add(ee);
+                            _itemSwitches.Items.Add(ee);
                         }
                     }
                     else if (e is Route)
                     {
                         var ee = e as Route;
 
-                        if (_routes.Any(x => x.ObjectId == ee.ObjectId))
+                        if (_itemRoutes.Items.Any(x => x.ObjectId == ee.ObjectId))
                             ee.UpdateTitle();
                         else
                         {
                             ee.UpdateTitle();
-                            _routes.Add(ee);
+                            _itemRoutes.Items.Add(ee);
                         }
                     }
                 }
             }, null);
         }
-        
+
         public void Close(object o)
         {
             if (_project != null)
@@ -447,25 +492,27 @@ namespace RailwayEssentialMdi.ViewModels
                 Windows = null;
                 Windows = new ObservableCollection<IContent>();
 
+                RootItems.Clear();
+
                 Project = null;
             }
         }
 
         public void Save(object p)
-        {            
-            foreach (var e in _trackEntities)
-            {
-                var ee = e as IPersist;
-                if (ee == null)
-                    continue;
-
+        {
+            var ee = _trackEntity as IPersist;
+            if(ee != null)
+            { 
                 bool r = ee.Save();
                 if (!r)
-                    Log("<Save> Failure storing file: " + e.TrackObjectFilepath);
+                    Log("<Save> Failure storing file: " + _trackEntity.TrackObjectFilepath);
             }
 
             Project.TargetHost = _cfg.IpAddress;
             Project.TargetPort = _cfg.Port;
+
+            // transfer window dimensions
+
 
             Project.Save();
 
@@ -480,6 +527,24 @@ namespace RailwayEssentialMdi.ViewModels
             System.Windows.Application.Current.Shutdown();
         }
 
+        public void ShowLocomotive(object p)
+        {
+            foreach (var item in Windows)
+            {
+                if (item == null)
+                    continue;
+                var e = item as LocomotivesWindow;
+                if(e != null)
+                    return;
+            }
+
+            var item2 = new LocomotivesWindow();
+            // TEST
+            item2.Entity = new LocomotiveEntity {Name = "BR10"};
+            item2.Closing += (s, e) => Windows.Remove(item2);
+            Windows.Add(item2);
+        }
+
         public void ConnectToCommandStation(object p)
         {
             try
@@ -489,7 +554,7 @@ namespace RailwayEssentialMdi.ViewModels
             }
             catch (Exception ex)
             {
-                LogNetwork("Could not connect to command station ({1}:{2}): {0}", ex.Message, _cfg.IpAddress, _cfg.Port);
+                LogNetwork("Could not connect to command station ({1}:{2}): {0}\r\n", ex.Message, _cfg.IpAddress, _cfg.Port);
             }
         }
 
@@ -498,7 +563,7 @@ namespace RailwayEssentialMdi.ViewModels
             if (_dispatcher != null)
                 _dispatcher.SetRunMode(false);
         }
-     
+
         public void PropertiesCommandStation(object p)
         {
             foreach (var item in Windows)
@@ -549,43 +614,45 @@ namespace RailwayEssentialMdi.ViewModels
         {
             var trackPath = "TrackPlan{0}.json".GenerateUniqueName(_project.Dirpath);
             var trackWeavePath = "TrackWeave{0}.json".GenerateUniqueName(_project.Dirpath);
-            try { File.WriteAllText("[]", trackPath, Encoding.UTF8); }
+            try { File.WriteAllText(trackPath, @"[]", Encoding.UTF8); }
             catch { /* ignore */ }
-            try { File.WriteAllText("[]", trackWeavePath, Encoding.UTF8); }
+            try { File.WriteAllText(trackWeavePath, @"[]", Encoding.UTF8); }
             catch { /* ignore */ }
 
             var trackName = Path.GetFileNameWithoutExtension(trackPath);
             var trackRelativePath = Path.GetFileName(trackPath);
             var trackWeaveRelativePath = Path.GetFileName(trackWeavePath);
 
-            TrackEntity e = new TrackEntity(_dispatcher)
+            if (_trackEntity == null)
             {
-                Theme = _theme,
-                Ctx = _ctx,
-                TrackObjectFilepath = trackPath
-            };
-            e.Initialize();
+                _trackEntity = new TrackEntity(_dispatcher)
+                {
+                    Theme = _theme,
+                    Ctx = _ctx,
+                    TrackObjectFilepath = trackPath
+                };
 
-            _trackEntities.Add(e);
-            
-            var item = new TrackWindow(e);
+                _trackEntity.Initialize();
+            }
+
+            var item = new TrackWindow(_trackEntity);
             item.Closing += (s, ev) => Windows.Remove(item);
             Windows.Add(item);
 
-            Project.Tracks.Add(new ProjectTrack()
+            Project.Track = new ProjectTrack
             {
                 Name = trackName,
                 Path = trackRelativePath,
                 Show = true,
                 Weave = trackWeaveRelativePath
-            });
+            };
         }
 
         public void RemoveTrack(object p)
         {
             // TODO
         }
- 
+
         #region can execute checks
 
         public bool CheckAddTrack(object p)
@@ -611,6 +678,22 @@ namespace RailwayEssentialMdi.ViewModels
                 return false;
 
             return m._dispatcher.GetRunMode();
+        }
+
+        private bool CheckShowLocomotive(object o1)
+        {
+            var m = o1 as RailwayEssentialModel;
+
+            if (m == null)
+                return false;
+
+            if (m._project == null)
+                return false;
+
+            if (m._cfg == null)
+                return false;
+
+            return true;
         }
 
         private bool CheckConnectToCommandStation(object o1)
@@ -678,6 +761,6 @@ namespace RailwayEssentialMdi.ViewModels
             }, null);
         }
 
-        #endregion
+        #endregion        
     }
 }

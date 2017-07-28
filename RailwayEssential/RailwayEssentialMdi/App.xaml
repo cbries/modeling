@@ -11,11 +11,9 @@
         <DataTemplate DataType="{x:Type viewModels:TrackWindow}">
             <views:TrackView/>
         </DataTemplate>
-        <!--
-        <DataTemplate DataType="{x:Type viewModels:LocomotiveControlWindow}">
-            <views:LocomotiveControlView/>
+        <DataTemplate DataType="{x:Type viewModels:LocomotivesWindow}">
+            <views:LocomotivesView/>
         </DataTemplate>
-        -->
         <DataTemplate DataType="{x:Type viewModels:PropertiesWindow}">
             <views:PropertiesView/>
         </DataTemplate>

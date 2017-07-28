@@ -39,11 +39,13 @@ namespace RailwayEssentialMdi.DataObjects
 
         public JObject ToJson()
         {
-            JObject o = new JObject();
-            o["name"] = Name;
-            o["path"] = Path;
-            o["weave"] = Weave;
-            o["show"] = Show;
+            JObject o = new JObject
+            {
+                ["name"] = Name,
+                ["path"] = Path,
+                ["weave"] = Weave,
+                ["show"] = Show
+            };
             return o;
         }
     }

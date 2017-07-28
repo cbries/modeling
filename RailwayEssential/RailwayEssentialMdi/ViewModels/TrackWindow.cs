@@ -5,8 +5,6 @@ namespace RailwayEssentialMdi.ViewModels
 {
     public class TrackWindow : BaseWindow, ITrackWindow
     {
-        public override string Title => "Track";
-
         private readonly TrackEntity _entity;
 
         public TrackEntity Entity => _entity;
@@ -26,7 +24,7 @@ namespace RailwayEssentialMdi.ViewModels
 
         public void PromoteViewer(ITrackViewer trackViewer)
         {
-            if(_entity != null)
+            if (_entity != null)
                 _entity.PromoteViewer(trackViewer);
         }
 

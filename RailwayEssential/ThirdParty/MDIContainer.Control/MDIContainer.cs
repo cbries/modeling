@@ -1,8 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Diagnostics;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
 using MDIContainer.Control.Events;
+using MDIContainer.Control.Extensions;
 
 namespace MDIContainer.Control
 {
@@ -10,6 +14,9 @@ namespace MDIContainer.Control
     {
         private IList InternalItemSource { get; set; }
         internal int MinimizedWindowsCount { get; private set; }
+
+        private IGeometry _initialGeometry;
+        private bool _initialResizeDone = false;
 
         static MDIContainer()
         {
@@ -34,15 +41,24 @@ namespace MDIContainer.Control
                 window.WindowStateChanged += OnWindowStateChanged;
                 window.Initialize(this);
 
-                Canvas.SetTop(window, 32);
-                Canvas.SetLeft(window, 32);
+                _initialGeometry = window.DataContext as IGeometry;
+                if (_initialGeometry != null)
+                {
+                    Canvas.SetTop(window, _initialGeometry.Top);
+                    Canvas.SetLeft(window, _initialGeometry.Left);                   
+                }
+                else
+                {
+                    Canvas.SetTop(window, 32);
+                    Canvas.SetLeft(window, 32);
+                }
 
                 window.Focus();
             }
 
             base.PrepareContainerForItemOverride(element, item);
         }
-
+        
         private void OnWindowStateChanged(object sender, WindowStateChangedEventArgs e)
         {
             if (e.NewValue == WindowState.Minimized)
@@ -88,6 +104,21 @@ namespace MDIContainer.Control
             if (((MDIWindow)sender).IsFocused)
             {
                 SelectedItem = e.OriginalSource;
+            }
+
+            if (!_initialResizeDone)
+            {
+                _initialResizeDone = true;
+
+                if (_initialGeometry != null)
+                {
+                    var w = sender as MDIWindow;
+                    if (w != null)
+                    {
+                        w.Resize(_initialGeometry.Width, _initialGeometry.Height);
+                        w.IsResizable = true;
+                    }
+                }
             }
         }
     }

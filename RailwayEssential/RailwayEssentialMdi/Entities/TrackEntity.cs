@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading;
 using Newtonsoft.Json;
 using RailwayEssentialCore;
+using RailwayEssentialMdi.DataObjects;
 using RailwayEssentialWeb;
 using TrackWeaver;
 
@@ -13,6 +14,8 @@ namespace RailwayEssentialMdi.Entities
     {
         public event EventHandler Changed;
 
+        public const string ToolContentId = "TrackEntityTool";
+
         private bool _initialized;
         private string _tmpTrackName;
         private Theme.Theme _theme;
@@ -21,9 +24,86 @@ namespace RailwayEssentialMdi.Entities
         private TrackPlanParser.Track _track;
         private WebGenerator _webGenerator;
 
+        public string TrackObjectFilepath { get; set; }
+
         internal SynchronizationContext Ctx { get; set; }
 
-        public string TrackObjectFilepath { get; set; }
+        public ProjectTrack ProjectTrack { get; set; }
+
+        #region Name
+
+        public string Name
+        {
+            get
+            {
+                if (ProjectTrack == null)
+                    return "-";
+                return ProjectTrack.Name;
+            }
+
+            set
+            {
+                if (ProjectTrack != null)
+                    ProjectTrack.Name = value;
+                RaisePropertyChanged("Name");
+            }
+        }
+
+        #endregion
+
+        #region ContentId
+
+        private string _contentId = null;
+        public string ContentId
+        {
+            get { return _contentId; }
+            set
+            {
+                if (_contentId != value)
+                {
+                    _contentId = value;
+                    RaisePropertyChanged("ContentId");
+                }
+            }
+        }
+
+        #endregion
+
+        #region IsSelected
+
+        private bool _isSelected = false;
+        public bool IsSelected
+        {
+            get { return _isSelected; }
+            set
+            {
+                if (_isSelected != value)
+                {
+                    _isSelected = value;
+                    RaisePropertyChanged("IsSelected");
+                }
+            }
+        }
+
+        #endregion
+
+        #region IsActive
+
+        private bool _isActive = false;
+        public bool IsActive
+        {
+            get { return _isActive; }
+            set
+            {
+                if (_isActive != value)
+                {
+                    _isActive = value;
+                    RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+
+        #endregion
 
         public Theme.Theme Theme
         {
@@ -44,6 +124,7 @@ namespace RailwayEssentialMdi.Entities
         public TrackEntity(Dispatcher.Dispatcher dispatcher)
         {
             _dispatcher = dispatcher;
+            ContentId = ToolContentId;
             TrackEditor = Utils.TrackplansEditor.ExpandRailwayEssential();
         }
 
@@ -320,7 +401,9 @@ namespace RailwayEssentialMdi.Entities
             }
             catch (Exception ex)
             {
-                Trace.WriteLine("<TrackEntity> " + ex.Message);
+                var logger = _dispatcher.Logger;
+                if(logger != null)
+                    logger.Log("<TrackEntity> " + ex.Message);
 
                 return false;
             }

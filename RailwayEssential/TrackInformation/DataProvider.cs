@@ -284,7 +284,7 @@ namespace TrackInformation
             if (block.Command == null)
                 return false;
 
-            Trace.WriteLine("Type: " + block.Command.Type);
+            //Trace.WriteLine("Type: " + block.Command.Type);
 
             if (block.Command.Type != CommandT.QueryObjects && block.Command.Type != CommandT.Get)
                 return false;

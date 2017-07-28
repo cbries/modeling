@@ -34,21 +34,21 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                
-                <ToggleButton Grid.Row="0" Grid.Column="0" Width="32" Height="32" Margin="0,2,0,2" Content="F0" Command="{Binding SwitchFncCmd}" CommandParameter="0"/>
-                <ToggleButton Grid.Row="0" Grid.Column="1" Width="32" Height="32" Margin="0,2,0,2" Content="F1" Command="{Binding SwitchFncCmd}" CommandParameter="1"/>
-                <ToggleButton Grid.Row="0" Grid.Column="2" Width="32" Height="32" Margin="0,2,0,2" Content="F2" Command="{Binding SwitchFncCmd}" CommandParameter="2"/>
-                <ToggleButton Grid.Row="0" Grid.Column="3" Width="32" Height="32" Margin="0,2,0,2" Content="F3" Command="{Binding SwitchFncCmd}" CommandParameter="3"/>
 
-                <ToggleButton Grid.Row="1" Grid.Column="0" Width="32" Height="32" Margin="0,2,0,2" Content="F4" Command="{Binding SwitchFncCmd}" CommandParameter="4"/>
-                <ToggleButton Grid.Row="1" Grid.Column="1" Width="32" Height="32" Margin="0,2,0,2" Content="F5" Command="{Binding SwitchFncCmd}" CommandParameter="5"/>
-                <ToggleButton Grid.Row="1" Grid.Column="2" Width="32" Height="32" Margin="0,2,0,2" Content="F6" Command="{Binding SwitchFncCmd}" CommandParameter="6"/>
-                <ToggleButton Grid.Row="1" Grid.Column="3" Width="32" Height="32" Margin="0,2,0,2" Content="F7" Command="{Binding SwitchFncCmd}" CommandParameter="7"/>
+                <ToggleButton Grid.Row="0" Grid.Column="0" Width="32" Height="32" Margin="0,2,0,2" Content="F0" Command="{Binding SwitchFncCommand}" CommandParameter="0"/>
+                <ToggleButton Grid.Row="0" Grid.Column="1" Width="32" Height="32" Margin="0,2,0,2" Content="F1" Command="{Binding SwitchFncCommand}" CommandParameter="1"/>
+                <ToggleButton Grid.Row="0" Grid.Column="2" Width="32" Height="32" Margin="0,2,0,2" Content="F2" Command="{Binding SwitchFncCommand}" CommandParameter="2"/>
+                <ToggleButton Grid.Row="0" Grid.Column="3" Width="32" Height="32" Margin="0,2,0,2" Content="F3" Command="{Binding SwitchFncCommand}" CommandParameter="3"/>
 
-                <ToggleButton Grid.Row="2" Grid.Column="0" Width="32" Height="32" Margin="0,2,0,2" Content="F8" Command="{Binding SwitchFncCmd}" CommandParameter="8"/>
-                <ToggleButton Grid.Row="2" Grid.Column="1" Width="32" Height="32" Margin="0,2,0,2" Content="F9" Command="{Binding SwitchFncCmd}" CommandParameter="9"/>
-                <ToggleButton Grid.Row="2" Grid.Column="2" Width="32" Height="32" Margin="0,2,0,2" Content="F10" Command="{Binding SwitchFncCmd}" CommandParameter="10"/>
-                <ToggleButton Grid.Row="2" Grid.Column="3" Width="32" Height="32" Margin="0,2,0,2" Content="F11" Command="{Binding SwitchFncCmd}" CommandParameter="11"/>
+                <ToggleButton Grid.Row="1" Grid.Column="0" Width="32" Height="32" Margin="0,2,0,2" Content="F4" Command="{Binding SwitchFncCommand}" CommandParameter="4"/>
+                <ToggleButton Grid.Row="1" Grid.Column="1" Width="32" Height="32" Margin="0,2,0,2" Content="F5" Command="{Binding SwitchFncCommand}" CommandParameter="5"/>
+                <ToggleButton Grid.Row="1" Grid.Column="2" Width="32" Height="32" Margin="0,2,0,2" Content="F6" Command="{Binding SwitchFncCommand}" CommandParameter="6"/>
+                <ToggleButton Grid.Row="1" Grid.Column="3" Width="32" Height="32" Margin="0,2,0,2" Content="F7" Command="{Binding SwitchFncCommand}" CommandParameter="7"/>
+
+                <ToggleButton Grid.Row="2" Grid.Column="0" Width="32" Height="32" Margin="0,2,0,2" Content="F8" Command="{Binding SwitchFncCommand}" CommandParameter="8"/>
+                <ToggleButton Grid.Row="2" Grid.Column="1" Width="32" Height="32" Margin="0,2,0,2" Content="F9" Command="{Binding SwitchFncCommand}" CommandParameter="9"/>
+                <ToggleButton Grid.Row="2" Grid.Column="2" Width="32" Height="32" Margin="0,2,0,2" Content="F10" Command="{Binding SwitchFncCommand}" CommandParameter="10"/>
+                <ToggleButton Grid.Row="2" Grid.Column="3" Width="32" Height="32" Margin="0,2,0,2" Content="F11" Command="{Binding SwitchFncCommand}" CommandParameter="11"/>
 
             </Grid>
 

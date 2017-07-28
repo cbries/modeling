@@ -19,12 +19,12 @@ namespace RailwayEssentialMdi.DataObjects
         public string TargetHost { get; set; }
         public UInt16 TargetPort { get; set; }
         public List<string> Objects { get; set; }
-        public List<ProjectTrack> Tracks { get; set; }
+        public ProjectTrack Track { get; set; }
 
         public ProjectFile()
         {
             Objects = new List<string>();
-            Tracks = new List<ProjectTrack>();
+            Track = new ProjectTrack();
         }
 
         public bool Load(string path)
@@ -81,27 +81,20 @@ namespace RailwayEssentialMdi.DataObjects
                     }
                 }
 
-                if (o["tracks"] != null)
+                if (o["track"] != null)
                 {
-                    JArray ar = o["tracks"] as JArray;
-                    if (ar != null)
+                    JObject ao = o["track"] as JObject;
+                    if (ao != null)
                     {
-                        foreach (var e in ar)
-                        {
-                            var oo = e as JObject;
-                            if (oo == null)
-                                continue;
-
-                            var item = new ProjectTrack();
-                            if(item.Parse(oo))
-                                Tracks.Add(item);
-                        }
+                        var item = new ProjectTrack();
+                        if (item.Parse(ao))
+                            Track = item;
                     }
                 }
 
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Trace.WriteLine("<Project> " + ex.Message);
                 return false;
@@ -110,20 +103,19 @@ namespace RailwayEssentialMdi.DataObjects
 
         private JObject ToJson()
         {
-            JObject o = new JObject();
-
-            o["name"] = Name;
-            o["version"] = Version;
-            o["targetHost"] = TargetHost;
-            o["targetPort"] = TargetPort;
             JArray objects = new JArray();
             foreach (var e in Objects)
                 objects.Add(e);
-            o["objects"] = objects;
-            JArray tr = new JArray();
-            foreach(var ee in Tracks)
-                tr.Add(ee.ToJson());
-            o["tracks"] = tr;
+
+            JObject o = new JObject
+            {
+                ["name"] = Name,
+                ["version"] = Version,
+                ["targetHost"] = TargetHost,
+                ["targetPort"] = TargetPort,
+                ["tracks"] = Track.ToJson(),
+                ["objects"] = objects
+            };
 
             return o;
         }

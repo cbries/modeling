@@ -94,6 +94,7 @@
     <Compile Include="Extensions\VisualTreeExtension.cs" />
     <Compile Include="Extensions\WindowBehaviorExtension.cs" />
     <Compile Include="Extensions\WindowVisualExtension.cs" />
+    <Compile Include="IGeometry.cs" />
     <Compile Include="WindowControls\ResizeThumb.cs" />
     <Compile Include="WindowControls\WindowButton.cs" />
     <Page Include="Themes\DefaultTheme.xaml">

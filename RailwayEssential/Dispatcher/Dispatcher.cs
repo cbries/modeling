@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using Ecos2Core;
@@ -14,6 +13,7 @@ namespace Dispatcher
     public class Dispatcher : IDispatcher
     {
         public event UpdateUiDelegate UpdateUi;
+        public event EventHandler ReadyToPlay;
 
         public IConfiguration Configuration { get; set; }
         public ILogging Logger { get; set; }
@@ -144,7 +144,8 @@ namespace Dispatcher
                 }
                 catch (Exception ex)
                 {
-                    Trace.WriteLine("<Dispatcher> {0}", ex.Message);
+                    if(Logger != null)
+                        Logger.LogNetwork("<Dispatcher> {0}", ex.Message);
                 }
             }
             else
@@ -186,6 +187,21 @@ namespace Dispatcher
 
         private void CommunicationOnCommunicationStarted(object sender, EventArgs args)
         {
+            if (_track == null)
+            {
+                if(Logger != null)
+                    Logger.Log("<Dispatcher> Weaving failed: no track loaded.\r\n");
+            }
+            else
+            { 
+                bool r = InitializeWeaving(_track);
+                if (!r)
+                {
+                    if (Logger != null)
+                        Logger.Log("<Dispatcher> Weaving failed\r\n");
+                }
+            }
+
             // send initial commands
             List<ICommand> initialCommands = new List<ICommand>()
             {
@@ -203,28 +219,40 @@ namespace Dispatcher
             _communication.SendCommands(initialCommands);
 
             if (Model != null)
+            {
                 Model.TriggerPropertyChanged("ConnectionState");
+                Model.TriggerPropertyChanged("ConnectionStateIcon");
+            }
+
+            if(ReadyToPlay != null)
+                ReadyToPlay(this, EventArgs.Empty);
         }
 
         private void CommunicationOnCommunicationStopped(object sender, EventArgs eventArgs)
         {
             if (Model != null)
+            {
                 Model.TriggerPropertyChanged("ConnectionState");
+                Model.TriggerPropertyChanged("ConnectionStateIcon");
+            }
         }
 
         private void CommunicationOnCommunicationFailed(object sender, EventArgs eventArgs)
         {
             var c = sender as Communication;
             if (c != null && c.HasError)
-                Logger?.Log("<Dispatcher> Communication failed: {0}\r\n", c.ErrorMessage);
-            if(Model != null)
+                Logger?.Log($"<Dispatcher> Communication failed: {c.ErrorMessage}\r\n");
+            if (Model != null)
+            {
                 Model.TriggerPropertyChanged("ConnectionState");
+                Model.TriggerPropertyChanged("ConnectionStateIcon");
+            }
         }
 
         private void CommunicationOnBlocksReceived(object sender, IReadOnlyList<IBlock> blocks)
         {
             if (Logger != null)
-                Logger.Log("<Dispatcher> Blocks received: " + blocks.Count + "\r\n");
+                Logger.Log($"<Dispatcher> Blocks received: {blocks.Count}\r\n");
 
             foreach (var blk in blocks)
             {
