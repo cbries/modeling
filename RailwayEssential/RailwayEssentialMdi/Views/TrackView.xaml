@@ -7,6 +7,17 @@
              mc:Ignorable="d" Initialized="TrackView_OnInitialized" DataContextChanged="TrackView_OnDataContextChanged"
              d:DesignHeight="250" d:DesignWidth="300">
     <Grid>
-        <railwayEssentialWeb:TrackViewer Name="trackViewer" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <DockPanel Grid.Row="0" HorizontalAlignment="Right">
+            <Button Content="0" Height="20" Width="20" Margin="0,0,5,0" Command="{Binding ZoomResetCommand}"/>
+            <Button Content="+" Height="20" Width="20" Margin="0,0,5,0" Command="{Binding ZoomPlusCommand}"/>
+            <Button Content="-" Height="20" Width="20" Margin="0,0,5,0" Command="{Binding ZoomMinusCommand}"/>
+        </DockPanel>
+        
+        <railwayEssentialWeb:TrackViewer Name="trackViewer" Grid.Row="1"/>
     </Grid>
 </UserControl>

@@ -3,12 +3,13 @@ using System.Diagnostics;
 using System.Threading;
 using System.Windows;
 using CefSharp;
+using CefSharp.Wpf;
 using RailwayEssentialCore;
 using RailwayEssentialWeb.Cef;
 
 namespace RailwayEssentialWeb
 {
-    public partial class TrackViewer : ITrackViewer
+    public partial class TrackViewer : ITrackViewer, ITrackViewerZoom
     {
         private string _url;
 
@@ -27,6 +28,18 @@ namespace RailwayEssentialWeb
         }
 
         public IWebGenerator WebGenerator { get; set; }
+
+        #region ITrackViewerZoom
+
+        public double ZoomLevel
+        {
+            get => Browser.ZoomLevel;
+            set { Browser.ZoomLevel = value; }
+        }
+
+        public double ZoomLevelIncrement => Browser.ZoomLevelIncrement;
+
+        #endregion
 
         public TrackViewer()
         {

@@ -67,6 +67,7 @@
     <Compile Include="ITrackEdit.cs" />
     <Compile Include="ITrackViewer.cs" />
     <Compile Include="ITrackViewerJsCallback.cs" />
+    <Compile Include="ITrackViewerZoom.cs" />
     <Compile Include="ITrackWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.cs" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using RailwayEssentialCore;
 using RailwayEssentialMdi.ViewModels;
 
 namespace RailwayEssentialMdi.Views
@@ -21,6 +22,9 @@ namespace RailwayEssentialMdi.Views
             var ctx = DataContext as TrackWindow;
             if (ctx == null)
                 return;
+
+            ctx.TrackView = this;
+            ctx.TrackViewZoomer = trackViewer as ITrackViewerZoom;
         }
     }
 }
