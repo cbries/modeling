@@ -19,6 +19,7 @@ namespace TrackInformation
             {
                 _name = value;
                 OnPropertyChanged();
+                OnPropertyChanged("Title");
             }
         }
 
@@ -32,6 +33,7 @@ namespace TrackInformation
             {
                 _protocol = value;
                 OnPropertyChanged();
+                OnPropertyChanged("Title");
             }
         }
 
@@ -44,6 +46,7 @@ namespace TrackInformation
             {
                 _addr = value;
                 OnPropertyChanged();
+                OnPropertyChanged("Title");
             }
         }
 
@@ -56,6 +59,7 @@ namespace TrackInformation
             {
                 _speed = value;
                 OnPropertyChanged();
+                OnPropertyChanged("Title");
             }
         }
         
@@ -68,6 +72,7 @@ namespace TrackInformation
             {
                 _speedstep = value;
                 OnPropertyChanged();
+                OnPropertyChanged("Title");
             }
         }
 
@@ -80,6 +85,7 @@ namespace TrackInformation
             {
                 _directon = value;
                 OnPropertyChanged();
+                OnPropertyChanged("Title");
             }
         }
 
@@ -92,6 +98,7 @@ namespace TrackInformation
             {
                 _funcset = value;
                 OnPropertyChanged();
+                OnPropertyChanged("Title");
             }
         }
 
@@ -122,6 +129,7 @@ namespace TrackInformation
         public void ChangeDirection(uint nr, bool backward)
         {
             int v = backward ? 1 : 0;
+            Direction = v;
             List<ICommand> ctrlCmds = new List<ICommand>
             {
                 CommandFactory.Create($"request({ObjectId}, control, force)"),

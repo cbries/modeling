@@ -97,7 +97,9 @@
     <Compile Include="Entities\LogEntity.cs" />
     <Compile Include="Entities\LocomotiveEntity.cs" />
     <Compile Include="Entities\TrackEntity.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="Interfaces\IContent.cs" />
+    <Compile Include="Interfaces\ILocomotiveView.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
     <Compile Include="Styles\PanesStyleSelector.cs" />
     <Compile Include="ViewModels\BaseWindow.cs" />

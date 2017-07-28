@@ -371,7 +371,7 @@ namespace RailwayEssentialMdi.Entities
                         _trackViewer.ExecuteJs($"changeSymbol({x}, {y}, {themeId}, \"{orientation}\", \"{symbol}\");");
                     }
 
-                    Trace.WriteLine($"CHANGE: {x},{y} -> {symbol}");
+                    //Trace.WriteLine($"CHANGE: {x},{y} -> {symbol}");
                 }
             }
 

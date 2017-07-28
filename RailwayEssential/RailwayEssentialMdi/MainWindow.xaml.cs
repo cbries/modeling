@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Windows;
+using System.Windows.Input;
 using RailwayEssentialMdi.Interfaces;
 using RailwayEssentialMdi.ViewModels;
 using Xceed.Wpf.AvalonDock;
@@ -8,18 +9,23 @@ namespace RailwayEssentialMdi
 {
     public partial class MainWindow : Window, IMainView
     {
+        private RailwayEssentialModel _dataContext;
+
         public MainWindow()
         {
             InitializeComponent();
 
             var m = DataContext as RailwayEssentialModel;
             if (m != null)
-                m.MainView = this as IMainView;
+            {
+                _dataContext = m;
+                m.MainView = this;
+            }
 
             Unloaded += MainWindow_Unloaded;
         }
 
-        void MainWindow_Unloaded(object sender, RoutedEventArgs e)
+        private void MainWindow_Unloaded(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -29,6 +35,37 @@ namespace RailwayEssentialMdi
             catch
             {
                 // ignore
+            }
+        }
+
+        private void TreeView_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            PropagateTreeViewSelection();
+        }
+
+        private void TreeView_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            PropagateTreeViewSelection();
+        }
+
+        private void PropagateTreeViewSelection()
+        {
+            if (_dataContext == null)
+                return;
+
+            var s = treeView;
+            if (s == null)
+                return;
+
+            var item = s.SelectedItem;
+
+            if (item is TrackInformation.Locomotive)
+                _dataContext.SetCurrentLocomotive(item);
+            else if (item is TrackInformation.Switch)
+                _dataContext.SetCurrentSwitch(item);
+            else
+            {
+                // ...
             }
         }
 

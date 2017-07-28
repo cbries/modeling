@@ -1,4 +1,9 @@
-﻿using RailwayEssentialMdi.Entities;
+﻿using System.Drawing.Text;
+using System.Threading;
+using System.Windows;
+using System.Windows.Controls.Primitives;
+using RailwayEssentialMdi.Entities;
+using RailwayEssentialMdi.Interfaces;
 
 namespace RailwayEssentialMdi.ViewModels
 {
@@ -7,6 +12,8 @@ namespace RailwayEssentialMdi.ViewModels
 
     public class LocomotivesWindow : BaseWindow
     {
+        public ILocomotiveView LocomotiveView { get; set; }
+
         private LocomotiveEntity _entity;
 
         public LocomotiveEntity Entity
@@ -19,17 +26,94 @@ namespace RailwayEssentialMdi.ViewModels
             }
         }
 
+        public int Speed
+        {
+            get => Entity == null ? 0 : Entity.ObjectItem.Speed;
+            set
+            {
+                if (Entity != null)
+                {
+                    Entity.ObjectItem.Speed = value;
+                    RaisePropertyChanged("Speed");
+                }
+            }
+        }
+
         public RelayCommand SwitchFncCommand { get; }
+        public RelayCommand SpeedIncCommand { get; }
+        public RelayCommand SpeedDecCommand { get; }
+        public RelayCommand StopCommand { get; }
 
         public LocomotivesWindow()
             : base()
         {
             SwitchFncCommand = new RelayCommand(SwitchFnc);
+            SpeedIncCommand = new RelayCommand(SpeedInc);
+            SpeedDecCommand = new RelayCommand(SpeedDec);
+            StopCommand = new RelayCommand(Stop);
+
+            if (_entity != null)
+                _entity.UpdateUi();
         }
 
         private void SwitchFnc(object p)
         {
-            Trace.WriteLine("Object: " + p);
+            int index;
+            if (!int.TryParse(p.ToString(), out index))
+                return;
+
+            var name = $"F{index}";
+
+            if (string.IsNullOrEmpty(name))
+                return;
+
+            ToggleButton btn = LocomotiveView.GetToggleButton(name);
+            
+            if(Entity != null && btn != null && btn.IsChecked.HasValue)
+                Entity.ObjectItem.ToggleFunction((uint)index, btn.IsChecked.Value);
+        }
+
+        private void SpeedInc(object p)
+        {
+            if (Entity == null)
+                return;
+            var v = Entity.ObjectItem.Speed;
+            v += 5;
+            if (v >= 100)
+                v = 100;
+
+            Speed = v;
+
+            PromoteSpeed();
+        }
+
+        private void SpeedDec(object p)
+        {
+            if (Entity == null)
+                return;
+            var v = Entity.ObjectItem.Speed;
+            v -= 5;
+            if (v <= 0)
+                v = 0;
+
+            Speed = v;
+
+            PromoteSpeed();
+        }
+
+        private void Stop(object p)
+        {
+            Entity.DriveBackward = !Entity.DriveBackward;
+            Thread.Sleep(100);
+            Entity.DriveBackward = !Entity.DriveBackward;
+
+            Speed = 0;
+            PromoteSpeed();
+        }
+
+        public void PromoteSpeed()
+        {
+            Entity.ObjectItem.ChangeSpeed(Entity.ObjectItem.Speed);
         }
     }
 }

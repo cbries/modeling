@@ -1,4 +1,6 @@
-﻿namespace RailwayEssentialMdi.Entities
+﻿using System.Diagnostics;
+
+namespace RailwayEssentialMdi.Entities
 {
     using System;
 
@@ -14,21 +16,25 @@
             set
             {
                 _objectItem = value;
+
+                UpdateUi();
+
                 RaisePropertyChanged("ObjectItem");
+                RaisePropertyChanged("Name");
             }
         }
 
         #region Name
 
-        private string _name;
-
         public string Name
         {
-            get => _name;
+            get => _objectItem != null ? _objectItem.Name : "-";
 
             set
             {
-                _name = value;
+                if(_objectItem != null)
+                    _objectItem.Name = value;
+
                 RaisePropertyChanged("Name");
             }
         }
@@ -89,8 +95,66 @@
 
         #endregion
 
-        public LocomotiveEntity() : base()
+        private bool _driveForward;
+        private bool _driveBackward;
+
+        public bool DriveForward
         {
+            get => _driveForward;
+            set
+            {
+                _driveForward = value;
+                _driveBackward = !value;
+
+                ObjectItem.ChangeDirection((uint)ObjectItem.ObjectId, !value);
+
+                UpdateUi();
+            }
+        }
+
+        public bool DriveBackward
+        {
+            get => _driveBackward;
+            set
+            {
+                _driveBackward = value;
+                _driveForward = !value;
+
+                ObjectItem.ChangeDirection((uint)ObjectItem.ObjectId, value);
+
+                UpdateUi();
+            }
+        }
+
+        public void UpdateUi()
+        {
+            Trace.WriteLine(" *** UpdateUi() of Locomotive *** ");
+
+            //if (_objectItem == null)
+            //{
+            //    IsActive = false;
+
+            //    return;
+            //}
+
+            IsActive = true;
+
+            if (ObjectItem.Direction == 1)
+            {
+                _driveBackward = true;
+                _driveForward = false;
+            }
+            else
+            {
+                _driveBackward = false;
+                _driveForward = true;
+            }
+
+            RaisePropertyChanged("DriveForward");
+            RaisePropertyChanged("DriveBackward");
+
+            if(ObjectItem != null)
+                ObjectItem.UpdateTitle();
         }
 
         protected override void OnPropertyChanged(string propertyName)

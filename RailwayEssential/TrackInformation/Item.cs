@@ -46,7 +46,7 @@ namespace TrackInformation
             set
             {
                 _title = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Title");
             }
         }
 

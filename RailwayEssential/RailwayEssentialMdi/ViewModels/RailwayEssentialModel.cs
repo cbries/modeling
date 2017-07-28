@@ -363,6 +363,17 @@ namespace RailwayEssentialMdi.ViewModels
             //    MainView.LoadLayout();
         }
 
+        private T GetWindow<T>() where T : class
+        {
+            foreach (var item in Windows)
+            {
+                if (item is T)
+                    return item as T;
+            }
+
+            return default(T);
+        }
+
         private void DispatcherOnReadyToPlay(object sender, EventArgs eventArgs)
         {
             var weaveFilepath = Path.Combine(Project.Dirpath, Project.Track.Weave);
@@ -525,18 +536,16 @@ namespace RailwayEssentialMdi.ViewModels
 
         public void ShowLocomotive(object p)
         {
-            foreach (var item in Windows)
+            var w = GetWindow<LocomotivesWindow>();
+            if (w != null)
             {
-                if (item == null)
-                    continue;
-                var e = item as LocomotivesWindow;
-                if(e != null)
-                    return;
+                w.Entity.ObjectItem = _currentLocomotive;
+
+                return;
             }
 
             var item2 = new LocomotivesWindow();
-            // TEST
-            item2.Entity = new LocomotiveEntity {Name = "BR10"};
+            item2.Entity = new LocomotiveEntity {ObjectItem = _currentLocomotive};
             item2.Closing += (s, e) => Windows.Remove(item2);
             Windows.Add(item2);
         }
@@ -562,12 +571,9 @@ namespace RailwayEssentialMdi.ViewModels
 
         public void PropertiesCommandStation(object p)
         {
-            foreach (var item in Windows)
-            {
-                var e = item as PropertiesWindow;
-                if (e != null)
-                    return;
-            }
+            var w = GetWindow<PropertiesWindow>();
+            if (w != null)
+                return;
 
             var item2 = new PropertiesWindow(_cfg);
             item2.Closing += (s, e) => Windows.Remove(item2);
@@ -576,14 +582,9 @@ namespace RailwayEssentialMdi.ViewModels
 
         public void ShowLog(object p)
         {
-            foreach (var item in Windows)
-            {
-                if (item == null)
-                    continue;
-                var e = item as LogWindow;
-                if (e?.LogMode == LogWindow.Mode.General)
-                    return;
-            }
+            var w = GetWindow<LogWindow>();
+            if (w?.LogMode == LogWindow.Mode.General)
+                return;
 
             var item2 = new LogWindow(_logMessagesGeneral) { LogMode = LogWindow.Mode.General };
             item2.Closing += (s, e) => Windows.Remove(item2);
@@ -592,14 +593,9 @@ namespace RailwayEssentialMdi.ViewModels
 
         public void ShowCommandLog(object p)
         {
-            foreach (var item in Windows)
-            {
-                if (item == null)
-                    continue;
-                var e = item as LogWindow;
-                if (e?.LogMode == LogWindow.Mode.Commands)
-                    return;
-            }
+            var w = GetWindow<LogWindow>();
+            if (w?.LogMode == LogWindow.Mode.Commands)
+                return;
 
             var item2 = new LogWindow(_logMessagesCommands) { LogMode = LogWindow.Mode.Commands };
             item2.Closing += (s, e) => Windows.Remove(item2);
@@ -755,6 +751,21 @@ namespace RailwayEssentialMdi.ViewModels
             {
                 RaisePropertyChanged(name);
             }, null);
+        }
+
+        private TrackInformation.Locomotive _currentLocomotive;
+        private TrackInformation.Switch _currentSwitch;
+
+        public void SetCurrentLocomotive(object locomotiveItem)
+        {
+            _currentLocomotive = locomotiveItem as TrackInformation.Locomotive;
+            ShowLocomotive(null);
+        }
+
+        public void SetCurrentSwitch(object switchItem)
+        {
+            _currentSwitch = switchItem as TrackInformation.Switch;
+            // TODO add ShowSwitch();
         }
 
         #endregion        
