@@ -72,6 +72,12 @@ namespace TrackInformation
             OnPropertyChanged("Title");
         }
 
+        public override void UpdateSubTitle()
+        {
+            SubTitle = $"";
+            OnPropertyChanged("SubTitle");
+        }
+
         #endregion
 
         public S88() : base()

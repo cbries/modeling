@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using RailwayEssentialCore;
 using RailwayEssentialMdi.ViewModels;
 
 namespace RailwayEssentialMdi.Views
@@ -24,7 +23,7 @@ namespace RailwayEssentialMdi.Views
                 return;
 
             ctx.TrackView = this;
-            ctx.TrackViewZoomer = trackViewer as ITrackViewerZoom;
+            ctx.TrackViewZoomer = trackViewer;
         }
     }
 }

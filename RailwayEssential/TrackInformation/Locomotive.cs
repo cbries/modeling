@@ -10,6 +10,8 @@ namespace TrackInformation
     {
         public override int TypeId() { return 1; }
 
+        public override int SubTitleHeight => 16;
+
         private string _name;
 
         public string Name
@@ -89,9 +91,9 @@ namespace TrackInformation
             }
         }
 
-        private string _funcset;
+        private List<bool> _funcset;
 
-        public string Funcset
+        public List<bool> Funcset
         {
             get => _funcset;
             set
@@ -102,15 +104,26 @@ namespace TrackInformation
             }
         }
 
-        public Locomotive() : base()
+        public Locomotive()
         {
+            _funcset = new List<bool>(32);
+            if (_funcset.Count == 0)
+            {
+                for (int i = 0; i < 32; ++i)
+                    _funcset.Add(false);
+            }
         }
 
         public override void UpdateTitle()
         {
+            Title = $"{Name}";
+        }
+
+        public override void UpdateSubTitle()
+        {
             string v = Direction == 1 ? "Backward" : "Forward";
-            
-            Title = $"{ObjectId} {Name} Speed[{Speed}]->{v} ({Protocol} : {Addr})";
+
+            SubTitle = $"Speed[{Speed}]->{v} ({Protocol} : {Addr})";
         }
 
         public void ToggleFunction(uint nr, bool state)
@@ -207,7 +220,18 @@ namespace TrackInformation
                 }
                 else if (arg.Name.Equals("funcset", StringComparison.OrdinalIgnoreCase))
                 {
-                    Funcset = arg.Parameter[0].Trim();
+                    var sindex = arg.Parameter[0].Trim();
+                    var sstate = arg.Parameter[1].Trim();
+
+                    int index;
+                    if (!int.TryParse(sindex, out index))
+                        index = -1;
+                    int state;
+                    if (!int.TryParse(sstate, out state))
+                        state = -1;
+
+                    if(index != -1 && state != -1)
+                        Funcset[index] = state == 1;
                 }
                 else if (arg.Name.Equals("func", StringComparison.OrdinalIgnoreCase))
                 {
@@ -224,6 +248,15 @@ namespace TrackInformation
 
         public override JObject ToJson()
         {
+            string m = "";
+            foreach (var f in _funcset)
+            {
+                if (f)
+                    m += "1";
+                else
+                    m += "0";
+            }
+
             JObject o = new JObject
             {
                 ["objectId"] = ObjectId,
@@ -232,8 +265,8 @@ namespace TrackInformation
                 ["addr"] = _addr,
                 ["speed"] = _speed,
                 ["speedstep"] = _speedstep,
-                ["direction"] = _directon,
-                ["funcset"] = _funcset
+                ["direction"] = _directon,                
+                ["funcset"] = m
             };
 
             return o;
@@ -259,7 +292,11 @@ namespace TrackInformation
             if (obj["direction"] != null)
                 Direction = (int) obj["direction"];
             if (obj["funcset"] != null)
-                Funcset = obj["funcset"].ToString();
+            {
+                string m = obj["funcset"].ToString();
+                for (int i = 0; i < m.Length; ++i)
+                    Funcset[i] = m[i] == '1';
+            }
         }
     }
 }

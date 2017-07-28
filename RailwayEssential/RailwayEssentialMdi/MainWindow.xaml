@@ -6,7 +6,7 @@
         xmlns:viewModels="clr-namespace:RailwayEssentialMdi.ViewModels"
         xmlns:trackInformation="clr-namespace:TrackInformation;assembly=TrackInformation"
         xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock" Name="app"
-        mc:Ignorable="d" Title="RailwayEssential" Height="800" Width="1200">
+        mc:Ignorable="d" Title="RailwayEssential" Height="700" Width="1200">
     
     <Window.DataContext>
         <viewModels:RailwayEssentialModel/>
@@ -31,17 +31,17 @@
                 <MenuItem Header="File">
                     <MenuItem Header="New project..." Command="{Binding NewProjectCommand}"/>
                     <Separator/>
-                    <MenuItem Header="Open" Command="{Binding OpenCommand}" CommandParameter="{Binding ElementName=app, Path=DataContext}"/>
-                    <MenuItem Header="Close" Command="{Binding CloseCommand}" CommandParameter="{Binding ElementName=app, Path=DataContext}"/>
-                    <MenuItem Header="Save" Command="{Binding SaveCommand}" CommandParameter="{Binding ElementName=app, Path=DataContext}"/>
+                    <MenuItem Header="Open" Command="{Binding OpenCommand}"/>
+                    <MenuItem Header="Close" Command="{Binding CloseCommand}"/>
+                    <MenuItem Header="Save" Command="{Binding SaveCommand}"/>
                     <Separator/>
                     <MenuItem Header="Exit" Command="{Binding ExitCommand}"/>
                 </MenuItem>
                 <MenuItem Header="Command Station">
-                    <MenuItem Header="Locomotive" Command="{Binding ShowLocomotiveCommand}" CommandParameter="{Binding ElementName=app, Path=DataContext}"/>
+                    <MenuItem Header="Locomotive" Command="{Binding ShowLocomotiveCommand}"/>
                     <Separator/>
-                    <MenuItem Header="Connect" Command="{Binding ConnectCommand}" CommandParameter="{Binding ElementName=app, Path=DataContext}"/>
-                    <MenuItem Header="Disconnect" Command="{Binding DisconnectCommand}" CommandParameter="{Binding ElementName=app, Path=DataContext}"/>
+                    <MenuItem Header="Connect" Command="{Binding ConnectCommand}"/>
+                    <MenuItem Header="Disconnect" Command="{Binding DisconnectCommand}"/>
                     <Separator/>
                     <MenuItem Header="Properties" Command="{Binding CmdStationsPropertiesCommand}"/>
                 </MenuItem>
@@ -110,11 +110,22 @@
                                           KeyDown="TreeView_OnKeyDown">
                                     <TreeView.ItemTemplate>
                                         <HierarchicalDataTemplate DataType="{x:Type trackInformation:Item}" ItemsSource="{Binding Items}">
-                                            <DockPanel Margin="0,1,0,1">
-                                                <Image Width="15" Height="15" Source="{Binding IconSource}" HorizontalAlignment="Center" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="NearestNeighbor" Margin="0,0,3,0">
-                                                </Image>
-                                                <TextBlock Text="{Binding Title}" FontSize="12"/>
-                                            </DockPanel>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="16"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <DockPanel Margin="0,1,0,1" Grid.Row="0">
+                                                    <Image Width="15" Height="15" Margin="0,0,3,0" 
+                                                           Source="{Binding IconSource}" HorizontalAlignment="Center" 
+                                                           VerticalAlignment="Center" RenderOptions.BitmapScalingMode="NearestNeighbor">
+                                                    </Image>
+                                                    <TextBlock Text="{Binding Title}" FontSize="12"/>
+                                                </DockPanel>
+                                                <DockPanel Margin="0,1,0,1" Grid.Row="1" Height="{Binding SubTitleHeight}">
+                                                    <TextBlock Text="{Binding SubTitle}" FontSize="10"/>
+                                                </DockPanel>
+                                            </Grid>
                                         </HierarchicalDataTemplate>
                                     </TreeView.ItemTemplate>
                                 </TreeView>

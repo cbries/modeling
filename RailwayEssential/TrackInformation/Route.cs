@@ -62,6 +62,11 @@ namespace TrackInformation
             Title = $"{ObjectId} {Name1}";
         }
 
+        public override void UpdateSubTitle()
+        {
+            SubTitle = $"";
+        }
+
         public override void Parse(List<CommandArgument> arguments)
         {
             foreach (var arg in arguments)

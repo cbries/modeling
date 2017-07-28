@@ -229,6 +229,7 @@ namespace TrackInformation
             {
                 itemLocomotive.Parse(listEntry.Arguments);
                 itemLocomotive.UpdateTitle();
+                itemLocomotive.UpdateSubTitle();
             }
 
             return true;
@@ -246,6 +247,7 @@ namespace TrackInformation
             {
                 itemSwitch.Parse(listEntry.Arguments);
                 itemSwitch.UpdateTitle();
+                itemSwitch.UpdateSubTitle();
             }
 
             return true;
@@ -268,6 +270,7 @@ namespace TrackInformation
             {
                 itemS88.StateOriginal = hex;
                 itemS88.UpdateTitle();
+                itemS88.UpdateSubTitle();
             }
 
             return true;

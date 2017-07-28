@@ -44,6 +44,13 @@ namespace RailwayEssentialMdi.Views
             return null;
         }
 
+        public void SetToggleButton(string name, bool state)
+        {
+            var btn = GetToggleButton(name);
+            if (btn != null)
+                btn.IsChecked = state;
+        }
+
         #endregion
 
         private void SpeedSlider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

@@ -5,5 +5,6 @@ namespace RailwayEssentialMdi.Interfaces
     public interface ILocomotiveView
     {
         ToggleButton GetToggleButton(string name);
+        void SetToggleButton(string name, bool state);
     }
 }

@@ -437,10 +437,14 @@ namespace RailwayEssentialMdi.ViewModels
                         var ee = e as Locomotive;
 
                         if (_itemLocomotives.Items.Any(x => x.ObjectId == ee.ObjectId))
+                        {
                             ee.UpdateTitle();
+                            ee.UpdateSubTitle();
+                        }
                         else
                         {
                             ee.UpdateTitle();
+                            ee.UpdateSubTitle();
                             _itemLocomotives.Items.Add(ee);
                         }
 
@@ -451,10 +455,14 @@ namespace RailwayEssentialMdi.ViewModels
                         var ee = e as S88;
 
                         if (_itemS88.Items.Any(x => x.ObjectId == ee.ObjectId))
+                        {
                             ee.UpdateTitle();
+                            ee.UpdateSubTitle();
+                        }
                         else
                         {
                             ee.UpdateTitle();
+                            ee.UpdateSubTitle();
                             _itemS88.Items.Add(ee);
                         }
                     }
@@ -463,10 +471,14 @@ namespace RailwayEssentialMdi.ViewModels
                         var ee = e as Switch;
 
                         if (_itemSwitches.Items.Any(x => x.ObjectId == ee.ObjectId))
+                        {
                             ee.UpdateTitle();
+                            ee.UpdateSubTitle();
+                        }
                         else
                         {
                             ee.UpdateTitle();
+                            ee.UpdateSubTitle();
                             _itemSwitches.Items.Add(ee);
                         }
                     }
@@ -475,10 +487,14 @@ namespace RailwayEssentialMdi.ViewModels
                         var ee = e as Route;
 
                         if (_itemRoutes.Items.Any(x => x.ObjectId == ee.ObjectId))
+                        {
                             ee.UpdateTitle();
+                            ee.UpdateSubTitle();
+                        }
                         else
                         {
                             ee.UpdateTitle();
+                            ee.UpdateSubTitle();
                             _itemRoutes.Items.Add(ee);
                         }
                     }
@@ -544,8 +560,14 @@ namespace RailwayEssentialMdi.ViewModels
                 return;
             }
 
-            var item2 = new LocomotivesWindow();
-            item2.Entity = new LocomotiveEntity {ObjectItem = _currentLocomotive};
+            var item2 = new LocomotivesWindow
+            {
+                Entity = new LocomotiveEntity
+                {
+                    ObjectItem = _currentLocomotive
+                }
+            };
+            item2.Entity.UpdateUi();
             item2.Closing += (s, e) => Windows.Remove(item2);
             Windows.Add(item2);
         }
@@ -661,28 +683,15 @@ namespace RailwayEssentialMdi.ViewModels
 
         private bool CheckDisconnectFromCommandStation(object p)
         {
-            var m = p as RailwayEssentialModel;
-
-            if (m == null)
+            if (_dispatcher == null)
                 return false;
 
-            if (m._dispatcher == null)
-                return false;
-
-            return m._dispatcher.GetRunMode();
+            return _dispatcher.GetRunMode();
         }
 
         private bool CheckShowLocomotive(object o1)
         {
-            var m = o1 as RailwayEssentialModel;
-
-            if (m == null)
-                return false;
-
-            if (m._project == null)
-                return false;
-
-            if (m._cfg == null)
+            if (_project == null || _cfg == null)
                 return false;
 
             return true;
@@ -690,15 +699,7 @@ namespace RailwayEssentialMdi.ViewModels
 
         private bool CheckConnectToCommandStation(object o1)
         {
-            var m = o1 as RailwayEssentialModel;
-
-            if (m == null)
-                return false;
-
-            if (m._project == null)
-                return false;
-
-            if (m._cfg == null)
+            if (_project == null || _cfg == null)
                 return false;
 
             return true;

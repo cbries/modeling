@@ -38,7 +38,7 @@ namespace TrackInformation
             }
         }
 
-        private string _title;
+        private string _title, _subTitle;
 
         public string Title
         {
@@ -47,8 +47,24 @@ namespace TrackInformation
             {
                 _title = value;
                 OnPropertyChanged("Title");
+                OnPropertyChanged("SubTitle");
+                OnPropertyChanged("SubTitleHeight");
             }
         }
+
+        public string SubTitle
+        {
+            get => _subTitle;
+            set
+            {
+                _subTitle = value;
+                OnPropertyChanged("Title");
+                OnPropertyChanged("SubTitle");
+                OnPropertyChanged("SubTitleHeight");
+            }
+        }
+
+        public virtual int SubTitleHeight => 0;
 
         private int _objectId;
 
@@ -122,6 +138,11 @@ namespace TrackInformation
             OnPropertyChanged("Title");
         }
 
+        public virtual void UpdateSubTitle()
+        {
+            OnPropertyChanged("SubTitle");
+        }
+
         public void EnableView()
         {
             List<ICommand> ctrlCmds = new List<ICommand>
@@ -172,6 +193,14 @@ namespace TrackInformation
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void RaisePropertyChange(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+                return;
+
+            OnPropertyChanged(name);
         }
     }
 }

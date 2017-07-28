@@ -10,6 +10,8 @@ namespace TrackInformation
     {
         public override int TypeId() { return 5; }
 
+        public override int SubTitleHeight => 16;
+
         private readonly string[] _names = new string[3];
 
         public string Name1
@@ -132,13 +134,19 @@ namespace TrackInformation
 
         public override void UpdateTitle()
         {
+            Title = $"{Name1}";
+        }
+
+        public override void UpdateSubTitle()
+        {
             var ext = string.Join(", ", Addrext);
             var direction = "Turn";
             if (State == 0)
                 direction = "Straight";
             else
                 direction = "Turn";
-            Title = $"{ObjectId} {Name1}[{ext}] {direction}";
+
+            SubTitle = $"{ext}] {direction}";
         }
 
         public override void Parse(List<CommandArgument> arguments)

@@ -1,14 +1,10 @@
-﻿using System.Drawing.Text;
-using System.Threading;
-using System.Windows;
-using System.Windows.Controls.Primitives;
-using RailwayEssentialMdi.Entities;
-using RailwayEssentialMdi.Interfaces;
-
-namespace RailwayEssentialMdi.ViewModels
+﻿namespace RailwayEssentialMdi.ViewModels
 {
-    using System.Diagnostics;
+    using System.Threading;
+    using System.Windows.Controls.Primitives;
     using Commands;
+    using Entities;
+    using Interfaces;
 
     public class LocomotivesWindow : BaseWindow
     {
@@ -18,10 +14,15 @@ namespace RailwayEssentialMdi.ViewModels
 
         public LocomotiveEntity Entity
         {
-            get => _entity;
+            get
+            {
+                return _entity;
+            }
+
             set
             {
                 _entity = value;
+
                 RaisePropertyChanged("Entity");
             }
         }
@@ -45,15 +46,13 @@ namespace RailwayEssentialMdi.ViewModels
         public RelayCommand StopCommand { get; }
 
         public LocomotivesWindow()
-            : base()
         {
             SwitchFncCommand = new RelayCommand(SwitchFnc);
             SpeedIncCommand = new RelayCommand(SpeedInc);
             SpeedDecCommand = new RelayCommand(SpeedDec);
             StopCommand = new RelayCommand(Stop);
 
-            if (_entity != null)
-                _entity.UpdateUi();
+            _entity?.UpdateUi();
         }
 
         private void SwitchFnc(object p)
@@ -114,6 +113,23 @@ namespace RailwayEssentialMdi.ViewModels
         public void PromoteSpeed()
         {
             Entity.ObjectItem.ChangeSpeed(Entity.ObjectItem.Speed);
+        }
+
+        public void UpdateFuncset()
+        {
+            for (int i = 0; i < 32; ++i)
+            {
+                string name = $"F{i}";
+
+                if (string.IsNullOrEmpty(name))
+                    continue;
+
+                if (_entity != null && _entity.ObjectItem != null)
+                {
+                    var state = _entity.ObjectItem.Funcset[i];
+                    LocomotiveView.SetToggleButton(name, state);
+                }
+            }
         }
     }
 }

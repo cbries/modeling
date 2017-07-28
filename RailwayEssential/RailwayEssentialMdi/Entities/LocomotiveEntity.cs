@@ -139,7 +139,7 @@ namespace RailwayEssentialMdi.Entities
 
             IsActive = true;
 
-            if (ObjectItem.Direction == 1)
+            if (ObjectItem != null && ObjectItem.Direction == 1)
             {
                 _driveBackward = true;
                 _driveForward = false;
@@ -150,11 +150,21 @@ namespace RailwayEssentialMdi.Entities
                 _driveForward = true;
             }
 
+            if (ObjectItem != null)
+            {
+                // ...
+            }
+
             RaisePropertyChanged("DriveForward");
             RaisePropertyChanged("DriveBackward");
 
-            if(ObjectItem != null)
+            if (ObjectItem != null)
+            {
+                ObjectItem.RaisePropertyChange("Speed");
+                ObjectItem.RaisePropertyChange("ObjectItem.Speed");
                 ObjectItem.UpdateTitle();
+                ObjectItem.UpdateSubTitle();
+            }
         }
 
         protected override void OnPropertyChanged(string propertyName)
