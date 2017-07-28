@@ -12,6 +12,8 @@ namespace Ecos2Core.Replies
         public ICommand Command { get; private set; }
         public int? ObjectId { get { return null; } }
 
+        public string NativeBlock { get; set; }
+
         public ReplyResult Result { get; private set; }
 
         public List<ListEntry> ListEntries { get; private set; }
@@ -28,6 +30,8 @@ namespace Ecos2Core.Replies
 
         public bool Parse(string block)
         {
+            NativeBlock = block;
+
             if (block.IndexOf("<REPLY", StringComparison.OrdinalIgnoreCase) == -1)
                 return false;
             if (block.IndexOf("<END", StringComparison.OrdinalIgnoreCase) == -1)

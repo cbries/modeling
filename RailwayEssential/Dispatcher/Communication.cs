@@ -107,8 +107,8 @@ namespace Dispatcher
         {
             var line = msg.Trim();
 
-            if (!string.IsNullOrEmpty(line))
-                Logger?.LogNetwork(line.Trim());
+            //if (!string.IsNullOrEmpty(line))
+            //    Logger?.LogNetwork(line.Trim()+"\r\n");
 
             if (Utils.HasAnyBlock(msg))
             {

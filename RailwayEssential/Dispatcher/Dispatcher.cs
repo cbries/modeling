@@ -43,18 +43,14 @@ namespace Dispatcher
             _communication.BlocksReceived += CommunicationOnBlocksReceived;
         }
 
-        public bool InitializeWeaving(TrackPlanParser.Track track)
+        public bool InitializeWeaving(TrackPlanParser.Track track, string weaveFilepath)
         {
             _track = track;
 
             _trackWeaver = new TrackWeaver.TrackWeaver();
-
-            var filepath = $@"\Sessions\0\TrackWeaving.json".ExpandRailwayEssential();
-            if (!File.Exists(filepath))
-                return false;
             
             TrackWeaveItems weaverItems = new TrackWeaveItems();
-            if (!weaverItems.Load(filepath))
+            if (!weaverItems.Load(weaveFilepath))
                 return false;
 
             foreach (var item in weaverItems.Items)
@@ -187,21 +183,6 @@ namespace Dispatcher
 
         private void CommunicationOnCommunicationStarted(object sender, EventArgs args)
         {
-            if (_track == null)
-            {
-                if(Logger != null)
-                    Logger.Log("<Dispatcher> Weaving failed: no track loaded.\r\n");
-            }
-            else
-            { 
-                bool r = InitializeWeaving(_track);
-                if (!r)
-                {
-                    if (Logger != null)
-                        Logger.Log("<Dispatcher> Weaving failed\r\n");
-                }
-            }
-
             // send initial commands
             List<ICommand> initialCommands = new List<ICommand>()
             {
@@ -258,6 +239,12 @@ namespace Dispatcher
             {
                 if (blk == null)
                     continue;
+
+                if (blk.StartLine.IndexOf("EVENT", StringComparison.OrdinalIgnoreCase) == -1)
+                {
+                    if(Logger != null)
+                        Logger.LogNetwork(blk.NativeBlock.Trim() + "\r\n");
+                }
 
                 if(_dataProvider != null)
                     _dataProvider.Add(blk);

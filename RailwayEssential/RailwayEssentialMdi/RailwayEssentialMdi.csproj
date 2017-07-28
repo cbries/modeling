@@ -427,6 +427,7 @@
     <Resource Include="Resources\cat_route.png" />
     <Resource Include="Resources\cat_switch.png" />
     <Resource Include="Resources\cat_locomotive.png" />
+    <Resource Include="Resources\esu0.png" />
     <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -365,18 +365,19 @@ namespace RailwayEssentialMdi.ViewModels
 
         private void DispatcherOnReadyToPlay(object sender, EventArgs eventArgs)
         {
-            _dispatcher.InitializeWeaving(_trackEntity.Track);
+            var weaveFilepath = Path.Combine(Project.Dirpath, Project.Track.Weave);
+            _dispatcher.InitializeWeaving(_trackEntity.Track, weaveFilepath);
         }
 
         private void DispatcherOnUpdateUi(object sender, TrackWeaver.TrackWeaver trackWeaver)
         {
             foreach (var w in Windows)
             {
-                var ww = w as TrackEntity;
-                if (ww == null)
+                var ww = w as TrackWindow;
+                if (ww == null || ww.Entity == null)
                     continue;
 
-                ww.UpdateTrackViewerUi(trackWeaver);
+                ww.Entity.UpdateTrackViewerUi(trackWeaver);
             }
         }
 
@@ -401,27 +402,22 @@ namespace RailwayEssentialMdi.ViewModels
                     {
                         var ee = e as Ecos2;
 
-                        if (_itemStatus.Items.Count == 0)
-                            _itemStatus.Items.Add(new Ecos2());
-
-                        var ecos2 = _itemStatus.Items[0] as Ecos2;
-
-                        if (ecos2 != null && ecos2.Items.Count < 4)
+                        if (_itemStatus != null && _itemStatus.Items.Count < 4)
                         {
-                            ecos2.Items.Clear();
-                            ecos2.Items.Add(new Item { Title = $"{ee.Name}" });
-                            ecos2.Items.Add(new Item { Title = $"Application Version: {ee.ApplicationVersion}" });
-                            ecos2.Items.Add(new Item { Title = $"Protocol Version: {ee.ProtocolVersion}" });
-                            ecos2.Items.Add(new Item { Title = $"Hardware Version: {ee.HardwareVersion}" });
+                            _itemStatus.Items.Clear();
+                            _itemStatus.Items.Add(new Item { Title = $"{ee.Name}", IconName = "esu0.png" });
+                            _itemStatus.Items.Add(new Item { Title = $"Application Version: {ee.ApplicationVersion}", IconName = "esu0.png" });
+                            _itemStatus.Items.Add(new Item { Title = $"Protocol Version: {ee.ProtocolVersion}", IconName = "esu0.png" });
+                            _itemStatus.Items.Add(new Item { Title = $"Hardware Version: {ee.HardwareVersion}", IconName = "esu0.png" });
                         }
                         else
                         {
-                            if (ecos2 != null)
+                            if (_itemStatus != null)
                             {
-                                ecos2.Items[0].Title = $"{ee.Name}";
-                                ecos2.Items[1].Title = $"Application Version: {ee.ApplicationVersion}";
-                                ecos2.Items[2].Title = $"Protocol Version: {ee.ProtocolVersion}";
-                                ecos2.Items[3].Title = $"Hardware Version: {ee.HardwareVersion}";
+                                _itemStatus.Items[0].Title = $"{ee.Name}";
+                                _itemStatus.Items[1].Title = $"Application Version: {ee.ApplicationVersion}";
+                                _itemStatus.Items[2].Title = $"Protocol Version: {ee.ProtocolVersion}";
+                                _itemStatus.Items[3].Title = $"Hardware Version: {ee.HardwareVersion}";
                             }
                         }
                     }

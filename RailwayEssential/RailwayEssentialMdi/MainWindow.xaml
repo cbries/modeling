@@ -6,7 +6,7 @@
         xmlns:viewModels="clr-namespace:RailwayEssentialMdi.ViewModels"
         xmlns:trackInformation="clr-namespace:TrackInformation;assembly=TrackInformation"
         xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock" Name="app"
-        mc:Ignorable="d" Title="RailwayEssential" Height="600" Width="800">
+        mc:Ignorable="d" Title="RailwayEssential" Height="768" Width="1024">
     
     <Window.DataContext>
         <viewModels:RailwayEssentialModel/>

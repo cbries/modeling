@@ -7,10 +7,14 @@ namespace Ecos2Core.Replies
     public class EventBlock : IBlock
     {
         public string StartLine { get; private set; }
+
         public string EndLine { get; private set; }
 
         public ICommand Command {  get { return null; } }
+
         public int? ObjectId { get; private set; }
+
+        public string NativeBlock { get; set; }
 
         public ReplyResult Result { get; private set; }
 
@@ -28,6 +32,8 @@ namespace Ecos2Core.Replies
 
         public bool Parse(string block)
         {
+            NativeBlock = block;
+
             if (block.IndexOf("<EVENT", StringComparison.OrdinalIgnoreCase) == -1)
                 return false;
             if (block.IndexOf("<END", StringComparison.OrdinalIgnoreCase) == -1)

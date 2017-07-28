@@ -7,6 +7,7 @@ namespace Ecos2Core
     {
         ICommand Command { get; }
         int? ObjectId { get; }
+        string NativeBlock { get; set; }
         string StartLine { get; }
         string EndLine { get; }
         ReplyResult Result { get; }
