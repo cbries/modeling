@@ -7,7 +7,7 @@ using RailwayEssentialCore;
 
 namespace RailwayEssentialWeb
 {
-    public partial class WebGenerator : IWebGenerator
+    public class WebGenerator : IWebGenerator
     {
         private string _targetFilepath;
 
@@ -37,8 +37,10 @@ namespace RailwayEssentialWeb
         private string _selectCategory = "";
         private Dictionary<string, string> _selectHtml = new Dictionary<string, string>();
 
-        private void CreateSymbolSelection()
+        private void CreateSymbolSelection(out List<string> physicalSymbols)
         {
+            physicalSymbols = new List<string>();
+
             // categories
             // [key:=category name, value:=selector list entries]
             string mhtmlCategories = "";
@@ -61,7 +63,7 @@ namespace RailwayEssentialWeb
 
                         var checkE = Path.GetFileNameWithoutExtension(e);
 
-                        if (checkE.EndsWith(symbol.Value, StringComparison.OrdinalIgnoreCase))
+                        if (checkE.EndsWith(symbol.Value, StringComparison.OrdinalIgnoreCase) && checkE.Length == symbol.Value.Length)
                         {
                             var symbolName = Path.GetFileNameWithoutExtension(e);
                             if (string.IsNullOrEmpty(symbolName))
@@ -69,7 +71,11 @@ namespace RailwayEssentialWeb
 
                             var themeItem = Theme.Get(k, symbol.Value);
 
-                            html += "<option value=\"" + symbolName + "\" data-railway-themeid=\""+ themeItem.UniqueIdentifier + "\" data-image=\"" + new Uri(e).AbsoluteUri + "\">" + symbol.Key + "</option>\r\n";
+                            var p = new Uri(e).AbsoluteUri;
+
+                            physicalSymbols.Add(p);
+
+                            html += $"<option value=\"{symbolName}\" data-railway-themeid=\"{themeItem.UniqueIdentifier}\" data-image=\"{p}\">{symbol.Key}</option>\r\n";
 
                             break;
                         }
@@ -109,6 +115,8 @@ namespace RailwayEssentialWeb
 
         public bool Generate(string targetFilepath)
         {
+            _targetFilepath = targetFilepath;
+
             StringBuilder oSb = new StringBuilder();
 
             oSb.Append("<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border: 0;\">");
@@ -117,9 +125,10 @@ namespace RailwayEssentialWeb
                 oSb.Append("<tr class=\"row\">");
                 for (int x = 0; x < Columns; ++x)
                 {
-                    var cellInfo = $"title=\"X={x}, Y={y}\"";
+                    var cellInfo = $"title=\"X={x+1}, Y={y+1}\"";
+                    var cellId = $"id=\"td_{x+1}_{y+1}\"";
 
-                    oSb.Append($"<td class=\"cell\" {cellInfo}><div class=\"overflow\"></div></td></td>");
+                    oSb.Append($"<td {cellId} class=\"cell\" {cellInfo}><div class=\"overflow\"></div></td></td>");
                 }
                 oSb.Append("</tr>\r\n");
             }
@@ -129,10 +138,22 @@ namespace RailwayEssentialWeb
 
             try
             {
-                CreateSymbolSelection();
+                List<string> physicalSymbols;
+                CreateSymbolSelection(out physicalSymbols);
+
+                var jsCode = "var themeDirectory='" + new Uri(AbsoluteThemeDirname.Replace("\\", "/")).AbsoluteUri + "';";
+                jsCode += "var symbolFiles = [";
+                foreach (var e in physicalSymbols)
+                {
+                    if (string.IsNullOrEmpty(e))
+                        continue;
+                    jsCode += $"'{e}',";
+                }
+                jsCode = jsCode.TrimEnd(',');
+                jsCode += "]; var svgCache = {}; var counter = 0; var total = symbolFiles.length; preloadSvgs();";
 
                 var b = CreateBase();
-                    b = b.Replace("{{GLOBALJS}}", "var themeDirectory='"+new Uri(AbsoluteThemeDirname.Replace("\\", "/")).AbsoluteUri+"';");
+                    b = b.Replace("{{GLOBALJS}}", jsCode);
                     b = b.Replace("{{GLOBALCSS}}", css);
                     b = b.Replace("{{TRACKTABLE}}", oSb.ToString());
                     b = b.Replace("{{TRACKSYMBOLCATEGORIES}}", _selectCategory);

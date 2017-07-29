@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RailwayEssentialCore;
 using RailwayEssentialMdi.DataObjects;
 using RailwayEssentialWeb;
@@ -163,6 +165,10 @@ namespace RailwayEssentialMdi.Entities
                 _trackViewer.JsCallback.TrackEdit = _track;
             }
 
+            List<string> clicks = new List<string>();
+ 
+            JArray arClicks = new JArray();
+
             // load current track
             foreach (var item in _track)
             {
@@ -172,15 +178,26 @@ namespace RailwayEssentialMdi.Entities
                 var themeItem = _theme.Get(item.ThemeId);
                 if (themeItem != null)
                 {
-                    var col = item.X;
-                    var row = item.Y;
+                    //var col = item.X;
+                    //var row = item.Y;
                     var symbol = Path.GetFileNameWithoutExtension(themeItem.Off.Default);
                     var orientation = item.Orientation;
 
-                    if(_trackViewer != null)
-                        _trackViewer.ExecuteJs($"simulateClick({col}, {row}, {item.ThemeId}, \"{symbol}\", \"{orientation}\");");
+                    JObject o = new JObject
+                    {
+                        ["col"] = item.X,
+                        ["row"] = item.Y,
+                        ["themeId"] = item.ThemeId,
+                        ["symbol"] = symbol,
+                        ["orientation"] = orientation
+                    };
+
+                    arClicks.Add(o);
                 }
             }
+
+            if (_trackViewer != null)
+                _trackViewer.ExecuteJs($"simulateClick2({arClicks.ToString(Formatting.None)});");
 
             return true;
         }

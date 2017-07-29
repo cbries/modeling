@@ -9,6 +9,48 @@ var isDrag = false;
 var objDrag = null;
 var objPosition = null; // top, left
 
+function preloadSvgsLoaded() {
+    // just increment the counter if there are still images pending...
+    ++counter;
+    if (counter >= total) {
+        // this function will be called when everything is loaded
+        // e.g. you can set a flag to say "I've got all the images now"
+        preloadSvgsAlldone();
+    }
+}
+
+function preloadSvgsAlldone() {
+    try {
+        railwayEssentialCallback.message("SVGs have been loaded");
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+function preloadSvgs() {
+    if (symbolFiles == null || symbolFiles === 'undefined')
+        return;
+
+    // This will load the images in parallel:
+    // In most browsers you can have between 4 to 6 parallel requests
+    // IE7/8 can only do 2 requests in parallel per time
+    for (var i = 0; i < total; i++) {
+        var img = new Image();
+        // When done call the function "loaded"
+        img.onload = preloadSvgsLoaded;
+        // cache it
+        svgCache[symbolFiles[i]] = img;
+        img.src = symbolFiles[i];
+    }
+}
+
+function showImage(url, id) {
+    // get the image referenced by the given url
+    var cached = svgCache[url];
+    // and append it to the element with the given id
+    document.getElementById(id).appendChild(cached);
+}
+
 $(document).keyup(function (e) {
     if (e.keyCode == 27) {
         resetSelection();
@@ -194,48 +236,75 @@ function changeSymbol(col, row, themeId, orientation, symbol) {
     });
 }
 
-function simulateClick(col, row, themeid, symbol, orientation) {
+function simulateClick2(jsonArray) {
+    for (var i = 0; i < jsonArray.length; ++i) {
+        var o = jsonArray[i];
+        if (o == null || o === 'undefined')
+            continue;
 
-    $('td').each(function (index, el) {
-        var oel = $(el);
-        var c = oel.parent().children().index(oel);
-        var r = oel.parent().parent().children().index(oel.parent());
+        var col = o.col;
+        var row = o.row;
+        var themeId = o.themeId;
+        var symbol = o.symbol;
+        var orientation = o.orientation;
+        var response = false;
 
-        if (col === c && row === r) {
-            var cdiv = oel.find("div");
-            if (cdiv.find("img").length === 1)
-                return;
+        simulateClick(col, row, themeId, symbol, orientation, response);
+    }
+}
 
-            var v = themeDirectory + '/' + symbol + '.svg';
+function simulateClick(col, row, themeid, symbol, orientation, response) {
 
+    if (response == null || response === 'undefined')
+        response = false;
+
+    var oel = $('#td_' + col + '_' + row);
+
+    var c = col;
+    var r = row;
+
+    if (col === c && row === r) {
+        var cdiv = oel.find("div");
+        if (cdiv.find("img").length === 1)
+            return;
+
+        var v = themeDirectory + '/' + symbol + '.svg';
+
+        if (response) {
             try {
                 var m = "";
-                m += "Coord(" + col + ", " + row + "): " + symbol + ", " + orientation + ", " + orientation;
+                m += "Coord(" + col + ", " + row + "): " + symbol + ", " + orientation + ", " + themeid + ", " + v;
                 railwayEssentialCallback.message(m);
             } catch (e) {
                 console.log(e);
             }
-
-            var newChild = cdiv.append("<img class=\"overflow " + orientation + "\" src=\"" + v + "\" border=\"0\" data-railway-themeid=\"" + themeid + "\">");
-
-            newChild.click(function (evt) {
-                if (evt.ctrlKey && evt.altKey) {
-                    rotateElement(col, row, $(this));
-                } else if (evt.ctrlKey) {
-                    //selectElement($(this));
-                    rotateElement(col, row, $(this));
-                } else if (evt.altKey) {
-                    if (isEdit) {
-                        $(this).remove();
-                        resetSelection();
-                        rebuildTable();
-                    }
-                }
-            });
-
-            newChild.draggable();
         }
-    });
+
+        var img = $(svgCache[v]).clone();
+
+        var newChild = cdiv.append(img);
+        newChild.addClass("overflow");
+        newChild.addClass(orientation);
+        newChild.attr("border", 0);
+        newChild.data("railway-themeid", themeid);
+
+        newChild.click(function (evt) {
+            if (evt.ctrlKey && evt.altKey) {
+                rotateElement(col, row, $(this));
+            } else if (evt.ctrlKey) {
+                //selectElement($(this));
+                rotateElement(col, row, $(this));
+            } else if (evt.altKey) {
+                if (isEdit) {
+                    $(this).remove();
+                    resetSelection();
+                    rebuildTable();
+                }
+            }
+        });
+
+        newChild.draggable();
+    }
 }
 
 function handleUserClick(col, row) {
@@ -337,7 +406,13 @@ $(document).ready(function (e) {
                     if (c.find("img").length == 1)
                         return;
 
-                    var newChild = c.append("<img class=\"overflow\" src=\"" + src + "\" border=\"0\" data-railway-themeid=\"" + themeId + "\">");
+                    var img = $(svgCache[src]).clone();
+
+                    var newChild = c.append(img); //c.append("<img class=\"overflow\" src=\"" + src + "\" border=\"0\" data-railway-themeid=\"" + themeId + "\">");
+                    newChild.addClass("overflow");
+                    newChild.attr("border", 0);
+                    newChild.data("railway-themeid", themeId);
+
                     newChild.click(function (evt) {
                         if (evt.ctrlKey && evt.altKey) {
                             rotateElement(col, row, $(this));
@@ -386,7 +461,14 @@ $(document).ready(function (e) {
                 var o2 = sel.find(':selected').data("railway-themeid");
                 var v = themeDirectory + '/' + o + '.svg';
 
-                var newChild = c.append("<img class=\"overflow\" src=\"" + v + "\" border=\"0\" data-railway-themeid=\"" + o2 + "\">");
+                //var newChild = c.append("<img class=\"overflow\" src=\"" + v + "\" border=\"0\" data-railway-themeid=\"" + o2 + "\">");
+
+                var img = $(svgCache[v]).clone();
+
+                var newChild = c.append(img); //c.append("<img class=\"overflow\" src=\"" + src + "\" border=\"0\" data-railway-themeid=\"" + themeId + "\">");
+                newChild.addClass("overflow");
+                newChild.attr("border", 0);
+                newChild.data("railway-themeid", o2);
 
                 newChild.click(function (evt) {
 
@@ -428,4 +510,7 @@ $(document).ready(function (e) {
     } catch (e) {
         railwayEssentialCallback.message(e.message);
     }
+
+    //isEdit = true;
+    //updateUi();
 });

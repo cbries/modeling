@@ -16,10 +16,10 @@
             <Button Height="20" Width="20" Margin="0,0,5,0" Command="{Binding ZoomResetCommand}" Padding="0" ToolTip="Reset Zoom">
                 <Image Source="/RailwayEssentialMdi;component/Resources/zoomnot.png"/>
             </Button>
-            <Button Height="20" Width="20" Margin="0,0,5,0" Command="{Binding ZoomPlusCommand}" Padding="0" ToolTip="Zoom-Out">
+            <Button Height="20" Width="20" Margin="0,0,5,0" Command="{Binding ZoomMinusCommand}" Padding="0" ToolTip="Zoom-Out">
                 <Image Source="/RailwayEssentialMdi;component/Resources/zoomminus.png"/>
             </Button>
-            <Button Height="20" Width="20" Margin="0,0,5,0" Command="{Binding ZoomMinusCommand}" Padding="0" ToolTip="Zoom-In">
+            <Button Height="20" Width="20" Margin="0,0,5,0" Command="{Binding ZoomPlusCommand}" Padding="0" ToolTip="Zoom-In">
                 <Image Source="/RailwayEssentialMdi;component/Resources/zoomplus.png"/>
             </Button>
 

@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Threading;
 using System.Windows;
 using CefSharp;
-using CefSharp.Wpf;
 using RailwayEssentialCore;
 using RailwayEssentialWeb.Cef;
 
