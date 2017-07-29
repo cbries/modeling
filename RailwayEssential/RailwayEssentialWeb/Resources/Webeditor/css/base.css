@@ -81,9 +81,9 @@ div {
     vertical-align: middle;
 }
 
-.container > div {
-    flex: 1; /*grow*/
-}
+    .container > div {
+        flex: 1; /*grow*/
+    }
 
 .statusLeft {
 }
@@ -118,6 +118,20 @@ div {
     -ms-transform: translateX(100%) rotate(-90deg); /* IE9 */
     -o-transform: translateX(100%) rotate(-90deg); /* Opera */
     transform: translateX(100%) rotate(-90deg); /* W3C */
+    -webkit-transform-origin: left bottom;
+    -moz-transform-origin: left bottom;
+    -ms-transform-origin: left bottom;
+    -o-transform-origin: left bottom;
+    transform-origin: left bottom;
+}
+
+.rot180 {
+    -webkit-transform: translateY(-100%) translateX(100%) rotate(180deg); /* Safari */
+    -moz-transform: translateY(-100%) translateX(100%) rotate(180deg); /* Firefox 3.6 Firefox 4 */
+    /*-moz-transform-origin: right top; */
+    -ms-transform: translateY(-100%) translateX(100%) rotate(180deg); /* IE9 */
+    -o-transform: translateY(-100%) translateX(100%) rotate(180deg); /* Opera */
+    transform: translateY(-100%) translateX(100%) rotate(180deg); /* W3C */
     -webkit-transform-origin: left bottom;
     -moz-transform-origin: left bottom;
     -ms-transform-origin: left bottom;

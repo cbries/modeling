@@ -3,7 +3,7 @@
     "x": 20,
     "y": 4,
     "themeId": 10,
-    "orientation": "imgflip2",
+    "orientation": "",
     "description": ""
   },
   {
@@ -51,8 +51,8 @@
   {
     "x": 5,
     "y": 7,
-    "themeId": 50,
-    "orientation": "imgflip",
+    "themeId": 51,
+    "orientation": "",
     "description": ""
   },
   {
@@ -65,8 +65,8 @@
   {
     "x": 4,
     "y": 6,
-    "themeId": 50,
-    "orientation": "imgflip",
+    "themeId": 51,
+    "orientation": "rot180",
     "description": ""
   },
   {
@@ -493,13 +493,6 @@
     "x": 19,
     "y": 4,
     "themeId": 10,
-    "orientation": "rot0",
-    "description": ""
-  },
-  {
-    "x": 25,
-    "y": 1,
-    "iconName": "curve",
     "orientation": "rot0",
     "description": ""
   },
@@ -513,43 +506,43 @@
   {
     "x": 23,
     "y": 1,
-    "themeId": 51,
+    "themeId": 50,
     "orientation": "rot0",
     "description": ""
   },
   {
     "x": 22,
     "y": 2,
-    "themeId": 51,
-    "orientation": "imgflip",
+    "themeId": 50,
+    "orientation": "",
     "description": ""
   },
   {
     "x": 21,
     "y": 3,
-    "themeId": 51,
-    "orientation": "imgflip",
+    "themeId": 50,
+    "orientation": "",
     "description": ""
   },
   {
     "x": 5,
     "y": 2,
-    "themeId": 51,
-    "orientation": "imgflip2",
+    "themeId": 50,
+    "orientation": "rot180",
     "description": ""
   },
   {
     "x": 4,
     "y": 3,
-    "themeId": 51,
-    "orientation": "imgflip2",
+    "themeId": 50,
+    "orientation": "rot180",
     "description": ""
   },
   {
     "x": 3,
     "y": 4,
-    "themeId": 51,
-    "orientation": "imgflip imgflip2",
+    "themeId": 50,
+    "orientation": "rot180",
     "description": ""
   },
   {
@@ -784,13 +777,6 @@
     "description": ""
   },
   {
-    "x": 1,
-    "y": 5,
-    "iconName": "curve",
-    "orientation": "imgflip imgflip2",
-    "description": ""
-  },
-  {
     "x": 2,
     "y": 5,
     "themeId": 10,
@@ -822,21 +808,21 @@
     "x": 23,
     "y": 8,
     "themeId": 51,
-    "orientation": "imgflip imgflip2",
+    "orientation": "rot180",
     "description": ""
   },
   {
     "x": 22,
     "y": 7,
     "themeId": 51,
-    "orientation": "imgflip imgflip2",
+    "orientation": "rot180",
     "description": ""
   },
   {
     "x": 21,
     "y": 6,
     "themeId": 51,
-    "orientation": "imgflip imgflip2",
+    "orientation": "rot180",
     "description": ""
   },
   {
@@ -919,7 +905,7 @@
   {
     "x": 23,
     "y": 2,
-    "themeId": 202,
+    "themeId": 201,
     "orientation": "rot90",
     "description": ""
   },
@@ -962,21 +948,28 @@
     "x": 3,
     "y": 6,
     "themeId": 201,
-    "orientation": "rot0",
+    "orientation": "rot180",
     "description": ""
   },
   {
     "x": 4,
     "y": 7,
     "themeId": 201,
-    "orientation": "rot0",
+    "orientation": "rot180",
     "description": ""
   },
   {
     "x": 5,
     "y": 8,
     "themeId": 201,
-    "orientation": "imgflip",
+    "orientation": "rot180",
+    "description": ""
+  },
+  {
+    "x": 1,
+    "y": 5,
+    "themeId": 11,
+    "orientation": "rot180",
     "description": ""
   }
 ]

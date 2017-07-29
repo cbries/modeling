@@ -128,22 +128,27 @@ function rotateElement2(col, row, el) {
     }
 
     if (o.hasClass('imgflip')) {
+        // links oben
         o.removeClass('imgflip');
         o.addClass('rot90');
         ss(col, row, "rot90");
     } else if (o.hasClass('rot90')) {
+        // rechts oben
         o.removeClass('rot90');
+        o.addClass('rot180');
+        ss(col, row, "rot180");
+    } else if (o.hasClass('rot180')) {
+        // rechts unten
+        o.removeClass('rot180');
         o.addClass('rot-90');
         ss(col, row, "rot-90");
     } else if (o.hasClass('rot-90')) {
+        // links unten
         o.removeClass('rot-90');
         o.addClass('rot0');
         ss(col, row, "rot0");
-    } else if (o.hasClass('rot0')) {
-        o.removeClass('rot0');
-        o.addClass('imgflip');
-        ss(col, row, "imgflip");
     } else {
+        // fallback, links oben
         o.addClass('rot90');
         ss(col, row, "rot90");
     }
