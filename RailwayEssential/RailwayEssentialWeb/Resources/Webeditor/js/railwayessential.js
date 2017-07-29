@@ -57,7 +57,7 @@ function rebuildTable() {
         if ($(el).find('img').length == 0) {
             var col = $(el).parent().children().index($(el));
             var row = $(el).parent().parent().children().index($(el).parent());
-            console.log("vs #3 cellEdited(" + col + ", " + row + ", -1)");
+            //console.log("vs #3 cellEdited(" + col + ", " + row + ", -1)");
             try {
                 railwayEssentialCallback.cellEdited(col, row, -1);
             } catch (ex) { /* ignore */ }
@@ -121,7 +121,7 @@ function rotateElement2(col, row, el) {
     var o = el;
 
     function ss(col, row, orientation) {
-        console.log("vs: cellRotated(" + col + ", " + row + ", " + orientation + ")");
+        //console.log("vs: cellRotated(" + col + ", " + row + ", " + orientation + ")");
         try {
             railwayEssentialCallback.cellRotated(col, row, orientation);
         } catch (ex) { /* ignore */ }
@@ -157,38 +157,6 @@ function rotateElement2(col, row, el) {
 function rotateElement(col, row, el) {
     rotateElement2(col, row, el);
     return;
-
-    //var o = el;
-
-    //function ss(col, row, orientation) {
-    //    console.log("vs: cellRotated(" + col + ", " + row + ", " + orientation + ")");
-    //    try {
-    //        railwayEssentialCallback.cellRotated(col, row, orientation);
-    //    } catch (ex) { /* ignore */ }
-    //}
-
-    //if (o.hasClass('rot0')) {
-    //    o.removeClass('rot0');
-    //    o.addClass('imgflip');
-    //    ss(col, row, "imgflip");
-    //} else if (o.hasClass('imgflip') && !o.hasClass('imgflip2')) {
-    //    o.removeClass('imgflip');
-    //    o.addClass('imgflip2');
-    //    ss(col, row, "imgflip2");
-    //} else if (o.hasClass('imgflip2') && !o.hasClass('imgflip')) {
-    //    o.removeClass('imgflip2');
-    //    o.removeClass('imgflip');
-    //    o.addClass('imgflip imgflip2');
-    //    ss(col, row, "imgflip imgflip2");
-    //} else if (o.hasClass('imgflip') && o.hasClass('imgflip2')) {
-    //    o.removeClass('imgflip');
-    //    o.removeClass('imgflip2');
-    //    o.addClass('rot0');
-    //    ss(col, row, "rot0");
-    //} else {
-    //    o.addClass('imgflip');
-    //    ss(col, row, "imgflip");
-    //}
 }
 
 function test(col, row) {
@@ -259,9 +227,11 @@ function simulateClick(col, row, themeid, symbol, orientation) {
                     //selectElement($(this));
                     rotateElement(col, row, $(this));
                 } else if (evt.altKey) {
-                    $(this).remove();
-                    resetSelection();
-                    rebuildTable();
+                    if (isEdit) {
+                        $(this).remove();
+                        resetSelection();
+                        rebuildTable();
+                    }
                 }
             });
 
@@ -285,8 +255,7 @@ $(document).ready(function (e) {
 
     $('#cmdEdit').click(function () {
         isEdit = !isEdit;
-
-        console.log("vs: editModeChanged(" + isEdit + ")");
+        //console.log("vs: editModeChanged(" + isEdit + ")");
         try {
             railwayEssentialCallback.editModeChanged(isEdit);
         } catch (ex) { /* ignore */ }
@@ -425,11 +394,14 @@ $(document).ready(function (e) {
                     } else if (evt.ctrlKey && evt.shiftKey) {
                         rotateElement2(col, row, $(this));;
                     } else if (evt.ctrlKey) {
-                        selectElement($(this));
+                        //selectElement($(this
+                        rotateElement(col, row, $(this));
                     } else if (evt.altKey) {
-                        $(this).remove();
-                        resetSelection();
-                        rebuildTable();
+                        if (isEdit) {
+                            $(this).remove();
+                            resetSelection();
+                            rebuildTable();
+                        }
                     }
                 });
 
