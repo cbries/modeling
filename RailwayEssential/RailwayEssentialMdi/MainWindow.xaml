@@ -6,7 +6,9 @@
         xmlns:viewModels="clr-namespace:RailwayEssentialMdi.ViewModels"
         xmlns:trackInformation="clr-namespace:TrackInformation;assembly=TrackInformation"
         xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock" Name="app"
-        mc:Ignorable="d" Title="RailwayEssential" Height="700" Width="1200">
+        mc:Ignorable="d" Title="RailwayEssential" Height="700" Width="1200" 
+        DataContextChanged="MainWindow_OnDataContextChanged"
+        Initialized="MainWindow_OnInitialized">
     
     <Window.DataContext>
         <viewModels:RailwayEssentialModel/>
@@ -73,7 +75,8 @@
 
             <xcad:DockingManager Grid.Column="0" Grid.ColumnSpan="2" Margin="4" x:Name="dockManager" 
                                  AllowMixedOrientation="True" 
-                                 DocumentsSource="{Binding Windows}">
+                                 DocumentsSource="{Binding Windows}"
+                                 DocumentClosing="DockManager_OnDocumentClosing">
 
                 <!--
                 <xcad:DockingManager.LayoutItemContainerStyleSelector>
@@ -97,6 +100,7 @@
                         <Setter Property="ContentId" Value="{Binding Model.Entity.ContentId}"/>
                         <Setter Property="IsSelected" Value="{Binding Model.Entity.IsSelected, Mode=TwoWay}"/>
                         <Setter Property="IsActive" Value="{Binding Model.Entity.IsActive, Mode=TwoWay}"/>
+                        <Setter Property="CloseCommand" Value="{Binding Model.CloseCommand}" />
                     </Style>
                 </xcad:DockingManager.LayoutItemContainerStyle>
 
@@ -104,7 +108,7 @@
                     <xcad:LayoutPanel Orientation="Horizontal">
 
                         <xcad:LayoutAnchorablePane DockWidth="250">
-                            <xcad:LayoutAnchorable Title="Object Explorer">
+                            <xcad:LayoutAnchorable Title="Object Explorer" CanClose="False" CanHide="False">
                                 <TreeView ItemsSource="{Binding RootItems}" Name="treeView"
                                           MouseDoubleClick="TreeView_OnMouseDoubleClick"
                                           KeyDown="TreeView_OnKeyDown">

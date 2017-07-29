@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using RailwayEssentialMdi.Interfaces;
@@ -10,19 +12,38 @@ namespace RailwayEssentialMdi
     public partial class MainWindow : Window, IMainView
     {
         private RailwayEssentialModel _dataContext;
+        private bool _initialized = false;
 
         public MainWindow()
         {
             InitializeComponent();
 
+            Unloaded += MainWindow_Unloaded;
+        }
+
+        private void MainWindow_OnInitialized(object sender, EventArgs e)
+        {
+            _initialized = true;
+        }
+
+        private void MainWindow_OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
             var m = DataContext as RailwayEssentialModel;
+
             if (m != null)
             {
                 _dataContext = m;
+
                 m.MainView = this;
             }
+        }
 
-            Unloaded += MainWindow_Unloaded;
+        private void DockManager_OnDocumentClosing(object sender, DocumentClosingEventArgs e)
+        {
+            if (!_initialized)
+                return;
+
+            Trace.WriteLine("Document: " + e.Document);
         }
 
         private void MainWindow_Unloaded(object sender, RoutedEventArgs e)
@@ -45,7 +66,8 @@ namespace RailwayEssentialMdi
 
         private void TreeView_OnKeyDown(object sender, KeyEventArgs e)
         {
-            PropagateTreeViewSelection();
+            if(e.Key == Key.Enter)
+                PropagateTreeViewSelection();
         }
 
         private void PropagateTreeViewSelection()
@@ -96,5 +118,6 @@ namespace RailwayEssentialMdi
         }
 
         #endregion
+
     }
 }

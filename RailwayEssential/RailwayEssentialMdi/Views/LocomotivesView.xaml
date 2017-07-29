@@ -16,7 +16,7 @@
             <Label Content="{Binding Entity.Name}" FontWeight="Bold" VerticalAlignment="Center"/>
             <Image Width="32" Height="32" HorizontalAlignment="Right" Margin="2,2,10,2" Source="/RailwayEssentialMdi;component/Resources/Main.ico"/>
         </DockPanel>
-        <Grid Grid.Row="1" VerticalAlignment="Top" IsEnabled="{Binding Entity.IsActive}">
+        <Grid Grid.Row="1" VerticalAlignment="Top" IsEnabled="{Binding Entity.IsEnabled}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="Auto"/>
@@ -63,7 +63,7 @@
             </DockPanel>
         </Grid>
 
-        <DockPanel Grid.Row="2" IsEnabled="{Binding Entity.IsActive}">
+        <DockPanel Grid.Row="2" IsEnabled="{Binding Entity.IsEnabled}">
             <Button Content="STOP" Margin="10,0,00,0" FontWeight="Bold" FontSize="14" Height="35" Width="50" HorizontalAlignment="Left" Command="{Binding StopCommand}"/>
             <DockPanel HorizontalAlignment="Right">
                 <ToggleButton Content="&lt;&lt;" Margin="0,0,5,0" FontWeight="Bold" FontSize="14" Height="35" Width="35" IsChecked="{Binding Entity.DriveBackward, Mode=TwoWay}"/>

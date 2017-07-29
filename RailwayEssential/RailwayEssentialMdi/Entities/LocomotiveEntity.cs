@@ -95,6 +95,24 @@ namespace RailwayEssentialMdi.Entities
 
         #endregion
 
+        #region IsEnabled
+
+        private bool _isEnabled = false;
+        public bool IsEnabled
+        {
+            get { return _isEnabled; }
+            set
+            {
+                if (_isEnabled != value)
+                {
+                    _isEnabled = value;
+                    RaisePropertyChanged("IsEnabled");
+                }
+            }
+        }
+
+        #endregion
+        
         private bool _driveForward;
         private bool _driveBackward;
 
@@ -130,14 +148,14 @@ namespace RailwayEssentialMdi.Entities
         {
             Trace.WriteLine(" *** UpdateUi() of Locomotive *** ");
 
-            //if (_objectItem == null)
-            //{
-            //    IsActive = false;
+            if (_objectItem == null)
+            {
+                IsEnabled = false;
 
-            //    return;
-            //}
+                return;
+            }
 
-            IsActive = true;
+            IsEnabled = true;
 
             if (ObjectItem != null && ObjectItem.Direction == 1)
             {
