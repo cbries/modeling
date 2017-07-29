@@ -30,6 +30,8 @@ namespace RailwayEssentialMdi.Entities
 
         public ProjectTrack ProjectTrack { get; set; }
 
+        internal ITrackViewer Viewer => _trackViewer;
+
         #region Name
 
         public string Name

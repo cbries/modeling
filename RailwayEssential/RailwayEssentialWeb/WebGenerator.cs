@@ -23,8 +23,8 @@ namespace RailwayEssentialWeb
         {
             Theme = theme;
 
-            Rows = 15;
-            Columns = 25;
+            Rows = 50;
+            Columns = 50;
 
             TileWidth = 24;
             TileHeight = 24;
@@ -125,7 +125,7 @@ namespace RailwayEssentialWeb
             }
             oSb.Append("</table>");
 
-            string css = string.Format("table {{width:{0}px; height:{1}px;}}", Columns * 32, Rows * 32);
+            string css = ""; //string.Format("table {{width:{0}px; height:{1}px;}}", Columns * TileWidth, Rows * TileHeight);
 
             try
             {

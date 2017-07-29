@@ -9,12 +9,12 @@ html, body {
 
 html {
     display: table;
-    margin: auto;
+    /*    margin: auto; */
 }
 
 body {
     display: table-cell;
-    vertical-align: middle;
+    /*    vertical-align: middle; */
 }
 
 table {
@@ -41,6 +41,8 @@ div {
     margin: 0;
     padding: 0;
     overflow: visible;
+    min-height: 32px !important;
+    min-width: 32px !important;
     max-height: 32px !important;
     max-width: 32px !important;
     width: 32px;
@@ -64,16 +66,6 @@ div {
     -ms-filter: "FlipH";
 }
 
-.imgflip2 {
-    transform: scaleY(-1);
-    filter: FlipV;
-    -ms-filter: "FlipV";
-}
-
-.imgflip.imgflip2 {
-    transform: scale(-1, -1);
-}
-
 .container {
     width: 100%;
     margin-top: 10px;
@@ -81,20 +73,8 @@ div {
     vertical-align: middle;
 }
 
-    .container > div {
-        flex: 1; /*grow*/
-    }
-
-.statusLeft {
-}
-
-.statusRight {
-    text-align: right;
-    font-weight: bold;
-}
-
-#cmdEdit {
-    cursor: pointer;
+.container > div {
+    flex: 1; /*grow*/
 }
 
 .rot90 {

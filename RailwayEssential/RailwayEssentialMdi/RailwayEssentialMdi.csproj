@@ -430,6 +430,12 @@
     <Resource Include="Resources\cat_switch.png" />
     <Resource Include="Resources\cat_locomotive.png" />
     <Resource Include="Resources\esu0.png" />
+    <Resource Include="Resources\zoomnot.png" />
+    <Resource Include="Resources\zoomminus.png" />
+    <Resource Include="Resources\zoomplus.png" />
+    <Resource Include="Resources\minus.png" />
+    <Resource Include="Resources\plus.png" />
+    <Resource Include="Resources\edit.png" />
     <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

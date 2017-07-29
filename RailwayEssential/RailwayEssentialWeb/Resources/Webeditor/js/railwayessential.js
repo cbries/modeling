@@ -17,11 +17,9 @@ $(document).keyup(function (e) {
 
 function updateUi() {
 
-    var cmdEdit = $('#cmdEdit');
     var o = $('#editMenu');
 
     if (isEdit) {
-        cmdEdit.css("border", "2px dashed green");
 
         o.show();
 
@@ -36,7 +34,6 @@ function updateUi() {
         });
     }
     else {
-        cmdEdit.css("border", "");
 
         o.hide();
 
@@ -70,7 +67,7 @@ function findTargetTd(evt, callback) {
 
     var clientX = evt.clientX;
     var clientY = evt.clientY;
-    
+
     $('td').each(function (index, el) {
 
         if (objDrag == null)
@@ -186,13 +183,14 @@ function changeSymbol(col, row, themeId, orientation, symbol) {
 
             var img = cdiv.find("img");
             img.removeClass("rot0");
+            img.removeClass("rot90");
+            img.removeClass("rot180");
             img.removeClass("imgflip");
-            img.removeClass("imgflip2");
             img.addClass(orientation);
             img.removeData("railway-themeid");
             img.data("railway-themeid", themeId);
             img.attr("src", v);
-        }       
+        }
     });
 }
 
@@ -241,10 +239,23 @@ function simulateClick(col, row, themeid, symbol, orientation) {
 }
 
 function handleUserClick(col, row) {
-    console.log("vs: cellClicked(" + col + ", " + row+")");
+    console.log("vs: cellClicked(" + col + ", " + row + ")");
     try {
         railwayEssentialCallback.cellClicked(col, row);
     } catch (ex) { /* ignore */ }
+}
+
+function changeEditMode(state) {
+    if (state == null || state === 'undefined')
+        isEdit = !isEdit;
+    else
+        isEdit = state;
+
+    try {
+        railwayEssentialCallback.editModeChanged(isEdit);
+    } catch (ex) { /* ignore */ }
+
+    updateUi();
 }
 
 $(document).ready(function (e) {
@@ -252,16 +263,6 @@ $(document).ready(function (e) {
     var isMouseDown = false;
     var isDragging = false;
     var startingPos = [];
-
-    $('#cmdEdit').click(function () {
-        isEdit = !isEdit;
-        //console.log("vs: editModeChanged(" + isEdit + ")");
-        try {
-            railwayEssentialCallback.editModeChanged(isEdit);
-        } catch (ex) { /* ignore */ }
-
-        updateUi();
-    });
 
     var currentCategory = "Track";
 
@@ -272,7 +273,7 @@ $(document).ready(function (e) {
     $('#webmenuDivSensor').hide();
     $('#webmenuDivAccessory').hide();
 
-    $('#webmenuCategories').change(function() {
+    $('#webmenuCategories').change(function () {
         $('#webmenuDivTrack').hide();
         $('#webmenuDivSwitch').hide();
         $('#webmenuDivSignal').hide();

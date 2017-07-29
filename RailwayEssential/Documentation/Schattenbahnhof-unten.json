@@ -3,7 +3,7 @@
 		"x": 20,
 		"y": 4,
 		"themeId": 10,
-		"orientation": "imgflip2",
+		"orientation": "",
 		"description": ""
 	},
 	{
@@ -52,7 +52,7 @@
 		"x": 5,
 		"y": 7,
 		"themeId": 50,
-		"orientation": "imgflip",
+		"orientation": "",
 		"description": ""
 	},
 	{
@@ -66,7 +66,7 @@
 		"x": 4,
 		"y": 6,
 		"themeId": 50,
-		"orientation": "imgflip",
+		"orientation": "",
 		"description": ""
 	},
 	{
@@ -521,35 +521,35 @@
 		"x": 22,
 		"y": 2,
 		"themeId": 51,
-		"orientation": "imgflip",
+		"orientation": "",
 		"description": ""
 	},
 	{
 		"x": 21,
 		"y": 3,
 		"themeId": 51,
-		"orientation": "imgflip",
+		"orientation": "",
 		"description": ""
 	},
 	{
 		"x": 5,
 		"y": 2,
 		"themeId": 51,
-		"orientation": "imgflip2",
+		"orientation": "",
 		"description": ""
 	},
 	{
 		"x": 4,
 		"y": 3,
 		"themeId": 51,
-		"orientation": "imgflip2",
+		"orientation": "",
 		"description": ""
 	},
 	{
 		"x": 3,
 		"y": 4,
 		"themeId": 51,
-		"orientation": "imgflip imgflip2",
+		"orientation": " ",
 		"description": ""
 	},
 	{
@@ -787,7 +787,7 @@
 		"x": 1,
 		"y": 5,
 		"iconName": "curve",
-		"orientation": "imgflip imgflip2",
+		"orientation": " ",
 		"description": ""
 	},
 	{
@@ -822,21 +822,21 @@
 		"x": 23,
 		"y": 8,
 		"themeId": 51,
-		"orientation": "imgflip imgflip2",
+		"orientation": " ",
 		"description": ""
 	},
 	{
 		"x": 22,
 		"y": 7,
 		"themeId": 51,
-		"orientation": "imgflip imgflip2",
+		"orientation": " ",
 		"description": ""
 	},
 	{
 		"x": 21,
 		"y": 6,
 		"themeId": 51,
-		"orientation": "imgflip imgflip2",
+		"orientation": " ",
 		"description": ""
 	},
 	{
@@ -976,7 +976,7 @@
 		"x": 5,
 		"y": 8,
 		"themeId": 201,
-		"orientation": "imgflip",
+		"orientation": "",
 		"description": ""
 	}
 ]

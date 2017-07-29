@@ -47,12 +47,14 @@
 
 {{TRACKTABLE}}
 
+<!--
 <div class="container">
   <div class="statusLeft"><img id="cmdEdit" width="24" height="24" style="vertical-align: middle;" border="0" src="edit.png"></div>
   <div>&nbsp;</div>  
   <div class="statusRight">ECOS2</div>
 </div>
-    
+-->
+
 <div class="childDiv" style="position: absolute; top: 0px; left: 0px; display: inline; overflow: visible;">
 </div>
 
