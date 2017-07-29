@@ -82,8 +82,6 @@
     <Compile Include="TrackViewerJsCallback.cs" />
     <Compile Include="WebGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebGenerator.CssCode.cs" />
-    <Compile Include="WebGenerator.JsCode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
