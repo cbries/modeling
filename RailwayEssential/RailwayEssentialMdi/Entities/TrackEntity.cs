@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Drawing.Text;
 using System.IO;
 using System.Threading;
 using Newtonsoft.Json;
@@ -256,11 +257,60 @@ namespace RailwayEssentialMdi.Entities
             }
         }
 
+        public S88 ItemsS88Selection { get; private set; }
+        public TrackInformation.Switch ItemsSwitchSelection { get; private set; }
+
+        public int SelectionX { get; private set; }
+        public int SelectionY { get; private set; }
+
+        public bool SelectionXYvisible { get; private set; }
+
+        private TrackInformationCore.IItem GetObject(int x, int y)
+        {
+            var track = Track;
+            var trackInfo = track.Get(x, y);
+
+            if (trackInfo == null)
+                return null;
+
+            var weaver = _dispatcher.Weaver;
+            if (weaver != null)
+            {
+                var ws = weaver.WovenSeam;
+                if (ws != null)
+                {
+                    foreach (var seam in ws)
+                    {
+                        if (seam == null)
+                            continue;
+
+                        if (seam.TrackObjects.ContainsKey(trackInfo))
+                            return seam.ObjectItem;
+                    }
+                }
+            }
+
+            return null;
+        }
+
         private void JsCallbackOnCellSelected(object sender, int x, int y)
         {
+            SelectionX = x;
+            SelectionY = y;
+            RaisePropertyChanged("SelectionX");
+            RaisePropertyChanged("SelectionY");
+
+            SelectionXYvisible = !(x == -1 || y == -1);
+            RaisePropertyChanged("SelectionXYvisible");
+
             if (x == -1 || y == -1)
             {
-                ShowObjectEdit = false;
+                Ctx.Send(state =>
+                {
+                    ShowObjectEdit = false;
+                    ItemsS88.Clear();
+                    ItemsSwitch.Clear();
+                }, null);
                 Trace.WriteLine("Selection reset");
                 return;
             }
@@ -276,6 +326,27 @@ namespace RailwayEssentialMdi.Entities
                 var dataProvider = _dispatcher.GetDataProvider();
                 if (dataProvider == null)
                     return;
+
+                var objItem = GetObject(x, y);
+                if (objItem != null)
+                {
+                    switch (objItem.TypeId())
+                    {
+                        case 4: // S88
+                        {
+                            ItemsS88Selection = objItem as S88;
+                            RaisePropertyChanged("ItemsS88Selection");
+                        }
+                            break;
+
+                        case 5: // switch
+                        {
+                            ItemsSwitchSelection = objItem as TrackInformation.Switch;
+                            RaisePropertyChanged("ItemsSwitchSelection");
+                        }
+                            break;
+                    }
+                }
 
                 ObservableCollection<TrackInformation.Item> items = new ObservableCollection<Item>();
                 foreach (var e in dataProvider.Objects)
@@ -296,8 +367,6 @@ namespace RailwayEssentialMdi.Entities
         {
             x = x + 1;
             y = y + 1;
-
-            //Trace.WriteLine("Cell clicked: " + x + ", " + y);
 
             var track = Track;
             var trackInfo = track.Get(x, y);

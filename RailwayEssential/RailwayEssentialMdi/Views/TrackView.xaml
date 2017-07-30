@@ -83,7 +83,14 @@
                 <TabItem Header="S88">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
                         <StackPanel>
-                            <ComboBox ItemsSource="{Binding Entity.ItemsS88}"/>
+                            <DockPanel Margin="0,5,0,0" Visibility="{Binding Entity.SelectionXYvisible, Mode=OneWay, Converter={StaticResource BoolToVis}}">
+                                <TextBlock Text="X:" FontWeight="Bold" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Entity.SelectionX, Mode=OneWay}" VerticalAlignment="Center"/>
+                                <TextBlock Text="Y:" FontWeight="Bold" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Entity.SelectionY, Mode=OneWay}" VerticalAlignment="Center"/>
+
+                                <ComboBox Margin="10,0,0,0" ItemsSource="{Binding Entity.ItemsS88}" SelectedItem="{Binding Entity.ItemsS88Selection, Mode=OneWay}" VerticalAlignment="Center"/>
+                            </DockPanel>
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
@@ -91,7 +98,14 @@
                 <TabItem Header="Switch">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
                         <StackPanel>
-                            <ComboBox ItemsSource="{Binding Entity.ItemsSwitch}"/>
+                            <DockPanel Margin="0,5,0,0" Visibility="{Binding Entity.SelectionXYvisible, Mode=OneWay, Converter={StaticResource BoolToVis}}">
+                                <TextBlock Text="X:" FontWeight="Bold" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Entity.SelectionX, Mode=OneWay}" VerticalAlignment="Center"/>
+                                <TextBlock Text="Y:" FontWeight="Bold" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Entity.SelectionY, Mode=OneWay}" VerticalAlignment="Center"/>
+
+                                <ComboBox Margin="10,0,0,0" ItemsSource="{Binding Entity.ItemsSwitch}" SelectedItem="{Binding Entity.ItemsSwitchSelection, Mode=OneWay}" VerticalAlignment="Center"/>
+                            </DockPanel>
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
