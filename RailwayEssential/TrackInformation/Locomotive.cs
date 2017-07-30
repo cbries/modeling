@@ -126,6 +126,16 @@ namespace TrackInformation
             SubTitle = $"Speed[{Speed}]->{v} ({Protocol} : {Addr})";
         }
 
+        public void Stop()
+        {
+            List<ICommand> ctrlCmds = new List<ICommand>
+            {
+                CommandFactory.Create($"set({ObjectId}, stop)"),
+            };
+
+            OnCommandsReady(this, ctrlCmds);
+        }
+
         public void ToggleFunction(uint nr, bool state)
         {
             int v = state ? 1 : 0;
