@@ -15,6 +15,8 @@
         public TrackEntity Entity => _entity;
         public override string Name => ProjectTrackView.Name;
         
+        public RelayCommand SaveCommand { get; }
+
         public RelayCommand ZoomResetCommand { get; }
         public RelayCommand ZoomPlusCommand { get; }
         public RelayCommand ZoomMinusCommand { get; }
@@ -40,6 +42,15 @@
             ZoomPlusCommand = new RelayCommand(ZoomPlus);
             ZoomMinusCommand = new RelayCommand(ZoomMinus);
             EditCommand = new RelayCommand(EditState);
+
+            SaveCommand = new RelayCommand(Save);
+        }
+
+        private void Save(object p)
+        {
+            // TODO
+            // TODO
+            // TODO
         }
 
         private void PlusColumRight(object p)
