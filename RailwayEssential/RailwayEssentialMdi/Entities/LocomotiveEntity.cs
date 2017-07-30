@@ -125,6 +125,9 @@
 
                 ObjectItem.ChangeDirection((uint)ObjectItem.ObjectId, !value);
 
+                if (_objectItem != null)
+                    _objectItem.Speed = 0;
+
                 UpdateUi();
             }
         }
@@ -138,6 +141,9 @@
                 _driveForward = !value;
 
                 ObjectItem.ChangeDirection((uint)ObjectItem.ObjectId, value);
+
+                if (_objectItem != null)
+                    _objectItem.Speed = 0;
 
                 UpdateUi();
             }

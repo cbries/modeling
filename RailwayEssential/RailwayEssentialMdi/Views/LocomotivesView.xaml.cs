@@ -23,6 +23,8 @@ namespace RailwayEssentialMdi.Views
                 _dataContext = m;
 
                 m.LocomotiveView = this;
+
+                _dataContext.UpdateFuncset();
             }
         }
 

@@ -8,7 +8,8 @@
       "speed": 0,
       "speedstep": 0,
       "direction": 0,
-      "funcset": ""
+      "funcset": "",
+      "nrOfFunctions": 8 
     },
     {
       "objectId": 1005,
@@ -18,7 +19,8 @@
       "speed": 0,
       "speedstep": 0,
       "direction": 0,
-      "funcset": ""
+      "funcset": "",
+      "nrOfFunctions": 8
     },
     {
       "objectId": 1007,
@@ -28,7 +30,8 @@
       "speed": 0,
       "speedstep": 0,
       "direction": 0,
-      "funcset": ""
+      "funcset": "",
+      "nrOfFunctions": 8
     },
     {
       "objectId": 1004,
@@ -38,7 +41,8 @@
       "speed": 0,
       "speedstep": 0,
       "direction": 0,
-      "funcset": ""
+      "funcset": "",
+      "nrOfFunctions": 8
     },
     {
       "objectId": 1006,
@@ -48,7 +52,8 @@
       "speed": 0,
       "speedstep": 0,
       "direction": 0,
-      "funcset": ""
+      "funcset": "",
+      "nrOfFunctions": 8
     },
     {
       "objectId": 1008,
@@ -58,7 +63,8 @@
       "speed": 0,
       "speedstep": 0,
       "direction": 0,
-      "funcset": ""
+      "funcset": "",
+      "nrOfFunctions": 8
     },
     {
       "objectId": 1000,
@@ -68,7 +74,8 @@
       "speed": 0,
       "speedstep": 0,
       "direction": 0,
-      "funcset": ""
+      "funcset": "",
+      "nrOfFunctions": 8
     },
     {
       "objectId": 1009,
@@ -78,7 +85,8 @@
       "speed": 0,
       "speedstep": 0,
       "direction": 0,
-      "funcset": ""
+      "funcset": "",
+      "nrOfFunctions": 8
     },
     {
       "objectId": 1001,
@@ -88,7 +96,8 @@
       "speed": 0,
       "speedstep": 0,
       "direction": 0,
-      "funcset": ""
+      "funcset": "",
+      "nrOfFunctions": 8
     },
     {
       "objectId": 1003,
@@ -98,7 +107,8 @@
       "speed": 0,
       "speedstep": 0,
       "direction": 0,
-      "funcset": ""
+      "funcset": "",
+      "nrOfFunctions": 8
     }
   ],
   "switches": [
