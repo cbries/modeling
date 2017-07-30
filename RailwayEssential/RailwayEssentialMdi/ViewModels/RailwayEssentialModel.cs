@@ -336,11 +336,17 @@ namespace RailwayEssentialMdi.ViewModels
 
             _trackEntity.Initialize();
 
-            if (prjTrack.Show)
+            foreach (var view in Project.TrackViews)
             {
-                var item = new TrackWindow(_trackEntity);
-                item.Closing += (s, ev) => Windows.Remove(item);
-                Windows.Add(item);
+                if (view == null)
+                    continue;
+
+                if (view.Show)
+                {
+                    var item = new TrackWindow(_trackEntity);
+                    item.Closing += (s, ev) => Windows.Remove(item);
+                    Windows.Add(item);
+                }
             }
 
             _dispatcher.UpdateUi += DispatcherOnUpdateUi;
@@ -626,19 +632,31 @@ namespace RailwayEssentialMdi.ViewModels
 
         public void AddTrack(object p)
         {
-            var trackPath = "TrackPlan{0}.json".GenerateUniqueName(_project.Dirpath);
-            var trackWeavePath = "TrackWeave{0}.json".GenerateUniqueName(_project.Dirpath);
-            try { File.WriteAllText(trackPath, @"[]", Encoding.UTF8); }
-            catch { /* ignore */ }
-            try { File.WriteAllText(trackWeavePath, @"[]", Encoding.UTF8); }
-            catch { /* ignore */ }
-
-            var trackName = Path.GetFileNameWithoutExtension(trackPath);
-            var trackRelativePath = Path.GetFileName(trackPath);
-            var trackWeaveRelativePath = Path.GetFileName(trackWeavePath);
-
             if (_trackEntity == null)
             {
+                var trackPath = "TrackPlan{0}.json".GenerateUniqueName(_project.Dirpath);
+                var trackWeavePath = "TrackWeave{0}.json".GenerateUniqueName(_project.Dirpath);
+                try
+                {
+                    File.WriteAllText(trackPath, @"[]", Encoding.UTF8);
+                }
+                catch
+                {
+                    /* ignore */
+                }
+                try
+                {
+                    File.WriteAllText(trackWeavePath, @"[]", Encoding.UTF8);
+                }
+                catch
+                {
+                    /* ignore */
+                }
+
+                var trackName = Path.GetFileNameWithoutExtension(trackPath);
+                var trackRelativePath = Path.GetFileName(trackPath);
+                var trackWeaveRelativePath = Path.GetFileName(trackWeavePath);
+
                 _trackEntity = new TrackEntity(_dispatcher)
                 {
                     Theme = _theme,
@@ -647,19 +665,32 @@ namespace RailwayEssentialMdi.ViewModels
                 };
 
                 _trackEntity.Initialize();
+
+                var item = new TrackWindow(_trackEntity);
+                item.Closing += (s, ev) => Windows.Remove(item);
+                Windows.Add(item);
+
+                Project.Track = new ProjectTrack
+                {
+                    Name = trackName,
+                    Path = trackRelativePath,
+                    Weave = trackWeaveRelativePath
+                };
+
+                Project.TrackViews.Add(new ProjectTrackView
+                {
+                    Name = trackName,
+                    Show = true,
+                    StartX = 0,
+                    StartY = 0
+                });
             }
-
-            var item = new TrackWindow(_trackEntity);
-            item.Closing += (s, ev) => Windows.Remove(item);
-            Windows.Add(item);
-
-            Project.Track = new ProjectTrack
+            else
             {
-                Name = trackName,
-                Path = trackRelativePath,
-                Show = true,
-                Weave = trackWeaveRelativePath
-            };
+                // TODO
+                // TODO
+                // TODO
+            }
         }
 
         public void RemoveTrack(object p)

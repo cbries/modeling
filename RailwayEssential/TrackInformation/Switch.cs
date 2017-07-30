@@ -146,7 +146,7 @@ namespace TrackInformation
             else
                 direction = "Turn";
 
-            SubTitle = $"{ext}] {direction}";
+            SubTitle = $"{direction} - [{ext}]";
         }
 
         public override void Parse(List<CommandArgument> arguments)

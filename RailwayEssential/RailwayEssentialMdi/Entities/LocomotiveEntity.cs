@@ -1,8 +1,7 @@
-﻿using System.Diagnostics;
-
-namespace RailwayEssentialMdi.Entities
+﻿namespace RailwayEssentialMdi.Entities
 {
     using System;
+    using System.Diagnostics;
 
     public class LocomotiveEntity : Bases.ViewModelBase
     {

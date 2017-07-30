@@ -94,6 +94,7 @@
     <Compile Include="Configuration.cs" />
     <Compile Include="DataObjects\ProjectFile.cs" />
     <Compile Include="DataObjects\ProjectTrack.cs" />
+    <Compile Include="DataObjects\ProjectTrackView.cs" />
     <Compile Include="Entities\LogEntity.cs" />
     <Compile Include="Entities\LocomotiveEntity.cs" />
     <Compile Include="Entities\TrackEntity.cs" />

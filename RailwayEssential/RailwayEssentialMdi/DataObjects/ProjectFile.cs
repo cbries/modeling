@@ -20,11 +20,13 @@ namespace RailwayEssentialMdi.DataObjects
         public UInt16 TargetPort { get; set; }
         public List<string> Objects { get; set; }
         public ProjectTrack Track { get; set; }
+        public List<ProjectTrackView> TrackViews { get; set; }
 
         public ProjectFile()
         {
             Objects = new List<string>();
             Track = new ProjectTrack();
+            TrackViews = new List<ProjectTrackView>();
         }
 
         public bool Load(string path)
@@ -89,6 +91,20 @@ namespace RailwayEssentialMdi.DataObjects
                         var item = new ProjectTrack();
                         if (item.Parse(ao))
                             Track = item;
+                    }
+                }
+
+                if (o["trackViews"] != null)
+                {
+                    JArray ar = o["trackViews"] as JArray;
+                    if (ar != null)
+                    {
+                        for (int i = 0; i < ar.Count; ++i)
+                        {
+                            var obj = new ProjectTrackView();
+                            if (obj.Parse(ar[i]))
+                                TrackViews.Add(obj);
+                        }
                     }
                 }
 

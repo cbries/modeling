@@ -124,10 +124,10 @@
                                                            Source="{Binding IconSource}" HorizontalAlignment="Center" 
                                                            VerticalAlignment="Center" RenderOptions.BitmapScalingMode="NearestNeighbor">
                                                     </Image>
-                                                    <TextBlock Text="{Binding Title}" FontSize="12"/>
+                                                    <TextBlock Text="{Binding Title}" FontSize="12" FontWeight="Bold"/>
                                                 </DockPanel>
                                                 <DockPanel Margin="0,1,0,1" Grid.Row="1" Height="{Binding SubTitleHeight}">
-                                                    <TextBlock Text="{Binding SubTitle}" FontSize="10"/>
+                                                    <TextBlock Text="{Binding SubTitle}" FontSize="11"/>
                                                 </DockPanel>
                                             </Grid>
                                         </HierarchicalDataTemplate>
