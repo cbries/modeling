@@ -203,37 +203,35 @@ function test(col, row) {
 }
 
 function changeSymbol(col, row, themeId, orientation, symbol) {
-    $('td').each(function (index, el) {
-        var oel = $(el);
-        var c = oel.parent().children().index(oel);
-        var r = oel.parent().parent().children().index(oel.parent());
 
-        if (col === c && row === r) {
-            var cdiv = oel.find("div");
-            if (cdiv.find("img").length === 0)
-                return;
+    var oel = $('#td_' + col + '_' + row);
 
-            var v = themeDirectory + '/' + symbol + '.svg';
+    var cdiv = oel.find("div");
+    if (cdiv.find("img").length === 0)
+        return;
 
-            try {
-                var m = "";
-                m += "Change Coord(" + col + ", " + row + "): " + themeId + ", " + orientation + ", " + symbol;
-                railwayEssentialCallback.message(m);
-            } catch (e) {
-                console.log(e);
-            }
+    var v = themeDirectory + '/' + symbol + '.svg';
 
-            var img = cdiv.find("img");
-            img.removeClass("rot0");
-            img.removeClass("rot90");
-            img.removeClass("rot180");
-            img.removeClass("imgflip");
-            img.addClass(orientation);
-            img.removeData("railway-themeid");
-            img.data("railway-themeid", themeId);
-            img.attr("src", v);
-        }
-    });
+    try {
+        var m = "";
+        m += "Change Coord(" + col + ", " + row + "): " + themeId + ", " + orientation + ", " + symbol;
+        railwayEssentialCallback.message(m);
+    } catch (e) {
+        console.log(e);
+    }
+
+    var img = cdiv.find("img");
+    if (!img.hasClass(orientation)) {
+        console.log("CHANGE CLASS: " + orientation + " -- " + col + ", " + row);
+        img.removeClass("rot0");
+        img.removeClass("rot90");
+        img.removeClass("rot-90");
+        img.removeClass("rot180");
+        img.addClass(orientation);
+    }
+    img.removeData("railway-themeid");
+    img.data("railway-themeid", themeId);
+    img.attr("src", v);
 }
 
 function simulateClick2(jsonArray) {
@@ -263,48 +261,46 @@ function simulateClick(col, row, themeid, symbol, orientation, response) {
     var c = col;
     var r = row;
 
-    if (col === c && row === r) {
-        var cdiv = oel.find("div");
-        if (cdiv.find("img").length === 1)
-            return;
+    var cdiv = oel.find("div");
+    if (cdiv.find("img").length === 1)
+        return;
 
-        var v = themeDirectory + '/' + symbol + '.svg';
+    var v = themeDirectory + '/' + symbol + '.svg';
 
-        if (response) {
-            try {
-                var m = "";
-                m += "Coord(" + col + ", " + row + "): " + symbol + ", " + orientation + ", " + themeid + ", " + v;
-                railwayEssentialCallback.message(m);
-            } catch (e) {
-                console.log(e);
+    if (response) {
+        try {
+            var m = "";
+            m += "Coord(" + col + ", " + row + "): " + symbol + ", " + orientation + ", " + themeid + ", " + v;
+            railwayEssentialCallback.message(m);
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    var img = $(svgCache[v]).clone();
+
+    var newChild = cdiv.append(img);
+    newChild.addClass("overflow");
+    newChild.addClass(orientation);
+    newChild.attr("border", 0);
+    newChild.data("railway-themeid", themeid);
+
+    newChild.click(function (evt) {
+        if (evt.ctrlKey && evt.altKey) {
+            rotateElement(col, row, $(this));
+        } else if (evt.ctrlKey) {
+            //selectElement($(this));
+            rotateElement(col, row, $(this));
+        } else if (evt.altKey) {
+            if (isEdit) {
+                $(this).remove();
+                resetSelection();
+                rebuildTable();
             }
         }
+    });
 
-        var img = $(svgCache[v]).clone();
-
-        var newChild = cdiv.append(img);
-        newChild.addClass("overflow");
-        newChild.addClass(orientation);
-        newChild.attr("border", 0);
-        newChild.data("railway-themeid", themeid);
-
-        newChild.click(function (evt) {
-            if (evt.ctrlKey && evt.altKey) {
-                rotateElement(col, row, $(this));
-            } else if (evt.ctrlKey) {
-                //selectElement($(this));
-                rotateElement(col, row, $(this));
-            } else if (evt.altKey) {
-                if (isEdit) {
-                    $(this).remove();
-                    resetSelection();
-                    rebuildTable();
-                }
-            }
-        });
-
-        newChild.draggable();
-    }
+    newChild.draggable();
 }
 
 function handleUserClick(col, row) {

@@ -324,19 +324,13 @@ namespace RailwayEssentialMdi.Entities
                     switch (seam.ObjectItem.TypeId())
                     {
                         case 1: // Locomotive
-                        {
-                        }
-                            break;
+                            continue;
 
                         case 2: // Ecos2
-                        {
-                        }
-                            break;
+                            continue;
 
                         case 3: // Route
-                        {
-                        }
-                            break;
+                            continue;
 
                         case 4: // S88
                         {
@@ -397,7 +391,7 @@ namespace RailwayEssentialMdi.Entities
                         _trackViewer.ExecuteJs($"changeSymbol({x}, {y}, {themeId}, \"{orientation}\", \"{symbol}\");");
                     }
 
-                    //Trace.WriteLine($"CHANGE: {x},{y} -> {symbol}");
+                    Trace.WriteLine($"CHANGE: {x},{y} -> {themeId} | {symbol} | {orientation}");
                 }
             }
 
