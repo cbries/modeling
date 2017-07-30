@@ -91,12 +91,18 @@ function updateUi() {
     }
 }
 
+function rebuildCell(col, row) {
+    var oel = $('#td_' + col + '_' + row);
+    if (oel != null) {
+        oel.html("<div class=\"overflow\"></div>");
+    }
+}
+
 function rebuildTable() {
     $('td').each(function (index, el) {
         if ($(el).find('img').length == 0) {
             var col = $(el).parent().children().index($(el));
             var row = $(el).parent().parent().children().index($(el).parent());
-            //console.log("vs #3 cellEdited(" + col + ", " + row + ", -1)");
             try {
                 railwayEssentialCallback.cellEdited(col, row, -1);
             } catch (ex) { /* ignore */ }
@@ -203,15 +209,10 @@ function test(col, row) {
 }
 
 function changeSymbol(col, row, themeId, orientation, symbol) {
-
     var oel = $('#td_' + col + '_' + row);
-
     var cdiv = oel.find("div");
     if (cdiv.find("img").length === 0)
         return;
-
-    var v = themeDirectory + '/' + symbol + '.svg';
-
     try {
         var m = "";
         m += "Change Coord(" + col + ", " + row + "): " + themeId + ", " + orientation + ", " + symbol;
@@ -219,19 +220,8 @@ function changeSymbol(col, row, themeId, orientation, symbol) {
     } catch (e) {
         console.log(e);
     }
-
-    var img = cdiv.find("img");
-    if (!img.hasClass(orientation)) {
-        console.log("CHANGE CLASS: " + orientation + " -- " + col + ", " + row);
-        img.removeClass("rot0");
-        img.removeClass("rot90");
-        img.removeClass("rot-90");
-        img.removeClass("rot180");
-        img.addClass(orientation);
-    }
-    img.removeData("railway-themeid");
-    img.data("railway-themeid", themeId);
-    img.attr("src", v);
+    rebuildCell(col, row);
+    simulateClick(col, row, themeId, symbol, orientation, false);
 }
 
 function simulateClick2(jsonArray) {
@@ -257,9 +247,6 @@ function simulateClick(col, row, themeid, symbol, orientation, response) {
         response = false;
 
     var oel = $('#td_' + col + '_' + row);
-
-    var c = col;
-    var r = row;
 
     var cdiv = oel.find("div");
     if (cdiv.find("img").length === 1)
@@ -404,7 +391,7 @@ $(document).ready(function (e) {
 
                     var img = $(svgCache[src]).clone();
 
-                    var newChild = c.append(img); //c.append("<img class=\"overflow\" src=\"" + src + "\" border=\"0\" data-railway-themeid=\"" + themeId + "\">");
+                    var newChild = c.append(img);
                     newChild.addClass("overflow");
                     newChild.attr("border", 0);
                     newChild.data("railway-themeid", themeId);
@@ -457,11 +444,9 @@ $(document).ready(function (e) {
                 var o2 = sel.find(':selected').data("railway-themeid");
                 var v = themeDirectory + '/' + o + '.svg';
 
-                //var newChild = c.append("<img class=\"overflow\" src=\"" + v + "\" border=\"0\" data-railway-themeid=\"" + o2 + "\">");
-
                 var img = $(svgCache[v]).clone();
 
-                var newChild = c.append(img); //c.append("<img class=\"overflow\" src=\"" + src + "\" border=\"0\" data-railway-themeid=\"" + themeId + "\">");
+                var newChild = c.append(img);
                 newChild.addClass("overflow");
                 newChild.attr("border", 0);
                 newChild.data("railway-themeid", o2);

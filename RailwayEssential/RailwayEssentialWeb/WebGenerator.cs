@@ -37,10 +37,23 @@ namespace RailwayEssentialWeb
         private string _selectCategory = "";
         private Dictionary<string, string> _selectHtml = new Dictionary<string, string>();
 
-        private void CreateSymbolSelection(out List<string> physicalSymbols)
+        private void CreateSymbolList(out List<string> physicalSymbols)
         {
             physicalSymbols = new List<string>();
 
+            foreach (var e in ThemeFiles)
+            {
+                if (string.IsNullOrEmpty(e))
+                    continue;
+
+                var p = new Uri(e).AbsoluteUri;
+
+                physicalSymbols.Add(p);
+            }
+        }
+
+        private void CreateSymbolSelection()
+        {
             // categories
             // [key:=category name, value:=selector list entries]
             string mhtmlCategories = "";
@@ -72,8 +85,6 @@ namespace RailwayEssentialWeb
                             var themeItem = Theme.Get(k, symbol.Value);
 
                             var p = new Uri(e).AbsoluteUri;
-
-                            physicalSymbols.Add(p);
 
                             html += $"<option value=\"{symbolName}\" data-railway-themeid=\"{themeItem.UniqueIdentifier}\" data-image=\"{p}\">{symbol.Key}</option>\r\n";
 
@@ -139,7 +150,8 @@ namespace RailwayEssentialWeb
             try
             {
                 List<string> physicalSymbols;
-                CreateSymbolSelection(out physicalSymbols);
+                CreateSymbolList(out physicalSymbols);
+                CreateSymbolSelection();
 
                 var jsCode = "var themeDirectory='" + new Uri(AbsoluteThemeDirname.Replace("\\", "/")).AbsoluteUri + "';";
                 jsCode += "var symbolFiles = [";
