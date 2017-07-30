@@ -305,118 +305,130 @@ namespace RailwayEssentialMdi.Entities
 
         public bool UpdateTrackViewerUi(TrackWeaver.TrackWeaver weaver)
         {
-            Trace.WriteLine(" ** UpdateUi() ** ");
+            var sw = StopWatch.Create();
 
-            if (weaver == null)
-                return false;
-
-            var ws = weaver.WovenSeam;
-            if (ws == null)
-                return false;
-
-            foreach (var seam in ws)
+            try
             {
-                if (seam == null)
-                    continue;
+                if (weaver == null)
+                    return false;
 
-                if (seam.TrackObjects.Count == 0)
-                    continue;
+                var ws = weaver.WovenSeam;
+                if (ws == null)
+                    return false;
 
-                foreach (var trackItem in seam.TrackObjects.Keys)
+                foreach (var seam in ws)
                 {
-                    if (trackItem == null)
+                    if (seam == null)
                         continue;
 
-                    var checkState = seam.TrackObjects[trackItem];
+                    if (seam.TrackObjects.Count == 0)
+                        continue;
 
-                    TrackCheckResult checkResult = null;
-                    if (checkState != null)
-                        checkResult = checkState();
-
-                    var x = trackItem.X;
-                    var y = trackItem.Y;
-                    var orientation = trackItem.Orientation;
-
-                    int themeId = trackItem.ThemeId;
-                    var themeObject = _theme.Get(themeId);
-                    string symbol = "";
-
-                    switch (seam.ObjectItem.TypeId())
+                    foreach (var trackItem in seam.TrackObjects.Keys)
                     {
-                        case 1: // Locomotive
+                        if (trackItem == null)
                             continue;
 
-                        case 2: // Ecos2
-                            continue;
+                        var checkState = seam.TrackObjects[trackItem];
 
-                        case 3: // Route
-                            continue;
+                        TrackCheckResult checkResult = null;
+                        if (checkState != null)
+                            checkResult = checkState();
 
-                        case 4: // S88
+                        var x = trackItem.X;
+                        var y = trackItem.Y;
+                        var orientation = trackItem.Orientation;
+
+                        int themeId = trackItem.ThemeId;
+                        var themeObject = _theme.Get(themeId);
+                        string symbol = "";
+
+                        switch (seam.ObjectItem.TypeId())
                         {
-                            bool rS88 = checkResult?.State != null && checkResult.State.Value;
+                            case 1: // Locomotive
+                                continue;
 
-                            if (rS88)
-                            {
-                                if (seam.ObjectItem.IsRouted)
-                                    symbol = themeObject.Active.Route;
-                                else
-                                    symbol = themeObject.Active.Default;
-                            }
-                            else
-                            {
-                                if (seam.ObjectItem.IsRouted)
-                                    symbol = themeObject.Off.Route;
-                                else
-                                    symbol = themeObject.Off.Default;
-                            }
-                        }
-                            break;
+                            case 2: // Ecos2
+                                continue;
 
-                        case 5: // Switch
-                        {
-                            if (checkResult != null && checkResult.Direction.HasValue)
-                            {
-                                var direction = checkResult.Direction.Value;
+                            case 3: // Route
+                                continue;
 
-                                if (direction == TrackCheckResult.SwitchDirection.Straight)
+                            case 4: // S88
+                            {
+                                bool rS88 = checkResult?.State != null && checkResult.State.Value;
+
+                                if (rS88)
                                 {
                                     if (seam.ObjectItem.IsRouted)
                                         symbol = themeObject.Active.Route;
                                     else
                                         symbol = themeObject.Active.Default;
                                 }
-                                else if (direction == TrackCheckResult.SwitchDirection.Turn)
+                                else
                                 {
                                     if (seam.ObjectItem.IsRouted)
                                         symbol = themeObject.Off.Route;
                                     else
                                         symbol = themeObject.Off.Default;
                                 }
-                                else
+                            }
+                                break;
+
+                            case 5: // Switch
+                            {
+                                if (checkResult != null && checkResult.Direction.HasValue)
                                 {
-                                    Trace.WriteLine("<Switch> Unknown direction: " + direction);
+                                    var direction = checkResult.Direction.Value;
+
+                                    if (direction == TrackCheckResult.SwitchDirection.Straight)
+                                    {
+                                        if (seam.ObjectItem.IsRouted)
+                                            symbol = themeObject.Active.Route;
+                                        else
+                                            symbol = themeObject.Active.Default;
+                                    }
+                                    else if (direction == TrackCheckResult.SwitchDirection.Turn)
+                                    {
+                                        if (seam.ObjectItem.IsRouted)
+                                            symbol = themeObject.Off.Route;
+                                        else
+                                            symbol = themeObject.Off.Default;
+                                    }
+                                    else
+                                    {
+                                        Trace.WriteLine("<Switch> Unknown direction: " + direction);
+                                    }
                                 }
                             }
-                        }
-                            break;
+                                break;
 
-                        default:
-                            break;
-                    }
+                            default:
+                                break;
+                        }
 
                         if (_trackViewer != null && _trackViewer.JsCallback != null)
                         {
                             _trackViewer.JsCallback.TrackEdit.ChangeSymbol(x, y, themeId);
-                            _trackViewer.ExecuteJs($"changeSymbol({x}, {y}, {themeId}, \"{orientation}\", \"{symbol}\");");
+                            _trackViewer.ExecuteJs(
+                                $"changeSymbol({x}, {y}, {themeId}, \"{orientation}\", \"{symbol}\");");
                         }
 
                         //Trace.WriteLine($"CHANGE: {x},{y} -> {themeId} | {symbol} | {orientation}");
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                // ignore
+            }
+            finally
+            {
+                sw.Stop();
+                sw.Show("UpdateUi()");
             }
 
             return true;
-
         }
 
         #region IPersist
