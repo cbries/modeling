@@ -568,26 +568,43 @@ namespace RailwayEssentialMdi.ViewModels
         {
             get
             {
-                string s0 = "Power on (GO)";
-                string s1 = "Power off (STOP)";
-                string s2 = "Power ?";
+                string s0 = "Switch on (GO)";
+                string s1 = "Switch off (STOP)";
+                string s2 = "Power Down (SHUTDOWN)";
 
                 if (_dispatcher == null)
+                {
+                    _itemStatus.Title = "Status";
                     return s2;
+                }
 
                 var data = _dispatcher.GetDataProvider();
                 if (data == null)
+                {
+                    _itemStatus.Title = "Status";
                     return s2;
+                }
 
                 var ecos = data.GetObjectBy(1) as TrackInformation.Ecos2;
                 if (ecos == null)
+                {
+                    _itemStatus.Title = "Status";
                     return s2;
+                }
 
                 if (ecos.CurrentState == Ecos2.State.Go)
+                {
+                    _itemStatus.Title = "Status (GO)";
                     return s1;
+                }
 
                 if (ecos.CurrentState == Ecos2.State.Stop)
+                {
+                    _itemStatus.Title = "Status (STOP)";
                     return s0;
+                }
+
+                _itemStatus.Title = "Status";
 
                 return s2;
             }
@@ -609,7 +626,7 @@ namespace RailwayEssentialMdi.ViewModels
             {
                 Log("switch Ecos off\r\n");
                 cmds.Add(CommandFactory.Create("set(1, stop)"));
-                cmds.Add(CommandFactory.Create("get(1, status)"));
+                cmds.Add(CommandFactory.Create("get(1, status)"));                
             }
             else if (ecos.CurrentState == Ecos2.State.Stop)
             {
@@ -822,6 +839,9 @@ namespace RailwayEssentialMdi.ViewModels
         private bool CheckConnectToCommandStation(object o1)
         {
             if (_project == null || _cfg == null)
+                return false;
+
+            if (_dispatcher.GetRunMode())
                 return false;
 
             return true;
