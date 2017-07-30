@@ -83,7 +83,7 @@
                 <TabItem Header="S88">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
                         <StackPanel>
-                            <!-- TODO -->
+                            <ComboBox ItemsSource="{Binding Entity.ItemsS88}"/>
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
@@ -91,18 +91,18 @@
                 <TabItem Header="Switch">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
                         <StackPanel>
-                            <!-- TODO -->
+                            <ComboBox ItemsSource="{Binding Entity.ItemsSwitch}"/>
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
-                
+                <!--
                 <TabItem Header="Accessory">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
                         <StackPanel>
-                            <!-- TODO -->
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
+                -->
             </TabControl>
         </Grid>
         

@@ -80,6 +80,11 @@ namespace TrackInformation
 
         #endregion
 
+        public override string ToString()
+        {
+            return $"{ObjectId} {Index}:{Ports} {StateBinary}";
+        }
+
         public S88() : base()
         {
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
@@ -8,7 +9,9 @@ using Newtonsoft.Json.Linq;
 using RailwayEssentialCore;
 using RailwayEssentialMdi.DataObjects;
 using RailwayEssentialWeb;
+using TrackInformation;
 using TrackWeaver;
+using Switch = TrackInformation.Switch;
 
 namespace RailwayEssentialMdi.Entities
 {
@@ -173,8 +176,6 @@ namespace RailwayEssentialMdi.Entities
                 _trackViewer.JsCallback.TrackEdit = _track;
             }
 
-            List<string> clicks = new List<string>();
- 
             JArray arClicks = new JArray();
 
             // load current track
@@ -186,8 +187,6 @@ namespace RailwayEssentialMdi.Entities
                 var themeItem = _theme.Get(item.ThemeId);
                 if (themeItem != null)
                 {
-                    //var col = item.X;
-                    //var row = item.Y;
                     var symbol = Path.GetFileNameWithoutExtension(themeItem.Off.Default);
                     var orientation = item.Orientation;
 
@@ -229,7 +228,31 @@ namespace RailwayEssentialMdi.Entities
             set
             {
                 _showObjectEdit = value;
+
                 RaisePropertyChanged("ShowObjectEdit");
+            }
+        }
+
+        private ObservableCollection<S88> _itemsS88 = new ObservableCollection<S88>();
+        private ObservableCollection<TrackInformation.Switch> _itemsSwitch = new ObservableCollection<Switch>();
+
+        public ObservableCollection<S88> ItemsS88
+        {
+            get => _itemsS88;
+            set
+            {
+                _itemsS88 = value;
+                RaisePropertyChanged("ItemsS88");
+            }
+        }
+
+        public ObservableCollection<TrackInformation.Switch> ItemsSwitch
+        {
+            get => _itemsSwitch;
+            set
+            {
+                _itemsSwitch = value;
+                RaisePropertyChanged("ItemsSwitch");
             }
         }
 
@@ -244,12 +267,29 @@ namespace RailwayEssentialMdi.Entities
 
             ShowObjectEdit = true;
 
-            //x = x + 1;
-            //y = y + 1;
+            if (Ctx == null)
+                return;
 
-            Trace.WriteLine("Selection: " + x + ", " + y);
+            Ctx.Send(state =>
+            {
 
-            // TODO
+                var dataProvider = _dispatcher.GetDataProvider();
+                if (dataProvider == null)
+                    return;
+
+                ObservableCollection<TrackInformation.Item> items = new ObservableCollection<Item>();
+                foreach (var e in dataProvider.Objects)
+                {
+                    var ee0 = e as S88;
+                    if (ee0 != null)
+                        _itemsS88.Add(ee0);
+
+                    var ee1 = e as TrackInformation.Switch;
+                    if (ee1 != null)
+                        _itemsSwitch.Add(ee1);
+                }
+
+            }, null);
         }
 
         private void JsCallbackOnCellClicked(object o, int x, int y)
@@ -285,16 +325,16 @@ namespace RailwayEssentialMdi.Entities
                                 switch (objItem.TypeId())
                                 {
                                     case 5:
-                                    {
-                                        var switchItem = objItem as TrackInformation.Switch;
-                                        if (switchItem != null)
                                         {
-                                            if (switchItem.State == 0)
-                                                switchItem.ChangeDirection(1);
-                                            else
-                                                switchItem.ChangeDirection(0);
+                                            var switchItem = objItem as TrackInformation.Switch;
+                                            if (switchItem != null)
+                                            {
+                                                if (switchItem.State == 0)
+                                                    switchItem.ChangeDirection(1);
+                                                else
+                                                    switchItem.ChangeDirection(0);
+                                            }
                                         }
-                                    }
                                         break;
                                 }
                             }
@@ -370,52 +410,52 @@ namespace RailwayEssentialMdi.Entities
                                 continue;
 
                             case 4: // S88
-                            {
-                                bool rS88 = checkResult?.State != null && checkResult.State.Value;
-
-                                if (rS88)
                                 {
-                                    if (seam.ObjectItem.IsRouted)
-                                        symbol = themeObject.Active.Route;
-                                    else
-                                        symbol = themeObject.Active.Default;
-                                }
-                                else
-                                {
-                                    if (seam.ObjectItem.IsRouted)
-                                        symbol = themeObject.Off.Route;
-                                    else
-                                        symbol = themeObject.Off.Default;
-                                }
-                            }
-                                break;
+                                    bool rS88 = checkResult?.State != null && checkResult.State.Value;
 
-                            case 5: // Switch
-                            {
-                                if (checkResult != null && checkResult.Direction.HasValue)
-                                {
-                                    var direction = checkResult.Direction.Value;
-
-                                    if (direction == TrackCheckResult.SwitchDirection.Straight)
+                                    if (rS88)
                                     {
                                         if (seam.ObjectItem.IsRouted)
                                             symbol = themeObject.Active.Route;
                                         else
                                             symbol = themeObject.Active.Default;
                                     }
-                                    else if (direction == TrackCheckResult.SwitchDirection.Turn)
+                                    else
                                     {
                                         if (seam.ObjectItem.IsRouted)
                                             symbol = themeObject.Off.Route;
                                         else
                                             symbol = themeObject.Off.Default;
                                     }
-                                    else
+                                }
+                                break;
+
+                            case 5: // Switch
+                                {
+                                    if (checkResult != null && checkResult.Direction.HasValue)
                                     {
-                                        Trace.WriteLine("<Switch> Unknown direction: " + direction);
+                                        var direction = checkResult.Direction.Value;
+
+                                        if (direction == TrackCheckResult.SwitchDirection.Straight)
+                                        {
+                                            if (seam.ObjectItem.IsRouted)
+                                                symbol = themeObject.Active.Route;
+                                            else
+                                                symbol = themeObject.Active.Default;
+                                        }
+                                        else if (direction == TrackCheckResult.SwitchDirection.Turn)
+                                        {
+                                            if (seam.ObjectItem.IsRouted)
+                                                symbol = themeObject.Off.Route;
+                                            else
+                                                symbol = themeObject.Off.Default;
+                                        }
+                                        else
+                                        {
+                                            Trace.WriteLine("<Switch> Unknown direction: " + direction);
+                                        }
                                     }
                                 }
-                            }
                                 break;
 
                             default:
@@ -469,7 +509,7 @@ namespace RailwayEssentialMdi.Entities
             catch (Exception ex)
             {
                 var logger = _dispatcher.Logger;
-                if(logger != null)
+                if (logger != null)
                     logger.Log("<TrackEntity> " + ex.Message + "\r\n");
 
                 return false;

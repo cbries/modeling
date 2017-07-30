@@ -149,6 +149,13 @@ namespace TrackInformation
             SubTitle = $"{direction} - [{ext}]";
         }
 
+        public override string ToString()
+        {
+            var ext = string.Join(", ", Addrext);
+
+            return $"{Name1} ({ext}, {ObjectId})";
+        }
+
         public override void Parse(List<CommandArgument> arguments)
         {
             foreach (var arg in arguments)
