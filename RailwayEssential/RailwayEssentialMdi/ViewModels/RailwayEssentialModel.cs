@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Ecos2Core;
@@ -131,6 +132,7 @@ namespace RailwayEssentialMdi.ViewModels
         public RelayCommand SaveCommand { get; }
         public RelayCommand ExitCommand { get; }
 
+        public RelayCommand TogglePowerCommand { get; }
         public RelayCommand ShowLocomotiveCommand { get; }
         public RelayCommand ConnectCommand { get; }
         public RelayCommand DisconnectCommand { get; }
@@ -159,6 +161,7 @@ namespace RailwayEssentialMdi.ViewModels
             CloseCommand = new RelayCommand(Close, CheckClose);
             SaveCommand = new RelayCommand(Save, CheckSave);
             ExitCommand = new RelayCommand(Exit, CheckExit);
+            TogglePowerCommand = new RelayCommand(TogglePower, CheckTogglePower);
             ShowLocomotiveCommand = new RelayCommand(ShowLocomotive, CheckShowLocomotive);
             ConnectCommand = new RelayCommand(ConnectToCommandStation, CheckConnectToCommandStation);
             DisconnectCommand = new RelayCommand(DisconnectFromCommandStation, CheckDisconnectFromCommandStation);
@@ -204,7 +207,7 @@ namespace RailwayEssentialMdi.ViewModels
             if (!_theme.Load(themePath))
             {
                 Trace.WriteLine("<Theme> Loading of theme failed: " + themePath);
-                Log("<Theme> Loading of theme failed: " + themePath);
+                Log("<Theme> Loading of theme failed: " + themePath + "\r\n");
             }
         }
 
@@ -440,6 +443,8 @@ namespace RailwayEssentialMdi.ViewModels
                                 _itemStatus.Items[3].Title = $"Hardware Version: {ee.HardwareVersion}";
                             }
                         }
+
+                        RaisePropertyChanged("TogglePowerCaption");
                     }
                     else if (e is Locomotive)
                     {
@@ -457,7 +462,7 @@ namespace RailwayEssentialMdi.ViewModels
                             _itemLocomotives.Items.Add(ee);
                         }
 
-                        Log($"Locomotive {ee.Addr}, {ee.Name}");
+                        Log($"Locomotive {ee.Addr}, {ee.Name}\r\n");
                     }
                     else if (e is S88)
                     {
@@ -537,26 +542,83 @@ namespace RailwayEssentialMdi.ViewModels
             { 
                 bool r = ee.Save();
                 if (!r)
-                    Log("<Save> Failure storing file: " + _trackEntity.TrackObjectFilepath);
+                    Log("<Save> Failure storing file: " + _trackEntity.TrackObjectFilepath + "\r\n");
             }
 
             Project.TargetHost = _cfg.IpAddress;
             Project.TargetPort = _cfg.Port;
 
             // transfer window dimensions
-
+            // ...
 
             Project.Save();
 
             var globalFilepath = Path.Combine(_project.Dirpath, "TrackObjects.json");
             var r3 = _dispatcher?.GetDataProvider().SaveObjects(globalFilepath);
             if (r3.HasValue)
-                Log("Storing failed: " + globalFilepath);
+                Log("Storing failed: " + globalFilepath + "\r\n");
         }
 
         public void Exit(object p)
         {
             System.Windows.Application.Current.Shutdown();
+        }
+
+        public string TogglePowerCaption
+        {
+            get
+            {
+                string s0 = "Power on (GO)";
+                string s1 = "Power off (STOP)";
+                string s2 = "Power ?";
+
+                if (_dispatcher == null)
+                    return s2;
+
+                var data = _dispatcher.GetDataProvider();
+                if (data == null)
+                    return s2;
+
+                var ecos = data.GetObjectBy(1) as TrackInformation.Ecos2;
+                if (ecos == null)
+                    return s2;
+
+                if (ecos.CurrentState == Ecos2.State.Go)
+                    return s1;
+
+                if (ecos.CurrentState == Ecos2.State.Stop)
+                    return s0;
+
+                return s2;
+            }
+        }
+
+        public void TogglePower(object p)
+        {
+            var data = _dispatcher.GetDataProvider();
+            if (data == null)
+                return;
+
+            var ecos = data.GetObjectBy(1) as TrackInformation.Ecos2;
+            if (ecos == null)
+                return;
+
+            List<ICommand> cmds = new List<ICommand>();
+
+            if (ecos.CurrentState == Ecos2.State.Go)
+            {
+                Log("switch Ecos off\r\n");
+                cmds.Add(CommandFactory.Create("set(1, stop)"));
+                cmds.Add(CommandFactory.Create("get(1, status)"));
+            }
+            else if (ecos.CurrentState == Ecos2.State.Stop)
+            {
+                Log("switch Ecos on\r\n");
+                cmds.Add(CommandFactory.Create("set(1, go)"));
+                cmds.Add(CommandFactory.Create("get(1, status)"));
+            }
+
+            _dispatcher.ForwardCommands(cmds);
         }
 
         public void ShowLocomotive(object p)
@@ -717,6 +779,17 @@ namespace RailwayEssentialMdi.ViewModels
         }
 
         #region can execute checks
+
+        public bool CheckTogglePower(object p)
+        {
+            if (_project == null)
+                return false;
+            if (_dispatcher == null)
+                return false;
+            if (!_dispatcher.GetRunMode())
+                return false;
+            return true;
+        }
 
         public bool CheckAddTrack(object p)
         {

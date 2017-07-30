@@ -45,11 +45,13 @@
                     <MenuItem Header="Connect" Command="{Binding ConnectCommand}"/>
                     <MenuItem Header="Disconnect" Command="{Binding DisconnectCommand}"/>
                     <Separator/>
+                    <MenuItem Header="{Binding TogglePowerCaption}" Command="{Binding TogglePowerCommand}"/>
+                    <Separator/>
                     <MenuItem Header="Properties" Command="{Binding CmdStationsPropertiesCommand}"/>
                 </MenuItem>
                 <MenuItem Header="Project">
-                    <MenuItem Header="Add Track" Command="{Binding AddTrackCommand}"></MenuItem>
-                    <MenuItem Header="Remove Track" Command="{Binding RemoveTrackCommand}"></MenuItem>
+                    <MenuItem Header="Add Track" Command="{Binding AddTrackCommand}"/>
+                    <MenuItem Header="Remove Track" Command="{Binding RemoveTrackCommand}"/>
                 </MenuItem>
                 <MenuItem Header="View">
                     <MenuItem Header="General Log" Command="{Binding ShowLogCommand}"/>

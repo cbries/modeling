@@ -282,7 +282,12 @@ namespace TrackInformation
                 return false;
 
             if (block is EventBlock)
+            {
+                if (block.ObjectId.HasValue && block.ObjectId.Value == 1)
+                    return HandleBaseobject(block);
+
                 return HandleEvent(block);
+            }
 
             if (block.Command == null)
                 return false;
@@ -362,7 +367,7 @@ namespace TrackInformation
                         Baseobject.Parse(e.Arguments);
                         if (!DoesObjectIdExist((uint) e.ObjectId))
                             _objects.Add(Baseobject);
-                        DataChanged?.Invoke(this);
+                        DataChanged?.Invoke(this);                            
                     }
                         break;
                 }

@@ -96,7 +96,7 @@ namespace Communicator
                     if (_clientConnection.IsConnected)
                     {
                         if (Logger != null)
-                            Logger.Log("<Connector> Connection established");
+                            Logger.Log("<Connector> Connection established\r\n");
 
                         if (Started != null)
                             Started(this);
@@ -104,7 +104,7 @@ namespace Communicator
                     else
                     {
                         if (Logger != null)
-                            Logger.Log("<Connector> Connection failed");
+                            Logger.Log("<Connector> Connection failed\r\n");
 
                         if (Failed != null)
                             Failed(this, "Connection failed");
@@ -117,7 +117,7 @@ namespace Communicator
                         if (!string.IsNullOrEmpty(msg))
                         {
                             if (Logger != null)
-                                Logger.Log("<Connector> Message received, Length: " + msg.Length);
+                                Logger.Log($"<Connector> Message received, Length: {msg.Length}\r\n");
 
                             if (MessageReceived != null)
                                 MessageReceived(this, msg);

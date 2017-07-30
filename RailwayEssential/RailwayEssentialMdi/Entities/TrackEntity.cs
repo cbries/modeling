@@ -429,7 +429,7 @@ namespace RailwayEssentialMdi.Entities
             {
                 var logger = _dispatcher.Logger;
                 if(logger != null)
-                    logger.Log("<TrackEntity> " + ex.Message);
+                    logger.Log("<TrackEntity> " + ex.Message + "\r\n");
 
                 return false;
             }

@@ -119,7 +119,7 @@ namespace Dispatcher
                 if (Logger != null)
                 {
                     foreach(var cmd in commands)
-                        Logger.Log($"<DryRun> " + cmd);
+                        Logger.Log($"<DryRun> {cmd}\r\n");
                 }
             }
             else
@@ -186,7 +186,6 @@ namespace Dispatcher
             // send initial commands
             List<ICommand> initialCommands = new List<ICommand>()
             {
-                CommandFactory.Create("request(1, view)"),
                 CommandFactory.Create("request(26, view)"),
                 CommandFactory.Create("request(5, view)"),
                 CommandFactory.Create("request(10, view)"),
@@ -194,7 +193,8 @@ namespace Dispatcher
                 CommandFactory.Create("queryObjects(11, addr, protocol, type, addrext, mode, symbol, name1, name2, name3)"),
                 CommandFactory.Create("queryObjects(10, addr, name, protocol)"),
                 CommandFactory.Create("queryObjects(26, ports)"),
-                CommandFactory.Create("get(1, info, status)")
+                CommandFactory.Create("get(1, info, status)"),
+                CommandFactory.Create("request(1, view)")
             };
 
             _communication.SendCommands(initialCommands);
@@ -203,6 +203,7 @@ namespace Dispatcher
             {
                 Model.TriggerPropertyChanged("ConnectionState");
                 Model.TriggerPropertyChanged("ConnectionStateIcon");
+                Model.TriggerPropertyChanged("TogglePowerCaption");
             }
 
             if(ReadyToPlay != null)
@@ -215,6 +216,7 @@ namespace Dispatcher
             {
                 Model.TriggerPropertyChanged("ConnectionState");
                 Model.TriggerPropertyChanged("ConnectionStateIcon");
+                Model.TriggerPropertyChanged("TogglePowerCaption");
             }
         }
 

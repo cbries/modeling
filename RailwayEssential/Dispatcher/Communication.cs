@@ -150,7 +150,7 @@ namespace Dispatcher
             if(CommunicationStopped != null)
                 CommunicationStopped(this, EventArgs.Empty);
 
-            Logger?.Log("Communication stopped");
+            Logger?.Log("Communication stopped\r\n");
         }
 
         private void COnStarted(object sender)
@@ -162,7 +162,7 @@ namespace Dispatcher
             if (CommunicationStarted != null)
                 CommunicationStarted(this, EventArgs.Empty);
 
-            Logger?.Log("Communication started");
+            Logger?.Log("Communication started\r\n");
         }
     }
 }

@@ -29,10 +29,8 @@
 
         <TextBlock Text="Track Size" Margin="4" Grid.Row="3" Grid.Column="0" FontWeight="Bold"/>
         <DockPanel Margin="4" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="Columns: "/>
-            <xctk:IntegerUpDown Name="NumberOfColumns" Height="20" Width="50" Value="{Binding DesignerColumns, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-            <TextBlock Text="Rows: " Margin="5,0,0,0"/>
-            <xctk:IntegerUpDown Name="NumberOfRows" Height="20" Width="50" Value="{Binding DesignerRows, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <xctk:IntegerUpDown Name="NumberOfColumns" Height="22" Width="75" Value="{Binding Entity.DesignerColumns, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Maximum="100" Minimum="25" FormatString="N0" Watermark="Columns" AllowSpin="True"/>
+            <xctk:IntegerUpDown Name="NumberOfRows" Margin="10,0,0,0" Height="22" Width="75" Value="{Binding Entity.DesignerRows, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Maximum="100" Minimum="10" FormatString="N0" Watermark="Rows" AllowSpin="True"/>
         </DockPanel>
         
         <!--
