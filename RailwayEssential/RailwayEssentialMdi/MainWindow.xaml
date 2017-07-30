@@ -92,7 +92,7 @@
 
                 <xcad:DockingManager.LayoutItemContainerStyle>
                     <Style TargetType="{x:Type xcad:LayoutItem}">
-                        <Setter Property="Title" Value="{Binding Model.Entity.Name}" />
+                        <Setter Property="Title" Value="{Binding Model.Name}" />
                         <!--
                         <Setter Property="IconSource" Value="{Binding Model.Entity.IconSource}"/>
                         <Setter Property="Visibility" Value="{Binding Model.Entity.IsVisible, Mode=TwoWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter={x:Static Visibility.Hidden}}"/>
@@ -108,8 +108,8 @@
                     <xcad:LayoutPanel Orientation="Horizontal">
 
                         <xcad:LayoutAnchorablePane DockWidth="250">
-                            <xcad:LayoutAnchorable Title="Object Explorer" CanClose="False" CanHide="False">
-                                <TreeView ItemsSource="{Binding RootItems}" Name="treeView"
+                            <xcad:LayoutAnchorable CanClose="False" CanHide="False">
+                                <TreeView ItemsSource="{Binding RootItems}" Name="Explorer"
                                           MouseDoubleClick="TreeView_OnMouseDoubleClick"
                                           KeyDown="TreeView_OnKeyDown">
                                     <TreeView.ItemTemplate>

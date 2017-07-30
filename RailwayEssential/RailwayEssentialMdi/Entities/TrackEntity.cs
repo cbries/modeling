@@ -42,6 +42,7 @@ namespace RailwayEssentialMdi.Entities
             {
                 if (ProjectTrack == null)
                     return "-";
+
                 return ProjectTrack.Name;
             }
 
@@ -125,6 +126,8 @@ namespace RailwayEssentialMdi.Entities
 
         public IWebGenerator WebGenerator { get; set; }
 
+        public Configuration Cfg { get; set; }
+
         public TrackEntity(Dispatcher.Dispatcher dispatcher)
         {
             _dispatcher = dispatcher;
@@ -149,7 +152,11 @@ namespace RailwayEssentialMdi.Entities
             _tmpTrackName = Path.Combine(Utils.TrackplansEditor, _tmpTrackName);
             _tmpTrackName = _tmpTrackName.ExpandRailwayEssential();
 
-            _webGenerator = new WebGenerator(_theme);
+            _webGenerator = new WebGenerator(_theme)
+            {
+                Columns = Cfg.DesignerColumns,
+                Rows = Cfg.DesignerRows
+            };
 
             GeneratePhysicalTrackViewerUi();
 

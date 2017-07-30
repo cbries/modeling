@@ -31,14 +31,19 @@
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
+                <!--
                 <ColumnDefinition Width="18"/>
+                -->
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
+                <!--
                 <RowDefinition Height="18"/>
+                -->
             </Grid.RowDefinitions>
 
             <!-- RIGHT -->
+            <!--
             <StackPanel Grid.Row="0" Grid.Column="1" Margin="0,5,0,0">
                 <Button Command="{Binding PlusColumRightCommand}" Width="16" Height="16" Margin="0" Padding="0">
                     <Image Source="/RailwayEssentialMdi;component/Resources/plus.png"/>
@@ -47,8 +52,10 @@
                     <Image Source="/RailwayEssentialMdi;component/Resources/minus.png"/>
                 </Button>
             </StackPanel>
+            -->
 
             <!-- BOTTOM -->
+            <!--
             <DockPanel Grid.Row="1" Grid.Column="0" Margin="0" HorizontalAlignment="Right">
                 <Button Command="{Binding MinusRowBottomCommand}" Width="16" Height="16" Margin="0" Padding="0">
                     <Image Source="/RailwayEssentialMdi;component/Resources/minus.png"/>
@@ -57,6 +64,7 @@
                     <Image Source="/RailwayEssentialMdi;component/Resources/plus.png"/>
                 </Button>
             </DockPanel>
+            -->
 
             <railwayEssentialWeb:TrackViewer Name="trackViewer" Grid.Row="0" Grid.Column="0"/>
 

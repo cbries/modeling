@@ -4,7 +4,7 @@ namespace RailwayEssentialMdi.Interfaces
 {
     public interface IContent
     {
-        string Title { get; }
+        string Name { get; }
 
         event EventHandler Closing;
     }

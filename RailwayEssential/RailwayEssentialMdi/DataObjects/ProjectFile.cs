@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -18,6 +19,8 @@ namespace RailwayEssentialMdi.DataObjects
         public float Version { get; set; }
         public string TargetHost { get; set; }
         public UInt16 TargetPort { get; set; }
+        public int DesignerColumns { get; set; }
+        public int DesignerRows { get; set; }
         public List<string> Objects { get; set; }
         public ProjectTrack Track { get; set; }
         public List<ProjectTrackView> TrackViews { get; set; }
@@ -66,6 +69,12 @@ namespace RailwayEssentialMdi.DataObjects
                     else
                         TargetPort = 15471;
                 }
+
+                if (o["designerColumns"] != null)
+                    DesignerColumns = (int) o["designerColumns"];
+
+                if (o["designerRows"] != null)
+                    DesignerRows = (int) o["designerRows"];
 
                 if (o["objects"] != null)
                 {
@@ -123,13 +132,20 @@ namespace RailwayEssentialMdi.DataObjects
             foreach (var e in Objects)
                 objects.Add(e);
 
+            JArray trackViews = new JArray();
+            foreach (var e in TrackViews)
+                trackViews.Add(e.ToJson());
+
             JObject o = new JObject
             {
                 ["name"] = Name,
                 ["version"] = Version,
                 ["targetHost"] = TargetHost,
                 ["targetPort"] = TargetPort,
-                ["tracks"] = Track.ToJson(),
+                ["designerColumns"] = DesignerColumns,
+                ["designerRows"] = DesignerRows,
+                ["track"] = Track.ToJson(),
+                ["trackViews"] = trackViews,
                 ["objects"] = objects
             };
 

@@ -75,7 +75,7 @@ namespace RailwayEssentialMdi
             if (_dataContext == null)
                 return;
 
-            var s = treeView;
+            var s = Explorer;
             if (s == null)
                 return;
 

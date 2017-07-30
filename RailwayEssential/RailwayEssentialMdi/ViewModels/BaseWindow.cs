@@ -7,7 +7,7 @@ namespace RailwayEssentialMdi.ViewModels
     {
         public event EventHandler Closing;
 
-        public virtual string Title { get; set; }
+        public virtual string Name { get; set; }
 
         public virtual RelayCommand CloseCommand { get; }
 

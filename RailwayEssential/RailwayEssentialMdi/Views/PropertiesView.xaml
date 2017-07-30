@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RailwayEssentialMdi.Views"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="300">
     <Grid>
@@ -16,6 +17,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -24,10 +26,19 @@
 
         <TextBlock Text="Port" Margin="4" Grid.Row="2" Grid.Column="0" FontWeight="Bold"/>
         <TextBox Margin="4" Grid.Row="2" Grid.Column="1" Text="{Binding Entity.Port, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-<!--
+
+        <TextBlock Text="Track Size" Margin="4" Grid.Row="3" Grid.Column="0" FontWeight="Bold"/>
+        <DockPanel Margin="4" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Columns: "/>
+            <xctk:IntegerUpDown Name="NumberOfColumns" Height="20" Width="50" Value="{Binding DesignerColumns, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            <TextBlock Text="Rows: " Margin="5,0,0,0"/>
+            <xctk:IntegerUpDown Name="NumberOfRows" Height="20" Width="50" Value="{Binding DesignerRows, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+        </DockPanel>
+        
+        <!--
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.ColumnSpan="2" Grid.Row="3">
             <Button Content="Close" Command="{Binding CloseCommand}" Margin="4" />
         </StackPanel>
--->
+        -->
     </Grid>
 </UserControl>

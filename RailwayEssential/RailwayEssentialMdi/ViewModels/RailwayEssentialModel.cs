@@ -316,6 +316,8 @@ namespace RailwayEssentialMdi.ViewModels
 
             _cfg.IpAddress = Project.TargetHost;
             _cfg.Port = Project.TargetPort;
+            _cfg.DesignerColumns = Project.DesignerColumns;
+            _cfg.DesignerRows = Project.DesignerRows;
 
             _dispatcher = new Dispatcher.Dispatcher(_cfg)
             {
@@ -331,7 +333,8 @@ namespace RailwayEssentialMdi.ViewModels
                 TrackObjectFilepath = Path.Combine(_project.Dirpath, prjTrack.Path),
                 Theme = _theme,
                 Ctx = _ctx,
-                ProjectTrack = prjTrack
+                ProjectTrack = prjTrack,
+                Cfg = _cfg
             };
 
             _trackEntity.Initialize();
@@ -343,7 +346,7 @@ namespace RailwayEssentialMdi.ViewModels
 
                 if (view.Show)
                 {
-                    var item = new TrackWindow(_trackEntity);
+                    var item = new TrackWindow(_trackEntity, view);
                     item.Closing += (s, ev) => Windows.Remove(item);
                     Windows.Add(item);
                 }
@@ -661,12 +664,21 @@ namespace RailwayEssentialMdi.ViewModels
                 {
                     Theme = _theme,
                     Ctx = _ctx,
-                    TrackObjectFilepath = trackPath
+                    TrackObjectFilepath = trackPath,
+                    Cfg = _cfg
                 };
 
                 _trackEntity.Initialize();
 
-                var item = new TrackWindow(_trackEntity);
+                var view = new ProjectTrackView
+                {
+                    Name = trackName,
+                    Show = true,
+                    StartX = 0,
+                    StartY = 0
+                };
+
+                var item = new TrackWindow(_trackEntity, view);
                 item.Closing += (s, ev) => Windows.Remove(item);
                 Windows.Add(item);
 
@@ -677,19 +689,25 @@ namespace RailwayEssentialMdi.ViewModels
                     Weave = trackWeaveRelativePath
                 };
 
-                Project.TrackViews.Add(new ProjectTrackView
-                {
-                    Name = trackName,
-                    Show = true,
-                    StartX = 0,
-                    StartY = 0
-                });
+                Project.TrackViews.Add(view);
             }
             else
             {
-                // TODO
-                // TODO
-                // TODO
+                int n = Project.TrackViews.Count;
+
+                var view = new ProjectTrackView
+                {
+                    Name = $"TrackView{n + 1}",
+                    Show = true,
+                    StartX = 0,
+                    StartY = 0
+                };
+
+                var item = new TrackWindow(_trackEntity, view);
+                item.Closing += (s, ev) => Windows.Remove(item);
+                Windows.Add(item);
+
+                Project.TrackViews.Add(view);
             }
         }
 

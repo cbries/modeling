@@ -16,7 +16,7 @@ namespace RailwayEssentialMdi.ViewModels
 
         public Mode LogMode { get; set; }
 
-        public override string Title
+        public override string Name
         {
             get
             {

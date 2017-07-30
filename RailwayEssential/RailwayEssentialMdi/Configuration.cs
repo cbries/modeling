@@ -1,4 +1,6 @@
-﻿namespace RailwayEssentialMdi
+﻿using System.Security.Cryptography;
+
+namespace RailwayEssentialMdi
 {
     using System;
     using RailwayEssentialCore;
@@ -7,6 +9,8 @@
     {
         private string _ipAddress;
         private UInt16 _port;
+        private int _designerColumns;
+        private int _designerRows;
 
         public string IpAddress
         {
@@ -28,6 +32,26 @@
             }
         }
 
+        public int DesignerColumns
+        {
+            get => _designerColumns;
+            set
+            {
+                _designerColumns = value;
+                RaisePropertyChanged("DesignerColumns");
+            }
+        }
+
+        public int DesignerRows
+        {
+            get => _designerRows;
+            set
+            {
+                _designerRows = value;
+                RaisePropertyChanged("DesignerRows");
+            }
+        }
+
         public string ThemeName { get; set; }
 
         public Configuration()
@@ -38,6 +62,8 @@
             IpAddress = "127.0.0.1";
 #endif
             Port = 15471;
+            DesignerColumns = 50;
+            DesignerRows = 50;
             ThemeName = "SpDrS60used";
         }
     }

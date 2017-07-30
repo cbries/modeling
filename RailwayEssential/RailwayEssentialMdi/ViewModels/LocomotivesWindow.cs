@@ -27,6 +27,8 @@
             }
         }
 
+        public override string Name => Entity != null ? Entity.Name : "-";
+
         public int Speed
         {
             get => Entity == null ? 0 : Entity.ObjectItem.Speed;

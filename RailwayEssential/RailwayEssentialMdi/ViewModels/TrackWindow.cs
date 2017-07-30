@@ -1,20 +1,20 @@
-﻿using System.Diagnostics;
-
-namespace RailwayEssentialMdi.ViewModels
+﻿namespace RailwayEssentialMdi.ViewModels
 {
+    using System.Diagnostics;
     using RailwayEssentialCore;
+    using DataObjects;
     using Commands;
     using Entities;
 
     public class TrackWindow : BaseWindow, ITrackWindow
     {
         public object TrackView { get; set; }
+        public ProjectTrackView ProjectTrackView { get; set; }
         public ITrackViewerZoom TrackViewZoomer { get; set; }
-
         private readonly TrackEntity _entity;
-
         public TrackEntity Entity => _entity;
-
+        public override string Name => ProjectTrackView.Name;
+        
         public RelayCommand ZoomResetCommand { get; }
         public RelayCommand ZoomPlusCommand { get; }
         public RelayCommand ZoomMinusCommand { get; }
@@ -25,9 +25,11 @@ namespace RailwayEssentialMdi.ViewModels
         public RelayCommand MinusRowBottomCommand { get; }
         public RelayCommand PlusRowBottomCommand { get; }
 
-        public TrackWindow(TrackEntity entity)
+        public TrackWindow(TrackEntity entity, ProjectTrackView trackView)
         {
             _entity = entity;
+
+            ProjectTrackView = trackView;
 
             PlusColumRightCommand = new RelayCommand(PlusColumRight);
             MinusColumnRightCommand = new RelayCommand(MinusColumnRight);

@@ -6,7 +6,7 @@ namespace RailwayEssentialMdi.ViewModels
     {
         public Configuration Entity { get; set; }
 
-        public override string Title => "Properties";
+        public override string Name => "Properties";
 
         public PropertiesWindow(Configuration cfg)
             : base()
