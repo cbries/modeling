@@ -268,6 +268,9 @@ namespace TrackInformation
                     Trace.WriteLine("funcset: " + arg.Parameter[0]);
 
                     NrOfFunctions = arg.Parameter[0].Length;
+
+                    for (int i = 0; i < NrOfFunctions; ++i)
+                        Funcset[i] = arg.Parameter[0][i] == '1' ? true : false;
                 }
                 else if (arg.Name.Equals("func", StringComparison.OrdinalIgnoreCase))
                 {

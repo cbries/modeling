@@ -14,6 +14,8 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" HorizontalAlignment="Stretch">
             <Label Content="{Binding Entity.Name}" FontWeight="Bold" VerticalAlignment="Center"/>
+            <Label Content=" : " FontWeight="Bold" VerticalAlignment="Center"/>
+            <Label Content="{Binding Entity.ObjectItem.ObjectId}" FontWeight="Bold" VerticalAlignment="Center"/>
             <Image Width="32" Height="32" HorizontalAlignment="Right" Margin="2,2,10,2" Source="/RailwayEssentialMdi;component/Resources/Main.ico"/>
         </DockPanel>
         <Grid Grid.Row="1" VerticalAlignment="Top" IsEnabled="{Binding Entity.IsEnabled}">
