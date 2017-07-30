@@ -10,6 +10,6 @@ namespace Ecos2Core
         int ObjectId { get; }
         List<CommandArgument> Arguments { get; set; }
 
-        bool Parse();
+        bool Parse(bool keepQuotes=false);
     }
 }

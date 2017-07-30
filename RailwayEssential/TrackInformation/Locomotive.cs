@@ -142,6 +142,17 @@ namespace TrackInformation
             SubTitle = $"V[{Speed}]->{v} ({Protocol}, {Addr}, {NrOfFunctions})";
         }
 
+        public void ChangeName(string name)
+        {
+            List<ICommand> ctrlCmds = new List<ICommand>
+            {
+                CommandFactory.Create($"set({ObjectId}, name[\"{name}\"])", true),
+                CommandFactory.Create($"get({ObjectId}, name)")
+            };
+
+            OnCommandsReady(this, ctrlCmds);
+        }
+
         public void Stop()
         {
             List<ICommand> ctrlCmds = new List<ICommand>

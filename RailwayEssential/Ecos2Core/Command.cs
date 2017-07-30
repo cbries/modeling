@@ -31,7 +31,7 @@ namespace Ecos2Core
 
         public List<CommandArgument> Arguments { get; set; } = new List<CommandArgument>();
 
-        public virtual bool Parse()
+        public virtual bool Parse(bool keepQuotes=false)
         {
             LastError = null;
 
@@ -64,7 +64,7 @@ namespace Ecos2Core
                     continue;
 
                 CommandArgument arg = new CommandArgument();
-                if (!arg.Parse(p))
+                if (!arg.Parse(p, keepQuotes))
                 {
                     LastError = "Parsing of argument list failed: " + p;
                     return false;

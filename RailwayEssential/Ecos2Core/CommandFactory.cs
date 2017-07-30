@@ -21,7 +21,7 @@ namespace Ecos2Core
 
     public static class CommandFactory
     {
-        public static ICommand Create(string cmdline)
+        public static ICommand Create(string cmdline, bool keepQuotes=false)
         {
             if (string.IsNullOrEmpty(cmdline))
                 return null;
@@ -53,7 +53,7 @@ namespace Ecos2Core
                 cmd = new Commands.Unknown();
 
             cmd.NativeCommand = cmdline;
-            cmd.Parse();
+            cmd.Parse(keepQuotes);
 
             return cmd;
         }

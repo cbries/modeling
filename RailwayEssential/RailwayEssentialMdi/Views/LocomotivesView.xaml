@@ -13,7 +13,7 @@
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" HorizontalAlignment="Stretch">
-            <Label Content="{Binding Entity.Name}" FontWeight="Bold" VerticalAlignment="Center"/>
+            <TextBox Text="{Binding Entity.Name, Mode=TwoWay}" FontWeight="Bold" VerticalAlignment="Center" Background="Transparent" BorderThickness="0"/>
             <Label Content=" : " FontWeight="Bold" VerticalAlignment="Center"/>
             <Label Content="{Binding Entity.ObjectItem.ObjectId}" FontWeight="Bold" VerticalAlignment="Center"/>
             <Image Width="32" Height="32" HorizontalAlignment="Right" Margin="2,2,10,2" Source="/RailwayEssentialMdi;component/Resources/Main.ico"/>

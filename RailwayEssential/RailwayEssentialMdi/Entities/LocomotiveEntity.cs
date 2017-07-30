@@ -31,8 +31,11 @@
 
             set
             {
-                if(_objectItem != null)
+                if (_objectItem != null)
+                {
                     _objectItem.Name = value;
+                    _objectItem.ChangeName(value);
+                }
 
                 RaisePropertyChanged("Name");
             }

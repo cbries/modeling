@@ -1,4 +1,6 @@
-﻿namespace RailwayEssentialMdi.ViewModels
+﻿using System.Text.RegularExpressions;
+
+namespace RailwayEssentialMdi.ViewModels
 {
     using System.Windows.Controls.Primitives;
     using Commands;
@@ -28,7 +30,22 @@
             }
         }
 
-        public override string Name => Entity != null ? Entity.Name : "-";
+        private bool ValidateName(string name)
+        {
+            return Regex.IsMatch(name, @"^[a-zA-Z0-9_ ]+$");
+        }
+
+        public override string Name
+        {
+            get => Entity != null ? Entity.Name : "-";
+            set
+            {
+                if (ValidateName(value))
+                    Entity.Name = value;
+
+                RaisePropertyChanged("Name");
+            }
+        }
 
         public int Speed
         {

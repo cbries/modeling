@@ -31,7 +31,7 @@ namespace Ecos2Core
             return string.Format("{0}[{1}]", Name, string.Join(",", Parameter));
         }
 
-        public bool Parse(string argument)
+        public bool Parse(string argument, bool keepQuotes=false)
         {
             if (string.IsNullOrEmpty(argument))
                 return false;
@@ -52,7 +52,8 @@ namespace Ecos2Core
                         if (string.IsNullOrEmpty(Parameter[i]))
                             continue;
 
-                        Parameter[i] = Parameter[i].Trim().Trim('"');
+                        if(!keepQuotes)
+                            Parameter[i] = Parameter[i].Trim().Trim('"');
                     }
                 }
             }

@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Ecos2Core;
@@ -155,7 +154,7 @@ namespace RailwayEssentialMdi.ViewModels
             _ctx = SynchronizationContext.Current;
 
             _cfg = new Configuration();
-            
+
             NewProjectCommand = new RelayCommand(NewProject, CheckNewProject);
             OpenCommand = new RelayCommand(Open, CheckOpen);
             CloseCommand = new RelayCommand(Close, CheckClose);
@@ -394,13 +393,25 @@ namespace RailwayEssentialMdi.ViewModels
 
         private void DispatcherOnUpdateUi(object sender, TrackWeaver.TrackWeaver trackWeaver)
         {
-            foreach (var w in Windows)
-            {
-                var ww = w as TrackWindow;
-                if (ww == null || ww.Entity == null)
-                    continue;
+            int n = Windows.Count;
 
-                ww.Entity.UpdateTrackViewerUi(trackWeaver);
+            for (int i = 0; i < n; ++i)
+            {
+                try
+                {
+                    if (i >= Windows.Count)
+                        return;
+
+                    var ww = Windows[i] as TrackWindow;
+                    if (ww == null || ww.Entity == null)
+                        continue;
+
+                    ww.Entity.UpdateTrackViewerUi(trackWeaver);
+                }
+                catch
+                {
+                    // ignore
+                }
             }
         }
 
@@ -525,10 +536,12 @@ namespace RailwayEssentialMdi.ViewModels
                     Save(null);
                 }
 
-                Windows.Clear();
-                Windows = null;
-                Windows = new ObservableCollection<IContent>();
-
+                lock (Windows)
+                {
+                    Windows.Clear();
+                    Windows = null;
+                    Windows = new ObservableCollection<IContent>();
+                }
                 RootItems.Clear();
 
                 Project = null;
@@ -538,8 +551,8 @@ namespace RailwayEssentialMdi.ViewModels
         public void Save(object p)
         {
             var ee = _trackEntity as IPersist;
-            if(ee != null)
-            { 
+            if (ee != null)
+            {
                 bool r = ee.Save();
                 if (!r)
                     Log("<Save> Failure storing file: " + _trackEntity.TrackObjectFilepath + "\r\n");
@@ -626,7 +639,7 @@ namespace RailwayEssentialMdi.ViewModels
             {
                 Log("switch Ecos off\r\n");
                 cmds.Add(CommandFactory.Create("set(1, stop)"));
-                cmds.Add(CommandFactory.Create("get(1, status)"));                
+                cmds.Add(CommandFactory.Create("get(1, status)"));
             }
             else if (ecos.CurrentState == Ecos2.State.Stop)
             {
@@ -657,9 +670,14 @@ namespace RailwayEssentialMdi.ViewModels
                     ObjectItem = _currentLocomotive
                 }
             };
+
             item2.Entity.UpdateUi();
             item2.Closing += (s, e) => Windows.Remove(item2);
-            Windows.Add(item2);
+
+            lock (Windows)
+            {
+                Windows.Add(item2);
+            }
             item2.UpdateFuncset();
         }
 
@@ -690,7 +708,10 @@ namespace RailwayEssentialMdi.ViewModels
 
             var item2 = new PropertiesWindow(_cfg);
             item2.Closing += (s, e) => Windows.Remove(item2);
-            Windows.Add(item2);
+            lock (Windows)
+            {
+                Windows.Add(item2);
+            }
         }
 
         public void ShowLog(object p)
@@ -701,7 +722,10 @@ namespace RailwayEssentialMdi.ViewModels
 
             var item2 = new LogWindow(_logMessagesGeneral) { LogMode = LogWindow.Mode.General };
             item2.Closing += (s, e) => Windows.Remove(item2);
-            Windows.Add(item2);
+            lock (Windows)
+            {
+                Windows.Add(item2);
+            }
         }
 
         public void ShowCommandLog(object p)
@@ -712,7 +736,10 @@ namespace RailwayEssentialMdi.ViewModels
 
             var item2 = new LogWindow(_logMessagesCommands) { LogMode = LogWindow.Mode.Commands };
             item2.Closing += (s, e) => Windows.Remove(item2);
-            Windows.Add(item2);
+            lock (Windows)
+            {
+                Windows.Add(item2);
+            }
         }
 
         public void AddTrack(object p)
@@ -762,7 +789,10 @@ namespace RailwayEssentialMdi.ViewModels
 
                 var item = new TrackWindow(_trackEntity, view);
                 item.Closing += (s, ev) => Windows.Remove(item);
-                Windows.Add(item);
+                lock (Windows)
+                {
+                    Windows.Add(item);
+                }
 
                 Project.Track = new ProjectTrack
                 {
@@ -787,7 +817,10 @@ namespace RailwayEssentialMdi.ViewModels
 
                 var item = new TrackWindow(_trackEntity, view);
                 item.Closing += (s, ev) => Windows.Remove(item);
-                Windows.Add(item);
+                lock (Windows)
+                {
+                    Windows.Add(item);
+                }
 
                 Project.TrackViews.Add(view);
             }

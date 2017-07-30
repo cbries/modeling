@@ -222,6 +222,9 @@ namespace RailwayEssentialMdi.Entities
 
         private void JsCallbackOnCellClicked(object o, int x, int y)
         {
+            x = x + 1;
+            y = y + 1;
+
             Trace.WriteLine("Cell clicked: " + x + ", " + y);
 
             var track = Track;
