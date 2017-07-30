@@ -1,6 +1,13 @@
 
 var isEdit = false;
 
+const ModeAddMove = 0;
+const ModeRemove = 1;
+const ModeRotate = 2;
+const ModeObject = 3;
+
+var editMode = ModeAddMove;
+
 var currentSelection = "";
 var currentRow = -1;
 var currentColumn = -1;
@@ -151,11 +158,17 @@ function resetSelection() {
     $('td').each(function () {
         $(this).css("background-color", "");
     });
+    try {
+        railwayEssentialCallback.cellSelected(-1, -1);
+    } catch (ex) { /* ignore */ }
 }
 
-function selectElement(el) {
+function selectElement(col, row, el) {
     resetSelection();
     el.parent().css("background-color", "red");
+    try {
+        railwayEssentialCallback.cellSelected(col, row);
+    } catch (ex) { /* ignore */ }
 }
 
 function rotateElement2(col, row, el) {
@@ -273,17 +286,27 @@ function simulateClick(col, row, themeid, symbol, orientation, response) {
     newChild.data("railway-themeid", themeid);
 
     newChild.click(function (evt) {
-        if (evt.ctrlKey && evt.altKey) {
-            rotateElement(col, row, $(this));
-        } else if (evt.ctrlKey) {
-            //selectElement($(this));
-            rotateElement(col, row, $(this));
-        } else if (evt.altKey) {
+
+        switch (editMode) {
+        case ModeRotate:
+            if (isEdit) {
+                rotateElement(col, row, $(this));
+            }
+            break;
+
+        case ModeRemove:
             if (isEdit) {
                 $(this).remove();
                 resetSelection();
                 rebuildTable();
             }
+            break;
+
+        case ModeObject:
+            if (isEdit) {
+                selectElement(col, row, $(this));
+            }
+            break;
         }
     });
 
@@ -397,16 +420,28 @@ $(document).ready(function (e) {
                     newChild.data("railway-themeid", themeId);
 
                     newChild.click(function (evt) {
-                        if (evt.ctrlKey && evt.altKey) {
-                            rotateElement(col, row, $(this));
-                        } else if (evt.ctrlKey) {
-                            //selectElement($(this));
-                            rotateElement(col, row, $(this));
-                        } else if (evt.altKey) {
-                            $(this).remove();
-                            resetSelection();
-                            rebuildTable();
+                        switch (editMode) {
+                        case ModeRotate:
+                            if (isEdit) {
+                                rotateElement(col, row, $(this));
+                            }
+                            break;
+
+                        case ModeRemove:
+                            if (isEdit) {
+                                $(this).remove();
+                                resetSelection();
+                                rebuildTable();
+                            }
+                            break;
+
+                        case ModeObject:
+                            if (isEdit) {
+                                selectElement(col, row, $(this));
+                            }
+                            break;
                         }
+
                     });
                     newChild.draggable();
 
@@ -438,6 +473,9 @@ $(document).ready(function (e) {
                     return;
                 }
 
+                if (editMode != ModeAddMove)
+                    return;
+
                 var cname = $('#webmenuCategories').val();
                 var sel = $('#webmenu' + cname);
                 var o = sel.val();
@@ -452,20 +490,26 @@ $(document).ready(function (e) {
                 newChild.data("railway-themeid", o2);
 
                 newChild.click(function (evt) {
+                    switch (editMode) {
+                    case ModeRotate:
+                        if (isEdit) {
+                            rotateElement(col, row, $(this));
+                        }
+                        break;
 
-                    if (evt.ctrlKey && evt.altKey) {
-                        rotateElement(col, row, $(this));
-                    } else if (evt.ctrlKey && evt.shiftKey) {
-                        rotateElement2(col, row, $(this));;
-                    } else if (evt.ctrlKey) {
-                        //selectElement($(this
-                        rotateElement(col, row, $(this));
-                    } else if (evt.altKey) {
+                    case ModeRemove:
                         if (isEdit) {
                             $(this).remove();
                             resetSelection();
                             rebuildTable();
                         }
+                        break;
+
+                    case ModeObject:
+                        if (isEdit) {
+                            selectElement(col, row, $(this));
+                        }
+                        break;
                     }
                 });
 
@@ -492,6 +536,29 @@ $(document).ready(function (e) {
         railwayEssentialCallback.message(e.message);
     }
 
+    $("#mode-1").checkboxradio();
+    $("#mode-2").checkboxradio();
+    $("#mode-3").checkboxradio();
+    $("#mode-4").checkboxradio();
+
+    $("#mode-1").change(updateEditMode);
+    $("#mode-2").change(updateEditMode);
+    $("#mode-3").change(updateEditMode);
+    $("#mode-4").change(updateEditMode);
+
     //isEdit = true;
     //updateUi();
 });
+
+function updateEditMode() {
+    if ($("#mode-1").is(':checked'))
+        editMode = ModeAddMove;
+    else if ($("#mode-2").is(':checked'))
+        editMode = ModeRemove;
+    else if ($("#mode-3").is(':checked'))
+        editMode = ModeRotate;
+    else if ($("#mode-4").is(':checked'))
+        editMode = ModeObject;
+    else
+        editMode = ModeAddMove;
+}

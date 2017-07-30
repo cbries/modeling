@@ -6,6 +6,7 @@ namespace RailwayEssentialWeb
     {
         public event EditModeChangedDelegator EditModeChanged;
         public event CellClickedDelegator CellClicked;
+        public event CellSelectedDelegator CellSelected;
 
         public ITrackEdit TrackEdit { get; set; }
 
@@ -30,6 +31,12 @@ namespace RailwayEssentialWeb
         {
             if (TrackEdit != null)
                 TrackEdit.RotateSymbol(x, y, orientation);
+        }
+
+        public void cellSelected(int x, int y)
+        {
+            if (CellSelected != null)
+                CellSelected(this, x, y);
         }
 
         public void editModeChanged(bool state)

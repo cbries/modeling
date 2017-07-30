@@ -168,6 +168,7 @@ namespace RailwayEssentialMdi.Entities
             if (_trackViewer != null && _trackViewer.JsCallback != null)
             {
                 _trackViewer.JsCallback.CellClicked += JsCallbackOnCellClicked;
+                _trackViewer.JsCallback.CellSelected += JsCallbackOnCellSelected;
                 _trackViewer.JsCallback.EditModeChanged += JsCallbackOnEditModeChanged;
                 _trackViewer.JsCallback.TrackEdit = _track;
             }
@@ -220,12 +221,28 @@ namespace RailwayEssentialMdi.Entities
             Trace.WriteLine("Edit mode changed: " + editState);
         }
 
+        private void JsCallbackOnCellSelected(object sender, int x, int y)
+        {
+            if (x == -1 || y == -1)
+            {
+                Trace.WriteLine("Selection reset");
+                return;
+            }
+
+            //x = x + 1;
+            //y = y + 1;
+
+            Trace.WriteLine("Selection: " + x + ", " + y);
+
+            // TODO
+        }
+
         private void JsCallbackOnCellClicked(object o, int x, int y)
         {
             x = x + 1;
             y = y + 1;
 
-            Trace.WriteLine("Cell clicked: " + x + ", " + y);
+            //Trace.WriteLine("Cell clicked: " + x + ", " + y);
 
             var track = Track;
             var trackInfo = track.Get(x, y);

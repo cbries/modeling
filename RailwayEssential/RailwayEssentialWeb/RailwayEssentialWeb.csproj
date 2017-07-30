@@ -120,6 +120,7 @@
     <Content Include="Resources\Webeditor\arrow_ccw.png" />
     <Content Include="Resources\Webeditor\arrow_cw.png" />
     <Content Include="Resources\Webeditor\css\base.css" />
+    <Content Include="Resources\Webeditor\css\jquery-ui.css" />
     <Content Include="Resources\Webeditor\css\msdropdown\dd.css" />
     <Content Include="Resources\Webeditor\css\msdropdown\flags.css" />
     <Content Include="Resources\Webeditor\css\msdropdown\skin2.css" />

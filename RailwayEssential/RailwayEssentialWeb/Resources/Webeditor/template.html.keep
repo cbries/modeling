@@ -9,6 +9,7 @@
 	<script src="js/msdropdown/jquery.dd.js" type="text/javascript"></script>	
 	<script src="js/railwayessential.js" type="text/javascript"></script>
 	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="css/base.css" />
 	<link rel="stylesheet" type="text/css" href="css/msdropdown/dd.css" />
 	<script>
@@ -20,7 +21,7 @@
 </head>
 <body>
 
-<div id="editMenu" style="display: none; margin-top: 10px; margin-bottom: 10px;">
+<div id="editMenu" style="display: none; margin-top: 10px; margin-bottom: 10px; float: left;">
 
 <div style="width: 100%; display: table;">
     <div style="display: table-row">
@@ -39,6 +40,22 @@
 		  {{TRACKSYMBOLS_Block}}
 		  {{TRACKSYMBOLS_Sensor}}
 		  {{TRACKSYMBOLS_Accessory}}
+		</div>
+
+		<div style="display: table-cell;">
+		  <fieldset style="margin-left: 15px; vertical-align: middle;">
+			<label for="mode-1">Add/Move</label>
+			<input type="radio" name="mode" id="mode-1" checked>
+
+			<label for="mode-2">Remove</label>
+			<input type="radio" name="mode" id="mode-2">
+
+			<label for="mode-3">Rotate</label>
+			<input type="radio" name="mode" id="mode-3">
+
+			<label for="mode-4">Object Assignment</label>
+			<input type="radio" name="mode" id="mode-4">
+		  </fieldset>
 		</div>
     </div>
 </div>
