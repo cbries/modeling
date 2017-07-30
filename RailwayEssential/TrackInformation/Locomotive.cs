@@ -12,6 +12,8 @@ namespace TrackInformation
 
         public override int SubTitleHeight => 16;
 
+        public bool InitQueryStateDone { get; set; }
+
         private string _name;
 
         public string Name
@@ -91,6 +93,19 @@ namespace TrackInformation
             }
         }
 
+        private int _nrOfFunctions;
+
+        public int NrOfFunctions
+        {
+            get => _nrOfFunctions;
+            set
+            {
+                _nrOfFunctions = value;
+                OnPropertyChanged();
+                OnPropertyChanged("Title");
+            }
+        }
+
         private List<bool> _funcset;
 
         public List<bool> Funcset
@@ -107,6 +122,7 @@ namespace TrackInformation
         public Locomotive()
         {
             _funcset = new List<bool>(32);
+
             if (_funcset.Count == 0)
             {
                 for (int i = 0; i < 32; ++i)
@@ -123,14 +139,14 @@ namespace TrackInformation
         {
             string v = Direction == 1 ? "Backward" : "Forward";
 
-            SubTitle = $"Speed[{Speed}]->{v} ({Protocol} : {Addr})";
+            SubTitle = $"V[{Speed}]->{v} ({Protocol}, {Addr}, {NrOfFunctions})";
         }
 
         public void Stop()
         {
             List<ICommand> ctrlCmds = new List<ICommand>
             {
-                CommandFactory.Create($"set({ObjectId}, stop)"),
+                CommandFactory.Create($"set({ObjectId}, )"),
             };
 
             OnCommandsReady(this, ctrlCmds);
@@ -145,6 +161,8 @@ namespace TrackInformation
                 CommandFactory.Create($"set({ObjectId}, func[{nr}, {v}])"),
                 CommandFactory.Create($"release({ObjectId}, control)")
             };
+
+            Funcset[(int)nr] = state;
 
             OnCommandsReady(this, ctrlCmds);
         }
@@ -228,20 +246,28 @@ namespace TrackInformation
                     else
                         Direction = -1;
                 }
-                else if (arg.Name.Equals("funcset", StringComparison.OrdinalIgnoreCase))
+                else if (arg.Name.Equals("funcdesc", StringComparison.OrdinalIgnoreCase))
                 {
                     var sindex = arg.Parameter[0].Trim();
-                    var sstate = arg.Parameter[1].Trim();
+                    var stype = arg.Parameter[1].Trim();
 
                     int index;
                     if (!int.TryParse(sindex, out index))
                         index = -1;
-                    int state;
-                    if (!int.TryParse(sstate, out state))
-                        state = -1;
+                    int type;
+                    if (!int.TryParse(stype, out type))
+                        type = -1;
 
-                    if(index != -1 && state != -1)
-                        Funcset[index] = state == 1;
+                    Trace.WriteLine("funcdesc: " + index + ", " + type);
+
+                    //if (index != -1 && state != -1)
+                    //    Funcset[index] = state == 1;
+                }
+                else if (arg.Name.Equals("funcset", StringComparison.OrdinalIgnoreCase))
+                {
+                    Trace.WriteLine("funcset: " + arg.Parameter[0]);
+
+                    NrOfFunctions = arg.Parameter[0].Length;
                 }
                 else if (arg.Name.Equals("func", StringComparison.OrdinalIgnoreCase))
                 {
@@ -276,7 +302,8 @@ namespace TrackInformation
                 ["speed"] = _speed,
                 ["speedstep"] = _speedstep,
                 ["direction"] = _directon,                
-                ["funcset"] = m
+                ["funcset"] = m,
+                ["nrOfFunctions"] = NrOfFunctions
             };
 
             return o;
@@ -307,6 +334,8 @@ namespace TrackInformation
                 for (int i = 0; i < m.Length; ++i)
                     Funcset[i] = m[i] == '1';
             }
+            if (obj["nrOfFunctions"] != null)
+                NrOfFunctions = (int) obj["nrOfFunctions"];
         }
     }
 }

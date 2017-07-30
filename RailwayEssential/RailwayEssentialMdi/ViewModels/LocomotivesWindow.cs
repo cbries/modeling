@@ -1,6 +1,5 @@
 ﻿namespace RailwayEssentialMdi.ViewModels
 {
-    using System.Threading;
     using System.Windows.Controls.Primitives;
     using Commands;
     using Entities;
@@ -22,6 +21,8 @@
             set
             {
                 _entity = value;
+
+                UpdateFuncset();
 
                 RaisePropertyChanged("Entity");
             }
@@ -55,6 +56,8 @@
             StopCommand = new RelayCommand(Stop);
 
             _entity?.UpdateUi();
+
+            UpdateFuncset();
         }
 
         private void SwitchFnc(object p)
@@ -118,6 +121,13 @@
 
         public void UpdateFuncset()
         {
+            if (LocomotiveView == null)
+                return;
+
+            int nrOfFunctions = 0;
+            if (_entity != null && _entity.ObjectItem != null)
+                nrOfFunctions = _entity.ObjectItem.NrOfFunctions;
+            
             for (int i = 0; i < 32; ++i)
             {
                 string name = $"F{i}";
@@ -125,10 +135,18 @@
                 if (string.IsNullOrEmpty(name))
                     continue;
 
-                if (_entity != null && _entity.ObjectItem != null)
+                if (i < nrOfFunctions)
                 {
-                    var state = _entity.ObjectItem.Funcset[i];
-                    LocomotiveView.SetToggleButton(name, state);
+                    if (_entity != null && _entity.ObjectItem != null)
+                    {
+                        var state = _entity.ObjectItem.Funcset[i];
+                        LocomotiveView.SetToggleButton(name, state);
+                        LocomotiveView.SetToggleButtonVisibility(name, true);
+                    }
+                }
+                else
+                {
+                    LocomotiveView.SetToggleButtonVisibility(name, false);
                 }
             }
         }

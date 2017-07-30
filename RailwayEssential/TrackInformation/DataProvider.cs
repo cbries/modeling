@@ -390,10 +390,11 @@ namespace TrackInformation
 
                 if (sid.StartsWith("20", StringComparison.OrdinalIgnoreCase))
                 {
-                    var sw = new Switch { ObjectId = e.ObjectId };
-                    sw.Parse(e.Arguments);
-                    if (!DoesObjectIdExist((uint) e.ObjectId))
-                    {
+                    var sw = GetObjectBy(e.ObjectId);
+                    if(sw == null)
+                    { 
+                        sw = new Switch { ObjectId = e.ObjectId };
+                        sw.Parse(e.Arguments);
                         sw.CommandsReady += CommandsReady;
                         _objects.Add(sw);
                         DataChanged?.Invoke(this);
@@ -401,30 +402,34 @@ namespace TrackInformation
                     }
                     else
                     {
-                        DataChanged?.Invoke(this);
+                        sw.Parse(e.Arguments);
                         sw.CommandsReady -= CommandsReady;
                         sw.CommandsReady += CommandsReady;
+                        DataChanged?.Invoke(this);
                         if (!sw.HasView)
                             sw.EnableView();
                     }
                 }
                 else if (sid.StartsWith("30", StringComparison.OrdinalIgnoreCase))
                 {
-                    var r = new Route {ObjectId = e.ObjectId};
-                    r.Parse(e.Arguments);
-                    if (!DoesObjectIdExist((uint) e.ObjectId))
+                    var r = GetObjectBy(e.ObjectId);
+                    if (r == null)
                     {
+                        r = new Route {ObjectId = e.ObjectId};
+                        r.Parse(e.Arguments);
                         r.CommandsReady += CommandsReady;
                         _objects.Add(r);
                         DataChanged?.Invoke(this);
+                        r.EnableView();
                     }
                     else
                     {
-                        DataChanged?.Invoke(this);
+                        r.Parse(e.Arguments);
                         r.CommandsReady -= CommandsReady;
                         r.CommandsReady += CommandsReady;
                         if (!r.HasView)
                             r.EnableView();
+                        DataChanged?.Invoke(this);
                     }
                 }
             }
@@ -446,10 +451,10 @@ namespace TrackInformation
 
                 if (sid.StartsWith("10", StringComparison.OrdinalIgnoreCase))
                 {
-                    var l = new Locomotive {ObjectId = e.ObjectId};
-                    l.Parse(e.Arguments);
                     if (!DoesObjectIdExist((uint) e.ObjectId))
                     {
+                        var l = new Locomotive { ObjectId = e.ObjectId };
+                        l.Parse(e.Arguments);
                         l.CommandsReady += CommandsReady;
                         _objects.Add(l);
                         DataChanged?.Invoke(this);
@@ -458,11 +463,23 @@ namespace TrackInformation
                     }
                     else
                     {
-                        DataChanged?.Invoke(this);
-                        l.CommandsReady -= CommandsReady;
-                        l.CommandsReady += CommandsReady;
-                        if (!l.HasView)
-                            l.EnableView();
+                        var l = GetObjectBy(e.ObjectId) as Locomotive;
+                        if (l != null)
+                        {
+                            l.Parse(e.Arguments);
+                            l.CommandsReady -= CommandsReady;
+                            l.CommandsReady += CommandsReady;
+
+                            if (!l.HasView)
+                                l.EnableView();
+
+                            if (!l.InitQueryStateDone)
+                            {
+                                l.QueryState();
+                                l.InitQueryStateDone = true;
+                            }
+                            DataChanged?.Invoke(this);
+                        }
                     }
                 }
             }
@@ -486,10 +503,11 @@ namespace TrackInformation
                 {
                     int n = _objects.Count(x => x is S88);
 
-                    var s88 = new S88 {ObjectId = e.ObjectId, Index = n};
-                    s88.Parse(e.Arguments);
-                    if (!DoesObjectIdExist((uint) e.ObjectId))
+                    var s88 = GetObjectBy(e.ObjectId) as S88;
+                    if (s88 == null)
                     {
+                        s88 = new S88 {ObjectId = e.ObjectId, Index = n};
+                        s88.Parse(e.Arguments);
                         s88.CommandsReady += CommandsReady;
                         _objects.Add(s88);
                         DataChanged?.Invoke(this);
@@ -497,11 +515,12 @@ namespace TrackInformation
                     }
                     else
                     {
-                        DataChanged?.Invoke(this);
+                        s88.Parse(e.Arguments);
                         s88.CommandsReady -= CommandsReady;
                         s88.CommandsReady += CommandsReady;
                         if (!s88.HasView)
                             s88.EnableView();
+                        DataChanged?.Invoke(this);
                     }
                 }
             }

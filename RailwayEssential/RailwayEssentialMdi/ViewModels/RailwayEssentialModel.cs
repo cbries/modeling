@@ -645,6 +645,8 @@ namespace RailwayEssentialMdi.ViewModels
             {
                 w.Entity.ObjectItem = _currentLocomotive;
 
+                w.UpdateFuncset();
+
                 return;
             }
 
@@ -658,6 +660,7 @@ namespace RailwayEssentialMdi.ViewModels
             item2.Entity.UpdateUi();
             item2.Closing += (s, e) => Windows.Remove(item2);
             Windows.Add(item2);
+            item2.UpdateFuncset();
         }
 
         public void ConnectToCommandStation(object p)

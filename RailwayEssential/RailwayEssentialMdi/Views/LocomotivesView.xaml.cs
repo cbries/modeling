@@ -21,6 +21,7 @@ namespace RailwayEssentialMdi.Views
             if (m != null)
             {
                 _dataContext = m;
+
                 m.LocomotiveView = this;
             }
         }
@@ -49,6 +50,18 @@ namespace RailwayEssentialMdi.Views
             var btn = GetToggleButton(name);
             if (btn != null)
                 btn.IsChecked = state;
+        }
+
+        public void SetToggleButtonVisibility(string name, bool visible)
+        {
+            var btn = GetToggleButton(name);
+            if (btn != null)
+            {
+                if(visible)
+                    btn.Visibility = Visibility.Visible;
+                else
+                    btn.Visibility = Visibility.Collapsed;
+            }
         }
 
         #endregion

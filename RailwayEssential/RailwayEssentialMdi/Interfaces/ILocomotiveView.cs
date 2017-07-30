@@ -6,5 +6,6 @@ namespace RailwayEssentialMdi.Interfaces
     {
         ToggleButton GetToggleButton(string name);
         void SetToggleButton(string name, bool state);
+        void SetToggleButtonVisibility(string name, bool visible);
     }
 }
