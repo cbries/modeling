@@ -104,12 +104,8 @@
 
         private void Stop(object p)
         {
-            //Entity.DriveBackward = !Entity.DriveBackward;
-            //Thread.Sleep(100);
-            //Entity.DriveBackward = !Entity.DriveBackward;
-
-            //Speed = 0;
-            //PromoteSpeed();
+            Speed = 0;
+            PromoteSpeed();
 
             if(Entity != null)
                 Entity.ObjectItem.Stop();
