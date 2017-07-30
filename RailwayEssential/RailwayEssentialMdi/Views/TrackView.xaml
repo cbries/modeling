@@ -4,12 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:railwayEssentialWeb="clr-namespace:RailwayEssentialWeb;assembly=RailwayEssentialWeb"
+             xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
              mc:Ignorable="d" Initialized="TrackView_OnInitialized" DataContextChanged="TrackView_OnDataContextChanged"
-             d:DesignHeight="250" d:DesignWidth="300">
+             d:DesignHeight="250" d:DesignWidth="600">
+    
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="24"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <DockPanel Grid.Row="0" HorizontalAlignment="Right">
@@ -69,6 +76,36 @@
             <railwayEssentialWeb:TrackViewer Name="trackViewer" Grid.Row="0" Grid.Column="0"/>
 
         </Grid>
+
+        <Grid Grid.Row="2" Visibility="{Binding Entity.ShowObjectEdit, Converter={StaticResource BoolToVis}, Mode=OneWay}">
+            <TabControl MinHeight="175" MaxHeight="175">
+
+                <TabItem Header="S88">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                        <StackPanel>
+                            <!-- TODO -->
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                
+                <TabItem Header="Switch">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                        <StackPanel>
+                            <!-- TODO -->
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                
+                <TabItem Header="Accessory">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                        <StackPanel>
+                            <!-- TODO -->
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+            </TabControl>
+        </Grid>
         
     </Grid>
 </UserControl>
+

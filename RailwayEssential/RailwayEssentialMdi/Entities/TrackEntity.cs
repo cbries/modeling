@@ -221,13 +221,28 @@ namespace RailwayEssentialMdi.Entities
             Trace.WriteLine("Edit mode changed: " + editState);
         }
 
+        private bool _showObjectEdit;
+
+        public bool ShowObjectEdit
+        {
+            get => _showObjectEdit;
+            set
+            {
+                _showObjectEdit = value;
+                RaisePropertyChanged("ShowObjectEdit");
+            }
+        }
+
         private void JsCallbackOnCellSelected(object sender, int x, int y)
         {
             if (x == -1 || y == -1)
             {
+                ShowObjectEdit = false;
                 Trace.WriteLine("Selection reset");
                 return;
             }
+
+            ShowObjectEdit = true;
 
             //x = x + 1;
             //y = y + 1;
