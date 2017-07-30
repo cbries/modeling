@@ -121,6 +121,8 @@
 
         public void UpdateFuncset()
         {
+            RaisePropertyChanged("Name");
+
             if (LocomotiveView == null)
                 return;
 
