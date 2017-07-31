@@ -199,6 +199,9 @@
     <None Include="Testprojekte\Schattenbahnhof1\TrackPlan.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Testprojekte\Schattenbahnhof1\TrackWeaving - Copy.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Testprojekte\Schattenbahnhof1\TrackWeaving.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -108,8 +108,8 @@ function rebuildCell(col, row) {
 function rebuildTable() {
     $('td').each(function (index, el) {
         if ($(el).find('img').length == 0) {
-            var col = $(el).parent().children().index($(el));
-            var row = $(el).parent().parent().children().index($(el).parent());
+            var col = $(el).parent().children().index($(el)) + 1;
+            var row = $(el).parent().parent().children().index($(el).parent()) + 1;
             try {
                 railwayEssentialCallback.cellEdited(col, row, -1);
             } catch (ex) { /* ignore */ }
@@ -141,8 +141,8 @@ function findTargetTd(evt, callback) {
         if (clientX >= x0 && clientX <= x1) {
             if (clientY >= y0 && clientY <= y1) {
                 var o = $(el);
-                var col = o.parent().children().index(o);
-                var row = o.parent().parent().children().index(o.parent());
+                var col = o.parent().children().index(o) + 1;
+                var row = o.parent().parent().children().index(o.parent()) + 1;
 
                 callback(col, row, $(el));
 
@@ -383,8 +383,8 @@ $(document).ready(function (e) {
         .mouseup(function (evt) {
             isMouseDown = false;
 
-            var col = $(this).parent().children().index($(this));
-            var row = $(this).parent().parent().children().index($(this).parent());
+            var col = $(this).parent().children().index($(this)) + 1;
+            var row = $(this).parent().parent().children().index($(this).parent()) + 1;
 
             if (isDragging && objDrag !== null) {
 
