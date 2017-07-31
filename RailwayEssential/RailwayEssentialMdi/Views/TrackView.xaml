@@ -79,7 +79,7 @@
 
         <Grid Grid.Row="2" Visibility="{Binding Entity.ShowObjectEdit, Converter={StaticResource BoolToVis}, Mode=OneWay}">
             <StackPanel>
-                <TabControl MinHeight="175" MaxHeight="175">
+                <TabControl MinHeight="175" MaxHeight="175" TabIndex="{Binding Entity.SelectionTabIndex}">
 
                     <TabItem Header="S88">
                         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
