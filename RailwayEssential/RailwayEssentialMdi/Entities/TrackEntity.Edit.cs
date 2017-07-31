@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace RailwayEssentialMdi.Entities
 {
     using System.Collections.ObjectModel;
@@ -12,8 +14,39 @@ namespace RailwayEssentialMdi.Entities
         private const int TabIndexS88 = 0;
         private const int TabIndexSwitch = 1;
 
-        public S88 ItemsS88Selection { get; set; }
-        public TrackInformation.Switch ItemsSwitchSelection { get; set; }
+        private S88 _itemS88Selection;
+        private TrackInformation.Switch _itemSwitchSelection;
+        private int _itemsS88SelectionPin;
+
+        public S88 ItemsS88Selection
+        {
+            get => _itemS88Selection;
+            set
+            {
+                _itemS88Selection = value;
+                if (_itemS88Selection == null)
+                    ItemsS88SelectionPin = -1;
+                RaisePropertyChanged("ItemsS88Selection");
+            }
+        }
+        public TrackInformation.Switch ItemsSwitchSelection
+        {
+            get => _itemSwitchSelection;
+            set
+            {
+                _itemSwitchSelection = value;
+                RaisePropertyChanged("ItemsSwitchSelection");
+            }
+        }
+        public int ItemsS88SelectionPin
+        {
+            get => _itemsS88SelectionPin;
+            set
+            {
+                _itemsS88SelectionPin = value;
+                RaisePropertyChanged("ItemsS88SelectionPin");
+            }
+        }
         public int SelectionX { get; private set; }
         public int SelectionY { get; private set; }
         public bool SelectionXYvisible { get; private set; }
@@ -128,7 +161,7 @@ namespace RailwayEssentialMdi.Entities
             {
                 item.Type = WeaveItemT.S88;
                 item.ObjectId = ItemsS88Selection.ObjectId;
-                item.Pin = ItemsS88Selection.Index;
+                item.Pin = ItemsS88SelectionPin;
             }
 
             if (ItemsSwitchSelection != null)
@@ -178,6 +211,58 @@ namespace RailwayEssentialMdi.Entities
             return null;
         }
 
+        private TrackWeaveItem GetWeaveItem(int x, int y)
+        {
+            var m = _dispatcher.Model as ViewModels.RailwayEssentialModel;
+            if (m == null)
+                return null;
+
+            var prj = m.Project;
+
+            var weaveFilepath = Path.Combine(prj.Dirpath, prj.Track.Weave);
+            TrackWeaveItems weaverItems = new TrackWeaveItems();
+            if (!weaverItems.Load(weaveFilepath))
+                return null;
+
+            foreach (var e in weaverItems.Items)
+            {
+                if (e?.VisuX == x && e.VisuY == y)
+                    return e;
+            }
+
+            return null;
+        }
+
+        private TrackWeaverItem GetWeaverItem(int x, int y)
+        {
+            var track = Track;
+            var trackInfo = track.Get(x, y);
+
+            if (trackInfo == null)
+                return null;
+
+            var weaver = _dispatcher.Weaver;
+            if (weaver != null)
+            {
+                var ws = weaver.WovenSeam;
+                if (ws != null)
+                {
+                    foreach (var seam in ws)
+                    {
+                        if (seam == null)
+                            continue;
+
+                        if (seam.TrackObjects.ContainsKey(trackInfo))
+                        {
+                            return seam;
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
         private void JsCallbackOnCellSelected(object sender, int x, int y)
         {
             SelectionX = x;
@@ -207,7 +292,6 @@ namespace RailwayEssentialMdi.Entities
 
             Ctx.Send(state =>
             {
-
                 var dataProvider = _dispatcher.GetDataProvider();
                 if (dataProvider == null)
                     return;
@@ -221,7 +305,10 @@ namespace RailwayEssentialMdi.Entities
                         {
                             ItemsS88Selection = objItem as S88;
                             SelectionTabIndex = TabIndexS88;
-                            RaisePropertyChanged("ItemsS88Selection");
+
+                            var weaveItem = GetWeaveItem(SelectionX, SelectionY);
+                            if (weaveItem != null)
+                                ItemsS88SelectionPin = weaveItem.Pin;
                         }
                             break;
 
@@ -229,7 +316,7 @@ namespace RailwayEssentialMdi.Entities
                         {
                             ItemsSwitchSelection = objItem as TrackInformation.Switch;
                             SelectionTabIndex = TabIndexSwitch;
-                            RaisePropertyChanged("ItemsSwitchSelection");
+                            ItemsS88SelectionPin = -1;
                         }
                             break;
                     }
@@ -251,52 +338,72 @@ namespace RailwayEssentialMdi.Entities
 
         private void JsCallbackOnCellClicked(object o, int x, int y)
         {
-            //x = x + 1;
-            //y = y + 1;
+            var weaverItem = GetWeaverItem(x, y);
 
-            var track = Track;
-            var trackInfo = track.Get(x, y);
+            var objItem = weaverItem?.ObjectItem;
 
-            if (trackInfo == null)
-                return;
-
-            var weaver = _dispatcher.Weaver;
-            if (weaver != null)
+            if (objItem != null)
             {
-                var ws = weaver.WovenSeam;
-                if (ws != null)
+                switch (objItem.TypeId())
                 {
-                    foreach (var seam in ws)
+                    case 5:
                     {
-                        if (seam == null)
-                            continue;
-
-                        if (seam.TrackObjects.ContainsKey(trackInfo))
+                        var switchItem = objItem as TrackInformation.Switch;
+                        if (switchItem != null)
                         {
-                            var objItem = seam.ObjectItem;
-
-                            if (objItem != null)
-                            {
-                                switch (objItem.TypeId())
-                                {
-                                    case 5:
-                                    {
-                                        var switchItem = objItem as TrackInformation.Switch;
-                                        if (switchItem != null)
-                                        {
-                                            if (switchItem.State == 0)
-                                                switchItem.ChangeDirection(1);
-                                            else
-                                                switchItem.ChangeDirection(0);
-                                        }
-                                    }
-                                        break;
-                                }
-                            }
+                            if (switchItem.State == 0)
+                                switchItem.ChangeDirection(1);
+                            else
+                                switchItem.ChangeDirection(0);
                         }
                     }
+                        break;
                 }
             }
+
+            //var track = Track;
+            //var trackInfo = track.Get(x, y);
+
+            //if (trackInfo == null)
+            //    return;
+
+            //var weaver = _dispatcher.Weaver;
+            //if (weaver != null)
+            //{
+            //    var ws = weaver.WovenSeam;
+            //    if (ws != null)
+            //    {
+            //        foreach (var seam in ws)
+            //        {
+            //            if (seam == null)
+            //                continue;
+
+            //            if (seam.TrackObjects.ContainsKey(trackInfo))
+            //            {
+            //                var objItem = seam.ObjectItem;
+
+            //                if (objItem != null)
+            //                {
+            //                    switch (objItem.TypeId())
+            //                    {
+            //                        case 5:
+            //                        {
+            //                            var switchItem = objItem as TrackInformation.Switch;
+            //                            if (switchItem != null)
+            //                            {
+            //                                if (switchItem.State == 0)
+            //                                    switchItem.ChangeDirection(1);
+            //                                else
+            //                                    switchItem.ChangeDirection(0);
+            //                            }
+            //                        }
+            //                            break;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
         }
 
     }

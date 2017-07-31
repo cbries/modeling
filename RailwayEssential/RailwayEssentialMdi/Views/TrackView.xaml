@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:railwayEssentialWeb="clr-namespace:RailwayEssentialWeb;assembly=RailwayEssentialWeb"
              xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" Initialized="TrackView_OnInitialized" DataContextChanged="TrackView_OnDataContextChanged"
              d:DesignHeight="250" d:DesignWidth="600">
     
@@ -90,7 +91,15 @@
                                     <TextBlock Text="Y:" FontWeight="Bold" Margin="5,0,0,0" VerticalAlignment="Center"/>
                                     <TextBlock Text="{Binding Entity.SelectionY, Mode=OneWay}" VerticalAlignment="Center"/>
 
-                                    <ComboBox Margin="10,0,0,0" ItemsSource="{Binding Entity.ItemsS88}" SelectedItem="{Binding Entity.ItemsS88Selection, Mode=TwoWay}" VerticalAlignment="Center"/>
+                                    <ComboBox Margin="10,0,0,0" ItemsSource="{Binding Entity.ItemsS88}" SelectedItem="{Binding Entity.ItemsS88Selection, Mode=TwoWay}" VerticalAlignment="Center" Width="200" HorizontalAlignment="Left" />
+                                </DockPanel>
+                                <DockPanel Margin="0,5,0,0">
+                                    <TextBlock Text="Pin: " FontWeight="Bold"/>
+
+                                    <xctk:IntegerUpDown Name="NumberOfColumns" Height="22" Width="75" HorizontalAlignment="Left" Margin="5,0,0,0"
+                                                        Value="{Binding Entity.ItemsS88SelectionPin, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                                        Maximum="{Binding Entity.ItemsS88Selection.Ports}" Minimum="1" 
+                                                        FormatString="N0" AllowSpin="True"/>
                                 </DockPanel>
                             </StackPanel>
                         </ScrollViewer>
@@ -105,7 +114,7 @@
                                     <TextBlock Text="Y:" FontWeight="Bold" Margin="5,0,0,0" VerticalAlignment="Center"/>
                                     <TextBlock Text="{Binding Entity.SelectionY, Mode=OneWay}" VerticalAlignment="Center"/>
 
-                                    <ComboBox Margin="10,0,0,0" ItemsSource="{Binding Entity.ItemsSwitch}" SelectedItem="{Binding Entity.ItemsSwitchSelection, Mode=TwoWay}" VerticalAlignment="Center"/>
+                                    <ComboBox Margin="10,0,0,0" ItemsSource="{Binding Entity.ItemsSwitch}" SelectedItem="{Binding Entity.ItemsSwitchSelection, Mode=TwoWay}" VerticalAlignment="Center" Width="200" HorizontalAlignment="Left"/>
                                 </DockPanel>
                             </StackPanel>
                         </ScrollViewer>
