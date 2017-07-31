@@ -945,6 +945,12 @@ namespace RailwayEssentialMdi.ViewModels
             if (IsDryRun)
                 return false;
 
+            if (_dispatcher == null)
+                return false;
+
+            if (_dispatcher.GetRunMode())
+                return false;
+
             return true;
         }
 
