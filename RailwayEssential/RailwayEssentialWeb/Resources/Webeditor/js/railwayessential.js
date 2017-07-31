@@ -326,6 +326,11 @@ function changeEditMode(state) {
     else
         isEdit = state;
 
+    if (!isEdit) {
+        resetSelection();
+        rebuildTable();
+    }
+
     try {
         railwayEssentialCallback.editModeChanged(isEdit);
     } catch (ex) { /* ignore */ }

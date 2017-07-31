@@ -213,7 +213,10 @@ namespace RailwayEssentialMdi.Entities
 
         private void JsCallbackOnEditModeChanged(object o, bool editState)
         {
-            Trace.WriteLine("Edit mode changed: " + editState);
+            if (!editState)
+            {
+                ShowObjectEdit = false;
+            }
         }
 
         protected override void OnPropertyChanged(string propertyName)

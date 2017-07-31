@@ -110,6 +110,8 @@
             if (_entity.Viewer == null)
                 return;
 
+
+
             _entity.Viewer.ExecuteJs("changeEditMode();");
         }
 
