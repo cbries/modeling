@@ -131,10 +131,11 @@ namespace RailwayEssentialMdi.ViewModels
         public RelayCommand SaveCommand { get; }
         public RelayCommand ExitCommand { get; }
 
-        public RelayCommand TogglePowerCommand { get; }
         public RelayCommand ShowLocomotiveCommand { get; }
         public RelayCommand ConnectCommand { get; }
         public RelayCommand DisconnectCommand { get; }
+        public RelayCommand DryRunCommand { get;  }
+        public RelayCommand TogglePowerCommand { get; }
         public RelayCommand CmdStationsPropertiesCommand { get; }
 
         public RelayCommand ShowLogCommand { get; }
@@ -160,10 +161,11 @@ namespace RailwayEssentialMdi.ViewModels
             CloseCommand = new RelayCommand(Close, CheckClose);
             SaveCommand = new RelayCommand(Save, CheckSave);
             ExitCommand = new RelayCommand(Exit, CheckExit);
-            TogglePowerCommand = new RelayCommand(TogglePower, CheckTogglePower);
             ShowLocomotiveCommand = new RelayCommand(ShowLocomotive, CheckShowLocomotive);
             ConnectCommand = new RelayCommand(ConnectToCommandStation, CheckConnectToCommandStation);
             DisconnectCommand = new RelayCommand(DisconnectFromCommandStation, CheckDisconnectFromCommandStation);
+            DryRunCommand = new RelayCommand(DryRun, CheckDryRun);
+            TogglePowerCommand = new RelayCommand(TogglePower, CheckTogglePower);
             CmdStationsPropertiesCommand = new RelayCommand(PropertiesCommandStation);
             ShowLogCommand = new RelayCommand(ShowLog);
             ShowCommandLogCommand = new RelayCommand(ShowCommandLog);
@@ -681,10 +683,21 @@ namespace RailwayEssentialMdi.ViewModels
             item2.UpdateFuncset();
         }
 
+        public void DryRun(object p)
+        {
+            IsDryRun = true;
+
+            var weaveFilepath = Path.Combine(Project.Dirpath, Project.Track.Weave);
+            _dispatcher.InitializeWeaving(_trackEntity.Track, weaveFilepath);
+        }
+
         public void ConnectToCommandStation(object p)
         {
             try
             {
+                if (IsDryRun)
+                    return;
+
                 if (_dispatcher != null)
                     _dispatcher.SetRunMode(true);
             }
@@ -696,8 +709,15 @@ namespace RailwayEssentialMdi.ViewModels
 
         public void DisconnectFromCommandStation(object p)
         {
-            if (_dispatcher != null)
-                _dispatcher.SetRunMode(false);
+            if (IsDryRun)
+            {
+                IsDryRun = false;
+            }
+            else
+            {
+                if (_dispatcher != null)
+                    _dispatcher.SetRunMode(false);
+            }
         }
 
         public void PropertiesCommandStation(object p)
@@ -861,6 +881,9 @@ namespace RailwayEssentialMdi.ViewModels
             if (_dispatcher == null)
                 return false;
 
+            if (IsDryRun)
+                return true;
+
             return _dispatcher.GetRunMode();
         }
 
@@ -874,10 +897,26 @@ namespace RailwayEssentialMdi.ViewModels
 
         private bool CheckConnectToCommandStation(object o1)
         {
+            if (IsDryRun)
+                return false;
+
             if (_project == null || _cfg == null)
                 return false;
 
             if (_dispatcher.GetRunMode())
+                return false;
+
+            return true;
+        }
+
+        private bool IsDryRun { get; set; }
+
+        public bool CheckDryRun(object p)
+        {
+            if (_project == null || _cfg == null)
+                return false;
+
+            if (IsDryRun)
                 return false;
 
             return true;

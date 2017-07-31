@@ -485,12 +485,14 @@ namespace RailwayEssentialMdi.Entities
 
             if (ItemsS88Selection != null)
             {
+                item.Type = WeaveItemT.S88;
                 item.ObjectId = ItemsS88Selection.ObjectId;
                 item.Pin = ItemsS88Selection.Index;
             }
 
             if (ItemsSwitchSelection != null)
             {
+                item.Type = WeaveItemT.Switch;
                 item.ObjectId = ItemsSwitchSelection.ObjectId;
             }
 

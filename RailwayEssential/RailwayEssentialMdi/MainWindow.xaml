@@ -45,6 +45,7 @@
                     <MenuItem Header="Connect" Command="{Binding ConnectCommand}"/>
                     <MenuItem Header="Disconnect" Command="{Binding DisconnectCommand}"/>
                     <Separator/>
+                    <MenuItem Header="Dry run" Command="{Binding DryRunCommand}"/>
                     <MenuItem Header="{Binding TogglePowerCaption}" Command="{Binding TogglePowerCommand}"/>
                     <Separator/>
                     <MenuItem Header="Properties" Command="{Binding CmdStationsPropertiesCommand}"/>

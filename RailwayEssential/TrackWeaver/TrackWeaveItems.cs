@@ -23,6 +23,8 @@ namespace TrackWeaver
 
         public bool Load(string filePath)
         {
+            _filePath = filePath;
+
             if (!File.Exists(filePath))
                 return false;
 
