@@ -63,5 +63,19 @@ namespace TrackWeaver
 
             return true;
         }
+
+        public JObject ToJson()
+        {
+            JObject o = new JObject {["type"] = Type.ToString()};
+            JObject oo = new JObject
+            {
+                ["objectId"] = ObjectId,
+                ["pin"] = Pin,
+                ["visuX"] = VisuX,
+                ["visuY"] = VisuY
+            };
+            o["setup"] = oo;
+            return o;
+        }
     }
 }

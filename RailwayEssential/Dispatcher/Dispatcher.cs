@@ -45,9 +45,15 @@ namespace Dispatcher
 
         public bool InitializeWeaving(TrackPlanParser.Track track, string weaveFilepath)
         {
-            _track = track;
+            if(_track == null)
+                _track = track;
 
-            _trackWeaver = new TrackWeaver.TrackWeaver();
+            if (_trackWeaver == null)
+                _trackWeaver = new TrackWeaver.TrackWeaver();
+            else
+            {
+                _trackWeaver.WovenSeam.Clear();
+            }
             
             TrackWeaveItems weaverItems = new TrackWeaveItems();
             if (!weaverItems.Load(weaveFilepath))

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace TrackWeaver
@@ -10,6 +11,8 @@ namespace TrackWeaver
     public class TrackWeaveItems
     {
         private readonly List<TrackWeaveItem> _items = new List<TrackWeaveItem>();
+
+        private string _filePath;
 
         public List<TrackWeaveItem> Items => _items;
 
@@ -50,6 +53,31 @@ namespace TrackWeaver
             catch(Exception ex)
             {
                 Trace.WriteLine("<Exception> " + ex.Message);
+                return false;
+            }
+        }
+
+        public bool Save()
+        {
+            if (string.IsNullOrEmpty(_filePath))
+                return false;
+
+            try
+            {
+                JArray ar = new JArray();
+                foreach (var e in _items)
+                {
+                    if (e == null)
+                        continue;
+
+                    ar.Add(e.ToJson());
+                }
+                File.WriteAllText(_filePath, ar.ToString(Formatting.Indented), Encoding.UTF8);
+                return true;
+            }
+            catch(Exception ex)
+            {
+                Trace.WriteLine("<Error> " + ex.Message);
                 return false;
             }
         }

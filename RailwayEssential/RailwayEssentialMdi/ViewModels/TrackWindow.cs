@@ -48,9 +48,10 @@
 
         private void Save(object p)
         {
-            // TODO
-            // TODO
-            // TODO
+            if (_entity == null)
+                return;
+
+            _entity.ApplyAssignment();
         }
 
         private void PlusColumRight(object p)

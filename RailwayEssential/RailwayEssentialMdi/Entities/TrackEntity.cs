@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Drawing.Text;
 using System.IO;
 using System.Threading;
 using Newtonsoft.Json;
@@ -257,8 +255,8 @@ namespace RailwayEssentialMdi.Entities
             }
         }
 
-        public S88 ItemsS88Selection { get; private set; }
-        public TrackInformation.Switch ItemsSwitchSelection { get; private set; }
+        public S88 ItemsS88Selection { get; set; }
+        public TrackInformation.Switch ItemsSwitchSelection { get; set; }
 
         public int SelectionX { get; private set; }
         public int SelectionY { get; private set; }
@@ -425,6 +423,88 @@ namespace RailwayEssentialMdi.Entities
                 return;
 
             _webGenerator.Generate(_tmpTrackName);
+        }
+
+        internal void ApplyAssignment()
+        {
+            var weaver = _dispatcher.Weaver;
+            if (weaver == null)
+                return;
+
+            var track = Track;
+            var trackInfo = track.Get(SelectionX, SelectionY);
+
+            if (trackInfo == null)
+                return;
+
+            var m = _dispatcher.Model as RailwayEssentialMdi.ViewModels.RailwayEssentialModel;
+            if (m == null)
+                return;
+
+            var prj = m.Project;
+
+            var weaveFilepath = Path.Combine(prj.Dirpath, prj.Track.Weave);
+            TrackWeaveItems weaverItems = new TrackWeaveItems();
+            if (!weaverItems.Load(weaveFilepath))
+                return;
+
+            var x = SelectionX;
+            var y = SelectionY;
+
+            TrackWeaveItem item = null;
+
+            foreach (var e in weaverItems.Items)
+            {
+                if (e == null)
+                    continue;
+
+
+                if (e.VisuX == x && e.VisuY == y)
+                {
+                    item = e;
+
+                    break;
+                }
+            }
+
+            if (item != null)
+                weaverItems.Items.Remove(item);
+
+            if (item == null)
+            {
+                item = new TrackWeaveItem();
+
+                bool addItemCheck = ItemsS88Selection != null || ItemsSwitchSelection != null;
+
+                if (addItemCheck)
+                    weaverItems.Items.Add(item);
+            }
+
+            item.VisuX = x;
+            item.VisuY = y;
+
+            if (ItemsS88Selection != null)
+            {
+                item.ObjectId = ItemsS88Selection.ObjectId;
+                item.Pin = ItemsS88Selection.Index;
+            }
+
+            if (ItemsSwitchSelection != null)
+            {
+                item.ObjectId = ItemsSwitchSelection.ObjectId;
+            }
+
+            bool res = weaverItems.Save();
+            if (!res)
+            {
+                Trace.WriteLine("<Error> Storing of weave file failed.");
+            }
+            else
+            {
+                // reload weave
+
+                _dispatcher.InitializeWeaving(Track, weaveFilepath);
+            }
         }
 
         public bool UpdateTrackViewerUi(TrackWeaver.TrackWeaver weaver)
