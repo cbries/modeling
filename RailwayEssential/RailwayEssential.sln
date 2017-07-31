@@ -27,6 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 		Documentation\accessory-manager.txt = Documentation\accessory-manager.txt
 		Documentation\Commands.txt = Documentation\Commands.txt
 		Documentation\Commands2.txt = Documentation\Commands2.txt
+		Documentation\Commands3.txt = Documentation\Commands3.txt
 		Documentation\ecos_pc_interface3.pdf = Documentation\ecos_pc_interface3.pdf
 		Documentation\ESU-ECOS-Command-Execution.odt = Documentation\ESU-ECOS-Command-Execution.odt
 		Documentation\ESU-ECOS-Commands.odt = Documentation\ESU-ECOS-Commands.odt
