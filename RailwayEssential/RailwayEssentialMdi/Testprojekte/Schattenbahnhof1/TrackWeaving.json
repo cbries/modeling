@@ -1,6 +1,6 @@
 [
   {
-    "type": "s88",
+    "type": "S88",
     "setup": {
       "objectId": 100,
       "pin": 9,
@@ -9,7 +9,7 @@
     }
   },
   {
-    "type": "s88",
+    "type": "S88",
     "setup": {
       "objectId": 100,
       "pin": 10,
@@ -18,7 +18,7 @@
     }
   },
   {
-    "type": "s88",
+    "type": "S88",
     "setup": {
       "objectId": 100,
       "pin": 11,
@@ -27,7 +27,7 @@
     }
   },
   {
-    "type": "s88",
+    "type": "S88",
     "setup": {
       "objectId": 100,
       "pin": 12,
@@ -36,7 +36,7 @@
     }
   },
   {
-    "type": "s88",
+    "type": "S88",
     "setup": {
       "objectId": 100,
       "pin": 13,
@@ -45,7 +45,7 @@
     }
   },
   {
-    "type": "s88",
+    "type": "S88",
     "setup": {
       "objectId": 100,
       "pin": 14,
@@ -54,7 +54,7 @@
     }
   },
   {
-    "type": "s88",
+    "type": "S88",
     "setup": {
       "objectId": 100,
       "pin": 15,
@@ -63,7 +63,7 @@
     }
   },
   {
-    "type": "s88",
+    "type": "S88",
     "setup": {
       "objectId": 100,
       "pin": 16,
@@ -72,7 +72,7 @@
     }
   },
   {
-    "type": "s88",
+    "type": "S88",
     "setup": {
       "objectId": 101,
       "pin": 9,
@@ -81,7 +81,7 @@
     }
   },
   {
-    "type": "s88",
+    "type": "S88",
     "setup": {
       "objectId": 101,
       "pin": 10,
@@ -90,7 +90,7 @@
     }
   },
   {
-    "type": "s88",
+    "type": "S88",
     "setup": {
       "objectId": 101,
       "pin": 11,
@@ -99,7 +99,7 @@
     }
   },
   {
-    "type": "s88",
+    "type": "S88",
     "setup": {
       "objectId": 101,
       "pin": 12,
@@ -108,7 +108,7 @@
     }
   },
   {
-    "type": "s88",
+    "type": "S88",
     "setup": {
       "objectId": 101,
       "pin": 13,
@@ -117,7 +117,7 @@
     }
   },
   {
-    "type": "s88",
+    "type": "S88",
     "setup": {
       "objectId": 101,
       "pin": 14,
@@ -126,7 +126,7 @@
     }
   },
   {
-    "type": "s88",
+    "type": "S88",
     "setup": {
       "objectId": 101,
       "pin": 15,
@@ -135,12 +135,21 @@
     }
   },
   {
-    "type": "s88",
+    "type": "S88",
     "setup": {
       "objectId": 101,
       "pin": 16,
       "visuX": 7,
       "visuY": 8
+    }
+  },
+  {
+    "type": "Switch",
+    "setup": {
+      "objectId": 20000,
+      "pin": 0,
+      "visuX": 3,
+      "visuY": 4
     }
   }
 ]

@@ -230,7 +230,11 @@ namespace Dispatcher
         {
             var c = sender as Communication;
             if (c != null && c.HasError)
+            {
                 Logger?.Log($"<Dispatcher> Communication failed: {c.ErrorMessage}\r\n");
+                Logger?.LogError($"Connection to ECoS2 failed: {c.ErrorMessage}");
+            }
+            
             if (Model != null)
             {
                 Model.TriggerPropertyChanged("ConnectionState");

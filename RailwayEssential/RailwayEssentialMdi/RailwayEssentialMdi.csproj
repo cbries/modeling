@@ -458,6 +458,7 @@
     <Resource Include="Resources\minus.png" />
     <Resource Include="Resources\plus.png" />
     <Resource Include="Resources\edit.png" />
+    <Resource Include="Resources\dryrun.png" />
     <Content Include="Resources\Theme\SpDrS60used\accessory-10-off-occ.svg" />
     <Content Include="Resources\Theme\SpDrS60used\accessory-10-off-route.svg" />
     <Content Include="Resources\Theme\SpDrS60used\accessory-10-off.svg" />

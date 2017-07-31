@@ -9,11 +9,26 @@ namespace RailwayEssentialMdi.Entities
 
     public partial class TrackEntity
     {
+        private const int TabIndexS88 = 0;
+        private const int TabIndexSwitch = 1;
+
         public S88 ItemsS88Selection { get; set; }
         public TrackInformation.Switch ItemsSwitchSelection { get; set; }
         public int SelectionX { get; private set; }
         public int SelectionY { get; private set; }
         public bool SelectionXYvisible { get; private set; }
+
+        private int _selectionTabIndex = TabIndexS88;
+
+        public int SelectionTabIndex
+        {
+            get => _selectionTabIndex;
+            set
+            {
+                _selectionTabIndex = value;
+                RaisePropertyChanged("SelectionTabIndex");
+            }
+        }
 
         private bool _showObjectEdit;
 
@@ -205,6 +220,7 @@ namespace RailwayEssentialMdi.Entities
                         case 4: // S88
                         {
                             ItemsS88Selection = objItem as S88;
+                            SelectionTabIndex = TabIndexS88;
                             RaisePropertyChanged("ItemsS88Selection");
                         }
                             break;
@@ -212,6 +228,7 @@ namespace RailwayEssentialMdi.Entities
                         case 5: // switch
                         {
                             ItemsSwitchSelection = objItem as TrackInformation.Switch;
+                            SelectionTabIndex = TabIndexSwitch;
                             RaisePropertyChanged("ItemsSwitchSelection");
                         }
                             break;

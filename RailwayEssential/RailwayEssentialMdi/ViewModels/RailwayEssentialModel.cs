@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Ecos2Core;
@@ -73,6 +74,14 @@ namespace RailwayEssentialMdi.ViewModels
             _logMessagesGeneral?.Add(text, args);
         }
 
+        public void LogError(string msg, params object[] args)
+        {
+            _ctx.Send(state =>
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show(string.Format(msg, args), "Error", MessageBoxButton.OK);
+            }, null);
+        }
+
         public void LogNetwork(string text, params object[] args)
         {
             _logMessagesCommands?.Add(text, args);
@@ -105,6 +114,8 @@ namespace RailwayEssentialMdi.ViewModels
         {
             get
             {
+                if(IsDryRun)
+                    return new BitmapImage(new Uri("/RailwayEssentialMdi;component/Resources/dryrun.png", UriKind.Relative));
                 if (_dispatcher == null || _cfg == null)
                     return new BitmapImage(new Uri("/RailwayEssentialMdi;component/Resources/offline.png", UriKind.Relative));
                 if (!_dispatcher.GetRunMode())
@@ -117,6 +128,8 @@ namespace RailwayEssentialMdi.ViewModels
         {
             get
             {
+                if (IsDryRun)
+                    return "DRY RUN";
                 if (_dispatcher == null || _cfg == null)
                     return "No connection";
                 if (!_dispatcher.GetRunMode())
@@ -909,7 +922,20 @@ namespace RailwayEssentialMdi.ViewModels
             return true;
         }
 
-        private bool IsDryRun { get; set; }
+        private bool _isDryRun;
+
+        private bool IsDryRun
+        {
+            get => _isDryRun;
+            set
+            {
+                _isDryRun = value;
+                
+                RaisePropertyChanged("IsDryRun");
+                RaisePropertyChanged("ConnectionState");
+                RaisePropertyChanged("ConnectionStateIcon");
+            }
+        }
 
         public bool CheckDryRun(object p)
         {

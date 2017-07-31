@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Ecos2Core;
+using PrimS.Telnet;
 using RailwayEssentialCore;
 using ThreadState = System.Threading.ThreadState;
 
@@ -28,7 +29,7 @@ namespace Communicator
 
         private bool _run = false;
         private Thread _thread = null;
-        private PrimS.Telnet.Client _clientConnection;
+        private Client _clientConnection;
 
         public async Task<bool> SendMessage(string msg)
         {
@@ -90,8 +91,7 @@ namespace Communicator
 
             try
             {
-
-                using (_clientConnection = new PrimS.Telnet.Client(ipaddr, port, new CancellationToken()))
+                using (_clientConnection = new Client(new TcpByteStream(ipaddr, port), new CancellationToken()))
                 {
                     if (_clientConnection.IsConnected)
                     {
