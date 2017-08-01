@@ -47,6 +47,17 @@ div {
     max-width: 32px !important;
     width: 32px;
     height: 32px;
+    cursor: pointer;
+}
+
+.cell:hover {background-color: #f3f3f3; }
+
+.cell:active {
+    /*
+    border: 1px solid red;
+    margin: -2px;
+    */
+    background-color: #a6a6a6;
 }
 
 .overflow {

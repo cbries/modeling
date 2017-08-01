@@ -33,6 +33,8 @@ namespace RailwayEssentialMdi.Entities
 
         internal ITrackViewer Viewer => _trackViewer;
 
+        internal Dispatcher.Dispatcher Dispatcher => _dispatcher;
+
         #region Name
 
         public string Name

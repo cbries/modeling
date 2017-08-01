@@ -129,7 +129,7 @@
                     -->
                 </TabControl>
 
-                <Button Content="Save" Width="100" HorizontalAlignment="Right" Margin="5" Command="{Binding SaveCommand}"/>
+                <Button Content="Save" Width="100" HorizontalAlignment="Left" Margin="5" Command="{Binding SaveCommand}"/>
             </StackPanel>
         </Grid>
         

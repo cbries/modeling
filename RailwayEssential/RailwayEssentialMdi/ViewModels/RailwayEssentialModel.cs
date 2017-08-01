@@ -881,12 +881,18 @@ namespace RailwayEssentialMdi.ViewModels
         {
             if (_project == null)
                 return false;
+            if (_trackEntity != null)
+                return false;
             return true;
         }
 
         public bool CheckRemoveTrack(object p)
         {
-            return CheckAddTrack(p);
+            if (_project == null)
+                return false;
+            if (_trackEntity != null)
+                return true;
+            return false;
         }
 
         private bool CheckDisconnectFromCommandStation(object p)
@@ -924,7 +930,7 @@ namespace RailwayEssentialMdi.ViewModels
 
         private bool _isDryRun;
 
-        private bool IsDryRun
+        internal bool IsDryRun
         {
             get => _isDryRun;
             set

@@ -61,7 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandStation.cs" />
     <Compile Include="Connector.cs" />
     <Compile Include="ICommandStation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

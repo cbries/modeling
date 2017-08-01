@@ -25,7 +25,7 @@ namespace TrackInformation
             }
         }
 
-        private int _ports;
+        private int _ports = 16;
 
         public int Ports
         {

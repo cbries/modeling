@@ -41,7 +41,7 @@
             ZoomResetCommand = new RelayCommand(ZoomReset);
             ZoomPlusCommand = new RelayCommand(ZoomPlus);
             ZoomMinusCommand = new RelayCommand(ZoomMinus);
-            EditCommand = new RelayCommand(EditState);
+            EditCommand = new RelayCommand(EditState, CheckEditState);
 
             SaveCommand = new RelayCommand(Save);
         }
@@ -109,10 +109,29 @@
 
             if (_entity.Viewer == null)
                 return;
-
-
-
+            
             _entity.Viewer.ExecuteJs("changeEditMode();");
+        }
+
+        private bool CheckEditState(object p)
+        {
+            if (_entity == null)
+                return false;
+
+            if (_entity.Dispatcher == null)
+                return false;
+
+            var m = _entity.Dispatcher.Model as RailwayEssentialModel;
+            if (m == null)
+                return false;
+
+            if (m.IsDryRun)
+                return true;
+
+            if (!_entity.Dispatcher.GetRunMode())
+                return false;
+
+            return true;
         }
 
         #region ITrackWindow

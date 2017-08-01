@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Ecos2Core;
+using Ecos2Core.Blocks;
 using Ecos2Core.Replies;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -197,6 +198,39 @@ namespace TrackInformation
             if (block == null)
                 return false;
 
+            RegisterS88.S88Info s88Info;
+            if (RegisterS88.IsRegisterS88(block, out s88Info))
+            {
+                if (s88Info != null && !s88Info.Appended)
+                {
+                    RemoveObjectWithId((uint)s88Info.ObjectId);
+
+                    return true;
+                }
+                else if(s88Info != null)
+                {
+                    if (DoesObjectIdExist((uint) s88Info.ObjectId))
+                        RemoveObjectWithId((uint) s88Info.ObjectId);
+
+                    int n = _objects.Count(x => x is S88);
+
+                    if (n + 1 != s88Info.NewSize)
+                    {
+                        Trace.WriteLine("<Error> S88 BusSize Mismatch");
+
+                        return false;
+                    }
+
+                    var s88 = new S88 { ObjectId = s88Info.ObjectId, Index = n };
+                    s88.CommandsReady += CommandsReady;
+                    _objects.Add(s88);
+                    DataChanged?.Invoke(this);
+                    s88.EnableView();
+
+                    return true;
+                }
+            }
+
             foreach (var e in block.ListEntries)
             {
                 if (e == null)
@@ -292,8 +326,6 @@ namespace TrackInformation
             if (block.Command == null)
                 return false;
 
-            //Trace.WriteLine("Type: " + block.Command.Type);
-
             if (block.Command.Type != CommandT.QueryObjects && block.Command.Type != CommandT.Get)
                 return false;
 
@@ -359,7 +391,7 @@ namespace TrackInformation
 
                 switch (e.ObjectId)
                 {
-                    case 1:
+                    case Globals.ID_EV_BASEOBJECT:
                     {
                         if (Baseobject == null)
                             Baseobject = new Ecos2 {ObjectId = e.ObjectId};

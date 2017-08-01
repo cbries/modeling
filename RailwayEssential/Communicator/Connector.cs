@@ -104,7 +104,7 @@ namespace Communicator
                     else
                     {
                         if (Logger != null)
-                            Logger.Log("<Connector> Connection failed\r\n");
+                            Logger.LogError("<Connector> Connection failed\r\n");
 
                         if (Failed != null)
                             Failed(this, "Connection failed");

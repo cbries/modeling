@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blocks\RegisterS88.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="CommandArgument.cs" />
     <Compile Include="CommandFactory.cs" />
@@ -69,12 +70,14 @@
     <Compile Include="Commands\Request.cs" />
     <Compile Include="Commands\Unknown.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="Globals.cs" />
     <Compile Include="ILogging.cs" />
     <Compile Include="Replies\EventBlock.cs" />
     <Compile Include="IBlock.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\Set.cs" />
+    <Compile Include="Replies\EventInfo.cs" />
     <Compile Include="Replies\ListEntry.cs" />
     <Compile Include="Replies\ReplyBlock.cs" />
     <Compile Include="Replies\ReplyHandler.cs" />
