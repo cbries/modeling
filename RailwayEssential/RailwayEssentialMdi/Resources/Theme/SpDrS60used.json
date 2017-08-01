@@ -15,7 +15,8 @@
           "occ": "straight-occ",
           "route": "straight-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC", "BD", "AC", "BD" ] 
       },
       {
         "id": 11,
@@ -30,7 +31,8 @@
           "occ": "curve-occ",
           "route": "curve-router"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AD", "AB", "BC", "CD" ]
       },
       {
         "id": 12,
@@ -45,7 +47,8 @@
           "occ": "dcurve",
           "route": "dcurve"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AD,BC", "AB,CD", "BC,AD", "CD,AB" ]
       },
       {
         "id": 13,
@@ -60,7 +63,8 @@
           "occ": "buffer-occ",
           "route": "buffer-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "A", "B", "C", "D" ]
       },
       {
         "id": 14,
@@ -75,7 +79,8 @@
           "occ": "dir-occ",
           "route": "dir-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "CA!", "DB!", "AC!", "BD!" ]
       },
       {
         "id": 15,
@@ -90,7 +95,8 @@
           "occ": "dirall-occ",
           "route": "dirall-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC", "BD", "AC", "BD" ]
       },
       {
         "id": 16,
@@ -105,7 +111,8 @@
           "occ": "decoupler-occ",
           "route": "decoupler-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC", "BD", "AC", "BD" ]
       },
       {
         "id": 17,
@@ -120,7 +127,8 @@
           "occ": "connector-occ",
           "route": "connector-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC+", "BD+", "CA+", "DB+" ]
       },
       {
         "id": 18,
@@ -135,7 +143,8 @@
           "occ": "connector-curve-right-occ",
           "route": "connector-curve-right-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AD+", "BA+", "CB+", "DC+" ]
       },
       {
         "id": 19,
@@ -150,7 +159,8 @@
           "occ": "connector-curve-left-occ",
           "route": "connector-curve-left-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AB+", "BC+", "CD+", "DA+" ]
       }
     ]
   },
@@ -170,7 +180,8 @@
           "occ": "turnoutleft-occ",
           "route": "turnoutleft-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "CA,CD", "DB,DA", "AC,AB", "BD,BC" ] 
       },
       {
         "id": 51,
@@ -185,7 +196,8 @@
           "occ": "turnoutright-occ",
           "route": "turnoutright-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC,AD", "BD,BA", "CA,CB", "DB,DC" ]
       },
       {
         "id": 52,
@@ -200,7 +212,8 @@
           "occ": "threeway-occ",
           "route": "threeway-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "CA,CB,CD", "DA,DA,DC", "AC,AB,AD", "BD,BA,BC" ] 
       },
       {
         "id": 53,
@@ -215,7 +228,8 @@
           "occ": "twoway-tr-occ",
           "route": "twoway-tr-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "BD", "CA", "DB", "AC" ] 
       },
       {
         "id": 54,
@@ -230,7 +244,8 @@
           "occ": "ccrossing-occ",
           "route": "ccrossing-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "", "", "", "" ]
       },
       {
         "id": 55,
@@ -245,7 +260,8 @@
           "occ": "crossing-occ",
           "route": "crossing-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC,BD", "AC,BD", "AC,BD", "AC,BD" ]
       },
       {
         "id": 56,
@@ -260,7 +276,8 @@
           "occ": "crossingright0m-occ",
           "route": "crossingright0m-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "A1C2,B2D1", "B1D2,A1C2", "A1C2,B2D1", "B1D2,A1C2" ]
       },
       {
         "id": 57,
@@ -275,7 +292,8 @@
           "occ": "crossingleft0m-occ",
           "route": "crossingleft0m-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "A1C2,B1D2", "B1D2,C1A2", "A1C2,B1D2", "B1D2,C1A2" ]
       },
       {
         "id": 58,
@@ -290,7 +308,8 @@
           "occ": "dcrossingright-srocc",
           "route": "dcrossingright-sr-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "A1C2,B2D1", "B1D2,A1C2", "A1C2,B2D1", "B1D2,A1C2" ]
       },
       {
         "id": 59,
@@ -305,7 +324,8 @@
           "occ": "dcrossingleft-sr-occ",
           "route": "dcrossingleft-sr-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "A1C2,B1D2", "B1D2,C1A2", "A1C2,B1D2", "B1D2,C1A2" ]
       }
     ]
   },

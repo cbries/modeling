@@ -167,6 +167,5 @@ namespace Theme
 
             return true;
         }
-
     }
 }

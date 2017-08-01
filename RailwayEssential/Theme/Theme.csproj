@@ -47,6 +47,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThemeCategory.cs" />
     <Compile Include="ThemeItem.cs" />
+    <Compile Include="ThemeItemRoute.cs" />
+    <Compile Include="ThemeItemState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
