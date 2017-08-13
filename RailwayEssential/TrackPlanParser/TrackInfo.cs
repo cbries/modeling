@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.SqlServer.Server;
 using Newtonsoft.Json.Linq;
 
 namespace TrackPlanParser
@@ -12,6 +13,7 @@ namespace TrackPlanParser
         public int ThemeId { get; set; }
         public string Orientation { get; set; }
         public string Description { get; set; }
+        public JObject Options { get; set; }
 
         public TrackInfo()
         {
@@ -19,6 +21,7 @@ namespace TrackPlanParser
             Y = -1;
             ThemeId = -1;
             Orientation = "rot0";
+            Options = new JObject();
         }
 
         public JObject ToObject()
@@ -29,7 +32,8 @@ namespace TrackPlanParser
                 ["y"] = Y,
                 ["themeId"] = ThemeId,
                 ["orientation"] = Orientation,
-                ["description"] = Description
+                ["description"] = Description,
+                ["options"] = Options
             };
             return o;
         }
@@ -49,11 +53,46 @@ namespace TrackPlanParser
                 Orientation = o["orientation"].ToString();
             if (o["description"] != null)
                 Description = o["description"].ToString();
+            if(o["options"] != null)
+                Options = o["options"] as JObject;
         }
 
         public override string ToString()
         {
             return $"{X}:{Y} -> {ThemeId}";
+        }
+
+        public void SetOption(string name, string value)
+        {
+            if (Options == null)
+                Options = new JObject();
+
+            if (value == null)
+            {
+                try
+                {
+                    Options.Remove(name);
+                }
+                catch
+                {
+                    // ignore
+                }
+
+                return;
+            }
+
+            Options[name] = value;
+        }
+
+        public string GetOption(string name)
+        {
+            if (Options == null)
+                return null;
+
+            if (Options[name] == null)
+                return null;
+
+            return Options[name].ToString();
         }
     }
 }

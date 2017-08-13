@@ -13,6 +13,7 @@ using Ecos2Core;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RailwayEssentialCore;
+using RailwayEssentialMdi.Analyze;
 using RailwayEssentialMdi.Bases;
 using RailwayEssentialMdi.Commands;
 using RailwayEssentialMdi.DataObjects;
@@ -154,12 +155,16 @@ namespace RailwayEssentialMdi.ViewModels
         public RelayCommand ShowLogCommand { get; }
         public RelayCommand ShowCommandLogCommand { get; }
 
+        public RelayCommand AnalyzeRoutesCommand { get; }
+
         public RelayCommand AddTrackCommand { get; }
         public RelayCommand RemoveTrackCommand { get; }
 
         private readonly LogEntity _logMessagesGeneral = new LogEntity();
         private readonly LogEntity _logMessagesCommands = new LogEntity();
         private TrackEntity _trackEntity = null;
+
+        internal TrackEntity TrackEntity => _trackEntity;
 
         public RailwayEssentialModel()
         {
@@ -182,6 +187,7 @@ namespace RailwayEssentialMdi.ViewModels
             CmdStationsPropertiesCommand = new RelayCommand(PropertiesCommandStation);
             ShowLogCommand = new RelayCommand(ShowLog);
             ShowCommandLogCommand = new RelayCommand(ShowCommandLog);
+            AnalyzeRoutesCommand = new RelayCommand(AnalyzeRoutes, CheckAnalyzeRoutes);
             AddTrackCommand = new RelayCommand(AddTrack, CheckAddTrack);
             RemoveTrackCommand = new RelayCommand(RemoveTrack, CheckRemoveTrack);
 
@@ -820,6 +826,16 @@ namespace RailwayEssentialMdi.ViewModels
             }
         }
 
+        public void AnalyzeRoutes(object p)
+        {
+            Analyze.Analyze a = new Analyze.Analyze(this);
+            AnalyzeResult res = a.Execute();
+            if (res == null)
+                throw new Exception("Analyzation failed");
+
+            Trace.WriteLine(res);
+        }
+
         public void AddTrack(object p)
         {
             if (_trackEntity == null)
@@ -910,6 +926,17 @@ namespace RailwayEssentialMdi.ViewModels
         }
 
 #region can execute checks
+
+        public bool CheckAnalyzeRoutes(object p)
+        {
+            if (_dispatcher == null)
+                return false;
+
+            if (Project == null)
+                return false;
+
+            return true;
+        }
 
         public bool CheckTogglePower(object p)
         {

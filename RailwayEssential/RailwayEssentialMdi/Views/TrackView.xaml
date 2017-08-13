@@ -119,6 +119,31 @@
                             </StackPanel>
                         </ScrollViewer>
                     </TabItem>
+
+                    <TabItem Header="Connector" Visibility="{Binding Entity.ConnectorVisible, Mode=OneWay, Converter={StaticResource BoolToVis}}">
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                            <StackPanel>
+                                <DockPanel Margin="0,5,0,0" Visibility="{Binding Entity.SelectionXYvisible, Mode=OneWay, Converter={StaticResource BoolToVis}}">
+                                    <TextBlock Text="X:" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Entity.SelectionX, Mode=OneWay}" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Y:" FontWeight="Bold" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Entity.SelectionY, Mode=OneWay}" VerticalAlignment="Center"/>
+<!--
+                                    <ComboBox Margin="10,0,0,0" ItemsSource="{Binding Entity.ItemsSwitch}" SelectedItem="{Binding Entity.ItemsSwitchSelection, Mode=TwoWay}" VerticalAlignment="Center" Width="200" HorizontalAlignment="Left"/>
+-->
+                                </DockPanel>
+                                <DockPanel Margin="0,5,0,0">
+                                    <TextBlock Text="Connector Identifier: " FontWeight="Bold"/>
+
+                                    <xctk:IntegerUpDown Name="ConnectorIdentifier" Height="22" Width="75" HorizontalAlignment="Left" Margin="5,0,0,0"
+                                                        Value="{Binding Entity.ConnectorIdentifier, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                                        Maximum="1000" Minimum="1" 
+                                                        FormatString="N0" AllowSpin="True"/>
+                                </DockPanel>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+
                     <!--
                     <TabItem Header="Accessory">
                         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >

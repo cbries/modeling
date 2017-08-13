@@ -309,7 +309,8 @@
           "route": "dcrossingright-sr-route"
         },
         "clickable": false,
-        "routes": [ "A1C2,B2D1", "B1D2,A1C2", "A1C2,B2D1", "B1D2,A1C2" ]
+        "routes": [ "A1C2,B2D1", "B1D2,A1C2", "A1C2,B2D1", "B1D2,A1C2" ],
+        "dimensions": [ "2x1", "1x2", "2x1", "1x2" ] 
       },
       {
         "id": 59,
@@ -325,7 +326,8 @@
           "route": "dcrossingleft-sr-route"
         },
         "clickable": false,
-        "routes": [ "A1C2,B1D2", "B1D2,C1A2", "A1C2,B1D2", "B1D2,C1A2" ]
+        "routes": [ "A1C2,B1D2", "B1D2,C1A2", "A1C2,B1D2", "B1D2,C1A2" ],
+        "dimensions": [ "2x1", "1x2", "2x1", "1x2" ]
       }
     ]
   },
@@ -500,7 +502,9 @@
           "occ": "block",
           "route": "block"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC", "BD", "AC", "BD" ],
+        "dimensions": [ "4x1", "1x4", "4x1", "1x4" ]
       },
       {
         "id": 151,
@@ -515,7 +519,9 @@
           "occ": "block-s",
           "route": "block-s"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC", "BD", "AC", "BD" ],
+        "dimensions": [ "2x1", "1x2", "2x1", "1x2" ]
       },
       {
         "id": 152,
@@ -530,7 +536,9 @@
           "occ": "stage",
           "route": "stage"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC", "BD", "AC", "BD" ],
+        "dimensions": [ "4x1", "1x4", "4x1", "1x4" ]
       }
     ]
   },

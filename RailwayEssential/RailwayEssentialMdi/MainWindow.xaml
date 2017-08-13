@@ -54,6 +54,9 @@
                     <MenuItem Header="Add Track" Command="{Binding AddTrackCommand}"/>
                     <MenuItem Header="Remove Track" Command="{Binding RemoveTrackCommand}"/>
                 </MenuItem>
+                <MenuItem Header="Analyze">
+                    <MenuItem Header="Routes" Command="{Binding AnalyzeRoutesCommand}"/>
+                </MenuItem>
                 <MenuItem Header="View">
                     <MenuItem Header="General Log" Command="{Binding ShowLogCommand}"/>
                     <MenuItem Header="Command Log" Command="{Binding ShowCommandLogCommand}"/>

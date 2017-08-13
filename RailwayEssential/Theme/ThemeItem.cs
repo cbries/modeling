@@ -11,6 +11,7 @@ namespace Theme
         public ThemeItemState Active { get; set; }
         public ThemeItemState Off { get; set; }
         public List<ThemeItemRoute> Routes { get; set; }
+        public List<ThemeItemDimension> Dimensions { get; set; }
 
         public ThemeItem()
         {
@@ -18,6 +19,7 @@ namespace Theme
             Active = new ThemeItemState(null);
             Off = new ThemeItemState(null);
             Routes = new List<ThemeItemRoute>();
+            Dimensions = new List<ThemeItemDimension>();
         }
 
         public bool Parse(JToken tkn)
@@ -51,6 +53,23 @@ namespace Theme
                         ThemeItemRoute route = new ThemeItemRoute();
                         if (route.Parse(e))
                             Routes.Add(route);
+                    }
+                }
+            }
+
+            if (o["dimensions"] != null)
+            {
+                var ar = o["dimensions"] as JArray;
+                if (ar != null)
+                {
+                    foreach (var e in ar)
+                    {
+                        if (e == null)
+                            continue;
+
+                        ThemeItemDimension dim = new ThemeItemDimension();
+                        if(dim.Parse(e))
+                            Dimensions.Add(dim);
                     }
                 }
             }

@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using TrackPlanParser;
 
 namespace RailwayEssentialMdi.Entities
 {
@@ -13,10 +14,24 @@ namespace RailwayEssentialMdi.Entities
     {
         private const int TabIndexS88 = 0;
         private const int TabIndexSwitch = 1;
+        private const int TabIndexConnector = 2;
 
+        private TrackInfo _trackInfoSelection;
         private S88 _itemS88Selection;
         private TrackInformation.Switch _itemSwitchSelection;
         private int _itemsS88SelectionPin;
+        private bool _connectorVisible;
+        private int _connectorIdentifier;
+
+        public TrackInfo TrackInfoSelection
+        {
+            get => _trackInfoSelection;
+            set
+            {
+                _trackInfoSelection = value;
+                RaisePropertyChanged("TrackInfoSelection");
+            }
+        }
 
         public S88 ItemsS88Selection
         {
@@ -47,6 +62,33 @@ namespace RailwayEssentialMdi.Entities
                 RaisePropertyChanged("ItemsS88SelectionPin");
             }
         }
+
+        public int ConnectorIdentifier
+        {
+            get => _connectorIdentifier;
+            set
+            {
+                _connectorIdentifier = value;
+
+                if (_trackInfoSelection != null)
+                {
+                    _trackInfoSelection.SetOption("connectorIdentifier", $"{value}");
+                }
+
+                RaisePropertyChanged("ConnectorIdentifier");
+            }
+        }
+
+        public bool ConnectorVisible
+        {
+            get => _connectorVisible;
+            set
+            {
+                _connectorVisible = value;
+                RaisePropertyChanged("ConnectorVisible");
+            }
+        }
+
         public int SelectionX { get; private set; }
         public int SelectionY { get; private set; }
         public bool SelectionXYvisible { get; private set; }
@@ -281,7 +323,9 @@ namespace RailwayEssentialMdi.Entities
                     ItemsS88.Clear();
                     ItemsSwitch.Clear();
                 }, null);
+
                 Trace.WriteLine("Selection reset");
+
                 return;
             }
 
@@ -297,8 +341,13 @@ namespace RailwayEssentialMdi.Entities
                     return;
 
                 var objItem = GetObject(x, y);
+
                 if (objItem != null)
                 {
+                    ConnectorVisible = false;
+                    TrackInfoSelection = null;
+                    SelectionTabIndex = 0;
+                    
                     switch (objItem.TypeId())
                     {
                         case 4: // S88
@@ -319,6 +368,57 @@ namespace RailwayEssentialMdi.Entities
                             ItemsS88SelectionPin = -1;
                         }
                             break;
+                    }
+                }
+                else
+                {
+                    // Is Connector?
+                    if (Track != null)
+                    {
+                        var trackInfo = Track.Get(x, y);
+
+                        if (trackInfo != null)
+                        {
+                            TrackInfoSelection = trackInfo;
+
+                            var themeId = trackInfo.ThemeId;
+                            if (themeId > 0)
+                            {
+                                List<int> connectorIds = new List<int> {17, 18, 19};
+
+                                if (connectorIds.Contains(themeId))
+                                {
+                                    // show Connector's configuration tab    
+
+                                    SelectionTabIndex = TabIndexConnector;
+                                    ConnectorVisible = true;
+
+                                    var opt = trackInfo.GetOption("connectorIdentifier");
+
+                                    if (!string.IsNullOrEmpty(opt))
+                                    {
+                                        int v;
+                                        if (int.TryParse(opt, out v))
+                                            ConnectorIdentifier = v;
+                                        else
+                                            ConnectorIdentifier = 1;
+                                    }
+                                    else
+                                    {
+                                        ConnectorIdentifier = 1;
+                                    }
+                                }
+                                else
+                                {
+                                    ConnectorVisible = false;
+                                    SelectionTabIndex = 0;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            TrackInfoSelection = null;
+                        }
                     }
                 }
 
