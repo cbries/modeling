@@ -407,6 +407,9 @@ $(document).ready(function (e) {
 
                     var themeId = objDrag.data("railway-themeid");
 
+                    if (themeId === null || typeof themeId == 'undefined')
+                        themeId = objDrag.parent().data("railway-themeid");
+
                     objDrag.remove();
                     objDrag = null;
 

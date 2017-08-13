@@ -15,6 +15,7 @@ namespace TrackPlanParser
         public void ChangeSymbol(int x, int y, int themeId)
         {
             var item = Get(x, y);
+
             if (item != null)
             {
                 item.ThemeId = themeId;
