@@ -258,14 +258,53 @@ namespace RailwayEssentialMdi.ViewModels
                     {
                         ["name"] = name,
                         ["version"] = 1.0,
+#if DEBUG
                         ["targetHost"] = "192.168.178.61",
+#else
+                        ["targetHost"] = "127.0.0.1",
+#endif
                         ["targetPort"] = 15471,
-                        ["objects"] = new JArray() { "TrackObjects.json" },
-                        ["tracks"] = new JArray()
+                        ["designerColumns"] = 40,
+                        ["designerRows"] = 40,
+                        ["objects"] = new JArray() {"TrackObjects.json"},
+                        ["track"] = new JObject(),
+                        ["trackViews"] = new JArray()
                     };
 
+                    var o0 = o["track"] as JObject;
+                    if (o0 != null)
+                    {
+                        o0["name"] = name;
+                        o0["path"] = "TrackPlan.json";
+                        o0["weave"] = "TrackWeaving.json";
+                    }
+
+                    var o1 = o["trackViews"] as JArray;
+                    if (o1 != null)
+                    {
+                        var oo = new JObject
+                        {
+                            ["name"] = "S#1",
+                            ["startX"] = 0,
+                            ["startY"] = 0,
+                            ["show"] = true
+                        };
+                        o1.Add(oo);
+                    }
+
+                    var targetDirectory = Path.GetDirectoryName(fname);
+
+                    if(string.IsNullOrEmpty(targetDirectory) || o0 == null)
+                        throw new Exception("Project creation failed.");
+
+                    // generate default files
+                    var fname0 = Path.Combine(targetDirectory, o0["path"].ToString());
+                    File.WriteAllText(fname0, new JArray().ToString(Formatting.Indented));
+                    var fname1 = Path.Combine(targetDirectory, o0["weave"].ToString());
+                    File.WriteAllText(fname1, new JArray().ToString(Formatting.Indented));
+
                     File.WriteAllText(
-                        Path.Combine(Path.GetDirectoryName(fname), "TrackObjects.json"),
+                        Path.Combine(targetDirectory, "TrackObjects.json"),
                         new JObject().ToString(Formatting.Indented), Encoding.UTF8);
 
                     File.WriteAllText(fname, o.ToString(Formatting.Indented), Encoding.UTF8);
@@ -276,6 +315,10 @@ namespace RailwayEssentialMdi.ViewModels
                 catch
                 {
                     // ignore
+                }
+                finally
+                {
+                    AfterOpen();
                 }
             }
         }
@@ -575,6 +618,8 @@ namespace RailwayEssentialMdi.ViewModels
 
             Project.TargetHost = _cfg.IpAddress;
             Project.TargetPort = _cfg.Port;
+            Project.DesignerColumns = _cfg.DesignerColumns;
+            Project.DesignerRows = _cfg.DesignerRows;
 
             // transfer window dimensions
             // ...
@@ -864,7 +909,7 @@ namespace RailwayEssentialMdi.ViewModels
             // TODO
         }
 
-        #region can execute checks
+#region can execute checks
 
         public bool CheckTogglePower(object p)
         {
@@ -920,6 +965,9 @@ namespace RailwayEssentialMdi.ViewModels
                 return false;
 
             if (_project == null || _cfg == null)
+                return false;
+
+            if (_dispatcher == null)
                 return false;
 
             if (_dispatcher.GetRunMode())
@@ -994,9 +1042,9 @@ namespace RailwayEssentialMdi.ViewModels
             return true;
         }
 
-        #endregion
+#endregion
 
-        #region IRailwayEssentialModel
+#region IRailwayEssentialModel
 
         public void TriggerPropertyChanged(string name)
         {
@@ -1024,6 +1072,6 @@ namespace RailwayEssentialMdi.ViewModels
             // TODO add ShowSwitch();
         }
 
-        #endregion        
+#endregion
     }
 }
