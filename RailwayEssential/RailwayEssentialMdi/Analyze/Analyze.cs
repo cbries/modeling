@@ -35,7 +35,7 @@ namespace RailwayEssentialMdi.Analyze
                 var maxX = o.Cfg.DesignerColumns;
                 var maxY = o.Cfg.DesignerRows;
 
-                List<int> blockIds = new List<int> {150, 151};
+                List<int> blockIds = new List<int> {150, 151, 152};
 
                 for (int x = 0; x <= maxX; ++x)
                 {
@@ -135,18 +135,18 @@ namespace RailwayEssentialMdi.Analyze
             var width = dim.X;
             var height = dim.Y;
 
-            Dictionary<int, int> indeces = new Dictionary<int, int>();
+            List<Coord> indeces = new List<Coord>();
 
             if (width == 1 && height == 1)
             {
                 if(x - 1 > 0)
-                    indeces.Add(x - 1, y);
+                    indeces.Add(new Coord(x -1, y));
                 if(x + 1 <= MaxX)
-                    indeces.Add(x + 1, y);
+                    indeces.Add(new Coord(x + 1, y));
                 if(y - 1 > 0)
-                    indeces.Add(x, y - 1);
+                    indeces.Add(new Coord(x, y - 1));
                 if(y + 1 <= MaxY)
-                    indeces.Add(x, y + 1);
+                    indeces.Add(new Coord(x, y + 1));
             }
             else
             {
@@ -156,7 +156,7 @@ namespace RailwayEssentialMdi.Analyze
                 if (startY > 0)
                 {
                     for (int col = 0; col < width; ++col)
-                        indeces.Add(startX + col, startY);
+                        indeces.Add(new Coord(startX + col, startY));
                 }
 
                 // bottom edge
@@ -165,34 +165,38 @@ namespace RailwayEssentialMdi.Analyze
                 if (startY <= MaxY)
                 {
                     for (int col = 0; col < width; ++col)
-                        indeces.Add(startX + col, startY);
+                        indeces.Add(new Coord(startX + col, startY));
                 }
 
                 // left edge
+                startY = y;
                 startX = x - 1;
                 if (startX > 0)
                 {
                     for (int row = 0; row < height; ++row)
-                        indeces.Add(startX, startY + row);
+                        indeces.Add(new Coord(startX, startY + row));
                 }
 
                 // right edge
+                startY = y;
                 startX = x + width;
                 if (startX <= MaxX)
                 {
                     for (int row = 0; row < height; ++row)
-                        indeces.Add(startX, startY + row);
+                        indeces.Add(new Coord(startX, startY + row));
                 }
             }
 
-            foreach (var k in indeces.Keys)
+            foreach (var e in indeces)
             {
-                var v = indeces[k];
-
-                var item = TrackEntity.Track.Get(k, v);
+                var item = TrackEntity.Track.Get(e.X, e.Y);
                 if (item != null)
                     neighbours.Add(item);
             }
+
+            // dump
+            foreach(var k in neighbours)
+                Trace.WriteLine($"{k.X} : {k.Y}");
 
             return neighbours;
         }
