@@ -65,6 +65,7 @@ namespace RailwayEssentialMdi.Analyze
             foreach (var b in blocks)
             {
                 var waypoints = GetWaypoints(b);
+
                 if (waypoints != null && waypoints.Count > 0)
                 {
                     Trace.WriteLine("Waypoints: " + waypoints.Count);
@@ -114,6 +115,16 @@ namespace RailwayEssentialMdi.Analyze
         private List<Waypoints> GetWaypoints(TrackInfo block)
         {
             var neighbours = GetNeighbours(block);
+
+            // follow all neighbours of a block
+            // probably the algorithm is recursive
+            // a) stop any route analyzing in case no more
+            // neighbours of an item are available to go next
+            // or when a block is found and reachable
+            // b) stop traversing in case in item is
+            // found which does not allow going the 
+            // straight the way (i.e. directions of a straight
+            // item is opposite way)
 
             return null;
         }
