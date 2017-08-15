@@ -262,21 +262,39 @@ namespace RailwayEssentialMdi.Analyze
             var blocks = Blocks;
 
             foreach (var b in blocks)
-            {
-                var nrOfRoutes = GetWaypointsStart(b);
+                GetWaypointsStart(b);
 
-                if (nrOfRoutes > 0)
-                    Trace.WriteLine("Waypoints: " + nrOfRoutes);
-            }
+            foreach(var r in Routes)
+                Trace.WriteLine(r);
 
             AnalyzeResult res = new AnalyzeResult();
 
             return res;
         }
 
+        private int Index => Indeces.Last();
+        private Stack<int> Indeces = new Stack<int>();
+        private List<string> Routes = new List<string>();
+        private string R {
+            get => Routes[Index];
+            set { Routes[Index] = value; }
+        }
+
         private int GetWaypointsStart(TrackInfo block)
         {
+            Routes.Add("R:");
+            Indeces.Push(Routes.Count - 1);
             GetWaypoints(block);
+            List<int> indecesToRemove = new List<int>();
+            for (int i = 0; i < Routes.Count; ++i)
+            {
+                var r = Routes[i];
+                if (r.Length <= 2)
+                    indecesToRemove.Add(i);
+            }
+            indecesToRemove.Reverse();
+            foreach(var idx in indecesToRemove)
+                Routes.RemoveAt(idx);
 
             return 0;
         }
@@ -285,7 +303,65 @@ namespace RailwayEssentialMdi.Analyze
         {
             var neighbours = GetNeighbours(item, previousItem);
 
-            Trace.WriteLine($"Neighbours: {neighbours.Count}");
+            if (neighbours.Count == 0)
+            {
+                R += " (!!) ";
+
+                var m = R;
+
+                Indeces.Pop();
+
+                if (Indeces.Count > 0)
+                {
+                    Routes.Add(m);
+                    Indeces.Push(Routes.Count - 1);
+                }
+
+                if (Indeces.Count == 0)
+                {
+                    Routes.Add("R:");
+                    Indeces.Push(Routes.Count - 1);
+                }
+
+                return;
+            }
+
+            for (int i = 0; i < neighbours.Count; ++i)
+            {
+                var neighbour = neighbours[i];
+                if (neighbour == null)
+                    continue;
+
+                if (!string.IsNullOrEmpty(R))
+                {
+                    string pattern = $"({neighbour.X}, {neighbour.Y})";
+
+                    if (R.IndexOf(pattern, StringComparison.OrdinalIgnoreCase) != -1)
+                    {
+                        R += " (!!) ";
+
+                        return;
+                    }
+                }
+
+                if (neighbours.Count > 1)
+                {
+                    string pattern = $"({item.X}, {item.Y})";
+                    if (Routes.Count >= 2)
+                    {
+                        string m = Routes[Routes.Count - 2];
+                        int index = m.IndexOf(pattern, StringComparison.OrdinalIgnoreCase);
+                        if (index != -1)
+                        {
+                            R += m.Substring(0, index + pattern.Length) + " -> ";                            
+                        }
+                    }
+                }
+
+                R += $"({neighbour.X}, {neighbour.Y}) -> ";
+
+                GetWaypoints(neighbour, item);
+            }
         }
 
         private List<TrackInfo> GetNeighbours(TrackInfo trackInfo, TrackInfo ignore = null)

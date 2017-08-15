@@ -558,7 +558,8 @@
           "occ": "sensor-off-occ",
           "route": "sensor-off-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC", "BD", "AC", "BD" ] 
       },
       {
         "id": 201,
@@ -573,7 +574,8 @@
           "occ": "curve-sensor-off-occ",
           "route": "curve-sensor-off-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AD", "AB", "BC", "CD" ]
       },
       {
         "id": 202,
