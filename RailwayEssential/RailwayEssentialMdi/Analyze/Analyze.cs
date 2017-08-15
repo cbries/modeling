@@ -1,12 +1,211 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using RailwayEssentialMdi.ViewModels;
 using Theme;
 using TrackPlanParser;
 
 namespace RailwayEssentialMdi.Analyze
 {
+    public enum AnalyzeDirection
+    {
+        Left,
+        Right,
+        Up,
+        Down,
+        Unknwon
+    };
+
+    public class AnalyzeUtils
+    {
+        public static int GetOrientation(TrackInfo trackInfo)
+        {
+            if (trackInfo == null)
+                return 0;
+            if (string.IsNullOrEmpty(trackInfo.Orientation))
+                return 0;
+            if (trackInfo.Orientation.Equals("rot0", StringComparison.OrdinalIgnoreCase))
+                return 0;
+            if (trackInfo.Orientation.Equals("rot90", StringComparison.OrdinalIgnoreCase))
+                return 1;
+            if (trackInfo.Orientation.Equals("rot180", StringComparison.OrdinalIgnoreCase))
+                return 2;
+            if (trackInfo.Orientation.Equals("rot-90", StringComparison.OrdinalIgnoreCase))
+                return 3;
+            return 0;
+        }
+
+        public static ThemeItemRoute GetThemeWays(TrackInfo trackInfo, Theme.Theme theme)
+        {
+            if (trackInfo == null)
+                return null;
+            var themeId = trackInfo.ThemeId;
+            if (themeId < 0)
+                return null;
+            if (theme == null)
+                return null;
+            var themeInfo = theme.Get(trackInfo.ThemeId);
+            if (themeInfo == null)
+                return null;
+
+            int index = GetOrientation(trackInfo);
+
+            return themeInfo.GetRoute(index);
+        }
+
+        public static List<string> Ways(ThemeItemRoute ways)
+        {
+            // "AB"
+            // "CA,CD"
+            // "CA,CB,CD"
+
+            var parts = ways.Value.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries);
+
+            return parts.ToList();
+        }
+    }
+
+    public static class AnalyzeHelper
+    {
+        public static string Reverse(this string s)
+        {
+            char[] charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            return new string(charArray);
+        }
+
+        public static bool IsLeft(this TrackInfo item, TrackInfo neighbourItem)
+        {
+            if (neighbourItem == null)
+                return false;
+            if (neighbourItem.X - 1 < item.X && neighbourItem.Y == item.Y)
+                return true;
+            return false;
+        }
+
+        public static bool IsRight(this TrackInfo item, TrackInfo neighbourItem)
+        {
+            if (neighbourItem == null)
+                return false;
+            if (neighbourItem.X + 1 > item.X && neighbourItem.Y == item.Y)
+                return true;
+            return false;
+        }
+
+        public static bool IsUp(this TrackInfo item, TrackInfo neighbourItem)
+        {
+            if (neighbourItem == null)
+                return false;
+            if (neighbourItem.Y - 1 < item.Y && neighbourItem.X == item.X)
+                return true;
+            return false;
+        }
+
+        public static bool IsDown(this TrackInfo item, TrackInfo neighbourItem)
+        {
+            if (neighbourItem == null)
+                return false;
+            if (neighbourItem.Y + 1 > item.Y && neighbourItem.X == item.X)
+                return true;
+            return false;
+        }
+
+        public static bool IsMoveAllowed(this TrackInfo fromItem, TrackInfo toItem, Theme.Theme theme)
+        {
+            var themeWayFrom = AnalyzeUtils.GetThemeWays(fromItem, theme);
+            var waysFrom = AnalyzeUtils.Ways(themeWayFrom);
+            if(waysFrom.Count == 1)
+                waysFrom.Add(waysFrom[0].Reverse());
+
+            var themeWayTo = AnalyzeUtils.GetThemeWays(toItem, theme);
+            var waysTo = AnalyzeUtils.Ways(themeWayTo);
+            if(waysTo.Count == 1 && !waysTo[0].EndsWith("!", StringComparison.OrdinalIgnoreCase))
+                waysTo.Add(waysTo[0].Reverse());
+
+            var dir = fromItem.Direction(toItem);
+
+            switch (dir)
+            {
+                    case AnalyzeDirection.Down:
+                        foreach (var from in waysFrom)
+                        {
+                            if (from.EndsWith("D", StringComparison.OrdinalIgnoreCase))
+                            {
+                                foreach (var to in waysTo)
+                                {
+                                    if (to.StartsWith("B", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        return true;
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    case AnalyzeDirection.Up:
+                        foreach (var from in waysFrom)
+                        {
+                            if (from.EndsWith("B", StringComparison.OrdinalIgnoreCase))
+                            {
+                                foreach (var to in waysTo)
+                                {
+                                    if (to.StartsWith("D", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        return true;
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    case AnalyzeDirection.Left:
+                        foreach (var from in waysFrom)
+                        {
+                            if (from.EndsWith("A", StringComparison.OrdinalIgnoreCase))
+                            {
+                                foreach (var to in waysTo)
+                                {
+                                    if (to.StartsWith("C", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        return true;
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    case AnalyzeDirection.Right:
+                        foreach (var from in waysFrom)
+                        {
+                            if (from.EndsWith("C", StringComparison.OrdinalIgnoreCase))
+                            {
+                                foreach (var to in waysTo)
+                                {
+                                    if (to.StartsWith("A", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        return true;
+                                    }
+                                }
+                            }
+                        }
+                        break;
+            }
+
+            return false;
+        }
+
+        public static AnalyzeDirection Direction(this TrackInfo item, TrackInfo neighbourItem)
+        {
+            if (item.IsLeft(neighbourItem))
+                return AnalyzeDirection.Left;
+            if (item.IsRight(neighbourItem))
+                return AnalyzeDirection.Right;
+            if (item.IsUp(neighbourItem))
+                return AnalyzeDirection.Up;
+            if (item.IsDown(neighbourItem))
+                return AnalyzeDirection.Down;
+            return AnalyzeDirection.Unknwon;
+        }
+    }
+
     public class Analyze
     {
         private readonly RailwayEssentialModel _model;
@@ -64,12 +263,10 @@ namespace RailwayEssentialMdi.Analyze
 
             foreach (var b in blocks)
             {
-                var waypoints = GetWaypoints(b);
+                var nrOfRoutes = GetWaypointsStart(b);
 
-                if (waypoints != null && waypoints.Count > 0)
-                {
-                    Trace.WriteLine("Waypoints: " + waypoints.Count);
-                }
+                if (nrOfRoutes > 0)
+                    Trace.WriteLine("Waypoints: " + nrOfRoutes);
             }
 
             AnalyzeResult res = new AnalyzeResult();
@@ -77,59 +274,21 @@ namespace RailwayEssentialMdi.Analyze
             return res;
         }
 
-        private int GetOrientation(TrackInfo trackInfo)
+        private int GetWaypointsStart(TrackInfo block)
         {
-            if (trackInfo == null)
-                return 0;
-            if (string.IsNullOrEmpty(trackInfo.Orientation))
-                return 0;
-            if (trackInfo.Orientation.Equals("rot0", StringComparison.OrdinalIgnoreCase))
-                return 0;
-            if (trackInfo.Orientation.Equals("rot90", StringComparison.OrdinalIgnoreCase))
-                return 1;
-            if (trackInfo.Orientation.Equals("rot180", StringComparison.OrdinalIgnoreCase))
-                return 2;
-            if (trackInfo.Orientation.Equals("rot-90", StringComparison.OrdinalIgnoreCase))
-                return 3;
+            GetWaypoints(block);
+
             return 0;
         }
 
-        private ThemeItemRoute GetThemeWays(TrackInfo trackInfo)
+        private void GetWaypoints(TrackInfo item, TrackInfo previousItem = null)
         {
-            if (trackInfo == null)
-                return null;
-            var themeId = trackInfo.ThemeId;
-            if (themeId < 0)
-                return null;
-            if (Theme == null)
-                return null;
-            var themeInfo = Theme.Get(trackInfo.ThemeId);
-            if (themeInfo == null)
-                return null;
+            var neighbours = GetNeighbours(item, previousItem);
 
-            int index = GetOrientation(trackInfo);
-
-            return themeInfo.GetRoute(index);
+            Trace.WriteLine($"Neighbours: {neighbours.Count}");
         }
 
-        private List<Waypoints> GetWaypoints(TrackInfo block)
-        {
-            var neighbours = GetNeighbours(block);
-
-            // follow all neighbours of a block
-            // probably the algorithm is recursive
-            // a) stop any route analyzing in case no more
-            // neighbours of an item are available to go next
-            // or when a block is found and reachable
-            // b) stop traversing in case in item is
-            // found which does not allow going the 
-            // straight the way (i.e. directions of a straight
-            // item is opposite way)
-
-            return null;
-        }
-
-        private List<TrackInfo> GetNeighbours(TrackInfo trackInfo)
+        private List<TrackInfo> GetNeighbours(TrackInfo trackInfo, TrackInfo ignore = null)
         {
             if (trackInfo == null)
                 return null;
@@ -138,7 +297,7 @@ namespace RailwayEssentialMdi.Analyze
 
             var x = trackInfo.X;
             var y = trackInfo.Y;
-            int orientationIndex = GetOrientation(trackInfo);
+            int orientationIndex = AnalyzeUtils.GetOrientation(trackInfo);
 
             // dimension required
             var themeInfo = Theme.Get(trackInfo.ThemeId);
@@ -200,14 +359,17 @@ namespace RailwayEssentialMdi.Analyze
 
             foreach (var e in indeces)
             {
+                if (ignore?.X == e.X && ignore.Y == e.Y)
+                    continue;
+                
                 var item = TrackEntity.Track.Get(e.X, e.Y);
                 if (item != null)
-                    neighbours.Add(item);
+                {
+                    var isMoveAllowed = trackInfo.IsMoveAllowed(item, Theme);
+                    if(isMoveAllowed)
+                        neighbours.Add(item);
+                }
             }
-
-            // dump
-            foreach(var k in neighbours)
-                Trace.WriteLine($"{k.X} : {k.Y}");
 
             return neighbours;
         }

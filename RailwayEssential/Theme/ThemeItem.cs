@@ -74,6 +74,14 @@ namespace Theme
                 }
             }
 
+            if (Dimensions == null || Dimensions.Count < 4)
+            {
+                int n = Dimensions.Count;
+
+                for (int i = n - 1; i < 4; ++i)
+                    Dimensions.Add(new ThemeItemDimension {Value = "1x1", X = 1, Y = 1});
+            }
+
             return true;
         }
 
