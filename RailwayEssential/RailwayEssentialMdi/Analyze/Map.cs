@@ -109,7 +109,7 @@ namespace RailwayEssentialMdi.Analyze
                 foreach (var n in neighbourIdxs)
                 {
                     edges.Add(Tuple.Create(localIdx, n));
-                    edges.Add(Tuple.Create(n, localIdx));
+                    //edges.Add(Tuple.Create(n, localIdx));
                 }
             }
 
@@ -123,32 +123,40 @@ namespace RailwayEssentialMdi.Analyze
                 if (b0 == null)
                     continue;
 
-                var startVertex = b0.Idx;
-                var shortestPath = algorithms.ShortestPathFunction(graph, startVertex);
+                var b0NeighboursIdxs = b0.GetReachableNeighbourIds();
 
-                foreach (var b1 in blks)
+                foreach (var b0Idx in b0NeighboursIdxs)
                 {
-                    if (b1 == null || b1.Equals(b0))
-                        continue;
+                    var startVertex = b0Idx;
+                    var shortestPath = algorithms.ShortestPathFunction(graph, startVertex);
 
-                    var pathIdx = shortestPath(b1.Idx).ToList();
-
-                    string m = "";
-
-                    foreach (var p in pathIdx)
+                    foreach (var b1 in blks)
                     {
-                        var item = Items.Where(x => x.Idx == p).ToList();
-                        if (item.Count > 0)
+                        if (b1 == null || b1.Equals(b0))
+                            continue;
+
+                        var pathIdx = shortestPath(b1.Idx).ToList();
+
+                        string m = "";
+
+                        foreach (var p in pathIdx)
                         {
-                            var coord = $"[{item[0].X0}, {item[0].Y0} ; {item[0].X1}, {item[0].Y1}]";
+                            var item = Items.Where(x => x.Idx == p).ToList();
+                            if (item.Count > 0)
+                            {
+                                var coord = $"({item[0].X0},{item[0].Y0})";
 
-                            m += $"{p} {coord} -> ";
+                                m += $"{coord} -> ";
+                            }
                         }
+
+                        m += " (!!) ";
+
+                        var fromInfo = $"{b0.X0},{b0.Y1}";
+                        var toInfo = $"{b1.X0},{b1.Y1}";
+
+                        Trace.WriteLine(string.Format("{0} -> {1}: {2}", fromInfo, toInfo, m));
                     }
-
-                    m += " (!!) ";
-
-                    Trace.WriteLine(string.Format("Path to {0,2}: {1}", b1.Idx, m));
                 }
             }
 
