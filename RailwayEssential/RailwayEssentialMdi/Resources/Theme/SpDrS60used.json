@@ -48,7 +48,7 @@
           "route": "dcurve"
         },
         "clickable": false,
-        "routes": [ "AD,BC", "AB,CD", "BC,AD", "CD,AB" ]
+        "routes": [ "AD,DA,BC,CB", "AB,BA,CD,DC", "AD,DA,BC,CB", "AB,BA,CD,DC" ]
       },
       {
         "id": 13,
@@ -181,7 +181,7 @@
           "route": "turnoutleft-route"
         },
         "clickable": false,
-        "routes": [ "CA,CD", "DB,DA", "AC,AB", "BD,BC" ] 
+        "routes": [ "AC,CA,CD,DC", "BD,DB,DA,AD", "AC,CA,AB,BA", "BD,DB,BC,CD" ] 
       },
       {
         "id": 51,
@@ -197,7 +197,7 @@
           "route": "turnoutright-route"
         },
         "clickable": false,
-        "routes": [ "AC,AD", "BD,BA", "CA,CB", "DB,DC" ]
+        "routes": [ "AC,CA,AD,DA", "BD,DB,BA,AB", "CA,AC,CB,BC", "DB,BD,DC,CD" ]
       },
       {
         "id": 52,
@@ -213,7 +213,7 @@
           "route": "threeway-route"
         },
         "clickable": false,
-        "routes": [ "CA,CB,CD", "DA,DA,DC", "AC,AB,AD", "BD,BA,BC" ] 
+        "routes": [ "CA,AC,CB,BC,CD,DC", "DA,AD,DB,BD,DC,CD", "AC,CA,AB,BA,AD,DA", "BD,DB,BA,AB,BC,CB" ] 
       },
       {
         "id": 53,
@@ -229,7 +229,7 @@
           "route": "twoway-tr-route"
         },
         "clickable": false,
-        "routes": [ "BD", "CA", "DB", "AC" ] 
+        "routes": [ "BC,CB,DC,CD", "AD,DA,CD,DC", "AB,BA,AD,DA", "BC,CB,CD,DC" ] 
       },
       {
         "id": 54,
@@ -261,10 +261,11 @@
           "route": "crossing-route"
         },
         "clickable": false,
-        "routes": [ "AC,BD", "AC,BD", "AC,BD", "AC,BD" ]
+        "routes": [ "AC,CA,BD,DB", "AC,CA,BD,DB", "AC,CA,BD,DB", "AC,CA,BD,DB" ]
       },
       {
-        "id": 56,
+        "_id": 56,
+        "id": -1, 
         "name": "Crossing Right 0m",
         "active": {
           "default": "crossingright0m",
@@ -280,7 +281,8 @@
         "routes": [ "A1C2,B2D1", "B1D2,A1C2", "A1C2,B2D1", "B1D2,A1C2" ]
       },
       {
-        "id": 57,
+        "_id": 57,
+        "id": -1, 
         "name": "Crossing Left 0m",
         "active": {
           "default": "crossingleft0m",
@@ -296,7 +298,8 @@
         "routes": [ "A1C2,B1D2", "B1D2,C1A2", "A1C2,B1D2", "B1D2,C1A2" ]
       },
       {
-        "id": 58,
+        "_id": 58,
+        "id": -1, 
         "name": "Crossing Right sr",
         "active": {
           "default": "dcrossingright-sr",
@@ -313,7 +316,8 @@
         "dimensions": [ "2x1", "1x2", "2x1", "1x2" ] 
       },
       {
-        "id": 59,
+        "_id": 59,
+        "id": -1, 
         "name": "Crossing Left sr",
         "active": {
           "default": "dcrossingleft-sr",
@@ -347,7 +351,8 @@
           "occ": "signaldistant-2-occ",
           "route": "signaldistant-2-r-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC", "BD", "AC", "BD" ] 
       },
       {
         "id": 101,
@@ -362,7 +367,8 @@
           "occ": "signalmain-r-occ",
           "route": "signalmain-r-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC", "BD", "AC", "BD" ] 
       },
       {
         "id": 102,
@@ -377,7 +383,8 @@
           "occ": "signalmain-2-r-occ",
           "route": "signalmain-2-r-occ"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC", "BD", "AC", "BD" ] 
       },
       {
         "id": 103,
@@ -392,7 +399,8 @@
           "occ": "signalmain-dwarf-r-occ",
           "route": "signalmain-dwarf-r-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC", "BD", "AC", "BD" ] 
       },
       {
         "id": 104,
@@ -407,7 +415,8 @@
           "occ": "signalshunting-2-r-occ",
           "route": "signalshunting-2-r-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC", "BD", "AC", "BD" ] 
       },
       {
         "id": 105,
@@ -422,7 +431,8 @@
           "occ": "semaphoredistant-r-occ",
           "route": "semaphoredistant-r-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC", "BD", "AC", "BD" ] 
       },
       {
         "id": 106,
@@ -437,7 +447,8 @@
           "occ": "semaphoremain-r-occ",
           "route": "semaphoremain-r-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC", "BD", "AC", "BD" ] 
       },
       {
         "id": 107,
@@ -452,7 +463,8 @@
           "occ": "semaphoremain-2-r-occ",
           "route": "semaphoremain-2-r-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC", "BD", "AC", "BD" ] 
       },
       {
         "id": 108,
@@ -467,7 +479,8 @@
           "occ": "semaphoreshunting-r-occ",
           "route": "semaphoreshunting-r-route"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC", "BD", "AC", "BD" ] 
       },
       {
         "id": 109,
@@ -482,7 +495,8 @@
           "occ": "blockstate",
           "route": "blockstate"
         },
-        "clickable": false
+        "clickable": false,
+        "routes": [ "AC", "BD", "AC", "BD" ] 
       }
     ]
   },
@@ -503,7 +517,7 @@
           "route": "block"
         },
         "clickable": false,
-        "routes": [ "AC", "BD", "AC", "BD" ],
+        "routes": [ "AC,CA", "BD,DB", "AC,CA", "BD,DB" ],
         "dimensions": [ "4x1", "1x4", "4x1", "1x4" ]
       },
       {
@@ -520,7 +534,7 @@
           "route": "block-s"
         },
         "clickable": false,
-        "routes": [ "AC", "BD", "AC", "BD" ],
+        "routes": [ "AC,CA", "BD,DB", "AC,CA", "BD,DB" ],
         "dimensions": [ "2x1", "1x2", "2x1", "1x2" ]
       },
       {

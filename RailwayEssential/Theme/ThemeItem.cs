@@ -31,6 +31,10 @@ namespace Theme
 
             if (o["id"] != null)
                 UniqueIdentifier = (int) o["id"];
+
+            if (UniqueIdentifier == -1)
+                return false;
+
             if (o["name"] != null)
                 Name = o["name"].ToString();
             if (o["clickable"] != null)

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{C8705CCB-F5B8-43F0-8510-E4AA93B3CCE2}"
 EndProject
@@ -31,6 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 		Documentation\ESU-ECOS-Commands.odt = Documentation\ESU-ECOS-Commands.odt
 		Documentation\Gleisplanung.odt = Documentation\Gleisplanung.odt
 		Documentation\Gleisplanung.pdf = Documentation\Gleisplanung.pdf
+		Documentation\Gleispläne.docx = Documentation\Gleispläne.docx
 		Documentation\Schattenbahnhof-unten.json = Documentation\Schattenbahnhof-unten.json
 	EndProjectSection
 EndProject
@@ -285,5 +286,8 @@ Global
 		{15405881-A35F-437E-9D2D-22DFDDBC3C11} = {C8705CCB-F5B8-43F0-8510-E4AA93B3CCE2}
 		{C15A7336-4B35-4BD3-9C31-7F7C8DD65E6B} = {5050BCD2-2DB5-4B46-9798-E034F293C22E}
 		{09C8914D-4E27-4F10-BC62-31A68484A661} = {7F9ADB59-538F-405D-98CA-249CD66007D9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C52D5BED-2900-496F-8227-13B3F8335997}
 	EndGlobalSection
 EndGlobal
