@@ -22,12 +22,20 @@ namespace RailwayEssentialMdi.Analyze.BFS
             AdjacencyList[vertex] = new HashSet<T>();
         }
 
-        public void AddEdge(Tuple<T, T> edge)
+        public void AddEdge(Tuple<T, T> edge, bool bidirectional=false)
         {
-            if (AdjacencyList.ContainsKey(edge.Item1) && AdjacencyList.ContainsKey(edge.Item2))
+            if (bidirectional)
             {
-                AdjacencyList[edge.Item1].Add(edge.Item2);
-                AdjacencyList[edge.Item2].Add(edge.Item1);
+                if (AdjacencyList.ContainsKey(edge.Item1) && AdjacencyList.ContainsKey(edge.Item2))
+                {
+                    AdjacencyList[edge.Item1].Add(edge.Item2);
+                    AdjacencyList[edge.Item2].Add(edge.Item1);
+                }
+            }
+            else
+            {
+                if (AdjacencyList.ContainsKey(edge.Item1))
+                    AdjacencyList[edge.Item1].Add(edge.Item2);
             }
         }
     }

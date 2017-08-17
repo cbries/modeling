@@ -412,7 +412,7 @@ namespace RailwayEssentialMdi.Analyze
             return neighbours;
         }
 
-        public List<TrackInfo> GetReachableNeighbours()
+        public List<TrackInfo> GetReachableNeighbours(TrackInfo ignore=null)
         {
             List<TrackInfo> neighbours = new List<TrackInfo>();
 
@@ -430,7 +430,13 @@ namespace RailwayEssentialMdi.Analyze
                 var yy = y + height;
 
                 var item = TrackEntity.Track.Get(x, yy);
-                if (item != null)
+
+                if (ignore != null && !ignore.Equals(item))
+                {
+                    if (item != null)
+                        neighbours.Add(item);
+                }
+                else if (item != null)
                     neighbours.Add(item);
             }
             if (CanMoveUp)
@@ -446,7 +452,12 @@ namespace RailwayEssentialMdi.Analyze
                     item = TrackEntity.Track.Get(x, yy);
                 }
 
-                if (item != null)
+                if (ignore != null && !ignore.Equals(item))
+                {
+                    if (item != null)
+                        neighbours.Add(item);
+                }
+                else if (item != null)
                     neighbours.Add(item);
             }
             if (CanMoveLeft)
@@ -462,7 +473,12 @@ namespace RailwayEssentialMdi.Analyze
                     item = TrackEntity.Track.Get(xx, y);
                 }
 
-                if (item != null)
+                if (ignore != null && !ignore.Equals(item))
+                {
+                    if (item != null)
+                        neighbours.Add(item);
+                }
+                else if (item != null)
                     neighbours.Add(item);
             }
             if (CanMoveRight)
@@ -470,7 +486,13 @@ namespace RailwayEssentialMdi.Analyze
                 var xx = x + width;
 
                 var item = TrackEntity.Track.Get(xx, y);
-                if (item != null)
+
+                if (ignore != null && !ignore.Equals(item))
+                {
+                    if (item != null)
+                        neighbours.Add(item);
+                }
+                else if (item != null)
                     neighbours.Add(item);
             }
             return neighbours;
@@ -486,6 +508,288 @@ namespace RailwayEssentialMdi.Analyze
                 indeces.Add(nItem.Idx);
             }
             return indeces;
+        }
+
+        private MapItem LeftItem => _ctx.Get(X0 - 1, Y0);
+        private MapItem TopItem => _ctx.Get(X0, Y0 - 1);
+        private MapItem RightItem => _ctx.Get(X1 + 1, Y0);
+        private MapItem BottomItem => _ctx.Get(X0, Y1 + 1);
+
+        public bool CanGoFromLeftToBottom()
+        {
+            var nbs = GetReachableNeighbours();
+            if (nbs == null || nbs.Count <= 0)
+                return false;
+
+            if (LeftItem == null || BottomItem == null)
+                return false;
+
+            if (!LeftItem.IsRightExit && !BottomItem.IsTopEntrance)
+                return false;
+
+            if (Left2Bottom)
+                return true;
+
+            return false;
+        }
+
+        public bool CanGoFromLeftToTop()
+        {
+            var nbs = GetReachableNeighbours();
+            if (nbs == null || nbs.Count <= 0)
+                return false;
+
+            if (LeftItem == null || TopItem == null)
+                return false;
+
+            if (!LeftItem.IsRightExit && !TopItem.IsBottomEntrance)
+                return false;
+
+            if (Left2Top)
+                return true;
+
+            return false;
+        }
+
+        public bool CanGoFromLeftToRight()
+        {
+            var nbs = GetReachableNeighbours();
+            if (nbs == null || nbs.Count <= 0)
+                return false;
+
+            if (LeftItem == null || RightItem == null)
+                return false;
+
+            if (!LeftItem.IsRightExit && !RightItem.IsLeftEntrance)
+                return false;
+
+            if (Left2Right)
+                return true;
+
+            return false;
+        }
+
+        public bool CanGoFromRightToBottom()
+        {
+            var nbs = GetReachableNeighbours();
+            if (nbs == null || nbs.Count <= 0)
+                return false;
+
+            if (RightItem == null || BottomItem == null)
+                return false;
+
+            if (!RightItem.IsLeftExit && !BottomItem.IsTopEntrance)
+                return false;
+
+            if (Right2Bottom)
+                return true;
+
+            return false;
+        }
+
+        public bool CanGoFromRightToTop()
+        {
+            var nbs = GetReachableNeighbours();
+            if (nbs == null || nbs.Count <= 0)
+                return false;
+
+            if (RightItem == null || TopItem == null)
+                return false;
+
+            if (!RightItem.IsLeftExit && !TopItem.IsBottomEntrance)
+                return false;
+
+            if (Right2Top)
+                return true;
+
+            return false;
+        }
+
+        public bool CanGoFromRightToLeft()
+        {
+            var nbs = GetReachableNeighbours();
+            if (nbs == null || nbs.Count <= 0)
+                return false;
+
+            if (RightItem == null || LeftItem == null)
+                return false;
+
+            if (!RightItem.IsLeftExit && !LeftItem.IsRightEntrance)
+                return false;
+
+            if (Right2Left)
+                return true;
+
+            return false;
+        }
+
+        public bool CanGoFromTopToBottom()
+        {
+            var nbs = GetReachableNeighbours();
+            if (nbs == null || nbs.Count <= 0)
+                return false;
+
+            if (TopItem == null || BottomItem == null)
+                return false;
+
+            if (!TopItem.IsBottomExit && !BottomItem.IsTopEntrance)
+                return false;
+
+            if (Top2Bottom)
+                return true;
+
+            return false;
+        }
+
+        public bool CanGoFromTopToRight()
+        {
+            var nbs = GetReachableNeighbours();
+            if (nbs == null || nbs.Count <= 0)
+                return false;
+
+            if (TopItem == null || RightItem == null)
+                return false;
+
+            if (!TopItem.IsBottomExit && !RightItem.IsLeftEntrance)
+                return false;
+
+            if (Top2Right)
+                return true;
+
+            return false;
+        }
+
+        public bool CanGoFromTopToLeft()
+        {
+            var nbs = GetReachableNeighbours();
+            if (nbs == null || nbs.Count <= 0)
+                return false;
+
+            if (TopItem == null || LeftItem == null)
+                return false;
+
+            if (!TopItem.IsBottomExit && !LeftItem.IsRightEntrance)
+                return false;
+
+            if (Top2Left)
+                return true;
+
+            return false;
+        }
+
+        public bool CanGoFromBottomToTop()
+        {
+            var nbs = GetReachableNeighbours();
+            if (nbs == null || nbs.Count <= 0)
+                return false;
+
+            if (BottomItem == null || TopItem == null)
+                return false;
+
+            if (!BottomItem.IsTopExit && !TopItem.IsBottomEntrance)
+                return false;
+
+            if (Bottom2Top)
+                return true;
+
+            return false;
+        }
+
+        public bool CanGoFromBottomToRight()
+        {
+            var nbs = GetReachableNeighbours();
+            if (nbs == null || nbs.Count <= 0)
+                return false;
+
+            if (BottomItem == null || RightItem == null)
+                return false;
+
+            if (!BottomItem.IsTopExit && !RightItem.IsLeftEntrance)
+                return false;
+
+            if (Bottom2Right)
+                return true;
+
+            return false;
+        }
+
+        public bool CanGoFromBottomToLeft()
+        {
+            var nbs = GetReachableNeighbours();
+            if (nbs == null || nbs.Count <= 0)
+                return false;
+
+            if (BottomItem == null || LeftItem == null)
+                return false;
+
+            if (!BottomItem.IsTopExit && !LeftItem.IsRightEntrance)
+                return false;
+
+            if (Bottom2Left)
+                return true;
+
+            return false;
+        }
+
+        public class WayInfo
+        {
+            public WayInfo(MapItem item)
+            {
+                LeftToBottom = item.CanGoFromLeftToBottom();
+                LeftToTop = item.CanGoFromLeftToTop();
+                LeftToRight = item.CanGoFromLeftToRight();
+
+                TopToBottom = item.CanGoFromTopToBottom();
+                TopToLeft = item.CanGoFromTopToLeft();
+                TopToRight = item.CanGoFromTopToRight();
+
+                RightToLeft = item.CanGoFromRightToLeft();
+                RightToTop = item.CanGoFromRightToTop();
+                RightToBottom = item.CanGoFromRightToBottom();
+
+                BottomToTop = item.CanGoFromBottomToTop();
+                BottomToLeft = item.CanGoFromBottomToLeft();
+                BottomToRight = item.CanGoFromBottomToRight();
+            }
+
+            public bool LeftToBottom { get; }
+            public bool LeftToTop {  get; }
+            public bool LeftToRight { get; }
+
+            public bool TopToBottom { get; }
+            public bool TopToLeft { get; }
+            public bool TopToRight { get; }
+
+            public bool RightToLeft { get; }
+            public bool RightToTop { get; }
+            public bool RightToBottom { get; }
+
+            public bool BottomToTop { get; }
+            public bool BottomToLeft { get; }
+            public bool BottomToRight { get; }
+
+            public override string ToString()
+            {
+                string m = "";
+
+                if (LeftToBottom) m += "LeftToBottom, ";
+                if (LeftToTop) m += "LeftToTop, ";
+                if (LeftToRight) m += "LeftToRight, ";
+
+                if (TopToBottom) m += "TopToBottom, ";
+                if (TopToLeft) m += "TopToLeft, ";
+                if (TopToRight) m += "TopToRight, ";
+
+                if (RightToLeft) m += "RightToLeft, ";
+                if (RightToTop) m += "RightToTop, ";
+                if (RightToBottom) m += "RightToBottom, ";
+
+                if (BottomToTop) m += "BottomToTop, ";
+                if (BottomToLeft) m += "BottomToLeft, ";
+                if (BottomToRight) m += "BottomToRight";
+
+                return m;
+            }
         }
 
         public int GetOrientation()
