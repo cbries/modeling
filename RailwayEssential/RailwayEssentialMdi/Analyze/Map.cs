@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using RailwayEssentialMdi.Analyze.BFS;
+﻿using System.Collections.Generic;
 using RailwayEssentialMdi.ViewModels;
 
 namespace RailwayEssentialMdi.Analyze
@@ -88,30 +84,25 @@ namespace RailwayEssentialMdi.Analyze
             return blocks;
         }
 
-        public Array GetEdges()
+        public int GetRoutes()
         {
-            var vertices = Items.Where(x => x.Idx != -1).ToList().OrderBy(x => x.Idx).ToList();
-            var idxs = new List<int>();
-
-            foreach (var v in vertices)
-                idxs.Add(v.Idx);
-
-            List<Tuple<int, int>> edges = new List<Tuple<int, int>>();
-
-            foreach (var it in Items)
-            {
-                if (it == null)
-                    continue;
-
-                var item = it.Info;
-                if (item == null)
-                    continue;
-
-                var localIdx = it.Idx;
-                var neighbourIdxs = it.GetReachableNeighbourIds();
-                foreach (var n in neighbourIdxs)
-                    edges.Add(Tuple.Create(localIdx, n));
-            }
+            //var vertices = Items.Where(x => x.Idx != -1).ToList().OrderBy(x => x.Idx).ToList();
+            //var idxs = new List<int>();
+            //foreach (var v in vertices)
+            //    idxs.Add(v.Idx);
+            //List<Tuple<int, int>> edges = new List<Tuple<int, int>>();
+            //foreach (var it in Items)
+            //{
+            //    if (it == null)
+            //        continue;
+            //    var item = it.Info;
+            //    if (item == null)
+            //        continue;
+            //    var localIdx = it.Idx;
+            //    var neighbourIdxs = it.GetReachableNeighbourIds();
+            //    foreach (var n in neighbourIdxs)
+            //        edges.Add(Tuple.Create(localIdx, n));
+            //}
 
             var blks = GetBlocks();
 
@@ -120,88 +111,238 @@ namespace RailwayEssentialMdi.Analyze
                 if (b0 == null)
                     continue;
 
-                foreach (var b1 in blks)
-                {
-                    if (b1 == null)
-                        continue;
-                    if (b1.Equals(b0))
-                        continue;
+                _branches.Clear();
+                _currentWay = "";
 
-                    var paths = GetAllPathBetween(b0, b1);
-                }
+                GetAllPath(b0);                
             }
 
-            foreach (var item in Items)
+            foreach (var p in _paths)
             {
-                if (item == null)
+                if (string.IsNullOrEmpty(p))
                     continue;
 
-                var ways = new MapItem.WayInfo(item);
-
-                Trace.WriteLine($"{item.Info} Ways: {ways}");
+                WayPoints wps = new WayPoints(this, p);
+                
+                if(Routes == null)
+                    Routes = new List<WayPoints>();
+                Routes.Add(wps);
             }
 
-            //var graph = new Graph<int>(idxs, edges);
-            //var algorithms = new Algorithms();
-            //var blks = GetBlocks();
-            //foreach (var b0 in blks)
-            //{
-            //    if (b0 == null)
-            //        continue;
-            //    var b0NeighboursIdxs = b0.GetReachableNeighbourIds();
-            //    foreach (var b0Idx in b0NeighboursIdxs)
-            //    {
-            //        var startVertex = b0Idx;
-            //        var shortestPath = algorithms.ShortestPathFunction(graph, startVertex);
-            //        foreach (var b1 in blks)
-            //        {
-            //            if (b1 == null || b1.Equals(b0))
-            //                continue;
-            //            var pathIdx = shortestPath(b1.Idx).ToList();
-            //            string m = "";
-            //            foreach (var p in pathIdx)
-            //            {
-            //                var item = Items.Where(x => x.Idx == p).ToList();
-            //                if (item.Count > 0)
-            //                {
-            //                    var coord = $"({item[0].X0},{item[0].Y0})";
-            //                    m += $"{coord} -> ";
-            //                }
-            //            }
-            //            m += " (!!) ";
-            //            var fromInfo = $"{b0.X0},{b0.Y1}";
-            //            var toInfo = $"{b1.X0},{b1.Y1}";
-            //            Trace.WriteLine(string.Format("{0} -> {1}: {2}", fromInfo, toInfo, m));
-            //        }
-            //    }
-            //}
+            if (Routes == null)
+                return 0;
 
-            return null;
+            return Routes.Count;
         }
-
-        private Dictionary<int, List<int>> GetAllPathBetween(MapItem from, MapItem to)
+        
+        private void GetAllPath(MapItem from)
         {
-            if (from == null || to == null)
-                return null;
-
-            Trace.WriteLine($"Find path: {from.Identifier} -> {to.Identifier}");
-
-            var paths = new Dictionary<int, List<int>>();
+            if (from == null)
+                return;
 
             var neighbours = from.GetReachableNeighbours();
+
             foreach (var n in neighbours)
             {
                 var nItem = Get(n.X, n.Y);
 
-                Walk(nItem, from);
+                StartWalk(nItem, from);
             }
 
-            return paths;
+            // check for branches
+            if (_branches.Count > 0)
+            {
+                int max = _branches.Count;
+                for (int i = 0; i < max; ++i)
+                {
+                    var branch = _branches.Pop();
+                    if (branch == null)
+                        continue;
+
+                    //_currentWay += $"{branch.Item.Identifier} -> ";
+
+                    for (int j = 0; j < branch.Neighbours.Count; ++j)
+                    {
+                        _currentWay = branch.RecentWay;
+                        var nb = branch.Neighbours[j];
+                        //branch.Neighbours.Remove(nb);
+                        StartWalk(nb, branch.Item);
+                    }
+                    branch.Neighbours.Clear();
+                }
+            }
+        }
+
+        private void StartWalk(MapItem item, MapItem comingFrom)
+        {
+            _currentWay += $"{item.Identifier}->";
+
+            Walk(item, comingFrom);
         }
 
         private void Walk(MapItem item, MapItem comingFrom)
         {
-            
+            if (item != null && item.IsBlock)
+            {
+                _paths.Add(_currentWay);
+                _currentWay = "";
+                return;
+            }
+
+            bool isFromLeft = item.Info.IsLeft(comingFrom.Info);
+            bool isFromTop = item.Info.IsUp(comingFrom.Info);
+            bool isFromRight = item.Info.IsRight(comingFrom.Info);
+            bool isFromBottom = item.Info.IsDown(comingFrom.Info);
+
+            var nbs = item.GetReachableNeighbours(comingFrom.Info);
+
+            if (nbs.Count == 0)
+            {
+                _currentWay = "";
+            }
+            else
+            {
+                if (nbs.Count == 1)
+                {
+                    var it = nbs[0];
+                    var nbsItem = Get(it.X, it.Y);
+                    _currentWay += $"{nbsItem.Identifier} -> ";
+                    Walk(nbsItem, item);
+                }
+                else
+                {
+                    List<int> indecesForRemove = new List<int>();
+
+                    for(int i=0; i < nbs.Count; ++i)
+                    {
+                        var n = nbs[i];
+
+                        bool nIsLeft = item.Info.IsLeft(n);
+                        bool nIsUp = item.Info.IsUp(n);
+                        bool nIsRight = item.Info.IsRight(n);
+                        bool nIsDown = item.Info.IsDown(n);
+
+                        //string sourceInfo = isFromLeft
+                        //    ? "From Left"
+                        //    : isFromTop
+                        //        ? "From Top"
+                        //        : isFromRight
+                        //            ? "From Right"
+                        //            : isFromBottom
+                        //                ? "From Bottom"
+                        //                : "Unknown";
+
+                        //string targetInfo = nIsLeft
+                        //    ? "Going Left"
+                        //    : nIsUp
+                        //        ? "Going Up"
+                        //        : nIsRight
+                        //            ? "Going Right"
+                        //            : nIsDown
+                        //                ? "Going Down"
+                        //                : "Unknown";
+
+                        //Trace.Write($" [{sourceInfo} -> {targetInfo}] ");
+
+                        if (isFromLeft)
+                        {
+                            if (nIsDown && !item.CanGoFromLeftToBottom()
+                                || nIsUp && !item.CanGoFromLeftToTop()
+                                || nIsRight && !item.CanGoFromLeftToRight())
+                            {
+                                indecesForRemove.Add(i);
+                            }
+                        }
+                        else if (isFromTop)
+                        {
+                            if (nIsLeft && !item.CanGoFromTopToLeft()
+                                || nIsDown && !item.CanGoFromTopToBottom()
+                                || nIsRight && !item.CanGoFromTopToRight())
+                            {
+                                indecesForRemove.Add(i);
+                            }
+                        }
+                        else if (isFromRight)
+                        {
+                            if (nIsUp && !item.CanGoFromRightToTop()
+                                || nIsDown && !item.CanGoFromRightToBottom()
+                                || nIsLeft && !item.CanGoFromRightToLeft())
+                            {
+                                indecesForRemove.Add(i);
+                            }
+                        }
+                        else if (isFromBottom)
+                        {
+                            if (nIsLeft && !item.CanGoFromBottomToLeft()
+                                || nIsUp && !item.CanGoFromBottomToTop()
+                                || nIsRight && !item.CanGoFromBottomToRight())
+                            {
+                                indecesForRemove.Add(i);
+                            }
+                        }
+                    }
+
+                    indecesForRemove.Reverse();
+                    foreach(var idx in indecesForRemove)
+                        nbs.RemoveAt(idx);
+
+                    if (nbs.Count > 1)
+                    {
+                        var branchInfo = new BranchInfo
+                        {
+                            Item = item,
+                            RecentWay = _currentWay
+                        };
+
+                        foreach (var n in nbs)
+                        {
+                            var nItem = Get(n.X, n.Y);
+                            if (nItem != null)
+                            {
+                                branchInfo.Neighbours.Add(nItem);
+                            }
+                        }
+
+                        _currentWay = "";
+
+                        _branches.Push(branchInfo);
+                    }
+                    else if(nbs.Count == 1)
+                    {
+                        var it = nbs[0];
+                        var nbsItem = Get(it.X, it.Y);
+                        _currentWay += $"{nbsItem.Identifier} -> ";
+                        Walk(nbsItem, item);
+                    }
+                }
+            }
         }
+
+        private class BranchInfo
+        {
+            public MapItem Item { get; set; }
+            public string RecentWay { get; set; }
+            public List<MapItem> Neighbours { get; private set; }
+
+            public BranchInfo()
+            {
+                Neighbours = new List<MapItem>();
+            }
+
+            public void NeighbourHasBeenVisited(MapItem neighbour)
+            {
+                if (neighbour == null)
+                    return;
+                Neighbours.Remove(neighbour);
+            }
+        }
+        
+        private string _currentWay = "";
+
+        private readonly Stack<BranchInfo> _branches = new Stack<BranchInfo>();
+
+        private readonly List<string> _paths = new List<string>();
+
+        public List<WayPoints> Routes { get; private set; }
     }
 }

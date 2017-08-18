@@ -417,7 +417,7 @@ namespace RailwayEssentialMdi.Analyze
             List<TrackInfo> neighbours = new List<TrackInfo>();
 
             const int max = 10;
-            int maxCounter = 0;
+            int maxCounter;
 
             var x = Info.X;
             var y = Info.Y;
@@ -429,71 +429,64 @@ namespace RailwayEssentialMdi.Analyze
             {
                 var yy = y + height;
 
-                var item = TrackEntity.Track.Get(x, yy);
+                var item = _ctx.Get(x, yy);
+                var itemInfo = item.Info;
 
-                if (ignore != null && !ignore.Equals(item))
-                {
-                    if (item != null)
-                        neighbours.Add(item);
-                }
-                else if (item != null)
-                    neighbours.Add(item);
+                if (ignore != null && ignore.Equals(itemInfo))
+                    ; // ignore
+                else if (itemInfo != null)
+                    neighbours.Add(itemInfo);
             }
             if (CanMoveUp)
             {
                 var yy = y - 1;
 
-                var item = TrackEntity.Track.Get(x, yy);
+                var item = _ctx.Get(x, yy);
+                TrackInfo itemInfo = item.Info;
                 maxCounter = 0;
-                while (item == null && maxCounter < max)
+                while (itemInfo == null && maxCounter < max)
                 {
                     --yy;
 
-                    item = TrackEntity.Track.Get(x, yy);
+                    item = _ctx.Get(x, yy);
+                    itemInfo = item.Info;
                 }
 
-                if (ignore != null && !ignore.Equals(item))
-                {
-                    if (item != null)
-                        neighbours.Add(item);
-                }
-                else if (item != null)
-                    neighbours.Add(item);
+                if (ignore != null && ignore.Equals(itemInfo))
+                    ; // ignore
+                else if (itemInfo != null)
+                    neighbours.Add(itemInfo);
             }
             if (CanMoveLeft)
             {
                 var xx = x - 1;
 
-                var item = TrackEntity.Track.Get(xx, y);
+                var item = _ctx.Get(xx, y);
+                TrackInfo itemInfo = item.Info;
                 maxCounter = 0;
-                while (item == null && maxCounter < max)
+                while (itemInfo == null && maxCounter < max)
                 {
                     --xx;
 
-                    item = TrackEntity.Track.Get(xx, y);
+                    item = _ctx.Get(xx, y);
+                    itemInfo = item.Info;
                 }
 
-                if (ignore != null && !ignore.Equals(item))
-                {
-                    if (item != null)
-                        neighbours.Add(item);
-                }
-                else if (item != null)
-                    neighbours.Add(item);
+                if (ignore != null && ignore.Equals(itemInfo))
+                    ; // ignore
+                else if (itemInfo != null)
+                    neighbours.Add(itemInfo);
             }
             if (CanMoveRight)
             {
                 var xx = x + width;
 
-                var item = TrackEntity.Track.Get(xx, y);
-
-                if (ignore != null && !ignore.Equals(item))
-                {
-                    if (item != null)
-                        neighbours.Add(item);
-                }
-                else if (item != null)
-                    neighbours.Add(item);
+                var item = _ctx.Get(xx, y);
+                TrackInfo itemInfo = item.Info;
+                if (ignore != null && ignore.Equals(itemInfo))
+                    ; // ignore
+                else if (itemInfo != null)
+                    neighbours.Add(itemInfo);
             }
             return neighbours;
         }
@@ -790,6 +783,11 @@ namespace RailwayEssentialMdi.Analyze
 
                 return m;
             }
+        }
+
+        public WayInfo GetWayInfo()
+        {
+            return new WayInfo(this);
         }
 
         public int GetOrientation()

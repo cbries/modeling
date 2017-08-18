@@ -18,18 +18,12 @@ namespace RailwayEssentialMdi.Analyze
         {
             var m = new Map(_model);
             m.Build();
-
-            foreach (var it in m.Items)
+            var numberOfRoutes = m.GetRoutes();
+            AnalyzeResult res = new AnalyzeResult
             {
-                Trace.WriteLine(" ---- " + it.Identifier);
-                Trace.WriteLine(" # Direction: " + it.DirectionInfo);
-                Trace.WriteLine(" # Local Idx: " + it.Idx);
-                Trace.WriteLine(" # Neighbour Idxs: " + string.Join(", ", it.GetReachableNeighbourIds()));
-            }
-
-            var edges = m.GetEdges();
-
-            AnalyzeResult res = new AnalyzeResult();
+                NumberOfRoutes = numberOfRoutes,
+                Routes = m.Routes
+            };
             return res;
         }
     }
