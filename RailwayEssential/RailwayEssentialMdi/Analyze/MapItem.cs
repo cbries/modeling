@@ -102,6 +102,18 @@ namespace RailwayEssentialMdi.Analyze
         public bool IsBlock => BlockIds.Contains(ThemeId);
         public bool IsSensor => SensorIds.Contains(ThemeId);
         public bool IsDirection => ThemeId == 14;
+        public bool IsConnector => ThemeId == 17 || ThemeId == 18 || ThemeId == 19;
+
+        public int ConnectorId
+        {
+            get
+            {
+                var connectorId = -1;
+                if (IsConnector && Info.Options["connectorIdentifier"] != null)
+                    connectorId = (int)Info.Options["connectorIdentifier"];
+                return connectorId;
+            }
+        }
 
         public MapItem(RailwayEssentialModel model, Map ctx)
         {
@@ -165,15 +177,22 @@ namespace RailwayEssentialMdi.Analyze
             if (IsDirection)
             {
                 var rule = e.Value.TrimEnd('!');
-
                 parts = rule.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            }
+            else if (IsConnector)
+            {
+                var rule = e.Value.TrimEnd('+');
+                parts = rule.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                if(parts.Count == 1)
+                    parts.Add(parts[0].Reverse());
             }
             else if (IsTrack || IsSignal || IsBlock || IsSensor)
             {
                 parts = e.Value.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
                 if (parts.Count <= 1
                     && !parts[0].EndsWith("!", StringComparison.OrdinalIgnoreCase)
-                    && !parts[0].EndsWith("+", StringComparison.OrdinalIgnoreCase))
+                    && !parts[0].EndsWith("+", StringComparison.OrdinalIgnoreCase)
+                )
                 {
                     parts.Add(parts[0].Reverse());
                 }
@@ -431,6 +450,29 @@ namespace RailwayEssentialMdi.Analyze
 
             var width = Width;
             var height = Height;
+
+            if (IsConnector)
+            {
+                var cons = _ctx.GetConnectors(ConnectorId);
+                if (cons != null && cons.Length == 2)
+                {
+                    TrackInfo target = null;
+
+                    if (cons[0].Idx != Idx)
+                        target = cons[0].Info;
+                    else if (cons[1].Idx != Idx)
+                        target = cons[1].Info;
+
+                    if (target != null)
+                    {
+                        var targetItem = _ctx.Get(target.X, target.Y);
+                        if (targetItem != null)
+                        {
+                            return targetItem.GetReachableNeighbours();
+                        }
+                    }
+                }
+            }
 
             if (CanMoveDown)
             {

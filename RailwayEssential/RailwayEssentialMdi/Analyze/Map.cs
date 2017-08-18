@@ -34,6 +34,43 @@ namespace RailwayEssentialMdi.Analyze
             return null;
         }
 
+        public MapItem[] GetConnectors(int connectorId)
+        {
+            if (connectorId == -1)
+                return null;
+
+            var items = new MapItem[2];
+
+            var o = _model?.TrackEntity;
+
+            var maxX = o.Cfg.DesignerColumns;
+            var maxY = o.Cfg.DesignerRows;
+
+            var index = 0;
+
+            for (int x = 0; x < maxX; ++x)
+            {
+                for (int y = 0; y < maxY; ++y)
+                {
+                    var item = Get(x, y);
+                    if (item == null)
+                        continue;
+                    if (!item.IsConnector)
+                        continue;
+                    if (item.ConnectorId == connectorId)
+                    {
+                        items[index] = item;
+                        index++;
+
+                        if (index == 2)
+                            return items;
+                    }
+                }
+            }
+
+            return items;
+        }
+
         public void Build()
         {
             if (_model?.TrackEntity == null)
