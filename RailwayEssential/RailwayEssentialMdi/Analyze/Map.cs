@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using RailwayEssentialMdi.ViewModels;
 
 namespace RailwayEssentialMdi.Analyze
@@ -86,24 +87,6 @@ namespace RailwayEssentialMdi.Analyze
 
         public int GetRoutes()
         {
-            //var vertices = Items.Where(x => x.Idx != -1).ToList().OrderBy(x => x.Idx).ToList();
-            //var idxs = new List<int>();
-            //foreach (var v in vertices)
-            //    idxs.Add(v.Idx);
-            //List<Tuple<int, int>> edges = new List<Tuple<int, int>>();
-            //foreach (var it in Items)
-            //{
-            //    if (it == null)
-            //        continue;
-            //    var item = it.Info;
-            //    if (item == null)
-            //        continue;
-            //    var localIdx = it.Idx;
-            //    var neighbourIdxs = it.GetReachableNeighbourIds();
-            //    foreach (var n in neighbourIdxs)
-            //        edges.Add(Tuple.Create(localIdx, n));
-            //}
-
             var blks = GetBlocks();
 
             foreach (var b0 in blks)
@@ -206,7 +189,62 @@ namespace RailwayEssentialMdi.Analyze
                 {
                     var it = nbs[0];
                     var nbsItem = Get(it.X, it.Y);
+
+                    if (item.IsDirection)
+                    {
+                        bool stopWalk = false;
+
+                        bool nIsLeft = item.Info.IsLeft(it);
+                        bool nIsUp = item.Info.IsUp(it);
+                        bool nIsRight = item.Info.IsRight(it);
+                        bool nIsDown = item.Info.IsDown(it);
+
+                        if (isFromLeft)
+                        {
+                            if (nIsDown && !item.CanGoFromLeftToBottom()
+                                || nIsUp && !item.CanGoFromLeftToTop()
+                                || nIsRight && !item.CanGoFromLeftToRight())
+                            {
+                                stopWalk = true;
+                            }
+                        }
+                        else if (isFromTop)
+                        {
+                            if (nIsLeft && !item.CanGoFromTopToLeft()
+                                || nIsDown && !item.CanGoFromTopToBottom()
+                                || nIsRight && !item.CanGoFromTopToRight())
+                            {
+                                stopWalk = true;
+                            }
+                        }
+                        else if (isFromRight)
+                        {
+                            if (nIsUp && !item.CanGoFromRightToTop()
+                                || nIsDown && !item.CanGoFromRightToBottom()
+                                || nIsLeft && !item.CanGoFromRightToLeft())
+                            {
+                                stopWalk = true;
+                            }
+                        }
+                        else if (isFromBottom)
+                        {
+                            if (nIsLeft && !item.CanGoFromBottomToLeft()
+                                || nIsUp && !item.CanGoFromBottomToTop()
+                                || nIsRight && !item.CanGoFromBottomToRight())
+                            {
+                                stopWalk = true;
+                            }
+                        }
+
+                        if(stopWalk)
+                        {
+                            _currentWay = "";
+                            return;
+                        }
+                    }
+
                     _currentWay += $"{nbsItem.Identifier} -> ";
+
                     Walk(nbsItem, item);
                 }
                 else

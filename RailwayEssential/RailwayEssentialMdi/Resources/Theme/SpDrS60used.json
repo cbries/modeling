@@ -232,7 +232,8 @@
         "routes": [ "BC,CB,DC,CD", "AD,DA,CD,DC", "AB,BA,AD,DA", "BC,CB,CD,DC" ] 
       },
       {
-        "id": 54,
+        "id": -1, 
+        "_id": 54,
         "name": "Crossing A",
         "active": {
           "default": "ccrossing",

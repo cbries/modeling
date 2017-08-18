@@ -101,6 +101,7 @@ namespace RailwayEssentialMdi.Analyze
         public bool IsSignal => SignalIds.Contains(ThemeId);
         public bool IsBlock => BlockIds.Contains(ThemeId);
         public bool IsSensor => SensorIds.Contains(ThemeId);
+        public bool IsDirection => ThemeId == 14;
 
         public MapItem(RailwayEssentialModel model, Map ctx)
         {
@@ -161,7 +162,13 @@ namespace RailwayEssentialMdi.Analyze
 
             List<string> parts = new List<string>();
 
-            if (IsTrack || IsSignal || IsBlock || IsSensor)
+            if (IsDirection)
+            {
+                var rule = e.Value.TrimEnd('!');
+
+                parts = rule.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            }
+            else if (IsTrack || IsSignal || IsBlock || IsSensor)
             {
                 parts = e.Value.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
                 if (parts.Count <= 1

@@ -105,8 +105,6 @@
     <Compile Include="Analyze\Analyze.cs" />
     <Compile Include="Analyze\AnalyzeHelper.cs" />
     <Compile Include="Analyze\AnalyzeResult.cs" />
-    <Compile Include="Analyze\BFS\Algorithms.cs" />
-    <Compile Include="Analyze\BFS\Graph.cs" />
     <Compile Include="Analyze\Coord.cs" />
     <Compile Include="Analyze\Map.cs" />
     <Compile Include="Analyze\MapItem.cs" />
