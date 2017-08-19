@@ -15,7 +15,7 @@ namespace TrackInformation
     {
         public event CommandsReadyDelegator CommandsReady;
 
-        public string IconName { get; set; }
+        public virtual string IconName { get; set; }
 
         public ObservableCollection<Item> Items { get; set; }
 
@@ -101,7 +101,7 @@ namespace TrackInformation
             }
         }
 
-        private void UpdateIconPath()
+        protected virtual void UpdateIconPath()
         {
             string BasePackUrlsPath = @"pack://application:,,,/RailwayEssentialMdi;component/Resources/";
 

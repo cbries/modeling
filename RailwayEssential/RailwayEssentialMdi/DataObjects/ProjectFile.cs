@@ -24,14 +24,14 @@ namespace RailwayEssentialMdi.DataObjects
         public List<string> Objects { get; set; }
         public ProjectTrack Track { get; set; }
         public List<ProjectTrackView> TrackViews { get; set; }
-        public List<List<WayPoint>> Routes { get; set; }
+        public List<List<WayPoint>> BlockRoutes { get; set; }
 
         public ProjectFile()
         {
             Objects = new List<string>();
             Track = new ProjectTrack();
             TrackViews = new List<ProjectTrackView>();
-            Routes = new List<List<WayPoint>>();
+            BlockRoutes = new List<List<WayPoint>>();
         }
 
         public bool Load(string path)
@@ -119,9 +119,11 @@ namespace RailwayEssentialMdi.DataObjects
                     }
                 }
 
-                if (o["routes"] != null)
+                if (o["routes"] != null || o["blockRoutes"] != null)
                 {
                     JArray ar = o["routes"] as JArray;
+                    if(ar == null)
+                        ar = o["blockRoutes"] as JArray;
                     if (ar != null)
                     {
                         for (int i = 0; i < ar.Count; ++i)
@@ -140,7 +142,7 @@ namespace RailwayEssentialMdi.DataObjects
                             }
 
                             if (wps.Count > 0)
-                                Routes.Add(wps);
+                                BlockRoutes.Add(wps);
                         }
                     }
                 }
@@ -165,7 +167,7 @@ namespace RailwayEssentialMdi.DataObjects
                 trackViews.Add(e.ToJson());
 
             JArray routes = new JArray();
-            foreach (var r in Routes)
+            foreach (var r in BlockRoutes)
             {
                 if (r == null)
                     continue;
@@ -188,7 +190,7 @@ namespace RailwayEssentialMdi.DataObjects
                 ["track"] = Track.ToJson(),
                 ["trackViews"] = trackViews,
                 ["objects"] = objects,
-                ["routes"] = routes
+                ["blockRoutes"] = routes
             };
 
             return o;

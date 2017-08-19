@@ -68,6 +68,8 @@ namespace RailwayEssentialMdi
         {
             if(e.Key == Key.Enter)
                 PropagateTreeViewSelection();
+            else if (e.Key == Key.Escape)
+                _dataContext.ResetBlockRoutePreview();
         }
 
         private void PropagateTreeViewSelection()
@@ -85,6 +87,8 @@ namespace RailwayEssentialMdi
                 _dataContext.SetCurrentLocomotive(item);
             else if (item is TrackInformation.Switch)
                 _dataContext.SetCurrentSwitch(item);
+            else if (item is Items.BlockRouteItem)
+                _dataContext.ShowBlockRoutePreview(item);
             else
             {
                 // ...

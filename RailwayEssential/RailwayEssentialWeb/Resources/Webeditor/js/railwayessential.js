@@ -221,6 +221,30 @@ function test(col, row) {
     console.log(col + ", " + row);
 }
 
+function highlightRoute(jsonArray) {
+    console.log("Highlight Route");
+
+    for (var i = 0; i < jsonArray.length; ++i) {
+        var o = jsonArray[i];
+        if (o == null || o === 'undefined')
+            continue;
+
+        var col = o.col;
+        var row = o.row;
+
+        var oel = $('#td_' + col + '_' + row);
+        //var cdiv = oel.find("div");
+        oel.addClass("routeHighlight");
+    }
+}
+
+function resetHighlightRoute() {
+    console.log("Reset Highlight Route");
+    $('td').each(function () {
+        $(this).removeClass("routeHighlight");
+    });
+}
+
 function changeSymbol(col, row, themeId, orientation, symbol) {
     var oel = $('#td_' + col + '_' + row);
     var cdiv = oel.find("div");
@@ -338,6 +362,15 @@ function changeEditMode(state) {
     updateUi();
 }
 
+function ResetRadios() {
+    $("#mode-1").prop('checked', false).checkboxradio('refresh');
+    $("#mode-2").prop('checked', false).checkboxradio('refresh');
+    $("#mode-3").prop('checked', false).checkboxradio('refresh');
+    $("#mode-4").prop('checked', false).checkboxradio('refresh');
+    $("#mode-1").prop('checked', true).checkboxradio('refresh');
+    updateEditMode();
+}
+
 $(document).ready(function (e) {
 
     var isMouseDown = false;
@@ -353,6 +386,13 @@ $(document).ready(function (e) {
     $('#webmenuDivSensor').hide();
     $('#webmenuDivAccessory').hide();
 
+    $('#webmenuDivTrack').change(ResetRadios);
+    $('#webmenuDivSwitch').change(ResetRadios);
+    $('#webmenuDivSignal').change(ResetRadios);
+    $('#webmenuDivBlock').change(ResetRadios);
+    $('#webmenuDivSensor').change(ResetRadios);
+    $('#webmenuDivAccessory').change(ResetRadios);
+
     $('#webmenuCategories').change(function () {
         $('#webmenuDivTrack').hide();
         $('#webmenuDivSwitch').hide();
@@ -360,6 +400,8 @@ $(document).ready(function (e) {
         $('#webmenuDivBlock').hide();
         $('#webmenuDivSensor').hide();
         $('#webmenuDivAccessory').hide();
+
+        ResetRadios();
 
         var cname = $(this).val();
 

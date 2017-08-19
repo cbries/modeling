@@ -124,6 +124,7 @@
     <Compile Include="Interfaces\IContent.cs" />
     <Compile Include="Interfaces\ILocomotiveView.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
+    <Compile Include="Items\BlockRouteItem.cs" />
     <Compile Include="Styles\PanesStyleSelector.cs" />
     <Compile Include="ViewModels\BaseWindow.cs" />
     <Compile Include="ViewModels\LocomotivesWindow.cs" />
@@ -468,6 +469,7 @@
     <Resource Include="Resources\plus.png" />
     <Resource Include="Resources\edit.png" />
     <Resource Include="Resources\dryrun.png" />
+    <Resource Include="Resources\cat_blockroutes.png" />
     <Content Include="Resources\Theme\SpDrS60used\accessory-10-off-occ.svg" />
     <Content Include="Resources\Theme\SpDrS60used\accessory-10-off-route.svg" />
     <Content Include="Resources\Theme\SpDrS60used\accessory-10-off.svg" />
@@ -1059,6 +1061,7 @@
     <Content Include="Resources\Theme\SpDrS60\twoway-tr-occ.svg" />
     <Content Include="Resources\Theme\SpDrS60\twoway-tr-route.svg" />
     <Content Include="Resources\Theme\SpDrS60\twoway-tr.svg" />
+    <Resource Include="Resources\trace.png" />
     <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

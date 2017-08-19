@@ -129,3 +129,7 @@ div {
     -o-transform-origin: left bottom;
     transform-origin: left bottom;
 }
+
+.routeHighlight {
+    background: chartreuse;
+}

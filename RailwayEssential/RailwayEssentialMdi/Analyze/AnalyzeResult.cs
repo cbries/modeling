@@ -17,8 +17,8 @@ namespace RailwayEssentialMdi.Analyze
             {
                 for (int i = 0; i < NumberOfRoutes; ++i)
                 {
-                    m += $"#{i + 1}: ";
                     var r = Routes[i];
+                    m += $"#{i + 1} (Steps {r.Count}): ";
                     foreach (var rr in r)
                         m += $"{rr.Identifier}->";
                     m += "END\r\n";

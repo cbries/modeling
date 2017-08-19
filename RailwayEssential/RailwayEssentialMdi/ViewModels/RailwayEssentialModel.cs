@@ -57,6 +57,7 @@ namespace RailwayEssentialMdi.ViewModels
         private readonly Category _itemS88 = new Category { Title = "S88 Ports", IconName = "cat_s88.png" };
         private readonly Category _itemSwitches = new Category { Title = "Switches", IconName = "cat_switch.png" };
         private readonly Category _itemRoutes = new Category { Title = "Routes", IconName = "cat_route.png" };
+        private readonly Category _itemBlockRoutes = new Category { Title = "Block Routes", IconName = "cat_blockroutes.png" };
 
         private ObservableCollection<Item> _rootItems = new ObservableCollection<Item>();
 
@@ -382,6 +383,7 @@ namespace RailwayEssentialMdi.ViewModels
             RootItems.Add(_itemS88);
             RootItems.Add(_itemSwitches);
             RootItems.Add(_itemRoutes);
+            RootItems.Add(_itemBlockRoutes);
 
             _cfg.IpAddress = Project.TargetHost;
             _cfg.Port = Project.TargetPort;
@@ -437,8 +439,49 @@ namespace RailwayEssentialMdi.ViewModels
                 dataProvider.LoadObjects(absolutePath);
             }
 
+            UpdateBlockRouteItems();
+
             //if (MainView != null)
             //    MainView.LoadLayout();
+        }
+
+        public void UpdateBlockRouteItems()
+        {
+            if (_itemBlockRoutes == null)
+                return;
+
+            SetDirty(true);
+
+            _itemBlockRoutes.Items.Clear();
+
+            if (Project == null || Project.BlockRoutes == null)
+                return;
+
+            int n = Project.BlockRoutes.Count;
+
+            for(int i=0; i < n; ++i)
+            {
+                var route = Project.BlockRoutes[i];
+                if (route == null)
+                    continue;
+
+                if (route.Count < 2)
+                    continue;
+
+                var firstItem = route[0];
+                var lastItem = route[route.Count - 1];
+
+                var firstCoord = $"{firstItem.X},{firstItem.Y}";
+                var lastCoord = $"{lastItem.X},{lastItem.Y}";
+
+                var item = new Items.BlockRouteItem
+                {
+                    Title = $"#{i + 1}: {firstCoord} -> {lastCoord}",
+                    WayPoints = route
+                };
+
+                _itemBlockRoutes.Items.Add(item);
+            }
         }
 
         private T GetWindow<T>() where T : class
@@ -623,6 +666,11 @@ namespace RailwayEssentialMdi.ViewModels
                      _itemS88.Items.Clear();
                 if (_itemRoutes != null)
                     _itemRoutes.Items.Clear();
+                if(_itemBlockRoutes != null)
+                    _itemBlockRoutes.Items.Clear();
+
+                IsDryRun = false;
+                IsDirty = false;
 
                 Project = null;
             }
@@ -846,6 +894,21 @@ namespace RailwayEssentialMdi.ViewModels
 
         public void AnalyzeRoutes(object p)
         {
+            if (Project != null && Project.BlockRoutes != null)
+            {
+                if (Project.BlockRoutes.Count > 0)
+                {
+                    System.Windows.Style style = new System.Windows.Style();
+                    style.Setters.Add(new Setter(Xceed.Wpf.Toolkit.MessageBox.YesButtonContentProperty, "Reset BlockRoutes"));
+                    style.Setters.Add(new Setter(Xceed.Wpf.Toolkit.MessageBox.NoButtonContentProperty, "Cancel"));
+                    MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show("BlockRoutes exist, the following analysis will reset them.", "BlockRoutes exist", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.Yes, style);
+                    if (result == MessageBoxResult.No || result == MessageBoxResult.Cancel)
+                        return;
+                }
+
+                Project.BlockRoutes.Clear();
+            }
+
             Analyze.Analyze a = new Analyze.Analyze(this);
             AnalyzeResult res = a.Execute();
             if (res == null)
@@ -853,14 +916,14 @@ namespace RailwayEssentialMdi.ViewModels
 
             foreach (var r in res.Routes)
             {
-                if (r == null)
-                    continue;
-                var wps = r.ToWaypoints();
+                var wps = r?.ToWaypoints();
                 if (wps != null && wps.Count > 0)
-                    Project.Routes.Add(wps);
+                    Project.BlockRoutes.Add(wps);
             }
 
-            Trace.WriteLine(res);
+            UpdateBlockRouteItems();
+
+            Log(res.ToString());
         }
 
         public void AddTrack(object p)
@@ -1131,6 +1194,35 @@ namespace RailwayEssentialMdi.ViewModels
             IsDirty = state;
         }
 
-#endregion
+        public void ShowBlockRoutePreview(object blockRouteItem)
+        {
+            ResetBlockRoutePreview();
+
+            var item = blockRouteItem as Items.BlockRouteItem;
+            if (item == null)
+                return;
+
+            JArray ar = new JArray();
+            foreach (var r in item.WayPoints)
+            {
+                JObject o = new JObject
+                {
+                    ["col"] = r.X,
+                    ["row"] = r.Y
+                };
+                ar.Add(o);
+            }
+
+            if (TrackEntity != null && TrackEntity.Viewer != null)
+                TrackEntity.Viewer.ExecuteJs($"highlightRoute({ar.ToString(Formatting.None)});");
+        }
+
+        public void ResetBlockRoutePreview()
+        {
+            if (TrackEntity != null && TrackEntity.Viewer != null)
+                TrackEntity.Viewer.ExecuteJs("resetHighlightRoute()");
+        }
+
+        #endregion
     }
 }
