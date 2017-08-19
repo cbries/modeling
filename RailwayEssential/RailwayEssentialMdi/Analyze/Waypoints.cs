@@ -60,7 +60,7 @@ namespace RailwayEssentialMdi.Analyze
                         X = item.Info.X, 
                         Y = item.Info.Y,
                         ThemeId = item.ThemeId,
-                        Orientation = item.GetOrientation()
+                        Orientation = Helper.GetOrientation(item.Info)
                     };
 
                     wps.Add(wp);

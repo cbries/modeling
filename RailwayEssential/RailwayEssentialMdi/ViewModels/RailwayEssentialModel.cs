@@ -1202,19 +1202,85 @@ namespace RailwayEssentialMdi.ViewModels
             if (item == null)
                 return;
 
-            JArray ar = new JArray();
-            foreach (var r in item.WayPoints)
+            JArray arStart = new JArray();
+            JArray arEnd = new JArray();
+            JArray arGeneral = new JArray();
+
+            int n = item.WayPoints.Count;
+            for(int idx = 0; idx < n; ++idx)
             {
-                JObject o = new JObject
+                var r = item.WayPoints[idx];
+
+                bool isStart = false;
+                bool isEnd = false;
+
+                if (idx == 0)
+                    isStart = true;
+                else if (idx == n - 1)
+                    isEnd = true;
+
+                int w = 1;
+                int h = 1;
+                var trackInfo = TrackEntity.Track.Get(r.X, r.Y);
+                if (trackInfo != null)
                 {
-                    ["col"] = r.X,
-                    ["row"] = r.Y
-                };
-                ar.Add(o);
+                    var themeInfo = _theme.Get(trackInfo.ThemeId);
+                    if (themeInfo != null)
+                    {
+                        var orientationIndex = Helper.GetOrientation(trackInfo);
+                        w = themeInfo.Dimensions[orientationIndex].X;
+                        h = themeInfo.Dimensions[orientationIndex].Y;
+                    }
+                }
+
+                bool isBlock = new List<int> {150, 151, 152}.Contains(trackInfo.ThemeId);
+
+                if (w > 1 || h > 1)
+                {
+                    for (int xx = 0; xx < w; ++xx)
+                    {
+                        for (int yy = 0; yy < h; ++yy)
+                        {
+                            JObject o = new JObject
+                            {
+                                ["col"] = r.X + xx,
+                                ["row"] = r.Y + yy
+                            };
+
+                            if (isBlock)
+                            {
+                                if (isStart)
+                                    arStart.Add(o);
+                                else if (isEnd)
+                                    arEnd.Add(o);
+                                else
+                                    arGeneral.Add(o);
+                            }
+                            else
+                            {
+                                arGeneral.Add(o);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    JObject o = new JObject
+                    {
+                        ["col"] = r.X,
+                        ["row"] = r.Y
+                    };
+
+                    arGeneral.Add(o);
+                }
             }
 
             if (TrackEntity != null && TrackEntity.Viewer != null)
-                TrackEntity.Viewer.ExecuteJs($"highlightRoute({ar.ToString(Formatting.None)});");
+            {
+                TrackEntity.Viewer.ExecuteJs($"highlightRoute({arStart.ToString(Formatting.None)}, 'routeHighlightStart');");
+                TrackEntity.Viewer.ExecuteJs($"highlightRoute({arEnd.ToString(Formatting.None)}, 'routeHighlightEnd');");
+                TrackEntity.Viewer.ExecuteJs($"highlightRoute({arGeneral.ToString(Formatting.None)}, 'routeHighlight');");
+            }
         }
 
         public void ResetBlockRoutePreview()

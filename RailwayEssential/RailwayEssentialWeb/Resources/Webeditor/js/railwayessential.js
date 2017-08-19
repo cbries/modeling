@@ -221,7 +221,7 @@ function test(col, row) {
     console.log(col + ", " + row);
 }
 
-function highlightRoute(jsonArray) {
+function highlightRoute(jsonArray, styleName) {
     console.log("Highlight Route");
 
     for (var i = 0; i < jsonArray.length; ++i) {
@@ -233,14 +233,15 @@ function highlightRoute(jsonArray) {
         var row = o.row;
 
         var oel = $('#td_' + col + '_' + row);
-        //var cdiv = oel.find("div");
-        oel.addClass("routeHighlight");
+        oel.addClass(styleName);
     }
 }
 
 function resetHighlightRoute() {
     console.log("Reset Highlight Route");
     $('td').each(function () {
+        $(this).removeClass("routeHighlightStart");
+        $(this).removeClass("routeHighlightEnd");
         $(this).removeClass("routeHighlight");
     });
 }

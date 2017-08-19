@@ -285,6 +285,7 @@ namespace RailwayEssentialMdi.Analyze
                     if (wasConnected)
                     {
                         var target = item.GetConnectorTarget();
+                        _currentWay += $"{target.Identifier} -> ";
                         Walk(nbsItem, target ?? item);
                     }
                     else

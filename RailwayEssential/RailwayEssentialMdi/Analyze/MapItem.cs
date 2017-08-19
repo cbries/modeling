@@ -32,6 +32,24 @@ namespace RailwayEssentialMdi.Analyze
         private int MaxX => TrackEntity.Cfg.DesignerColumns;
         private int MaxY => TrackEntity.Cfg.DesignerRows;
         public string Identifier => $"({Info.X},{Info.Y})";
+
+        public List<string> BlockIdentifiers
+        {
+            get
+            {
+                List <string> ids = new List<string>();
+                for (int x = X0; x <= X1; ++x)
+                {
+                    for (int y = Y0; y <= Y1; ++y)
+                    {
+                        var item = _ctx.Get(x, y);
+                        if (item != null)
+                            ids.Add($"({x},{y})");
+                    }
+                }
+                return ids;
+            }
+        }
         public int Idx => _localId;
 
         private bool _dimensionInitialized;
@@ -44,7 +62,7 @@ namespace RailwayEssentialMdi.Analyze
             if (_dimensionInitialized)
                 return;
             _dimensionInitialized = true;
-            _orientationIndex = GetOrientation();
+            _orientationIndex = Helper.GetOrientation(Info);
             _themeInfo = Theme.Get(ThemeId);
             _dim = _themeInfo.Dimensions[_orientationIndex];
         }
@@ -885,23 +903,6 @@ namespace RailwayEssentialMdi.Analyze
             return new WayInfo(this);
         }
 
-        public int GetOrientation()
-        {
-            if (Info == null)
-                return 0;
-            if (string.IsNullOrEmpty(Info.Orientation))
-                return 0;
-            if (Info.Orientation.Equals("rot0", StringComparison.OrdinalIgnoreCase))
-                return 0;
-            if (Info.Orientation.Equals("rot90", StringComparison.OrdinalIgnoreCase))
-                return 1;
-            if (Info.Orientation.Equals("rot180", StringComparison.OrdinalIgnoreCase))
-                return 2;
-            if (Info.Orientation.Equals("rot-90", StringComparison.OrdinalIgnoreCase))
-                return 3;
-            return 0;
-        }
-
         /// <summary>
         ///     "AB"        -> Straight
         ///     "CA,CD"     -> Switch
@@ -913,7 +914,7 @@ namespace RailwayEssentialMdi.Analyze
             var themeInfo = Theme.Get(ThemeId);
             if (themeInfo == null)
                 return null;
-            int index = GetOrientation();
+            int index = Helper.GetOrientation(Info);
             return themeInfo.GetRoute(index);
         }
     }
