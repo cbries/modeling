@@ -115,6 +115,25 @@ namespace RailwayEssentialMdi.Analyze
             }
         }
 
+        public MapItem GetConnectorTarget()
+        {
+            if (!IsConnector)
+                return null;
+            if (ConnectorId == -1)
+                return null;
+
+            var cons = _ctx.GetConnectors(ConnectorId);
+            if (cons != null && cons.Length == 2)
+            {
+                if (cons[0] != null && cons[0].Idx != Idx)
+                    return cons[0];
+                if (cons[1] != null && cons[1].Idx != Idx)
+                    return cons[1];
+            }
+
+            return null;
+        }
+
         public MapItem(RailwayEssentialModel model, Map ctx)
         {
             ++_instanceId;
@@ -167,7 +186,7 @@ namespace RailwayEssentialMdi.Analyze
                 return m.Trim().TrimEnd(',');
             }
         }
-        
+
         private void UpdateOrientation()
         {
             ThemeItemRoute e = GetWays();
@@ -183,7 +202,7 @@ namespace RailwayEssentialMdi.Analyze
             {
                 var rule = e.Value.TrimEnd('+');
                 parts = rule.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
-                if(parts.Count == 1)
+                if (parts.Count == 1)
                     parts.Add(parts[0].Reverse());
             }
             else if (IsTrack || IsSignal || IsBlock || IsSensor)
@@ -438,8 +457,9 @@ namespace RailwayEssentialMdi.Analyze
             return neighbours;
         }
 
-        public List<TrackInfo> GetReachableNeighbours(TrackInfo ignore=null)
+        public List<TrackInfo> GetReachableNeighbours(out bool wasConnected, TrackInfo ignore = null)
         {
+            wasConnected = false;
             List<TrackInfo> neighbours = new List<TrackInfo>();
 
             const int max = 10;
@@ -451,24 +471,39 @@ namespace RailwayEssentialMdi.Analyze
             var width = Width;
             var height = Height;
 
-            if (IsConnector)
+            MapItem ignoreItem = null;
+            if (ignore != null)
+                ignoreItem = _ctx.Get(ignore.X, ignore.Y);
+
+            if (IsConnector && (ignoreItem != null && !ignoreItem.IsConnector))
             {
                 var cons = _ctx.GetConnectors(ConnectorId);
                 if (cons != null && cons.Length == 2)
                 {
                     TrackInfo target = null;
+                    TrackInfo source = null;
 
-                    if (cons[0].Idx != Idx)
+                    if (cons[0] != null && cons[0].Idx != Idx)
                         target = cons[0].Info;
-                    else if (cons[1].Idx != Idx)
+                    else if (cons[1] != null && cons[1].Idx != Idx)
                         target = cons[1].Info;
+
+                    if (cons[0] != null && cons[1] != null && target != null)
+                    {
+                        if (cons[0].Info != null && target.Equals(cons[0].Info))
+                            source = cons[1].Info;
+                        if (cons[1].Info != null && target.Equals(cons[1].Info))
+                            source = cons[0].Info;
+                    }
 
                     if (target != null)
                     {
                         var targetItem = _ctx.Get(target.X, target.Y);
                         if (targetItem != null)
                         {
-                            return targetItem.GetReachableNeighbours();
+                            wasConnected = true;
+                            bool __dummy;
+                            return targetItem.GetReachableNeighbours(out __dummy, source);
                         }
                     }
                 }
@@ -543,7 +578,8 @@ namespace RailwayEssentialMdi.Analyze
         public List<int> GetReachableNeighbourIds()
         {
             List<int> indeces = new List<int>();
-            var neighbours = GetReachableNeighbours();
+            bool wasConnected;
+            var neighbours = GetReachableNeighbours(out wasConnected);
             foreach (var n in neighbours)
             {
                 MapItem nItem = _ctx.Get(n.X, n.Y);
@@ -559,7 +595,8 @@ namespace RailwayEssentialMdi.Analyze
 
         public bool CanGoFromLeftToBottom()
         {
-            var nbs = GetReachableNeighbours();
+            bool wasConnected;
+            var nbs = GetReachableNeighbours(out wasConnected);
             if (nbs == null || nbs.Count <= 0)
                 return false;
 
@@ -577,7 +614,8 @@ namespace RailwayEssentialMdi.Analyze
 
         public bool CanGoFromLeftToTop()
         {
-            var nbs = GetReachableNeighbours();
+            bool wasConnected;
+            var nbs = GetReachableNeighbours(out wasConnected);
             if (nbs == null || nbs.Count <= 0)
                 return false;
 
@@ -595,7 +633,8 @@ namespace RailwayEssentialMdi.Analyze
 
         public bool CanGoFromLeftToRight()
         {
-            var nbs = GetReachableNeighbours();
+            bool wasConnected;
+            var nbs = GetReachableNeighbours(out wasConnected);
             if (nbs == null || nbs.Count <= 0)
                 return false;
 
@@ -613,7 +652,8 @@ namespace RailwayEssentialMdi.Analyze
 
         public bool CanGoFromRightToBottom()
         {
-            var nbs = GetReachableNeighbours();
+            bool wasConnected;
+            var nbs = GetReachableNeighbours(out wasConnected);
             if (nbs == null || nbs.Count <= 0)
                 return false;
 
@@ -631,7 +671,8 @@ namespace RailwayEssentialMdi.Analyze
 
         public bool CanGoFromRightToTop()
         {
-            var nbs = GetReachableNeighbours();
+            bool wasConnected;
+            var nbs = GetReachableNeighbours(out wasConnected);
             if (nbs == null || nbs.Count <= 0)
                 return false;
 
@@ -649,7 +690,8 @@ namespace RailwayEssentialMdi.Analyze
 
         public bool CanGoFromRightToLeft()
         {
-            var nbs = GetReachableNeighbours();
+            bool wasConnected;
+            var nbs = GetReachableNeighbours(out wasConnected);
             if (nbs == null || nbs.Count <= 0)
                 return false;
 
@@ -667,7 +709,8 @@ namespace RailwayEssentialMdi.Analyze
 
         public bool CanGoFromTopToBottom()
         {
-            var nbs = GetReachableNeighbours();
+            bool wasConnected;
+            var nbs = GetReachableNeighbours(out wasConnected);
             if (nbs == null || nbs.Count <= 0)
                 return false;
 
@@ -685,7 +728,8 @@ namespace RailwayEssentialMdi.Analyze
 
         public bool CanGoFromTopToRight()
         {
-            var nbs = GetReachableNeighbours();
+            bool wasConnected;
+            var nbs = GetReachableNeighbours(out wasConnected);
             if (nbs == null || nbs.Count <= 0)
                 return false;
 
@@ -703,7 +747,8 @@ namespace RailwayEssentialMdi.Analyze
 
         public bool CanGoFromTopToLeft()
         {
-            var nbs = GetReachableNeighbours();
+            bool wasConnected;
+            var nbs = GetReachableNeighbours(out wasConnected);
             if (nbs == null || nbs.Count <= 0)
                 return false;
 
@@ -721,7 +766,8 @@ namespace RailwayEssentialMdi.Analyze
 
         public bool CanGoFromBottomToTop()
         {
-            var nbs = GetReachableNeighbours();
+            bool wasConnected;
+            var nbs = GetReachableNeighbours(out wasConnected);
             if (nbs == null || nbs.Count <= 0)
                 return false;
 
@@ -739,7 +785,8 @@ namespace RailwayEssentialMdi.Analyze
 
         public bool CanGoFromBottomToRight()
         {
-            var nbs = GetReachableNeighbours();
+            bool wasConnected;
+            var nbs = GetReachableNeighbours(out wasConnected);
             if (nbs == null || nbs.Count <= 0)
                 return false;
 
@@ -757,7 +804,8 @@ namespace RailwayEssentialMdi.Analyze
 
         public bool CanGoFromBottomToLeft()
         {
-            var nbs = GetReachableNeighbours();
+            bool wasConnected;
+            var nbs = GetReachableNeighbours(out wasConnected);
             if (nbs == null || nbs.Count <= 0)
                 return false;
 
@@ -795,7 +843,7 @@ namespace RailwayEssentialMdi.Analyze
             }
 
             public bool LeftToBottom { get; }
-            public bool LeftToTop {  get; }
+            public bool LeftToTop { get; }
             public bool LeftToRight { get; }
 
             public bool TopToBottom { get; }

@@ -160,7 +160,8 @@ namespace RailwayEssentialMdi.Analyze
             if (from == null)
                 return;
 
-            var neighbours = from.GetReachableNeighbours();
+            bool wasConnected;
+            var neighbours = from.GetReachableNeighbours(out wasConnected);
 
             foreach (var n in neighbours)
             {
@@ -214,7 +215,8 @@ namespace RailwayEssentialMdi.Analyze
             bool isFromRight = item.Info.IsRight(comingFrom.Info);
             bool isFromBottom = item.Info.IsDown(comingFrom.Info);
 
-            var nbs = item.GetReachableNeighbours(comingFrom.Info);
+            bool wasConnected;
+            var nbs = item.GetReachableNeighbours(out wasConnected, comingFrom.Info);
 
             if (nbs.Count == 0)
             {
@@ -282,7 +284,15 @@ namespace RailwayEssentialMdi.Analyze
 
                     _currentWay += $"{nbsItem.Identifier} -> ";
 
-                    Walk(nbsItem, item);
+                    if (wasConnected)
+                    {
+                        var target = item.GetConnectorTarget();
+                        Walk(nbsItem, target ?? item);
+                    }
+                    else
+                    {
+                        Walk(nbsItem, item);
+                    }
                 }
                 else
                 {
