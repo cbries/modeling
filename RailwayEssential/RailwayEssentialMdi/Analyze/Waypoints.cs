@@ -9,7 +9,6 @@ namespace RailwayEssentialMdi.Analyze
 
         public WayPoints()
         {
-
         }
 
         public WayPoints(Map ctx, string path)
@@ -42,6 +41,32 @@ namespace RailwayEssentialMdi.Analyze
             foreach (var e in this)
                 pts.Add(e);
             return pts;
+        }
+
+        public List<WayPoint> ToWaypoints()
+        {
+            lock (this)
+            {
+                List<WayPoint> wps = new List<WayPoint>();
+                foreach (var item in this)
+                {
+                    if (item == null)
+                        continue;
+                    if (item.ThemeId == -1)
+                        continue;
+
+                    WayPoint wp = new WayPoint
+                    {
+                        X = item.Info.X, 
+                        Y = item.Info.Y,
+                        ThemeId = item.ThemeId,
+                        Orientation = item.GetOrientation()
+                    };
+
+                    wps.Add(wp);
+                }
+                return wps;
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RailwayEssentialCore;
+using RailwayEssentialMdi.Analyze;
 
 namespace RailwayEssentialMdi.DataObjects
 {
@@ -23,12 +24,14 @@ namespace RailwayEssentialMdi.DataObjects
         public List<string> Objects { get; set; }
         public ProjectTrack Track { get; set; }
         public List<ProjectTrackView> TrackViews { get; set; }
+        public List<List<WayPoint>> Routes { get; set; }
 
         public ProjectFile()
         {
             Objects = new List<string>();
             Track = new ProjectTrack();
             TrackViews = new List<ProjectTrackView>();
+            Routes = new List<List<WayPoint>>();
         }
 
         public bool Load(string path)
@@ -116,6 +119,32 @@ namespace RailwayEssentialMdi.DataObjects
                     }
                 }
 
+                if (o["routes"] != null)
+                {
+                    JArray ar = o["routes"] as JArray;
+                    if (ar != null)
+                    {
+                        for (int i = 0; i < ar.Count; ++i)
+                        {
+                            var arr = ar[i] as JArray;
+                            if (arr == null)
+                                continue;
+
+                            List<WayPoint> wps = new List<WayPoint>();
+
+                            for (int j = 0; j < arr.Count; ++j)
+                            {
+                                WayPoint w = new WayPoint();
+                                if (w.Parse(arr[j]))
+                                    wps.Add(w);
+                            }
+
+                            if (wps.Count > 0)
+                                Routes.Add(wps);
+                        }
+                    }
+                }
+
                 return true;
             }
             catch (Exception ex)
@@ -135,6 +164,19 @@ namespace RailwayEssentialMdi.DataObjects
             foreach (var e in TrackViews)
                 trackViews.Add(e.ToJson());
 
+            JArray routes = new JArray();
+            foreach (var r in Routes)
+            {
+                if (r == null)
+                    continue;
+
+                JArray routePoints = new JArray();
+                foreach (var w in r)
+                    routePoints.Add(w.ToJson());
+                if (routePoints.Count > 0)
+                    routes.Add(routePoints);
+            }
+
             JObject o = new JObject
             {
                 ["name"] = Name,
@@ -145,7 +187,8 @@ namespace RailwayEssentialMdi.DataObjects
                 ["designerRows"] = DesignerRows,
                 ["track"] = Track.ToJson(),
                 ["trackViews"] = trackViews,
-                ["objects"] = objects
+                ["objects"] = objects,
+                ["routes"] = routes
             };
 
             return o;

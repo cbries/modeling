@@ -11,9 +11,7 @@ namespace RailwayEssentialMdi.Analyze
     {
         private static int _instanceId = 0;
         private readonly int _localId;
-
         private TrackInfo _info;
-
         private readonly Map _ctx;
         private readonly RailwayEssentialModel _model;
 

@@ -833,6 +833,15 @@ namespace RailwayEssentialMdi.ViewModels
             if (res == null)
                 throw new Exception("Analyzation failed");
 
+            foreach (var r in res.Routes)
+            {
+                if (r == null)
+                    continue;
+                var wps = r.ToWaypoints();
+                if (wps != null && wps.Count > 0)
+                    Project.Routes.Add(wps);
+            }
+
             Trace.WriteLine(res);
         }
 
