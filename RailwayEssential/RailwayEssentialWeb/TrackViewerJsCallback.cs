@@ -1,9 +1,11 @@
-﻿using RailwayEssentialCore;
+﻿using System;
+using RailwayEssentialCore;
 
 namespace RailwayEssentialWeb
 {
     public class TrackViewerJsCallback : ITrackViewerJsCallback
     {
+        public event EventHandler CellEdited;
         public event EditModeChangedDelegator EditModeChanged;
         public event CellClickedDelegator CellClicked;
         public event CellSelectedDelegator CellSelected;
@@ -22,7 +24,10 @@ namespace RailwayEssentialWeb
         }
 
         public void cellEdited(int x, int y, int themeId)
-        {            
+        {
+            if(CellEdited != null)
+                CellEdited(this, EventArgs.Empty);
+
             if (TrackEdit != null)
                 TrackEdit.ChangeSymbol(x, y, themeId);
         }

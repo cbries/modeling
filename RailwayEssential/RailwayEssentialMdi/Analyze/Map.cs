@@ -167,6 +167,8 @@ namespace RailwayEssentialMdi.Analyze
             {
                 var nItem = Get(n.X, n.Y);
 
+                _currentWay += $"{from.Identifier}->";
+
                 StartWalk(nItem, from);
             }
 
@@ -180,13 +182,10 @@ namespace RailwayEssentialMdi.Analyze
                     if (branch == null)
                         continue;
 
-                    //_currentWay += $"{branch.Item.Identifier} -> ";
-
                     for (int j = 0; j < branch.Neighbours.Count; ++j)
                     {
                         _currentWay = branch.RecentWay;
                         var nb = branch.Neighbours[j];
-                        //branch.Neighbours.Remove(nb);
                         StartWalk(nb, branch.Item);
                     }
                     branch.Neighbours.Clear();

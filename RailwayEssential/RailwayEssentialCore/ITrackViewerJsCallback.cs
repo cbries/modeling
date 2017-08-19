@@ -1,5 +1,7 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using System;
+
 namespace RailwayEssentialCore
 {
     public delegate void EditModeChangedDelegator(object sender, bool state);
@@ -10,6 +12,7 @@ namespace RailwayEssentialCore
 
     public interface ITrackViewerJsCallback
     {
+        event EventHandler CellEdited;
         event EditModeChangedDelegator EditModeChanged;
         event CellClickedDelegator CellClicked;
         event CellSelectedDelegator CellSelected;

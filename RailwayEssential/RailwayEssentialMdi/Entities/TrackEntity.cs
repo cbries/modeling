@@ -168,6 +168,7 @@ namespace RailwayEssentialMdi.Entities
         {
             if (_trackViewer != null && _trackViewer.JsCallback != null)
             {
+                _trackViewer.JsCallback.CellEdited += JsCallbackOnCellEdited;
                 _trackViewer.JsCallback.CellClicked += JsCallbackOnCellClicked;
                 _trackViewer.JsCallback.CellSelected += JsCallbackOnCellSelected;
                 _trackViewer.JsCallback.EditModeChanged += JsCallbackOnEditModeChanged;

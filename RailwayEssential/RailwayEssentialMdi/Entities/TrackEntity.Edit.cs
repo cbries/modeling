@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using TrackPlanParser;
 
@@ -223,6 +224,8 @@ namespace RailwayEssentialMdi.Entities
 
                 _dispatcher.InitializeWeaving(Track, weaveFilepath);
             }
+
+            prj?.Save();
         }
 
         private TrackInformationCore.IItem GetObject(int x, int y)
@@ -324,7 +327,7 @@ namespace RailwayEssentialMdi.Entities
                     ItemsSwitch.Clear();
                 }, null);
 
-                Trace.WriteLine("Selection reset");
+                //Trace.WriteLine("Selection reset");
 
                 return;
             }
@@ -436,6 +439,12 @@ namespace RailwayEssentialMdi.Entities
             }, null);
         }
 
+        private void JsCallbackOnCellEdited(object o, EventArgs ev)
+        {
+            if(Dispatcher != null && Dispatcher.Model != null)
+                Dispatcher.Model.SetDirty(true);
+        }
+
         private void JsCallbackOnCellClicked(object o, int x, int y)
         {
             var weaverItem = GetWeaverItem(x, y);
@@ -460,51 +469,6 @@ namespace RailwayEssentialMdi.Entities
                         break;
                 }
             }
-
-            //var track = Track;
-            //var trackInfo = track.Get(x, y);
-
-            //if (trackInfo == null)
-            //    return;
-
-            //var weaver = _dispatcher.Weaver;
-            //if (weaver != null)
-            //{
-            //    var ws = weaver.WovenSeam;
-            //    if (ws != null)
-            //    {
-            //        foreach (var seam in ws)
-            //        {
-            //            if (seam == null)
-            //                continue;
-
-            //            if (seam.TrackObjects.ContainsKey(trackInfo))
-            //            {
-            //                var objItem = seam.ObjectItem;
-
-            //                if (objItem != null)
-            //                {
-            //                    switch (objItem.TypeId())
-            //                    {
-            //                        case 5:
-            //                        {
-            //                            var switchItem = objItem as TrackInformation.Switch;
-            //                            if (switchItem != null)
-            //                            {
-            //                                if (switchItem.State == 0)
-            //                                    switchItem.ChangeDirection(1);
-            //                                else
-            //                                    switchItem.ChangeDirection(0);
-            //                            }
-            //                        }
-            //                            break;
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
         }
-
     }
 }

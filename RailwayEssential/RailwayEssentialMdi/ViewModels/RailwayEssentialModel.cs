@@ -374,6 +374,9 @@ namespace RailwayEssentialMdi.ViewModels
             if (_project == null)
                 return;
 
+            if(Windows == null)
+                Windows = new ObservableCollection<IContent>();
+
             RootItems.Add(_itemStatus);
             RootItems.Add(_itemLocomotives);
             RootItems.Add(_itemS88);
@@ -491,6 +494,8 @@ namespace RailwayEssentialMdi.ViewModels
             {
                 var dataProvider = _dispatcher.GetDataProvider();
 
+                IsDirty = true;
+
                 foreach (var e in dataProvider.Objects)
                 {
                     if (e == null)
@@ -597,16 +602,27 @@ namespace RailwayEssentialMdi.ViewModels
             {
                 if (IsDirty)
                 {
-                    Save(null);
+                    System.Windows.Style style = new System.Windows.Style();
+                    style.Setters.Add(new Setter(Xceed.Wpf.Toolkit.MessageBox.YesButtonContentProperty, "Save Project"));
+                    style.Setters.Add(new Setter(Xceed.Wpf.Toolkit.MessageBox.NoButtonContentProperty, "Discard Changes"));
+                    MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show("Project has been modified, save before close?", "Project modified", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.Yes, style);
+                    if(result == MessageBoxResult.Yes || result == MessageBoxResult.OK)
+                        Save(null);
                 }
 
-                lock (Windows)
-                {
-                    Windows.Clear();
-                    Windows = null;
-                    Windows = new ObservableCollection<IContent>();
-                }
+                Windows.Clear();
                 RootItems.Clear();
+
+                if (_itemStatus != null)
+                    _itemStatus.Items.Clear();
+                if(_itemLocomotives!= null)
+                    _itemLocomotives.Items.Clear();
+                if(_itemSwitches != null)
+                    _itemSwitches.Items.Clear();
+                if(_itemS88 != null)
+                     _itemS88.Items.Clear();
+                if (_itemRoutes != null)
+                    _itemRoutes.Items.Clear();
 
                 Project = null;
             }
@@ -636,6 +652,8 @@ namespace RailwayEssentialMdi.ViewModels
             var r3 = _dispatcher?.GetDataProvider().SaveObjects(globalFilepath);
             if (r3.HasValue)
                 Log("Storing failed: " + globalFilepath + "\r\n");
+
+            SetDirty(false);
         }
 
         public void Exit(object p)
@@ -1106,6 +1124,11 @@ namespace RailwayEssentialMdi.ViewModels
         {
             _currentSwitch = switchItem as TrackInformation.Switch;
             // TODO add ShowSwitch();
+        }
+
+        public void SetDirty(bool state)
+        {
+            IsDirty = state;
         }
 
 #endregion
