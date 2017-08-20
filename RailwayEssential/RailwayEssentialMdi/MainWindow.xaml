@@ -83,7 +83,7 @@
                 </MenuItem>
                 -->
                 <MenuItem Header="Help">
-                    <MenuItem Header="About RailwayEssential" />
+                    <MenuItem Header="About RailwayEssential" Command="{Binding AboutCommand}"/>
                 </MenuItem>
             </Menu>
         </Grid>

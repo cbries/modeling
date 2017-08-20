@@ -178,6 +178,8 @@ namespace RailwayEssentialMdi.ViewModels
         public RelayCommand ShowLogCommand { get; }
         public RelayCommand ShowCommandLogCommand { get; }
 
+        public RelayCommand AboutCommand { get; }
+
         public RelayCommand AnalyzeRoutesCommand { get; }
         public RelayCommand AnalyzeCleanCommand { get; }
 
@@ -215,6 +217,7 @@ namespace RailwayEssentialMdi.ViewModels
             CmdStationsPropertiesCommand = new RelayCommand(PropertiesCommandStation);
             ShowLogCommand = new RelayCommand(ShowLog);
             ShowCommandLogCommand = new RelayCommand(ShowCommandLog);
+            AboutCommand = new RelayCommand(ShowAbout);
             AnalyzeRoutesCommand = new RelayCommand(AnalyzeRoutes, CheckAnalyzeRoutes);
             AnalyzeCleanCommand = new RelayCommand(AnalyzeClean, CheckAnalyzeClean);
             AddTrackCommand = new RelayCommand(AddTrack, CheckAddTrack);
@@ -1036,6 +1039,12 @@ namespace RailwayEssentialMdi.ViewModels
             {
                 Windows.Add(item2);
             }
+        }
+
+        public void ShowAbout(object p)
+        {
+            var dlg = new About.About();
+            dlg.ShowDialog();
         }
 
         private bool AskForAnalyzeClean()

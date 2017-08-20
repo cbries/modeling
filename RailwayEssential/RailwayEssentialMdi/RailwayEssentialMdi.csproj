@@ -102,6 +102,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="About\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Analyze\Analyze.cs" />
     <Compile Include="Analyze\AnalyzeHelper.cs" />
     <Compile Include="Analyze\AnalyzeResult.cs" />
@@ -145,6 +148,10 @@
     <Compile Include="Views\TrackView.xaml.cs">
       <DependentUpon>TrackView.xaml</DependentUpon>
     </Compile>
+    <Page Include="About\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LocomotivesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
