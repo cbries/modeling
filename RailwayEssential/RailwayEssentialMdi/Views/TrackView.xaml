@@ -31,7 +31,7 @@
                 <Image Source="/RailwayEssentialMdi;component/Resources/zoomplus.png"/>
             </Button>
 
-            <Button Height="20" Width="20" Margin="15,0,0,0" Command="{Binding EditCommand}" HorizontalAlignment="Left" Padding="0" ToolTip="Toggle edit mode of the track view.">
+            <Button Height="20" Width="20" Margin="15,0,0,0" Command="{Binding EditCommand}" HorizontalAlignment="Left" Padding="0" ToolTip="Toggle edit mode of the track view." Visibility="{Binding Entity.CanEdit, Mode=OneWay, Converter={StaticResource BoolToVis}}">
                 <Image Source="/RailwayEssentialMdi;component/Resources/edit.png"/>
             </Button>
         </DockPanel>

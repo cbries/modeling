@@ -61,8 +61,10 @@
                     <MenuItem Header="Properties" Command="{Binding CmdStationsPropertiesCommand}"/>
                 </MenuItem>
                 <MenuItem Header="Project">
-                    <MenuItem Header="Add Track" Command="{Binding AddTrackCommand}"/>
+                    <MenuItem Header="Add View" Command="{Binding AddTrackCommand}"/>
+                    <!--
                     <MenuItem Header="Remove Track" Command="{Binding RemoveTrackCommand}"/>
+                    -->
                 </MenuItem>
                 <MenuItem Header="Analyze">
                     <MenuItem Header="Routes" Command="{Binding AnalyzeRoutesCommand}"/>
@@ -117,6 +119,7 @@
                         <Setter Property="IsSelected" Value="{Binding Model.Entity.IsSelected, Mode=TwoWay}"/>
                         <Setter Property="IsActive" Value="{Binding Model.Entity.IsActive, Mode=TwoWay}"/>
                         <Setter Property="CloseCommand" Value="{Binding Model.CloseCommand}" />
+                        <Setter Property="CanClose" Value="{Binding Model.Entity.CanClose, Mode=OneWay}" />
                     </Style>
                 </xcad:DockingManager.LayoutItemContainerStyle>
 

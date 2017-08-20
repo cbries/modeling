@@ -140,6 +140,15 @@ namespace RailwayEssentialMdi.ViewModels
             }
         }
 
+        private void UpdateCanClose()
+        {
+            var wnds = GetWindowList<TrackWindow>();
+            if (wnds.Count > 0)
+                wnds[0].Entity.CanClose = false;
+            for (int i = 1; i < wnds.Count; ++i)
+                wnds[i].Entity.CanClose = true;
+        }
+
         private List<string> _recentProjects = new List<string>();
 
         public IList<string> RecentProjects
@@ -496,18 +505,44 @@ namespace RailwayEssentialMdi.ViewModels
 
             _trackEntity.Initialize();
 
+            int numberOfViewsCreated = 0;
+
             foreach (var view in Project.TrackViews)
             {
                 if (view == null)
                     continue;
 
-                if (view.Show)
+                if (numberOfViewsCreated == 0)
                 {
-                    var item = new TrackWindow(_trackEntity, view);
-                    item.Closing += (s, ev) => Windows.Remove(item);
+                    if (view.Show)
+                    {
+                        var item = new TrackWindow(_trackEntity, view);
+                        item.Closing += (s, ev) => Windows.Remove(item);
+                        Windows.Add(item);
+                        ++numberOfViewsCreated;
+                    }
+                }
+                else
+                {
+                    // TODO any additional view must load to end
+                    // TODO before other views are added
+                    // TODO it seems that CEF does only load when
+                    // TODO the window is active and in front
+
+                    var trackEntityClone = _trackEntity.Clone();
+                    var item = new TrackWindow(trackEntityClone, view);
+                    item.Closing += (s, ev) =>
+                    {
+                        var v = item.ProjectTrackView;
+                        if (v != null)
+                            Project.TrackViews.Remove(v);
+                        Windows.Remove(item);
+                    };
                     Windows.Add(item);
+                    ++numberOfViewsCreated;
                 }
             }
+            UpdateCanClose();
 
             _dispatcher.UpdateUi += DispatcherOnUpdateUi;
             _dispatcher.ReadyToPlay += DispatcherOnReadyToPlay;
@@ -529,6 +564,8 @@ namespace RailwayEssentialMdi.ViewModels
 
             //if (MainView != null)
             //    MainView.LoadLayout();
+
+            UpdateCanClose();
         }
 
         public void UpdateBlockRouteItems()
@@ -579,6 +616,17 @@ namespace RailwayEssentialMdi.ViewModels
             }
 
             return default(T);
+        }
+
+        private List<T> GetWindowList<T>() where T : class
+        {
+            var list = new List<T>();
+            foreach (var item in Windows)
+            {
+                if (item is T)
+                    list.Add(item as T);
+            }
+            return list;
         }
 
         private void DispatcherOnReadyToPlay(object sender, EventArgs eventArgs)
@@ -1017,86 +1065,42 @@ namespace RailwayEssentialMdi.ViewModels
 
         public void AddTrack(object p)
         {
-            if (_trackEntity == null)
+            var trackEntityClone = _trackEntity.Clone();
+
+            var currentViews = Project.TrackViews;
+            List<string> currentViewNames = new List<string>();
+            foreach (var vv in currentViews)
+                currentViewNames.Add(vv.Name);
+            string newViewName = null;
+            for (int i = 1; i < 1000; ++i)
             {
-                var trackPath = "TrackPlan{0}.json".GenerateUniqueName(_project.Dirpath);
-                var trackWeavePath = "TrackWeave{0}.json".GenerateUniqueName(_project.Dirpath);
-                try
+                var testname = $"TrackView{i}";
+                if (!currentViewNames.Contains(testname))
                 {
-                    File.WriteAllText(trackPath, @"[]", Encoding.UTF8);
+                    newViewName = testname;
+                    break;
                 }
-                catch
-                {
-                    /* ignore */
-                }
-                try
-                {
-                    File.WriteAllText(trackWeavePath, @"[]", Encoding.UTF8);
-                }
-                catch
-                {
-                    /* ignore */
-                }
-
-                var trackName = Path.GetFileNameWithoutExtension(trackPath);
-                var trackRelativePath = Path.GetFileName(trackPath);
-                var trackWeaveRelativePath = Path.GetFileName(trackWeavePath);
-
-                _trackEntity = new TrackEntity(_dispatcher)
-                {
-                    Theme = _theme,
-                    Ctx = _ctx,
-                    TrackObjectFilepath = trackPath,
-                    Cfg = _cfg
-                };
-
-                _trackEntity.Initialize();
-
-                var view = new ProjectTrackView
-                {
-                    Name = trackName,
-                    Show = true,
-                    StartX = 0,
-                    StartY = 0
-                };
-
-                var item = new TrackWindow(_trackEntity, view);
-                item.Closing += (s, ev) => Windows.Remove(item);
-                lock (Windows)
-                {
-                    Windows.Add(item);
-                }
-
-                Project.Track = new ProjectTrack
-                {
-                    Name = trackName,
-                    Path = trackRelativePath,
-                    Weave = trackWeaveRelativePath
-                };
-
-                Project.TrackViews.Add(view);
             }
-            else
+
+            var view = new ProjectTrackView
             {
-                int n = Project.TrackViews.Count;
+                Name = !string.IsNullOrEmpty(newViewName) ? newViewName : "Unnamed",
+                Show = true,
+                StartX = 0,
+                StartY = 0
+            };
 
-                var view = new ProjectTrackView
-                {
-                    Name = $"TrackView{n + 1}",
-                    Show = true,
-                    StartX = 0,
-                    StartY = 0
-                };
-
-                var item = new TrackWindow(_trackEntity, view);
-                item.Closing += (s, ev) => Windows.Remove(item);
-                lock (Windows)
-                {
-                    Windows.Add(item);
-                }
-
-                Project.TrackViews.Add(view);
-            }
+            var item = new TrackWindow(trackEntityClone, view);
+            item.Closing += (s, ev) =>
+            {
+                var v = item.ProjectTrackView;
+                if (v != null)
+                    Project.TrackViews.Remove(v);
+                Windows.Remove(item);                
+            };
+            lock (Windows) { Windows.Add(item); }
+            Project.TrackViews.Add(view);
+            UpdateCanClose();
         }
 
         public void RemoveTrack(object p)
@@ -1132,8 +1136,8 @@ namespace RailwayEssentialMdi.ViewModels
         {
             if (_project == null)
                 return false;
-            if (_trackEntity != null)
-                return false;
+            //if (_trackEntity != null)
+            //    return false;
             return true;
         }
 

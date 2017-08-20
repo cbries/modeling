@@ -111,6 +111,40 @@ namespace RailwayEssentialMdi.Entities
 
         #endregion
 
+        #region CanClose
+
+        private bool _canClose = false;
+        public bool CanClose
+        {
+            get
+            {
+                return _canClose;
+            }
+            set
+            {
+                if (_canClose != value)
+                {
+                    _canClose = value;
+                    RaisePropertyChanged("CanClose");
+                    RaisePropertyChanged("CanEdit");
+                }
+            }
+        }
+
+        #endregion
+
+        #region CanEdit
+
+        public bool CanEdit
+        {
+            get
+            {
+                return !_canClose;
+            }
+        }
+
+        #endregion
+
         public Theme.Theme Theme
         {
             get => _theme;
@@ -134,6 +168,22 @@ namespace RailwayEssentialMdi.Entities
             _dispatcher = dispatcher;
             ContentId = ToolContentId;
             TrackEditor = Utils.TrackplansEditor.ExpandRailwayEssential();
+        }
+
+        public TrackEntity Clone()
+        {
+            var e = new TrackEntity(_dispatcher)
+            {
+                TrackObjectFilepath = TrackObjectFilepath,
+                Theme = _theme,
+                Ctx = Ctx,
+                ProjectTrack = ProjectTrack,
+                Cfg = Cfg
+            };
+
+            e.Initialize();
+
+            return e;
         }
 
         public bool Initialize()
