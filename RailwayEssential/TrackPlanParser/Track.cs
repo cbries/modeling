@@ -6,6 +6,23 @@ namespace TrackPlanParser
 {
     public class Track : List<TrackInfo>, ITrackEdit
     {
+        private string GenerateItemName(string basename)
+        {
+            var usedNames = new List<string>();
+            for (int i = 0; i < this.Count; ++i)
+            {
+                if(!string.IsNullOrEmpty(this[i].Name))
+                    usedNames.Add(this[i].Name);
+            }
+            for (int i = 1; i < 9999; ++i)
+            {
+                string testname = $"{basename}#{i}";
+                if (!usedNames.Contains(testname))
+                    return testname;
+            }
+            return null;
+        }
+
         public void Remove(int x, int y)
         {
             var item = Get(x, y);
@@ -34,8 +51,11 @@ namespace TrackPlanParser
                     return;
                 }
 
-                Add(new TrackInfo()
+                string basename = Globals.GetThemeTypeName(themeId);
+
+                Add(new TrackInfo
                 {
+                    Name = GenerateItemName(basename),
                     Description = "",
                     ThemeId = themeId,
                     Orientation = "rot0",

@@ -106,19 +106,13 @@ namespace RailwayEssentialMdi.Analyze
             }
         }
 
-        private static readonly List<int> TrackIds = new List<int> { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 };
-        private static readonly List<int> SwitchIds = new List<int> { 50, 51, 52, 53, 54, 55, 56, 57, 58, 59 };
-        private static readonly List<int> SignalIds = new List<int> { 100, 101, 102, 103, 104, 105, 106, 107, 108, 109 };
-        private static readonly List<int> BlockIds = new List<int> { 150, 151, 152 };
-        private static readonly List<int> SensorIds = new List<int> { 200, 201, 202 };
-
-        public bool IsTrack => TrackIds.Contains(ThemeId);
-        public bool IsSwitch => SwitchIds.Contains(ThemeId);
-        public bool IsSignal => SignalIds.Contains(ThemeId);
-        public bool IsBlock => BlockIds.Contains(ThemeId);
-        public bool IsSensor => SensorIds.Contains(ThemeId);
-        public bool IsDirection => ThemeId == 14;
-        public bool IsConnector => ThemeId == 17 || ThemeId == 18 || ThemeId == 19;
+        public bool IsTrack => RailwayEssentialCore.Globals.TrackIds.Contains(ThemeId);
+        public bool IsSwitch => RailwayEssentialCore.Globals.SwitchIds.Contains(ThemeId);
+        public bool IsSignal => RailwayEssentialCore.Globals.SignalIds.Contains(ThemeId);
+        public bool IsBlock => RailwayEssentialCore.Globals.BlockIds.Contains(ThemeId);
+        public bool IsSensor => RailwayEssentialCore.Globals.SensorIds.Contains(ThemeId);
+        public bool IsDirection => RailwayEssentialCore.Globals.DirectionIds.Contains(ThemeId);
+        public bool IsConnector => RailwayEssentialCore.Globals.ConnectorIds.Contains(ThemeId);
 
         public int ConnectorId
         {
