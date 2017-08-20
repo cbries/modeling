@@ -140,8 +140,21 @@ namespace RailwayEssentialMdi.ViewModels
             }
         }
 
+        private List<string> _recentProjects = new List<string>();
+
+        public IList<string> RecentProjects
+        {
+            get => _recentProjects;
+            set
+            {
+                _recentProjects = (List<string>) value;
+                RaisePropertyChanged("RecentProjects");
+            }
+        }
+
         public RelayCommand NewProjectCommand { get; }
         public RelayCommand OpenCommand { get; }
+        public RelayCommand OpenRecentCommand { get; }
         public RelayCommand CloseCommand { get; }
         public RelayCommand SaveCommand { get; }
         public RelayCommand ExitCommand { get; }
@@ -171,12 +184,16 @@ namespace RailwayEssentialMdi.ViewModels
         {
             Windows = new ObservableCollection<IContent>();
 
+            Registry.Registry registry = new Registry.Registry();
+            RecentProjects = registry.RecentProjects;
+            
             _ctx = SynchronizationContext.Current;
 
             _cfg = new Configuration();
 
             NewProjectCommand = new RelayCommand(NewProject, CheckNewProject);
             OpenCommand = new RelayCommand(Open, CheckOpen);
+            OpenRecentCommand = new RelayCommand(OpenRecent, CheckOpenRecent);
             CloseCommand = new RelayCommand(Close, CheckClose);
             SaveCommand = new RelayCommand(Save, CheckSave);
             ExitCommand = new RelayCommand(Exit, CheckExit);
@@ -370,10 +387,79 @@ namespace RailwayEssentialMdi.ViewModels
             AfterOpen();
         }
 
+        public void OpenRecent(object p)
+        {
+            string pp = p as string;
+            if (string.IsNullOrEmpty(pp) || !Directory.Exists(pp))
+            {
+                LogError($"Project vanished: {0}");
+                return;
+            }
+
+            string name = Path.GetFileName(pp);
+            string path = Path.Combine(pp, name + ".railwayprj");
+            if (!File.Exists(path))
+            {
+                LogError($"Project file is missing: {path}");
+                return;
+            }
+
+            try
+            {
+                if (Project != null)
+                {
+                    if (CloseCommand.CanExecute(null))
+                        CloseCommand.Execute(null);
+                }
+
+                var prj = new ProjectFile();
+                if (!prj.Load(path))
+                    Log("Project load failed: " + prj.Filepath + "\r\n");
+                else
+                {
+                    Project = prj;
+                    Log("Project opened: " + prj.Name + "\r\n");
+                }
+            }
+            catch(Exception ex)
+            {
+                LogError($"Open failed: {ex.Message}");
+                return;
+            }
+
+            AfterOpen();
+        }
+
         private void AfterOpen()
         {
             if (_project == null)
                 return;
+
+            string p4recent = _project.Filepath;
+            if (!string.IsNullOrEmpty(p4recent))
+            {
+                var p = Path.GetDirectoryName(p4recent);
+                if (Directory.Exists(p))
+                {
+                    Registry.Registry registry = new Registry.Registry();
+                    var recentProjects = registry.RecentProjects;
+                    if (recentProjects.Count > 0)
+                    {
+                        if (!recentProjects[0].Equals(p, StringComparison.OrdinalIgnoreCase))
+                        {
+                            recentProjects.Insert(0, p);
+                        }
+                    }
+                    else
+                    {
+                        recentProjects.Insert(0, p);
+                    }
+
+                    registry.SetRecent(recentProjects);
+
+                    RecentProjects = recentProjects;
+                }
+            }
 
             if(Windows == null)
                 Windows = new ObservableCollection<IContent>();
@@ -1138,6 +1224,13 @@ namespace RailwayEssentialMdi.ViewModels
             if (_project == null)
                 return true;
 
+            return false;
+        }
+
+        public bool CheckOpenRecent(object p)
+        {
+            if (_project == null)
+                return true;
             return false;
         }
 

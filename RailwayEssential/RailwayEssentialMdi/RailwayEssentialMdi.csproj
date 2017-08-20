@@ -125,6 +125,7 @@
     <Compile Include="Interfaces\ILocomotiveView.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
     <Compile Include="Items\BlockRouteItem.cs" />
+    <Compile Include="Registry\Registry.cs" />
     <Compile Include="Styles\PanesStyleSelector.cs" />
     <Compile Include="ViewModels\BaseWindow.cs" />
     <Compile Include="ViewModels\LocomotivesWindow.cs" />
@@ -198,7 +199,7 @@
     </None>
     <None Include="Resources\Theme\SpDrS60.json" />
     <None Include="Resources\Theme\SpDrS60used.json" />
-    <None Include="Testprojekte\Schattenbahnhof1\Schattenbahnhof.railwayprj">
+    <None Include="Testprojekte\Schattenbahnhof1\Schattenbahnhof1.railwayprj">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Testprojekte\Schattenbahnhof1\TrackObjects.json">

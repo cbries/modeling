@@ -29,9 +29,19 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Grid.Column="0">
-            <Menu Grid.Row="0" Name="Menu">
+            <Menu Grid.Row="0" Name="Menu" IsMainMenu="True">
                 <MenuItem Header="File">
-                    <MenuItem Header="New project..." Command="{Binding NewProjectCommand}"/>
+                    <MenuItem Header="New Project..." Command="{Binding NewProjectCommand}"/>
+                    <Separator/>
+                    <MenuItem Header="Recent Projects" ItemsSource="{Binding RecentProjects}" Command="{Binding OpenRecentCommand}">
+                        <ItemsControl.ItemContainerStyle>
+                            <Style TargetType="MenuItem">
+                                <Setter Property="Header" Value="{Binding}"/>
+                                <Setter Property="Command" Value="{Binding ElementName=Menu, Path=DataContext.OpenRecentCommand}"/>
+                                <Setter Property="CommandParameter" Value="{Binding}"/>
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+                    </MenuItem>
                     <Separator/>
                     <MenuItem Header="Open" Command="{Binding OpenCommand}"/>
                     <MenuItem Header="Close" Command="{Binding CloseCommand}"/>
