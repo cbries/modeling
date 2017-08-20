@@ -87,7 +87,7 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="42"/>
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Column="0" Grid.Row="0">
@@ -189,7 +189,7 @@
                     </TabControl>
                 </StackPanel>
 
-                <Button Content="Save" Grid.Row="1" Grid.ColumnSpan="2" Width="100" HorizontalAlignment="Left" Margin="5" Command="{Binding SaveCommand}"/>
+                <Button Content="Apply" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Width="75" Height="32" HorizontalAlignment="Left" Margin="5" Command="{Binding SaveCommand}"/>
 
             </Grid>
         </Grid>
