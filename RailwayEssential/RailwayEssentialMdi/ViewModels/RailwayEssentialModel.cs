@@ -599,9 +599,19 @@ namespace RailwayEssentialMdi.ViewModels
                 var firstCoord = $"{firstItem.X},{firstItem.Y}";
                 var lastCoord = $"{lastItem.X},{lastItem.Y}";
 
+                var t0 = TrackEntity.Track.Get(firstItem.X, firstItem.Y);
+                var t1 = TrackEntity.Track.Get(lastItem.X, lastItem.Y);
+
+                string firstName = firstCoord;
+                if (t0 != null && !string.IsNullOrEmpty(t0.Name))
+                    firstName = t0.Name;
+                string lastName = lastCoord;
+                if (t1 != null && !string.IsNullOrEmpty(t1.Name))
+                    lastName = t1.Name;
+
                 var item = new Items.BlockRouteItem
                 {
-                    Title = $"#{i + 1}: {firstCoord} -> {lastCoord}",
+                    Title = $"#{i + 1}: {firstName} -> {lastName}",
                     WayPoints = route
                 };
 

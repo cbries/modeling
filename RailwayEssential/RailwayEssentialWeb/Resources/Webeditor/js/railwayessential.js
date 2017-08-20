@@ -449,9 +449,18 @@ $(document).ready(function (e) {
                         return;
 
                     var themeId = objDrag.data("railway-themeid");
-
                     if (themeId === null || typeof themeId == 'undefined')
                         themeId = objDrag.parent().data("railway-themeid");
+
+                    var rotClass = "";
+                    if (objDrag.parent().hasClass("rot0"))
+                        rotClass = "rot0";
+                    if (objDrag.parent().hasClass("rot90"))
+                        rotClass = "rot90";
+                    if (objDrag.parent().hasClass("rot180"))
+                        rotClass = "rot180";
+                    if (objDrag.parent().hasClass("rot-90"))
+                        rotClass = "rot-90";
 
                     objDrag.remove();
                     objDrag = null;
@@ -467,6 +476,7 @@ $(document).ready(function (e) {
 
                     var newChild = c.append(img);
                     newChild.addClass("overflow");
+                    newChild.addClass(rotClass);
                     newChild.attr("border", 0);
                     newChild.data("railway-themeid", themeId);
 
