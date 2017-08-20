@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
 using RailwayEssentialMdi.ViewModels;
 
 namespace RailwayEssentialMdi.Analyze
@@ -174,20 +176,20 @@ namespace RailwayEssentialMdi.Analyze
             // check for branches
             if (_branches.Count > 0)
             {
-                int max = _branches.Count;
-                for (int i = 0; i < max; ++i)
-                {
-                    var branch = _branches.Pop();
-                    if (branch == null)
-                        continue;
-
+                BranchInfo branch = null;
+                while((branch=_branches.Pop()) != null)
+                { 
                     for (int j = 0; j < branch.Neighbours.Count; ++j)
                     {
                         _currentWay = branch.RecentWay;
                         var nb = branch.Neighbours[j];
                         StartWalk(nb, branch.Item);
                     }
+
                     branch.Neighbours.Clear();
+
+                    if (_branches.Count == 0)
+                        break;
                 }
             }
         }
@@ -227,7 +229,7 @@ namespace RailwayEssentialMdi.Analyze
                     var it = nbs[0];
                     var nbsItem = Get(it.X, it.Y);
 
-                    if (item.IsDirection)
+                    if (item.IsDirection || item.IsSwitch)
                     {
                         bool stopWalk = false;
 
@@ -279,7 +281,7 @@ namespace RailwayEssentialMdi.Analyze
                             return;
                         }
                     }
-
+                   
                     _currentWay += $"{nbsItem.Identifier} -> ";
 
                     if (wasConnected)

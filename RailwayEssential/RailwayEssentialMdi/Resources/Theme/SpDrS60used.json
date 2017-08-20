@@ -181,7 +181,7 @@
           "route": "turnoutleft-route"
         },
         "clickable": false,
-        "routes": [ "AC,CA,CD,DC", "BD,DB,DA,AD", "AC,CA,AB,BA", "BD,DB,BC,CD" ] 
+        "routes": [ "AC,CA,CD,DC", "BD,DB,DA,AD", "AC,CA,AB,BA", "BD,DB,BC,CB" ] 
       },
       {
         "id": 51,
@@ -590,7 +590,7 @@
           "route": "curve-sensor-off-route"
         },
         "clickable": false,
-        "routes": [ "AD", "AB", "BC", "CD" ]
+        "routes": [ "AD,DA", "AB,BA", "BC,CD", "CD,DC" ]
       },
       {
         "id": 202,

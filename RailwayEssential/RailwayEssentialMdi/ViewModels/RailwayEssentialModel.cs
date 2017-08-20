@@ -914,11 +914,14 @@ namespace RailwayEssentialMdi.ViewModels
             if (res == null)
                 throw new Exception("Analyzation failed");
 
-            foreach (var r in res.Routes)
+            if (res.Routes != null)
             {
-                var wps = r?.ToWaypoints();
-                if (wps != null && wps.Count > 0)
-                    Project.BlockRoutes.Add(wps);
+                foreach (var r in res.Routes)
+                {
+                    var wps = r?.ToWaypoints();
+                    if (wps != null && wps.Count > 0 && Project != null)
+                        Project.BlockRoutes?.Add(wps);
+                }
             }
 
             UpdateBlockRouteItems();
