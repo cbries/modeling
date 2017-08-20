@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using RailwayEssentialCore;
 using TrackPlanParser;
 
 namespace RailwayEssentialMdi.Entities
@@ -17,6 +18,7 @@ namespace RailwayEssentialMdi.Entities
         private const int TabIndexS88 = 1;
         private const int TabIndexSwitch = 2;
         private const int TabIndexConnector = 3;
+        private const int TabIndexBlock = 4;
 
         private TrackInfo _trackInfoSelection;
         private S88 _itemS88Selection;
@@ -24,6 +26,7 @@ namespace RailwayEssentialMdi.Entities
         private int _itemsS88SelectionPin;
         private bool _connectorVisible;
         private int _connectorIdentifier;
+        private int _blockGroupIdentifier;
 
         public TrackInfo TrackInfoSelection
         {
@@ -60,8 +63,7 @@ namespace RailwayEssentialMdi.Entities
                 RaisePropertyChanged("TrackInfoSelectionDescription");
             }
         }
-
-
+        
         public S88 ItemsS88Selection
         {
             get => _itemS88Selection;
@@ -89,6 +91,22 @@ namespace RailwayEssentialMdi.Entities
             {
                 _itemsS88SelectionPin = value;
                 RaisePropertyChanged("ItemsS88SelectionPin");
+            }
+        }
+
+        public int BlockGroupIdentifier
+        {
+            get => _blockGroupIdentifier;
+            set
+            {
+                _blockGroupIdentifier = value;
+
+                if (_trackInfoSelection != null)
+                {
+                    _trackInfoSelection.SetOption("blockGroupIdentifier", $"{value}");
+                }
+
+                RaisePropertyChanged("BlockGroupIdentifier");
             }
         }
 
@@ -428,34 +446,60 @@ namespace RailwayEssentialMdi.Entities
                             var themeId = TrackInfoSelection.ThemeId;
                             if (themeId > 0)
                             {
-                                List<int> connectorIds = new List<int> {17, 18, 19};
 
-                                if (connectorIds.Contains(themeId))
+                                var type = Globals.GetThemeType(themeId);
+
+                                switch (type)
                                 {
-                                    // show Connector's configuration tab    
-
-                                    SelectionTabIndex = TabIndexConnector;
-                                    ConnectorVisible = true;
-
-                                    var opt = TrackInfoSelection.GetOption("connectorIdentifier");
-
-                                    if (!string.IsNullOrEmpty(opt))
+                                    case Globals.ThemeIdType.Connector:
                                     {
-                                        int v;
-                                        if (int.TryParse(opt, out v))
-                                            ConnectorIdentifier = v;
+                                        // show Connector's configuration tab    
+
+                                        SelectionTabIndex = TabIndexConnector;
+                                        ConnectorVisible = true;
+
+                                        var opt = TrackInfoSelection.GetOption("connectorIdentifier");
+
+                                        if (!string.IsNullOrEmpty(opt))
+                                        {
+                                            int v;
+                                            if (int.TryParse(opt, out v))
+                                                ConnectorIdentifier = v;
+                                            else
+                                                ConnectorIdentifier = 1;
+                                        }
                                         else
-                                            ConnectorIdentifier = 1;
+                                        {
+                                            ConnectorIdentifier = -1;
+                                        }
                                     }
-                                    else
+                                        break;
+
+                                    case Globals.ThemeIdType.Block:
                                     {
-                                        ConnectorIdentifier = 1;
-                                    }
-                                }
-                                else
-                                {
-                                    ConnectorVisible = false;
-                                    SelectionTabIndex = 0;
+                                        SelectionTabIndex = TabIndexBlock;
+
+                                        var opt = TrackInfoSelection.GetOption("blockGroupIdentifier");
+
+                                        if (!string.IsNullOrEmpty(opt))
+                                        {
+                                            int v;
+                                            if (int.TryParse(opt, out v))
+                                                BlockGroupIdentifier = v;
+                                            else
+                                                BlockGroupIdentifier = 1;
+                                        }
+                                        else
+                                        {
+                                            BlockGroupIdentifier = -1;
+                                        }
+                                        }
+                                    break;
+
+                                    default:
+                                        ConnectorVisible = false;
+                                        SelectionTabIndex = 0;
+                                        break;
                                 }
                             }
                         }

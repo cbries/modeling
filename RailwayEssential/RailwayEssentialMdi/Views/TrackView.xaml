@@ -79,88 +79,106 @@
         </Grid>
 
         <Grid Grid.Row="2" Visibility="{Binding Entity.ShowObjectEdit, Converter={StaticResource BoolToVis}, Mode=OneWay}">
-            <StackPanel>
-                <TabControl MinHeight="175" MaxHeight="175" SelectedIndex="{Binding Entity.SelectionTabIndex, Mode=TwoWay}">
 
-                    <TabItem Header="General">
-                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
-                            <StackPanel>
-                                <DockPanel Margin="0,5,0,0">
-                                    <TextBlock Text="Name:" FontWeight="Bold" VerticalAlignment="Center" Width="100"/>
-                                    <TextBox Text="{Binding Entity.TrackInfoSelectionName, Mode=TwoWay}" VerticalAlignment="Center"/>
-                                </DockPanel>
-                                
-                                <DockPanel Margin="0,5,0,0">
-                                    <TextBlock Text="Description:" FontWeight="Bold" VerticalAlignment="Top" Margin="0,2,0,0" Width="100"/>
-                                    <TextBox Text="{Binding Entity.TrackInfoSelectionDescription, Mode=TwoWay}" VerticalAlignment="Center" Height="75"/>
-                                </DockPanel>
-                            </StackPanel>
-                        </ScrollViewer>
-                    </TabItem>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
 
-                    <TabItem Header="S88">
-                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
-                            <StackPanel>
-                                <DockPanel Margin="0,5,0,0" Visibility="{Binding Entity.SelectionXYvisible, Mode=OneWay, Converter={StaticResource BoolToVis}}">
-                                    <TextBlock Text="X:" FontWeight="Bold" VerticalAlignment="Center"/>
-                                    <TextBlock Text="{Binding Entity.SelectionX, Mode=OneWay}" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Y:" FontWeight="Bold" Margin="5,0,0,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="{Binding Entity.SelectionY, Mode=OneWay}" VerticalAlignment="Center"/>
-
-                                    <ComboBox Margin="10,0,0,0" ItemsSource="{Binding Entity.ItemsS88}" SelectedItem="{Binding Entity.ItemsS88Selection, Mode=TwoWay}" VerticalAlignment="Center" Width="200" HorizontalAlignment="Left" />
-                                </DockPanel>
-                                <DockPanel Margin="0,5,0,0">
-                                    <TextBlock Text="Pin: " FontWeight="Bold"/>
-
-                                    <xctk:IntegerUpDown Name="NumberOfColumns" Height="22" Width="75" HorizontalAlignment="Left" Margin="5,0,0,0"
-                                                        Value="{Binding Entity.ItemsS88SelectionPin, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                                                        Maximum="{Binding Entity.ItemsS88Selection.Ports}" Minimum="1" 
-                                                        FormatString="N0" AllowSpin="True"/>
-                                </DockPanel>
-                            </StackPanel>
-                        </ScrollViewer>
-                    </TabItem>
+                <StackPanel Grid.Column="0" Grid.Row="0">
+                    <TextBlock Text="Coord" FontWeight="Bold"/>
+                    <DockPanel>
+                        <TextBlock Text="X:" FontWeight="Bold" Margin="5,0,0,0" VerticalAlignment="Center" Width="25"/>
+                        <TextBlock Text="{Binding Entity.SelectionX, Mode=OneWay}" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Text="Y:" FontWeight="Bold" Margin="5,0,0,0" VerticalAlignment="Center" Width="25"/>
+                        <TextBlock Text="{Binding Entity.SelectionY, Mode=OneWay}" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                    </DockPanel>
+                </StackPanel>
                 
-                    <TabItem Header="Switch">
-                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
-                            <StackPanel>
-                                <DockPanel Margin="0,5,0,0" Visibility="{Binding Entity.SelectionXYvisible, Mode=OneWay, Converter={StaticResource BoolToVis}}">
-                                    <TextBlock Text="X:" FontWeight="Bold" VerticalAlignment="Center"/>
-                                    <TextBlock Text="{Binding Entity.SelectionX, Mode=OneWay}" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Y:" FontWeight="Bold" Margin="5,0,0,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="{Binding Entity.SelectionY, Mode=OneWay}" VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch">
+                    <TabControl MinHeight="175" MaxHeight="175" SelectedIndex="{Binding Entity.SelectionTabIndex, Mode=TwoWay}">
 
-                                    <ComboBox Margin="10,0,0,0" ItemsSource="{Binding Entity.ItemsSwitch}" SelectedItem="{Binding Entity.ItemsSwitchSelection, Mode=TwoWay}" VerticalAlignment="Center" Width="200" HorizontalAlignment="Left"/>
-                                </DockPanel>
-                            </StackPanel>
-                        </ScrollViewer>
-                    </TabItem>
+                        <TabItem Header="General">
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                                <StackPanel>
+                                    <DockPanel Margin="0,5,0,0">
+                                        <TextBlock Text="Name:" FontWeight="Bold" VerticalAlignment="Center" Width="100"/>
+                                        <TextBox Text="{Binding Entity.TrackInfoSelectionName, Mode=TwoWay}" VerticalAlignment="Center"/>
+                                    </DockPanel>
 
-                    <TabItem Header="Connector" Visibility="{Binding Entity.ConnectorVisible, Mode=OneWay, Converter={StaticResource BoolToVis}}">
-                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
-                            <StackPanel>
-                                <DockPanel Margin="0,5,0,0" Visibility="{Binding Entity.SelectionXYvisible, Mode=OneWay, Converter={StaticResource BoolToVis}}">
-                                    <TextBlock Text="X:" FontWeight="Bold" VerticalAlignment="Center"/>
-                                    <TextBlock Text="{Binding Entity.SelectionX, Mode=OneWay}" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Y:" FontWeight="Bold" Margin="5,0,0,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="{Binding Entity.SelectionY, Mode=OneWay}" VerticalAlignment="Center"/>
-<!--
-                                    <ComboBox Margin="10,0,0,0" ItemsSource="{Binding Entity.ItemsSwitch}" SelectedItem="{Binding Entity.ItemsSwitchSelection, Mode=TwoWay}" VerticalAlignment="Center" Width="200" HorizontalAlignment="Left"/>
--->
-                                </DockPanel>
-                                <DockPanel Margin="0,5,0,0">
-                                    <TextBlock Text="Connector Identifier: " FontWeight="Bold"/>
+                                    <DockPanel Margin="0,5,0,0">
+                                        <TextBlock Text="Description:" FontWeight="Bold" VerticalAlignment="Top" Margin="0,2,0,0" Width="100"/>
+                                        <TextBox Text="{Binding Entity.TrackInfoSelectionDescription, Mode=TwoWay}" VerticalAlignment="Center" Height="75"/>
+                                    </DockPanel>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
 
-                                    <xctk:IntegerUpDown Name="ConnectorIdentifier" Height="22" Width="75" HorizontalAlignment="Left" Margin="5,0,0,0"
-                                                        Value="{Binding Entity.ConnectorIdentifier, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                                                        Maximum="1000" Minimum="1" 
-                                                        FormatString="N0" AllowSpin="True"/>
-                                </DockPanel>
-                            </StackPanel>
-                        </ScrollViewer>
-                    </TabItem>
+                        <TabItem Header="S88">
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                                <StackPanel>
+                                    <DockPanel Margin="0,5,0,0" Visibility="{Binding Entity.SelectionXYvisible, Mode=OneWay, Converter={StaticResource BoolToVis}}">
+                                        <ComboBox Margin="0,0,0,0" ItemsSource="{Binding Entity.ItemsS88}" SelectedItem="{Binding Entity.ItemsS88Selection, Mode=TwoWay}" VerticalAlignment="Center" Width="200" HorizontalAlignment="Left" />
+                                    </DockPanel>
+                                    <DockPanel Margin="0,5,0,0">
+                                        <TextBlock Text="Pin: " FontWeight="Bold"/>
 
-                    <!--
+                                        <xctk:IntegerUpDown Name="NumberOfColumns" Height="22" Width="75" HorizontalAlignment="Left" Margin="5,0,0,0"
+                                                            Value="{Binding Entity.ItemsS88SelectionPin, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                                            Maximum="{Binding Entity.ItemsS88Selection.Ports}" Minimum="1" 
+                                                            FormatString="N0" AllowSpin="True"/>
+                                    </DockPanel>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+
+                        <TabItem Header="Switch">
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                                <StackPanel>
+                                    <DockPanel Margin="0,5,0,0" Visibility="{Binding Entity.SelectionXYvisible, Mode=OneWay, Converter={StaticResource BoolToVis}}">
+                                        <ComboBox Margin="0,0,0,0" ItemsSource="{Binding Entity.ItemsSwitch}" SelectedItem="{Binding Entity.ItemsSwitchSelection, Mode=TwoWay}" VerticalAlignment="Center" Width="200" HorizontalAlignment="Left"/>
+                                    </DockPanel>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+
+                        <TabItem Header="Connector" Visibility="{Binding Entity.ConnectorVisible, Mode=OneWay, Converter={StaticResource BoolToVis}}">
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                                <StackPanel>
+                                    <DockPanel Margin="0,5,0,0">
+                                        <TextBlock Text="Connector Identifier: " FontWeight="Bold"/>
+
+                                        <xctk:IntegerUpDown Name="ConnectorIdentifier" Height="22" Width="75" HorizontalAlignment="Left" Margin="5,0,0,0"
+                                                            Value="{Binding Entity.ConnectorIdentifier, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                                            Maximum="1000" Minimum="1" 
+                                                            FormatString="N0" AllowSpin="True"/>
+                                    </DockPanel>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+
+                        <TabItem Header="Blocks">
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                                <StackPanel>
+                                    <DockPanel Margin="0,5,0,0">
+                                        <TextBlock Text="Group Identifier: " FontWeight="Bold"/>
+                                        <xctk:IntegerUpDown Name="BlockGroupIdentifier" Height="22" Width="75" HorizontalAlignment="Left" Margin="5,0,0,0"
+                                                            Value="{Binding Entity.BlockGroupIdentifier, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                                            Maximum="1000" Minimum="-1" 
+                                                            FormatString="N0" AllowSpin="True"/>
+                                    </DockPanel>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </TabItem>
+
+                        <!--
                     <TabItem Header="Accessory">
                         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
                             <StackPanel>
@@ -168,10 +186,12 @@
                         </ScrollViewer>
                     </TabItem>
                     -->
-                </TabControl>
+                    </TabControl>
+                </StackPanel>
 
-                <Button Content="Save" Width="100" HorizontalAlignment="Left" Margin="5" Command="{Binding SaveCommand}"/>
-            </StackPanel>
+                <Button Content="Save" Grid.Row="1" Grid.ColumnSpan="2" Width="100" HorizontalAlignment="Left" Margin="5" Command="{Binding SaveCommand}"/>
+
+            </Grid>
         </Grid>
         
     </Grid>
