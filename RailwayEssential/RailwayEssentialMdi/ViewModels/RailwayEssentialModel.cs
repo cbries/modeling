@@ -179,6 +179,7 @@ namespace RailwayEssentialMdi.ViewModels
         public RelayCommand ShowCommandLogCommand { get; }
 
         public RelayCommand AnalyzeRoutesCommand { get; }
+        public RelayCommand AnalyzeCleanCommand { get; }
 
         public RelayCommand AddTrackCommand { get; }
         public RelayCommand RemoveTrackCommand { get; }
@@ -215,6 +216,7 @@ namespace RailwayEssentialMdi.ViewModels
             ShowLogCommand = new RelayCommand(ShowLog);
             ShowCommandLogCommand = new RelayCommand(ShowCommandLog);
             AnalyzeRoutesCommand = new RelayCommand(AnalyzeRoutes, CheckAnalyzeRoutes);
+            AnalyzeCleanCommand = new RelayCommand(AnalyzeClean, CheckAnalyzeClean);
             AddTrackCommand = new RelayCommand(AddTrack, CheckAddTrack);
             RemoveTrackCommand = new RelayCommand(RemoveTrack, CheckRemoveTrack);
 
@@ -1026,19 +1028,27 @@ namespace RailwayEssentialMdi.ViewModels
             }
         }
 
+        private bool AskForAnalyzeClean()
+        {
+            if (Project.BlockRoutes.Count > 0)
+            {
+                System.Windows.Style style = new System.Windows.Style();
+                style.Setters.Add(new Setter(Xceed.Wpf.Toolkit.MessageBox.YesButtonContentProperty, "Reset BlockRoutes"));
+                style.Setters.Add(new Setter(Xceed.Wpf.Toolkit.MessageBox.NoButtonContentProperty, "Cancel"));
+                MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show("BlockRoutes exist, the following analysis will reset them.", "BlockRoutes exist", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.Yes, style);
+                if (result == MessageBoxResult.No || result == MessageBoxResult.Cancel)
+                    return false;
+            }
+            
+            return true;
+        }
+
         public void AnalyzeRoutes(object p)
         {
             if (Project != null && Project.BlockRoutes != null)
             {
-                if (Project.BlockRoutes.Count > 0)
-                {
-                    System.Windows.Style style = new System.Windows.Style();
-                    style.Setters.Add(new Setter(Xceed.Wpf.Toolkit.MessageBox.YesButtonContentProperty, "Reset BlockRoutes"));
-                    style.Setters.Add(new Setter(Xceed.Wpf.Toolkit.MessageBox.NoButtonContentProperty, "Cancel"));
-                    MessageBoxResult result = Xceed.Wpf.Toolkit.MessageBox.Show("BlockRoutes exist, the following analysis will reset them.", "BlockRoutes exist", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.Yes, style);
-                    if (result == MessageBoxResult.No || result == MessageBoxResult.Cancel)
-                        return;
-                }
+                if (!AskForAnalyzeClean())
+                    return;
 
                 Project.BlockRoutes.Clear();
             }
@@ -1063,6 +1073,19 @@ namespace RailwayEssentialMdi.ViewModels
             Log(res.ToString());
         }
 
+        public void AnalyzeClean(object p)
+        {
+            if (Project != null && Project.BlockRoutes != null)
+            {
+                if(!AskForAnalyzeClean())
+                    return;
+
+                Project.BlockRoutes.Clear();
+                UpdateBlockRouteItems();
+                Project.Save();
+                SetDirty(false);
+            }
+        }
         public void AddTrack(object p)
         {
             var trackEntityClone = _trackEntity.Clone();
@@ -1111,6 +1134,17 @@ namespace RailwayEssentialMdi.ViewModels
 #region can execute checks
 
         public bool CheckAnalyzeRoutes(object p)
+        {
+            if (_dispatcher == null)
+                return false;
+
+            if (Project == null)
+                return false;
+
+            return true;
+        }
+
+        public bool CheckAnalyzeClean(object o)
         {
             if (_dispatcher == null)
                 return false;

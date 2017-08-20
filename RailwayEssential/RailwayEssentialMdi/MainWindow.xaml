@@ -47,6 +47,11 @@
                     <MenuItem Header="Close" Command="{Binding CloseCommand}"/>
                     <MenuItem Header="Save" Command="{Binding SaveCommand}"/>
                     <Separator/>
+                    <MenuItem Header="Analyze">
+                        <MenuItem Header="Routes" Command="{Binding AnalyzeRoutesCommand}"/>
+                        <MenuItem Header="Clean" Command="{Binding AnalyzeCleanCommand}"/>
+                    </MenuItem>
+                    <Separator/>
                     <MenuItem Header="Exit" Command="{Binding ExitCommand}"/>
                 </MenuItem>
                 <MenuItem Header="Command Station">
@@ -66,9 +71,7 @@
                     <MenuItem Header="Remove Track" Command="{Binding RemoveTrackCommand}"/>
                     -->
                 </MenuItem>
-                <MenuItem Header="Analyze">
-                    <MenuItem Header="Routes" Command="{Binding AnalyzeRoutesCommand}"/>
-                </MenuItem>
+                
                 <MenuItem Header="View">
                     <MenuItem Header="General Log" Command="{Binding ShowLogCommand}"/>
                     <MenuItem Header="Command Log" Command="{Binding ShowCommandLogCommand}"/>
