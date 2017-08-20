@@ -82,6 +82,22 @@
             <StackPanel>
                 <TabControl MinHeight="175" MaxHeight="175" SelectedIndex="{Binding Entity.SelectionTabIndex, Mode=TwoWay}">
 
+                    <TabItem Header="General">
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                            <StackPanel>
+                                <DockPanel Margin="0,5,0,0">
+                                    <TextBlock Text="Name:" FontWeight="Bold" VerticalAlignment="Center" Width="100"/>
+                                    <TextBox Text="{Binding Entity.TrackInfoSelectionName, Mode=TwoWay}" VerticalAlignment="Center"/>
+                                </DockPanel>
+                                
+                                <DockPanel Margin="0,5,0,0">
+                                    <TextBlock Text="Description:" FontWeight="Bold" VerticalAlignment="Top" Margin="0,2,0,0" Width="100"/>
+                                    <TextBox Text="{Binding Entity.TrackInfoSelectionDescription, Mode=TwoWay}" VerticalAlignment="Center" Height="75"/>
+                                </DockPanel>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+
                     <TabItem Header="S88">
                         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
                             <StackPanel>

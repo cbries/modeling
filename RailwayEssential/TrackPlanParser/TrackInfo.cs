@@ -8,6 +8,7 @@ namespace TrackPlanParser
     {
         public Func<bool> CheckState { get; set; }
 
+        public string Name { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public int ThemeId { get; set; }
@@ -28,6 +29,7 @@ namespace TrackPlanParser
         {
             JObject o = new JObject
             {
+                ["name"] = Name,
                 ["x"] = X,
                 ["y"] = Y,
                 ["themeId"] = ThemeId,
@@ -43,6 +45,8 @@ namespace TrackPlanParser
             if (o == null)
                 return;
 
+            if (o["name"] != null)
+                Name = o["name"].ToString();
             if (o["x"] != null)
                 X = (int) o["x"];
             if (o["y"] != null)

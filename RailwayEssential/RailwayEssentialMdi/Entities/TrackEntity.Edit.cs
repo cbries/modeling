@@ -13,9 +13,10 @@ namespace RailwayEssentialMdi.Entities
 
     public partial class TrackEntity
     {
-        private const int TabIndexS88 = 0;
-        private const int TabIndexSwitch = 1;
-        private const int TabIndexConnector = 2;
+        private const int TabIndexGeneral = 0;
+        private const int TabIndexS88 = 1;
+        private const int TabIndexSwitch = 2;
+        private const int TabIndexConnector = 3;
 
         private TrackInfo _trackInfoSelection;
         private S88 _itemS88Selection;
@@ -31,8 +32,35 @@ namespace RailwayEssentialMdi.Entities
             {
                 _trackInfoSelection = value;
                 RaisePropertyChanged("TrackInfoSelection");
+                RaisePropertyChanged("TrackInfoSelectionName");
+                RaisePropertyChanged("TrackInfoSelectionDescription");
             }
         }
+
+        public string TrackInfoSelectionName
+        {
+            get => _trackInfoSelection != null ? _trackInfoSelection.Name : "";
+            set
+            {
+                if (_trackInfoSelection != null)
+                    _trackInfoSelection.Name = value;
+                RaisePropertyChanged("TrackInfoSelection");
+                RaisePropertyChanged("TrackInfoSelectionName");
+            }
+        }
+
+        public string TrackInfoSelectionDescription
+        {
+            get => _trackInfoSelection != null ? _trackInfoSelection.Description : "";
+            set
+            {
+                if (_trackInfoSelection != null)
+                    _trackInfoSelection.Description = value;
+                RaisePropertyChanged("TrackInfoSelection");
+                RaisePropertyChanged("TrackInfoSelectionDescription");
+            }
+        }
+
 
         public S88 ItemsS88Selection
         {
@@ -94,7 +122,7 @@ namespace RailwayEssentialMdi.Entities
         public int SelectionY { get; private set; }
         public bool SelectionXYvisible { get; private set; }
 
-        private int _selectionTabIndex = TabIndexS88;
+        private int _selectionTabIndex = TabIndexGeneral;
 
         public int SelectionTabIndex
         {
@@ -153,6 +181,12 @@ namespace RailwayEssentialMdi.Entities
 
             if (trackInfo == null)
                 return;
+
+            if (TrackInfoSelection != null)
+            {
+                trackInfo.Name = TrackInfoSelection.Name.Trim();
+                trackInfo.Description = TrackInfoSelection.Description.Trim();
+            }
 
             var m = _dispatcher.Model as ViewModels.RailwayEssentialModel;
             if (m == null)
@@ -327,8 +361,6 @@ namespace RailwayEssentialMdi.Entities
                     ItemsSwitch.Clear();
                 }, null);
 
-                //Trace.WriteLine("Selection reset");
-
                 return;
             }
 
@@ -342,6 +374,10 @@ namespace RailwayEssentialMdi.Entities
                 var dataProvider = _dispatcher.GetDataProvider();
                 if (dataProvider == null)
                     return;
+
+                var trackInfo = Track.Get(x, y);
+                if (trackInfo != null)
+                    TrackInfoSelection = trackInfo;
 
                 var objItem = GetObject(x, y);
 
@@ -371,6 +407,15 @@ namespace RailwayEssentialMdi.Entities
                             ItemsS88SelectionPin = -1;
                         }
                             break;
+
+                        default:
+                        {
+                            ItemsS88Selection = null;
+                            ItemsSwitchSelection = null;
+                            SelectionTabIndex = TabIndexGeneral;
+                            ItemsS88SelectionPin = -1;
+                        }
+                            break;
                     }
                 }
                 else
@@ -378,13 +423,9 @@ namespace RailwayEssentialMdi.Entities
                     // Is Connector?
                     if (Track != null)
                     {
-                        var trackInfo = Track.Get(x, y);
-
-                        if (trackInfo != null)
+                        if (TrackInfoSelection != null)
                         {
-                            TrackInfoSelection = trackInfo;
-
-                            var themeId = trackInfo.ThemeId;
+                            var themeId = TrackInfoSelection.ThemeId;
                             if (themeId > 0)
                             {
                                 List<int> connectorIds = new List<int> {17, 18, 19};
@@ -396,7 +437,7 @@ namespace RailwayEssentialMdi.Entities
                                     SelectionTabIndex = TabIndexConnector;
                                     ConnectorVisible = true;
 
-                                    var opt = trackInfo.GetOption("connectorIdentifier");
+                                    var opt = TrackInfoSelection.GetOption("connectorIdentifier");
 
                                     if (!string.IsNullOrEmpty(opt))
                                     {
@@ -417,10 +458,6 @@ namespace RailwayEssentialMdi.Entities
                                     SelectionTabIndex = 0;
                                 }
                             }
-                        }
-                        else
-                        {
-                            TrackInfoSelection = null;
                         }
                     }
                 }
