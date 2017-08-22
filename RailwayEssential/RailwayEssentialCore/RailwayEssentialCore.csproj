@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base64.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="IConfiguration.cs" />
     <Compile Include="IPersist.cs" />

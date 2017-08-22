@@ -1,4 +1,6 @@
 
+var TESTDATA = true;
+
 var isEdit = false;
 
 const ModeAddMove = 0;
@@ -15,6 +17,111 @@ var isDrag = false;
 
 var objDrag = null;
 var objPosition = null; // top, left
+
+// callable by RailwayEssential
+//   a) changeDirectionMarker(col, row, direction)   direction := 1 or 2
+//   b) changeLocnameMarker(col, row, locname)
+//   c) changeItemIdMarker(col, row, idname)
+
+function getIdOfItemNameLbl(col, row) { return 'lbl_' + col + '_' + row + '_itemname'; }
+function getIdOfDirectionLbl(col, row) { return 'lbl_' + col + '_' + row + '_direction'; }
+function getIdOfLocanameLbl(col, row) { return 'lbl_' + col + '_' + row + '_locname'; }
+
+function changeDirectionMarker(col, row, direction) {
+    // direction = 1 -> left
+    // direction = 2 -> right
+    try {
+        var id = getIdOfDirectionLbl(col, row);
+        var el = $('#' + id)[0];
+        if (direction === 1)
+            el.firstChild.data = '<';
+        else if (direction === 2)
+            el.firstChild.data = '>';
+        else
+            el.firstChild.data = '?';
+    } catch (ex) { }
+}
+
+function changeLocnameMarker(col, row, locname) {
+    try {
+        var id = getIdOfLocanameLbl(col, row);
+        var el = $('#' + id)[0];
+        el.firstChild.data = locname;
+    } catch (ex) { }
+}
+
+function changeItemIdMarker(col, row, idname) {
+    try {
+        var id = getIdOfItemNameLbl(col, row);
+        var el = $('#' + id)[0];
+        el.firstChild.data = idname;
+    } catch (ex) { }
+}
+
+function isBetween(n, a, b) {
+    return (n - a) * (n - b) <= 0;
+}
+
+function appendBlockText(col, row, esvg, themeId) {
+
+    var el = null;
+
+    // BLOCK
+    if (themeId === 150 || themeId === 151 || themeId === 152) {
+        el = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        el.setAttribute('id', getIdOfDirectionLbl(col, row));
+        el.setAttribute('x', 5);
+        el.setAttribute('y', 18);
+        el.setAttribute('font-size', '12px');
+        el.setAttribute('stroke', 'red');
+        el.setAttribute('fill', 'red');
+        el.innerHTML = '?';
+        esvg.append(el);
+
+
+        el = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        el.setAttribute('id', getIdOfLocanameLbl(col, row));
+        el.setAttribute('x', 15);
+        el.setAttribute('y', 21);
+        el.setAttribute('font-size', '15px');
+        el.setAttribute('stroke', 'black');
+        el.setAttribute('fill', 'black');
+        el.innerHTML = '?';
+        esvg.append(el);
+    }
+
+    // Switch
+    if (isBetween(themeId, 50, 53) || isBetween(themeId, 200, 202)) {
+        el = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        el.setAttribute('id', getIdOfItemNameLbl(col, row));
+        el.setAttribute('x', 1);
+        el.setAttribute('y', 9);
+        el.setAttribute('font-size', '9px');
+        el.setAttribute('stroke', 'none');
+        el.setAttribute('fill', 'black');
+        el.innerHTML = '?';
+        esvg.append(el);
+    }
+
+    // SIGNAL
+    if (isBetween(themeId, 100, 108)) {
+        el = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        el.setAttribute('id', getIdOfItemNameLbl(col, row));
+        el.setAttribute('x', 1);
+        el.setAttribute('y', 29);
+        el.setAttribute('font-size', '9px');
+        el.setAttribute('stroke', 'none');
+        el.setAttribute('fill', 'black');
+        el.innerHTML = '?';
+        esvg.append(el);
+    }
+
+    if (TESTDATA && el !== 'undefined' && el != null) {
+        changeDirectionMarker(col, row, 2);
+        changeLocnameMarker(col, row, 'BR10');
+        changeItemIdMarker(col, row, '#id5');
+    }
+}
 
 function preloadSvgsLoaded() {
     // just increment the counter if there are still images pending...
@@ -73,7 +180,7 @@ function updateUi() {
         o.show();
 
         $('td').each(function () {
-            var img = $(this).find('img');
+            var img = $(this).find('svg');
             if (img.length == 1)
                 img.parent().draggable({ disabled: false });
         });
@@ -87,7 +194,7 @@ function updateUi() {
         o.hide();
 
         $('td').each(function () {
-            var img = $(this).find('img');
+            var img = $(this).find('svg');
             if (img.length == 1)
                 img.parent().draggable({ disabled: true });
         });
@@ -107,7 +214,7 @@ function rebuildCell(col, row) {
 
 function rebuildTable() {
     $('td').each(function (index, el) {
-        if ($(el).find('img').length == 0) {
+        if ($(el).find('svg').length == 0) {
             var col = $(el).parent().children().index($(el)) + 1;
             var row = $(el).parent().parent().children().index($(el).parent()) + 1;
             try {
@@ -249,7 +356,7 @@ function resetHighlightRoute() {
 function changeSymbol(col, row, themeId, orientation, symbol) {
     var oel = $('#td_' + col + '_' + row);
     var cdiv = oel.find("div");
-    if (cdiv.find("img").length === 0)
+    if (cdiv.find("svg").length === 0)
         return;
     try {
         var m = "";
@@ -287,7 +394,7 @@ function simulateClick(col, row, themeid, symbol, orientation, response) {
     var oel = $('#td_' + col + '_' + row);
 
     var cdiv = oel.find("div");
-    if (cdiv.find("img").length === 1)
+    if (cdiv.find("svg").length === 1)
         return;
 
     var v = themeDirectory + '/' + symbol + '.svg';
@@ -302,13 +409,16 @@ function simulateClick(col, row, themeid, symbol, orientation, response) {
         }
     }
 
-    var img = $(svgCache[v]).clone();
-
+    //var img = $(svgCache[v]).clone();
+    var img = window.atob(symbolFilesBase64[symbol]);
     var newChild = cdiv.append(img);
     newChild.addClass("overflow");
     newChild.addClass(orientation);
     newChild.attr("border", 0);
     newChild.data("railway-themeid", themeid);
+    newChild.data("src", v);
+    var svgChild = newChild.find("svg");
+    appendBlockText(col, row, svgChild, themeid);
 
     newChild.click(function (evt) {
 
@@ -417,7 +527,7 @@ $(document).ready(function (e) {
             isDragging = false;
             isMouseDown = true;
             startingPos = [evt.pageX, evt.pageY];
-            objDrag = $(this).find("img");
+            objDrag = $(this).find("svg");
         })
         .mousemove(function (evt) {
             if (!(evt.pageX === startingPos[0] && evt.pageY === startingPos[1])) {
@@ -444,7 +554,9 @@ $(document).ready(function (e) {
                     return;
 
                 var targetObject = findTargetTd(evt, function (col, row, target) {
-                    var src = objDrag.attr("src");
+                    var src = objDrag.data("src");
+                    if (src === 'undefined' || src == null)
+                        src = objDrag.parent().data("src");
                     if (src === 'undefined' || src == null)
                         return;
 
@@ -469,16 +581,21 @@ $(document).ready(function (e) {
                     rebuildTable();
 
                     var c = target.find("div");
-                    if (c.find("img").length == 1)
+                    if (c.find("svg").length == 1)
                         return;
 
-                    var img = $(svgCache[src]).clone();
-
+                    //var img = $(svgCache[src]).clone();
+                    var symbol = src.substring(src.lastIndexOf('/') + 1);
+                    symbol = symbol.substring(0, symbol.lastIndexOf('.'));
+                    var img = window.atob(symbolFilesBase64[symbol]);
                     var newChild = c.append(img);
                     newChild.addClass("overflow");
                     newChild.addClass(rotClass);
                     newChild.attr("border", 0);
                     newChild.data("railway-themeid", themeId);
+                    newChild.data("src", src);
+                    var svgChild = newChild.find("svg");
+                    appendBlockText(col, row, svgChild, themeId);
 
                     newChild.click(function (evt) {
                         switch (editMode) {
@@ -521,7 +638,7 @@ $(document).ready(function (e) {
                 objDrag = null;
 
                 var c = $(this).find("div");
-                if (c.find("img").length == 1) {
+                if (c.find("svg").length == 1) {
                     if (isEdit)
                         return;
 
@@ -543,12 +660,15 @@ $(document).ready(function (e) {
                 var o2 = sel.find(':selected').data("railway-themeid");
                 var v = themeDirectory + '/' + o + '.svg';
 
-                var img = $(svgCache[v]).clone();
-
+                //var img = $(svgCache[v]).clone();
+                var img = window.atob(symbolFilesBase64[o]);
                 var newChild = c.append(img);
                 newChild.addClass("overflow");
                 newChild.attr("border", 0);
                 newChild.data("railway-themeid", o2);
+                newChild.data("src", v);
+                var svgChild = newChild.find("svg");
+                appendBlockText(col, row, svgChild, o2);
 
                 newChild.click(function (evt) {
                     switch (editMode) {

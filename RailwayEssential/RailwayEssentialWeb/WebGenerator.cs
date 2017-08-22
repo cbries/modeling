@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RailwayEssentialCore;
 
 namespace RailwayEssentialWeb
@@ -153,16 +155,37 @@ namespace RailwayEssentialWeb
                 CreateSymbolList(out physicalSymbols);
                 CreateSymbolSelection();
 
+                Dictionary<string, string> base64Images = new Dictionary<string, string>();
+
                 var jsCode = "var themeDirectory='" + new Uri(AbsoluteThemeDirname.Replace("\\", "/")).AbsoluteUri + "';";
                 jsCode += "var symbolFiles = [";
                 foreach (var e in physicalSymbols)
                 {
                     if (string.IsNullOrEmpty(e))
                         continue;
+
                     jsCode += $"'{e}',";
+
+                    Uri u = new Uri(e);
+                    if (File.Exists(u.AbsolutePath))
+                    {
+                        string cnt = File.ReadAllText(u.AbsolutePath);
+
+                        var base64Cnt = Encoding.UTF8.ToBase64(cnt);
+                        string accessName = Path.GetFileNameWithoutExtension(u.AbsolutePath);
+                        if(!base64Images.ContainsKey(accessName))
+                            base64Images.Add(accessName, base64Cnt);
+                    }
                 }
                 jsCode = jsCode.TrimEnd(',');
                 jsCode += "]; var svgCache = {}; var counter = 0; var total = symbolFiles.length; preloadSvgs();";
+
+                JObject ar = new JObject();
+                foreach (var k in base64Images.Keys)
+                    ar[k] = base64Images[k];
+                var base64Json = "var symbolFilesBase64 = " + ar.ToString(Formatting.None) + ";";
+
+                jsCode += base64Json;
 
                 var b = CreateBase();
                     b = b.Replace("{{GLOBALJS}}", jsCode);
@@ -180,6 +203,7 @@ namespace RailwayEssentialWeb
                 if (!string.IsNullOrEmpty(dname))
                 {
                     var filesToRemove = Directory.GetFiles(dname, "*_track.html", SearchOption.TopDirectoryOnly);
+
                     try
                     {
                         foreach (var fname in filesToRemove)
