@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using RailwayEssentialCore;
+using RailwayEssentialMdi.ViewModels;
 using TrackPlanParser;
 
 namespace RailwayEssentialMdi.Entities
@@ -27,6 +28,9 @@ namespace RailwayEssentialMdi.Entities
         private bool _connectorVisible;
         private int _connectorIdentifier;
         private int _blockGroupIdentifier;
+        private TrackInformation.Locomotive _blockCurrentLocomotive;
+        private List<string> _availableBlocks = new List<string>();
+        private List<TrackInformation.Item> _availableLocomotives = new List<Item>();
 
         public TrackInfo TrackInfoSelection
         {
@@ -112,6 +116,91 @@ namespace RailwayEssentialMdi.Entities
                 }
 
                 RaisePropertyChanged("BlockGroupIdentifier");
+            }
+        }
+
+        public TrackInformation.Locomotive BlockCurrentLocomotive
+        {
+            get => _blockCurrentLocomotive;
+            set
+            {
+                _blockCurrentLocomotive = value;
+
+                if (_trackInfoSelection != null && _blockCurrentLocomotive != null)
+                    _trackInfoSelection.SetOption("blockCurrentLocomotive", $"{_blockCurrentLocomotive.ObjectId}");
+
+                UpdateAllVisualBlocks();
+
+                RaisePropertyChanged("BlockCurrentLocomotive");
+            }
+        }
+
+        public IList<string> AvailableBlocks
+        {
+            get
+            {
+                lock (_availableBlocks)
+                {
+                    _availableBlocks.Clear();
+
+                    if (Track == null)
+                        return _availableBlocks;
+
+                    foreach (var e in Track)
+                    {
+                        if (e == null)
+                            continue;
+
+                        if (!Globals.BlockIds.Contains(e.ThemeId))
+                            continue;
+
+                        if (string.IsNullOrEmpty(e.Name))
+                            _availableBlocks.Add(e.ToString());
+                        else
+                            _availableBlocks.Add(e.Name);
+                    }
+
+                    return _availableBlocks;
+                }
+            }
+            set
+            {
+                lock (_availableBlocks)
+                {
+                    _availableBlocks = (List<string>) value;
+                    RaisePropertyChanged("AvailableBlocks");
+                }
+            }
+        }
+
+        public IList<TrackInformation.Item> AvailableLocomotives
+        {
+            get
+            {
+                _availableLocomotives.Clear();
+
+                if (Model == null)
+                    return _availableLocomotives;
+
+                var m = Model as RailwayEssentialModel;
+                if (m == null)
+                    return _availableLocomotives;
+
+                foreach (var e in _dispatcher.GetDataProvider().Objects)
+                {
+                    if (e == null)
+                        continue;
+
+                    if (e.TypeId() == 1)
+                        _availableLocomotives.Add(e as TrackInformation.Locomotive);
+                }
+
+                return _availableLocomotives;
+            }
+            set
+            {
+                _availableLocomotives = (List<Item>) value;
+                RaisePropertyChanged("AvailableLocomotives");
             }
         }
 
@@ -207,8 +296,15 @@ namespace RailwayEssentialMdi.Entities
 
             if (TrackInfoSelection != null)
             {
-                trackInfo.Name = TrackInfoSelection.Name.Trim();
-                trackInfo.Description = TrackInfoSelection.Description.Trim();
+                if (string.IsNullOrEmpty(TrackInfoSelection.Name))
+                    trackInfo.Name = "";
+                else
+                    trackInfo.Name = TrackInfoSelection.Name.Trim();
+
+                if (string.IsNullOrEmpty(TrackInfoSelection.Description))
+                    trackInfo.Description = "";
+                else
+                    trackInfo.Description = TrackInfoSelection.Description.Trim();
             }
 
             var m = _dispatcher.Model as ViewModels.RailwayEssentialModel;
@@ -407,7 +503,6 @@ namespace RailwayEssentialMdi.Entities
                 if (objItem != null)
                 {
                     ConnectorVisible = false;
-                    TrackInfoSelection = null;
                     SelectionTabIndex = 0;
                     
                     switch (objItem.TypeId())
@@ -457,49 +552,72 @@ namespace RailwayEssentialMdi.Entities
                                 switch (type)
                                 {
                                     case Globals.ThemeIdType.Connector:
-                                    {
-                                        // show Connector's configuration tab    
-
-                                        SelectionTabIndex = TabIndexConnector;
-                                        ConnectorVisible = true;
-
-                                        var opt = TrackInfoSelection.GetOption("connectorIdentifier");
-
-                                        if (!string.IsNullOrEmpty(opt))
                                         {
-                                            int v;
-                                            if (int.TryParse(opt, out v))
-                                                ConnectorIdentifier = v;
+                                            // show Connector's configuration tab    
+
+                                            SelectionTabIndex = TabIndexConnector;
+                                            ConnectorVisible = true;
+
+                                            var opt = TrackInfoSelection.GetOption("connectorIdentifier");
+
+                                            if (!string.IsNullOrEmpty(opt))
+                                            {
+                                                int v;
+                                                if (int.TryParse(opt, out v))
+                                                    ConnectorIdentifier = v;
+                                                else
+                                                    ConnectorIdentifier = 1;
+                                            }
                                             else
-                                                ConnectorIdentifier = 1;
+                                            {
+                                                ConnectorIdentifier = -1;
+                                            }
                                         }
-                                        else
-                                        {
-                                            ConnectorIdentifier = -1;
-                                        }
-                                    }
                                         break;
 
                                     case Globals.ThemeIdType.Block:
-                                    {
-                                        SelectionTabIndex = TabIndexBlock;
-
-                                        var opt = TrackInfoSelection.GetOption("blockGroupIdentifier");
-
-                                        if (!string.IsNullOrEmpty(opt))
                                         {
-                                            int v;
-                                            if (int.TryParse(opt, out v))
-                                                BlockGroupIdentifier = v;
+                                            SelectionTabIndex = TabIndexBlock;
+
+                                            #region blockGroupIdentifier
+
+                                            var opt = TrackInfoSelection.GetOption("blockGroupIdentifier");
+
+                                            if (!string.IsNullOrEmpty(opt))
+                                            {
+                                                int v;
+                                                if (int.TryParse(opt, out v))
+                                                    BlockGroupIdentifier = v;
+                                                else
+                                                    BlockGroupIdentifier = 1;
+                                            }
                                             else
-                                                BlockGroupIdentifier = 1;
+                                            {
+                                                BlockGroupIdentifier = -1;
+                                            }
+
+                                            #endregion
+
+                                            #region blockCurrentLocomotive
+
+                                            opt = TrackInfoSelection.GetOption("blockCurrentLocomotive");
+
+                                            if (!string.IsNullOrEmpty(opt))
+                                            {
+                                                int objectId = -1;
+                                                if (int.TryParse(opt, out objectId))
+                                                {
+                                                    BlockCurrentLocomotive = dataProvider.GetObjectBy(objectId) as Locomotive;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                BlockCurrentLocomotive = null;
+                                            }
+
+                                            #endregion
                                         }
-                                        else
-                                        {
-                                            BlockGroupIdentifier = -1;
-                                        }
-                                        }
-                                    break;
+                                        break;
 
                                     default:
                                         ConnectorVisible = false;
@@ -633,6 +751,67 @@ namespace RailwayEssentialMdi.Entities
                     continue;
 
                 UpdateVisualId(item, state);
+            }
+        }
+
+        public void UpdateVisualBlock(TrackInfo info)
+        {
+            var x = info.X;
+            var y = info.Y;
+            var themeId = info.ThemeId;
+
+            if (x != -1 && y != -1 && themeId != -1)
+            {
+                var item = _track.Get(x, y);
+
+                if (item != null)
+                {
+                    var opt = item.GetOption("blockCurrentLocomotive");
+                    if (string.IsNullOrEmpty(opt))
+                    {
+                        Viewer.ExecuteJs($"changeLocnameMarker({x}, {y}, ' ');");
+                    }
+                    else
+                    {
+                        int objectId = -1;
+                        if (int.TryParse(opt, out objectId))
+                        {
+                            var dataProvider = _dispatcher.GetDataProvider();
+                            if (dataProvider == null)
+                                return;
+
+                            var loc = dataProvider.GetObjectBy(objectId) as Locomotive;
+                            if (loc != null)
+                            {
+                                if (Viewer != null)
+                                    Viewer.ExecuteJs($"changeLocnameMarker({x}, {y}, '{loc.Name}');");
+                            }
+                        }
+                        else
+                        {
+                            Viewer.ExecuteJs($"changeLocnameMarker({x}, {y}, 'FAILURE');");
+                        }
+                    }
+                }
+                else
+                {
+                    Viewer.ExecuteJs($"changeLocnameMarker({x}, {y}, ' ');");
+                }
+            }
+        }
+
+        public void UpdateAllVisualBlocks()
+        {
+            if (_track == null)
+                return;
+
+            foreach (var item in _track)
+            {
+                if (item == null)
+                    continue;
+
+                if(Globals.BlockIds.Contains(item.ThemeId))
+                    UpdateVisualBlock(item);
             }
         }
     }

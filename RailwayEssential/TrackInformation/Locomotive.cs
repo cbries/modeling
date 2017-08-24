@@ -10,6 +10,13 @@ namespace TrackInformation
     {
         public override int TypeId() { return 1; }
 
+        public override string ToString()
+        {
+            if (string.IsNullOrEmpty(Name))
+                return $"Locomotive {Addr},{Protocol}";
+            return Name;
+        }
+
         public override int SubTitleHeight => 16;
 
         public bool InitQueryStateDone { get; set; }

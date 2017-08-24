@@ -178,7 +178,8 @@ namespace RailwayEssentialMdi.Entities
                 Theme = _theme,
                 Ctx = Ctx,
                 ProjectTrack = ProjectTrack,
-                Cfg = Cfg
+                Cfg = Cfg,
+                Model = Model
             };
 
             e.Initialize();

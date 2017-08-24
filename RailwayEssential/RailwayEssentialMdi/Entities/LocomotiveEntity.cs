@@ -16,13 +16,16 @@
             {
                 _objectItem = value;
 
+                if (_objectItem != null)
+                    _objectItem.Ctx = Model;
+
                 UpdateUi();
 
                 RaisePropertyChanged("ObjectItem");
                 RaisePropertyChanged("Name");
             }
         }
-
+        
         #region Name
 
         public string Name

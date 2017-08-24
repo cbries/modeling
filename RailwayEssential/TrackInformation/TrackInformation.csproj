@@ -82,6 +82,10 @@
       <Project>{5e022579-45a1-4e6f-94db-1c88e089030d}</Project>
       <Name>Ecos2Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RailwayEssentialCore\RailwayEssentialCore.csproj">
+      <Project>{b80cfecd-db0b-4533-aa42-784b2ebe85ff}</Project>
+      <Name>RailwayEssentialCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TrackInformationCore\TrackInformationCore.csproj">
       <Project>{b839732a-5c4a-4501-8b5e-990d12627c56}</Project>
       <Name>TrackInformationCore</Name>

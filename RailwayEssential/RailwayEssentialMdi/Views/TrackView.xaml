@@ -168,11 +168,18 @@
                             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
                                 <StackPanel>
                                     <DockPanel Margin="0,5,0,0">
-                                        <TextBlock Text="Group Identifier: " FontWeight="Bold"/>
+                                        <TextBlock Text="Group Identifier: " FontWeight="Bold" Width="150"/>
                                         <xctk:IntegerUpDown Name="BlockGroupIdentifier" Height="22" Width="75" HorizontalAlignment="Left" Margin="5,0,0,0"
                                                             Value="{Binding Entity.BlockGroupIdentifier, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                                                             Maximum="1000" Minimum="-1" 
                                                             FormatString="N0" AllowSpin="True"/>
+                                    </DockPanel>
+
+                                    <DockPanel Margin="0,5,0,0">
+                                        <TextBlock Text="Current Locomotive: " FontWeight="Bold" Width="150"/>
+                                        <ComboBox Name="BlockCurrentLocomotive" Height="22" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0"
+                                                  ItemsSource="{Binding Entity.AvailableLocomotives}"
+                                                  SelectedItem="{Binding Entity.BlockCurrentLocomotive, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                                     </DockPanel>
                                 </StackPanel>
                             </ScrollViewer>

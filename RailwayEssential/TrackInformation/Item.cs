@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Media.Imaging;
 using Ecos2Core;
 using Newtonsoft.Json.Linq;
+using RailwayEssentialCore;
 using TrackInformation.Annotations;
 using TrackInformationCore;
 
@@ -14,6 +15,8 @@ namespace TrackInformation
     public class Item : IItem, INotifyPropertyChanged
     {
         public event CommandsReadyDelegator CommandsReady;
+
+        public IRailwayEssentialModel Ctx { get; set; }
 
         public virtual string IconName { get; set; }
 

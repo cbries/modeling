@@ -151,7 +151,7 @@ namespace RailwayEssentialMdi.ViewModels
         }
 
         private List<string> _recentProjects = new List<string>();
-
+        
         public IList<string> RecentProjects
         {
             get => _recentProjects;
@@ -168,6 +168,8 @@ namespace RailwayEssentialMdi.ViewModels
         public RelayCommand CloseCommand { get; }
         public RelayCommand SaveCommand { get; }
         public RelayCommand ExitCommand { get; }
+
+        public System.Windows.Input.ICommand AssignToBlockCommand { get; }
 
         public RelayCommand ShowLocomotiveCommand { get; }
         public RelayCommand ConnectCommand { get; }
@@ -508,7 +510,8 @@ namespace RailwayEssentialMdi.ViewModels
                 Theme = _theme,
                 Ctx = _ctx,
                 ProjectTrack = prjTrack,
-                Cfg = _cfg
+                Cfg = _cfg,
+                Model = this
             };
 
             _trackEntity.Initialize();
@@ -951,7 +954,8 @@ namespace RailwayEssentialMdi.ViewModels
             {
                 Entity = new LocomotiveEntity
                 {
-                    ObjectItem = _currentLocomotive
+                    ObjectItem = _currentLocomotive,
+                    Model = this
                 }
             };
 
@@ -1022,7 +1026,11 @@ namespace RailwayEssentialMdi.ViewModels
             if (w?.LogMode == LogWindow.Mode.General)
                 return;
 
-            var item2 = new LogWindow(_logMessagesGeneral) { LogMode = LogWindow.Mode.General };
+            var item2 = new LogWindow(_logMessagesGeneral)
+            {
+                LogMode = LogWindow.Mode.General,
+                Model = this
+            };
             item2.Closing += (s, e) => Windows.Remove(item2);
             lock (Windows)
             {
@@ -1036,7 +1044,11 @@ namespace RailwayEssentialMdi.ViewModels
             if (w?.LogMode == LogWindow.Mode.Commands)
                 return;
 
-            var item2 = new LogWindow(_logMessagesCommands) { LogMode = LogWindow.Mode.Commands };
+            var item2 = new LogWindow(_logMessagesCommands)
+            {
+                LogMode = LogWindow.Mode.Commands,
+                Model = this
+            };
             item2.Closing += (s, e) => Windows.Remove(item2);
             lock (Windows)
             {
