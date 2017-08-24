@@ -53,7 +53,7 @@ namespace RailwayEssentialMdi.Entities
                 {
                     _trackInfoSelection.Name = value;
 
-                    UpdateVisualId(_trackInfoSelection);
+                    UpdateVisualId(_trackInfoSelection, Model.IsVisualLabelActivated);
                 }
 
                 RaisePropertyChanged("TrackInfoSelection");
