@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Ecos2Core;
@@ -177,6 +178,7 @@ namespace RailwayEssentialMdi.ViewModels
 
         public RelayCommand ShowLogCommand { get; }
         public RelayCommand ShowCommandLogCommand { get; }
+        public RelayCommand ShowIdentifiersCommand { get; }
 
         public RelayCommand AboutCommand { get; }
 
@@ -198,9 +200,9 @@ namespace RailwayEssentialMdi.ViewModels
 
             Registry.Registry registry = new Registry.Registry();
             RecentProjects = registry.RecentProjects;
-            
-            _ctx = SynchronizationContext.Current;
 
+            IsVisualLabelActivated = false;
+            _ctx = SynchronizationContext.Current;
             _cfg = new Configuration();
 
             NewProjectCommand = new RelayCommand(NewProject, CheckNewProject);
@@ -217,6 +219,7 @@ namespace RailwayEssentialMdi.ViewModels
             CmdStationsPropertiesCommand = new RelayCommand(PropertiesCommandStation);
             ShowLogCommand = new RelayCommand(ShowLog);
             ShowCommandLogCommand = new RelayCommand(ShowCommandLog);
+            ShowIdentifiersCommand = new RelayCommand(ShowIdentifiers, CheckShowIdentifiers);
             AboutCommand = new RelayCommand(ShowAbout);
             AnalyzeRoutesCommand = new RelayCommand(AnalyzeRoutes, CheckAnalyzeRoutes);
             AnalyzeCleanCommand = new RelayCommand(AnalyzeClean, CheckAnalyzeClean);
@@ -1041,6 +1044,42 @@ namespace RailwayEssentialMdi.ViewModels
             }
         }
 
+        private bool _isVisualLabelActivated;
+
+        public bool IsVisualLabelActivated
+        {
+            get => _isVisualLabelActivated;
+            set
+            {
+                _isVisualLabelActivated = value;
+                RaisePropertyChanged("IsVisualLabelActivated");
+            }
+        }
+
+        public void ShowIdentifiers(object p)
+        {
+            if (p == null)
+                return;
+
+            try
+            {
+                bool pp = (bool) p;
+
+                if (pp)
+                {
+                    TrackEntity?.UpdateAllVisualIds(true);
+                }
+                else
+                {
+                    TrackEntity?.UpdateAllVisualIds(false);
+                }
+            }
+            catch
+            {
+                // ignore
+            }
+        }
+
         public void ShowAbout(object p)
         {
             var dlg = new About.About();
@@ -1312,9 +1351,19 @@ namespace RailwayEssentialMdi.ViewModels
             return true;
         }
 
+        public bool CheckShowIdentifiers(object p)
+        {
+            if (_project == null)
+                return false;
+            if (_trackEntity == null)
+                return false;
+
+            return true;
+        }
+
 #endregion
 
-#region IRailwayEssentialModel
+        #region IRailwayEssentialModel
 
         public void TriggerPropertyChanged(string name)
         {

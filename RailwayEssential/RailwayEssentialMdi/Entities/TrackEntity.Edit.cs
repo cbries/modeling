@@ -46,7 +46,12 @@ namespace RailwayEssentialMdi.Entities
             set
             {
                 if (_trackInfoSelection != null)
+                {
                     _trackInfoSelection.Name = value;
+
+                    UpdateVisualId(_trackInfoSelection);
+                }
+
                 RaisePropertyChanged("TrackInfoSelection");
                 RaisePropertyChanged("TrackInfoSelectionName");
             }
@@ -524,6 +529,29 @@ namespace RailwayEssentialMdi.Entities
         {
             if(Dispatcher != null && Dispatcher.Model != null)
                 Dispatcher.Model.SetDirty(true);
+
+            JsonObjectEventArgs evObj = ev as JsonObjectEventArgs;
+            if (evObj != null && evObj.GetData() != null)
+            {
+                int x = -1;
+                int y = -1;
+                int themeId = -1;
+
+                var data = evObj.GetData();
+
+                if (data["x"] != null)
+                    x = (int) data["x"];
+                if (data["y"] != null)
+                    y = (int) data["y"];
+                //if (data["themeId"] != null)
+                //    themeId = (int) data["themeId"];
+
+                var state = false;
+                if(_dispatcher != null && _dispatcher.Model != null)
+                    state = _dispatcher.Model.IsVisualLabelActivated;
+
+                UpdateVisualId(x, y, state);
+            }
         }
 
         private void JsCallbackOnCellClicked(object o, int x, int y)
@@ -549,6 +577,62 @@ namespace RailwayEssentialMdi.Entities
                     }
                         break;
                 }
+            }
+        }
+
+        public void UpdateVisualId(int x, int y, bool show=true)
+        {
+            if (x != -1 && y != -1)
+            {
+                var item = _track.Get(x, y);
+
+                if (item != null)
+                {
+                    if (Viewer != null)
+                    {
+                        if(show)
+                            Viewer.ExecuteJs($"changeItemIdMarker({x}, {y}, \"{item.Name}\");");
+                        else
+                            Viewer.ExecuteJs($"changeItemIdMarker({x}, {y}, \" \");");
+                    }
+                }
+            }
+        }
+
+        public void UpdateVisualId(TrackInfo info, bool show=true)
+        {
+            var x = info.X;
+            var y = info.Y;
+            var themeId = info.ThemeId;
+
+            if (x != -1 && y != -1 && themeId != -1)
+            {
+                var item = _track.Get(x, y);
+
+                if (item != null)
+                {
+                    if (Viewer != null)
+                    {
+                        if(show)
+                            Viewer.ExecuteJs($"changeItemIdMarker({x}, {y}, '{item.Name}');");
+                        else
+                            Viewer.ExecuteJs($"changeItemIdMarker({x}, {y}, ' ');");
+                    }
+                }
+            }
+        }
+
+        public void UpdateAllVisualIds(bool state)
+        {
+            if (_track == null)
+                return;
+
+            foreach (var item in _track)
+            {
+                if (item == null)
+                    continue;
+
+                UpdateVisualId(item, state);
             }
         }
     }

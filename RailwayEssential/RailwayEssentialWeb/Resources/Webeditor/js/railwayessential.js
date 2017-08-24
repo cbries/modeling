@@ -1,5 +1,5 @@
 
-var TESTDATA = true;
+var TESTDATA = false;
 
 var isEdit = false;
 
@@ -75,9 +75,9 @@ function appendBlockText(col, row, esvg, themeId) {
         el.setAttribute('font-size', '12px');
         el.setAttribute('stroke', 'red');
         el.setAttribute('fill', 'red');
-        el.innerHTML = '?';
+        el.innerHTML = '.';
         esvg.append(el);
-
+        changeDirectionMarker(col, row, 2);
 
         el = document.createElementNS('http://www.w3.org/2000/svg', 'text');
         el.setAttribute('id', getIdOfLocanameLbl(col, row));
@@ -86,7 +86,7 @@ function appendBlockText(col, row, esvg, themeId) {
         el.setAttribute('font-size', '15px');
         el.setAttribute('stroke', 'black');
         el.setAttribute('fill', 'black');
-        el.innerHTML = '?';
+        el.innerHTML = '.';
         esvg.append(el);
     }
 
@@ -99,7 +99,7 @@ function appendBlockText(col, row, esvg, themeId) {
         el.setAttribute('font-size', '9px');
         el.setAttribute('stroke', 'none');
         el.setAttribute('fill', 'black');
-        el.innerHTML = '?';
+        el.innerHTML = '.';
         esvg.append(el);
     }
 
@@ -112,15 +112,15 @@ function appendBlockText(col, row, esvg, themeId) {
         el.setAttribute('font-size', '9px');
         el.setAttribute('stroke', 'none');
         el.setAttribute('fill', 'black');
-        el.innerHTML = '?';
+        el.innerHTML = '.';
         esvg.append(el);
     }
 
-    if (TESTDATA && el !== 'undefined' && el != null) {
+    //if (TESTDATA && el !== 'undefined' && el != null) {
         changeDirectionMarker(col, row, 2);
-        changeLocnameMarker(col, row, 'BR10');
-        changeItemIdMarker(col, row, '#id5');
-    }
+        changeLocnameMarker(col, row, ' ');
+        changeItemIdMarker(col, row, ' ');
+    //}
 }
 
 function preloadSvgsLoaded() {

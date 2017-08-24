@@ -75,6 +75,11 @@
                 <MenuItem Header="View">
                     <MenuItem Header="General Log" Command="{Binding ShowLogCommand}"/>
                     <MenuItem Header="Command Log" Command="{Binding ShowCommandLogCommand}"/>
+                    <Separator/>
+                    <MenuItem Header="Show Identifiers" 
+                              Command="{Binding ShowIdentifiersCommand}" 
+                              CommandParameter="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}"
+                              IsCheckable="True" IsChecked="{Binding IsVisualLabelActivated}"/>
                 </MenuItem>
                 <!--
                 <MenuItem Header="Layout">

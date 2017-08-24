@@ -71,6 +71,7 @@
     <Compile Include="ITrackViewerJsCallback.cs" />
     <Compile Include="ITrackViewerZoom.cs" />
     <Compile Include="ITrackWindow.cs" />
+    <Compile Include="JsonObjectEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StopWatch.cs" />
     <Compile Include="Utils.cs" />

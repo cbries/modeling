@@ -62,6 +62,7 @@ namespace TrackPlanParser
                     X = x,
                     Y = y
                 });
+
             }
         }
 

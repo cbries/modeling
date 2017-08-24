@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json.Linq;
 using RailwayEssentialCore;
 
 namespace RailwayEssentialWeb
@@ -25,11 +26,20 @@ namespace RailwayEssentialWeb
 
         public void cellEdited(int x, int y, int themeId)
         {
-            if(CellEdited != null)
-                CellEdited(this, EventArgs.Empty);
-
             if (TrackEdit != null)
                 TrackEdit.ChangeSymbol(x, y, themeId);
+
+            if (CellEdited != null)
+            {
+                var o = new JObject
+                {
+                    ["x"] = x,
+                    ["y"] = y,
+                    ["themeId"] = themeId
+                };
+
+                CellEdited(this, new JsonObjectEventArgs(o)); 
+            }
         }
 
         public void cellRotated(int x, int y, string orientation)
