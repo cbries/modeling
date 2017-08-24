@@ -95,7 +95,7 @@ namespace RailwayEssentialWeb
 
         private void BrowserOnLoadingStateChanged(object sender, LoadingStateChangedEventArgs args)
         {
-            
+            Trace.WriteLine("Loading state: " + args.IsLoading);
         }
 
         public void Reload()

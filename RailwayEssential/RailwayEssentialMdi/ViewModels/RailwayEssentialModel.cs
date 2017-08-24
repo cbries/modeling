@@ -571,11 +571,10 @@ namespace RailwayEssentialMdi.ViewModels
                 dataProvider.LoadObjects(absolutePath);
             }
 
-            UpdateBlockRouteItems();
-
             //if (MainView != null)
             //    MainView.LoadLayout();
 
+            UpdateBlockRouteItems();
             UpdateCanClose();
         }
 

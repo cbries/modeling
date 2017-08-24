@@ -256,6 +256,9 @@ namespace RailwayEssentialMdi.Entities
             if (_trackViewer != null)
                 _trackViewer.ExecuteJs($"simulateClick2({arClicks.ToString(Formatting.None)});");
 
+            UpdateAllVisualBlocks();
+            UpdateAllVisualIds(Model.IsVisualLabelActivated);
+
             return true;
         }
 
