@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:RailwayEssentialMdi.ViewModels"
         xmlns:trackInformation="clr-namespace:TrackInformation;assembly=TrackInformation"
-        xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock" xmlns:local="clr-namespace:RailwayEssentialMdi" x:Class="RailwayEssentialMdi.MainWindow"
+        xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock" 
+        xmlns:local="clr-namespace:RailwayEssentialMdi" 
+        x:Class="RailwayEssentialMdi.MainWindow"
         x:Name="app"
         mc:Ignorable="d" Title="RailwayEssential" Height="700" Width="1200" 
         DataContextChanged="MainWindow_OnDataContextChanged"
@@ -45,24 +47,45 @@
                     </MenuItem>
                     <Separator/>
                     <MenuItem Header="Open" Command="{Binding OpenCommand}"/>
-                    <MenuItem Header="Close" Command="{Binding CloseCommand}"/>
-                    <MenuItem Header="Save" Command="{Binding SaveCommand}"/>
+                    <MenuItem Header="Close" Command="{Binding CloseCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="Resources/close.png" Width="16" Height="16"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Save" Command="{Binding SaveCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="Resources/save.png" Width="16" Height="16"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                     <Separator/>
                     <MenuItem Header="Analyze">
                         <MenuItem Header="Routes" Command="{Binding AnalyzeRoutesCommand}"/>
                         <MenuItem Header="Clean" Command="{Binding AnalyzeCleanCommand}"/>
                     </MenuItem>
                     <Separator/>
-                    <MenuItem Header="Exit" Command="{Binding ExitCommand}"/>
+                    <MenuItem Header="Exit" Command="{Binding ExitCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="Resources/close.png" Width="16" Height="16"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="Command Station">
-                    <MenuItem Header="Locomotive" Command="{Binding ShowLocomotiveCommand}"/>
+                    <MenuItem Header="Locomotive" Command="{Binding ShowLocomotiveCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="Resources/train.png" Width="16" Height="16"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                     <Separator/>
                     <MenuItem Header="Connect" Command="{Binding ConnectCommand}"/>
                     <MenuItem Header="Disconnect" Command="{Binding DisconnectCommand}"/>
                     <Separator/>
                     <MenuItem Header="Dry run" Command="{Binding DryRunCommand}"/>
                     <MenuItem Header="{Binding TogglePowerCaption}" Command="{Binding TogglePowerCommand}"/>
+                    <MenuItem Header="Autoplay" Command="{Binding AutoplayCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="Resources/autoplay.png" Width="16" Height="16"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                     <Separator/>
                     <MenuItem Header="Properties" Command="{Binding CmdStationsPropertiesCommand}"/>
                 </MenuItem>
@@ -80,7 +103,11 @@
                     <MenuItem Header="Show Identifiers" 
                               Command="{Binding ShowIdentifiersCommand}" 
                               CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
-                              IsCheckable="True" IsChecked="{Binding IsVisualLabelActivated}"/>
+                              IsCheckable="True" IsChecked="{Binding IsVisualLabelActivated}">
+                        <MenuItem.Icon>
+                            <Image Source="Resources/tags.png" Width="16" Height="16"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
                 <!--
                 <MenuItem Header="Layout">
@@ -89,7 +116,11 @@
                 </MenuItem>
                 -->
                 <MenuItem Header="Help">
-                    <MenuItem Header="About RailwayEssential" Command="{Binding AboutCommand}"/>
+                    <MenuItem Header="About RailwayEssential" Command="{Binding AboutCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="Resources/about.png" Width="16" Height="16"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
             </Menu>
         </Grid>

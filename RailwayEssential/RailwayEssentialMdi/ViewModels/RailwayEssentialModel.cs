@@ -176,6 +176,7 @@ namespace RailwayEssentialMdi.ViewModels
         public RelayCommand DisconnectCommand { get; }
         public RelayCommand DryRunCommand { get;  }
         public RelayCommand TogglePowerCommand { get; }
+        public RelayCommand AutoplayCommand { get; }
         public RelayCommand CmdStationsPropertiesCommand { get; }
 
         public RelayCommand ShowLogCommand { get; }
@@ -218,6 +219,7 @@ namespace RailwayEssentialMdi.ViewModels
             DisconnectCommand = new RelayCommand(DisconnectFromCommandStation, CheckDisconnectFromCommandStation);
             DryRunCommand = new RelayCommand(DryRun, CheckDryRun);
             TogglePowerCommand = new RelayCommand(TogglePower, CheckTogglePower);
+            AutoplayCommand = new RelayCommand(DoAutoplay, CheckDoAutoplay);
             CmdStationsPropertiesCommand = new RelayCommand(PropertiesCommandStation);
             ShowLogCommand = new RelayCommand(ShowLog);
             ShowCommandLogCommand = new RelayCommand(ShowCommandLog);
@@ -937,6 +939,11 @@ namespace RailwayEssentialMdi.ViewModels
             _dispatcher.ForwardCommands(cmds);
         }
 
+        public void DoAutoplay(object p)
+        {
+            // TODO
+        }
+
         public void ShowLocomotive(object p)
         {
             var w = GetWindow<LocomotivesWindow>();
@@ -1233,6 +1240,20 @@ namespace RailwayEssentialMdi.ViewModels
             if (!_dispatcher.GetRunMode())
                 return false;
             return true;
+        }
+
+        public bool CheckDoAutoplay(object p)
+        {
+            if (_project == null)
+                return false;
+
+            if (_trackEntity == null)
+                return false;
+
+            if (IsDryRun)
+                return true;
+
+            return _dispatcher.GetRunMode();
         }
 
         public bool CheckAddTrack(object p)
