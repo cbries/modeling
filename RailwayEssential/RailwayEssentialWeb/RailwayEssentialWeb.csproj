@@ -85,7 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Resources\Webeditor\images\msdropdown\icons\Thumbs.db" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="TrackViewer.xaml">
@@ -128,20 +127,9 @@
     <Content Include="Resources\Webeditor\css\reset.css" />
     <Content Include="Resources\Webeditor\edit.png" />
     <Content Include="Resources\Webeditor\images\msdropdown\icons\1273404841_tick_16.png" />
-    <Content Include="Resources\Webeditor\images\msdropdown\icons\Amex-56.png" />
     <Content Include="Resources\Webeditor\images\msdropdown\icons\blank.gif" />
-    <Content Include="Resources\Webeditor\images\msdropdown\icons\browser-chrome.png" />
-    <Content Include="Resources\Webeditor\images\msdropdown\icons\browser-firefox.png" />
-    <Content Include="Resources\Webeditor\images\msdropdown\icons\browser-msie.png" />
-    <Content Include="Resources\Webeditor\images\msdropdown\icons\browser-opera.png" />
-    <Content Include="Resources\Webeditor\images\msdropdown\icons\browser-safari.png" />
     <Content Include="Resources\Webeditor\images\msdropdown\icons\button-large.gif" />
-    <Content Include="Resources\Webeditor\images\msdropdown\icons\Cash-56.png" />
-    <Content Include="Resources\Webeditor\images\msdropdown\icons\demoaction.jpg" />
-    <Content Include="Resources\Webeditor\images\msdropdown\icons\Discover-56.png" />
     <Content Include="Resources\Webeditor\images\msdropdown\icons\enabled.gif" />
-    <Content Include="Resources\Webeditor\images\msdropdown\icons\flagssprite_small.png" />
-    <Content Include="Resources\Webeditor\images\msdropdown\icons\giftlelo_dot_com.jpg" />
     <Content Include="Resources\Webeditor\images\msdropdown\icons\icon-search.gif" />
     <Content Include="Resources\Webeditor\images\msdropdown\icons\icon_calendar.gif" />
     <Content Include="Resources\Webeditor\images\msdropdown\icons\icon_cart.gif" />
@@ -156,19 +144,9 @@
     <Content Include="Resources\Webeditor\images\msdropdown\icons\icon_secure.gif" />
     <Content Include="Resources\Webeditor\images\msdropdown\icons\icon_video.gif" />
     <Content Include="Resources\Webeditor\images\msdropdown\icons\jquery-msdropdown.gif" />
-    <Content Include="Resources\Webeditor\images\msdropdown\icons\Mastercard-56.png" />
-    <Content Include="Resources\Webeditor\images\msdropdown\icons\msDropDown.gif" />
-    <Content Include="Resources\Webeditor\images\msdropdown\icons\Paypal-56.png" />
-    <Content Include="Resources\Webeditor\images\msdropdown\icons\preview.gif" />
     <Content Include="Resources\Webeditor\images\msdropdown\icons\sprite.gif" />
     <Content Include="Resources\Webeditor\images\msdropdown\icons\sprite.jpg" />
     <Content Include="Resources\Webeditor\images\msdropdown\icons\tick.gif" />
-    <Content Include="Resources\Webeditor\images\msdropdown\icons\Visa-56.png" />
-    <Content Include="Resources\Webeditor\images\msdropdown\skin1\dd_arrow.gif" />
-    <Content Include="Resources\Webeditor\images\msdropdown\skin1\title-bg.gif" />
-    <Content Include="Resources\Webeditor\images\msdropdown\skin2\dd_arrow.gif" />
-    <Content Include="Resources\Webeditor\images\msdropdown\skin2\icon-ok.gif" />
-    <Content Include="Resources\Webeditor\images\msdropdown\skin2\title-bg.gif" />
     <Content Include="Resources\Webeditor\js\jquery\jquery-1.9.0.min.js" />
     <Content Include="Resources\Webeditor\js\jquery\jquery-ui.js" />
     <Content Include="Resources\Webeditor\js\jquery\tester.js" />

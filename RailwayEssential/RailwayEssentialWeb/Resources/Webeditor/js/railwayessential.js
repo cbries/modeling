@@ -117,9 +117,9 @@ function appendBlockText(col, row, esvg, themeId) {
     }
 
     //if (TESTDATA && el !== 'undefined' && el != null) {
-        changeDirectionMarker(col, row, 2);
-        changeLocnameMarker(col, row, ' ');
-        changeItemIdMarker(col, row, ' ');
+    changeDirectionMarker(col, row, 2);
+    changeLocnameMarker(col, row, ' ');
+    changeItemIdMarker(col, row, ' ');
     //}
 }
 
@@ -706,13 +706,21 @@ $(document).ready(function (e) {
         });
 
     try {
-        $('#webmenuCategories').msDropDown({ visibleRows: 20, rowHeight: 10, roundedCorner: false });
-        $('#webmenuTrack').msDropDown({ visibleRows: 20, rowHeight: 10, roundedCorner: false });
-        $('#webmenuSwitch').msDropDown({ visibleRows: 20, rowHeight: 10, roundedCorner: false });
-        $('#webmenuSignal').msDropDown({ visibleRows: 20, rowHeight: 10, roundedCorner: false });
-        $('#webmenuBlock').msDropDown({ visibleRows: 20, rowHeight: 10, roundedCorner: false });
-        $('#webmenuSensor').msDropDown({ visibleRows: 20, rowHeight: 10, roundedCorner: false });
-        $('#webmenuAccessory').msDropDown({ visibleRows: 20, rowHeight: 10, roundedCorner: false });
+        var options = { 
+            visibleRows: 7, 
+            rowHeight: 15, 
+            roundedCorner: false,
+            animStyle: 'none',
+            enableAutoFilter: true
+        };
+		
+        $('#webmenuCategories').msDropDown(options);
+        $('#webmenuTrack').msDropDown(options);
+        $('#webmenuSwitch').msDropDown(options);
+        $('#webmenuSignal').msDropDown(options);
+        $('#webmenuBlock').msDropDown(options);
+        $('#webmenuSensor').msDropDown(options);
+        $('#webmenuAccessory').msDropDown(options);
     } catch (e) {
         railwayEssentialCallback.message(e.message);
     }
@@ -727,8 +735,8 @@ $(document).ready(function (e) {
     $("#mode-3").change(updateEditMode);
     $("#mode-4").change(updateEditMode);
 
-    //isEdit = true;
-    //updateUi();
+    isEdit = true;
+    updateUi();
 });
 
 function updateEditMode() {
