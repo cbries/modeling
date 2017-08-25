@@ -478,7 +478,9 @@ function ResetRadios() {
     $("#mode-2").prop('checked', false).checkboxradio('refresh');
     $("#mode-3").prop('checked', false).checkboxradio('refresh');
     $("#mode-4").prop('checked', false).checkboxradio('refresh');
+
     $("#mode-1").prop('checked', true).checkboxradio('refresh');
+
     updateEditMode();
 }
 
@@ -706,14 +708,14 @@ $(document).ready(function (e) {
         });
 
     try {
-        var options = { 
-            visibleRows: 7, 
-            rowHeight: 15, 
+        var options = {
+            visibleRows: 7,
+            rowHeight: 15,
             roundedCorner: false,
             animStyle: 'none',
             enableAutoFilter: true
         };
-		
+
         $('#webmenuCategories').msDropDown(options);
         $('#webmenuTrack').msDropDown(options);
         $('#webmenuSwitch').msDropDown(options);
@@ -739,13 +741,17 @@ $(document).ready(function (e) {
 });
 
 function updateEditMode() {
-    if ($("#mode-1").is(':checked'))
+    if ($("#mode-1").is(':checked')) {
         editMode = ModeAddMove;
-    else if ($("#mode-2").is(':checked'))
+        resetSelection();
+    }
+    else if ($("#mode-2").is(':checked')) {
         editMode = ModeRemove;
-    else if ($("#mode-3").is(':checked'))
+        resetSelection();
+    } else if ($("#mode-3").is(':checked')) {
         editMode = ModeRotate;
-    else if ($("#mode-4").is(':checked'))
+        resetSelection();
+    } else if ($("#mode-4").is(':checked'))
         editMode = ModeObject;
     else
         editMode = ModeAddMove;
