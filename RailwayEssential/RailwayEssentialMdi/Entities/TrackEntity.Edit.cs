@@ -25,8 +25,8 @@ namespace RailwayEssentialMdi.Entities
         private S88 _itemS88Selection;
         private TrackInformation.Switch _itemSwitchSelection;
         private int _itemsS88SelectionPin;
-        private bool _connectorVisible;
-        private int _connectorIdentifier;
+        private bool _connectorVisible = true;
+        private int _connectorIdentifier = -1;
         private int _blockGroupIdentifier;
         private TrackInformation.Locomotive _blockCurrentLocomotive;
         private List<string> _availableBlocks = new List<string>();
@@ -502,15 +502,15 @@ namespace RailwayEssentialMdi.Entities
 
                 if (objItem != null)
                 {
-                    ConnectorVisible = false;
-                    SelectionTabIndex = 0;
+                    //ConnectorVisible = false;
+                    //SelectionTabIndex = 0;
                     
                     switch (objItem.TypeId())
                     {
                         case 4: // S88
                         {
                             ItemsS88Selection = objItem as S88;
-                            SelectionTabIndex = TabIndexS88;
+                            //SelectionTabIndex = TabIndexS88;
 
                             var weaveItem = GetWeaveItem(SelectionX, SelectionY);
                             if (weaveItem != null)
@@ -521,7 +521,7 @@ namespace RailwayEssentialMdi.Entities
                         case 5: // switch
                         {
                             ItemsSwitchSelection = objItem as TrackInformation.Switch;
-                            SelectionTabIndex = TabIndexSwitch;
+                            //SelectionTabIndex = TabIndexSwitch;
                             ItemsS88SelectionPin = -1;
                         }
                             break;
@@ -530,7 +530,7 @@ namespace RailwayEssentialMdi.Entities
                         {
                             ItemsS88Selection = null;
                             ItemsSwitchSelection = null;
-                            SelectionTabIndex = TabIndexGeneral;
+                            //SelectionTabIndex = TabIndexGeneral;
                             ItemsS88SelectionPin = -1;
                         }
                             break;
@@ -555,8 +555,8 @@ namespace RailwayEssentialMdi.Entities
                                         {
                                             // show Connector's configuration tab    
 
-                                            SelectionTabIndex = TabIndexConnector;
-                                            ConnectorVisible = true;
+                                            //SelectionTabIndex = TabIndexConnector;
+                                            //ConnectorVisible = true;
 
                                             var opt = TrackInfoSelection.GetOption("connectorIdentifier");
 
@@ -577,7 +577,7 @@ namespace RailwayEssentialMdi.Entities
 
                                     case Globals.ThemeIdType.Block:
                                         {
-                                            SelectionTabIndex = TabIndexBlock;
+                                            //SelectionTabIndex = TabIndexBlock;
 
                                             #region blockGroupIdentifier
 
@@ -620,8 +620,8 @@ namespace RailwayEssentialMdi.Entities
                                         break;
 
                                     default:
-                                        ConnectorVisible = false;
-                                        SelectionTabIndex = 0;
+                                        //ConnectorVisible = false;
+                                        //SelectionTabIndex = 0;
                                         break;
                                 }
                             }
