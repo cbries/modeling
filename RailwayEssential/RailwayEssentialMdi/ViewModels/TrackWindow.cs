@@ -1,4 +1,7 @@
-﻿namespace RailwayEssentialMdi.ViewModels
+﻿using System.Collections.Generic;
+using TrackInformation;
+
+namespace RailwayEssentialMdi.ViewModels
 {
     using System.Diagnostics;
     using RailwayEssentialCore;
@@ -26,6 +29,103 @@
         public RelayCommand MinusColumnRightCommand { get; }
         public RelayCommand MinusRowBottomCommand { get; }
         public RelayCommand PlusRowBottomCommand { get; }
+        
+        // based on the events of Rocrail
+        public IList<string> BlockEventNames => new List<string>()
+        {
+            "--",
+            "enter",       // Erkennung eines in den Block einfahrenden Zuges. Die Geschwindigkeit wird reduziert auf V_mid2), falls kein Folge-Block frei ist oder der Zug hier halten soll.
+            "enter2in",    // Eine Kombination von enter und in. Die Ereignisse werden sequentiell erzeugt; das in-Ereignis wird simuliert. Für die Nutzung in Blöcken mit nur einem realen Rückmelder. Das enter-Ereignis erzeugt automatisch nach einer in den Blockeigenschaften definierten Zeit das in-Ereignis
+            "in",          // Falls der Zug halten soll, wird die Geschwindigkeit auf Null gesetzt. Dieses Ereignis gibt ebenfalls den vorhergehenden Block frei, der durch den Zug bisher belegt war.
+
+            //"free",
+            //"enter",
+            //"enter2route",
+            //"enter2in",
+            //"enter2shortin",
+            //"enter2pre",
+            //"in",
+            //"exit",
+            //"pre2in",
+            //"occupied",
+            //"ident",
+            //"shortin"
+        };
+
+        private readonly string[] _blockEventNameSelected = {"--", "--", "--"};
+
+        public string BlockEventNameSelected0
+        {
+            get => _blockEventNameSelected[0];
+            set
+            {
+                _blockEventNameSelected[0] = value;
+                SaveEvents();
+                RaisePropertyChanged("BlockEventNameSelected0");
+            }
+        }
+
+        public string BlockEventNameSelected1
+        {
+            get => _blockEventNameSelected[1];
+            set
+            {
+                _blockEventNameSelected[1] = value;
+                SaveEvents();
+                RaisePropertyChanged("BlockEventNameSelected1");
+            }
+        }
+
+        public string BlockEventNameSelected2
+        {
+            get => _blockEventNameSelected[2];
+            set
+            {
+                _blockEventNameSelected[2] = value;
+                SaveEvents();
+                RaisePropertyChanged("BlockEventNameSelected2");
+            }
+        }
+
+        private readonly string[] _blockSensorNameSelected = {"--", "--", "--"};
+
+        public string BlockSensorNameSelected0
+        {
+            get => _blockSensorNameSelected[0];
+            set
+            {
+                _blockSensorNameSelected[0] = value;
+                SaveEvents();
+                RaisePropertyChanged("BlockSensorNameSelected0");
+            }
+        }
+
+        public string BlockSensorNameSelected1
+        {
+            get => _blockSensorNameSelected[1];
+            set
+            {
+                _blockSensorNameSelected[1] = value;
+                SaveEvents();
+                RaisePropertyChanged("BlockSensorNameSelected1");
+            }
+        }
+
+        public string BlockSensorNameSelected2
+        {
+            get => _blockSensorNameSelected[2];
+            set
+            {
+                _blockSensorNameSelected[2] = value;
+                SaveEvents();
+                RaisePropertyChanged("BlockSensorNameSelected2");
+            }
+        }
+
+        private void SaveEvents()
+        {
+            // TODO
+        }
 
         public TrackWindow(TrackEntity entity, ProjectTrackView trackView)
         {
@@ -44,6 +144,8 @@
             EditCommand = new RelayCommand(EditState, CheckEditState);
 
             SaveCommand = new RelayCommand(Save);
+
+            RaisePropertyChanged("BlockEventNames");
         }
 
         private void Save(object p)

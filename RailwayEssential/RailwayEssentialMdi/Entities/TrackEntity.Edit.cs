@@ -30,6 +30,7 @@ namespace RailwayEssentialMdi.Entities
         private int _blockGroupIdentifier;
         private TrackInformation.Locomotive _blockCurrentLocomotive;
         private List<string> _availableBlocks = new List<string>();
+        private List<string> _availableSensors = new List<string>();
         private List<TrackInformation.Item> _availableLocomotives = new List<Item>();
 
         public TrackInfo TrackInfoSelection
@@ -160,6 +161,8 @@ namespace RailwayEssentialMdi.Entities
                             _availableBlocks.Add(e.Name);
                     }
 
+                    _availableBlocks.Insert(0, "--");
+
                     return _availableBlocks;
                 }
             }
@@ -169,6 +172,46 @@ namespace RailwayEssentialMdi.Entities
                 {
                     _availableBlocks = (List<string>) value;
                     RaisePropertyChanged("AvailableBlocks");
+                }
+            }
+        }
+
+        public IList<string> AvailableSensors
+        {
+            get
+            {
+                lock (_availableSensors)
+                {
+                    _availableSensors.Clear();
+
+                    if (Track == null)
+                        return _availableSensors;
+
+                    foreach (var e in Track)
+                    {
+                        if (e == null)
+                            continue;
+
+                        if (!Globals.SensorIds.Contains(e.ThemeId))
+                            continue;
+
+                        if (string.IsNullOrEmpty(e.Name))
+                            _availableSensors.Add(e.ToString());
+                        else
+                            _availableSensors.Add(e.Name);
+                    }
+
+                    _availableSensors.Insert(0, "--");
+
+                    return _availableSensors;
+                }
+            }
+            set
+            {
+                lock (_availableSensors)
+                {
+                    _availableSensors = (List<string>)value;
+                    RaisePropertyChanged("AvailableSensors");
                 }
             }
         }
