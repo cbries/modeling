@@ -6,6 +6,7 @@
              xmlns:railwayEssentialWeb="clr-namespace:RailwayEssentialWeb;assembly=RailwayEssentialWeb"
              xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:xamlMagic="clr-namespace:RailwayEssentialMdi.XamlMagic"
              mc:Ignorable="d" Initialized="TrackView_OnInitialized" DataContextChanged="TrackView_OnDataContextChanged"
              d:DesignHeight="250" d:DesignWidth="600">
     
@@ -20,19 +21,19 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <DockPanel Grid.Row="0" HorizontalAlignment="Right">
-            <Button Height="20" Width="20" Margin="0,0,5,0" Command="{Binding ZoomResetCommand}" Padding="0" ToolTip="Reset Zoom">
+        <DockPanel Grid.Row="0" HorizontalAlignment="Left">
+            <Button Height="20" Width="20" Margin="5,0,10,0" Command="{Binding EditCommand}" HorizontalAlignment="Left" Padding="0" Visibility="{Binding Entity.CanEdit, Mode=OneWay, Converter={StaticResource BoolToVis}}">
+                <xamlMagic:AutoGreyableImage Source="/RailwayEssentialMdi;component/Resources/edit.png"/>
+            </Button>
+            
+            <Button Height="20" Width="20" Margin="0,0,3,0" Command="{Binding ZoomResetCommand}" Padding="0" ToolTip="Reset Zoom">
                 <Image Source="/RailwayEssentialMdi;component/Resources/zoomnot.png"/>
             </Button>
-            <Button Height="20" Width="20" Margin="0,0,5,0" Command="{Binding ZoomMinusCommand}" Padding="0" ToolTip="Zoom-Out">
+            <Button Height="20" Width="20" Margin="0,0,3,0" Command="{Binding ZoomMinusCommand}" Padding="0" ToolTip="Zoom-Out">
                 <Image Source="/RailwayEssentialMdi;component/Resources/zoomminus.png"/>
             </Button>
-            <Button Height="20" Width="20" Margin="0,0,5,0" Command="{Binding ZoomPlusCommand}" Padding="0" ToolTip="Zoom-In">
+            <Button Height="20" Width="20" Margin="0,0,3,0" Command="{Binding ZoomPlusCommand}" Padding="0" ToolTip="Zoom-In">
                 <Image Source="/RailwayEssentialMdi;component/Resources/zoomplus.png"/>
-            </Button>
-
-            <Button Height="20" Width="20" Margin="15,0,0,0" Command="{Binding EditCommand}" HorizontalAlignment="Left" Padding="0" ToolTip="Toggle edit mode of the track view." Visibility="{Binding Entity.CanEdit, Mode=OneWay, Converter={StaticResource BoolToVis}}">
-                <Image Source="/RailwayEssentialMdi;component/Resources/edit.png"/>
             </Button>
         </DockPanel>
         

@@ -148,6 +148,7 @@
     <Compile Include="Views\TrackView.xaml.cs">
       <DependentUpon>TrackView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="XamlMagic\AutoGreyableImage.cs" />
     <Page Include="About\About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
