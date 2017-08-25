@@ -735,8 +735,8 @@ $(document).ready(function (e) {
     $("#mode-3").change(updateEditMode);
     $("#mode-4").change(updateEditMode);
 
-    isEdit = true;
-    updateUi();
+    //isEdit = true;
+    //updateUi();
 });
 
 function updateEditMode() {
