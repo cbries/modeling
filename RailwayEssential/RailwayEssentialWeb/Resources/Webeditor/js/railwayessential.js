@@ -420,7 +420,17 @@ function simulateClick(col, row, themeid, symbol, orientation, response) {
     var svgChild = newChild.find("svg");
     appendBlockText(col, row, svgChild, themeid);
 
-    newChild.click(function (evt) {
+    newChild.mousedown(function (evt) {
+
+        if (isEdit) {
+            switch(evt.which) {
+                case 2: // middle button
+                    break;
+                case 3: // right button
+                    rotateElement(col, row, $(this));
+                    return;
+            }
+        }
 
         switch (editMode) {
         case ModeRotate:
@@ -599,27 +609,38 @@ $(document).ready(function (e) {
                     var svgChild = newChild.find("svg");
                     appendBlockText(col, row, svgChild, themeId);
 
-                    newChild.click(function (evt) {
-                        switch (editMode) {
-                        case ModeRotate:
-                            if (isEdit) {
+                    newChild.mousedown(function (evt) {
+
+                        if (isEdit) {
+                            switch (evt.which) {
+                            case 2: // middle button
+                                break;
+                            case 3: // right button
                                 rotateElement(col, row, $(this));
+                                return;
                             }
-                            break;
+                        }
 
-                        case ModeRemove:
-                            if (isEdit) {
-                                $(this).remove();
-                                resetSelection();
-                                rebuildTable();
-                            }
-                            break;
+                        switch (editMode) {
+                            case ModeRotate:
+                                if (isEdit) {
+                                    rotateElement(col, row, $(this));
+                                }
+                                break;
 
-                        case ModeObject:
-                            if (isEdit) {
-                                selectElement(col, row, $(this));
-                            }
-                            break;
+                            case ModeRemove:
+                                if (isEdit) {
+                                    $(this).remove();
+                                    resetSelection();
+                                    rebuildTable();
+                                }
+                                break;
+
+                            case ModeObject:
+                                if (isEdit) {
+                                    selectElement(col, row, $(this));
+                                }
+                                break;
                         }
 
                     });
@@ -672,27 +693,38 @@ $(document).ready(function (e) {
                 var svgChild = newChild.find("svg");
                 appendBlockText(col, row, svgChild, o2);
 
-                newChild.click(function (evt) {
-                    switch (editMode) {
-                    case ModeRotate:
-                        if (isEdit) {
+                newChild.mousedown(function (evt) {
+
+                    if (isEdit) {
+                        switch (evt.which) {
+                        case 2: // middle button
+                            break;
+                        case 3: // right button
                             rotateElement(col, row, $(this));
+                            return;
                         }
-                        break;
+                    }
 
-                    case ModeRemove:
-                        if (isEdit) {
-                            $(this).remove();
-                            resetSelection();
-                            rebuildTable();
-                        }
-                        break;
+                    switch (editMode) {
+                        case ModeRotate:
+                            if (isEdit) {
+                                rotateElement(col, row, $(this));
+                            }
+                            break;
 
-                    case ModeObject:
-                        if (isEdit) {
-                            selectElement(col, row, $(this));
-                        }
-                        break;
+                        case ModeRemove:
+                            if (isEdit) {
+                                $(this).remove();
+                                resetSelection();
+                                rebuildTable();
+                            }
+                            break;
+
+                        case ModeObject:
+                            if (isEdit) {
+                                selectElement(col, row, $(this));
+                            }
+                            break;
                     }
                 });
 
