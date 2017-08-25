@@ -48,9 +48,10 @@ namespace RailwayEssentialMdi.ViewModels
         private readonly Theme.Theme _theme;
         private readonly Configuration _cfg;
         private Dispatcher.Dispatcher _dispatcher;
+        private Autoplay.Autoplay _autoplayer = null;
 
-        private readonly SynchronizationContext _ctx = null;
-
+        internal readonly SynchronizationContext _ctx = null;
+        
         public Dispatcher.Dispatcher Dispatcher => _dispatcher;
 
         private readonly Category _itemStatus = new Category { Title = "Status", IconName = "cat_status.png" };
@@ -88,6 +89,11 @@ namespace RailwayEssentialMdi.ViewModels
         public void LogNetwork(string text, params object[] args)
         {
             _logMessagesCommands?.Add(text, args);
+        }
+
+        public void LogAutoplay(string text, params object[] args)
+        {
+            _logMessagesAutoplay?.Add(text, args);
         }
 
         private bool _isDirty;
@@ -141,6 +147,29 @@ namespace RailwayEssentialMdi.ViewModels
             }
         }
 
+        public ImageSource AutoplayStateIcon
+        {
+            get
+            {
+                if (_autoplayer == null)
+                    return new BitmapImage(new Uri("/RailwayEssentialMdi;component/Resources/offline.png", UriKind.Relative));
+                return new BitmapImage(new Uri("/RailwayEssentialMdi;component/Resources/autoplayon.gif", UriKind.Relative));
+            }
+        }
+
+        public string AutoplayState
+        {
+            get
+            {
+                if (_autoplayer == null)
+                    return "Autoplay OFF";
+                return "Autoplay ON";
+            }
+        }
+
+        public bool AutoplayState2 => _autoplayer != null;
+        public bool AutoplayState3 => !AutoplayState2;
+
         private void UpdateCanClose()
         {
             var wnds = GetWindowList<TrackWindow>();
@@ -181,6 +210,7 @@ namespace RailwayEssentialMdi.ViewModels
 
         public RelayCommand ShowLogCommand { get; }
         public RelayCommand ShowCommandLogCommand { get; }
+        public RelayCommand ShowAutoplayLogCommand { get; }
         public RelayCommand ShowIdentifiersCommand { get; }
 
         public RelayCommand AboutCommand { get; }
@@ -193,6 +223,7 @@ namespace RailwayEssentialMdi.ViewModels
 
         private readonly LogEntity _logMessagesGeneral = new LogEntity();
         private readonly LogEntity _logMessagesCommands = new LogEntity();
+        private readonly LogEntity _logMessagesAutoplay = new LogEntity();
         private TrackEntity _trackEntity = null;
 
         internal TrackEntity TrackEntity => _trackEntity;
@@ -223,6 +254,7 @@ namespace RailwayEssentialMdi.ViewModels
             CmdStationsPropertiesCommand = new RelayCommand(PropertiesCommandStation);
             ShowLogCommand = new RelayCommand(ShowLog);
             ShowCommandLogCommand = new RelayCommand(ShowCommandLog);
+            ShowAutoplayLogCommand = new RelayCommand(ShowAutoplayLog);
             ShowIdentifiersCommand = new RelayCommand(ShowIdentifiers, CheckShowIdentifiers);
             AboutCommand = new RelayCommand(ShowAbout);
             AnalyzeRoutesCommand = new RelayCommand(AnalyzeRoutes, CheckAnalyzeRoutes);
@@ -941,7 +973,65 @@ namespace RailwayEssentialMdi.ViewModels
 
         public void DoAutoplay(object p)
         {
-            // TODO
+            try
+            {
+                if (_autoplayer != null)
+                {
+                    _autoplayer.Stop();
+                    _autoplayer.Started -= Started;
+                    _autoplayer.Stopped -= Stopped;
+                    _autoplayer.Failed -= Failed;
+                    _autoplayer = null;
+                    return;
+                }
+
+                if (_autoplayer == null)
+                    _autoplayer = new Autoplay.Autoplay()
+                    {
+                        Ctx = this
+                    };
+
+                _autoplayer.Started += Started;
+                _autoplayer.Stopped += Stopped;
+                _autoplayer.Failed += Failed;
+
+                _autoplayer.Start();
+            }
+            catch (Exception ex)
+            {
+                // ignore
+            }
+            finally
+            {
+                RaisePropertyChanged("AutoplayStateIcon");
+                RaisePropertyChanged("AutoplayState");
+                RaisePropertyChanged("AutoplayState2");
+                RaisePropertyChanged("AutoplayState3");
+            }
+        }
+
+        private void Started(object sender, EventArgs eventArgs)
+        {
+            _ctx?.Send(state =>
+            {
+                LogAutoplay("Autoplay started");
+            }, null);
+        }
+
+        private void Stopped(object sender, EventArgs eventArgs)
+        {
+            _ctx?.Send(state =>
+            {
+                LogAutoplay("Autoplay stopped");
+            }, null);
+        }
+
+        private void Failed(object sender, EventArgs eventArgs)
+        {
+            _ctx?.Send(state =>
+            {
+                LogAutoplay("Autoplay failed");
+            }, null);
         }
 
         public void ShowLocomotive(object p)
@@ -1053,6 +1143,24 @@ namespace RailwayEssentialMdi.ViewModels
             var item2 = new LogWindow(_logMessagesCommands)
             {
                 LogMode = LogWindow.Mode.Commands,
+                Model = this
+            };
+            item2.Closing += (s, e) => Windows.Remove(item2);
+            lock (Windows)
+            {
+                Windows.Add(item2);
+            }
+        }
+
+        public void ShowAutoplayLog(object p)
+        {
+            var w = GetWindow<LogWindow>();
+            if (w?.LogMode == LogWindow.Mode.Autoplay)
+                return;
+
+            var item2 = new LogWindow(_logMessagesAutoplay)
+            {
+                LogMode = LogWindow.Mode.Autoplay,
                 Model = this
             };
             item2.Closing += (s, e) => Windows.Remove(item2);

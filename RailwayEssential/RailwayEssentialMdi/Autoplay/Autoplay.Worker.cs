@@ -1,0 +1,61 @@
+﻿using System;
+using System.ComponentModel;
+
+namespace RailwayEssentialMdi.Autoplay
+{
+    public partial class Autoplay
+    {
+        private static int WorkerDelay = 250;
+
+        private string GetTimeStr()
+        {
+            return string.Format("{0:MM/dd/yy H:mm:ss}", DateTime.UtcNow.ToLocalTime());
+        }
+
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var w = sender as BackgroundWorker;
+
+            for(;;)
+            {
+                if ((w.CancellationPending == true))
+                {
+                    e.Cancel = true;
+
+                    return;
+                }
+
+                Check();
+
+                System.Threading.Thread.Sleep(WorkerDelay);
+
+                //w.ReportProgress((i * 10));
+            }
+        }
+
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            var msg = "";
+
+            if(e.Cancelled)
+                msg = "Canceled!";
+            else if (e.Error != null)
+                msg = "Error: " + e.Error.Message;
+            else
+                msg = "Done!";
+
+            if (Ctx != null && Ctx._ctx != null)
+            {
+                Ctx._ctx.Send(state =>
+                {
+                    Ctx.LogAutoplay(msg);
+                }, null);
+            }
+        }
+
+        private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            //this.tbProgress.Text = (e.ProgressPercentage.ToString() + "%");
+        }
+    }
+}

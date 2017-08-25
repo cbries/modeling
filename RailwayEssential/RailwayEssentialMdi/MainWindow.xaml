@@ -6,7 +6,8 @@
         xmlns:viewModels="clr-namespace:RailwayEssentialMdi.ViewModels"
         xmlns:trackInformation="clr-namespace:TrackInformation;assembly=TrackInformation"
         xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock" 
-        xmlns:local="clr-namespace:RailwayEssentialMdi" 
+        xmlns:local="clr-namespace:RailwayEssentialMdi"
+        xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
         x:Class="RailwayEssentialMdi.MainWindow"
         x:Name="app"
         mc:Ignorable="d" Title="RailwayEssential" Height="700" Width="1200" 
@@ -81,7 +82,7 @@
                     <Separator/>
                     <MenuItem Header="Dry run" Command="{Binding DryRunCommand}"/>
                     <MenuItem Header="{Binding TogglePowerCaption}" Command="{Binding TogglePowerCommand}"/>
-                    <MenuItem Header="Autoplay" Command="{Binding AutoplayCommand}">
+                    <MenuItem Header="Autoplay" Command="{Binding AutoplayCommand}" IsCheckable="True">
                         <MenuItem.Icon>
                             <Image Source="Resources/autoplay.png" Width="16" Height="16"/>
                         </MenuItem.Icon>
@@ -99,6 +100,7 @@
                 <MenuItem Header="View">
                     <MenuItem Header="General Log" Command="{Binding ShowLogCommand}"/>
                     <MenuItem Header="Command Log" Command="{Binding ShowCommandLogCommand}"/>
+                    <MenuItem Header="Autoplay Log" Command="{Binding ShowAutoplayLogCommand}"/>
                     <Separator/>
                     <MenuItem Header="Show Identifiers" 
                               Command="{Binding ShowIdentifiersCommand}" 
@@ -212,6 +214,8 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="150" />
                         </Grid.ColumnDefinitions>
                     </Grid>
@@ -228,10 +232,20 @@
                 <!-- TODO -->
             </StatusBarItem>
             <Separator Grid.Column="3" />
-            <StatusBarItem Grid.Column="4">
+            <StatusBarItem Grid.Column="4" HorizontalContentAlignment="Left">
                 <DockPanel>
-                    <Image Width="15" Height="15" Source="{Binding ConnectionStateIcon, Mode=OneWay}"/>
-                    <TextBlock Text="{Binding ConnectionState, Mode=OneWay}" Margin="3,0,0,0"/>
+                    <Image Width="15" Height="15" Source="Resources/offline.png" VerticalAlignment="Center" Visibility="{Binding AutoplayState3, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter={x:Static Visibility.Collapsed}}"/>
+                    
+                    <Image Width="15" Height="15" gif:AnimationBehavior.SourceUri="Resources/autoplayon.gif" VerticalAlignment="Center" Visibility="{Binding AutoplayState2, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter={x:Static Visibility.Collapsed}}"/>
+
+                    <TextBlock Text="{Binding AutoplayState, Mode=OneWay}" Margin="3,0,10,0" VerticalAlignment="Center"/>
+                </DockPanel>
+            </StatusBarItem>
+            <Separator Grid.Column="5" />
+            <StatusBarItem Grid.Column="6" HorizontalContentAlignment="Left">
+                <DockPanel>
+                    <Image Width="15" Height="15" Source="{Binding ConnectionStateIcon, Mode=OneWay}" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding ConnectionState, Mode=OneWay}" Margin="3,0,0,0" VerticalAlignment="Center"/>
                 </DockPanel>
             </StatusBarItem>
         </StatusBar>

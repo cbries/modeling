@@ -11,7 +11,8 @@ namespace RailwayEssentialMdi.ViewModels
         public enum Mode
         {
             General,
-            Commands
+            Commands,
+            Autoplay
         }
 
         public Mode LogMode { get; set; }
@@ -22,6 +23,8 @@ namespace RailwayEssentialMdi.ViewModels
             {
                 if (LogMode == Mode.General)
                     return "General Log";
+                else if (LogMode == Mode.Autoplay)
+                    return "Autoplay Log";
                 return "Command Log";
             }
         }
