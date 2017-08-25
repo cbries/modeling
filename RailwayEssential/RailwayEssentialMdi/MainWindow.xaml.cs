@@ -19,6 +19,31 @@ namespace RailwayEssentialMdi
             InitializeComponent();
 
             Unloaded += MainWindow_Unloaded;
+
+            EventManager.RegisterClassHandler(typeof(Window),
+                Keyboard.KeyDownEvent, new KeyEventHandler(keyDown), true);
+        }
+
+        private bool _ctrlIsHold = false;
+
+        private void keyDown(object sender, KeyEventArgs e)
+        {
+            if (!_initialized)
+                return;
+
+            if ((e.Key == Key.LeftCtrl && (e.KeyStates & KeyStates.Down) != 0)
+                || e.Key == Key.RightCtrl && (e.KeyStates & KeyStates.Down) != 0)
+            {
+                _ctrlIsHold = true;
+            }
+            else
+            {
+                if (e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl)
+                    _ctrlIsHold = false;
+            }
+
+            if (e.Key == Key.S && _ctrlIsHold)
+                _dataContext?.Project?.Save();
         }
 
         private void MainWindow_OnInitialized(object sender, EventArgs e)

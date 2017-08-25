@@ -200,6 +200,8 @@ namespace RailwayEssentialMdi.DataObjects
 
         public bool Save()
         {
+            Trace.WriteLine("Save()");
+
             return Save(Filepath);
         }
 
