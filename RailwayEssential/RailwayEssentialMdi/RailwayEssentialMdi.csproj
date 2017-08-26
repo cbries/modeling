@@ -114,6 +114,8 @@
     <Compile Include="Analyze\Coord.cs" />
     <Compile Include="Analyze\Map.cs" />
     <Compile Include="Analyze\MapItem.cs" />
+    <Compile Include="Analyze\Route.cs" />
+    <Compile Include="Analyze\RouteGroup.cs" />
     <Compile Include="Analyze\WayPoint.cs" />
     <Compile Include="Analyze\Waypoints.cs" />
     <Compile Include="Autoplay\Autoplay.Check.cs" />

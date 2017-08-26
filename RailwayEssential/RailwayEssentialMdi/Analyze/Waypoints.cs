@@ -43,11 +43,11 @@ namespace RailwayEssentialMdi.Analyze
             return pts;
         }
 
-        public List<WayPoint> ToWaypoints()
+        public Route ToRoute()
         {
             lock (this)
             {
-                List<WayPoint> wps = new List<WayPoint>();
+                var wps = new Route();
                 foreach (var item in this)
                 {
                     if (item == null)

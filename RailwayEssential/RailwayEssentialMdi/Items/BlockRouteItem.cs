@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using RailwayEssentialMdi.Analyze;
+﻿using RailwayEssentialMdi.Analyze;
 
 namespace RailwayEssentialMdi.Items
 {
@@ -11,11 +10,11 @@ namespace RailwayEssentialMdi.Items
             set { }
         }
 
-        public List<WayPoint> WayPoints { get; set; }
+        public Route RoutePoints { get; set; }
 
         public BlockRouteItem()
         {
-            WayPoints = new List<WayPoint>();
+            RoutePoints = new Route();
         }
     }
 }

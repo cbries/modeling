@@ -18,12 +18,16 @@ namespace RailwayEssentialMdi.Analyze
         {
             var m = new Map(_model);
             m.Build();
+
             var numberOfRoutes = m.GetRoutes();
+
             AnalyzeResult res = new AnalyzeResult
             {
                 NumberOfRoutes = numberOfRoutes,
-                Routes = m.Routes
+                Routes = m.Routes,
+                RouteGroups = m.GetRouteGroups()
             };
+
             return res;
         }
     }

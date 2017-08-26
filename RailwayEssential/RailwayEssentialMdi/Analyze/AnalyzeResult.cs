@@ -9,6 +9,15 @@ namespace RailwayEssentialMdi.Analyze
 
         public List<WayPoints> Routes { get; set; }
 
+        public List<RouteGroup> RouteGroups { get; set; }
+
+        public AnalyzeResult()
+        {
+            NumberOfRoutes = -1;
+            Routes = new List<WayPoints>();
+            RouteGroups= new List<RouteGroup>();
+        }
+
         public override string ToString()
         {
             string m = "";
@@ -23,6 +32,13 @@ namespace RailwayEssentialMdi.Analyze
                         m += $"{rr.Identifier}->";
                     m += "END\r\n";
                 }
+            }
+            m += $"Number of Groups: {RouteGroups.Count}\r\n";
+            foreach (var grp in RouteGroups)
+            {
+                if (grp == null)
+                    continue;
+                m += grp + "\r\n";
             }
             return m;
         }

@@ -24,14 +24,16 @@ namespace RailwayEssentialMdi.DataObjects
         public List<string> Objects { get; set; }
         public ProjectTrack Track { get; set; }
         public List<ProjectTrackView> TrackViews { get; set; }
-        public List<List<WayPoint>> BlockRoutes { get; set; }
+        public List<Route> BlockRoutes { get; set; }
+        public List<RouteGroup> BlockRouteGroups { get; private set; }
 
         public ProjectFile()
         {
             Objects = new List<string>();
             Track = new ProjectTrack();
             TrackViews = new List<ProjectTrackView>();
-            BlockRoutes = new List<List<WayPoint>>();
+            BlockRoutes = new List<Route>();
+            BlockRouteGroups= new List<RouteGroup>();
         }
 
         public bool Load(string path)
@@ -132,19 +134,22 @@ namespace RailwayEssentialMdi.DataObjects
                             if (arr == null)
                                 continue;
 
-                            List<WayPoint> wps = new List<WayPoint>();
+                            Route route = new Route();
 
                             for (int j = 0; j < arr.Count; ++j)
                             {
                                 WayPoint w = new WayPoint();
                                 if (w.Parse(arr[j]))
-                                    wps.Add(w);
+                                    route.Add(w);
                             }
 
-                            if (wps.Count > 0)
-                                BlockRoutes.Add(wps);
+                            if (route.Count > 0)
+                                BlockRoutes.Add(route);
                         }
                     }
+
+                    if (BlockRoutes != null && BlockRoutes.Count > 0)
+                        BlockRouteGroups = Map.GetRouteGroups(BlockRoutes);
                 }
 
                 return true;

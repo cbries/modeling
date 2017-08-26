@@ -654,7 +654,7 @@ namespace RailwayEssentialMdi.ViewModels
                 var item = new Items.BlockRouteItem
                 {
                     Title = $"#{i + 1}: {firstName} -> {lastName}",
-                    WayPoints = route
+                    RoutePoints = route
                 };
 
                 _itemBlockRoutes.Items.Add(item);
@@ -807,9 +807,9 @@ namespace RailwayEssentialMdi.ViewModels
                             _itemSwitches.Items.Add(ee);
                         }
                     }
-                    else if (e is Route)
+                    else if (e is TrackInformation.Route)
                     {
-                        var ee = e as Route;
+                        var ee = e as TrackInformation.Route;
 
                         if (_itemRoutes.Items.Any(x => x.ObjectId == ee.ObjectId))
                         {
@@ -1242,13 +1242,15 @@ namespace RailwayEssentialMdi.ViewModels
             if (res == null)
                 throw new Exception("Analyzation failed");
 
+            Trace.WriteLine("Analyze:\r\n" + res);
+
             if (res.Routes != null)
             {
                 foreach (var r in res.Routes)
                 {
-                    var wps = r?.ToWaypoints();
-                    if (wps != null && wps.Count > 0 && Project != null)
-                        Project.BlockRoutes?.Add(wps);
+                    var route = r?.ToRoute();
+                    if (route != null && route.Count > 0 && Project != null)
+                        Project.BlockRoutes?.Add(route);
                 }
             }
 
@@ -1548,10 +1550,10 @@ namespace RailwayEssentialMdi.ViewModels
             JArray arEnd = new JArray();
             JArray arGeneral = new JArray();
 
-            int n = item.WayPoints.Count;
+            int n = item.RoutePoints.Count;
             for(int idx = 0; idx < n; ++idx)
             {
-                var r = item.WayPoints[idx];
+                var r = item.RoutePoints[idx];
 
                 bool isStart = false;
                 bool isEnd = false;

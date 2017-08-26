@@ -147,6 +147,7 @@ namespace RailwayEssentialMdi.Analyze
                 
                 if(Routes == null)
                     Routes = new List<WayPoints>();
+
                 Routes.Add(wps);
             }
 
@@ -155,7 +156,94 @@ namespace RailwayEssentialMdi.Analyze
 
             return Routes.Count;
         }
-        
+
+        public static List<RouteGroup> GetRouteGroups(List<Route> routes)
+        {
+            var list = new List<RouteGroup>();
+
+            if (routes == null || routes.Count <= 0)
+                return list;
+
+            int nrOfRoutes = routes.Count;
+
+            for (int i = 0; i < nrOfRoutes; ++i)
+            {
+                var route = routes[i];
+                if (route == null)
+                    continue;
+
+                RouteGroup grp = new RouteGroup();
+                grp.Routes.Add(route);
+
+                for (int j = 0; j < nrOfRoutes; ++j)
+                {
+                    if (i == j)
+                        continue;
+
+                    var r = routes[j];
+                    if (r == null)
+                        continue;
+
+                    bool res = Route.Cross(route, r);
+                    if (res)
+                        grp.Routes.Add(r);
+                }
+
+                list.Add(grp);
+            }
+
+            return list;
+        }
+
+        public List<RouteGroup> GetRouteGroups(List<WayPoints> wps = null)
+        {
+            var list = new List<RouteGroup>();
+
+            if (wps == null)
+                wps = Routes;
+
+            if (wps == null || wps.Count <= 0)
+                return list;
+
+            int nrOfRoutes = wps.Count;
+
+            for (int i = 0; i < nrOfRoutes; ++i)
+            {
+                var route = wps[i];
+                if (route == null)
+                    continue;
+
+                var rr0 = route.ToRoute();
+                if (rr0 == null)
+                    continue;
+
+                RouteGroup grp = new RouteGroup();
+                grp.Routes.Add(rr0);
+
+                for (int j = 0; j < nrOfRoutes; ++j)
+                {
+                    if (i == j)
+                        continue;
+
+                    var r = wps[j];
+                    if (r == null)
+                        continue;
+
+                    var rr1 = r.ToRoute();
+                    if (rr1 == null)
+                        continue;
+
+                    bool res = Route.Cross(rr0, rr1);
+                    if (res)
+                        grp.Routes.Add(rr1);
+                }
+
+                list.Add(grp);
+            }
+
+            return list;
+        }
+
         private void GetAllPath(MapItem from)
         {
             if (from == null)
