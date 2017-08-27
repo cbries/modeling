@@ -1,4 +1,4 @@
-﻿using RailwayEssentialMdi.Entities;
+﻿using System;
 
 namespace RailwayEssentialMdi.Autoplay
 {
@@ -43,6 +43,17 @@ namespace RailwayEssentialMdi.Autoplay
                         var themeId = trackInfo.ThemeId;
                         var orientation = trackInfo.Orientation;
                         var symbol = themeIcon;
+
+                        var isSwitch = RailwayEssentialCore.Globals.SwitchIds.Contains(themeId);
+
+                        if (r.HasTurn && isSwitch)
+                        {
+                            var parts = symbol.Split(new[] {'-'}, StringSplitOptions.RemoveEmptyEntries);
+                            if(parts.Length == 2)
+                                symbol = parts[0] + "-t-" + parts[1];
+                            else if (parts.Length == 1)
+                                symbol = parts[0] + "-t";
+                        }
 
                         trackEntity.Viewer.ExecuteJs($"changeSymbol({x}, {y}, {themeId}, \"{orientation}\", \"{symbol}\");");
                     }

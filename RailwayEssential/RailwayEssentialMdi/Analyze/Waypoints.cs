@@ -7,10 +7,6 @@ namespace RailwayEssentialMdi.Analyze
     {
         public Map Ctx { get; private set; }
 
-        public WayPoints()
-        {
-        }
-
         public WayPoints(Map ctx, string path)
         {
             Ctx = ctx;
@@ -20,7 +16,17 @@ namespace RailwayEssentialMdi.Analyze
             {
                 if (string.IsNullOrEmpty(pp))
                     continue;
-                var m = pp.Trim().TrimStart('(').TrimEnd(')').Trim();
+
+                bool hasTurn = false;
+
+                var m = pp.Trim();
+                if (m.EndsWith(">", StringComparison.OrdinalIgnoreCase))
+                {
+                    hasTurn = true;
+                    m = m.TrimEnd('>');
+                }
+
+                m = m.Trim().TrimStart('(').TrimEnd(')').Trim();
                 if (string.IsNullOrEmpty(m))
                     continue;
                 var mparts = m.Split(',');
@@ -31,16 +37,12 @@ namespace RailwayEssentialMdi.Analyze
                     y = -1;
                 var item = Ctx.Get(x, y);
                 if (item != null)
-                    Add(item);
-            }
-        }
+                {
+                    item.HasTurn = hasTurn;
 
-        public WayPoints Clone()
-        {
-            WayPoints pts = new WayPoints();
-            foreach (var e in this)
-                pts.Add(e);
-            return pts;
+                    Add(item);
+                }
+            }
         }
 
         public Route ToRoute()
@@ -52,6 +54,7 @@ namespace RailwayEssentialMdi.Analyze
                 {
                     if (item == null)
                         continue;
+
                     if (item.ThemeId == -1)
                         continue;
 
@@ -60,7 +63,8 @@ namespace RailwayEssentialMdi.Analyze
                         X = item.Info.X, 
                         Y = item.Info.Y,
                         ThemeId = item.ThemeId,
-                        Orientation = Helper.GetOrientation(item.Info)
+                        Orientation = Helper.GetOrientation(item.Info),
+                        HasTurn = item.HasTurn
                     };
 
                     wps.Add(wp);

@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using RailwayEssentialMdi.ViewModels;
+﻿using RailwayEssentialMdi.ViewModels;
 
 namespace RailwayEssentialMdi.Analyze
 {
@@ -17,6 +16,7 @@ namespace RailwayEssentialMdi.Analyze
         public AnalyzeResult Execute()
         {
             var m = new Map(_model);
+
             m.Build();
 
             var numberOfRoutes = m.GetRoutes();

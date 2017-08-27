@@ -1,10 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using RailwayEssentialMdi.ViewModels;
 
 namespace RailwayEssentialMdi.Analyze
 {
+    public class DirectionInfo
+    {
+        public bool IsFromLeft { get; private set; }
+        public bool IsFromTop { get; private set; }
+        public bool IsFromRight { get; private set; }
+        public bool IsFromBottom { get; private set; }
+
+        public DirectionInfo(MapItem from, MapItem to)
+        {
+            IsFromLeft = to.Info.IsLeft(from.Info);
+            IsFromTop = to.Info.IsUp(from.Info);
+            IsFromRight = to.Info.IsRight(from.Info);
+            IsFromBottom = to.Info.IsDown(from.Info);
+        }
+    }
+
     public class Map
     {
         private readonly RailwayEssentialModel _model;
@@ -265,12 +283,43 @@ namespace RailwayEssentialMdi.Analyze
             if (_branches.Count > 0)
             {
                 BranchInfo branch = null;
+
                 while((branch=_branches.Pop()) != null)
                 { 
                     for (int j = 0; j < branch.Neighbours.Count; ++j)
                     {
                         _currentWay = branch.RecentWay;
+
                         var nb = branch.Neighbours[j];
+
+                        bool hasTurn = false;
+
+                        DirectionInfo dirinfo = new DirectionInfo(branch.Item, nb);
+                        if (dirinfo.IsFromTop && !branch.Item.IsTopExit)
+                        {
+                            hasTurn = true;
+                        }
+                        else if (dirinfo.IsFromBottom && !branch.Item.IsBottomExit)
+                        {
+                            hasTurn = true;
+                        }
+                        else if (dirinfo.IsFromLeft && !branch.Item.IsLeftExit)
+                        {
+                            hasTurn = true;
+                        }
+                        else if (dirinfo.IsFromRight && !branch.Item.IsRightExit)
+                        {
+                            hasTurn = true;
+                        }
+
+                        if (hasTurn)
+                        {
+                            _currentWay = _currentWay.Trim();
+                            int n = _currentWay.LastIndexOf("->", StringComparison.OrdinalIgnoreCase);
+                            _currentWay = _currentWay.Substring(0, n).Trim();
+                            _currentWay += ">->";
+                        }
+
                         StartWalk(nb, branch.Item);
                     }
 
@@ -291,17 +340,25 @@ namespace RailwayEssentialMdi.Analyze
 
         private void Walk(MapItem item, MapItem comingFrom)
         {
+            if (item == null)
+            {
+                _currentWay = "";
+                return;
+            }
+
+            DirectionInfo dirinfo = new DirectionInfo(comingFrom, item);
+
+            bool isFromLeft = dirinfo.IsFromLeft;
+            bool isFromTop = dirinfo.IsFromTop;
+            bool isFromRight = dirinfo.IsFromRight;
+            bool isFromBottom = dirinfo.IsFromBottom;
+
             if (item != null && item.IsBlock)
             {
                 _paths.Add(_currentWay);
                 _currentWay = "";
                 return;
             }
-
-            bool isFromLeft = item.Info.IsLeft(comingFrom.Info);
-            bool isFromTop = item.Info.IsUp(comingFrom.Info);
-            bool isFromRight = item.Info.IsRight(comingFrom.Info);
-            bool isFromBottom = item.Info.IsDown(comingFrom.Info);
 
             bool wasConnected;
             var nbs = item.GetReachableNeighbours(out wasConnected, comingFrom.Info);

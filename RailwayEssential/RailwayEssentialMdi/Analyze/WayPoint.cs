@@ -8,6 +8,7 @@ namespace RailwayEssentialMdi.Analyze
         public int X { get; set; }
         public int Y { get; set; }
         public int Orientation { get; set; }
+        public bool HasTurn { get; set; }
 
         public JObject ToJson()
         {
@@ -16,7 +17,8 @@ namespace RailwayEssentialMdi.Analyze
                 ["themeId"] = ThemeId,
                 ["x"] = X,
                 ["y"] = Y,
-                ["orientation"] = Orientation
+                ["orientation"] = Orientation,
+                ["hasTurn"] = HasTurn
             };
             return o;
         }
@@ -43,6 +45,9 @@ namespace RailwayEssentialMdi.Analyze
 
                 if (o["orientation"] != null)
                     Orientation = (int) o["orientation"];
+
+                if (o["hasTurn"] != null)
+                    HasTurn = (bool) o["hasTurn"];
 
                 return true;
             }

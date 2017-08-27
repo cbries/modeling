@@ -29,7 +29,12 @@ namespace RailwayEssentialMdi.Analyze
                     var r = Routes[i];
                     m += $"#{i + 1} (Steps {r.Count}): ";
                     foreach (var rr in r)
-                        m += $"{rr.Identifier}->";
+                    {
+                        if (rr.HasTurn)
+                            m += $"{rr.Identifier}>->";
+                        else
+                            m += $"{rr.Identifier}->";
+                    }
                     m += "END\r\n";
                 }
             }

@@ -14,7 +14,7 @@ namespace RailwayEssentialMdi.Analyze
         private TrackInfo _info;
         private readonly Map _ctx;
         private readonly RailwayEssentialModel _model;
-
+        
         public TrackInfo Info
         {
             get => _info;
@@ -32,6 +32,7 @@ namespace RailwayEssentialMdi.Analyze
         private int MaxX => TrackEntity.Cfg.DesignerColumns;
         private int MaxY => TrackEntity.Cfg.DesignerRows;
         public string Identifier => $"({Info.X},{Info.Y})";
+        public bool HasTurn { get; set; }
 
         public List<string> BlockIdentifiers
         {
