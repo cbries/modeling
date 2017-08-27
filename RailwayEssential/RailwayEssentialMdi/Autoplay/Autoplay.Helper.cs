@@ -13,7 +13,7 @@ namespace RailwayEssentialMdi.Autoplay
 
             var trackEntity = Ctx.TrackEntity;
 
-            for (int idx = 0; idx < n; ++idx)
+            for (int idx = 1; idx < n - 1; ++idx)
             {
                 var r = route[idx];
                 if (r == null)
