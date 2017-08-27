@@ -54,6 +54,8 @@ namespace RailwayEssentialMdi.ViewModels
         
         public Dispatcher.Dispatcher Dispatcher => _dispatcher;
 
+        public Theme.Theme Theme => _theme;
+
         private readonly Category _itemStatus = new Category { Title = "Status", IconName = "cat_status.png" };
         private readonly Category _itemLocomotives = new Category { Title = "Locomotives", IconName = "cat_locomotive.png" };
         private readonly Category _itemS88 = new Category { Title = "S88 Ports", IconName = "cat_s88.png" };

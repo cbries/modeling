@@ -21,12 +21,12 @@
         "active": {
           "default": "curve.svg",
           "occ": "curve-occ.svg",
-          "route": "curve-router.svg"
+          "route": "curve-route.svg"
         },
         "off": {
           "default": "curve.svg",
           "occ": "curve-occ.svg",
-          "route": "curve-router.svg"
+          "route": "curve-route.svg"
         },
         "clickable": false
       },

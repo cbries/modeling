@@ -5,7 +5,7 @@ namespace RailwayEssentialMdi.Autoplay
 {
     public partial class Autoplay
     {
-        private static int WorkerDelay = 250;
+        private static int WorkerDelay = 1000;
 
         private string GetTimeStr()
         {

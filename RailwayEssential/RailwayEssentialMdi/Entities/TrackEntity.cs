@@ -397,8 +397,7 @@ namespace RailwayEssentialMdi.Entities
                         if (_trackViewer != null && _trackViewer.JsCallback != null)
                         {
                             _trackViewer.JsCallback.TrackEdit.ChangeSymbol(x, y, themeId);
-                            _trackViewer.ExecuteJs(
-                                $"changeSymbol({x}, {y}, {themeId}, \"{orientation}\", \"{symbol}\");");
+                            _trackViewer.ExecuteJs($"changeSymbol({x}, {y}, {themeId}, \"{orientation}\", \"{symbol}\");");
                         }
 
                         //Trace.WriteLine($"CHANGE: {x},{y} -> {themeId} | {symbol} | {orientation}");

@@ -24,12 +24,12 @@
         "active": {
           "default": "curve",
           "occ": "curve-occ",
-          "route": "curve-router"
+          "route": "curve-route"
         },
         "off": {
           "default": "curve",
           "occ": "curve-occ",
-          "route": "curve-router"
+          "route": "curve-route"
         },
         "clickable": false,
         "routes": [ "AD", "AB", "BC", "CD" ]

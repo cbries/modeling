@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using TrackInformation;
@@ -9,16 +10,27 @@ namespace RailwayEssentialMdi.Autoplay
     {
         private DataProvider DataProvider => Ctx?.Dispatcher?.GetDataProvider();
         private Dispatcher.Dispatcher Dispatcher => Ctx?.Dispatcher;
+        private Theme.Theme Theme => Ctx?.Theme;
 
         private List<Locomotive> Locomotives => DataProvider.Objects.OfType<Locomotive>().ToList();
+
+        private Random _rnd = new Random(DateTime.Now.Millisecond);
+
+        private int _previousIdx = -1;
 
         private void Check()
         {
             Trace.WriteLine($"{GetTimeStr()} ## Autoplay::Check()");
 
-            //Ctx.R
+            // reset
+            if (_previousIdx != -1)
+                SetRoute(Ctx.Project.BlockRoutes[_previousIdx], false);
 
-            // TODO
+            var max = Ctx.Project.BlockRoutes.Count;           
+            var idx = _rnd.Next(0, max - 1);
+            _previousIdx = idx;
+            var route = Ctx.Project.BlockRoutes[idx];
+            SetRoute(route, true);
         }
     }
 }
