@@ -22,12 +22,17 @@ namespace RailwayEssentialMdi.Autoplay
         {
             Trace.WriteLine($"{GetTimeStr()} ## Autoplay::Check()");
 
+            if (Ctx == null || Ctx.Project == null)
+                return;
+
             // reset
             if (_previousIdx != -1)
                 SetRoute(Ctx.Project.BlockRoutes[_previousIdx], false);
 
             var max = Ctx.Project.BlockRoutes.Count;           
             var idx = _rnd.Next(0, max);
+            while (idx == _previousIdx)
+                idx = _rnd.Next(0, max);
             _previousIdx = idx;
             var route = Ctx.Project.BlockRoutes[idx];
             SetRoute(route, true);

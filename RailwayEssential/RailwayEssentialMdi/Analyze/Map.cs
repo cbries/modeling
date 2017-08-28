@@ -156,6 +156,9 @@ namespace RailwayEssentialMdi.Analyze
                 GetAllPath(b0);                
             }
 
+            foreach(var p in _paths)
+                Trace.WriteLine("P: " + p);
+
             foreach (var p in _paths)
             {
                 if (string.IsNullOrEmpty(p))
@@ -292,34 +295,11 @@ namespace RailwayEssentialMdi.Analyze
 
                         var nb = branch.Neighbours[j];
 
-                        bool hasTurn = false;
-
-                        DirectionInfo dirinfo = new DirectionInfo(branch.Item, nb);
-                        if (dirinfo.IsFromTop && !branch.Item.IsTopExit)
-                        {
-                            hasTurn = true;
-                        }
-                        else if (dirinfo.IsFromBottom && !branch.Item.IsBottomExit)
-                        {
-                            hasTurn = true;
-                        }
-                        else if (dirinfo.IsFromLeft && !branch.Item.IsLeftExit)
-                        {
-                            hasTurn = true;
-                        }
-                        else if (dirinfo.IsFromRight && !branch.Item.IsRightExit)
-                        {
-                            hasTurn = true;
-                        }
-
-                        if (hasTurn)
-                        {
-                            _currentWay = _currentWay.Trim();
-                            int n = _currentWay.LastIndexOf("->", StringComparison.OrdinalIgnoreCase);
-                            _currentWay = _currentWay.Substring(0, n).Trim();
-                            _currentWay += ">->";
-                        }
-
+                        bool r = CheckSwitchAndTurn(branch.Item, nb);
+#if DEBUG
+                        if(r)
+                            Trace.WriteLine(" TURN #1 ");
+#endif
                         StartWalk(nb, branch.Item);
                     }
 
@@ -542,11 +522,48 @@ namespace RailwayEssentialMdi.Analyze
                     {
                         var it = nbs[0];
                         var nbsItem = Get(it.X, it.Y);
+
+                        bool r = CheckSwitchAndTurn(item, nbsItem);
+#if DEBUG
+                        if (r)
+                            Trace.WriteLine(" TURN #2 ");
+#endif
                         _currentWay += $"{nbsItem.Identifier} -> ";
                         Walk(nbsItem, item);
                     }
                 }
             }
+        }
+
+        private bool CheckSwitchAndTurn(MapItem currentItem, MapItem neighbour)
+        {
+            if (currentItem == null)
+                return false;
+            if (!currentItem.IsSwitch)
+                return false;
+            if (neighbour == null)
+                return false;
+
+            var previousWay = new WayPoints(this, _currentWay);
+            int lastIndex = previousWay.Count - 1;
+            var fromWp = previousWay[lastIndex - 1];
+            var fromItem = Get(fromWp.X0, fromWp.Y1);
+            var nb = neighbour;
+
+            var xdelta = nb.X0 - fromItem.X0;
+            var ydelta = nb.Y0 - fromItem.Y0;
+
+            bool hasTurn = Math.Abs(xdelta) == 1 || Math.Abs(ydelta) == 1;
+
+            if (hasTurn)
+            {
+                _currentWay = _currentWay.Trim();
+                int n = _currentWay.LastIndexOf("->", StringComparison.OrdinalIgnoreCase);
+                _currentWay = _currentWay.Substring(0, n).Trim();
+                _currentWay += ">->";
+            }
+
+            return hasTurn;
         }
 
         private class BranchInfo

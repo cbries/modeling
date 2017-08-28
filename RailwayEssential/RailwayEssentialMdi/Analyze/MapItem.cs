@@ -10,7 +10,7 @@ namespace RailwayEssentialMdi.Analyze
     public class MapItem
     {
         private static int _instanceId = 0;
-        private readonly int _localId;
+        private int _localId;
         private TrackInfo _info;
         private readonly Map _ctx;
         private readonly RailwayEssentialModel _model;
@@ -24,6 +24,15 @@ namespace RailwayEssentialMdi.Analyze
 
                 UpdateOrientation();
             }
+        }
+
+        public MapItem ShallowCopy()
+        {
+            var item = new MapItem(_model, _ctx);
+            item._localId = _localId;
+            item._info = _info;
+            item.HasTurn = HasTurn;
+            return item;
         }
 
         private Entities.TrackEntity TrackEntity => _model?.TrackEntity;

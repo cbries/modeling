@@ -833,6 +833,8 @@ namespace RailwayEssentialMdi.ViewModels
         {
             if (_project != null)
             {
+                _autoplayer?.Stop();
+
                 if (IsDirty)
                 {
                     System.Windows.Style style = new System.Windows.Style();
