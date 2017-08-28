@@ -1,0 +1,46 @@
+[
+  {
+    "x": 1,
+    "y": 1,
+    "themeId": 17,
+    "orientation": "rot180",
+    "description": "",
+    "options": {
+      "connectorIdentifier": "2"
+    }
+  },
+  {
+    "x": 2,
+    "y": 1,
+    "themeId": 10,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
+  },
+  {
+    "x": 8,
+    "y": 1,
+    "themeId": 17,
+    "orientation": "rot0",
+    "description": "",
+    "options": {
+      "connectorIdentifier": "2"
+    }
+  },
+  {
+    "x": 3,
+    "y": 1,
+    "themeId": 150,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
+  },
+  {
+    "x": 7,
+    "y": 1,
+    "themeId": 10,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
+  }
+]

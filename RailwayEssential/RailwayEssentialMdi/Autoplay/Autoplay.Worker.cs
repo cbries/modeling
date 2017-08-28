@@ -1,11 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Threading;
 
 namespace RailwayEssentialMdi.Autoplay
 {
     public partial class Autoplay
     {
-        private static int WorkerDelay = 1000;
+        private static int WorkerDelay = 5 * 1000;
 
         private string GetTimeStr()
         {
@@ -27,9 +28,7 @@ namespace RailwayEssentialMdi.Autoplay
 
                 Check();
 
-                System.Threading.Thread.Sleep(WorkerDelay);
-
-                //w.ReportProgress((i * 10));
+                Thread.Sleep(WorkerDelay);
             }
         }
 

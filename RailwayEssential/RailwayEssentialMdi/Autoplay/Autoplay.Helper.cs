@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using RailwayEssentialMdi.Analyze;
 
 namespace RailwayEssentialMdi.Autoplay
 {
@@ -61,5 +64,84 @@ namespace RailwayEssentialMdi.Autoplay
             }
         }
 
+        private AutoplayRouteThread GetByRoute(Analyze.Route route)
+        {
+            foreach (var thread in _blockRouteThreads)
+            {
+                if (thread == null)
+                    continue;
+
+                if (thread.Route == route)
+                    return thread;
+            }
+
+            return null;
+        }
+
+        private int GetLocObjectIdOfRoute(Analyze.Route route)
+        {
+            var startPoint = route.First();
+            if (startPoint != null)
+            {
+                var startItem = Ctx.TrackEntity.Track.Get(startPoint.X, startPoint.Y);
+                if (startItem != null)
+                {
+                    var locObjectId = startItem.GetLocomotiveObjectId();
+                    if (locObjectId != -1)
+                        return locObjectId;
+                }
+            }
+
+            return -1;
+        }
+
+        private List<RouteGroup> GetFreeBlockGroupsWithLocomotive()
+        {
+            List<RouteGroup> grps = new List<RouteGroup>();
+
+            foreach (var grp in Ctx.Project.BlockRouteGroups)
+            {
+                if (grp == null || grp.Routes.Count == 0)
+                    continue;
+
+                bool addToFreeList = true;
+
+                foreach (var r in grp.Routes)
+                {
+                    if (r == null)
+                        continue;
+
+                    if (r.IsBusy)
+                    {
+                        addToFreeList = false;
+
+                        break;
+                    }
+                }
+
+                if (!addToFreeList)
+                    continue;
+
+                addToFreeList = false;
+
+                foreach (var r in grp.Routes)
+                {
+                    if (r == null)
+                        continue;
+
+                    var locObjectId = GetLocObjectIdOfRoute(r);
+                    if (locObjectId != -1)
+                    {
+                        addToFreeList = true;
+                        break;
+                    }
+                }
+
+                if (addToFreeList)
+                    grps.Add(grp);
+            }
+
+            return grps;
+        }
     }
 }

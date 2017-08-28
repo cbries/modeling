@@ -1,9 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace RailwayEssentialMdi.Analyze
 {
     public class Route : List<WayPoint>
     {
+        public bool IsBusy { get; set; }
+        public DateTime StartBusiness { get; set; }
+        public DateTime StopBusiness { get; set; }
+
+        private int LocomotiveObjectId(JObject opts)
+        {
+            if (opts?["blockCurrentLocomotive"] == null)
+                return -1;
+            var v = opts["blockCurrentLocomotive"].ToString();
+            if (string.IsNullOrEmpty(v))
+                return -1;
+            if (int.TryParse(v, out var objectId))
+                return objectId;
+            return -1;
+        }
+
         public static bool Cross(Route r0, Route r1)
         {
             foreach (var runner0 in r0)

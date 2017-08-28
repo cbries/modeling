@@ -1,0 +1,92 @@
+[
+  {
+    "name": "",
+    "x": 6,
+    "y": 1,
+    "themeId": 10,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
+  },
+  {
+    "name": "",
+    "x": 7,
+    "y": 1,
+    "themeId": 10,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
+  },
+  {
+    "name": "",
+    "x": 8,
+    "y": 1,
+    "themeId": 10,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
+  },
+  {
+    "name": "",
+    "x": 9,
+    "y": 1,
+    "themeId": 10,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
+  },
+  {
+    "name": "",
+    "x": 2,
+    "y": 1,
+    "themeId": 150,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
+  },
+  {
+    "name": "",
+    "x": 10,
+    "y": 1,
+    "themeId": 150,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
+  },
+  {
+    "name": "",
+    "x": 7,
+    "y": 3,
+    "themeId": 10,
+    "orientation": "rot-90",
+    "description": "",
+    "options": {}
+  },
+  {
+    "name": "",
+    "x": 7,
+    "y": 4,
+    "themeId": 10,
+    "orientation": "rot90",
+    "description": "",
+    "options": {}
+  },
+  {
+    "name": "",
+    "x": 7,
+    "y": 5,
+    "themeId": 10,
+    "orientation": "rot90",
+    "description": "",
+    "options": {}
+  },
+  {
+    "name": "",
+    "x": 7,
+    "y": 6,
+    "themeId": 10,
+    "orientation": "rot90",
+    "description": "",
+    "options": {}
+  }
+]

@@ -1,0 +1,90 @@
+﻿{
+  "name": "Project22",
+  "version": 1.0,
+  "targetHost": "192.168.178.61",
+  "targetPort": 15471,
+  "designerColumns": 40,
+  "designerRows": 40,
+  "track": {
+    "name": "Project22",
+    "path": "TrackPlan.json",
+    "weave": "TrackWeaving.json"
+  },
+  "trackViews": [
+    {
+      "name": "S#1",
+      "startX": 0,
+      "startY": 0,
+      "show": true
+    }
+  ],
+  "objects": [
+    "TrackObjects.json"
+  ],
+  "blockRoutes": [
+    [
+      {
+        "themeId": 150,
+        "x": 4,
+        "y": 1,
+        "orientation": 0
+      },
+      {
+        "themeId": 10,
+        "x": 8,
+        "y": 1,
+        "orientation": 0
+      },
+      {
+        "themeId": 10,
+        "x": 9,
+        "y": 1,
+        "orientation": 0
+      },
+      {
+        "themeId": 10,
+        "x": 10,
+        "y": 1,
+        "orientation": 0
+      },
+      {
+        "themeId": 150,
+        "x": 11,
+        "y": 1,
+        "orientation": 0
+      }
+    ],
+    [
+      {
+        "themeId": 150,
+        "x": 11,
+        "y": 1,
+        "orientation": 0
+      },
+      {
+        "themeId": 10,
+        "x": 10,
+        "y": 1,
+        "orientation": 0
+      },
+      {
+        "themeId": 10,
+        "x": 9,
+        "y": 1,
+        "orientation": 0
+      },
+      {
+        "themeId": 10,
+        "x": 8,
+        "y": 1,
+        "orientation": 0
+      },
+      {
+        "themeId": 150,
+        "x": 4,
+        "y": 1,
+        "orientation": 0
+      }
+    ]
+  ]
+}

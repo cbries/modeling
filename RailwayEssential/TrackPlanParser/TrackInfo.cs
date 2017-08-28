@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.SqlServer.Server;
 using Newtonsoft.Json.Linq;
 
 namespace TrackPlanParser
@@ -98,5 +97,26 @@ namespace TrackPlanParser
 
             return Options[name].ToString();
         }
+
+        #region valid for Blocks
+
+        public int GetLocomotiveObjectId()
+        {
+            var vv = GetOption("blockCurrentLocomotive");
+            if (string.IsNullOrEmpty(vv))
+                return -1;
+
+            if (int.TryParse(vv, out var objectId))
+                return objectId;
+
+            return -1;
+        }
+
+        public void SetLocomotiveObjectId(int objectId)
+        {
+            SetOption("blockCurrentLocomotive", $"{objectId}");
+        }
+
+        #endregion
     }
 }

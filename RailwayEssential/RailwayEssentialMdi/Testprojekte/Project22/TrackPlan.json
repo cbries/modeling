@@ -1,0 +1,49 @@
+[
+  {
+    "name": "Track#1",
+    "x": 8,
+    "y": 1,
+    "themeId": 10,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
+  },
+  {
+    "name": "Track#2",
+    "x": 9,
+    "y": 1,
+    "themeId": 10,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
+  },
+  {
+    "name": "Track#3",
+    "x": 10,
+    "y": 1,
+    "themeId": 10,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
+  },
+  {
+    "name": "Block#1",
+    "x": 4,
+    "y": 1,
+    "themeId": 150,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
+  },
+  {
+    "name": "Block#2",
+    "x": 11,
+    "y": 1,
+    "themeId": 150,
+    "orientation": "rot0",
+    "description": "",
+    "options": {
+      "blockGroupIdentifier": "-1"
+    }
+  }
+]

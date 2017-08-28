@@ -60,6 +60,15 @@ namespace RailwayEssentialMdi.Autoplay
             _worker.ProgressChanged += Worker_ProgressChanged;
             _worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
 
+            try
+            {
+                InitializeRouteThreads();
+            }
+            catch (Exception ex)
+            {
+                Ctx.LogError(ex.Message);
+            }
+
             _worker.RunWorkerAsync();
 
             if (Started != null)
@@ -78,6 +87,8 @@ namespace RailwayEssentialMdi.Autoplay
 
             if(_worker.WorkerSupportsCancellation)
                 _worker?.CancelAsync();
+
+            StopRouteThreads();
 
             if (Stopped != null)
                 Stopped(this, null);
