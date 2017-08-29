@@ -319,7 +319,9 @@ namespace RailwayEssentialMdi.Autoplay
                         {
                             s88data.S88HasBeenHandled = true;
 
-                            string eventName = GetEventName(s88data.Info, s88data.Info.Name);
+                            // TODO
+
+                            string eventName = GetEventName(DestBlock, s88data.Info.Name);
 
                             Trace.WriteLine($"{prefix} {s88data.Info} {obj} state '{state}' -> {eventName}");
                         }
