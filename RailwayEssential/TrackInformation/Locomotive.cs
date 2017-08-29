@@ -185,7 +185,7 @@ namespace TrackInformation
             OnCommandsReady(this, ctrlCmds);
         }
 
-        public void ChangeDirection(uint nr, bool backward)
+        public void ChangeDirection(bool backward)
         {
             int v = backward ? 1 : 0;
             Direction = v;

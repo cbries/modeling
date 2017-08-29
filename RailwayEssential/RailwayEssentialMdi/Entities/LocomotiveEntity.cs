@@ -129,7 +129,7 @@
                 _driveForward = value;
                 _driveBackward = !value;
 
-                ObjectItem.ChangeDirection((uint)ObjectItem.ObjectId, !value);
+                ObjectItem.ChangeDirection(!value);
 
                 if (_objectItem != null)
                     _objectItem.Speed = 0;
@@ -146,7 +146,7 @@
                 _driveBackward = value;
                 _driveForward = !value;
 
-                ObjectItem.ChangeDirection((uint)ObjectItem.ObjectId, value);
+                ObjectItem.ChangeDirection(value);
 
                 if (_objectItem != null)
                     _objectItem.Speed = 0;

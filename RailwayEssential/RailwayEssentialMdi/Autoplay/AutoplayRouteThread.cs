@@ -4,18 +4,20 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 using RailwayEssentialCore;
 using RailwayEssentialMdi.ViewModels;
 using TrackInformation;
 using TrackInformationCore;
 using TrackPlanParser;
-using Switch = TrackInformation.Switch;
+using TrackWeaver;
 
 namespace RailwayEssentialMdi.Autoplay
 {
     public class AutoplayRouteThread
     {
         public RailwayEssentialModel Model { get; set; }
+        public TrackWeaver.TrackWeaver Weaver => Model.Dispatcher.Weaver;
         public Analyze.Route Route { get; set; }
         public TrackInfo SrcBlock { get; private set; }
         public TrackInfo DestBlock { get; private set; }
@@ -72,6 +74,82 @@ namespace RailwayEssentialMdi.Autoplay
             }
         }
 
+        private string GetEventName(TrackInfo destBlock, string s88name)
+        {
+            if (destBlock == null)
+                return null;
+
+            if (string.IsNullOrEmpty(s88name))
+                return null;
+
+            var eventSpec = DestBlock.GetOption("events");
+            JObject events = null;
+            if (!string.IsNullOrEmpty(eventSpec))
+                events = JObject.Parse(eventSpec);
+            if (events == null)
+                return null;
+
+            string[] sensors = new string[3];
+            string[] eventNames = new string[3];
+            for (int i = 0; i < 3; ++i)
+            {
+                if (events[$"sensor{i}"] != null)
+                    sensors[i] = events[$"sensor{i}"].ToString();
+
+                if (events[$"event{i}"] != null)
+                    eventNames[i] = events[$"event{i}"].ToString();
+
+                if (!string.IsNullOrEmpty(sensors[i]))
+                {
+                    if (sensors[i].EndsWith(s88name, StringComparison.OrdinalIgnoreCase))
+                        return eventNames[i];
+                }
+            }
+
+            return null;
+        }
+
+        private class ItemData
+        {
+            public Analyze.Route Route { get; set; }
+            public TrackInfo Info { get; set; }
+            public IItem Item { get; set; }
+            public TrackInformation.Switch ItemSwitch => Item as TrackInformation.Switch;
+            public S88 ItemS88 => Item as S88;
+            public Func<TrackCheckResult> S88Checker { get; set; }
+            public bool S88HasBeenHandled { get; set; }
+            
+            public bool IsS88 => Item is S88;
+            public bool IsSwitch => Item is TrackInformation.Switch;
+            public bool HasSwitchTurn
+            {
+                get
+                {
+                    if (!IsSwitch)
+                        return false;
+
+                    foreach (var r in Route)
+                    {
+                        if (r == null)
+                            continue;
+
+                        if (r.X != Info.X)
+                            continue;
+
+                        if (r.Y != Info.Y)
+                            continue;
+
+                        if (!Globals.SwitchIds.Contains(r.ThemeId))
+                            return false;
+
+                        return r.HasTurn;
+                    }
+
+                    return false;
+                }
+            }
+        }
+
         public void Start()
         {
             if (_cts != null)
@@ -88,11 +166,9 @@ namespace RailwayEssentialMdi.Autoplay
 
                 string prefix = "       HandleBlockRoute():";
 
-                bool isRouteSet = false;
-                int locObjectId = -1;
-                Locomotive locObject = null;
-                Dictionary<TrackInfo, S88> s88TrackObjects = new Dictionary<TrackInfo, S88>();
-                Dictionary<TrackInfo, TrackInformation.Switch> switchTrackObjects = new Dictionary<TrackInfo, TrackInformation.Switch>();
+                bool isRouteSet = false; // flag initialization of route's handling thread
+                Locomotive locObject = null; // the current locomotive on the route
+                List<ItemData> routeData = new List<ItemData>(); // s88 and switches on the route 
 
                 for (;;)
                 {
@@ -101,7 +177,8 @@ namespace RailwayEssentialMdi.Autoplay
                         Route.IsBusy = true;
                         isRouteSet = true;
                         Autoplayer?.SetRoute(Route, true);
-                        if(Autoplayer != null)
+                        int locObjectId = -1;
+                        if (Autoplayer != null)
                             locObjectId = Autoplayer.GetLocObjectIdOfRoute(Route);
                         locObject = Model.Dispatcher.GetDataProvider().GetObjectBy(locObjectId) as Locomotive;
 
@@ -142,6 +219,11 @@ namespace RailwayEssentialMdi.Autoplay
                         }
                         #endregion
 
+                        Dictionary<TrackInfo, S88> s88TrackObjects = new Dictionary<TrackInfo, S88>();
+                        Dictionary<TrackInfo, TrackInformation.Switch> switchTrackObjects = new Dictionary<TrackInfo, TrackInformation.Switch>();
+
+                        #region prepare route data
+
                         foreach (var trackInfo in trackObjects.Keys)
                         {
                             var itemObjects = trackObjects[trackInfo];
@@ -160,11 +242,88 @@ namespace RailwayEssentialMdi.Autoplay
                                     switchTrackObjects.Add(trackInfo, obj as TrackInformation.Switch);
                             }
                         }
+
+                        foreach (var trackInfo in s88TrackObjects.Keys)
+                        {
+                            var s88Obj = s88TrackObjects[trackInfo];
+
+                            var data = new ItemData
+                            {
+                                Route = Route,
+                                Info = trackInfo,
+                                Item = s88Obj,
+                                S88Checker = Weaver.GetCheckFnc(s88Obj, trackInfo)
+                            };
+
+                            routeData.Add(data);
+                        }
+
+                        foreach (var trackInfo in switchTrackObjects.Keys)
+                        {
+                            var switchObj = switchTrackObjects[trackInfo];
+
+                            var data = new ItemData
+                            {
+                                Route = Route,
+                                Info = trackInfo,
+                                Item = switchObj
+                            };
+
+                            routeData.Add(data);
+                        }
+
+                        #endregion
+
+                        #region set switches to let the locomotive pass the route
+
+                        foreach (var data in routeData)
+                        {
+                            if (data == null || !data.IsSwitch || data.ItemSwitch == null)
+                                continue;
+
+                            var sw = data.ItemSwitch;
+
+                            var v = data.HasSwitchTurn ? 1 : 0;
+                            var vs = v == 1 ? "TURN" : "STRAIGHT";
+                            Trace.WriteLine($"{prefix} Switch '{sw.Name1}' change to '{vs}'");
+                            sw.ChangeDirection(v);
+                        }
+
+                        #endregion
+
+                        if (locObject != null)
+                        {
+                            locObject.ChangeDirection(false);
+                            locObject.ChangeSpeed(50);
+                        }
                     }
 
                     var s = SrcBlock.ToString().Replace(" ", "");
                     var d = DestBlock.ToString().Replace(" ", "");
                     Trace.WriteLine($"{prefix} {s} to {d}");
+
+                    foreach (var s88data in routeData)
+                    {
+                        if (s88data == null || !s88data.IsS88)
+                            continue;
+
+                        var obj = s88data.ItemS88;
+                        if (obj == null)
+                            continue;
+
+                        if (s88data.S88HasBeenHandled)
+                            continue;
+
+                        var state = s88data.S88Checker().State.Value;
+                        if (state)
+                        {
+                            s88data.S88HasBeenHandled = true;
+
+                            string eventName = GetEventName(s88data.Info, s88data.Info.Name);
+
+                            Trace.WriteLine($"{prefix} {s88data.Info} {obj} state '{state}' -> {eventName}");
+                        }
+                    }
 
                     #region Thread stuff
 

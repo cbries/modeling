@@ -59,6 +59,24 @@ namespace TrackWeaver
             return items;
         }
 
+        public Func<TrackCheckResult> GetCheckFnc(IItem item, TrackInfo trackInfo)
+        {
+            if (item == null || trackInfo == null)
+                return null;
+
+            var e = GetItem(item);
+            if (e == null)
+                return null;
+
+            if (e.TrackObjects == null || e.TrackObjects.Count == 0)
+                return null;
+
+            if (!e.TrackObjects.ContainsKey(trackInfo))
+                return null;
+
+            return e.TrackObjects[trackInfo];
+        }
+
         public void Link(IItem item, TrackInfo trackObject, Func<TrackCheckResult> fncCheckState)
         {
             if (item == null || trackObject == null)
