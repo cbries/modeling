@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Media.Effects;
 using RailwayEssentialMdi.Analyze;
 
 namespace RailwayEssentialMdi.Autoplay
@@ -79,7 +78,7 @@ namespace RailwayEssentialMdi.Autoplay
             return null;
         }
 
-        private int GetLocObjectIdOfRoute(Analyze.Route route, bool destination = false)
+        internal int GetLocObjectIdOfRoute(Analyze.Route route, bool destination = false)
         {
             if (!destination)
             {

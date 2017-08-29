@@ -12,7 +12,8 @@
         x:Name="app"
         mc:Ignorable="d" Title="RailwayEssential" Height="700" Width="1200" 
         DataContextChanged="MainWindow_OnDataContextChanged"
-        Initialized="MainWindow_OnInitialized">
+        Initialized="MainWindow_OnInitialized"
+        Closing="MainWindow_OnClosing">
 
     <Window.Resources>
         <xcad:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
@@ -87,6 +88,7 @@
                             <Image Source="Resources/autoplay.png" Width="16" Height="16"/>
                         </MenuItem.Icon>
                     </MenuItem>
+                    <MenuItem Header="Simulation" Command="{Binding SimulationCommand}" IsCheckable="True" IsChecked="False"/>
                     <Separator/>
                     <MenuItem Header="Properties" Command="{Binding CmdStationsPropertiesCommand}"/>
                 </MenuItem>

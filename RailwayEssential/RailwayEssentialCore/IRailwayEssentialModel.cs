@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Input;
-
-namespace RailwayEssentialCore
+﻿namespace RailwayEssentialCore
 {
     public interface IRailwayEssentialModel
     {

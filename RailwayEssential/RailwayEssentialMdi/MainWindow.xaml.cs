@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
@@ -82,6 +83,14 @@ namespace RailwayEssentialMdi
             {
                 // ignore
             }
+        }
+
+        private void MainWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            if (_dataContext == null)
+                return;
+
+            _dataContext.Close(null);
         }
 
         private void TreeView_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)

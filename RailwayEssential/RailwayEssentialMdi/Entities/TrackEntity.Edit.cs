@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using RailwayEssentialCore;
 using RailwayEssentialMdi.ViewModels;
 using TrackPlanParser;
@@ -273,6 +274,150 @@ namespace RailwayEssentialMdi.Entities
             }
         }
 
+        // based on the events of Rocrail
+        public IList<string> BlockEventNames => new List<string>()
+        {
+            "--",
+            "enter",       // Erkennung eines in den Block einfahrenden Zuges. Die Geschwindigkeit wird reduziert auf V_mid2), falls kein Folge-Block frei ist oder der Zug hier halten soll.
+            "enter2in",    // Eine Kombination von enter und in. Die Ereignisse werden sequentiell erzeugt; das in-Ereignis wird simuliert. Für die Nutzung in Blöcken mit nur einem realen Rückmelder. Das enter-Ereignis erzeugt automatisch nach einer in den Blockeigenschaften definierten Zeit das in-Ereignis
+            "in",          // Falls der Zug halten soll, wird die Geschwindigkeit auf Null gesetzt. Dieses Ereignis gibt ebenfalls den vorhergehenden Block frei, der durch den Zug bisher belegt war.
+
+            //"free",
+            //"enter",
+            //"enter2route",
+            //"enter2in",
+            //"enter2shortin",
+            //"enter2pre",
+            //"in",
+            //"exit",
+            //"pre2in",
+            //"occupied",
+            //"ident",
+            //"shortin"
+        };
+
+        private readonly string[] _blockEventNameSelected = { "--", "--", "--" };
+
+        public string BlockEventNameSelected0
+        {
+            get => _blockEventNameSelected[0];
+            set
+            {
+                _blockEventNameSelected[0] = value;
+                RaisePropertyChanged("BlockEventNameSelected0");
+            }
+        }
+
+        public string BlockEventNameSelected1
+        {
+            get => _blockEventNameSelected[1];
+            set
+            {
+                _blockEventNameSelected[1] = value;
+                RaisePropertyChanged("BlockEventNameSelected1");
+            }
+        }
+
+        public string BlockEventNameSelected2
+        {
+            get => _blockEventNameSelected[2];
+            set
+            {
+                _blockEventNameSelected[2] = value;
+                RaisePropertyChanged("BlockEventNameSelected2");
+            }
+        }
+
+        private readonly string[] _blockSensorNameSelected = { "--", "--", "--" };
+
+        public string BlockSensorNameSelected0
+        {
+            get => _blockSensorNameSelected[0];
+            set
+            {
+                _blockSensorNameSelected[0] = value;
+                RaisePropertyChanged("BlockSensorNameSelected0");
+            }
+        }
+
+        public string BlockSensorNameSelected1
+        {
+            get => _blockSensorNameSelected[1];
+            set
+            {
+                _blockSensorNameSelected[1] = value;
+                RaisePropertyChanged("BlockSensorNameSelected1");
+            }
+        }
+
+        public string BlockSensorNameSelected2
+        {
+            get => _blockSensorNameSelected[2];
+            set
+            {
+                _blockSensorNameSelected[2] = value;
+                RaisePropertyChanged("BlockSensorNameSelected2");
+            }
+        }
+
+        private void SaveEvents()
+        {
+            JObject o = new JObject
+            {
+                ["sensor0"] = BlockSensorNameSelected0,
+                ["sensor1"] = BlockSensorNameSelected1,
+                ["sensor2"] = BlockSensorNameSelected2,
+                ["event0"] = BlockEventNameSelected0,
+                ["event1"] = BlockEventNameSelected1,
+                ["event2"] = BlockEventNameSelected2
+            };
+
+            if (_trackInfoSelection != null)
+                _trackInfoSelection.SetOption("events", o.ToString());
+        }
+
+        private void LoadEvents()
+        {
+            if (_trackInfoSelection == null)
+            {
+                BlockSensorNameSelected0 = "--";
+                BlockSensorNameSelected1 = "--";
+                BlockSensorNameSelected2 = "--";
+                BlockEventNameSelected0 = "--";
+                BlockEventNameSelected1 = "--";
+                BlockEventNameSelected2 = "--";
+            }
+            else
+            {
+                var opts = _trackInfoSelection.GetOption("events");
+                if (opts == null)
+                {
+                    BlockSensorNameSelected0 = "--";
+                    BlockSensorNameSelected1 = "--";
+                    BlockSensorNameSelected2 = "--";
+                    BlockEventNameSelected0 = "--";
+                    BlockEventNameSelected1 = "--";
+                    BlockEventNameSelected2 = "--";
+                }
+                else
+                {
+                    JObject o = JObject.Parse(opts);
+                    if (o["sensor0"] != null)
+                        BlockSensorNameSelected0 = o["sensor0"].ToString();
+                    if (o["sensor1"] != null)
+                        BlockSensorNameSelected1 = o["sensor1"].ToString();
+                    if (o["sensor2"] != null)
+                        BlockSensorNameSelected2 = o["sensor2"].ToString();
+                    if (o["event0"] != null)
+                        BlockEventNameSelected0 = o["event0"].ToString();
+                    if (o["event1"] != null)
+                        BlockEventNameSelected1 = o["event1"].ToString();
+                    if (o["event2"] != null)
+                        BlockEventNameSelected2 = o["event2"].ToString();
+                }
+            }
+        }
+
         public int SelectionX { get; private set; }
         public int SelectionY { get; private set; }
         public bool SelectionXYvisible { get; private set; }
@@ -421,6 +566,8 @@ namespace RailwayEssentialMdi.Entities
                 _dispatcher.InitializeWeaving(Track, weaveFilepath);
             }
 
+            SaveEvents();
+
             prj?.Save();
         }
 
@@ -513,6 +660,17 @@ namespace RailwayEssentialMdi.Entities
 
             SelectionXYvisible = !(x == -1 || y == -1);
             RaisePropertyChanged("SelectionXYvisible");
+
+            RaisePropertyChanged("AvailableSensors");
+            RaisePropertyChanged("BlockEventNames");
+
+            BlockEventNameSelected0 = "--";
+            BlockEventNameSelected1 = "--";
+            BlockEventNameSelected2 = "--";
+
+            BlockSensorNameSelected0 = "--";
+            BlockSensorNameSelected1 = "--";
+            BlockSensorNameSelected2 = "--";
 
             if (x == -1 || y == -1)
             {
@@ -682,6 +840,8 @@ namespace RailwayEssentialMdi.Entities
                     if (ee1 != null)
                         _itemsSwitch.Add(ee1);
                 }
+
+                LoadEvents();
 
             }, null);
         }

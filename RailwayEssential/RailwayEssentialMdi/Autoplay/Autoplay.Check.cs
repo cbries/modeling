@@ -22,8 +22,6 @@ namespace RailwayEssentialMdi.Autoplay
 
         private void InitializeRouteThreads()
         {
-            Trace.WriteLine(" InitializeRouteThreads() ");
-
             int n = Ctx.Project.BlockRoutes.Count;
             if (n == 0)
                 return;
@@ -108,7 +106,7 @@ namespace RailwayEssentialMdi.Autoplay
 
             if (grp != null)
             {
-                List<Analyze.Route> routesWithLocs = new List<Route>();
+                List<Route> routesWithLocs = new List<Route>();
 
                 foreach (var r in grp.Routes)
                 {
@@ -130,10 +128,6 @@ namespace RailwayEssentialMdi.Autoplay
                 if (route != null)
                 {
                     Trace.WriteLine($"START Group {grp.GroupName} with Route {route}");
-
-                    route.IsBusy = true;
-                    route.StartBusiness = DateTime.Now;
-                    route.StartBusiness = DateTime.MinValue;
 
                     GetByRoute(route)?.Start();
                 }

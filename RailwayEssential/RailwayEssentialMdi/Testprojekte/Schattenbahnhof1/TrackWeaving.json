@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "type": "S88",
     "setup": {
@@ -150,6 +150,96 @@
       "pin": 0,
       "visuX": 3,
       "visuY": 4
+    }
+  },
+  {
+    "type": "Switch",
+    "setup": {
+      "objectId": 20011,
+      "pin": 0,
+      "visuX": 5,
+      "visuY": 7
+    }
+  },
+  {
+    "type": "Switch",
+    "setup": {
+      "objectId": 20010,
+      "pin": 0,
+      "visuX": 4,
+      "visuY": 6
+    }
+  },
+  {
+    "type": "Switch",
+    "setup": {
+      "objectId": 20001,
+      "pin": 0,
+      "visuX": 4,
+      "visuY": 3
+    }
+  },
+  {
+    "type": "Switch",
+    "setup": {
+      "objectId": 20009,
+      "pin": 0,
+      "visuX": 3,
+      "visuY": 5
+    }
+  },
+  {
+    "type": "Switch",
+    "setup": {
+      "objectId": 20005,
+      "pin": 0,
+      "visuX": 23,
+      "visuY": 1
+    }
+  },
+  {
+    "type": "Switch",
+    "setup": {
+      "objectId": 20004,
+      "pin": 0,
+      "visuX": 22,
+      "visuY": 2
+    }
+  },
+  {
+    "type": "Switch",
+    "setup": {
+      "objectId": 20003,
+      "pin": 0,
+      "visuX": 21,
+      "visuY": 3
+    }
+  },
+  {
+    "type": "Switch",
+    "setup": {
+      "objectId": 20006,
+      "pin": 0,
+      "visuX": 21,
+      "visuY": 6
+    }
+  },
+  {
+    "type": "Switch",
+    "setup": {
+      "objectId": 20007,
+      "pin": 0,
+      "visuX": 22,
+      "visuY": 7
+    }
+  },
+  {
+    "type": "Switch",
+    "setup": {
+      "objectId": 20008,
+      "pin": 0,
+      "visuX": 23,
+      "visuY": 8
     }
   }
 ]

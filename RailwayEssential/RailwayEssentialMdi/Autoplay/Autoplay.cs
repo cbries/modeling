@@ -13,6 +13,8 @@ namespace RailwayEssentialMdi.Autoplay
 
         public RailwayEssentialModel Ctx { get; set; }
 
+        public bool DoSimulation { get; set; }
+
         private BackgroundWorker _worker = null;
 
         private bool _stopped = true;
@@ -85,15 +87,45 @@ namespace RailwayEssentialMdi.Autoplay
             _started = false;
             _stopped = true;
 
-            if (_worker.WorkerSupportsCancellation)
-                _worker?.CancelAsync();
+            try
+            {
+                if (_worker.WorkerSupportsCancellation)
+                    _worker?.CancelAsync();
+            }
+            catch
+            {
+                // ignore
+            }
 
-            StopRouteThreads();
+            try
+            {
+                StopRouteThreads();
+            }
+            catch
+            {
+                // ignore
+            }
 
             if (Stopped != null)
                 Stopped(this, null);
 
             return true;
+        }
+
+        public void Cleanup()
+        {
+            if (_worker == null)
+                return;
+
+            try
+            {
+                _worker.Dispose();
+                _worker = null;
+            }
+            catch
+            {
+                // ignore
+            }
         }
     }
 }

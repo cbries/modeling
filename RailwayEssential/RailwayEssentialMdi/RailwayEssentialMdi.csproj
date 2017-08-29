@@ -367,13 +367,7 @@
     <None Include="Testprojekte\Schattenbahnhof1\TrackObjects.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Schattenbahnhof1\TrackPlan - Copy.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Testprojekte\Schattenbahnhof1\TrackPlan.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Schattenbahnhof1\TrackWeaving - Copy.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Testprojekte\Schattenbahnhof1\TrackWeaving.json">

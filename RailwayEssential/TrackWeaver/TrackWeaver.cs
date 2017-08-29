@@ -16,6 +16,7 @@ namespace TrackWeaver
     public class TrackWeaverItem
     {
         public IItem ObjectItem { get; set; }
+
         public Dictionary<TrackInfo, Func<TrackCheckResult>> TrackObjects { get; set; }
     }
 
@@ -37,6 +38,25 @@ namespace TrackWeaver
             }
 
             return null;
+        }
+
+        public List<IItem> GetObject(TrackInfo trackInfo)
+        {
+            if (trackInfo == null)
+                return null;
+
+            List<IItem> items = new List<IItem>();
+
+            foreach (var assoc in _associations)
+            {
+                if (assoc == null)
+                    continue;
+
+                if (assoc.TrackObjects.ContainsKey(trackInfo))
+                    items.Add(assoc.ObjectItem);
+            }
+
+            return items;
         }
 
         public void Link(IItem item, TrackInfo trackObject, Func<TrackCheckResult> fncCheckState)

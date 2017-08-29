@@ -156,26 +156,26 @@
                                         <StackPanel>
                                             <DockPanel HorizontalAlignment="Left" Margin="2">
                                                 <TextBlock Text="ID:" VerticalAlignment="Center" Margin="3,0,5,0"/>
-                                                <ComboBox VerticalAlignment="Center" Height="22" Width="100" ItemsSource="{Binding Entity.AvailableSensors, Mode=OneWay}" SelectedValue="{Binding BlockSensorNameSelected0, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                <ComboBox VerticalAlignment="Center" Height="22" Width="100" ItemsSource="{Binding Entity.AvailableSensors, Mode=OneWay}" SelectedValue="{Binding Entity.BlockSensorNameSelected0, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                                 
                                                 <TextBlock Text="Event:" VerticalAlignment="Center" Margin="10,0,5,0"/>
-                                                <ComboBox Name="BlockEvent0" VerticalAlignment="Center" Height="22" Width="100" SelectedValue="{Binding BlockEventNameSelected0, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding BlockEventNames, Mode=OneWay}"/>
+                                                <ComboBox Name="BlockEvent0" VerticalAlignment="Center" Height="22" Width="100" SelectedValue="{Binding Entity.BlockEventNameSelected0, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Entity.BlockEventNames, Mode=OneWay}"/>
                                             </DockPanel>
 
                                             <DockPanel HorizontalAlignment="Left" Margin="2">
                                                 <TextBlock Text="ID:" VerticalAlignment="Center" Margin="3,0,5,0"/>
-                                                <ComboBox VerticalAlignment="Center" Height="22" Width="100" ItemsSource="{Binding Entity.AvailableSensors, Mode=OneWay}" SelectedValue="{Binding BlockSensorNameSelected1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                <ComboBox VerticalAlignment="Center" Height="22" Width="100" ItemsSource="{Binding Entity.AvailableSensors, Mode=OneWay}" SelectedValue="{Binding Entity.BlockSensorNameSelected1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                                                 <TextBlock Text="Event:" VerticalAlignment="Center" Margin="10,0,5,0"/>
-                                                <ComboBox Name="BlockEvent1" VerticalAlignment="Center" Height="22" Width="100" SelectedValue="{Binding BlockEventNameSelected1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding BlockEventNames, Mode=OneWay}"/>
+                                                <ComboBox Name="BlockEvent1" VerticalAlignment="Center" Height="22" Width="100" SelectedValue="{Binding Entity.BlockEventNameSelected1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Entity.BlockEventNames, Mode=OneWay}"/>
                                             </DockPanel>
 
                                             <DockPanel HorizontalAlignment="Left" Margin="2">
                                                 <TextBlock Text="ID:" VerticalAlignment="Center" Margin="3,0,5,0"/>
-                                                <ComboBox VerticalAlignment="Center" Height="22" Width="100" ItemsSource="{Binding Entity.AvailableSensors, Mode=OneWay}" SelectedValue="{Binding BlockSensorNameSelected2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                <ComboBox VerticalAlignment="Center" Height="22" Width="100" ItemsSource="{Binding Entity.AvailableSensors, Mode=OneWay}" SelectedValue="{Binding Entity.BlockSensorNameSelected2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                                                 <TextBlock Text="Event:" VerticalAlignment="Center" Margin="10,0,5,0"/>
-                                                <ComboBox Name="BlockEvent2" VerticalAlignment="Center" Height="22" Width="100" SelectedValue="{Binding BlockEventNameSelected2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding BlockEventNames, Mode=OneWay}"/>
+                                                <ComboBox Name="BlockEvent2" VerticalAlignment="Center" Height="22" Width="100" SelectedValue="{Binding Entity.BlockEventNameSelected2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Entity.BlockEventNames, Mode=OneWay}"/>
                                             </DockPanel>
                                         </StackPanel>
                                     </GroupBox>

@@ -209,6 +209,7 @@ namespace RailwayEssentialMdi.ViewModels
         public RelayCommand DryRunCommand { get;  }
         public RelayCommand TogglePowerCommand { get; }
         public RelayCommand AutoplayCommand { get; }
+        public RelayCommand SimulationCommand { get; }
         public RelayCommand CmdStationsPropertiesCommand { get; }
 
         public RelayCommand ShowLogCommand { get; }
@@ -254,6 +255,7 @@ namespace RailwayEssentialMdi.ViewModels
             DryRunCommand = new RelayCommand(DryRun, CheckDryRun);
             TogglePowerCommand = new RelayCommand(TogglePower, CheckTogglePower);
             AutoplayCommand = new RelayCommand(DoAutoplay, CheckDoAutoplay);
+            SimulationCommand = new RelayCommand(DoSimulation, CheckDoSimulation);
             CmdStationsPropertiesCommand = new RelayCommand(PropertiesCommandStation);
             ShowLogCommand = new RelayCommand(ShowLog);
             ShowCommandLogCommand = new RelayCommand(ShowCommandLog);
@@ -835,6 +837,24 @@ namespace RailwayEssentialMdi.ViewModels
             if (_project != null)
             {
                 _autoplayer?.Stop();
+                _autoplayer?.Cleanup();
+                try
+                {
+                    if (_autoplayer != null)
+                    {
+                        _autoplayer.Started -= Started;
+                        _autoplayer.Stopped -= Stopped;
+                        _autoplayer.Failed -= Failed;
+                    }
+                }
+                catch
+                {
+                    // ignore
+                }
+                finally
+                {
+                    _autoplayer = null;
+                }
 
                 if (IsDirty)
                 {
@@ -982,6 +1002,7 @@ namespace RailwayEssentialMdi.ViewModels
             {
                 if (_autoplayer != null)
                 {
+                    _autoplayer.DoSimulation = _doSimulation;
                     _autoplayer.Stop();
                     _autoplayer.Started -= Started;
                     _autoplayer.Stopped -= Stopped;
@@ -1013,6 +1034,16 @@ namespace RailwayEssentialMdi.ViewModels
                 RaisePropertyChanged("AutoplayState2");
                 RaisePropertyChanged("AutoplayState3");
             }
+        }
+
+        private bool _doSimulation = false;
+
+        public void DoSimulation(object p)
+        {
+            _doSimulation = !_doSimulation;
+
+            if (_autoplayer != null)
+                _autoplayer.DoSimulation = _doSimulation;
         }
 
         private void Started(object sender, EventArgs eventArgs)
@@ -1369,6 +1400,20 @@ namespace RailwayEssentialMdi.ViewModels
                 return true;
 
             return _dispatcher.GetRunMode();
+        }
+
+        public bool CheckDoSimulation(object p)
+        {
+            if (_project == null)
+                return false;
+
+            if (_trackEntity == null)
+                return false;
+
+            if (IsDryRun)
+                return true;
+
+            return false;
         }
 
         public bool CheckAddTrack(object p)
