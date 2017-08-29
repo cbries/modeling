@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Ecos2Core;
@@ -51,7 +50,9 @@ namespace RailwayEssentialMdi.ViewModels
         private Autoplay.Autoplay _autoplayer = null;
 
         internal readonly SynchronizationContext _ctx = null;
-        
+
+        internal SynchronizationContext UiSyncCtx => _ctx;
+
         public Dispatcher.Dispatcher Dispatcher => _dispatcher;
 
         public Theme.Theme Theme => _theme;

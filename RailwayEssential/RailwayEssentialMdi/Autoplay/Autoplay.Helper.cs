@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Media.Effects;
 using RailwayEssentialMdi.Analyze;
 
 namespace RailwayEssentialMdi.Autoplay
@@ -78,69 +79,72 @@ namespace RailwayEssentialMdi.Autoplay
             return null;
         }
 
-        private int GetLocObjectIdOfRoute(Analyze.Route route)
+        private int GetLocObjectIdOfRoute(Analyze.Route route, bool destination = false)
         {
-            var startPoint = route.First();
-            if (startPoint != null)
+            if (!destination)
             {
-                var startItem = Ctx.TrackEntity.Track.Get(startPoint.X, startPoint.Y);
-                if (startItem != null)
+                var startPoint = route.First();
+                if (startPoint != null)
                 {
-                    var locObjectId = startItem.GetLocomotiveObjectId();
-                    if (locObjectId != -1)
-                        return locObjectId;
+                    var startItem = Ctx.TrackEntity.Track.Get(startPoint.X, startPoint.Y);
+                    if (startItem != null)
+                    {
+                        var locObjectId = startItem.GetLocomotiveObjectId();
+                        if (locObjectId != -1)
+                            return locObjectId;
+                    }
+                }
+            }
+            else
+            {
+                var endPoint = route.Last();
+                if (endPoint != null)
+                {
+                    var endItem = Ctx.TrackEntity.Track.Get(endPoint.X, endPoint.Y);
+                    if (endItem != null)
+                    {
+                        var locObjectId = endItem.GetLocomotiveObjectId();
+                        if (locObjectId != -1)
+                            return locObjectId;
+                    }
                 }
             }
 
             return -1;
         }
 
-        private List<RouteGroup> GetFreeBlockGroupsWithLocomotive()
+        private List<RouteGroup> GetFreeBlockGroups()
         {
-            List<RouteGroup> grps = new List<RouteGroup>();
-
-            foreach (var grp in Ctx.Project.BlockRouteGroups)
+            List<Route> busyRoutes = new List<Route>();
+            foreach (var r in Ctx.Project.BlockRoutes)
             {
-                if (grp == null || grp.Routes.Count == 0)
+                if (r == null)
                     continue;
-
-                bool addToFreeList = true;
-
-                foreach (var r in grp.Routes)
-                {
-                    if (r == null)
-                        continue;
-
-                    if (r.IsBusy)
-                    {
-                        addToFreeList = false;
-
-                        break;
-                    }
-                }
-
-                if (!addToFreeList)
-                    continue;
-
-                addToFreeList = false;
-
-                foreach (var r in grp.Routes)
-                {
-                    if (r == null)
-                        continue;
-
-                    var locObjectId = GetLocObjectIdOfRoute(r);
-                    if (locObjectId != -1)
-                    {
-                        addToFreeList = true;
-                        break;
-                    }
-                }
-
-                if (addToFreeList)
-                    grps.Add(grp);
+                if (r.IsBusy)
+                    busyRoutes.Add(r);
             }
 
+            List<RouteGroup> grps = new List<RouteGroup>();
+            foreach (var grp in Ctx.Project.BlockRouteGroups)
+            {
+                if (grp == null)
+                    continue;
+
+                foreach (var r0 in grp.Routes)
+                {
+                    foreach (var r1 in busyRoutes)
+                    {
+                        if(Route.Cross(r0, r1, true))
+                            goto Outer;
+                    }
+                }
+
+                grps.Add(grp);
+
+                Outer:
+                    continue;
+            }
+            
             return grps;
         }
     }

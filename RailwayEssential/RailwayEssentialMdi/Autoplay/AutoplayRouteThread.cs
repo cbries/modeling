@@ -16,14 +16,22 @@ namespace RailwayEssentialMdi.Autoplay
         public TrackInfo SrcBlock { get; private set; }
         public TrackInfo DestBlock { get; private set; }
         public Task Task { get; private set; }
+        public Autoplay Autoplayer { get; set; }
 
         private CancellationTokenSource _cts;
         private CancellationToken _tkn;
 
-        public static AutoplayRouteThread Start(RailwayEssentialModel model, Analyze.Route route)
+        public static AutoplayRouteThread Start(RailwayEssentialModel model, Autoplay autoplayer, Analyze.Route route)
         {
-            var c = new AutoplayRouteThread { Model = model, Route = route };
+            var c = new AutoplayRouteThread
+            {
+                Model = model,
+                Autoplayer = autoplayer,
+                Route = route
+            };
+
             c.Initialize();
+
             return c;
         }
 
@@ -42,10 +50,26 @@ namespace RailwayEssentialMdi.Autoplay
             DestBlock = Model.TrackEntity.Track.Get(lastItem.X, lastItem.Y);
         }
 
+        public bool IsRunning
+        {
+            get
+            {
+                if (_cts == null)
+                    return false;
+                if (_tkn == null)
+                    return false;
+                if (Task.Status == TaskStatus.Running
+                    || Task.Status == TaskStatus.WaitingToRun
+                  )
+                    return true;
+                if (Task.Status == TaskStatus.Canceled)
+                    return false;
+                return false;
+            }
+        }
+
         public void Start()
         {
-            Trace.WriteLine("<RailwayEssential> Start route handling.");
-
             if (_cts != null)
                 return;
 
@@ -54,30 +78,40 @@ namespace RailwayEssentialMdi.Autoplay
 
             Task = new Task(() =>
             {
+                // **********************************************************************
+                // ** Route Thread 
+                // **********************************************************************
+
+                bool isRouteSet = false;
+
+                string prefix = "       HandleBlockRoute():";
+
                 for (;;)
                 {
-                    try
+                    if (!isRouteSet)
                     {
-                        if (_tkn.IsCancellationRequested)
-                            _tkn.ThrowIfCancellationRequested();
-                    }
-                    catch (Exception ex)
-                    {
-                        Trace.WriteLine(ex.Message);
-                        return;
-                    }
-                    finally
-                    {
-                        Route.IsBusy = false;
+                        isRouteSet = true;
+                        Autoplayer?.SetRoute(Route, true);
                     }
 
                     var s = SrcBlock.ToString().Replace(" ", "");
                     var d = DestBlock.ToString().Replace(" ", "");
 
-                    Trace.WriteLine($"HandleBlockRoute():  {s} to {d}");
+                    Trace.WriteLine($"{prefix} {s} to {d}");
+                    
+                    Thread.Sleep(1 * 1000);
 
-                    Thread.Sleep(5 * 1000);
+                    if (_tkn.IsCancellationRequested)
+                    {
+                        Trace.WriteLine($"{prefix} Stop requested...");
+                        Route.IsBusy = false;
+                        return;
+                    }
                 }
+
+                // **********************************************************************
+                // ** END Route Thread 
+                // **********************************************************************
 
             }, _tkn);
 
@@ -101,9 +135,11 @@ namespace RailwayEssentialMdi.Autoplay
 
                     if (waitFor)
                     {
+
                         bool r = Task.Wait(30 * 1000);
                         if (!r)
                             throw new Exception("Can not stop thread for Route: " + Route);
+
                     }
                 }
             }
@@ -113,8 +149,30 @@ namespace RailwayEssentialMdi.Autoplay
             }
             finally
             {
+                
+            }
+        }
+
+        public void Cleanup()
+        {
+            try
+            {
                 _cts?.Dispose();
                 _cts = null;
+            }
+            catch
+            {
+                // ignore
+            }
+
+            try
+            {
+                Task?.Dispose();
+                Task = null;
+            }
+            catch
+            {
+                // ignore
             }
         }
     }

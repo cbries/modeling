@@ -85,7 +85,7 @@ namespace RailwayEssentialMdi.Autoplay
             _started = false;
             _stopped = true;
 
-            if(_worker.WorkerSupportsCancellation)
+            if (_worker.WorkerSupportsCancellation)
                 _worker?.CancelAsync();
 
             StopRouteThreads();

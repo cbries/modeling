@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using TrackInformation;
 using TrackPlanParser;
@@ -21,6 +22,8 @@ namespace RailwayEssentialMdi.Autoplay
 
         private void InitializeRouteThreads()
         {
+            Trace.WriteLine(" InitializeRouteThreads() ");
+
             int n = Ctx.Project.BlockRoutes.Count;
             if (n == 0)
                 return;
@@ -34,7 +37,8 @@ namespace RailwayEssentialMdi.Autoplay
                 if (route == null)
                     continue;
 
-                var childThread = AutoplayRouteThread.Start(Ctx, route);
+                var childThread = AutoplayRouteThread.Start(Ctx, this, route);
+
                 _blockRouteThreads.Add(childThread);
             }
         }
@@ -48,13 +52,20 @@ namespace RailwayEssentialMdi.Autoplay
                 if (t == null)
                     continue;
 
-                if(t.Task!= null)
+                if(t.Task != null)
                     tasks.Add(t.Task);
 
-                t.Stop();
+                var route = t.Route;
+                if (route != null)
+                    SetRoute(route, false);
+
+                if(t.IsRunning)
+                    t.Stop();
             }
 
-            bool r = Task.WaitAll(tasks.ToArray(), 10 * 1000);
+            Trace.WriteLine($"Wait for {tasks.Count} Tasks...");
+
+            bool r = Task.WaitAll(tasks.ToArray(), 30 * 1000);
             if (!r)
                 Ctx.LogError("Tasks can not be finished.");
 
@@ -65,7 +76,7 @@ namespace RailwayEssentialMdi.Autoplay
 
                 try
                 {
-                    t.Task.Dispose();
+                    t.Cleanup();
                 }
                 catch
                 {
@@ -78,12 +89,12 @@ namespace RailwayEssentialMdi.Autoplay
 
         private void Check()
         {
-            Trace.WriteLine($"{GetTimeStr()} ## Autoplay::Check()");
+            //Trace.WriteLine($"{GetTimeStr()} ## Autoplay::Check()");
 
             if (Ctx == null || Ctx.Project == null)
                 return;
 
-            var grps = GetFreeBlockGroupsWithLocomotive();
+            var grps = GetFreeBlockGroups();
             var grpsN = grps.Count;
             if (grpsN == 0)
             {
@@ -104,8 +115,10 @@ namespace RailwayEssentialMdi.Autoplay
                     if(r == null)
                         continue;
 
-                    var locObjectId = GetLocObjectIdOfRoute(r);
-                    if (locObjectId != -1)
+                    var locObjectIdStart = GetLocObjectIdOfRoute(r);
+                    var locObjectIdEnd = GetLocObjectIdOfRoute(r, true);
+
+                    if (locObjectIdStart != -1 && locObjectIdEnd == -1 && !r.IsBusy)
                         routesWithLocs.Add(r);
                 }
 
@@ -116,12 +129,13 @@ namespace RailwayEssentialMdi.Autoplay
 
                 if (route != null)
                 {
+                    Trace.WriteLine($"START Group {grp.GroupName} with Route {route}");
+
                     route.IsBusy = true;
                     route.StartBusiness = DateTime.Now;
                     route.StartBusiness = DateTime.MinValue;
 
-                    var thread = GetByRoute(route);
-                    thread?.Start();
+                    GetByRoute(route)?.Start();
                 }
             }
         }        
