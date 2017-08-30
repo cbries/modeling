@@ -95,6 +95,8 @@ namespace Dispatcher
                         {
                             var trackObject = _track.Get(item.VisuX, item.VisuY);
 
+                            switchItem.InvertCommand = item.InvertSwitch;
+
                             _trackWeaver.Link(switchItem, trackObject,
                                 () => {
 

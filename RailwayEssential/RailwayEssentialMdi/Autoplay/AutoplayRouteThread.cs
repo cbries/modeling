@@ -415,6 +415,8 @@ namespace RailwayEssentialMdi.Autoplay
                                 {
                                     if (locObject != null)
                                         locObject.ChangeSpeed(Locomotive.SpeedBlockEntered);
+
+                                    Trace.WriteLine($"{Prefix} New speed {Locomotive.SpeedBlockEntered} for {locObject.Name}");
                                 }
                                 else if (evName.Equals("enter in", StringComparison.OrdinalIgnoreCase))
                                 {
@@ -453,6 +455,8 @@ namespace RailwayEssentialMdi.Autoplay
                                 {
                                     if (locObject != null)
                                         locObject.ChangeSpeed(Locomotive.SpeedStop);
+
+                                    Trace.WriteLine($"{Prefix} STOP {Locomotive.SpeedBlockEntered}");
 
                                     stopped = true;
                                 }

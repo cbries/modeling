@@ -15,13 +15,15 @@ namespace TrackWeaver
         public int Pin { get; set; }
         public int VisuX { get; set; }
         public int VisuY { get; set; }
-
+        public bool InvertSwitch { get; set; }
+        
         public TrackWeaveItem()
         {
             Type = WeaveItemT.Unknown;
             ObjectId = -1;
             VisuX = -1;
             VisuY = -1;
+            InvertSwitch = false;
         }
 
         public bool Parse(JObject o)
@@ -59,6 +61,8 @@ namespace TrackWeaver
                     VisuX = (int) os["visuX"];
                 if (os["visuY"] != null)
                     VisuY = (int) os["visuY"];
+                if (os["invertSwitch"] != null)
+                    InvertSwitch = (bool) os["invertSwitch"];
             }
 
             return true;
@@ -72,7 +76,8 @@ namespace TrackWeaver
                 ["objectId"] = ObjectId,
                 ["pin"] = Pin,
                 ["visuX"] = VisuX,
-                ["visuY"] = VisuY
+                ["visuY"] = VisuY,
+                ["invertSwitch"] = InvertSwitch
             };
             o["setup"] = oo;
             return o;

@@ -115,6 +115,8 @@
                                 <StackPanel>
                                     <DockPanel Margin="0,5,0,0" Visibility="{Binding Entity.SelectionXYvisible, Mode=OneWay, Converter={StaticResource BoolToVis}}">
                                         <ComboBox Margin="0,0,0,0" ItemsSource="{Binding Entity.ItemsSwitch}" SelectedItem="{Binding Entity.ItemsSwitchSelection, Mode=TwoWay}" VerticalAlignment="Center" Width="200" HorizontalAlignment="Left"/>
+
+                                        <CheckBox Content="Invert ECoS' Command" VerticalAlignment="Center" Margin="10,0,0,0" IsChecked="{Binding Entity.ItemsSwitchInvert, Mode=TwoWay}"/>
                                     </DockPanel>
                                 </StackPanel>
                             </ScrollViewer>

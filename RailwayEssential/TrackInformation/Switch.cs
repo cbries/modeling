@@ -44,6 +44,8 @@ namespace TrackInformation
             }
         }
 
+        public bool InvertCommand { get; set; }
+
         private List<string> _addrext = new List<string>();
 
         public List<string> Addrext
@@ -275,6 +277,18 @@ namespace TrackInformation
         public void ChangeDirection(int index)
         {
             string s = Addrext[index];
+
+            if (InvertCommand)
+            {
+                var maxIndex = Addrext.Count - 1;
+                if (maxIndex == index)
+                    index = 0;
+                else
+                    index = 1;
+
+                s = Addrext[index];
+            }
+
             List<ICommand> ctrlCmds = new List<ICommand>
             {
                 CommandFactory.Create($"request(11, control, force)"),
