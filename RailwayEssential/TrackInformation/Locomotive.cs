@@ -38,6 +38,19 @@ namespace TrackInformation
             }
         }
 
+        private int _maxSpeedPercentage = 50;
+
+        public int MaxSpeedPercentage
+        {
+            get => _maxSpeedPercentage;
+            set
+            {
+                _maxSpeedPercentage = value;
+                OnPropertyChanged();
+                OnPropertyChanged("MaxSpeedPercentage");
+            }
+        }
+
         private string _protocol;
 
         // MM14, MM27, MM28, DCC14, DCC28, DCC128, SX32, MMFKT
@@ -328,7 +341,8 @@ namespace TrackInformation
                 ["speedstep"] = _speedstep,
                 ["direction"] = _directon,                
                 ["funcset"] = m,
-                ["nrOfFunctions"] = NrOfFunctions
+                ["nrOfFunctions"] = NrOfFunctions,
+                ["maxSpeedPercentage"] = MaxSpeedPercentage
             };
 
             return o;
@@ -361,6 +375,8 @@ namespace TrackInformation
             }
             if (obj["nrOfFunctions"] != null)
                 NrOfFunctions = (int) obj["nrOfFunctions"];
+            if (obj["maxSpeedPercentage"] != null)
+                MaxSpeedPercentage = (int) obj["maxSpeedPercentage"];
         }
     }
 }

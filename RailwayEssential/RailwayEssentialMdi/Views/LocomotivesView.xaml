@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-              d:DesignWidth="300" d:DesignHeight="215"
+              d:DesignWidth="600" d:DesignHeight="215"
              DataContextChanged="LocomotivesView_OnDataContextChanged">
     <Grid>
         <Grid.RowDefinitions>
@@ -16,6 +16,10 @@
             <TextBox Text="{Binding Entity.Name, Mode=TwoWay}" FontWeight="Bold" VerticalAlignment="Center" Background="Transparent" BorderThickness="0"/>
             <Label Content=" : " FontWeight="Bold" VerticalAlignment="Center"/>
             <Label Content="{Binding Entity.ObjectItem.ObjectId}" FontWeight="Bold" VerticalAlignment="Center"/>
+            
+            <Label Content="Max speed:" VerticalAlignment="Center" Margin="25,0,0,0"/>
+            <TextBox VerticalContentAlignment="Center" Height="25" Width="75" TextAlignment="Center" Text="{Binding Entity.MaxSpeedPercentage, Mode=TwoWay}"/>
+            
             <Image Width="32" Height="32" HorizontalAlignment="Right" Margin="2,2,10,2" Source="/RailwayEssentialMdi;component/Resources/Main.ico"/>
         </DockPanel>
         <Grid Grid.Row="1" VerticalAlignment="Top" IsEnabled="{Binding Entity.IsEnabled}">

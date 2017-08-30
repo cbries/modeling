@@ -46,6 +46,22 @@
 
         #endregion
 
+        #region MaxSpeed 
+
+        public int MaxSpeedPercentage
+        {
+            get => _objectItem != null ? _objectItem.MaxSpeedPercentage : 50;
+            set
+            {
+                if (_objectItem != null)
+                    _objectItem.MaxSpeedPercentage = value;
+
+                RaisePropertyChanged("MaxSpeedPercentage");
+            }
+        }
+
+        #endregion
+
         #region ContentId
 
         private string _contentId = null;

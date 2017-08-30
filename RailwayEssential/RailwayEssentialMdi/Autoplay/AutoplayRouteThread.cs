@@ -391,13 +391,14 @@ namespace RailwayEssentialMdi.Autoplay
                         if (locObject != null)
                         {
                             locObject.ChangeDirection(false);
-                            locObject.ChangeSpeed(Locomotive.SpeedNormal);
+                            locObject.ChangeSpeed(locObject.MaxSpeedPercentage);
                         }
+
+                        Trace.WriteLine($"{Prefix} {s}  TO  {d}");
                     }
 
                     var s = SrcBlock.ToString().Replace(" ", "");
                     var d = DestBlock.ToString().Replace(" ", "");
-                    Trace.WriteLine($"{Prefix} {s}  TO  {d}");
 
                     foreach (var s88data in routeData)
                     {
