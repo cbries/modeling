@@ -366,8 +366,12 @@ namespace RailwayEssentialMdi.Autoplay
                                 continue;
 
                             var sw = data.ItemSwitch;
-
                             var v = data.HasSwitchTurn ? 0 : 1;
+                            if (sw.InvertCommand)
+                            {
+                                if (v == 1) v = 0;
+                                else v = 1;
+                            }
                             var vs = v == 1 ? "TURN" : "STRAIGHT";
                             Trace.WriteLine($"{Prefix} Switch '{sw.Name1}' change to '{vs}'");
                             sw.ChangeDirection(v);
