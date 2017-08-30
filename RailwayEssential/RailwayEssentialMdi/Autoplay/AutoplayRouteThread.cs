@@ -202,6 +202,9 @@ namespace RailwayEssentialMdi.Autoplay
                 
                 for (;;)
                 {
+                    var s = SrcBlock.ToString().Replace(" ", "");
+                    var d = DestBlock.ToString().Replace(" ", "");
+
                     if (!isRouteSet)
                     {
                         Route.IsBusy = true;
@@ -396,9 +399,6 @@ namespace RailwayEssentialMdi.Autoplay
 
                         Trace.WriteLine($"{Prefix} {s}  TO  {d}");
                     }
-
-                    var s = SrcBlock.ToString().Replace(" ", "");
-                    var d = DestBlock.ToString().Replace(" ", "");
 
                     foreach (var s88data in routeData)
                     {
