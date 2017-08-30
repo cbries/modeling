@@ -138,7 +138,12 @@ namespace RailwayEssentialMdi.Entities
                 _blockCurrentLocomotive = value;
 
                 if (_trackInfoSelection != null && _blockCurrentLocomotive != null)
-                    _trackInfoSelection.SetOption("blockCurrentLocomotive", $"{_blockCurrentLocomotive.ObjectId}");
+                {
+                    if (_blockCurrentLocomotive.ObjectId == -1)
+                        _trackInfoSelection.SetOption("blockCurrentLocomotive", "");
+                    else
+                        _trackInfoSelection.SetOption("blockCurrentLocomotive", $"{_blockCurrentLocomotive.ObjectId}");
+                }
 
                 UpdateAllVisualBlocks();
 
@@ -244,14 +249,12 @@ namespace RailwayEssentialMdi.Entities
                         _availableLocomotives.Add(e as Locomotive);
                 }
 
+                var dummyLocomotive = new Locomotive { Name = "--", Addr = -1, ObjectId = -1 };
+
                 if (_availableLocomotives.Count == 0)
-                {
-                    _availableLocomotives.Add(new Item {Title = "--"});
-                }
+                    _availableLocomotives.Add(dummyLocomotive);
                 else
-                {
-                    _availableLocomotives.Insert(0, new Item {Title = "--"});
-                }
+                    _availableLocomotives.Insert(0, dummyLocomotive);
 
                 return _availableLocomotives;
             }
@@ -777,13 +780,17 @@ namespace RailwayEssentialMdi.Entities
                                             {
                                                 int objectId = -1;
                                                 if (int.TryParse(opt, out objectId))
-                                                {
                                                     BlockCurrentLocomotive = dataProvider.GetObjectBy(objectId) as Locomotive;
+                                                else
+                                                {
+                                                    var mm = Model as RailwayEssentialModel;
+                                                    mm?.LogError($"Invalid Locomotive object id '{objectId}'. Associated Locomotive does not exist.");
+                                                    BlockCurrentLocomotive = _availableLocomotives[0] as Locomotive;
                                                 }
                                             }
                                             else
                                             {
-                                                BlockCurrentLocomotive = null;
+                                                BlockCurrentLocomotive = _availableLocomotives[0] as Locomotive;
                                             }
 
                                             #endregion
