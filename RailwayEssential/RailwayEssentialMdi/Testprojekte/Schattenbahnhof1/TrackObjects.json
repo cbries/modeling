@@ -20,7 +20,7 @@
       "speedstep": 0,
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 8
+      "nrOfFunctions": 9
     },
     {
       "objectId": 1007,
@@ -31,7 +31,7 @@
       "speedstep": 0,
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 8
+      "nrOfFunctions": 4
     },
     {
       "objectId": 1004,
@@ -40,9 +40,9 @@
       "addr": 2,
       "speed": 0,
       "speedstep": 0,
-      "direction": 0,
+      "direction": 1,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 8
+      "nrOfFunctions": 4
     },
     {
       "objectId": 1006,
@@ -53,7 +53,7 @@
       "speedstep": 0,
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 8
+      "nrOfFunctions": 5
     },
     {
       "objectId": 1008,
@@ -64,7 +64,7 @@
       "speedstep": 0,
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 8
+      "nrOfFunctions": 5
     },
     {
       "objectId": 1000,
@@ -73,9 +73,9 @@
       "addr": 1000,
       "speed": 0,
       "speedstep": 0,
-      "direction": 0,
+      "direction": 1,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 8
+      "nrOfFunctions": 5
     },
     {
       "objectId": 1009,
@@ -86,7 +86,7 @@
       "speedstep": 0,
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 8
+      "nrOfFunctions": 5
     },
     {
       "objectId": 1001,
@@ -97,7 +97,7 @@
       "speedstep": 0,
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 8
+      "nrOfFunctions": 5
     },
     {
       "objectId": 1003,
@@ -108,7 +108,7 @@
       "speedstep": 0,
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 8
+      "nrOfFunctions": 5
     }
   ],
   "switches": [
@@ -173,7 +173,7 @@
       "protocol": "DCC",
       "type": "ACCESSORY",
       "mode": "SWITCH",
-      "state": 0,
+      "state": 1,
       "switching": 0
     },
     {
@@ -308,58 +308,58 @@
   "routes": [
     {
       "objectId": 30000,
-      "name1": "",
-      "name2": null,
-      "name3": null,
+      "name1": "S1",
+      "name2": "Fahrweg",
+      "name3": "",
       "type": "ROUTE"
     },
     {
       "objectId": 30001,
-      "name1": "",
-      "name2": null,
-      "name3": null,
+      "name1": "S2",
+      "name2": "Fahrweg",
+      "name3": "",
       "type": "ROUTE"
     },
     {
       "objectId": 30002,
-      "name1": "",
-      "name2": null,
-      "name3": null,
+      "name1": "S3",
+      "name2": "Fahrweg",
+      "name3": "",
       "type": "ROUTE"
     },
     {
       "objectId": 30004,
-      "name1": "",
-      "name2": null,
-      "name3": null,
+      "name1": "S4",
+      "name2": "Fahrweg",
+      "name3": "",
       "type": "ROUTE"
     },
     {
       "objectId": 30005,
-      "name1": "",
-      "name2": null,
-      "name3": null,
+      "name1": "S5",
+      "name2": "Fahrweg",
+      "name3": "",
       "type": "ROUTE"
     },
     {
       "objectId": 30006,
-      "name1": "",
-      "name2": null,
-      "name3": null,
+      "name1": "S6",
+      "name2": "Fahrweg",
+      "name3": "",
       "type": "ROUTE"
     },
     {
       "objectId": 30007,
-      "name1": "",
-      "name2": null,
-      "name3": null,
+      "name1": "S7",
+      "name2": "Fahrweg",
+      "name3": "",
       "type": "ROUTE"
     },
     {
       "objectId": 30008,
-      "name1": "",
-      "name2": null,
-      "name3": null,
+      "name1": "S8",
+      "name2": "Fahrweg",
+      "name3": "",
       "type": "ROUTE"
     }
   ],
@@ -368,25 +368,25 @@
       "objectId": 100,
       "index": 0,
       "ports": 16,
-      "stateOriginal": "0x0000"
+      "stateOriginal": "0x307d"
     },
     {
       "objectId": 101,
       "index": 1,
       "ports": 16,
-      "stateOriginal": "0x0000"
+      "stateOriginal": "0x8d00"
     },
     {
       "objectId": 102,
       "index": 2,
       "ports": 16,
-      "stateOriginal": "0x0000"
+      "stateOriginal": "0xc0"
     },
     {
       "objectId": 103,
       "index": 3,
       "ports": 16,
-      "stateOriginal": "0x0000"
+      "stateOriginal": "0xffff"
     }
   ]
 }

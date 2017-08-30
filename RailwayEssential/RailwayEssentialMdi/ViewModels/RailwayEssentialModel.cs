@@ -129,9 +129,15 @@ namespace RailwayEssentialMdi.ViewModels
                 if(IsDryRun)
                     return new BitmapImage(new Uri("/RailwayEssentialMdi;component/Resources/dryrun.png", UriKind.Relative));
                 if (_dispatcher == null || _cfg == null)
+                {
+                    _itemStatus.Items.Clear();
                     return new BitmapImage(new Uri("/RailwayEssentialMdi;component/Resources/offline.png", UriKind.Relative));
+                }
                 if (!_dispatcher.GetRunMode())
+                {
+                    _itemStatus.Items.Clear();
                     return new BitmapImage(new Uri("/RailwayEssentialMdi;component/Resources/offline.png", UriKind.Relative));
+                }
                 return new BitmapImage(new Uri("/RailwayEssentialMdi;component/Resources/online.png", UriKind.Relative));
             }
         }
@@ -933,6 +939,7 @@ namespace RailwayEssentialMdi.ViewModels
                 if (_dispatcher == null)
                 {
                     _itemStatus.Title = "Status";
+                    _itemStatus.Items.Clear();
                     return s2;
                 }
 
@@ -940,6 +947,7 @@ namespace RailwayEssentialMdi.ViewModels
                 if (data == null)
                 {
                     _itemStatus.Title = "Status";
+                    _itemStatus.Items.Clear();
                     return s2;
                 }
 
@@ -947,6 +955,7 @@ namespace RailwayEssentialMdi.ViewModels
                 if (ecos == null)
                 {
                     _itemStatus.Title = "Status";
+                    _itemStatus.Items.Clear();
                     return s2;
                 }
 
@@ -963,6 +972,7 @@ namespace RailwayEssentialMdi.ViewModels
                 }
 
                 _itemStatus.Title = "Status";
+                _itemStatus.Items.Clear();
 
                 return s2;
             }

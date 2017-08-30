@@ -281,10 +281,11 @@ namespace TrackInformation
             if (InvertCommand)
             {
                 var maxIndex = Addrext.Count - 1;
+
                 if (maxIndex == index)
-                    index = 0;
-                else
                     index = 1;
+                else
+                    index = 0;
 
                 s = Addrext[index];
             }
