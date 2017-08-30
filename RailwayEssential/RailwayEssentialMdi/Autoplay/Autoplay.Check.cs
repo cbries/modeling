@@ -121,8 +121,9 @@ namespace RailwayEssentialMdi.Autoplay
                 }
 
                 var routeN = routesWithLocs.Count;
+                if (routeN == 0)
+                    return;
                 var routeIdx = _rnd.Next(0, routeN);
-
                 var route = routesWithLocs[routeIdx];
 
                 if (route != null)

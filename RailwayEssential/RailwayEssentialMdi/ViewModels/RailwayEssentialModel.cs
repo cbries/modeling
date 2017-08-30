@@ -1031,6 +1031,9 @@ namespace RailwayEssentialMdi.ViewModels
                 _autoplayer.Stopped += Stopped;
                 _autoplayer.Failed += Failed;
 
+                for(int i=0; i < 10; ++i)
+                    Thread.Sleep(125);
+
                 _autoplayer.Start();
             }
             catch (Exception ex)

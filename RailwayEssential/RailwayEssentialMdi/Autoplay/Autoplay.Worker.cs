@@ -26,7 +26,14 @@ namespace RailwayEssentialMdi.Autoplay
                     return;
                 }
 
-                Check();
+                try
+                {
+                    Check();
+                }
+                catch
+                {
+                    // ignore
+                }
 
                 Thread.Sleep(WorkerDelay);
             }

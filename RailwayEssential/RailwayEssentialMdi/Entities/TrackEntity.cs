@@ -420,7 +420,7 @@ namespace RailwayEssentialMdi.Entities
             finally
             {
                 sw.Stop();
-                sw.Show("UpdateUi()");
+                //sw.Show("UpdateUi()");
             }
 
             return true;

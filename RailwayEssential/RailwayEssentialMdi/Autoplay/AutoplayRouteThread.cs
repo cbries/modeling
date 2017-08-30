@@ -402,8 +402,19 @@ namespace RailwayEssentialMdi.Autoplay
                         if (s88data.S88HasBeenHandled)
                             continue;
 
-                        var b = s88data.S88Checker().State;
-                        var state = b != null && b.Value;
+                        var weavedItem = Helper.GetWeaveItem(Model.Dispatcher, s88data.Info.X, s88data.Info.Y);
+                        if(weavedItem != null)
+                            Trace.WriteLine(" #0 Pin " + weavedItem.Pin);
+
+                        Trace.WriteLine(" #1 " + s88data);
+                        Trace.WriteLine(" #2 " + s88data);
+                        Trace.WriteLine(" #3 " + s88data.S88Checker());
+
+                        bool state = false;
+                        var bb = s88data.S88Checker();
+                        if (bb != null && bb.State != null)
+                            state = bb.State.Value;
+
                         if (state)
                         {
                             s88data.S88HasBeenHandled = true;
@@ -483,7 +494,7 @@ namespace RailwayEssentialMdi.Autoplay
 
                     #region Thread stuff
 
-                    Thread.Sleep(1 * 1000);
+                    Thread.Sleep(1 * 500);
 
                     if (_tkn.IsCancellationRequested)
                     {
