@@ -282,12 +282,16 @@ namespace RailwayEssentialMdi.Autoplay
                         {
                             var s88Obj = s88TrackObjects[trackInfo];
 
+                            var fnc = Weaver.GetCheckFnc(s88Obj, trackInfo);
+                            if (fnc == null)
+                                Model.LogError($"S88-Checker is missing: {s88Obj}");
+
                             var data = new ItemData
                             {
                                 Route = Route,
                                 Info = trackInfo,
                                 Item = s88Obj,
-                                S88Checker = Weaver.GetCheckFnc(s88Obj, trackInfo)
+                                S88Checker = fnc
                             };
 
                             routeData.Add(data);
@@ -336,12 +340,17 @@ namespace RailwayEssentialMdi.Autoplay
                                     {
                                         var s88Obj = Helper.GetObject(Model.Dispatcher, Model.TrackEntity.Track, sensorTrackInfo.X, sensorTrackInfo.Y);
 
+                                        var fnc = Weaver.GetCheckFnc(s88Obj, sensorTrackInfo);
+                                        if (fnc == null)
+                                            Model.LogError($"S88-Checker is missing: {s88Obj}");
+
                                         var data = new ItemData
                                         {
                                             Route = Route,
                                             Info = sensorTrackInfo,
                                             Item = s88Obj,
-                                            DestBlockEvent = eventName
+                                            DestBlockEvent = eventName,
+                                            S88Checker = fnc
                                         };
 
                                         routeData.Add(data);
@@ -402,14 +411,15 @@ namespace RailwayEssentialMdi.Autoplay
                         if (s88data.S88HasBeenHandled)
                             continue;
 
-                        var weavedItem = Helper.GetWeaveItem(Model.Dispatcher, s88data.Info.X, s88data.Info.Y);
-                        if(weavedItem != null)
-                            Trace.WriteLine(" #0 Pin " + weavedItem.Pin);
+                        //var weavedItem = Helper.GetWeaveItem(Model.Dispatcher, s88data.Info.X, s88data.Info.Y);
+                        //if(weavedItem != null)
+                        //    Trace.WriteLine(" #0 Pin " + weavedItem.Pin);
+                        //Trace.WriteLine(" #1 " + s88data.ItemS88.Title);
+                        //Trace.WriteLine(" #2 " + s88data.ItemS88.Index);
+                        //Trace.WriteLine(" #3 " + s88data.ItemS88.Ports);
+                        //Trace.WriteLine(" #4 " + s88data.ItemS88.StateBinary);
+                        //Trace.WriteLine(" #5 " + s88data.ItemS88.StateOriginal);
 
-                        Trace.WriteLine(" #1 " + s88data.ItemSwitch.Name1);
-                        Trace.WriteLine(" #2 " + s88data.ItemSwitch.Addr);
-                        Trace.WriteLine(" #2 " + s88data.ItemSwitch.State);
-                        
                         bool state = false;
                         try
                         {
@@ -426,7 +436,7 @@ namespace RailwayEssentialMdi.Autoplay
                         {
                             s88data.S88HasBeenHandled = true;
 
-                            Trace.WriteLine($"{Prefix} {s88data.Info} {obj} state '{state}' -> {s88data.DestBlockEvent}");
+                            //Trace.WriteLine($"{Prefix} {s88data.Info} {obj} state '{state}' -> {s88data.DestBlockEvent}");
 
                             string evName = s88data.DestBlockEvent;
                             if (!string.IsNullOrEmpty(evName))
@@ -478,7 +488,7 @@ namespace RailwayEssentialMdi.Autoplay
                                     if (locObject != null)
                                         locObject.ChangeSpeed(Locomotive.SpeedStop);
 
-                                    Trace.WriteLine($"{Prefix} STOP {Locomotive.SpeedBlockEntered}");
+                                    Trace.WriteLine($"{Prefix} STOP {Locomotive.SpeedStop}");
 
                                     stopped = true;
                                 }
@@ -491,9 +501,15 @@ namespace RailwayEssentialMdi.Autoplay
 
                                     SrcBlock.SetOption("blockCurrentLocomotive", "");
                                     DestBlock.SetOption("blockCurrentLocomotive", $"{locObject.ObjectId}");
+                                    Model.UiSyncCtx?.Send(x =>
+                                    {
+                                        Model.Project.Save();
+                                        Model.UpdateBlockRouteItems();
+                                    }, null);
                                     Route.IsBusy = false;
                                     Route.StartBusiness = DateTime.MaxValue;
                                     Route.StopBusiness = DateTime.Now;
+                                    return;
                                 }
                             }
                         }

@@ -71,7 +71,7 @@
       "name": "DAMPF2",
       "protocol": "MM14",
       "addr": 20,
-      "speed": 0,
+      "speed": 50,
       "speedstep": 0,
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
