@@ -360,14 +360,14 @@ namespace RailwayEssentialMdi.Autoplay
 
                         #region set switches to let the locomotive pass the route
 
-                            foreach (var data in routeData)
+                        foreach (var data in routeData)
                         {
                             if (data == null || !data.IsSwitch || data.ItemSwitch == null)
                                 continue;
 
                             var sw = data.ItemSwitch;
 
-                            var v = data.HasSwitchTurn ? 1 : 0;
+                            var v = data.HasSwitchTurn ? 0 : 1;
                             var vs = v == 1 ? "TURN" : "STRAIGHT";
                             Trace.WriteLine($"{Prefix} Switch '{sw.Name1}' change to '{vs}'");
                             sw.ChangeDirection(v);

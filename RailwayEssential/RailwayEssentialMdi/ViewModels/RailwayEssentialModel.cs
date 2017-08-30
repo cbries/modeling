@@ -1687,6 +1687,44 @@ namespace RailwayEssentialMdi.ViewModels
             }
         }
 
+        public void TestBlockRoute(object blockRouteItem)
+        {
+            var item = blockRouteItem as Items.BlockRouteItem;
+            if (item == null)
+                return;
+
+            int n = item.RoutePoints.Count;
+            for (int idx = 0; idx < n; ++idx)
+            {
+                var r = item.RoutePoints[idx];
+                if (r == null)
+                    continue;
+
+                var trackInfo = TrackEntity.Track.Get(r.X, r.Y);
+                if (trackInfo != null)
+                {
+                    var itemObjects = _dispatcher.Weaver.GetObject(trackInfo);
+                    if (itemObjects.Count == 0)
+                        continue;
+
+                    var switchItem = itemObjects[0] as TrackInformation.Switch;
+                    if (switchItem == null)
+                        continue;
+
+                    var hasTurn = r.HasTurn;                   
+                    var v = hasTurn ? 0 : 1;
+                    if (switchItem.InvertCommand)
+                    {
+                        if (v == 1) v = 0;
+                        else v = 1;
+                    }
+                    var vs = v == 1 ? "TURN" : "STRAIGHT";
+                    Trace.WriteLine($"<Test> Switch '{switchItem.Name1}' change to '{vs}'");
+                    switchItem.ChangeDirection(v);
+                }
+            }
+        }
+
         public void ResetBlockRoutePreview()
         {
             if (TrackEntity != null && TrackEntity.Viewer != null)

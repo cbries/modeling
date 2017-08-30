@@ -102,6 +102,8 @@ namespace RailwayEssentialMdi
         {
             if(e.Key == Key.Enter)
                 PropagateTreeViewSelection();
+            else if (e.Key == Key.T)
+                PropagateTestRoute();
             else if (e.Key == Key.Escape)
                 _dataContext.ResetBlockRoutePreview();
         }
@@ -127,6 +129,21 @@ namespace RailwayEssentialMdi
             {
                 // ...
             }
+        }
+
+        private void PropagateTestRoute()
+        {
+            if (_dataContext == null)
+                return;
+
+            var s = Explorer;
+            if (s == null)
+                return;
+
+            var item = s.SelectedItem;
+
+            if (item is Items.BlockRouteItem)
+                _dataContext.TestBlockRoute(item);
         }
 
         #region IMainView
