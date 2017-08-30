@@ -8,6 +8,10 @@ namespace TrackInformation
 {
     public class Locomotive : Item
     {
+        public static int SpeedStop = 0;
+        public static int SpeedNormal = 50;
+        public static int SpeedBlockEntered = 35;
+
         public override int TypeId() { return 1; }
 
         public override string ToString()

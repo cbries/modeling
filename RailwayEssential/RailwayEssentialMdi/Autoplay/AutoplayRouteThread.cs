@@ -378,7 +378,7 @@ namespace RailwayEssentialMdi.Autoplay
                         if (locObject != null)
                         {
                             locObject.ChangeDirection(false);
-                            locObject.ChangeSpeed(50);
+                            locObject.ChangeSpeed(Locomotive.SpeedNormal);
                         }
                     }
 
@@ -404,9 +404,72 @@ namespace RailwayEssentialMdi.Autoplay
                         {
                             s88data.S88HasBeenHandled = true;
 
-                            Trace.WriteLine($"{Prefix} {s88data.Info} {obj} state '{state}' -> {s88data.DestBlockEvent}");      
-                            
-                            // TODO
+                            Trace.WriteLine($"{Prefix} {s88data.Info} {obj} state '{state}' -> {s88data.DestBlockEvent}");
+
+                            string evName = s88data.DestBlockEvent;
+                            if (!string.IsNullOrEmpty(evName))
+                            {
+                                var stopped = false;
+
+                                if (evName.Equals("enter", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    if (locObject != null)
+                                        locObject.ChangeSpeed(Locomotive.SpeedBlockEntered);
+                                }
+                                else if (evName.Equals("enter in", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    if (locObject != null)
+                                    {
+                                        var currentSpeed = locObject.Speed;
+                                        var secondsToStop = 3;
+                                        int speedSteps = currentSpeed / secondsToStop;
+
+                                        var o = locObject;
+
+                                        var task = Task.Run(() =>
+                                        {
+                                            currentSpeed -= speedSteps;
+
+                                            if (currentSpeed <= 0)
+                                            {
+                                                o?.ChangeSpeed(Locomotive.SpeedStop);
+                                            }
+                                            else
+                                            {
+                                                o?.ChangeSpeed(currentSpeed);
+                                            }
+
+                                            Trace.WriteLine($"{Prefix} Loc speed {locObject.Name} is {currentSpeed}");
+
+                                            Thread.Sleep(1 * 1000);
+                                        });
+
+                                        task.Wait();
+
+                                        stopped = true;
+                                    }
+                                }
+                                else if (evName.Equals("in", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    if (locObject != null)
+                                        locObject.ChangeSpeed(Locomotive.SpeedStop);
+
+                                    stopped = true;
+                                }
+
+                                if (stopped)
+                                {
+                                    // move loc from source block to destination block
+                                    // reset current route
+                                    // be ready for next routing decision
+
+                                    SrcBlock.SetOption("blockCurrentLocomotive", "");
+                                    DestBlock.SetOption("blockCurrentLocomotive", $"{locObject.ObjectId}");
+                                    Route.IsBusy = false;
+                                    Route.StartBusiness = DateTime.MaxValue;
+                                    Route.StopBusiness = DateTime.Now;
+                                }
+                            }
                         }
                     }
 
