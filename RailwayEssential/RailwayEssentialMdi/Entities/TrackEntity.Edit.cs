@@ -571,56 +571,6 @@ namespace RailwayEssentialMdi.Entities
             prj?.Save();
         }
 
-        private TrackInformationCore.IItem GetObject(int x, int y)
-        {
-            var track = Track;
-            var trackInfo = track.Get(x, y);
-
-            if (trackInfo == null)
-                return null;
-
-            var weaver = _dispatcher.Weaver;
-            if (weaver != null)
-            {
-                var ws = weaver.WovenSeam;
-                if (ws != null)
-                {
-                    foreach (var seam in ws)
-                    {
-                        if (seam == null)
-                            continue;
-
-                        if (seam.TrackObjects.ContainsKey(trackInfo))
-                            return seam.ObjectItem;
-                    }
-                }
-            }
-
-            return null;
-        }
-
-        private TrackWeaveItem GetWeaveItem(int x, int y)
-        {
-            var m = _dispatcher.Model as ViewModels.RailwayEssentialModel;
-            if (m == null)
-                return null;
-
-            var prj = m.Project;
-
-            var weaveFilepath = Path.Combine(prj.Dirpath, prj.Track.Weave);
-            TrackWeaveItems weaverItems = new TrackWeaveItems();
-            if (!weaverItems.Load(weaveFilepath))
-                return null;
-
-            foreach (var e in weaverItems.Items)
-            {
-                if (e?.VisuX == x && e.VisuY == y)
-                    return e;
-            }
-
-            return null;
-        }
-
         private TrackWeaverItem GetWeaverItem(int x, int y)
         {
             var track = Track;
@@ -699,7 +649,7 @@ namespace RailwayEssentialMdi.Entities
                 if (trackInfo != null)
                     TrackInfoSelection = trackInfo;
 
-                var objItem = GetObject(x, y);
+                var objItem = Helper.GetObject(_dispatcher, Track, x, y);
 
                 if (objItem != null)
                 {
@@ -713,7 +663,7 @@ namespace RailwayEssentialMdi.Entities
                             ItemsS88Selection = objItem as S88;
                             //SelectionTabIndex = TabIndexS88;
 
-                            var weaveItem = GetWeaveItem(SelectionX, SelectionY);
+                            var weaveItem = Helper.GetWeaveItem(_dispatcher, SelectionX, SelectionY);
                             if (weaveItem != null)
                                 ItemsS88SelectionPin = weaveItem.Pin;
                         }

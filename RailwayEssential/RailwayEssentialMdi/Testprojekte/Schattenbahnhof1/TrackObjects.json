@@ -368,25 +368,25 @@
       "objectId": 100,
       "index": 0,
       "ports": 16,
-      "stateOriginal": "0xf0ff"
+      "stateOriginal": "0x0000"
     },
     {
       "objectId": 101,
       "index": 1,
       "ports": 16,
-      "stateOriginal": "0x4400"
+      "stateOriginal": "0x0000"
     },
     {
       "objectId": 102,
       "index": 2,
       "ports": 16,
-      "stateOriginal": "0x1c0"
+      "stateOriginal": "0x0000"
     },
     {
       "objectId": 103,
       "index": 3,
       "ports": 16,
-      "stateOriginal": "0xffff"
+      "stateOriginal": "0x0000"
     }
   ]
 }

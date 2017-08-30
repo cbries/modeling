@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,6 +27,8 @@ namespace RailwayEssentialMdi.Autoplay
 
         private CancellationTokenSource _cts;
         private CancellationToken _tkn;
+
+        private static readonly string Prefix = "       HandleBlockRoute():";
 
         public static AutoplayRouteThread Start(RailwayEssentialModel model, Autoplay autoplayer, Analyze.Route route)
         {
@@ -74,13 +77,12 @@ namespace RailwayEssentialMdi.Autoplay
             }
         }
 
-        private string GetEventName(TrackInfo destBlock, string s88name)
+        private Dictionary<string, string> GetBlockData(TrackInfo destBlock)
         {
             if (destBlock == null)
                 return null;
 
-            if (string.IsNullOrEmpty(s88name))
-                return null;
+            Trace.WriteLine($"{Prefix} Destination {destBlock}");
 
             var eventSpec = DestBlock.GetOption("events");
             JObject events = null;
@@ -89,7 +91,9 @@ namespace RailwayEssentialMdi.Autoplay
             if (events == null)
                 return null;
 
-            string[] sensors = new string[3];
+            Dictionary<string, string> results = new Dictionary<string, string>();
+
+              string[] sensors = new string[3];
             string[] eventNames = new string[3];
             for (int i = 0; i < 3; ++i)
             {
@@ -101,12 +105,18 @@ namespace RailwayEssentialMdi.Autoplay
 
                 if (!string.IsNullOrEmpty(sensors[i]))
                 {
-                    if (sensors[i].EndsWith(s88name, StringComparison.OrdinalIgnoreCase))
-                        return eventNames[i];
+                    if (results.ContainsKey(sensors[i]))
+                    {
+                        // ignore
+                    }
+                    else
+                    {
+                        results.Add(sensors[i], eventNames[i]);
+                    }
                 }
             }
 
-            return null;
+            return results;
         }
 
         private class ItemData
@@ -148,6 +158,28 @@ namespace RailwayEssentialMdi.Autoplay
                     return false;
                 }
             }
+
+            public string DestBlockEvent { get; set; }
+        }
+
+        private ItemData Get(List<ItemData> items, int x, int y)
+        {
+            if (items == null || items.Count == 0)
+                return null;
+            if (x == -1 || y == -1)
+                return null;
+
+            foreach (var it in items)
+            {
+                if (it == null)
+                    continue;
+                if (it.Info == null)
+                    continue;
+                if (it.Info.X == x && it.Info.Y == y)
+                    return it;
+            }
+
+            return null;
         }
 
         public void Start()
@@ -164,12 +196,10 @@ namespace RailwayEssentialMdi.Autoplay
                 // ** Route Thread 
                 // **********************************************************************
 
-                string prefix = "       HandleBlockRoute():";
-
                 bool isRouteSet = false; // flag initialization of route's handling thread
                 Locomotive locObject = null; // the current locomotive on the route
                 List<ItemData> routeData = new List<ItemData>(); // s88 and switches on the route 
-
+                
                 for (;;)
                 {
                     if (!isRouteSet)
@@ -183,7 +213,12 @@ namespace RailwayEssentialMdi.Autoplay
                         locObject = Model.Dispatcher.GetDataProvider().GetObjectBy(locObjectId) as Locomotive;
 
                         if (locObject != null)
-                            Trace.WriteLine($"{prefix} Locomotive: {locObject.Name}");
+                            Trace.WriteLine($"{Prefix} Locomotive: {locObject.Name}");
+
+                        TrackWeaveItems weaverItems = new TrackWeaveItems();
+                        var weaveFilepath = Path.Combine(Model.Project.Dirpath, Model.Project.Track.Weave);
+                        if (!weaverItems.Load(weaveFilepath))
+                            throw new Exception("Reading weave file failed.");
 
                         Dictionary<TrackInfo, List<IItem>> trackObjects = new Dictionary<TrackInfo, List<IItem>>();
 
@@ -207,12 +242,12 @@ namespace RailwayEssentialMdi.Autoplay
                         }
 
                         #region DEBUG route's track info
-                        Trace.WriteLine($"{prefix} Route's track infos:");
+                        Trace.WriteLine($"{Prefix} Route's track infos:");
                         foreach (var info in trackObjects.Keys)
                         {
                             var objs = trackObjects[info];
 
-                            Trace.Write($"{prefix} {info}: ");
+                            Trace.Write($"{Prefix} {info}: ");
                             foreach (var o in objs)
                                 Trace.Write($"{o.ObjectId}, ");
                             Trace.WriteLine("||");
@@ -272,11 +307,60 @@ namespace RailwayEssentialMdi.Autoplay
                             routeData.Add(data);
                         }
 
+                        var sensorsAndEvents = GetBlockData(DestBlock);
+                        if (sensorsAndEvents != null)
+                        {
+                            foreach (var sensorName in sensorsAndEvents.Keys)
+                            {
+                                var eventName = sensorsAndEvents[sensorName];
+
+                                TrackInfo sensorTrackInfo = null;
+
+                                foreach (var item in Model.TrackEntity.Track)
+                                {
+                                    if (item == null || string.IsNullOrEmpty(item.Name))
+                                        continue;
+
+                                    if (item.Name.Equals(sensorName))
+                                    {
+                                        sensorTrackInfo = item;
+                                        break;
+                                    }
+                                }
+
+                                if (sensorTrackInfo != null)
+                                {
+                                    var it = Get(routeData, sensorTrackInfo.X, sensorTrackInfo.Y);
+
+                                    if (it == null)
+                                    {
+                                        var s88Obj = Helper.GetObject(Model.Dispatcher, Model.TrackEntity.Track, sensorTrackInfo.X, sensorTrackInfo.Y);
+
+                                        var data = new ItemData
+                                        {
+                                            Route = Route,
+                                            Info = sensorTrackInfo,
+                                            Item = s88Obj,
+                                            DestBlockEvent = eventName
+                                        };
+
+                                        routeData.Add(data);
+                                    }
+                                    else
+                                    {
+                                        it.DestBlockEvent = eventName;
+                                    }
+
+                                    Trace.WriteLine($"{Prefix} Sensor({sensorName}) with Event({eventName})");
+                                }
+                            }
+                        }
+
                         #endregion
 
                         #region set switches to let the locomotive pass the route
 
-                        foreach (var data in routeData)
+                            foreach (var data in routeData)
                         {
                             if (data == null || !data.IsSwitch || data.ItemSwitch == null)
                                 continue;
@@ -285,7 +369,7 @@ namespace RailwayEssentialMdi.Autoplay
 
                             var v = data.HasSwitchTurn ? 1 : 0;
                             var vs = v == 1 ? "TURN" : "STRAIGHT";
-                            Trace.WriteLine($"{prefix} Switch '{sw.Name1}' change to '{vs}'");
+                            Trace.WriteLine($"{Prefix} Switch '{sw.Name1}' change to '{vs}'");
                             sw.ChangeDirection(v);
                         }
 
@@ -300,7 +384,7 @@ namespace RailwayEssentialMdi.Autoplay
 
                     var s = SrcBlock.ToString().Replace(" ", "");
                     var d = DestBlock.ToString().Replace(" ", "");
-                    Trace.WriteLine($"{prefix} {s} to {d}");
+                    Trace.WriteLine($"{Prefix} {s}  TO  {d}");
 
                     foreach (var s88data in routeData)
                     {
@@ -314,16 +398,15 @@ namespace RailwayEssentialMdi.Autoplay
                         if (s88data.S88HasBeenHandled)
                             continue;
 
-                        var state = s88data.S88Checker().State.Value;
+                        var b = s88data.S88Checker().State;
+                        var state = b != null && b.Value;
                         if (state)
                         {
                             s88data.S88HasBeenHandled = true;
 
+                            Trace.WriteLine($"{Prefix} {s88data.Info} {obj} state '{state}' -> {s88data.DestBlockEvent}");      
+                            
                             // TODO
-
-                            string eventName = GetEventName(DestBlock, s88data.Info.Name);
-
-                            Trace.WriteLine($"{prefix} {s88data.Info} {obj} state '{state}' -> {eventName}");
                         }
                     }
 
@@ -333,7 +416,7 @@ namespace RailwayEssentialMdi.Autoplay
 
                     if (_tkn.IsCancellationRequested)
                     {
-                        Trace.WriteLine($"{prefix} Stop requested...");
+                        Trace.WriteLine($"{Prefix} Stop requested...");
                         Route.IsBusy = false;
                         return;
                     }
