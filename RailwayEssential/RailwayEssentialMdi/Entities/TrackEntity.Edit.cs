@@ -235,17 +235,22 @@ namespace RailwayEssentialMdi.Entities
                 if (Model == null)
                     return _availableLocomotives;
 
-                var m = Model as RailwayEssentialModel;
-                if (m == null)
+                if (!(Model is RailwayEssentialModel m))
                     return _availableLocomotives;
 
                 foreach (var e in _dispatcher.GetDataProvider().Objects)
                 {
-                    if (e == null)
-                        continue;
+                    if (e?.TypeId() == 1)
+                        _availableLocomotives.Add(e as Locomotive);
+                }
 
-                    if (e.TypeId() == 1)
-                        _availableLocomotives.Add(e as TrackInformation.Locomotive);
+                if (_availableLocomotives.Count == 0)
+                {
+                    _availableLocomotives.Add(new Item {Title = "--"});
+                }
+                else
+                {
+                    _availableLocomotives.Insert(0, new Item {Title = "--"});
                 }
 
                 return _availableLocomotives;

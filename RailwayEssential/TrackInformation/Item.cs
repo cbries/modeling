@@ -205,5 +205,12 @@ namespace TrackInformation
 
             OnPropertyChanged(name);
         }
+
+        public override string ToString()
+        {
+            if (string.IsNullOrEmpty(Title))
+                return base.ToString();
+            return Title.Trim();
+        }
     }
 }

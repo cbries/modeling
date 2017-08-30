@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using TrackInformation;
-
-namespace RailwayEssentialMdi.ViewModels
+﻿namespace RailwayEssentialMdi.ViewModels
 {
     using System.Diagnostics;
     using RailwayEssentialCore;

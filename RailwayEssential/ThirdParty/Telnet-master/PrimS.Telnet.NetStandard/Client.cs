@@ -146,9 +146,9 @@ namespace PrimS.Telnet
       string s = await this.TerminatedReadAsync(isTerminated, timeout, millisecondSpin);
       if (!isTerminated(s))
       {
-        System.Diagnostics.Debug.WriteLine("Failed to terminate '{0}' with '{1}'", s, terminator);
+        //System.Diagnostics.Debug.WriteLine("Failed to terminate '{0}' with '{1}'", s, terminator);
+        s += terminator;
       }
-
       return s;
     }
 
