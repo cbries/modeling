@@ -202,16 +202,6 @@
   {
     "type": "Switch",
     "setup": {
-      "objectId": 20009,
-      "pin": 0,
-      "visuX": 3,
-      "visuY": 5,
-      "invertSwitch": false
-    }
-  },
-  {
-    "type": "Switch",
-    "setup": {
       "objectId": 20004,
       "pin": 0,
       "visuX": 22,
@@ -276,7 +266,17 @@
       "pin": 0,
       "visuX": 23,
       "visuY": 1,
-      "invertSwitch": false
+      "invertSwitch": true
+    }
+  },
+  {
+    "type": "Switch",
+    "setup": {
+      "objectId": 20009,
+      "pin": 0,
+      "visuX": 3,
+      "visuY": 5,
+      "invertSwitch": true
     }
   }
 ]

@@ -278,18 +278,6 @@ namespace TrackInformation
         {
             string s = Addrext[index];
 
-            if (InvertCommand)
-            {
-                var maxIndex = Addrext.Count - 1;
-
-                if (maxIndex == index)
-                    index = 1;
-                else
-                    index = 0;
-
-                s = Addrext[index];
-            }
-
             List<ICommand> ctrlCmds = new List<ICommand>
             {
                 CommandFactory.Create($"request(11, control, force)"),

@@ -10,7 +10,7 @@
         xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
         x:Class="RailwayEssentialMdi.MainWindow"
         x:Name="app"
-        mc:Ignorable="d" Title="RailwayEssential" Height="700" Width="1200" 
+        mc:Ignorable="d" Title="RailwayEssential" Height="700" Width="1350" 
         DataContextChanged="MainWindow_OnDataContextChanged"
         Initialized="MainWindow_OnInitialized"
         Closing="MainWindow_OnClosing">

@@ -368,6 +368,15 @@ namespace RailwayEssentialMdi.Entities
                                     {
                                         var direction = checkResult.Direction.Value;
 
+                                        var objS = seam.ObjectItem as TrackInformation.Switch;
+                                        if (objS != null && objS.InvertCommand)
+                                        {
+                                            if (direction == TrackCheckResult.SwitchDirection.Straight)
+                                                direction = TrackCheckResult.SwitchDirection.Turn;
+                                            else
+                                                direction = TrackCheckResult.SwitchDirection.Straight;
+                                        }
+
                                         if (direction == TrackCheckResult.SwitchDirection.Straight)
                                         {
                                             if (seam.ObjectItem.IsRouted)
