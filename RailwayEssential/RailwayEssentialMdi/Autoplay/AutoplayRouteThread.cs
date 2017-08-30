@@ -504,6 +504,7 @@ namespace RailwayEssentialMdi.Autoplay
                                     Model.UiSyncCtx?.Send(x =>
                                     {
                                         Model.Project.Save();
+                                        Autoplayer.SetRoute(Route, false);
                                         Model.UpdateBlockRouteItems();
                                     }, null);
                                     Route.IsBusy = false;
