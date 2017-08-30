@@ -19,7 +19,7 @@ namespace RailwayEssentialMdi.Autoplay
 
             for(;;)
             {
-                if ((w.CancellationPending == true))
+                if (w != null && w.CancellationPending)
                 {
                     e.Cancel = true;
 

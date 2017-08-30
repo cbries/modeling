@@ -406,14 +406,21 @@ namespace RailwayEssentialMdi.Autoplay
                         if(weavedItem != null)
                             Trace.WriteLine(" #0 Pin " + weavedItem.Pin);
 
-                        Trace.WriteLine(" #1 " + s88data);
-                        Trace.WriteLine(" #2 " + s88data);
-                        Trace.WriteLine(" #3 " + s88data.S88Checker());
-
+                        Trace.WriteLine(" #1 " + s88data.ItemSwitch.Name1);
+                        Trace.WriteLine(" #2 " + s88data.ItemSwitch.Addr);
+                        Trace.WriteLine(" #2 " + s88data.ItemSwitch.State);
+                        
                         bool state = false;
-                        var bb = s88data.S88Checker();
-                        if (bb != null && bb.State != null)
-                            state = bb.State.Value;
+                        try
+                        {
+                            var bb = s88data.S88Checker();
+                            if (bb != null && bb.State != null)
+                                state = bb.State.Value;
+                        }
+                        catch(Exception ex)
+                        {
+                            Trace.WriteLine($"{Prefix} {ex.Message}");
+                        }
 
                         if (state)
                         {
