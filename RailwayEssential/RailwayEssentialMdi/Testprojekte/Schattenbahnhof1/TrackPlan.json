@@ -1356,5 +1356,14 @@
     "orientation": "rot0",
     "description": "",
     "options": {}
+  },
+  {
+    "name": "Track#4",
+    "x": 19,
+    "y": 3,
+    "themeId": 10,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
   }
 ]

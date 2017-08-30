@@ -77,7 +77,7 @@
       "name": "DAMPF2",
       "protocol": "MM14",
       "addr": 20,
-      "speed": 40,
+      "speed": 0,
       "speedstep": 5,
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
@@ -366,7 +366,7 @@
       "objectId": 100,
       "index": 0,
       "ports": 16,
-      "stateOriginal": "0x70ff"
+      "stateOriginal": "0x707a"
     },
     {
       "objectId": 101,
