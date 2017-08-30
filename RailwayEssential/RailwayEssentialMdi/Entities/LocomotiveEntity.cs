@@ -157,7 +157,7 @@
 
         public void UpdateUi()
         {
-            Trace.WriteLine(" *** UpdateUi() of Locomotive *** ");
+            //Trace.WriteLine(" *** UpdateUi() of Locomotive *** ");
 
             if (_objectItem == null)
             {
