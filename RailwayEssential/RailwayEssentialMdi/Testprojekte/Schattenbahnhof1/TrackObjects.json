@@ -9,7 +9,8 @@
       "speedstep": 0,
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 8
+      "nrOfFunctions": 8,
+      "maxSpeedPercentage": 50
     },
     {
       "objectId": 1007,
@@ -20,7 +21,8 @@
       "speedstep": 0,
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 4
+      "nrOfFunctions": 4,
+      "maxSpeedPercentage": 50
     },
     {
       "objectId": 1004,
@@ -31,7 +33,8 @@
       "speedstep": 0,
       "direction": 1,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 4
+      "nrOfFunctions": 4,
+      "maxSpeedPercentage": 75
     },
     {
       "objectId": 1006,
@@ -42,7 +45,8 @@
       "speedstep": 0,
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 5
+      "nrOfFunctions": 5,
+      "maxSpeedPercentage": 45
     },
     {
       "objectId": 1008,
@@ -53,7 +57,8 @@
       "speedstep": 0,
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 5
+      "nrOfFunctions": 5,
+      "maxSpeedPercentage": 50
     },
     {
       "objectId": 1000,
@@ -64,18 +69,20 @@
       "speedstep": 0,
       "direction": 1,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 5
+      "nrOfFunctions": 5,
+      "maxSpeedPercentage": 50
     },
     {
       "objectId": 1009,
       "name": "DAMPF2",
       "protocol": "MM14",
       "addr": 20,
-      "speed": 50,
-      "speedstep": 0,
+      "speed": 40,
+      "speedstep": 5,
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 5
+      "nrOfFunctions": 5,
+      "maxSpeedPercentage": 80
     },
     {
       "objectId": 1001,
@@ -86,7 +93,8 @@
       "speedstep": 0,
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 5
+      "nrOfFunctions": 5,
+      "maxSpeedPercentage": 50
     },
     {
       "objectId": 1003,
@@ -97,7 +105,8 @@
       "speedstep": 0,
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 5
+      "nrOfFunctions": 5,
+      "maxSpeedPercentage": 50
     }
   ],
   "switches": [
@@ -130,7 +139,7 @@
       "protocol": "DCC",
       "type": "ACCESSORY",
       "mode": "SWITCH",
-      "state": 1,
+      "state": 0,
       "switching": 0
     },
     {
@@ -162,7 +171,7 @@
       "protocol": "DCC",
       "type": "ACCESSORY",
       "mode": "SWITCH",
-      "state": 0,
+      "state": 1,
       "switching": 0
     },
     {
@@ -194,7 +203,7 @@
       "protocol": "DCC",
       "type": "ACCESSORY",
       "mode": "SWITCH",
-      "state": 0,
+      "state": 1,
       "switching": 0
     },
     {
@@ -210,7 +219,7 @@
       "protocol": "DCC",
       "type": "ACCESSORY",
       "mode": "SWITCH",
-      "state": 1,
+      "state": 0,
       "switching": 0
     },
     {
@@ -258,7 +267,7 @@
       "protocol": "DCC",
       "type": "ACCESSORY",
       "mode": "SWITCH",
-      "state": 0,
+      "state": 1,
       "switching": 0
     },
     {
@@ -357,13 +366,13 @@
       "objectId": 100,
       "index": 0,
       "ports": 16,
-      "stateOriginal": "0x105d"
+      "stateOriginal": "0x70ff"
     },
     {
       "objectId": 101,
       "index": 1,
       "ports": 16,
-      "stateOriginal": "0xd00"
+      "stateOriginal": "0xa00"
     },
     {
       "objectId": 102,

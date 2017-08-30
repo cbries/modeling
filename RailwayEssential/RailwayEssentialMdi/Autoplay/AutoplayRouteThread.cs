@@ -506,7 +506,7 @@ namespace RailwayEssentialMdi.Autoplay
                                     {
                                         Model.Project.Save();
                                         Autoplayer.SetRoute(Route, false);
-                                        Model.UpdateBlockRouteItems();
+                                        Model.TrackEntity.UpdateAllVisualBlocks();
                                     }, null);
                                     Route.IsBusy = false;
                                     Route.StartBusiness = DateTime.MaxValue;

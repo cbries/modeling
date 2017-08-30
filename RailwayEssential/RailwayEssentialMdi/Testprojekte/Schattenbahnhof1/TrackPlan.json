@@ -688,7 +688,7 @@
     "description": "",
     "options": {
       "blockGroupIdentifier": "7",
-      "blockCurrentLocomotive": "",
+      "blockCurrentLocomotive": "1009",
       "events": "{\r\n  \"sensor0\": \"0,10\",\r\n  \"sensor1\": \"1,10\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}"
     }
   },
@@ -714,7 +714,8 @@
     "description": "",
     "options": {
       "blockGroupIdentifier": "7",
-      "events": "{\r\n  \"sensor0\": \"0,12\",\r\n  \"sensor1\": \"1,12\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}"
+      "events": "{\r\n  \"sensor0\": \"0,12\",\r\n  \"sensor1\": \"1,12\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}",
+      "blockCurrentLocomotive": "1004"
     }
   },
   {
@@ -726,7 +727,8 @@
     "description": "",
     "options": {
       "blockGroupIdentifier": "7",
-      "events": "{\r\n  \"sensor0\": \"1,13\",\r\n  \"sensor1\": \"0,13\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}"
+      "events": "{\r\n  \"sensor0\": \"1,13\",\r\n  \"sensor1\": \"0,13\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}",
+      "blockCurrentLocomotive": "1006"
     }
   },
   {
@@ -739,7 +741,7 @@
     "options": {
       "blockGroupIdentifier": "7",
       "events": "{\r\n  \"sensor0\": \"1,14\",\r\n  \"sensor1\": \"0,14\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}",
-      "blockCurrentLocomotive": ""
+      "blockCurrentLocomotive": "1008"
     }
   },
   {
@@ -752,7 +754,7 @@
     "options": {
       "blockGroupIdentifier": "7",
       "events": "{\r\n  \"sensor0\": \"1,15\",\r\n  \"sensor1\": \"0,15\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}",
-      "blockCurrentLocomotive": ""
+      "blockCurrentLocomotive": "1000"
     }
   },
   {
@@ -1027,7 +1029,7 @@
     "description": "",
     "options": {
       "blockGroupIdentifier": "7",
-      "blockCurrentLocomotive": "1009",
+      "blockCurrentLocomotive": "",
       "events": "{\r\n  \"sensor0\": \"0,9\",\r\n  \"sensor1\": \"1,9\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}"
     }
   },
@@ -1327,5 +1329,32 @@
     "options": {
       "connectorIdentifier": "3"
     }
+  },
+  {
+    "name": "Track#1",
+    "x": 19,
+    "y": 4,
+    "themeId": 10,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
+  },
+  {
+    "name": "Track#2",
+    "x": 9,
+    "y": 5,
+    "themeId": 10,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
+  },
+  {
+    "name": "Track#3",
+    "x": 9,
+    "y": 7,
+    "themeId": 10,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
   }
 ]
