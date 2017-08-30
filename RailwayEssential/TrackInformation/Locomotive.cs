@@ -225,6 +225,8 @@ namespace TrackInformation
                 CommandFactory.Create($"release({ObjectId}, control)")
             };
 
+            Speed = percentage;
+
             OnCommandsReady(this, ctrlCmds);
         }
 

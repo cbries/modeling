@@ -447,7 +447,12 @@ namespace RailwayEssentialMdi.Autoplay
                                 if (evName.Equals("enter", StringComparison.OrdinalIgnoreCase))
                                 {
                                     if (locObject != null)
-                                        locObject.ChangeSpeed(Locomotive.SpeedBlockEntered);
+                                    {
+                                        var currentSpeed = locObject.Speed;
+                                        currentSpeed -= (int) (currentSpeed / 2.0f);
+                                        locObject.ChangeSpeed(currentSpeed);
+                                        //locObject.ChangeSpeed(Locomotive.SpeedBlockEntered);
+                                    }
 
                                     Trace.WriteLine($"{Prefix} New speed {Locomotive.SpeedBlockEntered} for {locObject.Name}");
                                 }
