@@ -12,17 +12,6 @@
       "nrOfFunctions": 8
     },
     {
-      "objectId": 1005,
-      "name": "Dampf #2",
-      "protocol": "MM14",
-      "addr": 20,
-      "speed": 0,
-      "speedstep": 0,
-      "direction": 0,
-      "funcset": "00000000000000000000000000000000",
-      "nrOfFunctions": 9
-    },
-    {
       "objectId": 1007,
       "name": "Kompressorlok",
       "protocol": "MM14",
@@ -141,7 +130,7 @@
       "protocol": "DCC",
       "type": "ACCESSORY",
       "mode": "SWITCH",
-      "state": 0,
+      "state": 1,
       "switching": 0
     },
     {
@@ -221,7 +210,7 @@
       "protocol": "DCC",
       "type": "ACCESSORY",
       "mode": "SWITCH",
-      "state": 0,
+      "state": 1,
       "switching": 0
     },
     {
@@ -237,7 +226,7 @@
       "protocol": "DCC",
       "type": "ACCESSORY",
       "mode": "SWITCH",
-      "state": 0,
+      "state": 1,
       "switching": 0
     },
     {
@@ -368,13 +357,13 @@
       "objectId": 100,
       "index": 0,
       "ports": 16,
-      "stateOriginal": "0x10ff"
+      "stateOriginal": "0x105d"
     },
     {
       "objectId": 101,
       "index": 1,
       "ports": 16,
-      "stateOriginal": "0x8e00"
+      "stateOriginal": "0xd00"
     },
     {
       "objectId": 102,
