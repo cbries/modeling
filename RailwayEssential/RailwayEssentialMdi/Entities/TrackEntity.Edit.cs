@@ -697,7 +697,7 @@ namespace RailwayEssentialMdi.Entities
                     
                     switch (objItem.TypeId())
                     {
-                        case 4: // S88
+                        case TrackInformation.S88.Typeid:
                         {
                             ItemsS88Selection = objItem as S88;
                             //SelectionTabIndex = TabIndexS88;
@@ -709,7 +709,7 @@ namespace RailwayEssentialMdi.Entities
                         }
                             break;
 
-                        case 5: // switch
+                        case TrackInformation.Switch.Typeid:
                         {
                             ItemsSwitchSelection = objItem as TrackInformation.Switch;
                             //SelectionTabIndex = TabIndexSwitch;
@@ -884,7 +884,7 @@ namespace RailwayEssentialMdi.Entities
             {
                 switch (objItem.TypeId())
                 {
-                    case 5:
+                    case TrackInformation.Switch.Typeid:
                     {
                         var switchItem = objItem as TrackInformation.Switch;
                         if (switchItem != null)
@@ -893,6 +893,46 @@ namespace RailwayEssentialMdi.Entities
                                 switchItem.ChangeDirection(1);
                             else
                                 switchItem.ChangeDirection(0);
+                        }
+                    }
+                        break;
+
+                    case TrackInformation.S88.Typeid:
+                    {
+                        if (Model is RailwayEssentialModel m && m.IsDryRun)
+                        {
+                            int pin = -1;
+
+                            var weaveItem = Helper.GetWeaveItem(_dispatcher, x, y);
+                            if (weaveItem != null)
+                                pin = weaveItem.Pin;
+
+                            if (pin != -1)
+                            {
+                                Trace.WriteLine("Simulate S88 PIN change!");
+
+                                var s88Item = objItem as TrackInformation.S88;
+                                if (s88Item != null)
+                                {
+                                    var beforeBinary = s88Item.StateBinary;
+
+                                    int len = s88Item.Ports;
+                                    int idx = pin - 1;
+
+                                    var currentState = Convert.ToInt32(s88Item.StateOriginal, 16);
+                                    byte[] bytes = BitConverter.GetBytes(currentState);
+                                    var changedBytes = bytes.ToggleBit(idx);
+                                    string changedHhexValue = BitConverter.ToInt32(changedBytes, 0).ToString("X");
+                                    s88Item.StateOriginal = changedHhexValue;
+
+                                    var afterBinary = s88Item.StateBinary;
+
+                                    Trace.WriteLine($"Binaries: {beforeBinary}");
+                                    Trace.WriteLine($"Binaries: {afterBinary}");
+
+                                    m.TriggerUpdateUi();
+                                }
+                             }
                         }
                     }
                         break;

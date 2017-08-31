@@ -25,6 +25,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using RailwayEssentialMdi.Analyze;
+using TrackInformation;
+using TrackWeaver;
+using Route = RailwayEssentialMdi.Analyze.Route;
 
 namespace RailwayEssentialMdi.Autoplay
 {
@@ -55,10 +58,45 @@ namespace RailwayEssentialMdi.Autoplay
                         var themeInfo = Theme?.Get(trackInfo.ThemeId);
                         if (themeInfo != null)
                         {
-                            if (state)
-                                themeIcon = themeInfo.Off.Route;
+                            TrackCheckResult checkResult = null;
+                            TrackInformation.S88 s88item = null;
+
+                            var w = Ctx.Dispatcher.Weaver;
+                            var objItems = w.GetObject(trackInfo);
+                            if (objItems != null && objItems.Count > 0)
+                            {
+                                s88item = objItems[0] as S88;
+                                var checkFnc = w.GetCheckFnc(s88item, trackInfo);
+                                if (checkFnc != null)
+                                    checkResult = checkFnc();
+                            }
+
+                            if (checkResult == null)
+                            {
+                                if (state)
+                                    themeIcon = themeInfo.Off.Route;
+                                else
+                                    themeIcon = themeInfo.Off.Default;
+                            }
                             else
-                                themeIcon = themeInfo.Off.Default;
+                            {
+                                bool rS88 = checkResult?.State != null && checkResult.State.Value;
+
+                                if (rS88 && s88item != null)
+                                {
+                                    if (s88item.IsRouted)
+                                        themeIcon = themeInfo.Active.Route;
+                                    else
+                                        themeIcon = themeInfo.Active.Occ;
+                                }
+                                else
+                                {
+                                    if (s88item != null && s88item.IsRouted)
+                                        themeIcon = themeInfo.Off.Route;
+                                    else
+                                        themeIcon = themeInfo.Off.Default;
+                                }
+                            }
                         }
                     }
 

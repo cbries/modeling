@@ -31,11 +31,6 @@ namespace RailwayEssentialMdi.Autoplay
     {
         private static int WorkerDelay = 1 * 1000;
 
-        private string GetTimeStr()
-        {
-            return string.Format("{0:MM/dd/yy H:mm:ss}", DateTime.UtcNow.ToLocalTime());
-        }
-
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
             var w = sender as BackgroundWorker;

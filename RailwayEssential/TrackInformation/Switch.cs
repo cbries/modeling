@@ -31,7 +31,9 @@ namespace TrackInformation
 {
     public class Switch : Item
     {
-        public override int TypeId() { return 5; }
+        public const int Typeid = 5;
+
+        public override int TypeId() { return Typeid; }
 
         public override int SubTitleHeight => 16;
 

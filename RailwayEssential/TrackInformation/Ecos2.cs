@@ -39,7 +39,9 @@ namespace TrackInformation
 
         public string Name => "ECoS2";
 
-        public override int TypeId() { return 2; }
+        public const int Typeid = 2;
+
+        public override int TypeId() { return Typeid; }
 
         private readonly string[] _fields = new string[4];
 

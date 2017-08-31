@@ -82,13 +82,16 @@
                     <MenuItem Header="Disconnect" Command="{Binding DisconnectCommand}"/>
                     <Separator/>
                     <MenuItem Header="Dry run" Command="{Binding DryRunCommand}"/>
+                    <Separator/>
                     <MenuItem Header="{Binding TogglePowerCaption}" Command="{Binding TogglePowerCommand}"/>
                     <MenuItem Header="Autoplay" Command="{Binding AutoplayCommand}" IsCheckable="True">
                         <MenuItem.Icon>
                             <Image Source="Resources/autoplay.png" Width="16" Height="16"/>
                         </MenuItem.Icon>
                     </MenuItem>
+                    <!--
                     <MenuItem Header="Simulation" Command="{Binding SimulationCommand}" IsCheckable="True" IsChecked="False"/>
+                    -->
                     <Separator/>
                     <MenuItem Header="Properties" Command="{Binding CmdStationsPropertiesCommand}"/>
                 </MenuItem>

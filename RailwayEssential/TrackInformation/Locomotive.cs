@@ -38,7 +38,9 @@ namespace TrackInformation
         public DateTime StartTime { get; private set; }
         public DateTime StopTime { get; private set; }
 
-        public override int TypeId() { return 1; }
+        public const int Typeid = 1;
+
+        public override int TypeId() { return Typeid; }
 
         public override string ToString()
         {

@@ -373,7 +373,7 @@ namespace RailwayEssentialMdi.Entities
                                         if (seam.ObjectItem.IsRouted)
                                             symbol = themeObject.Active.Route;
                                         else
-                                            symbol = themeObject.Active.Default;
+                                            symbol = themeObject.Active.Occ;
                                     }
                                     else
                                     {

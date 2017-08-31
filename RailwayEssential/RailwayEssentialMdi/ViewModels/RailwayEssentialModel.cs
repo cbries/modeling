@@ -747,6 +747,11 @@ namespace RailwayEssentialMdi.ViewModels
             }
         }
 
+        internal void TriggerUpdateUi()
+        {
+            DispatcherOnUpdateUi(null, _dispatcher.Weaver);
+        }
+
         private void DataProviderOnCommandsReady(object sender, IReadOnlyList<ICommand> commands)
         {
             if (_dispatcher != null)
@@ -1140,6 +1145,10 @@ namespace RailwayEssentialMdi.ViewModels
 
             var weaveFilepath = Path.Combine(Project.Dirpath, Project.Track.Weave);
             _dispatcher.InitializeWeaving(_trackEntity.Track, weaveFilepath);
+
+            Thread.Sleep(125);
+
+            TriggerUpdateUi();
         }
 
         public void ConnectToCommandStation(object p)

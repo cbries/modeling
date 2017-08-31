@@ -100,5 +100,39 @@ namespace RailwayEssentialMdi
 
             return null;
         }
+        
     }
+
+    public static class ByteArrayExt
+    {
+        public static byte[] SetBit(this byte[] self, int index, bool value)
+        {
+            int byteIndex = index / 8;
+            int bitIndex = index % 8;
+            byte mask = (byte)(1 << bitIndex);
+
+            self[byteIndex] = (byte)(value ? (self[byteIndex] | mask) : (self[byteIndex] & ~mask));
+            return self;
+        }
+
+        public static byte[] ToggleBit(this byte[] self, int index)
+        {
+            int byteIndex = index / 8;
+            int bitIndex = index % 8;
+            byte mask = (byte)(1 << bitIndex);
+
+            self[byteIndex] ^= mask;
+            return self;
+        }
+
+        public static bool GetBit(this byte[] self, int index, bool value)
+        {
+            int byteIndex = index / 8;
+            int bitIndex = index % 8;
+            byte mask = (byte)(1 << bitIndex);
+
+            return (self[byteIndex] & mask) != 0;
+        }
+    }
+
 }

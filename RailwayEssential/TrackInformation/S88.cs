@@ -30,7 +30,9 @@ namespace TrackInformation
 {
     public class S88 : Item
     {
-        public override int TypeId() { return 4; }
+        public const int Typeid = 4;
+
+        public override int TypeId() { return Typeid; }
 
         #region Properties
 
