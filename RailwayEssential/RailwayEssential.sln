@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecos2CoreTest", "Ecos2CoreT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communicator", "Communicator\Communicator.csproj", "{8C4A1922-3BAB-4F3E-B5A4-3FB906F97BC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunicatorTest", "CommunicatorTest\CommunicatorTest.csproj", "{D79C1180-3D72-4112-846A-DA2D2EAE0E51}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{5050BCD2-2DB5-4B46-9798-E034F293C22E}"
 	ProjectSection(SolutionItems) = preProject
 		Documentation\accessory-manager.txt = Documentation\accessory-manager.txt
@@ -109,18 +107,6 @@ Global
 		{8C4A1922-3BAB-4F3E-B5A4-3FB906F97BC2}.Release|x64.Build.0 = Release|Any CPU
 		{8C4A1922-3BAB-4F3E-B5A4-3FB906F97BC2}.Release|x86.ActiveCfg = Release|x86
 		{8C4A1922-3BAB-4F3E-B5A4-3FB906F97BC2}.Release|x86.Build.0 = Release|x86
-		{D79C1180-3D72-4112-846A-DA2D2EAE0E51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D79C1180-3D72-4112-846A-DA2D2EAE0E51}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D79C1180-3D72-4112-846A-DA2D2EAE0E51}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{D79C1180-3D72-4112-846A-DA2D2EAE0E51}.Debug|x64.Build.0 = Debug|Any CPU
-		{D79C1180-3D72-4112-846A-DA2D2EAE0E51}.Debug|x86.ActiveCfg = Debug|x86
-		{D79C1180-3D72-4112-846A-DA2D2EAE0E51}.Debug|x86.Build.0 = Debug|x86
-		{D79C1180-3D72-4112-846A-DA2D2EAE0E51}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D79C1180-3D72-4112-846A-DA2D2EAE0E51}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D79C1180-3D72-4112-846A-DA2D2EAE0E51}.Release|x64.ActiveCfg = Release|Any CPU
-		{D79C1180-3D72-4112-846A-DA2D2EAE0E51}.Release|x64.Build.0 = Release|Any CPU
-		{D79C1180-3D72-4112-846A-DA2D2EAE0E51}.Release|x86.ActiveCfg = Release|x86
-		{D79C1180-3D72-4112-846A-DA2D2EAE0E51}.Release|x86.Build.0 = Release|x86
 		{6925E932-7AD6-4AFA-A6BA-CBBF35014264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6925E932-7AD6-4AFA-A6BA-CBBF35014264}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6925E932-7AD6-4AFA-A6BA-CBBF35014264}.Debug|x64.ActiveCfg = Debug|Any CPU

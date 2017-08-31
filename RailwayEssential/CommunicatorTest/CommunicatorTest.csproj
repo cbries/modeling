@@ -94,6 +94,10 @@
       <Project>{8c4a1922-3bab-4f3e-b5a4-3fb906f97bc2}</Project>
       <Name>Communicator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ecos2Core\Ecos2Core.csproj">
+      <Project>{5e022579-45a1-4e6f-94db-1c88e089030d}</Project>
+      <Name>Ecos2Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RailwayEssentialCore\RailwayEssentialCore.csproj">
       <Project>{b80cfecd-db0b-4533-aa42-784b2ebe85ff}</Project>
       <Name>RailwayEssentialCore</Name>

@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Communicator;
+using Ecos2Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RailwayEssentialCore;
 
