@@ -1,17 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.3
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{C8705CCB-F5B8-43F0-8510-E4AA93B3CCE2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RailwayEssential", "RailwayEssential\RailwayEssential.csproj", "{91DEFD46-D645-45F6-BEBA-8417A4E56A40}"
-	ProjectSection(ProjectDependencies) = postProject
-		{15405881-A35F-437E-9D2D-22DFDDBC3C11} = {15405881-A35F-437E-9D2D-22DFDDBC3C11}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RailwayControl", "RailwayEssential\Templates\RailwayControl\RailwayControl.csproj", "{15405881-A35F-437E-9D2D-22DFDDBC3C11}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecos2Core", "Ecos2Core\Ecos2Core.csproj", "{5E022579-45A1-4E6F-94DB-1C88E089030D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecos2CoreTest", "Ecos2CoreTest\Ecos2CoreTest.csproj", "{24656E28-71BE-49C8-86FD-743631174C9F}"
@@ -66,6 +57,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdParty", "ThirdParty", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrimS.Telnet.NetStandard", "ThirdParty\Telnet-master\PrimS.Telnet.NetStandard\PrimS.Telnet.NetStandard.csproj", "{09C8914D-4E27-4F10-BC62-31A68484A661}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1F3DB6F3-484B-493B-90FB-0B617D1508D9}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		Documentation\TODO.txt = Documentation\TODO.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,28 +73,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{91DEFD46-D645-45F6-BEBA-8417A4E56A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91DEFD46-D645-45F6-BEBA-8417A4E56A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91DEFD46-D645-45F6-BEBA-8417A4E56A40}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{91DEFD46-D645-45F6-BEBA-8417A4E56A40}.Debug|x86.ActiveCfg = Debug|x86
-		{91DEFD46-D645-45F6-BEBA-8417A4E56A40}.Debug|x86.Build.0 = Debug|x86
-		{91DEFD46-D645-45F6-BEBA-8417A4E56A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91DEFD46-D645-45F6-BEBA-8417A4E56A40}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91DEFD46-D645-45F6-BEBA-8417A4E56A40}.Release|x64.ActiveCfg = Release|Any CPU
-		{91DEFD46-D645-45F6-BEBA-8417A4E56A40}.Release|x86.ActiveCfg = Release|x86
-		{91DEFD46-D645-45F6-BEBA-8417A4E56A40}.Release|x86.Build.0 = Release|x86
-		{15405881-A35F-437E-9D2D-22DFDDBC3C11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{15405881-A35F-437E-9D2D-22DFDDBC3C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{15405881-A35F-437E-9D2D-22DFDDBC3C11}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{15405881-A35F-437E-9D2D-22DFDDBC3C11}.Debug|x64.Build.0 = Debug|Any CPU
-		{15405881-A35F-437E-9D2D-22DFDDBC3C11}.Debug|x86.ActiveCfg = Debug|x86
-		{15405881-A35F-437E-9D2D-22DFDDBC3C11}.Debug|x86.Build.0 = Debug|x86
-		{15405881-A35F-437E-9D2D-22DFDDBC3C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{15405881-A35F-437E-9D2D-22DFDDBC3C11}.Release|Any CPU.Build.0 = Release|Any CPU
-		{15405881-A35F-437E-9D2D-22DFDDBC3C11}.Release|x64.ActiveCfg = Release|Any CPU
-		{15405881-A35F-437E-9D2D-22DFDDBC3C11}.Release|x64.Build.0 = Release|Any CPU
-		{15405881-A35F-437E-9D2D-22DFDDBC3C11}.Release|x86.ActiveCfg = Release|x86
-		{15405881-A35F-437E-9D2D-22DFDDBC3C11}.Release|x86.Build.0 = Release|x86
 		{5E022579-45A1-4E6F-94DB-1C88E089030D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5E022579-45A1-4E6F-94DB-1C88E089030D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E022579-45A1-4E6F-94DB-1C88E089030D}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -283,7 +258,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{15405881-A35F-437E-9D2D-22DFDDBC3C11} = {C8705CCB-F5B8-43F0-8510-E4AA93B3CCE2}
 		{C15A7336-4B35-4BD3-9C31-7F7C8DD65E6B} = {5050BCD2-2DB5-4B46-9798-E034F293C22E}
 		{09C8914D-4E27-4F10-BC62-31A68484A661} = {7F9ADB59-538F-405D-98CA-249CD66007D9}
 	EndGlobalSection

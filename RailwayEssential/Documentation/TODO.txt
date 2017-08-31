@@ -1,0 +1,14 @@
+
+[A] := hohe Priorität
+[B] := ...
+[C] := niedrige Priorität
+
+##############################
+
+[A] in einem Schattenbahnhof nicht die gleiche Lok starten, wenn andere zur Verfügung stehen
+[A] man sollte den Automatikbetrieb "herunterfahren" lassen, so dass die Züge an ihre nächste Position fahren und die Anlage ausgemacht werden kann
+[A] die jeweiligen Lokomotiven müssen individuelle "Block-Enter-Geschwindigkeiten" erhalten
+
+[B] setzen eines Ziels für eine Lokomotive, die Steuerung sollte automatisch die Lokomotiven arrangieren
+
+[C] "Fast Edit"-Tabelle für alle Objekte, TrackInformationen, etc. um schnell einen Plan editieren zu können

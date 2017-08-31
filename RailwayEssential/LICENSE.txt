@@ -1,4 +1,4 @@
-﻿/*
+/*
  * MIT License
  *
  * Copyright (c) 2017 Dr. Christian Benjamin Ries
@@ -21,12 +21,3 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-namespace Ecos2Core.Commands
-{
-    public class Release : Command
-    {
-        public static string N = "release";
-        public override CommandT Type => CommandT.Release;
-        public override string Name => N;
-    }
-}

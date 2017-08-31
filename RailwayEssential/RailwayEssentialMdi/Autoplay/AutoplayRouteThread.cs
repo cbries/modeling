@@ -1,4 +1,27 @@
-﻿using System;
+﻿/*
+ * MIT License
+ *
+ * Copyright (c) 2017 Dr. Christian Benjamin Ries
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -28,7 +51,7 @@ namespace RailwayEssentialMdi.Autoplay
         private CancellationTokenSource _cts;
         private CancellationToken _tkn;
 
-        private static readonly string Prefix = "       HandleBlockRoute():";
+        private static readonly string Prefix = "§ ";
 
         public static AutoplayRouteThread Start(RailwayEssentialModel model, Autoplay autoplayer, Analyze.Route route)
         {
@@ -216,7 +239,10 @@ namespace RailwayEssentialMdi.Autoplay
                         locObject = Model.Dispatcher.GetDataProvider().GetObjectBy(locObjectId) as Locomotive;
 
                         if (locObject != null)
+                        {
+                            Model?.LogAutoplay($"{Prefix} Locomotive: {locObject.Name}");
                             Trace.WriteLine($"{Prefix} Locomotive: {locObject.Name}");
+                        }
 
                         TrackWeaveItems weaverItems = new TrackWeaveItems();
                         var weaveFilepath = Path.Combine(Model.Project.Dirpath, Model.Project.Track.Weave);
@@ -397,49 +423,38 @@ namespace RailwayEssentialMdi.Autoplay
                             locObject.ChangeSpeed(locObject.MaxSpeedPercentage);
                         }
 
+                        Model?.LogAutoplay($"{Prefix} {s}  TO  {d}");
                         Trace.WriteLine($"{Prefix} {s}  TO  {d}");
                     }
 
-                    foreach (var s88data in routeData)
+                    foreach (var s88Data in routeData)
                     {
-                        if (s88data == null || !s88data.IsS88)
+                        if (s88Data == null || !s88Data.IsS88 || s88Data.ItemS88 == null)
                             continue;
 
-                        var obj = s88data.ItemS88;
-                        if (obj == null)
+                        if (s88Data.S88HasBeenHandled)
                             continue;
-
-                        if (s88data.S88HasBeenHandled)
-                            continue;
-
-                        //var weavedItem = Helper.GetWeaveItem(Model.Dispatcher, s88data.Info.X, s88data.Info.Y);
-                        //if(weavedItem != null)
-                        //    Trace.WriteLine(" #0 Pin " + weavedItem.Pin);
-                        //Trace.WriteLine(" #1 " + s88data.ItemS88.Title);
-                        //Trace.WriteLine(" #2 " + s88data.ItemS88.Index);
-                        //Trace.WriteLine(" #3 " + s88data.ItemS88.Ports);
-                        //Trace.WriteLine(" #4 " + s88data.ItemS88.StateBinary);
-                        //Trace.WriteLine(" #5 " + s88data.ItemS88.StateOriginal);
 
                         bool state = false;
                         try
                         {
-                            var bb = s88data.S88Checker();
+                            var bb = s88Data.S88Checker();
                             if (bb != null && bb.State != null)
                                 state = bb.State.Value;
                         }
                         catch(Exception ex)
                         {
+                            Model?.LogAutoplay($"{Prefix} {ex.Message}");
                             Trace.WriteLine($"{Prefix} {ex.Message}");
                         }
 
                         if (state)
                         {
-                            s88data.S88HasBeenHandled = true;
+                            s88Data.S88HasBeenHandled = true;
 
-                            //Trace.WriteLine($"{Prefix} {s88data.Info} {obj} state '{state}' -> {s88data.DestBlockEvent}");
+                            //Model?.LogAutoplay($"{Prefix} {s88Data.Info} {s88Data.ItemS88} state '{state}' -> {s88Data.DestBlockEvent}");
 
-                            string evName = s88data.DestBlockEvent;
+                            string evName = s88Data.DestBlockEvent;
                             if (!string.IsNullOrEmpty(evName))
                             {
                                 var stopped = false;
@@ -524,7 +539,7 @@ namespace RailwayEssentialMdi.Autoplay
 
                     #region Thread stuff
 
-                    Thread.Sleep(1 * 500);
+                    Thread.Sleep(1 * 125);
 
                     if (_tkn.IsCancellationRequested)
                     {
