@@ -35,6 +35,9 @@ namespace TrackInformation
         public static int SpeedNormal = 50;
         public static int SpeedBlockEntered = 35;
 
+        public DateTime StartTime { get; private set; }
+        public DateTime StopTime { get; private set; }
+
         public override int TypeId() { return 1; }
 
         public override string ToString()
@@ -168,6 +171,9 @@ namespace TrackInformation
 
         public Locomotive()
         {
+            StartTime = DateTime.MaxValue;
+            StopTime = DateTime.MinValue;
+
             _funcset = new List<bool>(32);
 
             if (_funcset.Count == 0)
@@ -204,9 +210,11 @@ namespace TrackInformation
         {
             List<ICommand> ctrlCmds = new List<ICommand>
             {
-                CommandFactory.Create($"set({ObjectId}, )"),
+                CommandFactory.Create($"set({ObjectId}, stop)"),
             };
 
+            StopTime = DateTime.Now;
+            
             OnCommandsReady(this, ctrlCmds);
         }
 
@@ -241,6 +249,20 @@ namespace TrackInformation
 
         public void ChangeSpeed(int percentage)
         {
+            if (_speed == 0 && percentage > 0)
+            {
+                StartTime = DateTime.Now;
+                StopTime = DateTime.MinValue;
+            }
+            else
+            {
+                if (percentage <= 0)
+                {
+                    StartTime = DateTime.MaxValue;
+                    StopTime = DateTime.Now;
+                }
+            }
+
             List<ICommand> ctrlCmds = new List<ICommand>
             {
                 CommandFactory.Create($"request({ObjectId}, control, force)"),

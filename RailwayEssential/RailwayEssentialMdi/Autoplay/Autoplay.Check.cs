@@ -25,12 +25,17 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using TrackInformation;
 using Route = RailwayEssentialMdi.Analyze.Route;
 
 namespace RailwayEssentialMdi.Autoplay
 {
     public partial class Autoplay
     {
+        // seconds between a stop of a locomotive and next run
+        // i.e. we just give other locomotives the chance to run
+        private static int SecondsToNextLocRun = 10;
+
         private Theme.Theme Theme => Ctx?.Theme;
         private readonly List<AutoplayRouteThread> _blockRouteThreads = new List<AutoplayRouteThread>();
         private readonly Random _rnd = new Random(DateTime.Now.Millisecond);
@@ -102,8 +107,6 @@ namespace RailwayEssentialMdi.Autoplay
 
         private void Check()
         {
-            //Trace.WriteLine($"{GetTimeStr()} ## Autoplay::Check()");
-
             if (Ctx == null || Ctx.Project == null)
                 return;
 
@@ -115,6 +118,7 @@ namespace RailwayEssentialMdi.Autoplay
 
                 return;
             }
+
             var grpsIdx = _rnd.Next(0, grpsN);
 
             var grp = grps[grpsIdx];
@@ -132,7 +136,18 @@ namespace RailwayEssentialMdi.Autoplay
                     var locObjectIdEnd = GetLocObjectIdOfRoute(r, true);
 
                     if (locObjectIdStart != -1 && locObjectIdEnd == -1 && !r.IsBusy)
-                        routesWithLocs.Add(r);
+                    {
+                        if (Ctx.Dispatcher.GetDataProvider().GetObjectBy(locObjectIdStart) is Locomotive locObj)
+                        {
+                            TimeSpan duration = DateTime.Now - locObj.StopTime;
+                            if (duration.Seconds > SecondsToNextLocRun)
+                                routesWithLocs.Add(r);
+                        }
+                        else
+                        {
+                            routesWithLocs.Add(r);
+                        }
+                    }
                 }
 
                 var routeN = routesWithLocs.Count;
@@ -143,6 +158,7 @@ namespace RailwayEssentialMdi.Autoplay
 
                 if (route != null)
                 {
+                    Ctx?.LogAutoplay($"START Group {grp.GroupName} with Route {route}");
                     Trace.WriteLine($"START Group {grp.GroupName} with Route {route}");
 
                     GetByRoute(route)?.Start();

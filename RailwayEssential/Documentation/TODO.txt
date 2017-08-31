@@ -5,7 +5,6 @@
 
 ##############################
 
-[A] in einem Schattenbahnhof nicht die gleiche Lok starten, wenn andere zur Verfügung stehen
 [A] man sollte den Automatikbetrieb "herunterfahren" lassen, so dass die Züge an ihre nächste Position fahren und die Anlage ausgemacht werden kann
 [A] die jeweiligen Lokomotiven müssen individuelle "Block-Enter-Geschwindigkeiten" erhalten
 
