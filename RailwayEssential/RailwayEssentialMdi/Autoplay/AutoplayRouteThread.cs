@@ -463,9 +463,21 @@ namespace RailwayEssentialMdi.Autoplay
                                 {
                                     if (locObject != null)
                                     {
-                                        var currentSpeed = locObject.Speed;
-                                        currentSpeed -= (int) (currentSpeed / 2.0f);
-                                        locObject.ChangeSpeed(currentSpeed);
+                                        var blockSpeed = locObject.BlockSpeedPercentage;
+                                        if (blockSpeed >= locObject.MaxSpeedPercentage)
+                                            blockSpeed = -1;
+
+                                        if (blockSpeed <= 0)
+                                        {
+                                            var currentSpeed = locObject.Speed;
+                                            currentSpeed -= (int) (currentSpeed / 2.0f);
+                                            locObject.ChangeSpeed(currentSpeed);
+                                        }
+                                        else
+                                        {
+                                            locObject.ChangeSpeed(blockSpeed);
+                                        }
+
                                         //locObject.ChangeSpeed(Locomotive.SpeedBlockEntered);
                                     }
 

@@ -17,14 +17,12 @@
             <Label Content=" : " FontWeight="Bold" VerticalAlignment="Center"/>
             <Label Content="{Binding Entity.ObjectItem.ObjectId}" FontWeight="Bold" VerticalAlignment="Center"/>
             
-            <Label Content="Max speed:" VerticalAlignment="Center" Margin="25,0,0,0"/>
-            <TextBox VerticalContentAlignment="Center" Height="25" Width="75" TextAlignment="Center" Text="{Binding Entity.ObjectItem.MaxSpeedPercentage, Mode=TwoWay}"/>
-            
             <Image Width="32" Height="32" HorizontalAlignment="Right" Margin="2,2,10,2" Source="/RailwayEssentialMdi;component/Resources/Main.ico"/>
         </DockPanel>
         <Grid Grid.Row="1" VerticalAlignment="Top" IsEnabled="{Binding Entity.IsEnabled}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="110"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" Name="FncButtons">
@@ -58,7 +56,7 @@
 
             </Grid>
 
-            <DockPanel Grid.Column="1" HorizontalAlignment="Stretch" Margin="10, 0, 0, 10">
+            <DockPanel Grid.Column="1" HorizontalAlignment="Stretch" Margin="10, 0, 10, 10">
                 <Slider Name="SpeedSlider" Orientation="Vertical" Margin="2,2,2,2" Minimum="0" Maximum="100" Value="{Binding Entity.ObjectItem.Speed, Mode=OneWay}" ValueChanged="SpeedSlider_OnValueChanged" 
                         Thumb.DragCompleted="SpeedSlider_OnDragCompleted"/>
                 <StackPanel>
@@ -67,6 +65,18 @@
                     <Button Content="--" FontWeight="Bold" FontSize="14" Margin="5" Command="{Binding SpeedDecCommand}"/>
                 </StackPanel>
             </DockPanel>
+            
+            <StackPanel Grid.Column="2" HorizontalAlignment="Stretch">
+                <DockPanel Margin="0,2,0,0">
+                    <Label Content="Max speed:" VerticalAlignment="Center" Width="85"/>
+                    <TextBox VerticalContentAlignment="Center" Height="25" Width="75" TextAlignment="Center" Text="{Binding Entity.ObjectItem.MaxSpeedPercentage, Mode=TwoWay}"/>
+                </DockPanel>
+
+                <DockPanel Margin="0,2,0,0">
+                    <Label Content="Block speed:" VerticalAlignment="Center" Width="85"/>
+                    <TextBox VerticalContentAlignment="Center" Height="25" Width="75" TextAlignment="Center" Text="{Binding Entity.ObjectItem.BlockSpeedPercentage, Mode=TwoWay}"/>
+                </DockPanel>
+            </StackPanel>
         </Grid>
 
         <DockPanel Grid.Row="2" IsEnabled="{Binding Entity.IsEnabled}">

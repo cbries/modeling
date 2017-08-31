@@ -10,7 +10,8 @@
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
       "nrOfFunctions": 8,
-      "maxSpeedPercentage": 50
+      "maxSpeedPercentage": 50,
+      "blockSpeedPercentage": 50
     },
     {
       "objectId": 1007,
@@ -22,7 +23,8 @@
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
       "nrOfFunctions": 4,
-      "maxSpeedPercentage": 50
+      "maxSpeedPercentage": 50,
+      "blockSpeedPercentage": 50
     },
     {
       "objectId": 1004,
@@ -34,7 +36,8 @@
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
       "nrOfFunctions": 4,
-      "maxSpeedPercentage": 65
+      "maxSpeedPercentage": 65,
+      "blockSpeedPercentage": 40
     },
     {
       "objectId": 1006,
@@ -46,7 +49,8 @@
       "direction": 0,
       "funcset": "10000000000000000000000000000000",
       "nrOfFunctions": 5,
-      "maxSpeedPercentage": 25
+      "maxSpeedPercentage": 25,
+      "blockSpeedPercentage": 15
     },
     {
       "objectId": 1008,
@@ -58,7 +62,8 @@
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
       "nrOfFunctions": 5,
-      "maxSpeedPercentage": 50
+      "maxSpeedPercentage": 50,
+      "blockSpeedPercentage": 50
     },
     {
       "objectId": 1000,
@@ -70,7 +75,8 @@
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
       "nrOfFunctions": 5,
-      "maxSpeedPercentage": 50
+      "maxSpeedPercentage": 50,
+      "blockSpeedPercentage": 50
     },
     {
       "objectId": 1009,
@@ -82,7 +88,8 @@
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
       "nrOfFunctions": 5,
-      "maxSpeedPercentage": 80
+      "maxSpeedPercentage": 80,
+      "blockSpeedPercentage": 50
     },
     {
       "objectId": 1001,
@@ -94,7 +101,8 @@
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
       "nrOfFunctions": 5,
-      "maxSpeedPercentage": 50
+      "maxSpeedPercentage": 50,
+      "blockSpeedPercentage": 50
     },
     {
       "objectId": 1003,
@@ -106,7 +114,8 @@
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
       "nrOfFunctions": 5,
-      "maxSpeedPercentage": 50
+      "maxSpeedPercentage": 50,
+      "blockSpeedPercentage": 50
     }
   ],
   "switches": [
@@ -306,58 +315,58 @@
   "routes": [
     {
       "objectId": 30000,
-      "name1": "S1",
-      "name2": "Fahrweg",
-      "name3": "",
+      "name1": "",
+      "name2": null,
+      "name3": null,
       "type": "ROUTE"
     },
     {
       "objectId": 30001,
-      "name1": "S2",
-      "name2": "Fahrweg",
-      "name3": "",
+      "name1": "",
+      "name2": null,
+      "name3": null,
       "type": "ROUTE"
     },
     {
       "objectId": 30002,
-      "name1": "S3",
-      "name2": "Fahrweg",
-      "name3": "",
+      "name1": "",
+      "name2": null,
+      "name3": null,
       "type": "ROUTE"
     },
     {
       "objectId": 30004,
-      "name1": "S4",
-      "name2": "Fahrweg",
-      "name3": "",
+      "name1": "",
+      "name2": null,
+      "name3": null,
       "type": "ROUTE"
     },
     {
       "objectId": 30005,
-      "name1": "S5",
-      "name2": "Fahrweg",
-      "name3": "",
+      "name1": "",
+      "name2": null,
+      "name3": null,
       "type": "ROUTE"
     },
     {
       "objectId": 30006,
-      "name1": "S6",
-      "name2": "Fahrweg",
-      "name3": "",
+      "name1": "",
+      "name2": null,
+      "name3": null,
       "type": "ROUTE"
     },
     {
       "objectId": 30007,
-      "name1": "S7",
-      "name2": "Fahrweg",
-      "name3": "",
+      "name1": "",
+      "name2": null,
+      "name3": null,
       "type": "ROUTE"
     },
     {
       "objectId": 30008,
-      "name1": "S8",
-      "name2": "Fahrweg",
-      "name3": "",
+      "name1": "",
+      "name2": null,
+      "name3": null,
       "type": "ROUTE"
     }
   ],

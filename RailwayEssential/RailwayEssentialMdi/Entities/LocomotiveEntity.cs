@@ -85,6 +85,22 @@ namespace RailwayEssentialMdi.Entities
 
         #endregion
 
+        #region BlockSpeed 
+
+        public int BlockSpeedPercentage
+        {
+            get => _objectItem != null ? _objectItem.BlockSpeedPercentage : 25;
+            set
+            {
+                if (_objectItem != null)
+                    _objectItem.BlockSpeedPercentage = value;
+
+                RaisePropertyChanged("BlockSpeedPercentage");
+            }
+        }
+
+        #endregion
+
         #region ContentId
 
         private string _contentId = null;

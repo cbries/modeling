@@ -77,6 +77,19 @@ namespace TrackInformation
             }
         }
 
+        private int _blockSpeedPercentage = 50;
+
+        public int BlockSpeedPercentage
+        {
+            get => _blockSpeedPercentage;
+            set
+            {
+                _blockSpeedPercentage = value;
+                OnPropertyChanged();
+                OnPropertyChanged("BlockSpeedPercentage");
+            }
+        }
+
         private string _protocol;
 
         // MM14, MM27, MM28, DCC14, DCC28, DCC128, SX32, MMFKT
@@ -389,7 +402,8 @@ namespace TrackInformation
                 ["direction"] = _directon,                
                 ["funcset"] = m,
                 ["nrOfFunctions"] = NrOfFunctions,
-                ["maxSpeedPercentage"] = MaxSpeedPercentage
+                ["maxSpeedPercentage"] = MaxSpeedPercentage,
+                ["blockSpeedPercentage"]  = BlockSpeedPercentage
             };
 
             return o;
@@ -424,6 +438,8 @@ namespace TrackInformation
                 NrOfFunctions = (int) obj["nrOfFunctions"];
             if (obj["maxSpeedPercentage"] != null)
                 MaxSpeedPercentage = (int) obj["maxSpeedPercentage"];
+            if (obj["blockSpeedPercentage"] != null)
+                BlockSpeedPercentage = (int) obj["blockSpeedPercentage"];
         }
     }
 }

@@ -6,7 +6,6 @@
 ##############################
 
 [A] man sollte den Automatikbetrieb "herunterfahren" lassen, so dass die Züge an ihre nächste Position fahren und die Anlage ausgemacht werden kann
-[A] die jeweiligen Lokomotiven müssen individuelle "Block-Enter-Geschwindigkeiten" erhalten
 
 [B] setzen eines Ziels für eine Lokomotive, die Steuerung sollte automatisch die Lokomotiven arrangieren
 
