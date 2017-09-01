@@ -702,6 +702,12 @@
     <Resource Include="Resources\Theme\RailwayEssential\button-4-on.png" />
     <Resource Include="Resources\Theme\RailwayEssential\accessory-4-off.png" />
     <Resource Include="Resources\Theme\RailwayEssential\accessory-4-on.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\turnoutright-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\turnoutright-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\turnoutright-t-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\turnoutright-t-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\turnoutright-t.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\turnoutright.png" />
     <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
