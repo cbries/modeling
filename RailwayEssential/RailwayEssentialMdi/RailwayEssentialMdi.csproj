@@ -676,6 +676,12 @@
     <Resource Include="Resources\Theme\RailwayEssential\connector-curve-left-occ.png" />
     <Resource Include="Resources\Theme\RailwayEssential\connector-curve-left-route.png" />
     <Resource Include="Resources\Theme\RailwayEssential\connector-curve-left.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\curve-sensor-off-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\curve-sensor-off-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\curve-sensor-off.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\curve-sensor-on-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\curve-sensor-on-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\curve-sensor-on.png" />
     <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
