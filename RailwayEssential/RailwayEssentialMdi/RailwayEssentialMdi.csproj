@@ -667,6 +667,9 @@
     <Resource Include="Resources\Theme\RailwayEssential\decoupler-on.png" />
     <Resource Include="Resources\Theme\RailwayEssential\decoupler-route.png" />
     <Resource Include="Resources\Theme\RailwayEssential\decoupler.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\connector-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\connector-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\connector.png" />
     <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
