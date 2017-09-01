@@ -673,6 +673,9 @@
     <Resource Include="Resources\Theme\RailwayEssential\connector-curve-right-occ.png" />
     <Resource Include="Resources\Theme\RailwayEssential\connector-curve-right-route.png" />
     <Resource Include="Resources\Theme\RailwayEssential\connector-curve-right.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\connector-curve-left-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\connector-curve-left-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\connector-curve-left.png" />
     <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
