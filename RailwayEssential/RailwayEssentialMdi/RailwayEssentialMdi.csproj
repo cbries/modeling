@@ -774,6 +774,9 @@
     <Resource Include="Resources\Theme\RailwayEssential\twoway-tr-occ.png" />
     <Resource Include="Resources\Theme\RailwayEssential\twoway-tr-route.png" />
     <Resource Include="Resources\Theme\RailwayEssential\twoway-tr.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\signalmain-dwarf-r-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\signalmain-dwarf-r-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\signalmain-dwarf-r.png" />
     <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
