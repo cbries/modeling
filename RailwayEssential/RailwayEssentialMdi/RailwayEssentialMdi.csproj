@@ -223,6 +223,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Resources\Theme\RailwayEssential.json" />
+    <None Include="Resources\Theme\RailwayEssential\tpl128x32.psd" />
     <None Include="Resources\Theme\RailwayEssential\tpl32x32.psd" />
     <None Include="Resources\Theme\RailwayEssential\trackicon.svg.tpl" />
     <None Include="Testprojekte\Project11\Project11.railwayprj">
