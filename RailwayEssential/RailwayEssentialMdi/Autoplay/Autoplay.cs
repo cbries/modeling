@@ -23,6 +23,7 @@
  */
 using System;
 using System.ComponentModel;
+using RailwayEssentialMdi.Autoplay.Ui;
 using RailwayEssentialMdi.ViewModels;
 
 namespace RailwayEssentialMdi.Autoplay
@@ -119,6 +120,34 @@ namespace RailwayEssentialMdi.Autoplay
                 // ignore
             }
 
+            // in case any train is running
+            // let them reach their destination
+            var tasks = GetRunningRouteThreads();
+            if (tasks.Count > 0)
+            {
+                DoWorkWithModal(progress =>
+                {
+                    for (;;)
+                    {
+                        var ts = GetRunningRouteThreads();
+                        if (ts.Count == 0)
+                            break;
+
+                        int n = ts.Count;
+                        if (n > 1)
+                        {
+                            progress.Report($"Wait for {ts.Count} trains which run for reaching their destination.");
+                        }
+                        else
+                        {
+                            progress.Report($"Wait for one train until it reaches its final destination.");
+                        }
+
+                        System.Threading.Thread.Sleep(250);
+                    }
+                });
+            }
+
             try
             {
                 StopRouteThreads();
@@ -148,6 +177,23 @@ namespace RailwayEssentialMdi.Autoplay
             {
                 // ignore
             }
+        }
+
+        public static void DoWorkWithModal(Action<IProgress<string>> work)
+        {
+            ProgressWindow dlg = new ProgressWindow {Title = "Wait for Trains..."};
+
+            dlg.Loaded += (_, args) =>
+            {
+                BackgroundWorker worker = new BackgroundWorker();
+                Progress<string> progress = new Progress<string>(data => dlg.Msg.Text = data);
+                worker.DoWork += (s, workerArgs) => work(progress);
+                worker.RunWorkerCompleted += (s, workerArgs) => dlg.Close();
+                worker.RunWorkerAsync();
+            };
+
+            dlg.CmdCancel.Click += (s, ev) => dlg.Close();
+            dlg.ShowDialog();
         }
     }
 }

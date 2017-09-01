@@ -28,7 +28,7 @@ namespace RailwayEssentialCore
 {
     public static class Utils
     {
-        public const string ThemeName = @"\Themes\SpDrS60used";
+        public const string ThemeName = @"\Themes\RailwayEssential";
         public const string TrackplansEditor = @"\Trackplans\Webeditor";
         
         public static string ExpandRailwayEssential(this string path)

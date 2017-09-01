@@ -61,6 +61,19 @@ namespace RailwayEssentialMdi.Autoplay
             }
         }
 
+        private List<Task> GetRunningRouteThreads()
+        {
+            List<Task> tasks = new List<Task>();
+
+            foreach (var t in _blockRouteThreads)
+            {
+                if (t?.Task != null && t.IsRunning)
+                    tasks.Add(t.Task);
+            }
+
+            return tasks;
+        }
+
         private void StopRouteThreads()
         {
             List<Task> tasks = new List<Task>();

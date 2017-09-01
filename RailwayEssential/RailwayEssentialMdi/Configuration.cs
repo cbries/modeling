@@ -85,7 +85,7 @@ namespace RailwayEssentialMdi
             Port = 15471;
             DesignerColumns = 50;
             DesignerRows = 50;
-            ThemeName = "SpDrS60used";
+            ThemeName = "RailwayEssential";
         }
     }
 }
