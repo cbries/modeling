@@ -756,6 +756,18 @@
     <Resource Include="Resources\Theme\RailwayEssential\signalshunting-2-r-occ.png" />
     <Resource Include="Resources\Theme\RailwayEssential\signalshunting-2-r-route.png" />
     <Resource Include="Resources\Theme\RailwayEssential\signalshunting-2-r.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\semaphoremain-2-r-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\semaphoremain-2-r-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\semaphoremain-2-r.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\semaphoremain-r-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\semaphoremain-r-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\semaphoremain-r.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\signalmain-2-r-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\signalmain-2-r-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\signalmain-2-r.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\signalmain-r-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\signalmain-r-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\signalmain-r.png" />
     <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
