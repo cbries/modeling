@@ -708,6 +708,12 @@
     <Resource Include="Resources\Theme\RailwayEssential\turnoutright-t-route.png" />
     <Resource Include="Resources\Theme\RailwayEssential\turnoutright-t.png" />
     <Resource Include="Resources\Theme\RailwayEssential\turnoutright.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\turnoutleft-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\turnoutleft-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\turnoutleft-t-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\turnoutleft-t-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\turnoutleft-t.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\turnoutleft.png" />
     <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
