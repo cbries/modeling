@@ -649,6 +649,18 @@
     <Resource Include="Resources\Theme\RailwayEssential\straight-route.png" />
     <Resource Include="Resources\Theme\RailwayEssential\straight.png" />
     <Resource Include="Resources\trace.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\buffer-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\buffer-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\buffer.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\dcurve-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\dcurve-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\dcurve.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\dir-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\dir-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\dir.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\dirall-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\dirall-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\dirall.png" />
     <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
