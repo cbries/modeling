@@ -723,6 +723,33 @@
     <Resource Include="Resources\Theme\RailwayEssential\threeway-tr-route.png" />
     <Resource Include="Resources\Theme\RailwayEssential\threeway-tr.png" />
     <Resource Include="Resources\Theme\RailwayEssential\threeway.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-10-off-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-10-off-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-10-off.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-10-on-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-10-on-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-10-on.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-11-off-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-11-off-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-11-off.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-11-on-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-11-on-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-11-on.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-12-off-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-12-off-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-12-off.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-12-on-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-12-on-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\accessory-12-on.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\crossing-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\crossing-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\crossing.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\semaphoredistant-r-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\semaphoredistant-r-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\semaphoredistant-r.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\signaldistant-2-r-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\signaldistant-2-r-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\signaldistant-2-r.png" />
     <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
