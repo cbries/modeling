@@ -691,6 +691,9 @@
     <Resource Include="Resources\Theme\RailwayEssential\button-1-active.png" />
     <Resource Include="Resources\Theme\RailwayEssential\button-1-off.png" />
     <Resource Include="Resources\Theme\RailwayEssential\button-1-on.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\button-0-active.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\button-0-off.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\button-0-on.png" />
     <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
