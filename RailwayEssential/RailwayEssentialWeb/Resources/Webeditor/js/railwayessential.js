@@ -397,7 +397,7 @@ function simulateClick(col, row, themeid, symbol, orientation, response) {
     if (cdiv.find("svg").length === 1)
         return;
 
-    var v = themeDirectory + '/' + symbol + '.svg';
+    var v = themeDirectory + '/' + symbol + '.png';
 
     if (response) {
         try {
@@ -688,7 +688,7 @@ $(document).ready(function (e) {
                 var sel = $('#webmenu' + cname);
                 var o = sel.val();
                 var o2 = sel.find(':selected').data("railway-themeid");
-                var v = themeDirectory + '/' + o + '.svg';
+                var v = themeDirectory + '/' + o + '.png';
 
                 //var img = $(svgCache[v]).clone();
                 var img = window.atob(symbolFilesBase64[o]);

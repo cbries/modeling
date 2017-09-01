@@ -75,6 +75,7 @@ namespace SvgThemeIconGenerator
                 var targetSvgName = Path.Combine(svgTplDir, name + ".svg");
 
                 string targetSvgCnt = svgCnt;
+                targetSvgCnt = targetSvgCnt.Replace("{{WIDTH}}", $"{img.Width}");
                 targetSvgCnt = targetSvgCnt.Replace("{{BASE64IMAGEDATA}}", imgBase64);
 
                 Console.WriteLine($"Generate {Path.GetFileName(targetSvgName)}");
