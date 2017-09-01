@@ -714,6 +714,15 @@
     <Resource Include="Resources\Theme\RailwayEssential\turnoutleft-t-route.png" />
     <Resource Include="Resources\Theme\RailwayEssential\turnoutleft-t.png" />
     <Resource Include="Resources\Theme\RailwayEssential\turnoutleft.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\threeway-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\threeway-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\threeway-tl-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\threeway-tl-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\threeway-tl.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\threeway-tr-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\threeway-tr-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\threeway-tr.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\threeway.png" />
     <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
