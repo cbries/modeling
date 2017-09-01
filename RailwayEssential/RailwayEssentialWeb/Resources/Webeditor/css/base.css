@@ -72,7 +72,7 @@ div {
 }
 
 .imgflip {
-    transform: scaleX(-1);
+/*    transform: scaleX(-1);*/
     filter: FlipH;
     -ms-filter: "FlipH";
 }
@@ -114,7 +114,7 @@ div {
     -ms-transform-origin: left bottom;
     -o-transform-origin: left bottom;
     transform-origin: left bottom;
-    height: 31px;
+    height: 32px;
 }
 
 .rot180 {
@@ -129,7 +129,7 @@ div {
     -ms-transform-origin: left bottom;
     -o-transform-origin: left bottom;
     transform-origin: left bottom;
-    height: 31px;
+    height: 32px;
 }
 
 .routeHighlightStart {

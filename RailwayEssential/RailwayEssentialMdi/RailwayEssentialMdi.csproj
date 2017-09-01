@@ -750,6 +750,12 @@
     <Resource Include="Resources\Theme\RailwayEssential\signaldistant-2-r-occ.png" />
     <Resource Include="Resources\Theme\RailwayEssential\signaldistant-2-r-route.png" />
     <Resource Include="Resources\Theme\RailwayEssential\signaldistant-2-r.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\semaphoreshunting-r-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\semaphoreshunting-r-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\semaphoreshunting-r.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\signalshunting-2-r-occ.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\signalshunting-2-r-route.png" />
+    <Resource Include="Resources\Theme\RailwayEssential\signalshunting-2-r.png" />
     <Content Include="ThirdParty\CefLib\CefSharp.BrowserSubprocess.Core.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

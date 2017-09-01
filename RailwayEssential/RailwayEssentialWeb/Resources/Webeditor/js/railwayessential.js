@@ -410,52 +410,59 @@ function simulateClick(col, row, themeid, symbol, orientation, response) {
     }
 
     //var img = $(svgCache[v]).clone();
-    var img = window.atob(symbolFilesBase64[symbol]);
-    var newChild = cdiv.append(img);
-    newChild.addClass("overflow");
-    newChild.addClass(orientation);
-    newChild.attr("border", 0);
-    newChild.data("railway-themeid", themeid);
-    newChild.data("src", v);
-    var svgChild = newChild.find("svg");
-    appendBlockText(col, row, svgChild, themeid);
+    var img = null;
+    try {
+        img = window.atob(symbolFilesBase64[symbol]);
 
-    newChild.mousedown(function (evt) {
+        var newChild = cdiv.append(img);
+        newChild.addClass("overflow");
+        newChild.addClass(orientation);
+        newChild.attr("border", 0);
+        newChild.data("railway-themeid", themeid);
+        newChild.data("src", v);
+        var svgChild = newChild.find("svg");
+        appendBlockText(col, row, svgChild, themeid);
 
-        if (isEdit) {
-            switch(evt.which) {
+        newChild.mousedown(function(evt) {
+
+            if (isEdit) {
+                switch (evt.which) {
                 case 2: // middle button
                     break;
                 case 3: // right button
                     rotateElement(col, row, $(this));
                     return;
+                }
             }
-        }
 
-        switch (editMode) {
-        case ModeRotate:
-            if (isEdit) {
-                rotateElement(col, row, $(this));
+            switch (editMode) {
+            case ModeRotate:
+                if (isEdit) {
+                    rotateElement(col, row, $(this));
+                }
+                break;
+
+            case ModeRemove:
+                if (isEdit) {
+                    $(this).remove();
+                    resetSelection();
+                    rebuildTable();
+                }
+                break;
+
+            case ModeObject:
+                if (isEdit) {
+                    selectElement(col, row, $(this));
+                }
+                break;
             }
-            break;
+        });
 
-        case ModeRemove:
-            if (isEdit) {
-                $(this).remove();
-                resetSelection();
-                rebuildTable();
-            }
-            break;
+        newChild.draggable();
+    } catch (e) {
+        console.log(e);
+    }
 
-        case ModeObject:
-            if (isEdit) {
-                selectElement(col, row, $(this));
-            }
-            break;
-        }
-    });
-
-    newChild.draggable();
 }
 
 function handleUserClick(col, row) {
