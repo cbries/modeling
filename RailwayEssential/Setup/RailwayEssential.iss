@@ -2,10 +2,10 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "RailwayEssential"
-#define MyAppVersion "0.9"
+#define MyAppVersion "1"
 #define MyAppPublisher "Dr. Christian Benjamin Ries"
 #define MyAppURL "http://www.railwayessential.net"
-#define MyAppExeName "RailwayEssentialMdi.exe"
+#define MyAppExeName "RailwayEssential.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -34,7 +34,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\RailwayEssentialMdi.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\RailwayEssential.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\cef.pak"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\cef_100_percent.pak"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\cef_200_percent.pak"; DestDir: "{app}"; Flags: ignoreversion
