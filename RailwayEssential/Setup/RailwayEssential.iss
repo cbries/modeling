@@ -6,6 +6,7 @@
 #define MyAppPublisher "Dr. Christian Benjamin Ries"
 #define MyAppURL "http://www.railwayessential.net"
 #define MyAppExeName "RailwayEssential.exe"
+#define MyAppBuildDir "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -23,7 +24,7 @@ DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
 OutputDir=C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\Setup
 OutputBaseFilename=setup
-SetupIconFile={#OutputDir}\..\RailwayEssentialMdi\Resources\Main.ico
+SetupIconFile={#MyAppBuildDir}\RailwayEssentialMdi\Resources\Main.ico
 Compression=lzma
 SolidCompression=yes
 ; Tell Windows Explorer to reload the environment
@@ -36,7 +37,10 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "{#OutputDir}\..\RailwayEssentialMdi\bin\Debug\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#MyAppBuildDir}\RailwayEssentialMdi\bin\Debug\*" ; \
+  Excludes: "*.pdb,*.log, CefLib" ; \
+  DestDir: "{app}" ; \
+  Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{commonprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
