@@ -136,7 +136,7 @@ namespace RailwayEssentialWeb
         private void BrowserOnIsBrowserInitializedChanged(object sender, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
             if (Url != null)
-                Browser.Address = Url;
+                Browser.Address = Url.Replace(" ", "%20");
         }
 
         private void BrowserOnLoadError(object sender, LoadErrorEventArgs loadErrorEventArgs)
@@ -183,12 +183,12 @@ namespace RailwayEssentialWeb
 
         public void SetUrl(string url)
         {
-            Url = url;
+            Url = url.Replace(" ", "%20");
         }
 
         public void Load()
         {
-            Browser.Address = Url;
+            Browser.Address = Url.Replace(" ", "%20");
             Browser.Reload();
         }
 

@@ -190,12 +190,13 @@ namespace RailwayEssentialWeb
                     jsCode += $"'{e}',";
 
                     Uri u = new Uri(e);
-                    if (File.Exists(u.AbsolutePath))
+                    var upath = u.AbsolutePath.Replace("%20", " ");
+                    if (File.Exists(upath))
                     {
-                        string cnt = File.ReadAllText(u.AbsolutePath);
+                        string cnt = File.ReadAllText(upath);
 
                         var base64Cnt = Encoding.UTF8.ToBase64(cnt);
-                        string accessName = Path.GetFileNameWithoutExtension(u.AbsolutePath);
+                        string accessName = Path.GetFileNameWithoutExtension(upath);
                         if(!base64Images.ContainsKey(accessName))
                             base64Images.Add(accessName, base64Cnt);
                     }

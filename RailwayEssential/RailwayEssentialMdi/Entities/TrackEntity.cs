@@ -291,7 +291,7 @@ namespace RailwayEssentialMdi.Entities
         public void PromoteViewer(ITrackViewer trackViewer)
         {
             _trackViewer = trackViewer;
-            _trackViewer.SetUrl(_tmpTrackName);
+            _trackViewer.SetUrl(_tmpTrackName.Replace(" ", "%20"));
         }
 
         private void JsCallbackOnEditModeChanged(object o, bool editState)

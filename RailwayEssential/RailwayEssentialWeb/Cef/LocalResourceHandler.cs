@@ -45,6 +45,9 @@ namespace RailwayEssentialWeb.Cef
             var uri = new Uri(request.Url);
             var file = uri.AbsolutePath;
 
+            if (!string.IsNullOrEmpty(file))
+                file = file.Replace("%20", " ");
+
             if (File.Exists(file))
             {
                 Byte[] bytes = File.ReadAllBytes(file);
