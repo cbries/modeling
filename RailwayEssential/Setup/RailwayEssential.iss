@@ -2,8 +2,10 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "RailwayEssential"
-#define MyAppVersion "1"
+#define MyAppVersion "1.0"
+#define MyAppInfoVersion "1.0.0.0"
 #define MyAppPublisher "Dr. Christian Benjamin Ries"
+#define MyAppCopyright "Copyright (C) 2017 Dr. C.B.Ries"
 #define MyAppURL "http://www.railwayessential.net"
 #define MyAppExeName "RailwayEssential.exe"
 #define MyAppBuildDir "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential"
@@ -15,11 +17,14 @@
 AppId={{FC9A371F-9745-4EFE-9AEF-163F5A144A01}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
+VersionInfoVersion={#MyAppInfoVersion}
+VersionInfoProductVersion={#MyAppInfoVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
+AppCopyright={#MyAppCopyright}
 DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
 OutputDir=C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\Setup
