@@ -544,6 +544,20 @@ namespace RailwayEssentialMdi.Autoplay
                                     Route.IsBusy = false;
                                     Route.StartBusiness = DateTime.MaxValue;
                                     Route.StopBusiness = DateTime.Now;
+
+                                    if (_cts != null)
+                                    {
+                                        try
+                                        {
+                                            _cts.Dispose();
+                                            _cts = null;
+                                        }
+                                        catch
+                                        {
+                                            // ignore
+                                        }                
+                                    }
+
                                     return;
                                 }
                             }

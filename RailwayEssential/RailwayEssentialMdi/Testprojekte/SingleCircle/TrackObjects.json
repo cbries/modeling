@@ -31,7 +31,7 @@
       "name": "Ae3/6II SBB ",
       "protocol": "DCC28",
       "addr": 1000,
-      "speed": 0,
+      "speed": 50,
       "speedstep": 0,
       "direction": 0,
       "funcset": "00000000000000000000000000000000",
@@ -47,7 +47,7 @@
       "objectId": 100,
       "index": 0,
       "ports": 16,
-      "stateOriginal": "0x0000"
+      "stateOriginal": "0"
     }
   ]
 }

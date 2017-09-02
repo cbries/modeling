@@ -3,16 +3,6 @@
     "type": "S88",
     "setup": {
       "objectId": 100,
-      "pin": 1,
-      "visuX": 9,
-      "visuY": 2,
-      "invertSwitch": false
-    }
-  },
-  {
-    "type": "S88",
-    "setup": {
-      "objectId": 100,
       "pin": 2,
       "visuX": 3,
       "visuY": 2,
@@ -36,6 +26,16 @@
       "pin": 4,
       "visuX": 11,
       "visuY": 4,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 100,
+      "pin": 1,
+      "visuX": 9,
+      "visuY": 2,
       "invertSwitch": false
     }
   }

@@ -7,13 +7,13 @@
     "orientation": "rot0",
     "description": "",
     "options": {
-      "blockGroupIdentifier": "-1",
+      "blockGroupIdentifier": "1",
       "blockCurrentLocomotive": "1000",
-      "events": "{\r\n  \"sensor0\": \"9:2 -> 200\",\r\n  \"sensor1\": \"3:2 -> 200\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}"
+      "events": "{\r\n  \"sensor0\": \"s4\",\r\n  \"sensor1\": \"s1\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}"
     }
   },
   {
-    "name": "",
+    "name": "s1",
     "x": 3,
     "y": 2,
     "themeId": 200,
@@ -42,7 +42,7 @@
     "options": {}
   },
   {
-    "name": "",
+    "name": "s4",
     "x": 9,
     "y": 2,
     "themeId": 200,
@@ -89,7 +89,7 @@
     "options": {}
   },
   {
-    "name": "",
+    "name": "s2",
     "x": 5,
     "y": 4,
     "themeId": 200,
@@ -116,13 +116,13 @@
     "orientation": "rot0",
     "description": "",
     "options": {
-      "blockGroupIdentifier": "-1",
+      "blockGroupIdentifier": "1",
       "blockCurrentLocomotive": "",
-      "events": "{\r\n  \"sensor0\": \"5:4 -> 200\",\r\n  \"sensor1\": \"11:4 -> 200\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}"
+      "events": "{\r\n  \"sensor0\": \"s2\",\r\n  \"sensor1\": \"s3\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}"
     }
   },
   {
-    "name": "",
+    "name": "s3",
     "x": 11,
     "y": 4,
     "themeId": 200,
