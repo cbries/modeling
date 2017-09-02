@@ -129,7 +129,7 @@ namespace TrackInformation
 
         protected virtual void UpdateIconPath()
         {
-            string BasePackUrlsPath = @"pack://application:,,,/RailwayEssentialMdi;component/Resources/";
+            string BasePackUrlsPath = @"pack://application:,,,/RailwayEssential;component/Resources/";
 
             var item = this as IItem;
 

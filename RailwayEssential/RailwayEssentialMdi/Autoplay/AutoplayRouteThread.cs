@@ -537,6 +537,7 @@ namespace RailwayEssentialMdi.Autoplay
                                     Model.UiSyncCtx?.Send(x =>
                                     {
                                         Model.Project.Save();
+                                        Model.SetDirty(false);
                                         Autoplayer.SetRoute(Route, false);
                                         Model.TrackEntity.UpdateAllVisualBlocks();
                                     }, null);

@@ -607,6 +607,7 @@ namespace RailwayEssentialMdi.Entities
             SaveEvents();
 
             prj?.Save();
+            Model.SetDirty(false);
             
         }
 

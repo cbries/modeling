@@ -34,11 +34,16 @@ namespace RailwayEssentialMdi.XamlMagic
                 if (!isEnable)
                 {
                     // Get the source bitmap
-                    var bitmapImage = new BitmapImage(new Uri(autoGreyScaleImg.Source.ToString()));
-                    // Convert it to Gray
-                    autoGreyScaleImg.Source = new FormatConvertedBitmap(bitmapImage, PixelFormats.Gray32Float, null, 0);
-                    // Create Opacity Mask for greyscale image as FormatConvertedBitmap does not keep transparency info
-                    autoGreyScaleImg.OpacityMask = new ImageBrush(bitmapImage);
+                    var p = autoGreyScaleImg.Source;
+                    if (p != null)
+                    {
+                        var bitmapImage = new BitmapImage(new Uri(p.ToString()));
+                        // Convert it to Gray
+                        autoGreyScaleImg.Source =
+                            new FormatConvertedBitmap(bitmapImage, PixelFormats.Gray32Float, null, 0);
+                        // Create Opacity Mask for greyscale image as FormatConvertedBitmap does not keep transparency info
+                        autoGreyScaleImg.OpacityMask = new ImageBrush(bitmapImage);
+                    }
                 }
                 else
                 {

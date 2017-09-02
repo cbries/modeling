@@ -70,7 +70,10 @@ namespace RailwayEssentialMdi
             }
 
             if (e.Key == Key.S && _ctrlIsHold)
+            {
                 _dataContext?.Project?.Save();
+                _dataContext?.SetDirty(false);
+            }
         }
 
         private void MainWindow_OnInitialized(object sender, EventArgs e)

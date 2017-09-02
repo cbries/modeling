@@ -150,18 +150,18 @@ namespace RailwayEssentialMdi.ViewModels
             get
             {
                 if(IsDryRun)
-                    return new BitmapImage(new Uri("/RailwayEssentialMdi;component/Resources/dryrun.png", UriKind.Relative));
+                    return new BitmapImage(new Uri("/RailwayEssential;component/Resources/dryrun.png", UriKind.Relative));
                 if (_dispatcher == null || _cfg == null)
                 {
                     _itemStatus.Items.Clear();
-                    return new BitmapImage(new Uri("/RailwayEssentialMdi;component/Resources/offline.png", UriKind.Relative));
+                    return new BitmapImage(new Uri("/RailwayEssential;component/Resources/offline.png", UriKind.Relative));
                 }
                 if (!_dispatcher.GetRunMode())
                 {
                     _itemStatus.Items.Clear();
-                    return new BitmapImage(new Uri("/RailwayEssentialMdi;component/Resources/offline.png", UriKind.Relative));
+                    return new BitmapImage(new Uri("/RailwayEssential;component/Resources/offline.png", UriKind.Relative));
                 }
-                return new BitmapImage(new Uri("/RailwayEssentialMdi;component/Resources/online.png", UriKind.Relative));
+                return new BitmapImage(new Uri("/RailwayEssential;component/Resources/online.png", UriKind.Relative));
             }
         }
 
@@ -184,8 +184,8 @@ namespace RailwayEssentialMdi.ViewModels
             get
             {
                 if (_autoplayer == null)
-                    return new BitmapImage(new Uri("/RailwayEssentialMdi;component/Resources/offline.png", UriKind.Relative));
-                return new BitmapImage(new Uri("/RailwayEssentialMdi;component/Resources/autoplayon.gif", UriKind.Relative));
+                    return new BitmapImage(new Uri("/RailwayEssential;component/Resources/offline.png", UriKind.Relative));
+                return new BitmapImage(new Uri("/RailwayEssential;component/Resources/autoplayon.gif", UriKind.Relative));
             }
         }
 

@@ -23,17 +23,17 @@
 
         <DockPanel Grid.Row="0" HorizontalAlignment="Left">
             <Button Height="20" Width="20" Margin="5,0,10,0" Command="{Binding EditCommand}" HorizontalAlignment="Left" Padding="0" Visibility="{Binding Entity.CanEdit, Mode=OneWay, Converter={StaticResource BoolToVis}}">
-                <xamlMagic:AutoGreyableImage Source="/RailwayEssentialMdi;component/Resources/edit.png"/>
+                <xamlMagic:AutoGreyableImage Source="/RailwayEssential;component/Resources/edit.png"/>
             </Button>
             
             <Button Height="20" Width="20" Margin="0,0,3,0" Command="{Binding ZoomResetCommand}" Padding="0" ToolTip="Reset Zoom">
-                <Image Source="/RailwayEssentialMdi;component/Resources/zoomnot.png"/>
+                <Image Source="/RailwayEssential;component/Resources/zoomnot.png"/>
             </Button>
             <Button Height="20" Width="20" Margin="0,0,3,0" Command="{Binding ZoomMinusCommand}" Padding="0" ToolTip="Zoom-Out">
-                <Image Source="/RailwayEssentialMdi;component/Resources/zoomminus.png"/>
+                <Image Source="/RailwayEssential;component/Resources/zoomminus.png"/>
             </Button>
             <Button Height="20" Width="20" Margin="0,0,3,0" Command="{Binding ZoomPlusCommand}" Padding="0" ToolTip="Zoom-In">
-                <Image Source="/RailwayEssentialMdi;component/Resources/zoomplus.png"/>
+                <Image Source="/RailwayEssential;component/Resources/zoomplus.png"/>
             </Button>
         </DockPanel>
         

@@ -36,10 +36,11 @@ namespace RailwayEssentialCore
             if (string.IsNullOrEmpty(path))
                 return path;
 
-            var p = Environment.ExpandEnvironmentVariables("%RAILWAYESSENTIAL%");
-            if (string.IsNullOrEmpty(p))
-                return path;
+//            var p = Environment.ExpandEnvironmentVariables("%RAILWAYESSENTIAL%");
+//            if (string.IsNullOrEmpty(p))
+//                return path;
 
+            var p = Directory.GetCurrentDirectory();
             var pp = path.TrimStart('/', '\\');
 
             return Path.Combine(p, pp);

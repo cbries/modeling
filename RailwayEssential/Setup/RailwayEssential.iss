@@ -23,9 +23,11 @@ DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
 OutputDir=C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\Setup
 OutputBaseFilename=setup
-SetupIconFile=C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\Resources\Main.ico
+SetupIconFile={#OutputDir}\..\RailwayEssentialMdi\Resources\Main.ico
 Compression=lzma
 SolidCompression=yes
+; Tell Windows Explorer to reload the environment
+ChangesEnvironment=yes
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -34,66 +36,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\RailwayEssential.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\cef.pak"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\cef_100_percent.pak"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\cef_200_percent.pak"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\cef_extensions.pak"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\CefSharp.BrowserSubprocess.Core.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\CefSharp.BrowserSubprocess.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\CefSharp.Core.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\CefSharp.Core.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\CefSharp.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\CefSharp.Wpf.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\CefSharp.Wpf.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\CefSharp.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\chrome_elf.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Communicator.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\d3dcompiler_47.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\devtools_resources.pak"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Dispatcher.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Ecos2Core.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\icudtl.dat"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\libcef.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\libEGL.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\libGLESv2.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\LiteGuard.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\LiteGuard.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\natives_blob.bin"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Newtonsoft.Json.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\PrimS.Telnet.NetStandard.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\RailwayEssentialCore.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\RailwayEssentialWeb.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\snapshot_blob.bin"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Theme.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\TrackInformation.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\TrackInformationCore.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\TrackPlanParser.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\TrackWeaver.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\widevinecdmadapter.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.AvalonDock.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.DataGrid.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.Themes.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.Themes.Metro.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.Themes.Metro.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.Themes.Office2007.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.Themes.Office2007.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.Themes.Windows10.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.Themes.Windows10.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.Themes.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.Toolkit.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.Toolkit.Themes.Metro.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.Toolkit.Themes.Metro.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.Toolkit.Themes.Office2007.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.Toolkit.Themes.Office2007.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.Toolkit.Themes.Windows10.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\Xceed.Wpf.Toolkit.Themes.Windows10.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\ChristianRi\Desktop\Github\modeling\RailwayEssential\RailwayEssentialMdi\bin\Debug\ThirdParty\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-; NOTE: Don't use "Flags: ignoreversion" on any shared system files
+Source: "{#OutputDir}\..\RailwayEssentialMdi\bin\Debug\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{commonprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -101,4 +44,3 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: 
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
-
