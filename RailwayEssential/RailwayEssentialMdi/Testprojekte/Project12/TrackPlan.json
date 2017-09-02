@@ -1,52 +1,16 @@
 [
   {
-    "name": "",
-    "x": 5,
-    "y": 2,
-    "themeId": 150,
-    "orientation": "rot0",
-    "description": "",
-    "options": {}
-  },
-  {
-    "name": "",
-    "x": 5,
-    "y": 4,
-    "themeId": 150,
-    "orientation": "rot0",
-    "description": "",
-    "options": {}
-  },
-  {
-    "name": "",
-    "x": 12,
-    "y": 2,
-    "themeId": 150,
-    "orientation": "rot0",
-    "description": "",
-    "options": {}
-  },
-  {
-    "name": "",
-    "x": 9,
-    "y": 2,
-    "themeId": 10,
-    "orientation": "rot0",
-    "description": "",
-    "options": {}
-  },
-  {
-    "name": "",
-    "x": 11,
-    "y": 2,
-    "themeId": 10,
-    "orientation": "rot0",
-    "description": "",
-    "options": {}
-  },
-  {
-    "name": "",
+    "name": "Track#3",
     "x": 10,
+    "y": 2,
+    "themeId": 10,
+    "orientation": "rot0",
+    "description": "",
+    "options": {}
+  },
+  {
+    "name": "Track#7",
+    "x": 9,
     "y": 3,
     "themeId": 10,
     "orientation": "rot90",
@@ -54,26 +18,8 @@
     "options": {}
   },
   {
-    "name": "",
+    "name": "Switch#1",
     "x": 9,
-    "y": 4,
-    "themeId": 10,
-    "orientation": "rot0",
-    "description": "",
-    "options": {}
-  },
-  {
-    "name": "s2",
-    "x": 10,
-    "y": 4,
-    "themeId": 51,
-    "orientation": "rot90",
-    "description": "",
-    "options": {}
-  },
-  {
-    "name": "s0",
-    "x": 10,
     "y": 2,
     "themeId": 50,
     "orientation": "rot0",
@@ -81,26 +27,17 @@
     "options": {}
   },
   {
-    "name": "s1",
-    "x": 16,
-    "y": 2,
-    "themeId": 51,
-    "orientation": "rot0",
-    "description": "",
-    "options": {}
-  },
-  {
-    "name": "",
-    "x": 16,
-    "y": 3,
-    "themeId": 10,
+    "name": "Block#6",
+    "x": 9,
+    "y": 4,
+    "themeId": 150,
     "orientation": "rot90",
     "description": "",
     "options": {}
   },
   {
-    "name": "",
-    "x": 17,
+    "name": "Track#1",
+    "x": 8,
     "y": 2,
     "themeId": 10,
     "orientation": "rot0",
@@ -108,8 +45,8 @@
     "options": {}
   },
   {
-    "name": "",
-    "x": 18,
+    "name": "Block#1",
+    "x": 11,
     "y": 2,
     "themeId": 150,
     "orientation": "rot0",
@@ -117,92 +54,11 @@
     "options": {}
   },
   {
-    "name": "Track#1",
-    "x": 16,
-    "y": 4,
-    "themeId": 10,
-    "orientation": "rot90",
-    "description": "",
-    "options": {}
-  },
-  {
-    "name": "Track#2",
-    "x": 16,
-    "y": 5,
-    "themeId": 10,
-    "orientation": "rot90",
-    "description": "",
-    "options": {}
-  },
-  {
-    "name": "Track#3",
-    "x": 16,
-    "y": 6,
-    "themeId": 11,
-    "orientation": "rot90",
-    "description": "",
-    "options": {}
-  },
-  {
-    "name": "Track#4",
-    "x": 15,
-    "y": 6,
-    "themeId": 10,
+    "name": "Block#2",
+    "x": 4,
+    "y": 2,
+    "themeId": 150,
     "orientation": "rot0",
-    "description": "",
-    "options": {}
-  },
-  {
-    "name": "Track#5",
-    "x": 14,
-    "y": 6,
-    "themeId": 10,
-    "orientation": "rot0",
-    "description": "",
-    "options": {}
-  },
-  {
-    "name": "Track#9",
-    "x": 10,
-    "y": 5,
-    "themeId": 10,
-    "orientation": "rot90",
-    "description": "",
-    "options": {}
-  },
-  {
-    "name": "Track#10",
-    "x": 11,
-    "y": 6,
-    "themeId": 10,
-    "orientation": "rot0",
-    "description": "",
-    "options": {}
-  },
-  {
-    "name": "Track#11",
-    "x": 12,
-    "y": 6,
-    "themeId": 10,
-    "orientation": "rot0",
-    "description": "",
-    "options": {}
-  },
-  {
-    "name": "Track#12",
-    "x": 13,
-    "y": 6,
-    "themeId": 10,
-    "orientation": "rot0",
-    "description": "",
-    "options": {}
-  },
-  {
-    "name": "Track#13",
-    "x": 10,
-    "y": 6,
-    "themeId": 11,
-    "orientation": "rot180",
     "description": "",
     "options": {}
   }

@@ -1,12 +1,12 @@
 ﻿{
-  "name": "Project17",
+  "name": "Project08",
   "version": 1.0,
   "targetHost": "192.168.178.61",
   "targetPort": 15471,
   "designerColumns": 40,
   "designerRows": 40,
   "track": {
-    "name": "Project17",
+    "name": "Project08",
     "path": "TrackPlan.json",
     "weave": "TrackWeaving.json"
   },
