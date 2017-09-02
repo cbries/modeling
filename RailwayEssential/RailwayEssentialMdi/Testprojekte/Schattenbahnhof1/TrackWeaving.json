@@ -278,5 +278,335 @@
       "visuY": 5,
       "invertSwitch": true
     }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 101,
+      "pin": 11,
+      "visuX": 6,
+      "visuY": 3,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 101,
+      "pin": 13,
+      "visuX": 6,
+      "visuY": 5,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 101,
+      "pin": 13,
+      "visuX": 8,
+      "visuY": 5,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 101,
+      "pin": 11,
+      "visuX": 8,
+      "visuY": 3,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 101,
+      "pin": 12,
+      "visuX": 6,
+      "visuY": 4,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 101,
+      "pin": 12,
+      "visuX": 8,
+      "visuY": 4,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 101,
+      "pin": 10,
+      "visuX": 6,
+      "visuY": 2,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 101,
+      "pin": 10,
+      "visuX": 8,
+      "visuY": 2,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 101,
+      "pin": 9,
+      "visuX": 6,
+      "visuY": 1,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 101,
+      "pin": 9,
+      "visuX": 8,
+      "visuY": 1,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 100,
+      "pin": 9,
+      "visuX": 16,
+      "visuY": 1,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 100,
+      "pin": 9,
+      "visuX": 18,
+      "visuY": 1,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 100,
+      "pin": 10,
+      "visuX": 16,
+      "visuY": 2,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 100,
+      "pin": 10,
+      "visuX": 18,
+      "visuY": 2,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 100,
+      "pin": 11,
+      "visuX": 16,
+      "visuY": 3,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 100,
+      "pin": 11,
+      "visuX": 18,
+      "visuY": 3,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 100,
+      "pin": 12,
+      "visuX": 16,
+      "visuY": 4,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 100,
+      "pin": 12,
+      "visuX": 18,
+      "visuY": 4,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 100,
+      "pin": 13,
+      "visuX": 16,
+      "visuY": 5,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 100,
+      "pin": 13,
+      "visuX": 18,
+      "visuY": 5,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 100,
+      "pin": 14,
+      "visuX": 16,
+      "visuY": 6,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 100,
+      "pin": 14,
+      "visuX": 18,
+      "visuY": 6,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 100,
+      "pin": 15,
+      "visuX": 16,
+      "visuY": 7,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 100,
+      "pin": 15,
+      "visuX": 18,
+      "visuY": 7,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 100,
+      "pin": 16,
+      "visuX": 16,
+      "visuY": 8,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 100,
+      "pin": 16,
+      "visuX": 18,
+      "visuY": 8,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 101,
+      "pin": 16,
+      "visuX": 6,
+      "visuY": 8,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 101,
+      "pin": 16,
+      "visuX": 8,
+      "visuY": 8,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 101,
+      "pin": 15,
+      "visuX": 8,
+      "visuY": 7,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 101,
+      "pin": 15,
+      "visuX": 6,
+      "visuY": 7,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 101,
+      "pin": 14,
+      "visuX": 6,
+      "visuY": 6,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 101,
+      "pin": 14,
+      "visuX": 8,
+      "visuY": 6,
+      "invertSwitch": false
+    }
+  },
+  {
+    "type": "S88",
+    "setup": {
+      "objectId": 102,
+      "pin": 1,
+      "visuX": 3,
+      "visuY": 3,
+      "invertSwitch": false
+    }
   }
 ]

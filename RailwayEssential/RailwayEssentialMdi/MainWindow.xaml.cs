@@ -26,6 +26,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using RailwayEssentialMdi.Interfaces;
 using RailwayEssentialMdi.ViewModels;
@@ -121,12 +122,69 @@ namespace RailwayEssentialMdi
             PropagateTreeViewSelection();
         }
 
+        private void TreeView_OnContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            if (_dataContext == null)
+                return;
+            var s = Explorer;
+            if (s == null)
+                return;
+
+            var item = s.SelectedItem;
+
+            if (item is Items.BlockRouteItem routeGrpItem)
+            {
+
+                ContextMenu mnu = new ContextMenu();
+
+                MenuItem m0 = new MenuItem {Header = "Force Switches"};
+                m0.Click += (o, args) => PropagateTestRoute(routeGrpItem);
+
+                MenuItem m1 = new MenuItem {Header = "Show Route"};
+                m1.Click += (o, args) => _dataContext.ShowBlockRoutePreview(routeGrpItem);
+
+                MenuItem m2 = new MenuItem {Header = "Reset Route"};
+                m2.Click += (o, args) => _dataContext.ResetBlockRoutePreview();
+
+                mnu.Items.Add(m0);
+                mnu.Items.Add(m1);
+                mnu.Items.Add(m2);
+
+                s.ContextMenu = mnu;
+            }
+            else if (item is TrackInformation.Locomotive locItem)
+            {
+                ContextMenu mnu = new ContextMenu();
+
+                MenuItem m0 = new MenuItem {Header = "Stop"};
+                m0.Click += (o, args) => locItem.Stop();
+
+                mnu.Items.Add(m0);
+
+                s.ContextMenu = mnu;
+            }
+        }
+
+        private void PropagateTestRoute(Items.BlockRouteItem item=null)
+        {
+            if (_dataContext == null)
+                return;
+
+            var s = Explorer;
+            if (s == null)
+                return;
+
+            if (item == null)
+                item = s.SelectedItem as Items.BlockRouteItem;
+
+            if (item != null)
+                _dataContext.TestBlockRoute(item);
+        }
+
         private void TreeView_OnKeyDown(object sender, KeyEventArgs e)
         {
             if(e.Key == Key.Enter)
                 PropagateTreeViewSelection();
-            else if (e.Key == Key.T)
-                PropagateTestRoute();
             else if (e.Key == Key.Escape)
                 _dataContext.ResetBlockRoutePreview();
         }
@@ -152,21 +210,6 @@ namespace RailwayEssentialMdi
             {
                 // ...
             }
-        }
-
-        private void PropagateTestRoute()
-        {
-            if (_dataContext == null)
-                return;
-
-            var s = Explorer;
-            if (s == null)
-                return;
-
-            var item = s.SelectedItem;
-
-            if (item is Items.BlockRouteItem)
-                _dataContext.TestBlockRoute(item);
         }
 
         #region IMainView
@@ -196,6 +239,5 @@ namespace RailwayEssentialMdi
         }
 
         #endregion
-
     }
 }

@@ -39,8 +39,6 @@ namespace TrackInformationCore
 
         int ObjectId { get; set; }
 
-        bool IsRouted { get; set; }
-
         bool HasView { get; }
 
         void Parse(List<CommandArgument> arguments);

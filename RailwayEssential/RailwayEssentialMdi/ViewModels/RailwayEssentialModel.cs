@@ -721,6 +721,10 @@ namespace RailwayEssentialMdi.ViewModels
         {
             var weaveFilepath = Path.Combine(Project.Dirpath, Project.Track.Weave);
             _dispatcher.InitializeWeaving(_trackEntity.Track, weaveFilepath);
+
+            var allSwitches = _dispatcher.GetDataProvider().Objects.OfType<TrackInformation.Switch>();
+            foreach (var sw in allSwitches)
+                sw?.ChangeDirection(0);
         }
 
         private void DispatcherOnUpdateUi(object sender, TrackWeaver.TrackWeaver trackWeaver)

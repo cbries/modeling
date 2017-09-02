@@ -177,6 +177,7 @@
                             <xcad:LayoutAnchorable CanClose="False" CanHide="False">
                                 <TreeView ItemsSource="{Binding RootItems}" x:Name="Explorer"
                                           MouseDoubleClick="TreeView_OnMouseDoubleClick"
+                                          ContextMenuOpening="TreeView_OnContextMenuOpening"
                                           KeyDown="TreeView_OnKeyDown">
                                     <TreeView.ItemTemplate>
                                         <HierarchicalDataTemplate DataType="{x:Type trackInformation:Item}" ItemsSource="{Binding Items}">

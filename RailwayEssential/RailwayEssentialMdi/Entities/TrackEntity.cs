@@ -22,13 +22,16 @@
  * SOFTWARE.
  */
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RailwayEssentialCore;
+using RailwayEssentialMdi.Analyze;
 using RailwayEssentialMdi.DataObjects;
+using RailwayEssentialMdi.ViewModels;
 using RailwayEssentialWeb;
 using TrackWeaver;
 
@@ -355,29 +358,49 @@ namespace RailwayEssentialMdi.Entities
 
                         switch (seam.ObjectItem.TypeId())
                         {
-                            case 1: // Locomotive
+                            case TrackInformation.Locomotive.Typeid:
                                 continue;
 
-                            case 2: // Ecos2
+                            case TrackInformation.Ecos2.Typeid:
                                 continue;
 
-                            case 3: // Route
+                            case TrackInformation.Route.Typeid:
                                 continue;
 
-                            case 4: // S88
+                            case TrackInformation.S88.Typeid:
                                 {
                                     bool rS88 = checkResult?.State != null && checkResult.State.Value;
 
+                                    bool partOfBusyRoute = false;
+
+                                    var m = Model as RailwayEssentialModel;
+                                    var blockRoutes = m.Project.BlockRoutes;
+                                    foreach (var r in blockRoutes)
+                                    {
+                                        if (r.IsBusy)
+                                        {
+                                            foreach (var wp in r)
+                                            {
+                                                if (wp.X == x && wp.Y == y)
+                                                {
+                                                    partOfBusyRoute = true;
+                                                    goto afterForeach;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    afterForeach:
+
                                     if (rS88)
                                     {
-                                        if (seam.ObjectItem.IsRouted)
+                                        if (partOfBusyRoute)
                                             symbol = themeObject.Active.Route;
                                         else
                                             symbol = themeObject.Active.Occ;
                                     }
                                     else
                                     {
-                                        if (seam.ObjectItem.IsRouted)
+                                        if (partOfBusyRoute)
                                             symbol = themeObject.Off.Route;
                                         else
                                             symbol = themeObject.Off.Default;
@@ -385,7 +408,7 @@ namespace RailwayEssentialMdi.Entities
                                 }
                                 break;
 
-                            case 5: // Switch
+                            case TrackInformation.Switch.Typeid:
                                 {
                                     if (checkResult != null && checkResult.Direction.HasValue)
                                     {
@@ -402,16 +425,16 @@ namespace RailwayEssentialMdi.Entities
 
                                         if (direction == TrackCheckResult.SwitchDirection.Straight)
                                         {
-                                            if (seam.ObjectItem.IsRouted)
-                                                symbol = themeObject.Active.Route;
-                                            else
+                                            //if (seam.ObjectItem.IsRouted)
+                                            //    symbol = themeObject.Active.Route;
+                                            //else
                                                 symbol = themeObject.Active.Default;
                                         }
                                         else if (direction == TrackCheckResult.SwitchDirection.Turn)
                                         {
-                                            if (seam.ObjectItem.IsRouted)
-                                                symbol = themeObject.Off.Route;
-                                            else
+                                            //if (seam.ObjectItem.IsRouted)
+                                            //    symbol = themeObject.Off.Route;
+                                            //else
                                                 symbol = themeObject.Off.Default;
                                         }
                                         else

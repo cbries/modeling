@@ -58,5 +58,21 @@ namespace RailwayEssentialMdi.Analyze
 
             return false;
         }
+
+        public static bool HasPoint(Route route, int x, int y)
+        {
+            if (route == null)
+                return false;
+            if (x == -1 || y == -1)
+                return false;
+
+            foreach (var wp in route)
+            {
+                if (wp?.X == x && wp.Y == y)
+                    return true;
+            }
+
+            return true;
+        }
     }
 }

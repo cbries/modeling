@@ -74,9 +74,16 @@ namespace RailwayEssentialMdi.Autoplay
                             if (checkResult == null)
                             {
                                 if (state)
-                                    themeIcon = themeInfo.Off.Route;
+                                {
+                                    if (Route.HasPoint(route, trackInfo.X, trackInfo.Y))
+                                        themeIcon = themeInfo.Off.Route;
+                                    else
+                                        themeIcon = themeInfo.Off.Default;
+                                }
                                 else
+                                {
                                     themeIcon = themeInfo.Off.Default;
+                                }
                             }
                             else
                             {
@@ -92,9 +99,16 @@ namespace RailwayEssentialMdi.Autoplay
                                 else
                                 {
                                     if (s88item != null && s88item.IsRouted)
+                                    {
                                         themeIcon = themeInfo.Off.Route;
+                                    }
                                     else
-                                        themeIcon = themeInfo.Off.Default;
+                                    {
+                                        if (state && Route.HasPoint(route, trackInfo.X, trackInfo.Y))
+                                            themeIcon = themeInfo.Off.Route;
+                                        else
+                                            themeIcon = themeInfo.Off.Default;
+                                    }
                                 }
                             }
                         }

@@ -37,7 +37,7 @@
       "funcset": "00000000000000000000000000000000",
       "nrOfFunctions": 4,
       "maxSpeedPercentage": 65,
-      "blockSpeedPercentage": 40
+      "blockSpeedPercentage": 30
     },
     {
       "objectId": 1006,
@@ -47,10 +47,10 @@
       "speed": 0,
       "speedstep": 0,
       "direction": 0,
-      "funcset": "10000000000000000000000000000000",
+      "funcset": "00000000000000000000000000000000",
       "nrOfFunctions": 5,
       "maxSpeedPercentage": 25,
-      "blockSpeedPercentage": 15
+      "blockSpeedPercentage": 7
     },
     {
       "objectId": 1008,
@@ -116,6 +116,19 @@
       "nrOfFunctions": 5,
       "maxSpeedPercentage": 50,
       "blockSpeedPercentage": 50
+    },
+    {
+      "objectId": 1005,
+      "name": "Dampf #2",
+      "protocol": "MM14",
+      "addr": 20,
+      "speed": 0,
+      "speedstep": 0,
+      "direction": 0,
+      "funcset": "00000000000000000000000000000000",
+      "nrOfFunctions": 9,
+      "maxSpeedPercentage": 50,
+      "blockSpeedPercentage": 50
     }
   ],
   "switches": [
@@ -132,7 +145,7 @@
       "protocol": "DCC",
       "type": "ACCESSORY",
       "mode": "SWITCH",
-      "state": 0,
+      "state": 1,
       "switching": 0
     },
     {
@@ -196,7 +209,7 @@
       "protocol": "DCC",
       "type": "ACCESSORY",
       "mode": "SWITCH",
-      "state": 0,
+      "state": 1,
       "switching": 0
     },
     {
@@ -228,7 +241,7 @@
       "protocol": "DCC",
       "type": "ACCESSORY",
       "mode": "SWITCH",
-      "state": 0,
+      "state": 1,
       "switching": 0
     },
     {
@@ -260,7 +273,7 @@
       "protocol": "DCC",
       "type": "ACCESSORY",
       "mode": "SWITCH",
-      "state": 1,
+      "state": 0,
       "switching": 0
     },
     {
@@ -308,65 +321,65 @@
       "protocol": "DCC",
       "type": "ACCESSORY",
       "mode": "SWITCH",
-      "state": 0,
+      "state": 1,
       "switching": 0
     }
   ],
   "routes": [
     {
       "objectId": 30000,
-      "name1": "",
-      "name2": null,
-      "name3": null,
+      "name1": "S1",
+      "name2": "Fahrweg",
+      "name3": "",
       "type": "ROUTE"
     },
     {
       "objectId": 30001,
-      "name1": "",
-      "name2": null,
-      "name3": null,
+      "name1": "S2",
+      "name2": "Fahrweg",
+      "name3": "",
       "type": "ROUTE"
     },
     {
       "objectId": 30002,
-      "name1": "",
-      "name2": null,
-      "name3": null,
+      "name1": "S3",
+      "name2": "Fahrweg",
+      "name3": "",
       "type": "ROUTE"
     },
     {
       "objectId": 30004,
-      "name1": "",
-      "name2": null,
-      "name3": null,
+      "name1": "S4",
+      "name2": "Fahrweg",
+      "name3": "",
       "type": "ROUTE"
     },
     {
       "objectId": 30005,
-      "name1": "",
-      "name2": null,
-      "name3": null,
+      "name1": "S5",
+      "name2": "Fahrweg",
+      "name3": "",
       "type": "ROUTE"
     },
     {
       "objectId": 30006,
-      "name1": "",
-      "name2": null,
-      "name3": null,
+      "name1": "S6",
+      "name2": "Fahrweg",
+      "name3": "",
       "type": "ROUTE"
     },
     {
       "objectId": 30007,
-      "name1": "",
-      "name2": null,
-      "name3": null,
+      "name1": "S7",
+      "name2": "Fahrweg",
+      "name3": "",
       "type": "ROUTE"
     },
     {
       "objectId": 30008,
-      "name1": "",
-      "name2": null,
-      "name3": null,
+      "name1": "S8",
+      "name2": "Fahrweg",
+      "name3": "",
       "type": "ROUTE"
     }
   ],
@@ -375,13 +388,13 @@
       "objectId": 100,
       "index": 0,
       "ports": 16,
-      "stateOriginal": "0xc0cd"
+      "stateOriginal": "0x9097"
     },
     {
       "objectId": 101,
       "index": 1,
       "ports": 16,
-      "stateOriginal": "0xd00"
+      "stateOriginal": "0x700"
     },
     {
       "objectId": 102,
