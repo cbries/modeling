@@ -223,6 +223,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\Main.xcf" />
     <None Include="Resources\Theme\RailwayEssential.json" />
     <None Include="Resources\Theme\RailwayEssential\tpl128x32.psd" />
     <None Include="Resources\Theme\RailwayEssential\tpl32x32.psd" />
