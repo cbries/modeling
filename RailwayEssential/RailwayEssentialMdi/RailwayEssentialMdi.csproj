@@ -229,148 +229,64 @@
     <None Include="Resources\Theme\RailwayEssential\tpl32x32.psd" />
     <None Include="Resources\Theme\RailwayEssential\tpl64x32.psd" />
     <None Include="Resources\Theme\RailwayEssential\trackicon.svg.tpl" />
-    <None Include="Testprojekte\Project03\Project03.railwayprj">
+    <None Include="Testprojekte\8Turn\8Turn.railwayprj">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project03\TrackObjects.json">
+    <None Include="Testprojekte\8Turn\TrackObjects.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project03\TrackPlan.json">
+    <None Include="Testprojekte\8Turn\TrackPlan.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project03\TrackWeaving.json">
+    <None Include="Testprojekte\8Turn\TrackWeaving.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project04\Project04.railwayprj">
+    <None Include="Testprojekte\FourStations\FourStations.railwayprj">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project04\TrackObjects.json">
+    <None Include="Testprojekte\FourStations\TrackObjects.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project04\TrackPlan.json">
+    <None Include="Testprojekte\FourStations\TrackPlan.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project04\TrackWeaving.json">
+    <None Include="Testprojekte\FourStations\TrackWeaving.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project05\Project05.railwayprj">
+    <None Include="Testprojekte\Connectors\Connectors.railwayprj">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project05\TrackObjects.json">
+    <None Include="Testprojekte\Connectors\TrackObjects.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project05\TrackPlan.json">
+    <None Include="Testprojekte\Connectors\TrackPlan.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project05\TrackWeaving.json">
+    <None Include="Testprojekte\Connectors\TrackWeaving.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project06\Project06.railwayprj">
+    <None Include="Testprojekte\Crossing\Crossing.railwayprj">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project06\TrackObjects.json">
+    <None Include="Testprojekte\Crossing\TrackObjects.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project06\TrackPlan.json">
+    <None Include="Testprojekte\Crossing\TrackPlan.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project06\TrackWeaving.json">
+    <None Include="Testprojekte\Crossing\TrackWeaving.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project07\Project07.railwayprj">
+    <None Include="Testprojekte\SingleCircle\SingleCircle.railwayprj">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project07\TrackObjects.json">
+    <None Include="Testprojekte\SingleCircle\TrackObjects.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project07\TrackPlan.json">
+    <None Include="Testprojekte\SingleCircle\TrackPlan.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Testprojekte\Project07\TrackWeaving.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project08\Project08.railwayprj">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project08\TrackObjects.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project08\TrackPlan.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project08\TrackWeaving.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project09\Project09.railwayprj">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project09\TrackObjects.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project09\TrackPlan.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project09\TrackWeaving.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project10\Project10.railwayprj">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project10\TrackObjects.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project10\TrackPlan.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project10\TrackWeaving.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project11\Project11.railwayprj">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project11\TrackObjects.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project11\TrackPlan.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project11\TrackWeaving.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project12\Project12.railwayprj">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project12\TrackObjects.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project12\TrackPlan.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project12\TrackWeaving.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project02\Project02.railwayprj">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project02\TrackObjects.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project02\TrackPlan.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project02\TrackWeaving.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project01\Project01.railwayprj">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project01\TrackObjects.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project01\TrackPlan.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Testprojekte\Project01\TrackWeaving.json">
+    <None Include="Testprojekte\SingleCircle\TrackWeaving.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Testprojekte\Schattenbahnhof1\Schattenbahnhof1.railwayprj">

@@ -1,12 +1,12 @@
 ﻿{
-  "name": "Project08",
+  "name": "Connectors",
   "version": 1.0,
   "targetHost": "192.168.178.61",
   "targetPort": 15471,
   "designerColumns": 40,
   "designerRows": 40,
   "track": {
-    "name": "Project08",
+    "name": "Connectors",
     "path": "TrackPlan.json",
     "weave": "TrackWeaving.json"
   },

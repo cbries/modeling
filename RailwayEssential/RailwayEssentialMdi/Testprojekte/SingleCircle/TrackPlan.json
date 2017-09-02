@@ -1,21 +1,28 @@
 [
   {
+    "name": "",
     "x": 4,
     "y": 2,
     "themeId": 150,
     "orientation": "rot0",
     "description": "",
-    "options": {}
+    "options": {
+      "blockGroupIdentifier": "-1",
+      "blockCurrentLocomotive": "1005",
+      "events": "{\r\n  \"sensor0\": \"9:2 -> 200\",\r\n  \"sensor1\": \"3:2 -> 200\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}"
+    }
   },
   {
+    "name": "",
     "x": 3,
     "y": 2,
-    "themeId": 10,
+    "themeId": 200,
     "orientation": "rot0",
     "description": "",
     "options": {}
   },
   {
+    "name": "",
     "x": 8,
     "y": 2,
     "themeId": 10,
@@ -24,6 +31,7 @@
     "options": {}
   },
   {
+    "name": "",
     "x": 4,
     "y": 4,
     "themeId": 10,
@@ -32,14 +40,16 @@
     "options": {}
   },
   {
+    "name": "",
     "x": 9,
     "y": 2,
-    "themeId": 10,
+    "themeId": 200,
     "orientation": "rot0",
     "description": "",
     "options": {}
   },
   {
+    "name": "",
     "x": 10,
     "y": 2,
     "themeId": 10,
@@ -48,14 +58,16 @@
     "options": {}
   },
   {
+    "name": "",
     "x": 11,
     "y": 2,
-    "themeId": 10,
+    "themeId": 14,
     "orientation": "rot0",
     "description": "",
     "options": {}
   },
   {
+    "name": "",
     "x": 2,
     "y": 3,
     "themeId": 10,
@@ -64,22 +76,25 @@
     "options": {}
   },
   {
+    "name": "",
     "x": 3,
     "y": 4,
-    "themeId": 10,
-    "orientation": "rot0",
+    "themeId": 14,
+    "orientation": "rot180",
     "description": "",
     "options": {}
   },
   {
+    "name": "",
     "x": 5,
     "y": 4,
-    "themeId": 10,
+    "themeId": 200,
     "orientation": "rot0",
     "description": "",
     "options": {}
   },
   {
+    "name": "",
     "x": 6,
     "y": 4,
     "themeId": 10,
@@ -88,46 +103,29 @@
     "options": {}
   },
   {
+    "name": "",
     "x": 7,
     "y": 4,
-    "themeId": 10,
+    "themeId": 150,
     "orientation": "rot0",
     "description": "",
-    "options": {}
+    "options": {
+      "blockGroupIdentifier": "-1",
+      "blockCurrentLocomotive": "",
+      "events": "{\r\n  \"sensor0\": \"5:4 -> 200\",\r\n  \"sensor1\": \"11:4 -> 200\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}"
+    }
   },
   {
-    "x": 8,
-    "y": 4,
-    "themeId": 10,
-    "orientation": "rot0",
-    "description": "",
-    "options": {}
-  },
-  {
-    "x": 9,
-    "y": 4,
-    "themeId": 10,
-    "orientation": "rot0",
-    "description": "",
-    "options": {}
-  },
-  {
-    "x": 10,
-    "y": 4,
-    "themeId": 10,
-    "orientation": "rot0",
-    "description": "",
-    "options": {}
-  },
-  {
+    "name": "",
     "x": 11,
     "y": 4,
-    "themeId": 10,
+    "themeId": 200,
     "orientation": "rot0",
     "description": "",
     "options": {}
   },
   {
+    "name": "",
     "x": 12,
     "y": 3,
     "themeId": 10,
@@ -136,6 +134,7 @@
     "options": {}
   },
   {
+    "name": "",
     "x": 2,
     "y": 2,
     "themeId": 11,
@@ -144,6 +143,7 @@
     "options": {}
   },
   {
+    "name": "",
     "x": 2,
     "y": 4,
     "themeId": 11,
@@ -152,6 +152,7 @@
     "options": {}
   },
   {
+    "name": "",
     "x": 12,
     "y": 2,
     "themeId": 11,
@@ -160,6 +161,7 @@
     "options": {}
   },
   {
+    "name": "",
     "x": 12,
     "y": 4,
     "themeId": 11,
