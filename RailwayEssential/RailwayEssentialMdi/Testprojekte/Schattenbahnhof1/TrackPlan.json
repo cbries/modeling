@@ -766,7 +766,7 @@
     "options": {
       "blockGroupIdentifier": "7",
       "events": "{\r\n  \"sensor0\": \"0,11\",\r\n  \"sensor1\": \"1,11\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}",
-      "blockCurrentLocomotive": "1006"
+      "blockCurrentLocomotive": ""
     }
   },
   {
@@ -779,7 +779,7 @@
     "options": {
       "blockGroupIdentifier": "7",
       "events": "{\r\n  \"sensor0\": \"0,12\",\r\n  \"sensor1\": \"1,12\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}",
-      "blockCurrentLocomotive": ""
+      "blockCurrentLocomotive": "1004"
     }
   },
   {
@@ -792,7 +792,7 @@
     "options": {
       "blockGroupIdentifier": "7",
       "events": "{\r\n  \"sensor0\": \"1,13\",\r\n  \"sensor1\": \"0,13\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}",
-      "blockCurrentLocomotive": "1004"
+      "blockCurrentLocomotive": ""
     }
   },
   {
@@ -805,7 +805,7 @@
     "options": {
       "blockGroupIdentifier": "7",
       "events": "{\r\n  \"sensor0\": \"1,14\",\r\n  \"sensor1\": \"0,14\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}",
-      "blockCurrentLocomotive": ""
+      "blockCurrentLocomotive": "1006"
     }
   },
   {
@@ -818,7 +818,7 @@
     "options": {
       "blockGroupIdentifier": "7",
       "events": "{\r\n  \"sensor0\": \"1,15\",\r\n  \"sensor1\": \"0,15\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}",
-      "blockCurrentLocomotive": ""
+      "blockCurrentLocomotive": "1000"
     }
   },
   {
@@ -1106,7 +1106,7 @@
     "description": "",
     "options": {
       "blockGroupIdentifier": "7",
-      "blockCurrentLocomotive": "1000",
+      "blockCurrentLocomotive": "",
       "events": "{\r\n  \"sensor0\": \"1,16\",\r\n  \"sensor1\": \"0,16\",\r\n  \"sensor2\": \"--\",\r\n  \"event0\": \"enter\",\r\n  \"event1\": \"in\",\r\n  \"event2\": \"--\"\r\n}"
     }
   },

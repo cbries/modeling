@@ -202,6 +202,8 @@ namespace RailwayEssentialMdi.ViewModels
         public bool AutoplayState2 => _autoplayer != null;
         public bool AutoplayState3 => !AutoplayState2;
 
+        internal Autoplay.Autoplay Autoplayer => _autoplayer;
+
         private void UpdateCanClose()
         {
             var wnds = GetWindowList<TrackWindow>();

@@ -24,6 +24,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using TrackInformation;
 using Route = RailwayEssentialMdi.Analyze.Route;
@@ -39,6 +40,21 @@ namespace RailwayEssentialMdi.Autoplay
         private Theme.Theme Theme => Ctx?.Theme;
         private readonly List<AutoplayRouteThread> _blockRouteThreads = new List<AutoplayRouteThread>();
         private readonly Random _rnd = new Random(DateTime.Now.Millisecond);
+
+        private readonly Dictionary<Locomotive, Route> _manuallyDefinedRoutes = new Dictionary<Locomotive, Route>();
+
+        public void SetNext(Locomotive loc, Analyze.Route route)
+        {
+            lock (_manuallyDefinedRoutes)
+            {
+                if (_manuallyDefinedRoutes.ContainsKey(loc))
+                    _manuallyDefinedRoutes[loc] = route;
+                else
+                {
+                    _manuallyDefinedRoutes.Add(loc, route);
+                }
+            }
+        }
 
         private void InitializeRouteThreads()
         {
@@ -83,14 +99,14 @@ namespace RailwayEssentialMdi.Autoplay
                 if (t == null)
                     continue;
 
-                if(t.Task != null)
+                if (t.Task != null)
                     tasks.Add(t.Task);
 
                 var route = t.Route;
                 if (route != null)
                     SetRoute(route, false);
 
-                if(t.IsRunning)
+                if (t.IsRunning)
                     t.Stop();
             }
 
@@ -123,6 +139,45 @@ namespace RailwayEssentialMdi.Autoplay
             if (Ctx == null || Ctx.Project == null)
                 return;
 
+            // in case any loc is manually defined to reach any block
+            lock (_manuallyDefinedRoutes)
+            {
+                if (_manuallyDefinedRoutes.Count > 0)
+                {
+                    var firstRoute = _manuallyDefinedRoutes.First();
+                    var locomotive = firstRoute.Key;
+                    var route = firstRoute.Value;
+
+                    var gr = GetBlockGroupsOfRoute(route);
+                    foreach (var g in gr)
+                    {
+                        if (g == null) continue;
+
+                        foreach (var r in g.Routes)
+                        {
+                            if (r == null) continue;
+
+                            var locObjectIdStart = GetLocObjectIdOfRoute(r);
+                            if (locObjectIdStart != locomotive.ObjectId)
+                                continue;
+
+                            if (route != null)
+                            {
+                                Ctx?.LogAutoplay($"START Group {g.GroupName} with Route {route}");
+                                Trace.WriteLine($"START Group {g.GroupName} with Route {route}");
+
+                                GetByRoute(route)?.Start();
+
+                                _manuallyDefinedRoutes.Remove(locomotive);
+                            }
+                        }
+                    }
+
+                    if (_manuallyDefinedRoutes.Count > 0)
+                        return;
+                }
+            }
+
             var grps = GetFreeBlockGroups();
             var grpsN = grps.Count;
             if (grpsN == 0)
@@ -142,7 +197,7 @@ namespace RailwayEssentialMdi.Autoplay
 
                 foreach (var r in grp.Routes)
                 {
-                    if(r == null)
+                    if (r == null)
                         continue;
 
                     var locObjectIdStart = GetLocObjectIdOfRoute(r);
@@ -166,6 +221,7 @@ namespace RailwayEssentialMdi.Autoplay
                 var routeN = routesWithLocs.Count;
                 if (routeN == 0)
                     return;
+
                 var routeIdx = _rnd.Next(0, routeN);
                 var route = routesWithLocs[routeIdx];
 
@@ -177,6 +233,6 @@ namespace RailwayEssentialMdi.Autoplay
                     GetByRoute(route)?.Start();
                 }
             }
-        }        
+        }
     }
 }

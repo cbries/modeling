@@ -25,9 +25,11 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using RailwayEssentialMdi.Analyze;
 using RailwayEssentialMdi.Interfaces;
 using RailwayEssentialMdi.ViewModels;
 using Xceed.Wpf.AvalonDock;
@@ -159,7 +161,66 @@ namespace RailwayEssentialMdi
                 MenuItem m0 = new MenuItem {Header = "Stop"};
                 m0.Click += (o, args) => locItem.Stop();
 
+                MenuItem m1 = new MenuItem {Header = "Send to Block...", IsEnabled = true};
+                if (_dataContext.Project == null /*|| !_dataContext.AutoplayState2*/)
+                {
+                    m1.IsEnabled = false;
+                }
+                else
+                {
+                    var m = _dataContext;
+
+                    foreach (var route in m.Project.BlockRoutes)
+                    {
+                        if (route == null)
+                            continue;
+
+                        var routeStartBlock = route.First() as WayPoint;
+                        if (routeStartBlock == null)
+                            continue;
+
+                        var x = routeStartBlock.X;
+                        var y = routeStartBlock.Y;
+
+                        var trackInfo = m.TrackEntity.Track.Get(x, y);
+                        if (trackInfo == null)
+                            continue;
+
+                        var locObjectId = trackInfo.GetLocomotiveObjectId();
+                        if (locObjectId == -1)
+                            continue;
+
+                        if (locObjectId != locItem.ObjectId)
+                            continue;
+
+                        var targetBlock = route.Last() as WayPoint;
+                        if (targetBlock == null)
+                            continue;
+
+                        x = targetBlock.X;
+                        y = targetBlock.Y;
+
+                        trackInfo = m.TrackEntity.Track.Get(x, y);
+                        if (trackInfo == null)
+                            continue;
+
+                        var header = trackInfo.Name;
+                        if (string.IsNullOrEmpty(header))
+                            header = trackInfo.ToString();
+
+                        MenuItem itm = new MenuItem {Header = header};
+                        itm.Click += (o, args) =>
+                        {
+                            var autoplayer = _dataContext.Autoplayer;
+                            autoplayer?.SetNext(locItem, route);
+                        };
+
+                        m1.Items.Add(itm);
+                    }
+                }
+
                 mnu.Items.Add(m0);
+                mnu.Items.Add(m1);
 
                 s.ContextMenu = mnu;
             }

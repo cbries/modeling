@@ -187,6 +187,30 @@ namespace RailwayEssentialMdi.Autoplay
             return -1;
         }
 
+        private List<RouteGroup> GetBlockGroupsOfRoute(Route route)
+        {
+            if(route == null)
+                return new List<RouteGroup>();
+
+            List<RouteGroup> grps = new List<RouteGroup>();
+            foreach (var grp in GetFreeBlockGroups())
+            {
+                if (grp == null)
+                    continue;
+
+                foreach (var r0 in grp.Routes)
+                {
+                    if (r0 == route)
+                    {
+                        grps.Add(grp);
+                        break;
+                    }
+                }
+            }
+
+            return grps;
+        }
+
         private List<RouteGroup> GetFreeBlockGroups()
         {
             List<Route> busyRoutes = new List<Route>();
