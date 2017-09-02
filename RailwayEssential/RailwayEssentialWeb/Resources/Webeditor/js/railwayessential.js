@@ -1,4 +1,26 @@
-
+/*
+ * MIT License
+ *
+ * Copyright (c) 2017 Dr. Christian Benjamin Ries
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 var TESTDATA = false;
 
 var isEdit = false;
@@ -329,7 +351,7 @@ function test(col, row) {
 }
 
 function highlightRoute(jsonArray, styleName) {
-    console.log("Highlight Route");
+    //console.log("Highlight Route");
 
     for (var i = 0; i < jsonArray.length; ++i) {
         var o = jsonArray[i];
@@ -345,7 +367,7 @@ function highlightRoute(jsonArray, styleName) {
 }
 
 function resetHighlightRoute() {
-    console.log("Reset Highlight Route");
+    //console.log("Reset Highlight Route");
     $('td').each(function () {
         $(this).removeClass("routeHighlightStart");
         $(this).removeClass("routeHighlightEnd");
@@ -466,7 +488,7 @@ function simulateClick(col, row, themeid, symbol, orientation, response) {
 }
 
 function handleUserClick(col, row) {
-    console.log("vs: cellClicked(" + col + ", " + row + ")");
+    //console.log("vs: cellClicked(" + col + ", " + row + ")");
     try {
         railwayEssentialCallback.cellClicked(col, row);
     } catch (ex) { /* ignore */ }
@@ -653,7 +675,7 @@ $(document).ready(function (e) {
                     });
                     newChild.draggable();
 
-                    console.log("vs: #1 cellEdited(" + col + ", " + row + ", " + themeId + ")");
+                    //console.log("vs: #1 cellEdited(" + col + ", " + row + ", " + themeId + ")");
                     try {
                         railwayEssentialCallback.cellEdited(col, row, themeId);
                     } catch (ex) { /* ignore */ }
@@ -737,7 +759,7 @@ $(document).ready(function (e) {
 
                 newChild.draggable();
 
-                console.log("vs: #2 cellEdited(" + col + ", " + row + ", " + o2 + ")");
+                //console.log("vs: #2 cellEdited(" + col + ", " + row + ", " + o2 + ")");
                 try {
                     railwayEssentialCallback.cellEdited(col, row, o2);
                 } catch (ex) { /* ignore */ }

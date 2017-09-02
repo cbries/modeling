@@ -26,6 +26,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using RailwayEssentialCore;
 using TrackInformation;
 using Route = RailwayEssentialMdi.Analyze.Route;
 
@@ -207,9 +208,29 @@ namespace RailwayEssentialMdi.Autoplay
                     {
                         if (Ctx.Dispatcher.GetDataProvider().GetObjectBy(locObjectIdStart) is Locomotive locObj)
                         {
-                            TimeSpan duration = DateTime.Now - locObj.StopTime;
-                            if (duration.Seconds > SecondsToNextLocRun)
+                            var blocks = Ctx.TrackEntity.Track.Where(x => Globals.BlockIds.Contains(x.ThemeId)).ToList();
+                            int numberOfLocs = 0;
+                            foreach (var b in blocks)
+                            {
+                                var objectId = b.GetLocomotiveObjectId();
+                                if (objectId != -1)
+                                    numberOfLocs++;
+                            }
+
+                            Trace.WriteLine($"Number of assigned Locomotives: {numberOfLocs}");
+
+                            if (numberOfLocs <= 1)
+                            {
                                 routesWithLocs.Add(r);
+                            }
+                            else
+                            {
+                                // check if locomotive has been stopped a specific time
+                                TimeSpan duration = DateTime.Now - locObj.StopTime;
+                                Trace.WriteLine($"Duration: {duration}");
+                                if (duration.Seconds > SecondsToNextLocRun)
+                                    routesWithLocs.Add(r);
+                            }
                         }
                         else
                         {
@@ -227,8 +248,8 @@ namespace RailwayEssentialMdi.Autoplay
 
                 if (route != null)
                 {
-                    Ctx?.LogAutoplay($"START Group {grp.GroupName} with Route {route}");
-                    Trace.WriteLine($"START Group {grp.GroupName} with Route {route}");
+                    Ctx?.LogAutoplay($"START Group {grp.GroupName} with Route {routeIdx}");
+                    Trace.WriteLine($"START Group {grp.GroupName} with Route {routeIdx}");
 
                     GetByRoute(route)?.Start();
                 }

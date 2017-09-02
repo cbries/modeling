@@ -233,7 +233,7 @@ namespace RailwayEssentialMdi.Entities
                             continue;
 
                         if (string.IsNullOrEmpty(e.Name))
-                            _availableSensors.Add(e.ToString());
+                            _availableSensors.Add($"{e} [INVALID - 'Name' should be set!]");
                         else
                             _availableSensors.Add(e.Name);
                     }
@@ -910,7 +910,7 @@ namespace RailwayEssentialMdi.Entities
 
                             if (pin != -1)
                             {
-                                Trace.WriteLine("Simulate S88 PIN change!");
+                                //Trace.WriteLine("Simulate S88 PIN change!");
 
                                 var s88Item = objItem as TrackInformation.S88;
                                 if (s88Item != null)
@@ -928,8 +928,8 @@ namespace RailwayEssentialMdi.Entities
 
                                     var afterBinary = s88Item.StateBinary;
 
-                                    Trace.WriteLine($"Binaries: {beforeBinary}");
-                                    Trace.WriteLine($"Binaries: {afterBinary}");
+                                    //Trace.WriteLine($"Binaries: {beforeBinary}");
+                                    //Trace.WriteLine($"Binaries: {afterBinary}");
 
                                     m.TriggerUpdateUi();
                                 }
