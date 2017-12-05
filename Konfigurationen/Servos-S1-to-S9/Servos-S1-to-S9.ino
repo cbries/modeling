@@ -40,8 +40,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Fill in these 2 values ...
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const byte maxservos = 12; //The number of servos you have connected to this Arduino
-const byte servotimer = 30; //Servo angle change timer. Lower value -> higher speed
+const byte maxservos = 11; //The number of servos you have connected to this Arduino
+const byte servotimer = 45; //Servo angle change timer. Lower value -> higher speed
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 unsigned long timetoupdatesetpoint = millis() + servotimer;
@@ -68,69 +68,83 @@ servoItem servos[maxservos];
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void ConfigureFunctionsAndServos()
 {
-  servos[0].address = 7; // DCC address for this accessory
-  servos[0].outputPin = 13; // Arduino pin number for additional function output (not where servo is attached to)
-  servos[0].servo.attach(3); //Arduino pin number where servo is connected to
-  servos[0].offangle = 60; //Angle for DCC=off. For ECoS turnout is DCC off, straight is DCC on.
-  servos[0].onangle = 100; //Angle for DCC=on. For ECoS turnout is DCC off, straight is DCC on.
- 
-  servos[1].address = 8;
+  // S1
+  servos[0].address = 20;     // DCC address for this accessory
+  servos[0].outputPin = 13;   // Arduino pin number for additional function output (not where servo is attached to)
+  servos[0].servo.attach(3);  // Arduino pin number where servo is connected to
+  servos[0].offangle = 110;    // Angle for DCC=off. For ECoS turnout is DCC off, straight is DCC on.
+  servos[0].onangle = 90;    // Angle for DCC=on. For ECoS turnout is DCC off, straight is DCC on.
+
+  // S2
+  servos[1].address = 21;
   servos[1].outputPin = 13;
   servos[1].servo.attach(4);
-  servos[1].offangle = 80;
-  servos[1].onangle = 110;
+  servos[1].offangle = 100;
+  servos[1].onangle = 85;
 
-  servos[2].address = 9;
+  // S3
+  servos[2].address = 22;
   servos[2].outputPin = 13;
   servos[2].servo.attach(5);
-  servos[2].offangle = 55;
-  servos[2].onangle = 95;
+  servos[2].offangle = 110;
+  servos[2].onangle = 85;
 
-  servos[3].address = 10;
+  // S4
+  servos[3].address = 23;
   servos[3].outputPin = 13;
   servos[3].servo.attach(6);
-  servos[3].offangle = 90;
-  servos[3].onangle = 130;
+  servos[3].offangle = 70;
+  servos[3].onangle = 95;
 
-  servos[4].address = 11;
+  // S5.1
+  servos[4].address = 24;
   servos[4].outputPin = 13;
   servos[4].servo.attach(7);
-  servos[4].offangle = 100;
-  servos[4].onangle = 75;
+  servos[4].offangle = 85;
+  servos[4].onangle = 65;
 
-  servos[5].address = 12;
+  // S5.2
+  servos[5].address = 25;
   servos[5].outputPin = 13;
   servos[5].servo.attach(8);
-  servos[5].offangle = 80;
-  servos[5].onangle = 55;
-  
-  // S10
-  servos[6].address = 34;
+  servos[5].offangle = 105;
+  servos[5].onangle = 89;
+
+  // S6.1
+  servos[6].address = 26;
   servos[6].outputPin = 13;
   servos[6].servo.attach(9);
-  servos[6].offangle = 95;
-  servos[6].onangle = 130;
+  servos[6].offangle = 75;
+  servos[6].onangle = 95;
 
-  // S11
-  servos[7].address = 35;
+  // S6.2
+  servos[7].address = 27;
   servos[7].outputPin = 13;
   servos[7].servo.attach(10);
-  servos[7].offangle = 85;
-  servos[7].onangle = 110;
+  servos[7].offangle = 115;
+  servos[7].onangle = 90;
 
-/*
-  servos[8].address = 9;
+  // S7
+  servos[8].address = 28;
   servos[8].outputPin = 13;
   servos[8].servo.attach(11);
-  servos[8].offangle = 50;
-  servos[8].onangle = 138;
+  servos[8].offangle = 75;
+  servos[8].onangle = 105;
 
-  servos[9].address = 10;
+  // S8
+  servos[9].address = 29;
   servos[9].outputPin = 13;
   servos[9].servo.attach(12);
-  servos[9].offangle = 124;
-  servos[9].onangle = 64;
-*/
+  servos[9].offangle = 71;
+  servos[9].onangle = 116;
+
+  // S9
+  servos[10].address = 30;
+  servos[10].outputPin = 13;
+  servos[10].servo.attach(1);
+  servos[10].offangle = 99;
+  servos[10].onangle = 55;
+  
 } // END ConfigureFunctionsAndServos()
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
