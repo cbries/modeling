@@ -81,14 +81,14 @@ void ConfigureFunctionsAndServos()
   servos[1].servo.attach(4);
   servos[1].offangle = 100;
   servos[1].onangle = 78;
-/*
-  // S41
-  servos[2].address = 41;
+
+  // S55
+  servos[2].address = 36;
   servos[2].outputPin = 13;
   servos[2].servo.attach(5);
-  servos[2].offangle = 96;
-  servos[2].onangle = 74;
-
+  servos[2].offangle = 110;
+  servos[2].onangle = 85;
+/*
   // S42
   servos[3].address = 42;
   servos[3].outputPin = 13;
