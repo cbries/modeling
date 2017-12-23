@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <modocc>
   <occ bkid="B1" lcid="S 3/6 BR18.4 gr" auto="false" closed="false" placing="1" blockenterside="2"/>
-  <occ bkid="B2" lcid="" auto="false" closed="false" placing="0" blockenterside="1"/>
-  <occ bkid="B3" lcid="" auto="false" closed="false" placing="0" blockenterside="2"/>
+  <occ bkid="B2" lcid="DAMPF2" auto="false" closed="false" placing="1" blockenterside="2"/>
+  <occ bkid="B3" lcid="S 3/6 BR18.4 sw" auto="false" closed="false" placing="1" blockenterside="1"/>
   <occ bkid="B4" lcid="" auto="false" closed="false" placing="0" blockenterside="1"/>
   <occ bkid="B5" lcid="Ae3/6II SBB " auto="false" closed="false" placing="1" blockenterside="1"/>
-  <occ bkid="B6" lcid="" auto="false" closed="false" placing="0"/>
-  <occ bkid="B7" lcid="" auto="false" closed="false" placing="0" blockenterside="2"/>
-  <occ bkid="B8" lcid="" auto="false" closed="false" placing="0" blockenterside="1"/>
-  <occ bkid="B9" auto="false" closed="false" placing="0" blockenterside="2" lcid=""/>
+  <occ bkid="B6" auto="false" closed="false" placing="0" blockenterside="2"/>
+  <occ bkid="B7" lcid="" auto="false" closed="false" placing="0" blockenterside="1"/>
+  <occ bkid="B8" lcid="Kompressorlok" auto="false" closed="false" placing="0" blockenterside="1"/>
+  <occ bkid="B9" auto="false" closed="false" placing="1" blockenterside="2" lcid="DIESEL 221 rot"/>
   <occ bkid="B10" auto="false" closed="true" placing="0" lcid=""/>
   <occ bkid="B11" auto="false" closed="true" placing="0" blockenterside="1" lcid=""/>
-  <occ bkid="B12" auto="false" closed="false" placing="0" lcid="" blockenterside="1"/>
-  <occ bkid="B13" auto="false" closed="false" placing="0" blockenterside="2" lcid=""/>
-  <occ bkid="B14" lcid="DAMPF2" auto="false" closed="false" placing="1" blockenterside="1"/>
-  <occ bkid="B15" auto="false" closed="false" placing="1" lcid="Dampf grau" blockenterside="2"/>
+  <occ bkid="B12" auto="false" closed="false" placing="0" lcid="" blockenterside="2"/>
+  <occ bkid="B13" auto="false" closed="false" placing="0" blockenterside="1" lcid=""/>
+  <occ bkid="B14" lcid="Dampf grau" auto="false" closed="false" placing="1" blockenterside="2"/>
+  <occ bkid="B15" auto="false" closed="false" placing="0" lcid="" blockenterside="1"/>
   <occ bkid="B16" auto="false" closed="false" placing="0" blockenterside="1" lcid=""/>
   <occ bkid="B17" auto="false" closed="false" placing="0" blockenterside="2" lcid=""/>
   <occ bkid="B18" lcid="" auto="false" closed="false" placing="0"/>
@@ -23,5 +23,5 @@
   <occ bkid="B21" lcid="" auto="false" closed="false" placing="0"/>
   <occ bkid="B22" lcid="" auto="false" closed="false" placing="0"/>
   <occ bkid="B23" lcid="" auto="false" closed="false" placing="0" blockenterside="1"/>
-  <occ bkid="B24" lcid="" auto="false" closed="false" placing="0" blockenterside="2"/>
+  <occ bkid="B24" lcid="" auto="false" closed="false" placing="0" blockenterside="1"/>
 </modocc>
