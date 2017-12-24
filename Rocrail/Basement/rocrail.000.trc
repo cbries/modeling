@@ -1,0 +1,668 @@
+--------------------------------------------------
+                                            lll   
+                                        iii lll   
+                                            lll   
+ rrrrrr   ooooo   ccccc rrrrrr   aaaaaa iii lll   
+ rrr rrr ooo ooo ccc    rrr rrr aaa aaa iii lll   
+ rrr     ooo ooo ccc    rrr     aaa aaa iii lll   
+ rrr      ooooo   ccccc rrr      aaaaaa iii  lll  
+--------------------------------------------------
+ TM and Copyright 2002-2017 Robert Jan Versluis.
+ All Rights Reserved.
+   r.j.versluis@rocrail.net
+   http://www.rocrail.net
+--------------------------------------------------
+ Rocrail 13273 [a8c9169086e45046ef991abfcb3b76349e63963f]
+ Build: Dec 24 2017 06:03:04
+ librocs 2.0-0 build Dec 24 2017 06:01:05
+ processid = 840
+       mac = E0DB55D2E2610000
+       pwd = C:\Users\cries\Documents\GitHub\modeling\Rocrail\Basement
+      args = OCmdLn: key=-l value=C:\Program Files\Rocrail, key=-w value=C:\Users\cries\Documents\GitHub\modeling\Rocrail\Basement, 
+--------------------------------------------------
+20171224.101036.727 r9999I main     OSystem  0552 no key
+************************************************************************
+* Rocrail runs entirely on volunteer labor.                            *
+* However, Rocrail also needs contributions of money.                  *
+* Your continued support is vital for keeping Rocrail available.       *
+* If you already did support you can ask a key: supportkey@rocrail.net *
+************************************************************************
+20171224.101036.727 r9999I main     OApp     1091 dpIID = []
+20171224.101036.727 r9999I main     OApp     1092 ptIID = []
+20171224.101036.727 r9999I main     OApp     1093 svIID = []
+20171224.101036.727 r9999I main     OApp     1094 lcIID = []
+20171224.101036.727 r9999I main     OModel   0466 parsePlan file: plan.xml
+20171224.101036.774 r9999W main     OAnalyse 8758 WARNING: switch TURN1 has no address set
+20171224.101036.821 r9999I main     OModel   0532 parsePlan title: New Plan
+20171224.101036.821 r9999I main     OModel   4528 init clearingMaps...
+20171224.101036.821 r9999I main     OModel   4560 init creatingMaps...
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB5.1 0_17_esu_: size=1.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB5.2 0_18_esu_: size=2.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB5.3 0_19_esu_: size=3.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB5.4 0_20_esu_: size=4.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB5.5 0_21_esu_: size=5.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB5.6 0_22_esu_: size=6.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB5.7 0_23_esu_: size=7.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB5.8 0_24_esu_: size=8.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB6.1 0_2_esu_: size=9.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB6.2 0_10_esu_: size=10.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB6.3 0_11_esu_: size=11.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB6.4 0_12_esu_: size=12.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB6.5 0_14_esu_: size=13.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB6.6 0_15_esu_: size=14.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB6.7 0_13_esu_: size=15.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB6.8 0_16_esu_: size=16.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB4.1 0_1_esu_: size=17.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB4.2 0_9_esu_: size=18.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB4.3 0_3_esu_: size=19.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB4.4 0_4_esu_: size=20.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB4.5 0_5_esu_: size=21.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB4.6 0_6_esu_: size=22.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB4.7 0_7_esu_: size=23.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB4.8 0_8_esu_: size=24.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB7.1 0_55_esu_: size=25.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB7.2 0_56_esu_: size=26.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB8.1 0_54_esu_: size=27.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB8.2 0_53_esu_: size=28.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB9 0_78_esu_: size=29.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB10 0_77_esu_: size=30.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB11 0_76_esu_: size=31.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB12 0_75_esu_: size=32.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB15 0_74_esu_: size=33.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB14 0_73_esu_: size=34.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB13 0_72_esu_: size=35.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FBR4 0_49_esu_: size=36.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FBR3 0_52_esu_: size=37.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FBR2 0_50_esu_: size=38.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FBR1 0_51_esu_: size=39.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FBL4 0_29_esu_: size=40.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FBL3 0_31_esu_: size=41.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FBL2 0_30_esu_: size=42.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FBL1 0_32_esu_: size=43.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB1 0_45_esu_: size=44.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB2A 0_46_esu_: size=45.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB2B 0_47_esu_: size=46.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB3 0_48_esu_: size=47.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB20.1 0_34_esu_: size=48.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB20.2 0_33_esu_: size=49.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB21.1 0_36_esu_: size=50.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB21.2 0_35_esu_: size=51.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB22.1 0_38_esu_: size=52.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB22.2 0_37_esu_: size=53.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB23.1 0_40_esu_: size=54.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB23.2 0_39_esu_: size=55.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB24.1 0_42_esu_: size=56.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB24.2 0_41_esu_: size=57.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB25.1 0_44_esu_: size=58.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB25.2 0_43_esu_: size=59.
+20171224.101036.821 r9999I main     OModel   4564 init creatingFbAddrMap...
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB8.1 0_54_esu_(**multiple**): size=59.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB8.2 0_53_esu_(**multiple**): size=59.
+20171224.101036.821 r9999I main     OModel   2979 addFbKey from FB7.1 0_55_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB7.2 0_56_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB1 0_45_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB3 0_48_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB9 0_78_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB6.1 0_2_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB6.2 0_10_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB6.3 0_11_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB6.4 0_12_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB6.5 0_14_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB6.6 0_15_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB6.7 0_13_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB6.8 0_16_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB5.1 0_17_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB5.2 0_18_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB5.3 0_19_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB5.4 0_20_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB5.5 0_21_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB5.6 0_22_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB5.7 0_23_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB5.8 0_24_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FBL1 0_32_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FBL2 0_30_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FBL3 0_31_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FBL4 0_29_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB4.1 0_1_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB4.2 0_9_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB4.3 0_3_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB4.4 0_4_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB4.5 0_5_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB4.6 0_6_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB4.7 0_7_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB4.8 0_8_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB25.1 0_44_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB25.2 0_43_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB10 0_77_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB11 0_76_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB12 0_75_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB13 0_72_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB14 0_73_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB15 0_74_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB24.1 0_42_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB24.2 0_41_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FBR1 0_51_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FBR2 0_50_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FBR3 0_52_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FBR4 0_49_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB2A 0_46_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB2B 0_47_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB23.1 0_40_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB23.2 0_39_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB22.1 0_38_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB22.2 0_37_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB21.1 0_36_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB21.2 0_35_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB20.1 0_34_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2979 addFbKey from FB20.2 0_33_esu_(**multiple**): size=59.
+20171224.101036.837 r9999I main     OModel   2991 createFbAddrMap: size=59.
+20171224.101036.852 r9999I main     OLoc     5343 no restore wanted: reset speed for loco [Ae3/6II SBB ]
+20171224.101036.852 r9999I main     OLoc     5347 no restore wanted: reset functions for loco [Ae3/6II SBB ]
+20171224.101036.852 r9999I main     OLib     0038 rocs_lib_load OK [C:\Program Files\Rocrail\./lcdriver.dll]
+20171224.101036.868 r9999I main     OLib     0052 rocs_lib_getProc OK [C:\Program Files\Rocrail\./lcdriver.dll:rocGetLcDrInt]
+20171224.101036.868 r9999I 00000350 OLcDrive 0842 LcDriver 2.0.0 loaded for Ae3/6II SBB 
+20171224.101036.868 r9999I tick077F OSystem  0102 Ticker thread has started.
+20171224.101036.868 r9999I main     OLoc     5382 loco [Ae3/6II SBB ] enterside=[+]
+20171224.101036.868 r9999I main     OLoc     5343 no restore wanted: reset speed for loco [DAMPF2]
+20171224.101036.868 r9999I main     OLoc     5347 no restore wanted: reset functions for loco [DAMPF2]
+20171224.101036.868 r9999I main     OLib     0038 rocs_lib_load OK [C:\Program Files\Rocrail\./lcdriver.dll]
+20171224.101036.868 r9999I main     OLib     0052 rocs_lib_getProc OK [C:\Program Files\Rocrail\./lcdriver.dll:rocGetLcDrInt]
+20171224.101036.868 r9999I 00000350 OLcDrive 0842 LcDriver 2.0.0 loaded for DAMPF2
+20171224.101036.868 r9999I main     OLoc     5382 loco [DAMPF2] enterside=[-]
+20171224.101036.868 r9999I main     OLoc     5343 no restore wanted: reset speed for loco [Dampf grau]
+20171224.101036.868 r9999I main     OLoc     5347 no restore wanted: reset functions for loco [Dampf grau]
+20171224.101036.868 r9999I main     OLib     0038 rocs_lib_load OK [C:\Program Files\Rocrail\./lcdriver.dll]
+20171224.101036.868 r9999I main     OLib     0052 rocs_lib_getProc OK [C:\Program Files\Rocrail\./lcdriver.dll:rocGetLcDrInt]
+20171224.101036.868 r9999I 00000350 OLcDrive 0842 LcDriver 2.0.0 loaded for Dampf grau
+20171224.101036.868 r9999I main     OLoc     5382 loco [Dampf grau] enterside=[-]
+20171224.101036.868 r9999I main     OLoc     5343 no restore wanted: reset speed for loco [Kompressorlok]
+20171224.101036.868 r9999I main     OLoc     5347 no restore wanted: reset functions for loco [Kompressorlok]
+20171224.101036.868 r9999I main     OLib     0038 rocs_lib_load OK [C:\Program Files\Rocrail\./lcdriver.dll]
+20171224.101036.868 r9999I main     OLib     0052 rocs_lib_getProc OK [C:\Program Files\Rocrail\./lcdriver.dll:rocGetLcDrInt]
+20171224.101036.868 r9999I 00000350 OLcDrive 0842 LcDriver 2.0.0 loaded for Kompressorlok
+20171224.101036.868 r9999I main     OLoc     5382 loco [Kompressorlok] enterside=[+]
+20171224.101036.868 r9999I main     OLoc     5343 no restore wanted: reset speed for loco [Schwarz Diesel]
+20171224.101036.868 r9999I main     OLoc     5347 no restore wanted: reset functions for loco [Schwarz Diesel]
+20171224.101036.868 r9999I main     OLib     0038 rocs_lib_load OK [C:\Program Files\Rocrail\./lcdriver.dll]
+20171224.101036.868 r9999I main     OLib     0052 rocs_lib_getProc OK [C:\Program Files\Rocrail\./lcdriver.dll:rocGetLcDrInt]
+20171224.101036.868 r9999I 00000350 OLcDrive 0842 LcDriver 2.0.0 loaded for Schwarz Diesel
+20171224.101036.868 r9999I main     OLoc     5382 loco [Schwarz Diesel] enterside=[+]
+20171224.101036.868 r9999I main     OLoc     5343 no restore wanted: reset speed for loco [BR10]
+20171224.101036.868 r9999I main     OLoc     5347 no restore wanted: reset functions for loco [BR10]
+20171224.101036.868 r9999I main     OLib     0038 rocs_lib_load OK [C:\Program Files\Rocrail\./lcdriver.dll]
+20171224.101036.868 r9999I main     OLib     0052 rocs_lib_getProc OK [C:\Program Files\Rocrail\./lcdriver.dll:rocGetLcDrInt]
+20171224.101036.868 r9999I 00000350 OLcDrive 0842 LcDriver 2.0.0 loaded for BR10
+20171224.101036.868 r9999I main     OLoc     5382 loco [BR10] enterside=[+]
+20171224.101036.868 r9999I main     OLoc     5343 no restore wanted: reset speed for loco [S 3/6 BR18.4 gr]
+20171224.101036.868 r9999I main     OLoc     5347 no restore wanted: reset functions for loco [S 3/6 BR18.4 gr]
+20171224.101036.868 r9999I main     OLib     0038 rocs_lib_load OK [C:\Program Files\Rocrail\./lcdriver.dll]
+20171224.101036.868 r9999I main     OLib     0052 rocs_lib_getProc OK [C:\Program Files\Rocrail\./lcdriver.dll:rocGetLcDrInt]
+20171224.101036.868 r9999I 00000350 OLcDrive 0842 LcDriver 2.0.0 loaded for S 3/6 BR18.4 gr
+20171224.101036.868 r9999I main     OLoc     5382 loco [S 3/6 BR18.4 gr] enterside=[-]
+20171224.101036.868 r9999I main     OLoc     5343 no restore wanted: reset speed for loco [S 3/6 BR18.4 sw]
+20171224.101036.868 r9999I main     OLoc     5347 no restore wanted: reset functions for loco [S 3/6 BR18.4 sw]
+20171224.101036.868 r9999I main     OLib     0038 rocs_lib_load OK [C:\Program Files\Rocrail\./lcdriver.dll]
+20171224.101036.868 r9999I main     OLib     0052 rocs_lib_getProc OK [C:\Program Files\Rocrail\./lcdriver.dll:rocGetLcDrInt]
+20171224.101036.868 r9999I 00000350 OLcDrive 0842 LcDriver 2.0.0 loaded for S 3/6 BR18.4 sw
+20171224.101036.868 r9999I main     OLoc     5382 loco [S 3/6 BR18.4 sw] enterside=[+]
+20171224.101036.868 r9999I main     OLoc     5343 no restore wanted: reset speed for loco [DIESEL 221 rot]
+20171224.101036.868 r9999I main     OLoc     5347 no restore wanted: reset functions for loco [DIESEL 221 rot]
+20171224.101036.868 r9999I main     OLib     0038 rocs_lib_load OK [C:\Program Files\Rocrail\./lcdriver.dll]
+20171224.101036.868 r9999I main     OLib     0052 rocs_lib_getProc OK [C:\Program Files\Rocrail\./lcdriver.dll:rocGetLcDrInt]
+20171224.101036.868 r9999I 00000350 OLcDrive 0842 LcDriver 2.0.0 loaded for DIESEL 221 rot
+20171224.101036.868 r9999I main     OLoc     5382 loco [DIESEL 221 rot] enterside=[-]
+20171224.101036.868 r9999I main     OLoc     5343 no restore wanted: reset speed for loco [Kittel]
+20171224.101036.868 r9999I main     OLoc     5347 no restore wanted: reset functions for loco [Kittel]
+20171224.101036.868 r9999I main     OLib     0038 rocs_lib_load OK [C:\Program Files\Rocrail\./lcdriver.dll]
+20171224.101036.868 r9999I main     OLib     0052 rocs_lib_getProc OK [C:\Program Files\Rocrail\./lcdriver.dll:rocGetLcDrInt]
+20171224.101036.868 r9999I 00000350 OLcDrive 0842 LcDriver 2.0.0 loaded for Kittel
+20171224.101036.868 r9999I main     OLoc     5382 loco [Kittel] enterside=[+]
+20171224.101036.868 r9999I main     OLocatio 0102 location Schattenbahnhof#1: MinOcc=0 Fifo=1
+20171224.101036.868 r9999I main     OLocatio 0140 cold start; add [S 3/6 BR18.4 gr] to the arrived list
+20171224.101036.868 r9999I main     OLocatio 0140 cold start; add [DAMPF2] to the arrived list
+20171224.101036.868 r9999I main     OLocatio 0140 cold start; add [S 3/6 BR18.4 sw] to the arrived list
+20171224.101036.868 r9999I main     OLocatio 0140 cold start; add [Ae3/6II SBB ] to the arrived list
+20171224.101036.868 r9999I main     OLocatio 0140 cold start; add [Kompressorlok] to the arrived list
+20171224.101036.868 r9999I main     OLocatio 0122 inform loco S 3/6 BR18.4 gr that its on FiFo top in location Schattenbahnhof#1
+20171224.101036.868 r9999I main     OLocatio 0102 location Hauptbahnhof: MinOcc=0 Fifo=1
+20171224.101036.868 r9999I main     OLocatio 0140 cold start; add [Dampf grau] to the arrived list
+20171224.101036.868 r9999I main     OLocatio 0122 inform loco Dampf grau that its on FiFo top in location Hauptbahnhof
+20171224.101036.868 r9999I main     OModel   4589 init creatingFbAddrMap...
+20171224.101036.868 r9999I main     OModel   3013 createSwAddrMap: size=33.
+20171224.101036.868 r9999I main     OModel   3034 createCoAddrMap: size=0.
+20171224.101036.868 r9999I main     OControl 2519 devices: ""
+20171224.101036.868 r9999I main     OControl 2053 initDigInts lib=[ecos] iid=[esu]
+20171224.101036.884 r9999I main     OLib     0038 rocs_lib_load OK [C:\Program Files\Rocrail\ecos.dll]
+20171224.101036.884 r9999I main     OLib     0052 rocs_lib_getProc OK [C:\Program Files\Rocrail\ecos.dll:rocGetDigInt]
+20171224.101036.884 r9999c 00000350 OECoS    2630 ----------------------------------------
+20171224.101036.884 r9999c 00000350 OECoS    2631 ECoS 2.0.0
+20171224.101036.884 r9999c 00000350 OECoS    2632   host: 192.168.178.61
+20171224.101036.884 r9999c 00000350 OECoS    2633   port: 15471
+20171224.101036.884 r9999c 00000350 OECoS    2634   ver.: 0
+20171224.101036.884 r9999c 00000350 OECoS    2635   sync: yes
+20171224.101036.884 r9999c 00000350 OECoS    2636 ----------------------------------------
+20171224.101036.884 r9999c 00000350 OECoS    2637 iOECoS[esu] 192.168.178.61:15471
+20171224.101036.884 r9999I main     OControl 2139 initDigInts OK
+20171224.101036.884 r9999c ecosread OECoS    2559 reader started
+20171224.101036.884 r9999I main     OPowerMa 0559 Power Manager instantiated.
+20171224.101036.884 r9999I main     OControl 0184 Init short circuit sensor...
+20171224.101036.884 r9999I main     OModel   6898 loading occupancy file [occ.xml]
+20171224.101036.884 r9999I clocktic OControl 2344 ClockTicker started.
+20171224.101036.884 r9999I checker  OControl 2437 Checker started.
+20171224.101036.899 r9999I main     OModel   6955 restore loco placing for [S 3/6 BR18.4 gr] bkid=[B1] section=[] enterside=2 placing=1
+20171224.101036.899 r9999I main     OModel   6966 set enterside to [min] for [S 3/6 BR18.4 gr]
+20171224.101036.899 r9999I main     OModel   6971 set placing to [default] for [S 3/6 BR18.4 gr]
+20171224.101036.899 r9999I main     OModel   7006 block [B1]
+20171224.101036.899 r9999I main     OModel   6955 restore loco placing for [DAMPF2] bkid=[B2] section=[] enterside=2 placing=1
+20171224.101036.899 r9999I main     OModel   6966 set enterside to [min] for [DAMPF2]
+20171224.101036.899 r9999I main     OModel   6971 set placing to [default] for [DAMPF2]
+20171224.101036.899 r9999I main     OModel   7006 block [B2]
+20171224.101036.899 r9999I main     OModel   6955 restore loco placing for [S 3/6 BR18.4 sw] bkid=[B3] section=[] enterside=1 placing=1
+20171224.101036.899 r9999I main     OModel   6966 set enterside to [plus] for [S 3/6 BR18.4 sw]
+20171224.101036.899 r9999I main     OModel   6971 set placing to [default] for [S 3/6 BR18.4 sw]
+20171224.101036.899 r9999I main     OModel   7006 block [B3]
+20171224.101036.899 r9999I main     OModel   7006 block [B4]
+20171224.101036.899 r9999I main     OModel   6955 restore loco placing for [Ae3/6II SBB ] bkid=[B5] section=[] enterside=1 placing=1
+20171224.101036.899 r9999I main     OModel   6966 set enterside to [plus] for [Ae3/6II SBB ]
+20171224.101036.899 r9999I main     OModel   6971 set placing to [default] for [Ae3/6II SBB ]
+20171224.101036.899 r9999I main     OModel   7006 block [B5]
+20171224.101036.899 r9999I main     OModel   7006 block [B6]
+20171224.101036.899 r9999I main     OModel   7006 block [B7]
+20171224.101036.899 r9999I main     OModel   6955 restore loco placing for [Kompressorlok] bkid=[B8] section=[] enterside=1 placing=0
+20171224.101036.899 r9999I main     OModel   6966 set enterside to [plus] for [Kompressorlok]
+20171224.101036.899 r9999I main     OModel   7006 block [B8]
+20171224.101036.899 r9999I main     OModel   6955 restore loco placing for [DIESEL 221 rot] bkid=[B9] section=[] enterside=2 placing=1
+20171224.101036.899 r9999I main     OModel   6966 set enterside to [min] for [DIESEL 221 rot]
+20171224.101036.899 r9999I main     OModel   6971 set placing to [default] for [DIESEL 221 rot]
+20171224.101036.899 r9999I main     OModel   7006 block [B9]
+20171224.101036.899 r9999I main     OModel   7006 block [B10]
+20171224.101036.899 r9999I main     OModel   7006 block [B11]
+20171224.101036.899 r9999I main     OModel   7006 block [B12]
+20171224.101036.899 r9999I main     OModel   7006 block [B13]
+20171224.101036.899 r9999I main     OModel   6955 restore loco placing for [Dampf grau] bkid=[B14] section=[] enterside=2 placing=1
+20171224.101036.899 r9999I main     OModel   6966 set enterside to [min] for [Dampf grau]
+20171224.101036.899 r9999I main     OModel   6971 set placing to [default] for [Dampf grau]
+20171224.101036.899 r9999I main     OModel   7006 block [B14]
+20171224.101036.899 r9999I main     OModel   7006 block [B15]
+20171224.101036.899 r9999I main     OModel   7006 block [B16]
+20171224.101036.899 r9999I main     OModel   7006 block [B17]
+20171224.101036.899 r9999I main     OModel   7006 block [B18]
+20171224.101036.899 r9999I main     OModel   7006 block [B19]
+20171224.101036.899 r9999I main     OModel   7006 block [B20]
+20171224.101036.899 r9999I main     OModel   7006 block [B21]
+20171224.101036.899 r9999I main     OModel   7006 block [B22]
+20171224.101036.899 r9999I main     OModel   7006 block [B23]
+20171224.101036.899 r9999I main     OModel   7006 block [B24]
+20171224.101036.899 r9999I main     OModel   4596 init blocks...
+20171224.101036.899 r9999I main     OBlock   3311 init block B1
+20171224.101036.899 r9999I main     OBlock   3311 init block B2
+20171224.101036.899 r9999I main     OBlock   3311 init block B3
+20171224.101036.899 r9999I main     OBlock   3311 init block B4
+20171224.101036.899 r9999I main     OBlock   3311 init block B5
+20171224.101036.899 r9999I main     OBlock   3311 init block B6
+20171224.101036.899 r9999I main     OBlock   3311 init block B7
+20171224.101036.899 r9999I main     OBlock   3311 init block B8
+20171224.101036.899 r9999I main     OBlock   3311 init block B9
+20171224.101036.899 r9999I main     OBlock   3311 init block B10
+20171224.101036.899 r9999I main     OBlock   3311 init block B11
+20171224.101036.899 r9999I main     OBlock   3311 init block B12
+20171224.101036.899 r9999I main     OBlock   3311 init block B13
+20171224.101036.899 r9999I main     OBlock   3311 init block B14
+20171224.101036.899 r9999I main     OBlock   3311 init block B15
+20171224.101036.899 r9999I main     OBlock   3311 init block B16
+20171224.101036.899 r9999I main     OBlock   3311 init block B17
+20171224.101036.899 r9999I main     OBlock   3311 init block B18
+20171224.101036.899 r9999I main     OBlock   3311 init block B19
+20171224.101036.899 r9999I main     OBlock   3311 init block B20
+20171224.101036.899 r9999I main     OBlock   3311 init block B21
+20171224.101036.899 r9999I main     OBlock   3311 init block B22
+20171224.101036.899 r9999I main     OBlock   3311 init block B23
+20171224.101036.899 r9999I main     OBlock   3311 init block B24
+20171224.101036.899 r9999I main     OCompeti 0269 competition ready to go...
+20171224.101036.899 r9999I makeWeat OWeather 0853 make weather started...
+20171224.101036.899 r9999I lightrun OLightCt 0123 light control started...
+20171224.101036.899 r9999I main     OClntCon 0858 ClientConnection started on port 8051.
+20171224.101036.899 r9999I cconmngr OClntCon 0409 Manager started.
+20171224.101036.899 r9999I broadcas OClntCon 0556 Broadcaster started.
+20171224.101036.915 r9999I main     OLib     0038 rocs_lib_load OK [C:\Program Files\Rocrail\rocabox.dll]
+20171224.101036.915 r9999I main     OLib     0052 rocs_lib_getProc OK [C:\Program Files\Rocrail\rocabox.dll:getArchiveBox]
+20171224.101036.915 r9999I main     OSystem  0552 no key
+20171224.101036.915 r9999I 00000350 OArchive 0504 ------------------------------------------------------------
+20171224.101036.915 r9999I 00000350 OArchive 0505 @Box
+20171224.101036.915 r9999I 00000350 OArchive 0506   home     = [abox]
+20171224.101036.915 r9999I 00000350 OArchive 0507   readonly = [true]
+20171224.101036.915 r9999I 00000350 OArchive 0508   Copyright (c) 2002-2017 Robert Jan Versluis, Rocrail.net
+20171224.101036.915 r9999I 00000350 OArchive 0509   All rights reserved.
+20171224.101036.915 r9999I 00000350 OArchive 0510 ------------------------------------------------------------
+20171224.101036.915 r9999I 00000350 OArchive 0397 read ini [abox\rocabox.ini]
+20171224.101036.931 r9999I 00000350 OArchive 0415 categories = []
+20171224.101036.931 r9999I main     OModel   2284 Checking all Loco's for V=0...
+20171224.101036.946 r9999I cconmngr OClntCon 0429 client connect count: 1
+20171224.101036.946 r9999I cmdr0624 OClntCon 0255 cmdReader started for:127.0.0.1.
+20171224.101036.946 r9999I infw0624 OClntCon 0109 infoWriter started for:127.0.0.1.
+20171224.101037.087 r9999I main     OModel   4293 init Track Driver blocks...
+20171224.101037.087 r9999I main     OModel   0729 updateFB
+20171224.101037.087 r9999I main     OModel   0715 add bus 0, 0,1,2,3,4,5,6,8,9...
+20171224.101037.087 r9999I main     OModel   0734 update Boosters...
+20171224.101037.384 r9999I Kittel   OLoc     2465 Runner for "Kittel" started.
+20171224.101037.384 r9999I DIESEL 2 OLoc     2465 Runner for "DIESEL 221 rot" started.
+20171224.101037.384 r9999I S 3/6 BR OLoc     2465 Runner for "S 3/6 BR18.4 sw" started.
+20171224.101037.384 r9999I S 3/6 BR OLoc     2465 Runner for "S 3/6 BR18.4 gr" started.
+20171224.101037.384 r9999I Schwarz  OLoc     2465 Runner for "Schwarz Diesel" started.
+20171224.101037.384 r9999I BR10     OLoc     2465 Runner for "BR10" started.
+20171224.101037.384 r9999I Kompress OLoc     2465 Runner for "Kompressorlok" started.
+20171224.101037.384 r9999I Dampf gr OLoc     2465 Runner for "Dampf grau" started.
+20171224.101037.384 r9999I Ae3/6II  OLoc     2465 Runner for "Ae3/6II SBB " started.
+20171224.101037.384 r9999I DAMPF2   OLoc     2465 Runner for "DAMPF2" started.
+20171224.101037.977 r9999I cmdr0624 OClntCon 0316 monitoring for client is on
+20171224.101037.977 r9999I cmdr0624 OClntCon 0332 client has control access
+20171224.101037.977 r9999I cmdr0624 OSocket  0887 address 0 = 192.168.178.78
+20171224.101037.977 r9999I cmdr0624 OSystem  0552 no key
+20171224.101037.977 r9999I cmdr0624 OModel   2769 no valid donation key found
+20171224.101038.650 r9999I cmdr0624 OModel   2831 Sending 0 fstats to client...
+20171224.101057.923 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101057.923 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101119.964 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101119.964 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101141.994 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101141.994 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101204.012 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101204.013 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101226.032 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101226.032 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101248.056 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101248.056 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101310.103 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101310.103 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101332.131 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101332.131 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101354.149 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101354.150 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101416.169 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101416.169 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101438.181 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101438.182 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101500.200 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101500.201 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101522.243 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101522.243 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101544.278 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101544.278 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101606.322 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101606.322 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101628.369 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101628.369 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101650.400 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101650.400 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101712.423 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101712.423 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101734.463 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101734.463 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101756.509 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101756.509 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101818.541 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101818.541 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101840.587 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101840.587 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101851.165 r9999I cmdr0624 OModel   0749 adding sc Bahnhöfe...
+20171224.101851.165 r9999I cmdr0624 OModel   1059 new item added sc Bahnhöfe
+20171224.101902.637 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101902.637 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101903.230 r9999I cmdr0624 sc       1543 schedule id=[Hauptbahnhöfe] prev_id[Bahnhöfe] id[Bahnhöfe]
+20171224.101903.230 r9999I cmdr0624 sc       1547 modify schedule[Hauptbahnhöfe]
+20171224.101915.973 r9999I cmdr0624 sc       1543 schedule id=[Hauptbahnhöfe] prev_id[Hauptbahnhöfe] id[Hauptbahnhöfe]
+20171224.101915.973 r9999I cmdr0624 sc       1547 modify schedule[Hauptbahnhöfe]
+20171224.101921.306 r9999I cmdr0624 sc       1543 schedule id=[Hauptbahnhöfe] prev_id[Hauptbahnhöfe] id[Hauptbahnhöfe]
+20171224.101921.306 r9999I cmdr0624 sc       1547 modify schedule[Hauptbahnhöfe]
+20171224.101924.681 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101924.681 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.101946.712 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.101946.712 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102008.731 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102008.731 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102030.775 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102030.775 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102052.817 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102052.817 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102114.845 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102114.845 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102136.869 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102136.869 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102158.903 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102158.903 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102220.932 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102220.932 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102242.967 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102242.967 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102304.994 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102304.994 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102305.103 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks...
+20171224.102305.103 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks
+20171224.102327.026 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102327.026 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102349.058 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102349.058 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102403.369 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks01...
+20171224.102403.369 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks01
+20171224.102411.104 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102411.104 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102433.142 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102433.142 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102455.166 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102455.167 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102517.210 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102517.210 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102531.901 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks02...
+20171224.102531.901 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks02
+20171224.102539.244 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102539.244 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102542.916 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks03...
+20171224.102542.916 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks03
+20171224.102550.485 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks04...
+20171224.102550.485 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks04
+20171224.102601.260 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102601.260 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102607.838 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks05...
+20171224.102607.838 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks05
+20171224.102615.901 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks06...
+20171224.102615.901 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks06
+20171224.102623.104 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks07...
+20171224.102623.104 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks07
+20171224.102623.310 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102623.310 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102630.961 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks08...
+20171224.102630.961 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks08
+20171224.102645.353 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102645.353 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102707.385 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102707.385 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102729.416 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102729.416 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102751.455 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102751.455 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102813.479 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102813.479 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102815.534 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks04...
+20171224.102815.534 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks04
+20171224.102835.530 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102835.530 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102857.572 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102857.572 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102919.615 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102919.615 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102941.644 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.102941.644 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.102945.667 r9999s cmdr0624 OModel   3039 Saving plan [plan.xml]...
+20171224.102945.776 r9999I cmdr0624 OModel   3080 Serialized Plan=230138
+20171224.102945.776 r9999I cmdr0624 OModel   0337 backup plan.xml to backup\20171224102945776-plan.xml
+20171224.102945.792 r9999I cmdr0624 OModel   0368 230138 bytes saved in plan.xml.
+20171224.102945.792 r9999s cmdr0624 OModel   3085 Plan file saved.
+20171224.102947.144 r9999s cmdr0624 OModel   3039 Saving plan [plan.xml]...
+20171224.102947.269 r9999I cmdr0624 OModel   3080 Serialized Plan=230138
+20171224.102947.269 r9999I cmdr0624 OModel   0337 backup plan.xml to backup\20171224102947269-plan.xml
+20171224.102947.284 r9999I cmdr0624 OModel   0368 230138 bytes saved in plan.xml.
+20171224.102947.284 r9999s cmdr0624 OModel   3085 Plan file saved.
+20171224.103003.689 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.103003.689 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.103025.715 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.103025.715 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.103028.939 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks01A...
+20171224.103028.939 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks01A
+20171224.103032.182 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks02A...
+20171224.103032.182 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks02A
+20171224.103037.440 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks03A...
+20171224.103037.440 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks03A
+20171224.103040.880 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks04A...
+20171224.103040.880 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks04A
+20171224.103043.623 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks05A...
+20171224.103043.623 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks05A
+20171224.103046.706 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks06A...
+20171224.103046.706 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks06A
+20171224.103047.760 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.103047.760 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.103050.164 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks07A...
+20171224.103050.164 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks07A
+20171224.103053.564 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks08A...
+20171224.103053.564 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks08A
+20171224.103109.776 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.103109.776 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.103114.740 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks01B...
+20171224.103114.740 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks01B
+20171224.103125.854 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks02B...
+20171224.103125.854 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks02B
+20171224.103131.791 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.103131.791 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.103134.432 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks03B...
+20171224.103134.432 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks03B
+20171224.103143.417 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks04B...
+20171224.103143.417 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks04B
+20171224.103153.385 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks05B...
+20171224.103153.385 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks05B
+20171224.103153.807 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.103153.807 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.103203.005 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks06B...
+20171224.103203.021 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks06B
+20171224.103210.492 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks07B...
+20171224.103210.492 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks07B
+20171224.103215.838 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.103215.838 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.103217.108 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks08B...
+20171224.103217.108 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks08B
+20171224.103230.589 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks01C...
+20171224.103230.589 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks01C
+20171224.103237.854 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.103237.854 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.103239.754 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks02C...
+20171224.103239.754 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks02C
+20171224.103246.338 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks03C...
+20171224.103246.338 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks03C
+20171224.103254.025 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks04C...
+20171224.103254.025 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks04C
+20171224.103259.885 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.103259.885 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.103301.854 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks05C...
+20171224.103301.854 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks05C
+20171224.103308.776 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks06C...
+20171224.103308.776 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks06C
+20171224.103316.589 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks07C...
+20171224.103316.589 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks07C
+20171224.103321.917 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.103321.917 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.103323.208 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks08C...
+20171224.103323.208 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks08C
+20171224.103332.026 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks01D...
+20171224.103332.026 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks01D
+20171224.103341.524 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks02D...
+20171224.103341.524 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks02D
+20171224.103343.964 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.103343.964 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.103348.761 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks03D...
+20171224.103348.776 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks03D
+20171224.103357.425 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks04D...
+20171224.103357.425 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks04D
+20171224.103405.999 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.103405.999 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.103408.374 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks05D...
+20171224.103408.374 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks05D
+20171224.103415.401 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks06D...
+20171224.103415.401 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks06D
+20171224.103422.647 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks07D...
+20171224.103422.662 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks07D
+20171224.103428.026 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.103428.026 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.103430.785 r9999I cmdr0624 OModel   0749 adding link BahnhöfeLinks08D...
+20171224.103430.785 r9999I cmdr0624 OModel   1059 new item added link BahnhöfeLinks08D
+20171224.103446.346 r9999s cmdr0624 OModel   3039 Saving plan [plan.xml]...
+20171224.103446.455 r9999I cmdr0624 OModel   3080 Serialized Plan=233482
+20171224.103446.455 r9999I cmdr0624 OModel   0337 backup plan.xml to backup\20171224103446455-plan.xml
+20171224.103446.471 r9999I cmdr0624 OModel   0368 233482 bytes saved in plan.xml.
+20171224.103446.471 r9999s cmdr0624 OModel   3085 Plan file saved.
+20171224.103450.056 r9999E ecosinit OSocket  0330 connect(192.168.178.61:15471) failed [10060]
+20171224.103450.056 r9999E ecosinit OECoS    0759 ERROR connecting to ECoS at 192.168.178.61:15471
+20171224.103454.884 r9999I cmdr0624 OApp     1339 SHUTDOWN
+20171224.103454.884 r9999I cmdr0624 OModel   2599 informing 11 listeners of a system event name=sys val=shutdown...
+20171224.103454.884 r9999I cmdr0624 OApp     1349 Informing clients...
+20171224.103454.978 r9999I Ae3/6II  OLoc     2682 Runner for "Ae3/6II SBB " ended.
+20171224.103454.978 r9999I Kompress OLoc     2682 Runner for "Kompressorlok" ended.
+20171224.103454.978 r9999I S 3/6 BR OLoc     2682 Runner for "S 3/6 BR18.4 gr" ended.
+20171224.103454.978 r9999I DIESEL 2 OLoc     2682 Runner for "DIESEL 221 rot" ended.
+20171224.103454.978 r9999I Dampf gr OLoc     2682 Runner for "Dampf grau" ended.
+20171224.103454.978 r9999I DAMPF2   OLoc     2682 Runner for "DAMPF2" ended.
+20171224.103454.978 r9999I BR10     OLoc     2682 Runner for "BR10" ended.
+20171224.103454.978 r9999I Kittel   OLoc     2682 Runner for "Kittel" ended.
+20171224.103454.978 r9999I checker  OControl 2459 Checker ended.
+20171224.103454.978 r9999I S 3/6 BR OLoc     2682 Runner for "S 3/6 BR18.4 sw" ended.
+20171224.103454.978 r9999I Schwarz  OLoc     2682 Runner for "Schwarz Diesel" ended.
+20171224.103455.103 r9999E cconmngr OSocket  0728 accept() failed [10004]
+20171224.103455.103 r9999I cconmngr OClntCon 0443 Manager ended.
+20171224.103455.209 r9999I cmdr0624 OApp     1363 Informing model...
+20171224.103455.209 r9999s cmdr0624 OModel   3039 Saving plan [plan.xml]...
+20171224.103455.334 r9999I cmdr0624 OModel   3080 Serialized Plan=233482
+20171224.103455.334 r9999I cmdr0624 OModel   0337 backup plan.xml to backup\20171224103455334-plan.xml
+20171224.103455.350 r9999I cmdr0624 OModel   0368 233482 bytes saved in plan.xml.
+20171224.103455.350 r9999s cmdr0624 OModel   3085 Plan file saved.
+20171224.103455.366 r9999I cmdr0624 OModel   6850 writing occupancy file [occ.xml]
+20171224.103455.366 r9999I cmdr0624 OApp     1378 Informing all threads...
+20171224.103455.366 r9999W cmdr0624 OApp     1382 Shutting down because of [System command]
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[0] <clockticker> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[1] <S 3/6 BR18.4 gr> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[2] <Kittel> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[3] <Schwarz Diesel> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[4] <Kompressorlok> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[5] <DIESEL 221 rot> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[6] <tick031D8244> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[7] <cmdr0624D944> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[8] <lightrunner> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[9] <BR10> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[10] <infw0624D944> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[11] <broadcast> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[12] <S 3/6 BR18.4 sw> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[13] <Ae3/6II SBB > still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[14] <Dampf grau> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[15] <makeWeather> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[16] <checker> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[17] <cconmngr> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[18] <memwatch> still active.
+20171224.103455.366 r9999I cmdr0624 OApp     1393 Thread[19] <DAMPF2> still active.
+20171224.103455.366 r9999I cmdr0624 OHttp    0446 Shutting down HTTP...
+20171224.103455.413 r9999I makeWeat OWeather 0888 make weather ended...
+20171224.103455.553 r9999I lightrun OLightCt 0329 light control ended...
+20171224.103455.839 r9999I clocktic OControl 2425 ClockTicker ended.
+20171224.103456.518 r9999I cmdr0624 OApp     1435 Informing controller...
+20171224.103456.518 r9999I cmdr0624 OControl 2155 Shutting down...
+20171224.103456.518 r9999I cmdr0624 OControl 2160 Informing interfaces...
+20171224.103456.518 r9999c 00002B10 OECoS    1325 Power OFF
+20171224.103456.518 r9999E 00002B10 OECoS    0431 ERROR: Socket is not connected
+20171224.103456.518 r9999E 00002B10 OECoS    0431 ERROR: Socket is not connected
+20171224.103456.518 r9999E 00002B10 OECoS    0431 ERROR: Socket is not connected
+20171224.103456.518 r9999E 00002B10 OECoS    0431 ERROR: Socket is not connected
+20171224.103456.518 r9999E 00002B10 OECoS    0431 ERROR: Socket is not connected
+20171224.103456.518 r9999E 00002B10 OECoS    0431 ERROR: Socket is not connected
+20171224.103456.518 r9999E 00002B10 OECoS    0431 ERROR: Socket is not connected
+20171224.103456.534 r9999c ecosread OECoS    2588 reader stopped
+20171224.103457.026 r9999I cmdr0624 OApp     1285 backing up rocrail.ini to rocrail.ini.bak...
+20171224.103457.030 r9999I cmdr0624 OApp     1316 saving ini rocrail.ini...
+20171224.103457.035 r9999I cmdr0624 OApp     1440 Exit.
+20171224.103457.046 r9999I cmdr0624 OClntCon 0397 Server ended.
+20171224.103457.046 r9999R infw0624 OClntCon 0155 InfoService() waitPost returns NULL!
+20171224.103457.072 r9999I infw0624 OClntCon 0177 InfoService ended.

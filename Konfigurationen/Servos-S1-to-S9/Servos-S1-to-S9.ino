@@ -41,7 +41,7 @@
 // Fill in these 2 values ...
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const byte maxservos = 11; //The number of servos you have connected to this Arduino
-const byte servotimer = 45; //Servo angle change timer. Lower value -> higher speed
+const byte servotimer = 25; //Servo angle change timer. Lower value -> higher speed
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 unsigned long timetoupdatesetpoint = millis() + servotimer;
@@ -135,8 +135,8 @@ void ConfigureFunctionsAndServos()
   servos[9].address = 29;
   servos[9].outputPin = 13;
   servos[9].servo.attach(12);
-  servos[9].offangle = 71;
-  servos[9].onangle = 116;
+  servos[9].offangle = 81;
+  servos[9].onangle = 105;
 
   // S9
   servos[10].address = 30;
