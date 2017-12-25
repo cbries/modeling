@@ -7,24 +7,6 @@
 // Many thanks to www.mynabay.com for publishing their DCC monitor and -decoder code, which is used in this sketch.
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#define portOfPin(P)\
-  (((P)>=0&&(P)<8)?&PORTD:(((P)>7&&(P)<14)?&PORTB:&PORTC))
-#define ddrOfPin(P)\
-  (((P)>=0&&(P)<8)?&DDRD:(((P)>7&&(P)<14)?&DDRB:&DDRC))
-#define pinOfPin(P)\
-  (((P)>=0&&(P)<8)?&PIND:(((P)>7&&(P)<14)?&PINB:&PINC))
-#define pinIndex(P)((uint8_t)(P>13?P-14:P&7))
-#define pinMask(P)((uint8_t)(1<<pinIndex(P)))
-
-#define pinAsInput(P) *(ddrOfPin(P))&=~pinMask(P)
-#define pinAsInputPullUp(P) *(ddrOfPin(P))&=~pinMask(P);digitalHigh(P)
-#define pinAsOutput(P) *(ddrOfPin(P))|=pinMask(P)
-#define digitalLow(P) *(portOfPin(P))&=~pinMask(P)
-#define digitalHigh(P) *(portOfPin(P))|=pinMask(P)
-#define isHigh(P)((*(pinOfPin(P))& pinMask(P))>0)
-#define isLow(P)((*(pinOfPin(P))& pinMask(P))==0)
-#define digitalState(P)((uint8_t)isHigh(P))
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // IMPORTANT: GOTO lines 23 and 44 to configure some data!
 // IMPORTANT: To avoid servo movement and possible high current draw at startup:
@@ -41,7 +23,7 @@
 // Fill in these 2 values ...
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const byte maxservos = 11; //The number of servos you have connected to this Arduino
-const byte servotimer = 25; //Servo angle change timer. Lower value -> higher speed
+const byte servotimer = 10; //Servo angle change timer. Lower value -> higher speed
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 unsigned long timetoupdatesetpoint = millis() + servotimer;
@@ -191,8 +173,8 @@ void setup()
   DCC.SetupDecoder( 0x00, 0x00, kDCC_INTERRUPT );
   pinMode(2, INPUT_PULLUP); //Interrupt 0 with internal pull up resistor (can get rid of external 10k)
   
-  pinMode(13, OUTPUT);
-  digitalWrite(13, LOW);
+  //pinMode(13, OUTPUT);
+  //digitalWrite(13, LOW);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -208,16 +190,18 @@ void loop()
     addr = 0; 
 
   // Set servos output pin
-  if (servos[addr].output) 
-    digitalWrite(servos[addr].outputPin, HIGH);
-  else 
-    digitalWrite(servos[addr].outputPin, LOW);
+//  if (servos[addr].output) 
+//    digitalWrite(servos[addr].outputPin, HIGH);
+//  else 
+//    digitalWrite(servos[addr].outputPin, LOW);
+
 /*
   if (servos[addr].output) 
     digitalHigh(servos[addr].outputPin);
   else 
     digitalLow(servos[addr].outputPin); 
 */  
+
   // Every 'servotimer' ms, modify setpoints and move servos 1 step (if needed)
   if (millis() > timetoupdatesetpoint)
 	{
@@ -232,6 +216,7 @@ void loop()
 
       if (servos[n].angle < servos[n].setpoint) 
         servos[n].angle++;
+      
       if (servos[n].angle > servos[n].setpoint) 
         servos[n].angle--;
       
