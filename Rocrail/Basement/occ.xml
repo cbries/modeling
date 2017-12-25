@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <modocc>
-  <occ bkid="B1" lcid="DIESEL 221 rot" auto="false" closed="false" placing="1" blockenterside="2"/>
-  <occ bkid="B2" lcid="S 3/6 BR18.4 sw" auto="false" closed="false" placing="1" blockenterside="1"/>
-  <occ bkid="B3" lcid="" auto="false" closed="false" placing="0" blockenterside="2"/>
-  <occ bkid="B4" auto="false" closed="false" placing="1" blockenterside="1" lcid="Ae3/6II SBB "/>
-  <occ bkid="B5" lcid="" auto="false" closed="false" placing="0" blockenterside="1"/>
-  <occ bkid="B6" auto="false" closed="false" placing="0" blockenterside="1" lcid=""/>
-  <occ bkid="B7" lcid="" auto="false" closed="false" placing="0" blockenterside="1"/>
-  <occ bkid="B8" lcid="S 3/6 BR18.4 gr" auto="false" closed="false" placing="1" blockenterside="2"/>
-  <occ bkid="B9" auto="false" closed="false" placing="0" blockenterside="1" lcid=""/>
+  <occ bkid="B01" lcid="DIESEL 221 rot" auto="false" closed="false" placing="1" blockenterside="2"/>
+  <occ bkid="B02" lcid="S 3/6 BR18.4 sw" auto="false" closed="false" placing="1" blockenterside="1"/>
+  <occ bkid="B03" lcid="" auto="false" closed="false" placing="0" blockenterside="2"/>
+  <occ bkid="B04" auto="false" closed="false" placing="1" blockenterside="1" lcid="Ae3/6II SBB "/>
+  <occ bkid="B05" lcid="" auto="false" closed="false" placing="0" blockenterside="1"/>
+  <occ bkid="B06" auto="false" closed="false" placing="0" blockenterside="1" lcid=""/>
+  <occ bkid="B07" lcid="" auto="false" closed="false" placing="0" blockenterside="1"/>
+  <occ bkid="B08" lcid="S 3/6 BR18.4 gr" auto="false" closed="false" placing="1" blockenterside="2"/>
+  <occ bkid="B09" auto="false" closed="false" placing="0" blockenterside="1" lcid=""/>
   <occ bkid="B10" auto="false" closed="true" placing="0" lcid=""/>
   <occ bkid="B11" auto="false" closed="true" placing="0" blockenterside="1" lcid=""/>
   <occ bkid="B12" auto="false" closed="false" placing="1" lcid="Dampf grau" blockenterside="2"/>
