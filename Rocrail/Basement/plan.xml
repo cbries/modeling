@@ -1424,6 +1424,599 @@
       <swcmd id="SK2" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
       <swcmd id="s23" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
     </st>
+    <st id="[B12+]-[B01+]" desc="" autogen="false" bka="B12" bkb="B01" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B12+]-[B01+]" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s01" type="sw" cmd="straight"/>
+      <swcmd id="s02" type="sw" cmd="straight"/>
+      <swcmd id="s03" type="sw" cmd="straight"/>
+      <swcmd id="s07" type="sw" cmd="straight"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s19" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13+]-[B01+]" desc="" autogen="false" bka="B13" bkb="B01" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B01+]-[B13+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s01" type="sw" cmd="straight"/>
+      <swcmd id="s02" type="sw" cmd="straight"/>
+      <swcmd id="s03" type="sw" cmd="straight"/>
+      <swcmd id="s07" type="sw" cmd="straight"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15-]-[B09-]" desc="" autogen="false" bka="B15" bkb="B09" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B09-]-[B15-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s09" type="sw" cmd="turnout"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="SK2" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14+]-[B09+]" desc="" autogen="false" bka="B14" bkb="B09" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B09+]-[B14+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s08" type="sw" cmd="turnout"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14-]-[B09-]" desc="" autogen="false" bka="B14" bkb="B09" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B09-]-[B14-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s09" type="sw" cmd="turnout"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="SK2" type="sw" cmd="left" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B12+]-[B09+]" desc="" autogen="false" bka="B12" bkb="B09" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B09+]-[B12+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s08" type="sw" cmd="turnout"/>
+      <swcmd id="s17" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s19" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13-]-[B09-]" desc="" autogen="false" bka="B13" bkb="B09" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B09-]-[B13-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s09" type="sw" cmd="turnout"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14-]-[B08-]" desc="" autogen="false" bka="B14" bkb="B08" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B08-]-[B14-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s11" type="sw" cmd="straight"/>
+      <swcmd id="s10" type="sw" cmd="turnout"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="SK2" type="sw" cmd="left" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B12-]-[B09-]" desc="" autogen="false" bka="B12" bkb="B09" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B09-]-[B12-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s09" type="sw" cmd="turnout"/>
+      <swcmd id="s22" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B12-]-[B08-]" desc="" autogen="false" bka="B12" bkb="B08" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B08-]-[B12-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s11" type="sw" cmd="straight"/>
+      <swcmd id="s10" type="sw" cmd="turnout"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15+]-[B09+]" desc="" autogen="false" bka="B15" bkb="B09" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B09+]-[B15+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s08" type="sw" cmd="turnout"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14+]-[B01+]" desc="" autogen="false" bka="B14" bkb="B01" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B01+]-[B14+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s01" type="sw" cmd="straight"/>
+      <swcmd id="s02" type="sw" cmd="straight"/>
+      <swcmd id="s03" type="sw" cmd="straight"/>
+      <swcmd id="s07" type="sw" cmd="straight"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13+]-[B09+]" desc="" autogen="false" bka="B13" bkb="B09" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B09+]-[B13+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s08" type="sw" cmd="turnout"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13-]-[B08-]" desc="" autogen="false" bka="B13" bkb="B08" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B08-]-[B13-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s11" type="sw" cmd="straight"/>
+      <swcmd id="s10" type="sw" cmd="turnout"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15-]-[B08-]" desc="" autogen="false" bka="B15" bkb="B08" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B08-]-[B15-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s11" type="sw" cmd="straight"/>
+      <swcmd id="s10" type="sw" cmd="turnout"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="SK2" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15+]-[B08+]" desc="" autogen="false" bka="B15" bkb="B08" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B08+]-[B15+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s06" type="sw" cmd="straight"/>
+      <swcmd id="s05" type="sw" cmd="straight"/>
+      <swcmd id="s04" type="sw" cmd="turnout"/>
+      <swcmd id="s07" type="sw" cmd="turnout"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15+]-[B07+]" desc="" autogen="false" bka="B15" bkb="B07" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B07+]-[B15+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s06" type="sw" cmd="turnout"/>
+      <swcmd id="s05" type="sw" cmd="straight"/>
+      <swcmd id="s04" type="sw" cmd="turnout"/>
+      <swcmd id="s07" type="sw" cmd="turnout"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B12-]-[B02-]" desc="" autogen="false" bka="B12" bkb="B02" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B02-]-[B12-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s14" type="sw" cmd="turnout"/>
+      <swcmd id="s16" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="straight"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14+]-[B08+]" desc="" autogen="false" bka="B14" bkb="B08" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B08+]-[B14+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s06" type="sw" cmd="straight"/>
+      <swcmd id="s05" type="sw" cmd="straight"/>
+      <swcmd id="s04" type="sw" cmd="turnout"/>
+      <swcmd id="s07" type="sw" cmd="turnout"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13+]-[B07+]" desc="" autogen="false" bka="B13" bkb="B07" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B07+]-[B13+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s06" type="sw" cmd="turnout"/>
+      <swcmd id="s05" type="sw" cmd="straight"/>
+      <swcmd id="s04" type="sw" cmd="turnout"/>
+      <swcmd id="s07" type="sw" cmd="turnout"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15-]-[B06-]" desc="" autogen="false" bka="B15" bkb="B06" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B06-]-[B15-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s13" type="sw" cmd="turnout"/>
+      <swcmd id="s12" type="sw" cmd="straight"/>
+      <swcmd id="s11" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="turnout"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="SK2" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B12+]-[B06+]" desc="" autogen="false" bka="B12" bkb="B06" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B06+]-[B12+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s05" type="sw" cmd="turnout"/>
+      <swcmd id="s04" type="sw" cmd="turnout"/>
+      <swcmd id="s07" type="sw" cmd="turnout"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s19" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13+]-[B08+]" desc="" autogen="false" bka="B13" bkb="B08" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B08+]-[B13+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s06" type="sw" cmd="straight"/>
+      <swcmd id="s05" type="sw" cmd="straight"/>
+      <swcmd id="s04" type="sw" cmd="turnout"/>
+      <swcmd id="s07" type="sw" cmd="turnout"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13-]-[B06-]" desc="" autogen="false" bka="B13" bkb="B06" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B06-]-[B13-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s13" type="sw" cmd="turnout"/>
+      <swcmd id="s12" type="sw" cmd="straight"/>
+      <swcmd id="s11" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="turnout"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B12+]-[B08+]" desc="" autogen="false" bka="B12" bkb="B08" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B08+]-[B12+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s06" type="sw" cmd="straight"/>
+      <swcmd id="s05" type="sw" cmd="straight"/>
+      <swcmd id="s04" type="sw" cmd="turnout"/>
+      <swcmd id="s07" type="sw" cmd="turnout"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s19" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15-]-[B07-]" desc="" autogen="false" bka="B15" bkb="B07" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B07-]-[B15-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s12" type="sw" cmd="turnout"/>
+      <swcmd id="s11" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="turnout"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="SK2" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B12-]-[B07-]" desc="" autogen="false" bka="B12" bkb="B07" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B07-]-[B12-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s12" type="sw" cmd="turnout"/>
+      <swcmd id="s11" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="turnout"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13+]-[B06+]" desc="" autogen="false" bka="B13" bkb="B06" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B06+]-[B13+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s05" type="sw" cmd="turnout"/>
+      <swcmd id="s04" type="sw" cmd="turnout"/>
+      <swcmd id="s07" type="sw" cmd="turnout"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14-]-[B07-]" desc="" autogen="false" bka="B14" bkb="B07" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B07-]-[B14-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s12" type="sw" cmd="turnout"/>
+      <swcmd id="s11" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="turnout"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="SK2" type="sw" cmd="left" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15+]-[B05+]" desc="" autogen="false" bka="B15" bkb="B05" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B05+]-[B15+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s04" type="sw" cmd="straight"/>
+      <swcmd id="s07" type="sw" cmd="turnout"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14-]-[B05-]" desc="" autogen="false" bka="B14" bkb="B05" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B05-]-[B14-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s13" type="sw" cmd="straight"/>
+      <swcmd id="s12" type="sw" cmd="straight"/>
+      <swcmd id="s11" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="turnout"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="SK2" type="sw" cmd="left" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13-]-[B07-]" desc="" autogen="false" bka="B13" bkb="B07" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B07-]-[B13-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s12" type="sw" cmd="turnout"/>
+      <swcmd id="s11" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="turnout"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B12-]-[B01-]" desc="" autogen="false" bka="B12" bkb="B01" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B01-]-[B12-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s16" type="sw" cmd="straight"/>
+      <swcmd id="s10" type="sw" cmd="straight"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14+]-[B05+]" desc="" autogen="false" bka="B14" bkb="B05" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B14+]-[B05+]" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s04" type="sw" cmd="straight"/>
+      <swcmd id="s07" type="sw" cmd="turnout"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B12-]-[B05-]" desc="" autogen="false" bka="B12" bkb="B05" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B05-]-[B12-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s13" type="sw" cmd="straight"/>
+      <swcmd id="s12" type="sw" cmd="straight"/>
+      <swcmd id="s11" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="turnout"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15+]-[B04+]" desc="" autogen="false" bka="B15" bkb="B04" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B04+]-[B15+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s03" type="sw" cmd="turnout"/>
+      <swcmd id="s07" type="sw" cmd="straight"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15+]-[B06+]" desc="" autogen="false" bka="B15" bkb="B06" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B06+]-[B15+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s05" type="sw" cmd="turnout"/>
+      <swcmd id="s04" type="sw" cmd="turnout"/>
+      <swcmd id="s07" type="sw" cmd="turnout"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B12+]-[B05+]" desc="" autogen="false" bka="B12" bkb="B05" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B05+]-[B12+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s04" type="sw" cmd="straight"/>
+      <swcmd id="s07" type="sw" cmd="turnout"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s19" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13-]-[B03-]" desc="" autogen="false" bka="B13" bkb="B03" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B03-]-[B13-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s15" type="sw" cmd="turnout"/>
+      <swcmd id="s14" type="sw" cmd="straight"/>
+      <swcmd id="s16" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="straight"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15-]-[B04-]" desc="" autogen="false" bka="B15" bkb="B04" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B04-]-[B15-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s15" type="sw" cmd="straight"/>
+      <swcmd id="s14" type="sw" cmd="straight"/>
+      <swcmd id="s16" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="straight"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="SK2" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14-]-[B01-]" desc="" autogen="false" bka="B14" bkb="B01" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B01-]-[B14-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s16" type="sw" cmd="straight"/>
+      <swcmd id="s10" type="sw" cmd="straight"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="SK2" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13+]-[B03+]" desc="" autogen="false" bka="B13" bkb="B03" bkaside="true" bkbside="true" show="false" x="0" y="0" prev_id="[B03+]-[B13+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" status="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s02" type="sw" cmd="turnout"/>
+      <swcmd id="s03" type="sw" cmd="straight"/>
+      <swcmd id="s07" type="sw" cmd="straight"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13-]-[B04-]" desc="" autogen="false" bka="B13" bkb="B04" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B04-]-[B13-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s15" type="sw" cmd="straight"/>
+      <swcmd id="s14" type="sw" cmd="straight"/>
+      <swcmd id="s16" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="straight"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13+]-[B05+]" desc="" autogen="false" bka="B13" bkb="B05" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B05+]-[B13+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s04" type="sw" cmd="straight"/>
+      <swcmd id="s07" type="sw" cmd="turnout"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B12-]-[B04-]" desc="" autogen="false" bka="B12" bkb="B04" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B04-]-[B12-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s15" type="sw" cmd="straight"/>
+      <swcmd id="s14" type="sw" cmd="straight"/>
+      <swcmd id="s16" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="straight"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B12-]-[B03-]" desc="" autogen="false" bka="B12" bkb="B03" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B03-]-[B12-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s15" type="sw" cmd="turnout"/>
+      <swcmd id="s14" type="sw" cmd="straight"/>
+      <swcmd id="s16" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="straight"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14-]-[B03-]" desc="" autogen="false" bka="B14" bkb="B03" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B03-]-[B14-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s15" type="sw" cmd="turnout"/>
+      <swcmd id="s14" type="sw" cmd="straight"/>
+      <swcmd id="s16" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="straight"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="SK2" type="sw" cmd="left" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14+]-[B07+]" desc="" autogen="false" bka="B14" bkb="B07" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B07+]-[B14+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s06" type="sw" cmd="turnout"/>
+      <swcmd id="s05" type="sw" cmd="straight"/>
+      <swcmd id="s04" type="sw" cmd="turnout"/>
+      <swcmd id="s07" type="sw" cmd="turnout"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15-]-[B05-]" desc="" autogen="false" bka="B15" bkb="B05" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B05-]-[B15-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s13" type="sw" cmd="straight"/>
+      <swcmd id="s12" type="sw" cmd="straight"/>
+      <swcmd id="s11" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="turnout"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="SK2" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13-]-[B05-]" desc="" autogen="false" bka="B13" bkb="B05" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B05-]-[B13-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s13" type="sw" cmd="straight"/>
+      <swcmd id="s12" type="sw" cmd="straight"/>
+      <swcmd id="s11" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="turnout"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14-]-[B04-]" desc="" autogen="false" bka="B14" bkb="B04" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B04-]-[B14-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s15" type="sw" cmd="straight"/>
+      <swcmd id="s14" type="sw" cmd="straight"/>
+      <swcmd id="s16" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="straight"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="SK2" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B12+]-[B07+]" desc="" autogen="false" bka="B12" bkb="B07" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B07+]-[B12+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s06" type="sw" cmd="turnout"/>
+      <swcmd id="s05" type="sw" cmd="straight"/>
+      <swcmd id="s04" type="sw" cmd="turnout"/>
+      <swcmd id="s07" type="sw" cmd="turnout"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s19" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14+]-[B06+]" desc="" autogen="false" bka="B14" bkb="B06" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B06+]-[B14+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s05" type="sw" cmd="turnout"/>
+      <swcmd id="s04" type="sw" cmd="turnout"/>
+      <swcmd id="s07" type="sw" cmd="turnout"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B12-]-[B06-]" desc="" autogen="false" bka="B12" bkb="B06" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B06-]-[B12-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s13" type="sw" cmd="turnout"/>
+      <swcmd id="s12" type="sw" cmd="straight"/>
+      <swcmd id="s11" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="turnout"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15-]-[B03-]" desc="" autogen="false" bka="B15" bkb="B03" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B03-]-[B15-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s15" type="sw" cmd="turnout"/>
+      <swcmd id="s14" type="sw" cmd="straight"/>
+      <swcmd id="s16" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="straight"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="SK2" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14-]-[B06-]" desc="" autogen="false" bka="B14" bkb="B06" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B06-]-[B14-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s13" type="sw" cmd="turnout"/>
+      <swcmd id="s12" type="sw" cmd="straight"/>
+      <swcmd id="s11" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="turnout"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s23" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14+]-[B04+]" desc="" autogen="false" bka="B14" bkb="B04" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B04+]-[B14+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s03" type="sw" cmd="turnout"/>
+      <swcmd id="s07" type="sw" cmd="straight"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13+]-[B04+]" desc="" autogen="false" bka="B13" bkb="B04" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B04+]-[B13+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s03" type="sw" cmd="turnout"/>
+      <swcmd id="s07" type="sw" cmd="straight"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B12+]-[B04+]" desc="" autogen="false" bka="B12" bkb="B04" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B04+]-[B12+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s03" type="sw" cmd="turnout"/>
+      <swcmd id="s07" type="sw" cmd="straight"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s19" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15+]-[B03+]" desc="" autogen="false" bka="B15" bkb="B03" bkaside="true" bkbside="true" show="false" x="0" y="0" prev_id="[B03+]-[B15+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" status="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s02" type="sw" cmd="turnout"/>
+      <swcmd id="s03" type="sw" cmd="straight"/>
+      <swcmd id="s07" type="sw" cmd="straight"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15-]-[B01-]" desc="" autogen="false" bka="B15" bkb="B01" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B15-]-[B01-]" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s16" type="sw" cmd="straight"/>
+      <swcmd id="s10" type="sw" cmd="straight"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="SK2" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14+]-[B03+]" desc="" autogen="false" bka="B14" bkb="B03" bkaside="true" bkbside="true" show="false" x="0" y="0" prev_id="[B03+]-[B14+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" status="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s02" type="sw" cmd="turnout"/>
+      <swcmd id="s03" type="sw" cmd="straight"/>
+      <swcmd id="s07" type="sw" cmd="straight"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B12+]-[B03+]" desc="" autogen="false" bka="B12" bkb="B03" bkaside="true" bkbside="true" show="false" x="0" y="0" prev_id="[B03+]-[B12+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" status="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s02" type="sw" cmd="turnout"/>
+      <swcmd id="s03" type="sw" cmd="straight"/>
+      <swcmd id="s07" type="sw" cmd="straight"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s19" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B12+]-[B02+]" desc="" autogen="false" bka="B12" bkb="B02" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B02+]-[B12+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s01" type="sw" cmd="turnout"/>
+      <swcmd id="s02" type="sw" cmd="straight"/>
+      <swcmd id="s03" type="sw" cmd="straight"/>
+      <swcmd id="s07" type="sw" cmd="straight"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s19" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15-]-[B02-]" desc="" autogen="false" bka="B15" bkb="B02" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B02-]-[B15-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s14" type="sw" cmd="turnout"/>
+      <swcmd id="s16" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="straight"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="SK2" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15+]-[B01+]" desc="" autogen="false" bka="B15" bkb="B01" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B01+]-[B15+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s01" type="sw" cmd="straight"/>
+      <swcmd id="s02" type="sw" cmd="straight"/>
+      <swcmd id="s03" type="sw" cmd="straight"/>
+      <swcmd id="s07" type="sw" cmd="straight"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14-]-[B02-]" desc="" autogen="false" bka="B14" bkb="B02" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B02-]-[B14-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s14" type="sw" cmd="turnout"/>
+      <swcmd id="s16" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="straight"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="SK2" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13-]-[B01-]" desc="" autogen="false" bka="B13" bkb="B01" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B01-]-[B13-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s16" type="sw" cmd="straight"/>
+      <swcmd id="s10" type="sw" cmd="straight"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13+]-[B02+]" desc="" autogen="false" bka="B13" bkb="B02" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B02+]-[B13+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s01" type="sw" cmd="turnout"/>
+      <swcmd id="s02" type="sw" cmd="straight"/>
+      <swcmd id="s03" type="sw" cmd="straight"/>
+      <swcmd id="s07" type="sw" cmd="straight"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B14+]-[B02+]" desc="" autogen="false" bka="B14" bkb="B02" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B02+]-[B14+] (copy)" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s01" type="sw" cmd="turnout"/>
+      <swcmd id="s02" type="sw" cmd="straight"/>
+      <swcmd id="s03" type="sw" cmd="straight"/>
+      <swcmd id="s07" type="sw" cmd="straight"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B13-]-[B02-]" desc="" autogen="false" bka="B13" bkb="B02" bkaside="false" bkbside="false" show="false" x="0" y="0" status="0" prev_id="[B02-]-[B13-] (copy)" nr="0" bkc="B17,B24" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s14" type="sw" cmd="turnout"/>
+      <swcmd id="s16" type="sw" cmd="turnout"/>
+      <swcmd id="s10" type="sw" cmd="straight"/>
+      <swcmd id="s09" type="sw" cmd="straight"/>
+      <swcmd id="s22" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s23" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
+    <st id="[B15+]-[B02+]" desc="" autogen="false" bka="B15" bkb="B02" bkaside="true" bkbside="true" show="false" x="0" y="0" status="0" prev_id="[B15+]-[B02+]" nr="0" bkc="B23,B16" modid="" sga="0" sgb="0" speed="none" speedWait="none" countcars="no" polarizationA="0" polarizationB="0" reduceV="true" whiteaspect="false" maxkmh="0" maxkmhWait="0" speedpercentWait="80" swappost="false" crossingblocksignals="false" manual="false" preferred="0" thrownswitches="false" routespeedatenter="false" generated="false" typeperm="" class="" era="0" maxlen="0" minlen="0" commuter="false" nocommuter="false" placing="0" automatic="0" ctciid1="" ctciid2="" ctciid3="" ctcuid1="" ctcuid2="" ctcuid3="" ctcbus1="0" ctcbus2="0" ctcbus3="0" ctcaddr1="0" ctcaddr2="0" ctcaddr3="0" ctcoutput1="" ctcoutput2="" ctcoutput3="" allconditions="false">
+      <swcmd id="s01" type="sw" cmd="turnout"/>
+      <swcmd id="s02" type="sw" cmd="straight"/>
+      <swcmd id="s03" type="sw" cmd="straight"/>
+      <swcmd id="s07" type="sw" cmd="straight"/>
+      <swcmd id="s08" type="sw" cmd="straight"/>
+      <swcmd id="s17" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s18" type="sw" cmd="straight" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+      <swcmd id="s20" type="sw" cmd="turnout" lock="true" protect="false" reduceV="true" atfree="false" mode="0"/>
+    </st>
   </stlist>
   <locationlist>
     <location id="Schattenbahnhof#1" prev_id="Schattenbahnhof#1" desc="" minocc="0" fifo="true" blocks="B1,B2,B3,B4,B5,B6,B7,B8" subblocks=""/>
