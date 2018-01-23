@@ -37,7 +37,7 @@ int decoderAddress = 1830; // This is the decoder address, change into the numbe
 #define F12_pin 0
 
 #include <Stepper.h>
-#include <EEPROM.h>
+#include <TinyWireM.h>
 #include <DCC_Decoder.h>
 #define kDCC_INTERRUPT 0
 
@@ -53,10 +53,38 @@ int pos2 = 31;
 
 byte Func[4]; //0=L4321, 1=8765, 2=CBA9, 3=F20-F13, 4=F28-F21
 byte instrByte1;
+#define disk1 0x50
 int Address;
 byte forw_rev=1; //0=reverse, 1=forward
 
-bool moveToPositionValue(int steps)
+void writeEEPROM(int deviceaddress, unsigned int eeaddress, byte data ) 
+{
+  TinyWireM.beginTransmission(deviceaddress);
+  TinyWireM.send((int)(eeaddress >> 8));   // MSB
+  TinyWireM.send((int)(eeaddress & 0xFF)); // LSB
+  TinyWireM.send(data);
+  TinyWireM.endTransmission();
+ 
+  delay(5);
+}
+ 
+byte readEEPROM(int deviceaddress, unsigned int eeaddress ) 
+{
+  byte rdata = 0xFF;
+ 
+  TinyWireM.beginTransmission(deviceaddress);
+  TinyWireM.send((int)(eeaddress >> 8));   // MSB
+  TinyWireM.send((int)(eeaddress & 0xFF)); // LSB
+  TinyWireM.endTransmission();
+ 
+  TinyWireM.requestFrom(deviceaddress,1);
+ 
+  if (TinyWireM.available()) rdata = TinyWireM.receive();
+ 
+  return rdata;
+}
+
+byte moveToPositionValue(int steps)
 {
   if(stepsDone > steps)
   {
@@ -64,7 +92,7 @@ bool moveToPositionValue(int steps)
     {
       decPosition();
       if(stepsDone == steps)
-        return true;
+        return 1;
     }
   }
   else if(stepsDone < steps)
@@ -73,38 +101,38 @@ bool moveToPositionValue(int steps)
     {
       incPosition();
       if(stepsDone == steps)
-        return true;   
+        return 1;   
     }
   }
 
-  return false;
+  return 0;
 }
 
-void incPosition()
+byte incPosition()
 {
   if(stepsDone > maxSteps)
-    return false;    
+    return 0;    
   ++stepsDone;
   myStepper.step(-stepsPerRevolution);
   store();
-  return true;
+  return 1;
 }
 
-bool decPosition()
+byte decPosition()
 {
   if(stepsDone < minSteps)
-    return false;    
+    return 0;    
   --stepsDone;
   myStepper.step(stepsPerRevolution);
   store();
-  return true;
+  return 1;
 }
 
 void store()
 {
-  EEPROM.write(stepsDone_eepromAddr, stepsDone);
-  Serial.print(" Steps: ");
-  Serial.println(stepsDone);  
+  //EEPROM.write(stepsDone_eepromAddr, stepsDone);
+  writeEEPROM(disk1, stepsDone_eepromAddr, stepsDone);
+  //Serial.println(stepsDone);  
 }
 
 bool changed = false;
@@ -147,9 +175,9 @@ boolean RawPacket_Handler(byte pktByteCount, byte* dccPacket)
 
     // F0 is an example of two output pins that alternate based on loc forw_rev driving direction.
 //    if (Func[0]&B00010000) {digitalWrite(F0_pin,forw_rev); digitalWrite(F0_pin2,!forw_rev);} else digitalWrite(F0_pin,HIGH);
-    if (Func[0]&B00000001) digitalWrite(F1_pin,LOW); else digitalWrite(F1_pin,HIGH);
-    if (Func[0]&B00000010) digitalWrite(F2_pin,LOW); else digitalWrite(F2_pin,HIGH);
-    if (Func[0]&B00000100) digitalWrite(F3_pin,LOW); else digitalWrite(F3_pin,HIGH);
+//    if (Func[0]&B00000001) digitalWrite(F1_pin,LOW); else digitalWrite(F1_pin,HIGH);
+//    if (Func[0]&B00000010) digitalWrite(F2_pin,LOW); else digitalWrite(F2_pin,HIGH);
+//    if (Func[0]&B00000100) digitalWrite(F3_pin,LOW); else digitalWrite(F3_pin,HIGH);
 
     if(Func[0]&B00000001)
     {
@@ -166,7 +194,6 @@ boolean RawPacket_Handler(byte pktByteCount, byte* dccPacket)
 
     if(changed)
     {
-      Serial.println(" ## DONE");
       store();
     }
 
@@ -185,6 +212,7 @@ boolean RawPacket_Handler(byte pktByteCount, byte* dccPacket)
 }
 
 void setup() {
+  TinyWireM.begin();
   DCC.SetRawPacketHandler(RawPacket_Handler);
   DCC.SetupMonitor( kDCC_INTERRUPT );
   pinMode(0, OUTPUT);
@@ -194,15 +222,15 @@ void setup() {
   pinMode(5, OUTPUT);
 
   myStepper.setSpeed(60);
-  Serial.begin(9600);
-  stepsDone = (int) EEPROM.read(stepsDone_eepromAddr);
+  //Serial.begin(9600);
+  //stepsDone = (int) EEPROM.read(stepsDone_eepromAddr);
+  stepsDone = (int) readEEPROM(disk1, stepsDone_eepromAddr);
   if(stepsDone>=255)
   {
     stepsDone = 0;
-    EEPROM.write(stepsDone_eepromAddr, stepsDone);
+    writeEEPROM(disk1, stepsDone_eepromAddr, stepsDone);
   }
-  Serial.println("Initialized");
-  Serial.print(" Steps: "); Serial.println(stepsDone);
+  //Serial.println(stepsDone);
 }
 
 void loop() {
