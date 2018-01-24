@@ -19,7 +19,7 @@
 #define kDCC_INTERRUPT 0
 
 const int stepsPerRevolution = 500;
-Stepper myStepper(stepsPerRevolution, 2, 3, 6, 7);
+Stepper myStepper(stepsPerRevolution, 3, 4, 5, 6);
 int stepsDone = 0;
 int stepsDone_eepromAddr = 0;
 int minSteps = 0;
@@ -77,7 +77,7 @@ byte moveToPositionValue(int steps)
 
 byte incPosition()
 {
-  if(stepsDone > maxSteps)
+  if(stepsDone >= maxSteps)
     return 0;    
   ++stepsDone;
   myStepper.step(-stepsPerRevolution);
@@ -87,7 +87,7 @@ byte incPosition()
 
 byte decPosition()
 {
-  if(stepsDone < minSteps)
+  if(stepsDone <= minSteps)
     return 0;    
   --stepsDone;
   myStepper.step(stepsPerRevolution);
@@ -98,11 +98,7 @@ byte decPosition()
 void store()
 {
   EEPROM.write(stepsDone_eepromAddr, stepsDone);
-  Serial.print(" Steps: ");
-  Serial.println(stepsDone);  
 }
-
-bool changed = false;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Fill in the attributes for every accessory / function
@@ -112,20 +108,25 @@ void ConfigureDecoderFunctions() // The amount of accessories must be same as in
 {
   accessory[0].address = 1024;
   accessory[0].mode = 1;
+  accessory[0].outputPin = 7;
 
   accessory[1].address = 1025;
   accessory[1].mode = 1;
+  accessory[1].outputPin = 8;
  
   accessory[2].address = 1026;
   accessory[2].mode = 1;
+  accessory[2].outputPin = 9;
 
   // min position
   accessory[3].address = 1027;
   accessory[3].mode = 1;
+  accessory[3].outputPin = 10;
 
   // max position
   accessory[4].address = 1028;
   accessory[4].mode = 1;
+  accessory[4].outputPin = 11;
 
 }  // END ConfigureDecoderFunctions
 
@@ -161,6 +162,12 @@ void setup()
 {   
   Serial.begin(9600);
 
+  for(int i=3; i<20; i++)
+  {
+    pinMode(i, OUTPUT);
+    digitalWrite(i, HIGH); // all function outputs are set to 0 at startup
+  }
+
   ConfigureDecoderFunctions();
   DCC.SetBasicAccessoryDecoderPacketHandler(BasicAccDecoderPacket_Handler, true);
   DCC.SetupDecoder( 0x00, 0x00, kDCC_INTERRUPT );
@@ -168,7 +175,6 @@ void setup()
 
   myStepper.setSpeed(60);
   stepsDone = (int) EEPROM.read(stepsDone_eepromAddr);
-  //stepsDone = (int) readEEPROM(disk1, stepsDone_eepromAddr);
   if(stepsDone>=255)
   {
     stepsDone = 0;
@@ -176,129 +182,79 @@ void setup()
   }
   Serial.println("Initialized");
   Serial.print(" Steps: "); Serial.println(stepsDone);
-
-  for(int i=3; i<20; i++)
-  {
-    pinMode(i, OUTPUT);
-    digitalWrite(i, HIGH); //all function outputs are set to 0 at startup
-  }
 } // END setup
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Main loop (run continuous)
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int addr = 0;
+
+void checkPins()
+{
+  if (accessory[addr].onoff) 
+    digitalWrite(accessory[addr].outputPin, HIGH);
+  else 
+    digitalWrite(accessory[addr].outputPin, LOW);
+  
+  if (accessory[addr].onoff2) 
+    digitalWrite(accessory[addr].outputPin2, HIGH);
+  else 
+    digitalWrite(accessory[addr].outputPin2, LOW);
+}
+
+byte nrOfActivations()
+{
+  byte _nrOfActivations = 0;
+  for(byte i = 0;  i < maxaccessories; ++i)
+  {
+    if(accessory[i].dccstate)
+      ++_nrOfActivations;
+  }
+  return _nrOfActivations;
+}
+
 void loop()
 {
-  static int addr = 0;
-
-  DCC.loop(); // Loop DCC library
-    
-  if( ++addr >= maxaccessories ) addr = 0; // Next address to test
+  DCC.loop();
+ 
+  if( ++addr >= maxaccessories ) 
+    addr = 0; // Next address to test
 
   if (accessory[addr].dccstate)
-  {
+  {  
     switch (accessory[addr].mode)
     {
-    case 1: // Continuous
-      accessory[addr].onoff = 1;
-      break;
-    case 2: // Oneshot
-      if (!accessory[addr].onoff && !accessory[addr].finished)
-      {
-        accessory[addr].onoff = 1;
-        accessory[addr].offMilli = millis() + accessory[addr].ontime;
-      }
-      if (accessory[addr].onoff && millis() > accessory[addr].offMilli)
-      {
-        accessory[addr].onoff = 0;
-        accessory[addr].finished = true; //this is reset to flase below in the 'else' statement
-      }
-      break;
-    case 3: // Flasher, is always an 'alternating' flasher together with .outputPin2
-      if (!accessory[addr].onoff && millis() > accessory[addr].onMilli)
-      {
-        accessory[addr].onoff = 1;
-        accessory[addr].onoff2 = 0;
-        accessory[addr].offMilli = millis() + accessory[addr].ontime;
-      }
-      if (accessory[addr].onoff && millis() > accessory[addr].offMilli)
-      {
-        accessory[addr].onoff = 0;
-        accessory[addr].onoff2 = 1;
-        accessory[addr].onMilli = millis() + accessory[addr].offtime;
-      }
-      break;
-    case 4: // Signal
-      accessory[addr].onoff = 1;
-      accessory[addr].onoff2 = 0;
-      break;
+      case 1: // Continuous
+
+        bool changed = false;
+  
+        if(nrOfActivations() == 1)
+        {
+          accessory[addr].onoff = 1;
+
+          checkPins();
+
+          switch(addr)
+          {
+            case 0: changed = moveToPositionValue(pos0); break;
+            case 1: changed = moveToPositionValue(pos1); break;
+            case 2: changed = moveToPositionValue(pos2); break;
+            case 3: changed = moveToPositionValue(minSteps); break;
+            case 4: changed = moveToPositionValue(maxSteps); break;
+          }
+        }
+        
+        if(changed)
+        {
+          Serial.print(" Steps: ");
+          Serial.println(stepsDone);  
+          
+          store();
+        }
+        break;
     }
   }
-  else //accessory[addr].dccstate == 0
+  else
   {
     accessory[addr].onoff = 0;
-    if (accessory[addr].mode == 4) accessory[addr].onoff2 = 1; else accessory[addr].onoff2 = 0;
-    if (accessory[addr].mode == 2) accessory[addr].finished = false; // Oneshot finished by DCCstate, not by ontime
-  }
 
-  // activate outputpin, based on value of onoff
-
-  byte nrOfActivations = 0;
-  if(accessory[0].onoff)
-    ++nrOfActivations;
-  if(accessory[1].onoff)
-    ++nrOfActivations;
-  if(accessory[2].onoff)
-    ++nrOfActivations;
-  if(accessory[3].onoff)
-    ++nrOfActivations;
-  if(accessory[4].onoff)
-    ++nrOfActivations;
-
-  if(nrOfActivations > 1)
-    return;  
-
-  if(accessory[0].onoff)
-  {
-    changed = moveToPositionValue(pos0);
+    checkPins();
   }
-  else if(accessory[1].onoff)
-  {
-    changed = moveToPositionValue(pos1);
-  }
-  else if(accessory[2].onoff)
-  {
-    changed = moveToPositionValue(pos2);
-  }
-  else if(accessory[3].onoff)
-  {
-    changed = moveToPositionValue(minSteps);
-  }
-  else if(accessory[4].onoff)
-  {
-    changed = moveToPositionValue(maxSteps);
-  }
-
-  accessory[0].onoff = 0;
-  accessory[1].onoff = 0;
-  accessory[2].onoff = 0;
-  accessory[3].onoff = 0;
-  accessory[4].onoff = 0;
-
-  if(changed)
-  {
-    Serial.println(" ## DONE");
-    store();
-  }
-  
-  //if (accessory[addr].onoff)
-  //  digitalWrite(accessory[addr].outputPin, LOW);
-  //else 
-  //  digitalWrite(accessory[addr].outputPin, HIGH);
-  
-  //if(accessory[addr].onoff2) 
-  //  digitalWrite(accessory[addr].outputPin2, LOW);
-  //else 
-  //  digitalWrite(accessory[addr].outputPin2, HIGH);
-  
 } //END loop

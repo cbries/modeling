@@ -45,9 +45,9 @@ DCCAccessoryAddress accessory[maxaccessories];
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void ConfigureDecoderFunctions() // The amount of accessories must be same as in line 26 above!
 {
-  accessory[0].address = 1; // DCC address
+  accessory[0].address = 1024; // DCC address
   accessory[0].mode = 1; // Continuous: HIGH until DCC switches the address off again
-  accessory[0].outputPin = 13; // Arduino pin to which this accessory is connected
+  accessory[0].outputPin = 7; // Arduino pin to which this accessory is connected
 
   accessory[1].address = 2;
   accessory[1].mode = 2; // Oneshot: HIGH for ontime ms, then LOW and stays LOW.
@@ -97,6 +97,7 @@ void ConfigureDecoderFunctions() // The amount of accessories must be same as in
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void setup() 
 { 
+  
   ConfigureDecoderFunctions();
   DCC.SetBasicAccessoryDecoderPacketHandler(BasicAccDecoderPacket_Handler, true);
   DCC.SetupDecoder( 0x00, 0x00, kDCC_INTERRUPT );
