@@ -24,9 +24,9 @@ int stepsDone = 0;
 int stepsDone_eepromAddr = 0;
 int minSteps = 0;
 int maxSteps = 35;
-int pos0 = 5;
+int pos0 = 3;
 int pos1 = 18;
-int pos2 = 31;
+int pos2 = 33;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Fill in the number of accessories / functions you want to control
