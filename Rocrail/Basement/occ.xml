@@ -19,9 +19,9 @@
   <occ bkid="B17" auto="false" closed="false" placing="0" blockenterside="2" lcid=""/>
   <occ bkid="B18" lcid="" auto="false" closed="false" placing="0"/>
   <occ bkid="B19" lcid="" auto="false" closed="false" placing="0"/>
-  <occ bkid="B20" auto="false" closed="true" placing="0" lcid=""/>
-  <occ bkid="B21" auto="false" closed="true" placing="0" lcid=""/>
-  <occ bkid="B22" auto="false" closed="true" placing="0" lcid=""/>
+  <occ bkid="B20" auto="false" closed="false" placing="0"/>
+  <occ bkid="B21" auto="false" closed="false" placing="0"/>
+  <occ bkid="B22" auto="false" closed="false" placing="0"/>
   <occ bkid="B23" auto="false" closed="false" placing="0" blockenterside="1" lcid=""/>
   <occ bkid="B24" auto="false" closed="false" placing="0" blockenterside="2" lcid=""/>
 </modocc>
