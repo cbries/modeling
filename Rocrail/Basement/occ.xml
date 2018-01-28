@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <modocc>
-<<<<<<< HEAD
   <occ bkid="B01" auto="false" closed="false" placing="0" blockenterside="2" lcid=""/>
   <occ bkid="B02" lcid="" auto="false" closed="false" placing="0" blockenterside="1"/>
   <occ bkid="B03" lcid="LokPilot V4.0 M4" auto="false" closed="false" placing="1" blockenterside="2"/>
@@ -15,30 +14,14 @@
   <occ bkid="B12" auto="false" closed="false" placing="1" lcid="S 3/6 BR18.4 gr" blockenterside="1"/>
   <occ bkid="B13" auto="false" closed="false" placing="1" blockenterside="2" lcid="S 3/6 BR18.4 sw"/>
   <occ bkid="B14" auto="false" closed="false" placing="1" blockenterside="2" lcid="BR10"/>
-=======
-  <occ bkid="B01" auto="false" closed="false" placing="1" blockenterside="1" lcid="S 3/6 BR18.4 sw"/>
-  <occ bkid="B02" lcid="BR52 Kondens." auto="false" closed="false" placing="1" blockenterside="1"/>
-  <occ bkid="B03" lcid="" auto="false" closed="false" placing="0" blockenterside="2"/>
-  <occ bkid="B04" auto="false" closed="false" placing="0" blockenterside="1" lcid="LokPilot V4.0 M4"/>
-  <occ bkid="B05" auto="false" closed="false" placing="2" blockenterside="1" lcid="Kompressorlok"/>
-  <occ bkid="B06" auto="false" closed="false" placing="0" blockenterside="2" lcid=""/>
-  <occ bkid="B07" auto="false" closed="false" placing="0" blockenterside="2" lcid="DIESEL 221"/>
-  <occ bkid="B08" lcid="" auto="false" closed="false" placing="0" blockenterside="1"/>
-  <occ bkid="B09" auto="false" closed="false" placing="1" blockenterside="2" lcid="S 3/6 BR18.4 gr"/>
-  <occ bkid="B10" auto="false" closed="false" placing="0" lcid=""/>
-  <occ bkid="B11" auto="false" closed="false" placing="0" blockenterside="1" lcid="Ae3/6II SBB "/>
-  <occ bkid="B12" auto="false" closed="false" placing="0" lcid="Kompressorlok" blockenterside="2"/>
-  <occ bkid="B13" auto="false" closed="false" placing="1" blockenterside="2" lcid="BR10"/>
-  <occ bkid="B14" auto="false" closed="false" placing="0" blockenterside="2" lcid="LokPilot V4.0 M4"/>
->>>>>>> c9ed2497a074c17df9d769abf6e17769488de8b6
   <occ bkid="B15" auto="false" closed="false" placing="1" lcid="DAMPF2" blockenterside="1"/>
-  <occ bkid="B16" auto="false" closed="false" placing="0" blockenterside="1" lcid="LokPilot V4.0 M4"/>
-  <occ bkid="B17" auto="false" closed="false" placing="0" blockenterside="2" lcid="Kompressorlok"/>
+  <occ bkid="B16" auto="false" closed="false" placing="0" blockenterside="1" lcid=""/>
+  <occ bkid="B17" auto="false" closed="false" placing="0" blockenterside="2" lcid=""/>
   <occ bkid="B18" lcid="" auto="false" closed="false" placing="0"/>
   <occ bkid="B19" lcid="" auto="false" closed="false" placing="0"/>
   <occ bkid="B20" auto="false" closed="true" placing="0" lcid=""/>
   <occ bkid="B21" auto="false" closed="true" placing="0" lcid=""/>
   <occ bkid="B22" auto="false" closed="true" placing="0" lcid=""/>
-  <occ bkid="B23" auto="false" closed="false" placing="0" blockenterside="1" lcid="LokPilot V4.0 M4"/>
-  <occ bkid="B24" auto="false" closed="false" placing="0" blockenterside="2" lcid="Kompressorlok"/>
+  <occ bkid="B23" auto="false" closed="false" placing="0" blockenterside="1" lcid=""/>
+  <occ bkid="B24" auto="false" closed="false" placing="0" blockenterside="2" lcid=""/>
 </modocc>
