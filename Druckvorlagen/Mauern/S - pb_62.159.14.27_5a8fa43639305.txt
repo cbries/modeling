@@ -1,0 +1,11 @@
+
+Current Parameters
+Page Size: A4
+Page Orientation: L
+Model Scale: 1:64
+Brick Size: 240x71 Deutschland
+Mortar Colour: custom(#292929)
+Mortar Thickness: 10 mm
+Image Set: Stone-1
+Brick Bond: Kreuzverband
+Print Header Bricks?: No
