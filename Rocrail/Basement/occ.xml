@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <modocc>
-  <occ bkid="B01" auto="false" closed="false" placing="0" blockenterside="2" lcid=""/>
+  <occ bkid="B01" auto="false" closed="true" placing="0" blockenterside="0"/>
   <occ bkid="B02" lcid="BR52 Kondens." auto="false" closed="false" placing="1" blockenterside="1"/>
-  <occ bkid="B03" lcid="S 3/6 BR18.4 gr" auto="false" closed="false" placing="1" blockenterside="2"/>
-  <occ bkid="B04" auto="false" closed="false" placing="0" blockenterside="1" lcid=""/>
-  <occ bkid="B05" auto="false" closed="false" placing="1" blockenterside="1" lcid="BR10"/>
-  <occ bkid="B06" auto="false" closed="false" placing="1" blockenterside="2" lcid="DAMPF2"/>
+  <occ bkid="B03" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="B04" auto="false" closed="false" placing="0" blockenterside="0" lcid="BR10"/>
+  <occ bkid="B05" auto="false" closed="false" placing="0" blockenterside="0" lcid="V16 101 (blau)"/>
+  <occ bkid="B06" auto="false" closed="true" placing="0" blockenterside="0"/>
   <occ bkid="B07" auto="false" closed="false" placing="0" blockenterside="2" lcid="DIESEL 221"/>
   <occ bkid="B08" lcid="V 80" auto="false" closed="false" placing="2" blockenterside="2"/>
-  <occ bkid="B09" auto="false" closed="false" placing="0" blockenterside="1" lcid=""/>
-  <occ bkid="B10" auto="false" closed="false" placing="0" lcid="" blockenterside="2"/>
+  <occ bkid="B09" auto="false" closed="false" placing="0" blockenterside="0" lcid=""/>
+  <occ bkid="B10" auto="false" closed="false" placing="0" lcid="" blockenterside="0"/>
   <occ bkid="B11" auto="false" closed="false" placing="0" blockenterside="1" lcid=""/>
-  <occ bkid="B12" auto="false" closed="false" placing="1" lcid="S 3/6 BR18.4 sw" blockenterside="2"/>
-  <occ bkid="B13" auto="false" closed="false" placing="1" blockenterside="1" lcid="V16 101 (blau)"/>
+  <occ bkid="B12" auto="false" closed="false" placing="1" lcid="S 3/6 BR18.4 gr" blockenterside="1"/>
+  <occ bkid="B13" auto="false" closed="false" placing="1" blockenterside="1" lcid="BR 86 130"/>
   <occ bkid="B14" auto="false" closed="false" placing="2" blockenterside="2" lcid="Kompressorlok"/>
-  <occ bkid="B15" auto="false" closed="false" placing="1" lcid="BR 86 130" blockenterside="1"/>
-  <occ bkid="B16" auto="false" closed="false" placing="0" blockenterside="1" lcid=""/>
-  <occ bkid="B17" auto="false" closed="false" placing="0" blockenterside="2" lcid=""/>
+  <occ bkid="B15" auto="false" closed="false" placing="1" blockenterside="1" lcid="DAMPF2"/>
+  <occ bkid="B16" auto="false" closed="false" placing="0" blockenterside="0" lcid=""/>
+  <occ bkid="B17" auto="false" closed="false" placing="0" blockenterside="0" lcid=""/>
   <occ bkid="B18" auto="false" closed="false" placing="0" blockenterside="2" lcid=""/>
-  <occ bkid="B19" auto="false" closed="false" placing="0" blockenterside="2" lcid=""/>
-  <occ bkid="B20" auto="false" closed="false" placing="2" lcid="Schwarz Diesel" blockenterside="2"/>
+  <occ bkid="B19" auto="false" closed="false" placing="0" blockenterside="0" lcid=""/>
+  <occ bkid="B20" auto="false" closed="false" placing="1" lcid="Schwarz Diesel" blockenterside="1"/>
   <occ bkid="B21" auto="false" closed="false" placing="0" blockenterside="2" lcid=""/>
   <occ bkid="B22" auto="false" closed="false" placing="0" lcid="" blockenterside="2"/>
-  <occ bkid="B23" auto="false" closed="false" placing="0" blockenterside="1" lcid=""/>
-  <occ bkid="B24" auto="false" closed="false" placing="0" blockenterside="2" lcid=""/>
+  <occ bkid="B23" auto="false" closed="false" placing="0" blockenterside="0" lcid=""/>
+  <occ bkid="B24" auto="false" closed="false" placing="0" blockenterside="0" lcid=""/>
 </modocc>
