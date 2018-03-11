@@ -1,24 +1,16 @@
 
+// 13 -> SCLK   
+// 11 -> SIN    
+// 10 -> BLANK  
+//  9 -> XLAT   
+//  3 -> GSCLK  
+
 #include "SparkFun_Tlc5940.h"
 
 void setup()
 {
   randomSeed(analogRead(0));
-  Serial.begin(9600);
   Tlc.init();
-}
-
-int getStepValue()
-{
-  if(Serial.available())
-  {
-    char c = (char) Serial.read();
-    if(c == '+')
-      return 1;
-    if(c == '-')
-      return -1;
-  }
-  return 0;
 }
 
 const int randomPortsN = 11;
@@ -54,7 +46,6 @@ void loop()
   if(runLoopCount > 5)
   {
     int waitFor = 10000 + (random(5, 20) * 1000);
-    Serial.print("Wait (sec): "); Serial.println(waitFor / 1000);
     delay(waitFor);
   } 
   else
