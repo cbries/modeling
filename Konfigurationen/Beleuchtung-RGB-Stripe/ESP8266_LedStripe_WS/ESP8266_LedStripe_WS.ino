@@ -74,6 +74,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
     {
         case WStype_DISCONNECTED:
             USE_SERIAL.printf("[%u] Disconnected!\n", num);
+            storeValues();
             break;
         case WStype_CONNECTED: {
             IPAddress ip = webSocket.remoteIP(num);
@@ -98,8 +99,6 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
                 analogWrite(LED_RED,    r);
                 analogWrite(LED_GREEN,  g);
                 analogWrite(LED_BLUE,   b);
-
-                storeValues();
             }
 
             break;
