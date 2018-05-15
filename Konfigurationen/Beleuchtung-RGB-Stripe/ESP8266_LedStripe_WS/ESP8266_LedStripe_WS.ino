@@ -12,11 +12,11 @@
 static const uint8_t D0   = 16;
 static const uint8_t D1   = 5;
 static const uint8_t D2   = 4;
-static const uint8_t D3   = 0;
+static const uint8_t D3   = 0;   SCL,  RED
 static const uint8_t D4   = 2;
-static const uint8_t D5   = 14;
-static const uint8_t D6   = 12;
-static const uint8_t D7   = 13;
+static const uint8_t D5   = 14;  SCK,  GREEN
+static const uint8_t D6   = 12;  MISO, BLUE
+static const uint8_t D7   = 13;  MOSI, WHITE
 static const uint8_t D8   = 15;
 static const uint8_t RX   = 3;
 static const uint8_t TX   = 1;
@@ -35,17 +35,24 @@ const char* password  = "";
 #include <EEPROM.h>
 #include <Hash.h>
 
+#include "ArduinoJson.h"
+
 int _BLUE = D6;
 int _GREEN = D5;
 int _RED = D3;
+int _WHITE = D7;
 
-byte r = 0;
-byte g = 0;
-byte b = 0;
+int r = 0;
+int g = 0;
+int b = 0;
+int w = 0;
+int w1 = 0;
+int w2 = 0;
 
 #define LED_RED     _RED
 #define LED_GREEN   _GREEN
 #define LED_BLUE    _BLUE
+#define LED_WHITE   _WHITE
 
 #define USE_SERIAL Serial
 
@@ -53,23 +60,53 @@ ESP8266WiFiMulti WiFiMulti;
 ESP8266WebServer server(80);
 WebSocketsServer webSocket = WebSocketsServer(81);
 
+void EEPROMWriteInt(int p_address, int p_value)
+{
+  byte lowByte = ((p_value >> 0) & 0xFF);
+  byte highByte = ((p_value >> 8) & 0xFF);
+  EEPROM.write(p_address, lowByte);
+  EEPROM.write(p_address + 1, highByte);
+}
+
+unsigned int EEPROMReadInt(int p_address)
+{
+  byte lowByte = EEPROM.read(p_address);
+  byte highByte = EEPROM.read(p_address + 1);
+  return ((lowByte << 0) & 0xFF) + ((highByte << 8) & 0xFF00);
+}     
+
 void storeValues()
 {
-  EEPROM.write(0, r);
-  EEPROM.write(1, g);
-  EEPROM.write(2, b);
+  EEPROMWriteInt(0, r);
+  EEPROMWriteInt(5, g);
+  EEPROMWriteInt(10, b);
+  EEPROMWriteInt(15, w);
   EEPROM.commit();
 }
 
 void restoreValues()
 {
-  r = EEPROM.read(0);
-  g = EEPROM.read(1);
-  b = EEPROM.read(2);
+  r = EEPROMReadInt(0);
+  g = EEPROMReadInt(5);
+  b = EEPROMReadInt(10);
+  w = EEPROMReadInt(15);
+}
+
+void ShowValues()
+{
+  analogWrite(LED_WHITE, w);
+  analogWrite(LED_RED, r);
+  analogWrite(LED_GREEN, g);
+  analogWrite(LED_BLUE, b);
+  
+  USE_SERIAL.print("RED:   "); USE_SERIAL.println(r);
+  USE_SERIAL.print("Green: "); USE_SERIAL.println(g);
+  USE_SERIAL.print("BLUE:  "); USE_SERIAL.println(b);    
+  USE_SERIAL.print("WHITE: "); USE_SERIAL.println(w);
 }
 
 void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length) 
-{
+{ 
     switch(type) 
     {
         case WStype_DISCONNECTED:
@@ -79,27 +116,22 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
         case WStype_CONNECTED: {
             IPAddress ip = webSocket.remoteIP(num);
             USE_SERIAL.printf("[%u] Connected from %d.%d.%d.%d url: %s\n", num, ip[0], ip[1], ip[2], ip[3], payload);
-
-            // send message to client
             webSocket.sendTXT(num, "Connected");
+            restoreValues();
+            ShowValues();            
         }
             break;
         case WStype_TEXT:
             USE_SERIAL.printf("[%u] get Text: %s\n", num, payload);
 
-            if(payload[0] == '#') 
-            {
-                // decode rgb data
-                uint32_t rgb = (uint32_t) strtol((const char *) &payload[1], NULL, 16);
+            StaticJsonBuffer<200> jsonBuffer;
+            JsonObject& root = jsonBuffer.parseObject(payload);
+            r = root["r"];
+            g = root["g"];
+            b = root["b"];
+            w = root["w"];
 
-                r = ((rgb >> 16) & 0xFF);
-                g = ((rgb >>  8) & 0xFF);
-                b = ((rgb >>  0) & 0xFF);
-
-                analogWrite(LED_RED,    r);
-                analogWrite(LED_GREEN,  g);
-                analogWrite(LED_BLUE,   b);
-            }
+            ShowValues();            
 
             break;
     }
@@ -129,10 +161,12 @@ void setup()
   pinMode(LED_RED, OUTPUT);
   pinMode(LED_GREEN, OUTPUT);
   pinMode(LED_BLUE, OUTPUT);
+  pinMode(LED_WHITE, OUTPUT);
 
   digitalWrite(LED_RED, 1);
   digitalWrite(LED_GREEN, 1);
   digitalWrite(LED_BLUE, 1);
+  digitalWrite(LED_WHITE, 1);
 
   WiFiMulti.addAP(ssid, password);
 
@@ -140,54 +174,56 @@ void setup()
     delay(100);
   }
 
-    // start webSocket server
-    webSocket.begin();
-    webSocket.onEvent(webSocketEvent);
+  webSocket.begin();
+  webSocket.onEvent(webSocketEvent);
 
-    if(MDNS.begin("esp8266")) {
-        USE_SERIAL.println("MDNS responder started");
-    }
+  if(MDNS.begin("esp8266")) {
+    USE_SERIAL.println("MDNS responder started");
+  }
 
-    // handle index
-    server.on("/", []() {
-      //char bufR[12] = {0}; sprintf(bufR, "%i", (int)r);
-      //char bufG[12] = {0}; sprintf(bufG, "%i", (int)g);
-      //char bufB[12] = {0}; sprintf(bufB, "%i", (int)b);
-
-      char buf[2048] = {0};
-      sprintf(buf, "<html><head><script>var connection = new WebSocket('ws://'+location.hostname+':81/'," \
-        "['arduino']);connection.onopen = function () {  connection.send('Connect ' + new Date()); }; " \ 
+  server.on("/", []() {
+      
+  char buf[2048] = {0};
+  sprintf(buf, "<html><head>" \
+        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> " \
+        "<script>var connection = new WebSocket('ws://'+location.hostname+':81/'," \
+        "['arduino']); /*connection.onopen = function () { connection.send('Connect ' + new Date()); };*/ " \ 
         "connection.onerror = function (error) {    console.log('WebSocket Error ', error);};connection.onmessage " \
         "= function (e) {  console.log('Server: ', e.data);};function sendRGB() {  " \
-          "var r = parseInt(document.getElementById('r').value).toString(16);  " \
-          "var g = parseInt(document.getElementById('g').value).toString(16);  " \
-          "var b = parseInt(document.getElementById('b').value).toString(16);  " \
-        "if(r.length < 2) { r = '0' + r; }   if(g.length < 2) { g = '0' + g; }   if(b.length < 2) { b = '0' + b; }   " \
-        "var rgb = '#'+r+g+b;    console.log('RGB: ' + rgb); connection.send(rgb); }</script></head>" \
-        "<body>LED Control:<br/><br/>" \
-           "R: <input id=\"r\" value=\"%i\" type=\"range\" min=\"0\" max=\"255\" step=\"1\" oninput=\"sendRGB();\" /><br/>" \
-           "G: <input id=\"g\" value=\"%i\" type=\"range\" min=\"0\" max=\"255\" step=\"1\" oninput=\"sendRGB();\" /><br/>" \
-           "B: <input id=\"b\" value=\"%i\" type=\"range\" min=\"0\" max=\"255\" step=\"1\" oninput=\"sendRGB();\" /><br/></body></html>",
-          (int)r, (int)g, (int)b);
+          "var r = parseInt(document.getElementById('r').value);  " \
+          "var g = parseInt(document.getElementById('g').value);  " \
+          "var b = parseInt(document.getElementById('b').value);  " \
+          "var w = parseInt(document.getElementById('w').value);  " \
+          "var dataToSend = new Object(); " \
+          "dataToSend.r = parseInt(r); " \
+          "dataToSend.g = parseInt(g); " \
+          "dataToSend.b = parseInt(b); " \
+          "dataToSend.w = parseInt(w); " \
+          "var data = JSON.stringify(dataToSend); " \
+          "console.log('DATA:  ' + data); connection.send(data); } " \
+          "</script></head>" \
+          "<body>LED Control:<br/><br/>" \
+           "R: <input id=\"r\" value=\"%i\" type=\"range\" min=\"0\" max=\"%i\" step=\"1\" oninput=\"sendRGB();\" /><br/>" \
+           "G: <input id=\"g\" value=\"%i\" type=\"range\" min=\"0\" max=\"%i\" step=\"1\" oninput=\"sendRGB();\" /><br/>" \
+           "B: <input id=\"b\" value=\"%i\" type=\"range\" min=\"0\" max=\"%i\" step=\"1\" oninput=\"sendRGB();\" /><br/>" \
+           "W: <input id=\"w\" value=\"%i\" type=\"range\" min=\"0\" max=\"%i\" step=\"1\" oninput=\"sendRGB();\" /><br/>" \
+           "</body></html>",
+          (int)r, PWMRANGE, (int)g, PWMRANGE, (int)b, PWMRANGE, (int)w, PWMRANGE);
       
-        // send index.html
         server.send(200, "text/html", buf);
-    });
+  });
 
-    server.begin();
+  server.begin();
 
-    // Add service to MDNS
-    MDNS.addService("http", "tcp", 80);
-    MDNS.addService("ws", "tcp", 81);
+  MDNS.addService("http", "tcp", 80);
+  MDNS.addService("ws", "tcp", 81);
 
-    digitalWrite(LED_RED, 0);
-    digitalWrite(LED_GREEN, 0);
-    digitalWrite(LED_BLUE, 0);
+  ShowValues();
 }
 
 void loop() 
 {
-    webSocket.loop();
-    server.handleClient();
+  webSocket.loop();
+  server.handleClient();
 }
 
