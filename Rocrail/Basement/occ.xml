@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <modocc>
-  <occ bkid="B01" auto="false" closed="false" placing="1" blockenterside="2" lcid="DAMPF2"/>
+  <occ bkid="B01" auto="false" closed="false" placing="1" blockenterside="1" lcid="BR10"/>
   <occ bkid="B02" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="B03" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="B04" auto="false" closed="false" placing="0" blockenterside="0" lcid=""/>
