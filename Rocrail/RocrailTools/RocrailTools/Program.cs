@@ -9,6 +9,8 @@ namespace SetDayLight
     class Program
     {
         private static string _targetAddress;
+        private static int _steps = 25;
+        private static int _delayBetweenSteps = 1000;
 
         private static AutoResetEvent _waitFor = new AutoResetEvent(false);
         private static WebSocket _ws;
@@ -50,8 +52,13 @@ namespace SetDayLight
         {
             if (args.Length < 5)
                 return;
-            if (args.Length > 5 && args.Length <= 9)
+            if (args.Length > 5)
                 singleShot = false;
+
+            if (args.Length >= 10)
+                _steps = Convert.ToInt16(args[9]);
+            if (args.Length >= 11)
+                _delayBetweenSteps = Convert.ToInt16(args[10]);
 
             _targetAddress = args[0];
             string red = args[1];
@@ -94,14 +101,14 @@ namespace SetDayLight
                 var delta_blue = ib1 - ib0;
                 var delta_white = iw1 - iw0;
 
-                int n = 25;
+                int n = _steps;
 
                 var step_red = delta_red / n;
                 var step_green = delta_green / n;
                 var step_blue = delta_blue / n;
                 var step_white = delta_white / n;
 
-                for (int i = 0; i < (int) n; ++i)
+                for (int i = 0; i < (int)n; ++i)
                 {
                     ir0 += step_red;
                     ig0 += step_green;
@@ -152,7 +159,7 @@ namespace SetDayLight
 
             //Console.ReadKey();
 
-            Thread.Sleep(1000);
+            Thread.Sleep(_delayBetweenSteps);
         }
     }
 }
