@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -16,16 +17,29 @@ namespace SetDayLight
         private static WebSocket _ws;
         private static JObject _o;
 
+        static void StopApp()
+        {
+            Environment.Exit(0);
+        }
+
         static void Send(JObject o)
         {
             _o = o;
 
             if (_ws == null)
             {
-                _ws = new WebSocket(_targetAddress);
-                _ws.OnMessage += (sender, e) => Console.WriteLine("MSG from Controller: " + e.Data);
-                _ws.OnOpen += WsOnOnOpen;
-                _ws.Connect();
+                try
+                {
+                    _ws = new WebSocket(_targetAddress);
+                    _ws.OnMessage += (sender, e) => Console.WriteLine("MSG from Controller: " + e.Data);
+                    _ws.OnOpen += WsOnOnOpen;
+                    _ws.OnError += WsOnOnError;
+                    _ws.Connect();
+                }
+                catch
+                {
+                    StopApp();
+                }
             }
             else
             {
@@ -35,6 +49,20 @@ namespace SetDayLight
 
                 _waitFor.Set();
             }
+
+            if (_ws != null && !_ws.IsAlive)
+            {
+                StopApp();
+            }
+        }
+
+        private static void WsOnOnError(object sender, ErrorEventArgs ev)
+        {
+            string m = "WebSocket failed: " + ev.Message;
+            Trace.WriteLine(m);
+            Console.WriteLine(m);
+
+            Environment.Exit(0);
         }
 
         private static void WsOnOnOpen(object sender1, EventArgs ev)
@@ -48,10 +76,26 @@ namespace SetDayLight
 
         private static bool singleShot = true;
 
+        static void ShowHelp()
+        {
+            string m = "";
+            m += "Usage #1 (set static color): SetDayLight ws://HOST:PORT red green blue white \r\n";
+            m += "Usage #2 (set fading): SetDayLight ws://HOST:PORT redFrom greenFrom blueFrom whiteFrom \r\n";
+            m += "Usage #3 (set fading): SetDayLight ws://HOST:PORT redFrom greenFrom blueFrom whiteFrom fadeSteps pauseFadeSteps[msec] \r\n";
+
+            Trace.WriteLine(m.Trim());
+            Console.WriteLine(m.Trim());
+        }
+
         static void Main(string[] args)
         {
             if (args.Length < 5)
+            {
+                ShowHelp();
+
                 return;
+            }
+
             if (args.Length > 5)
                 singleShot = false;
 
@@ -136,28 +180,6 @@ namespace SetDayLight
 
                 _waitFor.WaitOne();
             }
-
-            //var rnd = new Random();
-
-            //for (int i = 0; i < 25; ++i)
-            //{
-            //    int cr = rnd.Next(10, 1023);
-            //    int cg = rnd.Next(10, 1023);
-            //    int cb = rnd.Next(10, 1023);
-            //    int cw = rnd.Next(10, 1023);
-
-            //    var oo = new JObject();
-            //    oo["r"] = cr;
-            //    oo["g"] = cg;
-            //    oo["b"] = cb;
-            //    oo["w"] = cw;
-
-            //    Send(oo);
-
-            //    Thread.Sleep(500);
-            //}
-
-            //Console.ReadKey();
 
             Thread.Sleep(_delayBetweenSteps);
         }
