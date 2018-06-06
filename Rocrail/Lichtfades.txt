@@ -1,0 +1,8 @@
+Lichtwege
+
+$cmd = "C:\Users\cries\Documents\GitHub\modeling\Rocrail\RocrailTools\RocrailTools\bin\Debug\SetDayLight.exe"
+
+Tag 		-> Dämmerung	$cmd "ws://192.168.178.71:81" "0" "0" "84" "1023" ""519"" ""0"" ""57"" ""842"" ""50"" ""500""
+Dämmerung 	-> Nacht		$cmd "ws://192.168.178.71:81" ""519"" ""0"" ""57"" ""842"" "0" "0" "0" "10" ""50"" ""500""
+Nacht 		-> Dämmerung	$cmd "ws://192.168.178.71:81" "0" "0" "0" "10" ""519"" ""0"" ""57"" ""50"" ""500""
+Dämmerung 	-> Tag			$cmd "ws://192.168.178.71:81" ""519"" ""0"" ""57"" "0" "0" "84" "1023" ""50"" ""500""
