@@ -10,15 +10,15 @@
   <occ bkid="B08" auto="false" closed="false" placing="1" blockenterside="2" lcid="BR41 354"/>
   <occ bkid="B09" auto="false" closed="false" placing="0" blockenterside="0" lcid=""/>
   <occ bkid="B10" auto="false" closed="false" placing="2" lcid="Kompressorlok" blockenterside="2"/>
-  <occ bkid="B11" auto="false" closed="false" placing="0" blockenterside="0" lcid=""/>
+  <occ bkid="B11" auto="false" closed="false" placing="0" blockenterside="0" lcid="V 80"/>
   <occ bkid="B12" auto="false" closed="false" placing="1" lcid="S 3/6 BR18.4 gr" blockenterside="2"/>
   <occ bkid="B13" auto="false" closed="false" placing="0" blockenterside="0" lcid=""/>
   <occ bkid="B14" auto="false" closed="false" placing="1" blockenterside="1" lcid="DIESEL 221"/>
-  <occ bkid="B15" auto="false" closed="false" placing="0" blockenterside="0" lcid=""/>
+  <occ bkid="B15" auto="false" closed="false" placing="0" blockenterside="0" lcid="BR10"/>
   <occ bkid="B16" auto="false" closed="false" placing="0" blockenterside="0" lcid=""/>
   <occ bkid="B17" auto="false" closed="false" placing="0" blockenterside="0" lcid=""/>
   <occ bkid="B18" auto="false" closed="false" placing="0" blockenterside="0" lcid=""/>
-  <occ bkid="B19" auto="false" closed="false" placing="2" blockenterside="1" lcid="V 80"/>
+  <occ bkid="B19" auto="false" closed="false" placing="0" blockenterside="0" lcid=""/>
   <occ bkid="B20" auto="false" closed="false" placing="0" lcid="" blockenterside="0"/>
   <occ bkid="B21" auto="false" closed="false" placing="2" blockenterside="2" lcid="Märklin 1994"/>
   <occ bkid="B22" auto="false" closed="false" placing="0" lcid="" blockenterside="0"/>
