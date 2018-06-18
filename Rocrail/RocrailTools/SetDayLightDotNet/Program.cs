@@ -3,18 +3,18 @@ using System.Diagnostics;
 using System.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using WebSocketSharp;
 
-namespace SetDayLight
+namespace SetDayLightDotNet
 {
     class Program
     {
+        private static string WsApp = @"/usr/local/bin/wsta";
+
         private static string _targetAddress;
         private static int _steps = 25;
         private static int _delayBetweenSteps = 1000;
 
         private static AutoResetEvent _waitFor = new AutoResetEvent(false);
-        private static WebSocket _ws;
         private static JObject _o;
 
         static void StopApp()
@@ -26,53 +26,14 @@ namespace SetDayLight
         {
             _o = o;
 
-            if (_ws == null)
-            {
-                try
-                {
-                    _ws = new WebSocket(_targetAddress);
-                    _ws.OnMessage += (sender, e) => Console.WriteLine("MSG from Controller: " + e.Data);
-                    _ws.OnOpen += WsOnOnOpen;
-                    _ws.OnError += WsOnOnError;
-                    _ws.Connect();
-                }
-                catch
-                {
-                    StopApp();
-                }
-            }
-            else
-            {
-                _ws.Send(o.ToString(Formatting.None));
-
-                Console.WriteLine("Send: " + _o.ToString(Formatting.None));
-
-                _waitFor.Set();
-            }
-
-            if (_ws != null && !_ws.IsAlive)
-            {
-                StopApp();
-            }
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = WsApp;
+            startInfo.Arguments = string.Format("{0} \"{1}\"",
+                _targetAddress, _o.ToString(Formatting.None).Replace("\"", "\\\""));
+            startInfo.CreateNoWindow = true;
+            startInfo.UseShellExecute = true;
+            Process.Start(startInfo);
         }
-
-        private static void WsOnOnError(object sender, ErrorEventArgs ev)
-        {
-            string m = "WebSocket failed: " + ev.Message;
-            Trace.WriteLine(m);
-            Console.WriteLine(m);
-
-            Environment.Exit(0);
-        }
-
-        private static void WsOnOnOpen(object sender1, EventArgs ev)
-        {
-            _ws.Send(_o.ToString(Formatting.None));
-            Console.WriteLine("Send: " + _o.ToString(Formatting.None));
-            _waitFor.Set();
-        }
-
-        private static bool singleShot = true;
 
         static void ShowHelp()
         {
@@ -84,6 +45,8 @@ namespace SetDayLight
             Trace.WriteLine(m.Trim());
             Console.WriteLine(m.Trim());
         }
+
+        private static bool singleShot = true;
 
         static void Main(string[] args)
         {
