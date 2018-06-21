@@ -80,5 +80,10 @@ elif (( $# >= 9 )) ; then
         let COUNTER=COUNTER+1
     done
 else
-    echo "help"
+	echo "STATIC"
+    echo "  Usage: $0 ws://host:port red green blue white"
+	echo "FADING"
+	echo "Usage: $0 ws://host:port redFrom greenFrom blueFrom whiteFrom redTo greenTo blueTo whiteTo"
+	echo "FADING WITH PARAMETER"
+	echo "Usage: $0 ws://host:port redFrom greenFrom blueFrom whiteFrom redTo greenTo blueTo whiteTo STEPS PAUSE[msec]"
 fi
