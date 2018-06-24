@@ -141,22 +141,8 @@ void setup()
 {
   EEPROM.begin(512);
   delay(10);
-  
-  //USE_SERIAL.begin(921600);
-  USE_SERIAL.begin(115200);
-  //USE_SERIAL.setDebugOutput(true);
-  USE_SERIAL.println();
-  USE_SERIAL.println();
-  USE_SERIAL.println();
 
   restoreValues();
-
-  for(uint8_t t = 4; t > 0; t--) 
-  {
-    USE_SERIAL.printf("[SETUP] BOOT WAIT %d...\n", t);
-    USE_SERIAL.flush();
-    delay(1000);
-  }
 
   pinMode(LED_RED, OUTPUT);
   pinMode(LED_GREEN, OUTPUT);
@@ -167,6 +153,22 @@ void setup()
   digitalWrite(LED_GREEN, 1);
   digitalWrite(LED_BLUE, 1);
   digitalWrite(LED_WHITE, 1);
+
+  ShowValues();
+
+  //USE_SERIAL.begin(921600);
+  USE_SERIAL.begin(115200);
+  //USE_SERIAL.setDebugOutput(true);
+  USE_SERIAL.println();
+  USE_SERIAL.println();
+  USE_SERIAL.println();
+
+  for(uint8_t t = 4; t > 0; t--) 
+  {
+    USE_SERIAL.printf("[SETUP] BOOT WAIT %d...\n", t);
+    USE_SERIAL.flush();
+    delay(1000);
+  }
 
   WiFiMulti.addAP(ssid, password);
 
@@ -217,8 +219,6 @@ void setup()
 
   MDNS.addService("http", "tcp", 80);
   MDNS.addService("ws", "tcp", 81);
-
-  ShowValues();
 }
 
 void loop() 
