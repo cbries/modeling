@@ -22,13 +22,13 @@ static const uint8_t RX   = 3;
 static const uint8_t TX   = 1;
 */
 
-const char* ssid      = "";
-const char* password  = "";
+const char* ssid     = "";
+const char* password = "";
 
 #include <Arduino.h>
 
 #include <ESP8266WiFi.h>
-#include <ESP8266WiFiMulti.h>
+//#include <ESP8266WiFiMulti.h>
 #include <WebSocketsServer.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
@@ -56,7 +56,7 @@ int w2 = 0;
 
 #define USE_SERIAL Serial
 
-ESP8266WiFiMulti WiFiMulti;
+//ESP8266WiFiMulti WiFiMulti;
 ESP8266WebServer server(80);
 WebSocketsServer webSocket = WebSocketsServer(81);
 
@@ -156,9 +156,7 @@ void setup()
 
   ShowValues();
 
-  //USE_SERIAL.begin(921600);
   USE_SERIAL.begin(115200);
-  //USE_SERIAL.setDebugOutput(true);
   USE_SERIAL.println();
   USE_SERIAL.println();
   USE_SERIAL.println();
@@ -170,11 +168,19 @@ void setup()
     delay(1000);
   }
 
-  WiFiMulti.addAP(ssid, password);
+  IPAddress ip(192, 168, 1, 62);
+  IPAddress gateway(192, 168, 1, 1); 
+  Serial.print(F("Setting static ip to : "));
+  Serial.println(ip);
+  IPAddress subnet(255, 255, 255, 0);
+  WiFi.config(ip, gateway, subnet);
+  WiFi.begin(ssid, password);
 
-  while(WiFiMulti.run() != WL_CONNECTED) {
+  while(WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
     delay(100);
   }
+  Serial.println("<>");
 
   webSocket.begin();
   webSocket.onEvent(webSocketEvent);
