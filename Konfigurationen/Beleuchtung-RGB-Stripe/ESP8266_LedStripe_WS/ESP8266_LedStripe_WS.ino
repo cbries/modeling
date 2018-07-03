@@ -1,3 +1,6 @@
+const char* ssid      = "";
+const char* password  = "";
+
 /*
  */
  
@@ -22,13 +25,10 @@ static const uint8_t RX   = 3;
 static const uint8_t TX   = 1;
 */
 
-const char* ssid      = "";
-const char* password  = "";
-
 #include <Arduino.h>
 
 #include <ESP8266WiFi.h>
-#include <ESP8266WiFiMulti.h>
+//#include <ESP8266WiFiMulti.h>
 #include <WebSocketsServer.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
@@ -36,6 +36,23 @@ const char* password  = "";
 #include <Hash.h>
 
 #include "ArduinoJson.h"
+
+void SetupWifi()
+{
+  IPAddress ip(192, 168, 178, 63);
+  IPAddress gateway(192, 168, 178, 1); 
+  Serial.print(F("Setting static ip to : "));
+  Serial.println(ip);
+  IPAddress subnet(255, 255, 255, 0);
+  WiFi.config(ip, gateway, subnet);
+  WiFi.begin(ssid, password);
+
+  while(WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
+    delay(100);
+  }
+  Serial.println("<>");
+}
 
 int _BLUE = D6;
 int _GREEN = D5;
@@ -56,7 +73,7 @@ int w2 = 0;
 
 #define USE_SERIAL Serial
 
-ESP8266WiFiMulti WiFiMulti;
+//ESP8266WiFiMulti WiFiMulti;
 ESP8266WebServer server(80);
 WebSocketsServer webSocket = WebSocketsServer(81);
 
@@ -141,22 +158,8 @@ void setup()
 {
   EEPROM.begin(512);
   delay(10);
-  
-  //USE_SERIAL.begin(921600);
-  USE_SERIAL.begin(115200);
-  //USE_SERIAL.setDebugOutput(true);
-  USE_SERIAL.println();
-  USE_SERIAL.println();
-  USE_SERIAL.println();
 
   restoreValues();
-
-  for(uint8_t t = 4; t > 0; t--) 
-  {
-    USE_SERIAL.printf("[SETUP] BOOT WAIT %d...\n", t);
-    USE_SERIAL.flush();
-    delay(1000);
-  }
 
   pinMode(LED_RED, OUTPUT);
   pinMode(LED_GREEN, OUTPUT);
@@ -168,11 +171,21 @@ void setup()
   digitalWrite(LED_BLUE, 1);
   digitalWrite(LED_WHITE, 1);
 
-  WiFiMulti.addAP(ssid, password);
+  ShowValues();
 
-  while(WiFiMulti.run() != WL_CONNECTED) {
-    delay(100);
+  USE_SERIAL.begin(115200);
+  USE_SERIAL.println();
+  USE_SERIAL.println();
+  USE_SERIAL.println();
+
+  for(uint8_t t = 4; t > 0; t--) 
+  {
+    USE_SERIAL.printf("[SETUP] BOOT WAIT %d...\n", t);
+    USE_SERIAL.flush();
+    delay(1000);
   }
+
+  SetupWifi();
 
   webSocket.begin();
   webSocket.onEvent(webSocketEvent);
@@ -217,8 +230,6 @@ void setup()
 
   MDNS.addService("http", "tcp", 80);
   MDNS.addService("ws", "tcp", 81);
-
-  ShowValues();
 }
 
 void loop() 
