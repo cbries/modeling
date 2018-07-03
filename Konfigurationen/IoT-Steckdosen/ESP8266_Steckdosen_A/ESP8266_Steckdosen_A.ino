@@ -1,3 +1,6 @@
+const char* ssid      = "";
+const char* password  = "";
+
 /*
  */
  
@@ -22,9 +25,6 @@ static const uint8_t RX   = 3;
 static const uint8_t TX   = 1;
 */
 
-const char* ssid      = "";
-const char* password  = "";
-
 #include <Arduino.h>
 
 #include <ESP8266WiFi.h>
@@ -36,6 +36,23 @@ const char* password  = "";
 #include <Hash.h>
 
 #include "ArduinoJson.h"
+
+void SetupWifi()
+{
+  IPAddress ip(192, 168, 178, 62);
+  IPAddress gateway(192, 168, 178, 1); 
+  Serial.print(F("Setting static ip to : "));
+  Serial.println(ip);
+  IPAddress subnet(255, 255, 255, 0);
+  WiFi.config(ip, gateway, subnet);
+  WiFi.begin(ssid, password);
+
+  while(WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
+    delay(100);
+  }
+  Serial.println("<>");
+}
 
 int PortIN1 = D2;
 int PortIN2 = D3;
@@ -145,12 +162,8 @@ void setup()
 
   storeValues();
   delay(10);
-  
-  WiFiMulti.addAP(ssid, password);
 
-  while(WiFiMulti.run() != WL_CONNECTED) {
-    delay(100);
-  }
+  SetupWifi();
 
   webSocket.begin();
   webSocket.onEvent(webSocketEvent);
