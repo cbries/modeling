@@ -1,7 +1,7 @@
-const char* ssid      = "";
+const char* ssid      = "Hogwarts School of Wizardry";
 const char* password  = "";
 
-#include<Arduino.h>
+#include <Arduino.h>
 
 // IP ADDRESSES / GATEWAY
 const uint8_t ipaddress[4] = { 192, 168, 178, 64 };
@@ -13,36 +13,27 @@ const uint8_t gateaddress[4] = { 192, 168, 178, 1 };
 // v2 Lower Memory
 // 115200
 
-// Arduino Wemos D1
-/*
-static const uint8_t D0   = 16;
-static const uint8_t D1   = 5;
-static const uint8_t D2   = 4;
-static const uint8_t D3   = 0;   SCL,  RED
-static const uint8_t D4   = 2;
-static const uint8_t D5   = 14;  SCK,  GREEN
-static const uint8_t D6   = 12;  MISO, BLUE
-static const uint8_t D7   = 13;  MOSI, WHITE
-static const uint8_t D8   = 15;
-static const uint8_t RX   = 3;
-static const uint8_t TX   = 1;
-*/
-
-#include<ESP8266WiFi.h>
-#include<WebSocketsServer.h>
-#include<ESP8266WebServer.h>
-#include<ESP8266mDNS.h>
-#include<EEPROM.h>
-#include<Wire.h>
-#include<Hash.h>
+#include <ESP8266WiFi.h>
+#include <WebSocketsServer.h>
+#include <ESP8266WebServer.h>
+#include <ESP8266mDNS.h>
+#include <Wire.h>
+#include <Hash.h>
+#include <FS.h>
 
 #include "ArduinoJson.h"
 
 #define USE_SERIAL Serial
 #define INT_PIN 13
 
+String getContentType(String filename); // convert the file extension to the MIME type
+bool handleFileRead(String path);       // send the right file to the client (if it exists)
+bool writeToFile(const char *path, const char *content);
+
 // Gyroscope
 const uint8_t MPU_addr = 0x68; // I2C address of the MPU-6050
+const int _mpuMinVal = 265;
+const int _mpuMaxVal = 402;
 // DHT*
 #include "DHTesp.h"
 #define DHT_PIN 16
@@ -54,12 +45,16 @@ struct SensorData
 {
 #define SENSORDATA_SIZE 512
   
-  DHTesp::DHT_ERROR_t dhtStatus;
+  int dhtStatus;
   float dhtHumidity;
   float dhtTemperature;
   float dhtFahrenheit;
   float dhtHeatIndexCelsius;
   float dhtHeatIndexFahrenheit;
+
+  double angleX;
+  double angleY;
+  double angleZ;
 
   int16_t AcX,AcY,AcZ;
   int16_t Tmp;
@@ -73,12 +68,17 @@ public:
   {
     StaticJsonBuffer<SENSORDATA_SIZE> jsonBuffer;
     JsonObject& root = jsonBuffer.createObject();
-    root["dhtStatus"] = (int) dhtStatus;
+    root["millis"] = millis();
+    root["numberOfInterrupts"] = numberOfInterrupts;
+    root["dhtStatus"] = dhtStatus;
     root["dhtHumidity"] = dhtHumidity;
     root["dhtTemperature"] = dhtTemperature;
     root["dhtFahrenheit"] = dhtFahrenheit;
     root["dhtHeatIndexCelsius"] = dhtHeatIndexCelsius;
     root["dhtHeatIndexFahrenheit"] = dhtHeatIndexFahrenheit;
+    root["angleX"] = angleX;
+    root["angleY"] = angleY;
+    root["angleZ"] = angleZ;
     root["AcX"] = AcX;
     root["AcY"] = AcY;
     root["AcZ"] = AcZ;
@@ -86,30 +86,7 @@ public:
     root["GyX"] = GyX;
     root["GyY"] = GyY;
     root["GyZ"] = GyZ;
-    root["numberOfInterrupts"] = numberOfInterrupts;
     root.printTo(json, maxSize);
-  }
-
-  // https://arduinojson.org/v5/faq/whats-the-best-way-to-use-the-library/
-  bool deserialize(SensorData& data, char* json)
-  {
-    StaticJsonBuffer<SENSORDATA_SIZE> jsonBuffer;
-    JsonObject& root = jsonBuffer.parseObject(json);
-    dhtStatus = root["dhtStatus"];
-    dhtHumidity = root["dhtHumidity"];
-    dhtTemperature = root["dhtTemperature"];
-    dhtFahrenheit = root["dhtFahrenheit"];
-    dhtHeatIndexCelsius = root["dhtHeatIndexCelsius"];
-    dhtHeatIndexFahrenheit = root["dhtHeatIndexFahrenheit"];
-    AcX = root["AcX"];
-    AcY = root["AcY"];
-    AcZ = root["AcZ"];
-    Tmp = root["Tmprature"];
-    GyX = root["GyX"];
-    GyY = root["GyY"];
-    GyZ = root["GyZ"];
-    numberOfInterrupts = root["numberOfInterrupts"];
-    return root.success();
   }
 };
 
@@ -118,7 +95,7 @@ SensorData _data;
 long _previousMillis = 0;
 long _intervallMillis = 0;
 
-ESP8266WiFiMulti WiFiMulti;
+//ESP8266WiFiMulti WiFiMulti;
 ESP8266WebServer server(80);
 WebSocketsServer webSocket = WebSocketsServer(81);
 
@@ -133,7 +110,7 @@ void updateData()
   if(currentMillis - _previousMillis > _intervallMillis)
   {
     _previousMillis = currentMillis;
-    _data.dhtStatus = dht.getStatus();
+    _data.dhtStatus = (int) dht.getStatus();
     _data.dhtHumidity = dht.getHumidity();
     _data.dhtTemperature = dht.getTemperature(); 
     _data.dhtFahrenheit = dht.toFahrenheit(_data.dhtTemperature);
@@ -158,15 +135,14 @@ void updateData()
   _data.GyX = Wire.read()<<8|Wire.read();  // 0x43 (GYRO_XOUT_H) & 0x44 (GYRO_XOUT_L)
   _data.GyY = Wire.read()<<8|Wire.read();  // 0x45 (GYRO_YOUT_H) & 0x46 (GYRO_YOUT_L)
   _data.GyZ = Wire.read()<<8|Wire.read();  // 0x47 (GYRO_ZOUT_H) & 0x48 (GYRO_ZOUT_L)
-  /*
-  Serial.print("AcX = "); Serial.print(AcX);
-  Serial.print(" | AcY = "); Serial.print(AcY);
-  Serial.print(" | AcZ = "); Serial.print(AcZ);
-  Serial.print(" | Tmp = "); Serial.print(Tmp/340.00+36.53);  //equation for temperature in degrees C from datasheet
-  Serial.print(" | GyX = "); Serial.print(GyX);
-  Serial.print(" | GyY = "); Serial.print(GyY);
-  Serial.print(" | GyZ = "); Serial.println(GyZ);
-  */
+
+  int xAng = map(_data.AcX, _mpuMinVal, _mpuMaxVal, -90, 90);
+  int yAng = map(_data.AcY, _mpuMinVal, _mpuMaxVal, -90, 90);
+  int zAng = map(_data.AcZ, _mpuMinVal, _mpuMaxVal, -90, 90);
+
+  _data.angleX = RAD_TO_DEG * (atan2(-yAng, -zAng)+PI);
+  _data.angleY = RAD_TO_DEG * (atan2(-xAng, -zAng)+PI);
+  _data.angleZ = RAD_TO_DEG * (atan2(-yAng, -xAng)+PI);
 }
 
 void SetupWifi()
@@ -184,6 +160,47 @@ void SetupWifi()
     delay(100);
   }
   Serial.println("<>");
+}
+
+void handleCommand(uint8_t * payload, size_t length)
+{
+  StaticJsonBuffer<200> jsonBuffer;
+  JsonObject& root = jsonBuffer.parseObject(payload);
+  if (!root.success()) {
+    Serial.println("handleCommand() failed");
+    return;
+  }
+  
+  const char* fname = root["fname"];
+  const char* cnt = root["cnt"];
+
+  Serial.print("Filename: "); Serial.print(fname);
+  Serial.print(", Content: "); Serial.println(cnt);
+
+  // we trust our customers, no auth check
+  writeToFile(fname, cnt);
+}
+
+bool _isConnected = false;
+uint8_t _wsNum = 0;
+
+void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length) { 
+    switch(type) {
+        case WStype_DISCONNECTED: {
+          _isConnected = false;
+        } break;
+
+        case WStype_CONNECTED: {
+          IPAddress ip = webSocket.remoteIP(num);
+          Serial.printf("[%u] Connected from %d.%d.%d.%d url: %s\n", num, ip[0], ip[1], ip[2], ip[3], payload);
+          _isConnected = true;  
+          _wsNum = num;      
+        } break;
+        
+        case WStype_TEXT: {
+          handleCommand(payload, length);
+        } break;
+    }
 }
 
 void setup()
@@ -211,76 +228,22 @@ void setup()
 
   if(MDNS.begin("esp8266")) { }
 
-  server.on("/", []() {
+  MDNS.addService("http", "tcp", 80);
+  MDNS.addService("ws", "tcp", 81);
 
-  // TODO
-  // TODO
-      
-  char buf[2048] = {0};
-  sprintf(buf, "<html><head>" \
-        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> " \
-        "<script>var connection = new WebSocket('ws://'+location.hostname+':81/'," \
-        "['arduino']); /*connection.onopen = function () { connection.send('Connect ' + new Date()); };*/ " \ 
-        "connection.onerror = function (error) {    console.log('WebSocket Error ', error);};connection.onmessage " \
-        "= function (e) {  console.log('Server: ', e.data);};function sendState() {  " \
-          "var in1 = parseInt(document.getElementById('in1').checked ? 1 : 0 );  " \
-          "var in2 = parseInt(document.getElementById('in2').checked ? 1 : 0 );  " \
-          "var in3 = parseInt(document.getElementById('in3').checked ? 1 : 0 );  " \
-          "var in4 = parseInt(document.getElementById('in4').checked ? 1 : 0 );  " \
-          "var dataToSend = new Object(); " \
-          "dataToSend.in1 = parseInt(in1); " \
-          "dataToSend.in2 = parseInt(in2); " \
-          "dataToSend.in3 = parseInt(in3); " \
-          "dataToSend.in4 = parseInt(in4); " \
-          "var data = JSON.stringify(dataToSend); " \
-          "console.log('DATA:  ' + data); connection.send(data); } " \
-          "</script></head>" \
-          "<body>Steckdosen:<br/><br/>" \
-           "IN1: <input id=\"in1\" type=\"checkbox\" onclick=\"sendState();\" %s/><br/>" \
-           "IN2: <input id=\"in2\" type=\"checkbox\" onclick=\"sendState();\" %s/><br/>" \
-           "IN3: <input id=\"in3\" type=\"checkbox\" onclick=\"sendState();\" %s/><br/>" \
-           "IN4: <input id=\"in4\" type=\"checkbox\" onclick=\"sendState();\" %s/><br/>" \
-           "</body></html>",
-          in1 ? "checked" : "", in2 ? "checked" : "", in3 ? "checked" : "", in4 ? "checked" : "");
-      
-        server.send(200, "text/html", buf);
+  webSocket.begin();
+  webSocket.onEvent(webSocketEvent);
+
+  SPIFFS.begin();
+  
+  server.onNotFound([]() {
+    if (!handleFileRead(server.uri()))
+      server.send(404, "text/plain", "404: Not Found");
   });
 
   server.begin();
 
-  MDNS.addService("http", "tcp", 80);
-  MDNS.addService("ws", "tcp", 81);
-}
-
-// TODO
-// TODO
-void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length) 
-{ 
-    switch(type) 
-    {
-        case WStype_DISCONNECTED:
-            storeValues();
-            break;
-
-        case WStype_CONNECTED: {
-            IPAddress ip = webSocket.remoteIP(num);
-            webSocket.sendTXT(num, "Connected");
-            restoreValues();
-            ShowValues();            
-        }
-            break;
-        case WStype_TEXT:
-            StaticJsonBuffer<200> jsonBuffer;
-            JsonObject& root = jsonBuffer.parseObject(payload);
-            in1 = root["in1"] == 1;
-            in2 = root["in2"] == 1;
-            in3 = root["in3"] == 1;
-            in4 = root["in4"] == 1;
-
-            ShowValues();            
-
-            break;
-    }
+  Serial.println("***** READY *****");
 }
 
 void loop()
@@ -288,4 +251,55 @@ void loop()
   updateData();
   webSocket.loop();
   server.handleClient();
+
+  char data[512];
+  _data.serialize(data, 512);
+
+  if(_isConnected) {
+    webSocket.sendTXT(_wsNum, data);
+  }
+
+  delay(100);
+}
+
+bool handleFileRead(String path) {
+  Serial.println("handleFileRead: " + path);
+  if (path.endsWith("/")) path += "index.html";
+  String contentType = getContentType(path);
+  if (SPIFFS.exists(path)) {
+    File file = SPIFFS.open(path, "r");
+    size_t sent = server.streamFile(file, contentType);
+    file.close();
+    return true;
+  }
+  Serial.println("\tFile Not Found");
+  return false;
+}
+
+bool writeToFile(const char *path, const char *content)
+{
+  File f = SPIFFS.open(path, "w");
+  if (!f) { 
+    Serial.println("file open failed");
+    return false;
+  }
+  f.print(content);
+  f.close();
+  return true;
+}
+
+String getContentType(String filename){
+  if(filename.endsWith(".htm")) return "text/html";
+  else if(filename.endsWith(".html")) return "text/html";
+  else if(filename.endsWith(".css")) return "text/css";
+  else if(filename.endsWith(".js")) return "application/javascript";
+  else if(filename.endsWith(".png")) return "image/png";
+  else if(filename.endsWith(".gif")) return "image/gif";
+  else if(filename.endsWith(".jpg")) return "image/jpeg";
+  else if(filename.endsWith(".ico")) return "image/x-icon";
+  else if(filename.endsWith(".xml")) return "text/xml";
+  else if(filename.endsWith(".pdf")) return "application/x-pdf";
+  else if(filename.endsWith(".zip")) return "application/x-zip";
+  else if(filename.endsWith(".gz")) return "application/x-gzip";
+  return "text/plain";
 }
