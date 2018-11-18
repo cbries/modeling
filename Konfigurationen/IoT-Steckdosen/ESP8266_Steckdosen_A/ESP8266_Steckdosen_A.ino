@@ -1,6 +1,8 @@
 const char* ssid      = "";
 const char* password  = "";
 
+// .\SetIoTSteckdose.exe --host=ws://192.168.178.62:81 --in=in4 --state=off
+
 /*
  */
  
@@ -132,10 +134,23 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
         case WStype_TEXT:
             StaticJsonBuffer<200> jsonBuffer;
             JsonObject& root = jsonBuffer.parseObject(payload);
-            in1 = root["in1"] == 1;
-            in2 = root["in2"] == 1;
-            in3 = root["in3"] == 1;
-            in4 = root["in4"] == 1;
+
+            Serial.println(payload);
+
+            int v1 = root["in1"];
+            int v2 = root["in2"];
+            int v3 = root["in3"];
+            int v4 = root["in4"];
+
+            Serial.print("v1: "); Serial.println(v1);
+            Serial.print("v2: "); Serial.println(v2);
+            Serial.print("v3: "); Serial.println(v3);
+            Serial.print("v4: "); Serial.println(v4);
+
+            if(v1 != -1) in1 = root["in1"] == 1;
+            if(v2 != -1) in2 = root["in2"] == 1;
+            if(v3 != -1) in3 = root["in3"] == 1;
+            if(v4 != -1) in4 = root["in4"] == 1;
 
             ShowValues();            
 
@@ -156,6 +171,8 @@ void setup()
   in4 = false;
 
   ShowValues();
+
+  Serial.begin(115200);
 
   EEPROM.begin(512);
   delay(10);

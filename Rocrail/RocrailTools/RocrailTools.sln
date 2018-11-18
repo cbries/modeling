@@ -12,6 +12,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BashTools", "BashTools", "{
 		BashTools\setdaylight.sh = BashTools\setdaylight.sh
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetIoTSteckdose", "SetIoTSteckdose\SetIoTSteckdose.csproj", "{72D6CC1B-E719-4652-A6A8-D6150F14CDE4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3rdparty", "3rdparty", "{24152D42-5816-43A1-83C0-3FC151EFB3C5}"
+	ProjectSection(SolutionItems) = preProject
+		3rdparty\log4net.dll = 3rdparty\log4net.dll
+		3rdparty\SuperSocket.ClientEngine.dll = 3rdparty\SuperSocket.ClientEngine.dll
+		3rdparty\SuperSocket.Common.dll = 3rdparty\SuperSocket.Common.dll
+		3rdparty\SuperSocket.Dlr.dll = 3rdparty\SuperSocket.Dlr.dll
+		3rdparty\SuperSocket.Facility.dll = 3rdparty\SuperSocket.Facility.dll
+		3rdparty\SuperSocket.ProtoBase.dll = 3rdparty\SuperSocket.ProtoBase.dll
+		3rdparty\SuperSocket.SocketBase.dll = 3rdparty\SuperSocket.SocketBase.dll
+		3rdparty\SuperSocket.SocketEngine.dll = 3rdparty\SuperSocket.SocketEngine.dll
+		3rdparty\SuperWebSocket.dll = 3rdparty\SuperWebSocket.dll
+		3rdparty\WebSocket4Net.dll = 3rdparty\WebSocket4Net.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +42,10 @@ Global
 		{5E0CE213-A4EC-418A-8FDB-1D4205FF1CC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E0CE213-A4EC-418A-8FDB-1D4205FF1CC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E0CE213-A4EC-418A-8FDB-1D4205FF1CC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72D6CC1B-E719-4652-A6A8-D6150F14CDE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72D6CC1B-E719-4652-A6A8-D6150F14CDE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72D6CC1B-E719-4652-A6A8-D6150F14CDE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72D6CC1B-E719-4652-A6A8-D6150F14CDE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
