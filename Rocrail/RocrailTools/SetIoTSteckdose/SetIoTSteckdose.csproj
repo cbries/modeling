@@ -65,4 +65,20 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>SET ProgData=C:\ProgramData\Rocrail
+SET Target0=%25ProgData%25\tools
+SET Target1=%25ProgData%25\tools\$(TargetName)
+
+REM IF NOT EXIST "%25ProgData%25" ( mkdir "%25ProgData%25" )
+REM IF NOT EXIST "%25Target0%25" ( mkdir "%25Target0%25" )
+REM IF NOT EXIST "%25Target1%25" ( mkdir "%25Target1%25" )
+
+xcopy "$(TargetDir)*" "%25Target1%25\" /d /e /y /Q &amp;&amp; (
+  echo [[SUCCESSFUL]] Copy of AppData 
+) || (
+  echo [[FAILURE]] Copy of AppData 
+)
+</PostBuildEvent>
+  </PropertyGroup>
 </Project>
