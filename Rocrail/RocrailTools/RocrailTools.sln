@@ -16,6 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetIoTSteckdose", "SetIoTSt
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3rdparty", "3rdparty", "{24152D42-5816-43A1-83C0-3FC151EFB3C5}"
 	ProjectSection(SolutionItems) = preProject
+		3rdparty\CommandCam.exe = 3rdparty\CommandCam.exe
 		3rdparty\log4net.dll = 3rdparty\log4net.dll
 		3rdparty\SuperSocket.ClientEngine.dll = 3rdparty\SuperSocket.ClientEngine.dll
 		3rdparty\SuperSocket.Common.dll = 3rdparty\SuperSocket.Common.dll
@@ -27,6 +28,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3rdparty", "3rdparty", "{24
 		3rdparty\SuperWebSocket.dll = 3rdparty\SuperWebSocket.dll
 		3rdparty\WebSocket4Net.dll = 3rdparty\WebSocket4Net.dll
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bmp2Png", "Bmp2Png\Bmp2Png.csproj", "{B34D8649-869E-4D52-BA73-46DEEBC20B07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +49,10 @@ Global
 		{72D6CC1B-E719-4652-A6A8-D6150F14CDE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72D6CC1B-E719-4652-A6A8-D6150F14CDE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72D6CC1B-E719-4652-A6A8-D6150F14CDE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B34D8649-869E-4D52-BA73-46DEEBC20B07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B34D8649-869E-4D52-BA73-46DEEBC20B07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B34D8649-869E-4D52-BA73-46DEEBC20B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B34D8649-869E-4D52-BA73-46DEEBC20B07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
