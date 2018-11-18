@@ -83,8 +83,8 @@ void ConfigureFunctionsAndServos()
   servos[4].address = 29;
   servos[4].outputPin = 13;
   servos[4].servo.attach(12);
-  servos[4].offangle = 81;
-  servos[4].onangle = 105;
+  servos[4].offangle = 82;
+  servos[4].onangle = 104;
   
 /*
   // S9
