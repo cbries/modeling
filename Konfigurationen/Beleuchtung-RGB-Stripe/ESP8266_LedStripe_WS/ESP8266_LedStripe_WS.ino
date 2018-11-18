@@ -1,4 +1,4 @@
-const char* ssid      = "";
+const char* ssid      = "Hogwarts School of Wizardry";
 const char* password  = "";
 
 /*

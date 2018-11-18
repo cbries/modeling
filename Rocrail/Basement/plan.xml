@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<plan rocrailversion="2.0.999-14572" rocrailpwd="C:\Users\cries\Documents\GitHub\modeling\Rocrail\Basement" rocrailos="win64" rocrailip="192.168.178.70" donkey="true" healthy="true">
+<plan rocrailversion="2.0.999-14572" rocrailpwd="C:\Users\cries\Documents\GitHub\modeling\Rocrail\Basement" rocrailos="win64" rocrailip="192.168.178.70" donkey="true" healthy="false">
   <zlevel title="Level 0"/>
   <boosterlist>
     <booster id="esu station" prev_id="esu station" desc="" iid="esu" district="" scfb="" powerfb="" powersw="" uid="65000" addr="0" bus="0" modids="" blockids="" scopt_stoplocos="false" scopt_poweroffall="false" scopt_repoweron="false" doesreport="true" load="0" volt="0" temp="0"/>
@@ -388,7 +388,7 @@
     <tx id="tx9" text="Arduinos (IN2, 12V)" x="32" y="10" z="0" block="" prev_id="tx9" desc="" pointsize="0" html="false" bold="false" fixed="false" underlined="false" border="false" italic="false" transparent="true" mirror="false" manualinput="false" show="true" reset="false" clock="false" webcam="false" refresh="0" ori="west" iid="" bus="0" addr="0" display="1" speak="false" cx="3" cy="1"/>
     <tx id="tx10" text="Servostrom (IN3, 5V)" x="32" y="11" z="0" block="" prev_id="tx10" desc="" pointsize="0" html="false" bold="false" fixed="false" underlined="false" border="false" italic="false" transparent="true" mirror="false" manualinput="false" show="true" reset="false" clock="false" webcam="false" refresh="0" ori="west" iid="" bus="0" addr="0" display="1" speak="false" cx="4" cy="1"/>
     <tx id="tx11" text="IN4" x="32" y="12" z="0" block=""/>
-    <tx id="tx12" text="C:\ProgramData\Rocrail\tools\webcam1.png" x="30" y="0" z="0" block="" prev_id="tx12" desc="" pointsize="0" html="false" bold="false" fixed="false" underlined="false" border="false" italic="false" transparent="true" mirror="false" manualinput="false" show="true" reset="false" clock="false" webcam="false" refresh="500" ori="west" iid="" bus="0" addr="0" display="1" speak="false" cx="8" cy="5"/>
+    <tx id="Webcam Schattenbahnhof" text="C:\ProgramData\Rocrail\tools\webcam1.png" x="2" y="10" z="0" block="" prev_id="Webcam Schattenbahnhof" desc="" pointsize="0" html="false" bold="false" fixed="false" underlined="false" border="false" italic="false" transparent="true" mirror="false" manualinput="false" show="true" reset="false" clock="false" webcam="false" refresh="500" ori="west" iid="" bus="0" addr="0" display="1" speak="false" cx="5" cy="4"/>
   </txlist>
   <tklist>
     <tk type="straight" id="tk20171218185751497" x="14" y="7" z="0" routeids="[B07-]-[B12-],[B07-]-[B13-],[B07-]-[B14-],[B07-]-[B15-],[B12-]-[B07-],[B13-]-[B07-],[B14-]-[B07-],[B15-]-[B07-]" prev_id="tk20171218185751497" blockid="B07" sensorid="" road="false" tknr="1" direxception=""/>
@@ -2149,6 +2149,7 @@
       <bbt bk="B15" frombk="B03" route="[B03+]-[B15+]" interval="350" steps="10" speed="36" blockenterside="1" count="1"/>
       <bbt bk="B14" frombk="B08" route="[B08+]-[B14+]" interval="350" steps="10" speed="40" blockenterside="1" count="1"/>
     </lc>
+    <lc id="74 854 DB" identifier="1004" spcnt="128" prot="F" iid="esu" oid="1004" fncnt="4" engine="diesel" addr="1004" V_max="100" V_mid="50" V_min="10" V_mode="percent" show="true" generated="true" destblockid="" cmdDelay="0" pause="false" mode="stop" fifotop="false" lookupschedulevirtual="false" energypercentage="0" V="0" fx="0" throttleid="" trainlen="0" trainweight="0" info4throttle="false" placing="true"/>
   </lclist>
   <vrlist>
     <vr id="lc4112" generated="false" text="BR10" value="0"/>
@@ -2164,11 +2165,11 @@
     <co ori="west" id="Seg1" x="19" y="8" z="0" porttype="0" prev_id="Seg1" nr="0" desc="" decid="" show="true" showid="true" svgtype="0" blockid="" routeids="" grpid="SchalterSegmentdrehscheibe" tristate="false" toggleswitch="true" operable="true" iid="esu" bus="0" uidname="" addr="256" port="4" gate="0" param="0" paramoff="0" value="1" delay="0" prot="N" inv="false" blink="false" colortype="false" asswitch="false" accessory="true" redChannel="0" greenChannel="0" blueChannel="0" whiteChannel="0" white2Channel="0" brightnessChannel="0" state="on">
       <color red="0" green="0" blue="0" white="0" white2="0" saturation="254" brightness="0" id=""/>
     </co>
-    <co id="cmdTageslicht" x="27" y="10" z="0" value="1" state="off" porttype="0" prev_id="cmdTageslicht" nr="0" desc="" decid="" show="true" showid="true" svgtype="0" blockid="" routeids="" grpid="Lichtschalter" tristate="false" toggleswitch="true" operable="true" iid="" bus="0" uidname="" addr="0" port="0" gate="0" param="0" paramoff="0" delay="0" prot="D" inv="false" blink="false" colortype="false" asswitch="false" accessory="true" redChannel="0" greenChannel="0" blueChannel="0" whiteChannel="0" white2Channel="0" brightnessChannel="0" svgacctype="false">
+    <co id="cmdTageslicht" x="27" y="10" z="0" value="1" state="on" porttype="0" prev_id="cmdTageslicht" nr="0" desc="" decid="" show="true" showid="true" svgtype="0" blockid="" routeids="" grpid="Lichtschalter" tristate="false" toggleswitch="true" operable="true" iid="" bus="0" uidname="" addr="0" port="0" gate="0" param="0" paramoff="0" delay="0" prot="D" inv="false" blink="false" colortype="false" asswitch="false" accessory="true" redChannel="0" greenChannel="0" blueChannel="0" whiteChannel="0" white2Channel="0" brightnessChannel="0" svgacctype="false">
       <color red="0" green="0" blue="0" white="0" white2="0" saturation="254" brightness="0" id=""/>
       <actionctrl id="LichtTageslicht" state="" desc="" lcid="" reset="true" allconditions="true" atcmd="true" atevt="false" auto="true" manual="true" substate="" duration="0" timer="0" callerid="cmdTageslicht" callerdesc="" calleruserdata=""/>
     </co>
-    <co id="cmdDaemmerung" x="27" y="11" z="0" porttype="0" prev_id="cmdDaemmerung" nr="0" desc="" decid="" show="true" showid="true" svgtype="0" blockid="" routeids="" grpid="Lichtschalter" tristate="false" toggleswitch="true" operable="true" iid="" bus="0" uidname="" addr="0" port="0" gate="0" param="0" paramoff="0" value="1" delay="0" prot="D" inv="false" blink="false" colortype="false" asswitch="false" accessory="true" redChannel="0" greenChannel="0" blueChannel="0" whiteChannel="0" white2Channel="0" brightnessChannel="0" state="on">
+    <co id="cmdDaemmerung" x="27" y="11" z="0" porttype="0" prev_id="cmdDaemmerung" nr="0" desc="" decid="" show="true" showid="true" svgtype="0" blockid="" routeids="" grpid="Lichtschalter" tristate="false" toggleswitch="true" operable="true" iid="" bus="0" uidname="" addr="0" port="0" gate="0" param="0" paramoff="0" value="1" delay="0" prot="D" inv="false" blink="false" colortype="false" asswitch="false" accessory="true" redChannel="0" greenChannel="0" blueChannel="0" whiteChannel="0" white2Channel="0" brightnessChannel="0" state="off">
       <color red="0" green="0" blue="0" white="0" white2="0" saturation="254" brightness="0" id=""/>
       <actionctrl id="LichtDaemmerung" state="" desc="" lcid="" reset="true" allconditions="true" atcmd="true" atevt="false" auto="true" manual="true" substate="" duration="0" timer="0" callerid="cmdDaemmerung" callerdesc="" calleruserdata=""/>
     </co>

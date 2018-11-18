@@ -25,6 +25,7 @@
 using System;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 
 namespace Bmp2Png
@@ -49,7 +50,8 @@ namespace Bmp2Png
 				targetName = Path.Combine(dirname, fname + ".png");
 				if (File.Exists(targetName))
 					File.Delete(targetName);
-				img.Save(targetName);
+
+				img.Save(targetName, ImageFormat.Png);
 
 				var finfo = new FileInfo(targetName);
 				if (!finfo.Exists)

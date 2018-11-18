@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="CamOff.bat" />
+    <None Include="CamOn.bat" />
     <None Include="MakeWebCamShot.bat" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -64,6 +66,8 @@ REM IF NOT EXIST "%25Target0%25" ( mkdir "%25Target0%25" )
 
 copy "$(TargetPath)" "%25Target0%25\$(TargetFileName)"
 copy "$(SolutionDir)\3rdparty\CommandCam.exe" "%25Target0%25\CommandCam.exe"
-copy "$(ProjectDir)\MakeWebCamShot.bat" "%25Target0%25\MakeWebCamShot.bat"</PostBuildEvent>
+copy "$(ProjectDir)\MakeWebCamShot.bat" "%25Target0%25\MakeWebCamShot.bat"
+copy "$(ProjectDir)\CamOn.bat" "%25Target0%25\CamOn.bat"
+copy "$(ProjectDir)\CamOff.bat" "%25Target0%25\CamOff.bat"</PostBuildEvent>
   </PropertyGroup>
 </Project>
