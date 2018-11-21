@@ -39,7 +39,7 @@ static const uint8_t TX   = 1;
 
 void SetupWifi()
 {
-  IPAddress ip(192, 168, 178, 65);
+  IPAddress ip(192, 168, 178, 66);
   IPAddress gateway(192, 168, 178, 1); 
   Serial.print(F("Setting static ip to : "));
   Serial.println(ip);
