@@ -70,46 +70,46 @@ int w2 = 0;
 void storeValues();
 
 void callback(char * topic, byte * payload, unsigned int length) {
-  Serial.print(topic);
-  Serial.print(" => ");
+  //Serial.print(topic);
+  //Serial.print(" => ");
 
   char * payload_str;
   payload_str = (char * ) malloc(length + 1);
   memcpy(payload_str, payload, length);
   payload_str[length] = '\0';
-  Serial.println(String(payload_str));
+  //Serial.println(String(payload_str));
 
-  String t = String(topic);
+  //String t = String(topic);
 
-  if (t == "Haus/Railway/Sky/R") {
+  if (String(topic) == "Haus/Railway/Sky/R") {
     String v = String(payload_str);
     r = v.toInt();
   }
-  if (t == "Haus/Railway/Sky/G") {
+  if (String(topic) == "Haus/Railway/Sky/G") {
     String v = String(payload_str);
     g = v.toInt();
   }
-  if (t == "Haus/Railway/Sky/B") {
+  if (String(topic) == "Haus/Railway/Sky/B") {
     String v = String(payload_str);
     b = v.toInt();
   }
-  if (t == "Haus/Railway/Sky/W" || t == "Haus/Railway/Sky/A") {
+  if (String(topic) == "Haus/Railway/Sky/W" || String(topic) == "Haus/Railway/Sky/A") {
     String v = String(payload_str);
     w = v.toInt();
   } 
-  if (t == "Haus/Railway/Sky/Off") {
+  if (String(topic) == "Haus/Railway/Sky/Off") {
     r = 0;
     g = 0;
     b = 0;
     w = 0;
   } 
-  if (t == "Haus/Railway/Sky/On") {
+  if (String(topic) == "Haus/Railway/Sky/On") {
     r = 1023;
     g = 1023;
     b = 1023;
     w = 1023;
   } 
-
+/*
   Serial.print("RGBA: ");
   Serial.print(r);
   Serial.print(", ");
@@ -118,7 +118,7 @@ void callback(char * topic, byte * payload, unsigned int length) {
   Serial.print(b);
   Serial.print(", ");
   Serial.println(w);
-
+*/
   ShowValues();
 
   storeValues();
@@ -130,7 +130,7 @@ void connect_to_MQTT() {
   client.setServer(mqtt_server, 1883);
   client.setCallback(callback);
 
-  if (client.connect("Railway")) {
+  if (client.connect("RailwayLedStripe")) {
     Serial.println("(re)-connected to MQTT");
     client.subscribe("Haus/Railway/Sky/R");
     client.subscribe("Haus/Railway/Sky/G");
@@ -250,6 +250,9 @@ void loop()
   if (!client.connected()) {
     Serial.println("Not connected to MQTT....");
     connect_to_MQTT();
+
+    Serial.println("IP address local: ");
+    Serial.println(WiFi.localIP());
     delay(1000);
   }
 }
