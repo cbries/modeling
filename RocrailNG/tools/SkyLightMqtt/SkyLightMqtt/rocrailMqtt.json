@@ -1,0 +1,8 @@
+﻿{
+  "Enabled": true,
+  "BrokerAddress": "192.168.178.29",
+  "DefaultRed": 255,
+  "DefaultGreen": 255,
+  "DefaultBlue": 255,
+  "DefaultWhite": 1023
+}
