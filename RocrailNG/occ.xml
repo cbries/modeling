@@ -42,7 +42,7 @@
   <occ bkid="Hauptbhf_2" arrivetime="1687416713" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="Hauptbhf_3" arrivetime="1687416693" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="Hauptbhf_4" arrivetime="1687416693" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Nebenbhf_A_1" arrivetime="1687451752" lcid="74 854 DB" auto="false" closed="true" placing="1" blockenterside="2"/>
+  <occ bkid="Block_Nebenbhf_A_1" arrivetime="1687466334" lcid="74 854 DB" auto="false" closed="true" placing="1" blockenterside="2"/>
   <occ bkid="Block_Nebenbhf_A_2" arrivetime="1687451755" lcid="BR 75 057" auto="false" closed="true" placing="1" blockenterside="2"/>
   <occ bkid="Block_Hauptbhf_1" arrivetime="1687453996" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="Block_Hauptbhf_2" arrivetime="1687455711" lcid="BR41 354" auto="false" closed="false" placing="1" blockenterside="1"/>
