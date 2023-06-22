@@ -1,0 +1,32 @@
+Aktionen in Rocrail
+
+AktionLichtMorgens
+Befehl: 	C:\git\privateProjekte\modeling\RocrailNG\tools\SkyLightMqtt\SkyLightMqtt\bin\Debug\rocrailMqtt.exe
+Parameter: 	sky "rgba(255, 255, 255, 300)"
+
+AktionLichtTag
+Befehl: 	C:\git\privateProjekte\modeling\RocrailNG\tools\SkyLightMqtt\SkyLightMqtt\bin\Debug\rocrailMqtt.exe
+Parameter: 	sky "rgba(255, 255, 255, 1023)"
+
+AktionLichtNachmittag
+Befehl: 	C:\git\privateProjekte\modeling\RocrailNG\tools\SkyLightMqtt\SkyLightMqtt\bin\Debug\rocrailMqtt.exe
+Parameter: 	sky "rgba(255, 255, 255, 500)"
+
+AktionLichtAbend
+Befehl: 	C:\git\privateProjekte\modeling\RocrailNG\tools\SkyLightMqtt\SkyLightMqtt\bin\Debug\rocrailMqtt.exe
+Parameter: 	sky "rgba(255, 255, 255, 250)"
+
+AktionLichtNacht
+Befehl: 	C:\git\privateProjekte\modeling\RocrailNG\tools\SkyLightMqtt\SkyLightMqtt\bin\Debug\rocrailMqtt.exe
+Parameter: 	sky "rgba(255, 255, 255, 100)"
+
+
+Befehl: 	C:\git\privateProjekte\modeling\RocrailNG\tools\SkyLightMqtt\SkyLightMqtt\bin\Debug\rocrailMqtt.exe
+Aktion5V_an		power "Haus/Switches/Railway02" True
+Aktion5V_aus	power "Haus/Switches/Railway02" False
+
+
+Befehl: 	C:\git\privateProjekte\modeling\RocrailNG\tools\SkyLightMqtt\SkyLightMqtt\bin\Debug\rocrailMqtt.exe
+Aktion12V_an	power "Haus/Switches/Railway03" True
+Aktion12V_aus	power "Haus/Switches/Railway03" False
+

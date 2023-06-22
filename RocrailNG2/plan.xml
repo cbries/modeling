@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plan rocrailversion="2.1.3403" rocrailpwd="C:\git\privateProjekte\modeling\RocrailNG" rocrailos="win64" rocrailarch="X86_64" rocrailip="172.17.64.140" donkey="false" healthy="true" title="New Plan" remark="">
+  <zlevel title="Level 0"/>
+  <boosterlist/>
+  <lightctrl converted="true"/>
+  <competition/>
+  <tklist>
+    <tk type="straight" id="tk1" x="2" y="3" z="0"/>
+    <tk type="straight" ori="north" id="tk2" x="36" y="6" z="0"/>
+    <tk type="curve" id="tk3" x="19" y="5" z="0" ori="south"/>
+    <tk type="straight" id="tk4" x="15" y="4" z="0"/>
+    <tk type="straight" ori="west" id="tk5" x="8" y="5" z="0"/>
+    <tk type="straight" ori="west" id="tk6" x="17" y="4" z="0"/>
+    <tk type="straight" ori="west" id="tk7" x="18" y="4" z="0"/>
+    <tk type="straight" ori="west" id="tk8" x="15" y="5" z="0"/>
+    <tk type="straight" ori="north" id="tk9" x="2" y="20" z="0"/>
+    <tk type="straight" ori="west" id="tk10" x="17" y="5" z="0"/>
+    <tk type="straight" ori="west" id="tk11" x="1" y="21" z="0"/>
+    <tk type="straight" ori="west" id="tk12" x="15" y="6" z="0"/>
+    <tk type="straight" ori="west" id="tk13" x="15" y="7" z="0"/>
+    <tk type="straight" ori="west" id="tk14" x="1" y="3" z="0"/>
+    <tk type="curve" id="tk15" x="17" y="7" z="0" ori="south"/>
+    <tk type="straight" id="tk16" x="20" y="4" z="0"/>
+    <tk type="straight" id="tk17" x="19" y="6" z="0"/>
+    <tk type="straight" ori="west" id="tk18" x="20" y="6" z="0"/>
+    <tk type="straight" id="tk19" x="10" y="4" z="0"/>
+    <tk type="straight" ori="west" id="tk20" x="10" y="5" z="0"/>
+    <tk type="straight" ori="west" id="tk21" x="10" y="6" z="0"/>
+    <tk type="straight" ori="west" id="tk22" x="10" y="7" z="0"/>
+    <tk type="curve" id="tk23" x="8" y="7" z="0" ori="east"/>
+    <tk type="curve" id="tk24" x="7" y="6" z="0" ori="east"/>
+    <tk type="curve" id="tk25" x="5" y="4" z="0" ori="east"/>
+    <tk type="curve" ori="west" id="tk26" x="6" y="4" z="0"/>
+    <tk type="curve" ori="east" id="tk27" x="6" y="5" z="0"/>
+    <tk type="curve" id="tk28" x="7" y="4" z="0" ori="east"/>
+    <tk type="straight" id="tk29" x="6" y="3" z="0"/>
+    <tk type="straight" ori="east" id="tk30" x="8" y="4" z="0"/>
+    <tk type="straight" id="tk31" x="4" y="3" z="0"/>
+    <tk type="curve" id="tk32" x="8" y="3" z="0" ori="south"/>
+    <tk type="straight" id="tk33" x="7" y="2" z="0"/>
+    <tk type="straight" ori="west" id="tk34" x="6" y="2" z="0"/>
+    <tk type="buffer" id="tk35" x="21" y="6" z="0"/>
+    <tk type="buffer" ori="east" id="tk36" x="5" y="2" z="0"/>
+    <tk type="straight" id="tk37" x="10" y="2" z="0"/>
+    <tk type="straight" ori="east" id="tk38" x="15" y="2" z="0"/>
+    <tk type="straight" id="tk39" x="16" y="2" z="0"/>
+    <tk type="straight" ori="east" id="tk40" x="17" y="2" z="0"/>
+    <tk type="straight" ori="east" id="tk41" x="18" y="2" z="0"/>
+    <tk type="straight" ori="east" id="tk42" x="15" y="1" z="0"/>
+    <tk type="straight" ori="east" id="tk43" x="16" y="1" z="0"/>
+    <tk type="straight" ori="east" id="tk44" x="17" y="1" z="0"/>
+    <tk type="straight" ori="east" id="tk45" x="18" y="1" z="0"/>
+    <tk type="curve" id="tk46" x="19" y="1" z="0"/>
+    <tk type="straight" id="tk47" x="20" y="2" z="0"/>
+    <tk type="straight" ori="east" id="tk48" x="21" y="7" z="0"/>
+    <tk type="straight" ori="east" id="tk49" x="22" y="2" z="0"/>
+    <tk type="straight" ori="east" id="tk50" x="23" y="2" z="0"/>
+    <tk type="straight" ori="east" id="tk51" x="3" y="3" z="0"/>
+    <tk type="straight" id="tk52" x="36" y="5" z="0" ori="north"/>
+    <tk type="straight" ori="north" id="tk53" x="36" y="8" z="0"/>
+    <tk type="straight" ori="east" id="tk54" x="32" y="2" z="0"/>
+    <tk type="straight" ori="east" id="tk55" x="34" y="3" z="0"/>
+    <tk type="straight" ori="east" id="tk56" x="26" y="2" z="0"/>
+    <tk type="straight" ori="east" id="tk57" x="24" y="2" z="0"/>
+    <tk type="curve" id="tk58" x="33" y="2" z="0"/>
+    <tk type="curve" id="tk59" x="25" y="3" z="0" ori="east"/>
+    <tk type="straight" id="tk60" x="10" y="1" z="0"/>
+    <tk type="curve" id="tk61" x="9" y="1" z="0" ori="north"/>
+    <tk type="straight" id="tk62" x="3" y="18" z="0"/>
+    <tk type="straight" ori="east" id="tk63" x="5" y="18" z="0"/>
+    <tk type="straight" ori="east" id="tk64" x="6" y="18" z="0"/>
+    <tk type="straight" ori="east" id="tk65" x="3" y="19" z="0"/>
+    <tk type="straight" ori="east" id="tk66" x="4" y="19" z="0"/>
+    <tk type="straight" ori="east" id="tk67" x="5" y="19" z="0"/>
+    <tk type="straight" ori="east" id="tk68" x="6" y="19" z="0"/>
+    <tk type="curve" id="tk69" x="7" y="19" z="0" ori="south"/>
+    <tk type="straight" id="tk70" x="8" y="18" z="0"/>
+    <tk type="curve" id="tk71" x="6" y="17" z="0" ori="east"/>
+    <tk type="curve" ori="east" id="tk72" x="5" y="16" z="0"/>
+    <tk type="curve" ori="east" id="tk73" x="4" y="15" z="0"/>
+    <tk type="straight" id="tk74" x="3" y="14" z="0"/>
+    <tk type="straight" ori="east" id="tk75" x="5" y="14" z="0"/>
+    <tk type="straight" ori="east" id="tk76" x="6" y="14" z="0"/>
+    <tk type="straight" ori="east" id="tk77" x="7" y="14" z="0"/>
+    <tk type="straight" ori="east" id="tk78" x="8" y="14" z="0"/>
+    <tk type="straight" ori="east" id="tk79" x="8" y="15" z="0"/>
+    <tk type="straight" ori="east" id="tk80" x="7" y="15" z="0"/>
+    <tk type="straight" ori="east" id="tk81" x="6" y="15" z="0"/>
+    <tk type="straight" ori="east" id="tk82" x="7" y="16" z="0"/>
+    <tk type="straight" ori="east" id="tk83" x="8" y="16" z="0"/>
+    <tk type="straight" ori="east" id="tk84" x="8" y="17" z="0"/>
+    <tk type="straight" ori="east" id="tk85" x="7" y="17" z="0"/>
+    <tk type="straight" ori="south" id="tk86" x="2" y="15" z="0"/>
+    <tk type="straight" ori="south" id="tk87" x="2" y="16" z="0"/>
+    <tk type="straight" ori="south" id="tk88" x="2" y="17" z="0"/>
+    <tk type="curve" id="tk89" x="2" y="13" z="0" ori="north"/>
+    <tk type="curve" ori="north" id="tk90" x="3" y="12" z="0"/>
+    <tk type="curve" ori="north" id="tk91" x="4" y="11" z="0"/>
+    <tk type="curve" ori="north" id="tk92" x="5" y="10" z="0"/>
+    <tk type="straight" id="tk93" x="6" y="10" z="0"/>
+    <tk type="straight" ori="east" id="tk94" x="7" y="10" z="0"/>
+    <tk type="straight" ori="east" id="tk95" x="8" y="10" z="0"/>
+    <tk type="straight" ori="east" id="tk96" x="6" y="11" z="0"/>
+    <tk type="straight" ori="east" id="tk97" x="7" y="11" z="0"/>
+    <tk type="straight" ori="east" id="tk98" x="8" y="11" z="0"/>
+    <tk type="straight" ori="east" id="tk99" x="8" y="12" z="0"/>
+    <tk type="straight" ori="east" id="tk100" x="7" y="12" z="0"/>
+    <tk type="straight" ori="east" id="tk101" x="6" y="12" z="0"/>
+    <tk type="straight" ori="east" id="tk102" x="5" y="12" z="0"/>
+    <tk type="straight" ori="east" id="tk103" x="4" y="13" z="0"/>
+    <tk type="straight" ori="east" id="tk104" x="5" y="13" z="0"/>
+    <tk type="straight" ori="east" id="tk105" x="6" y="13" z="0"/>
+    <tk type="straight" ori="east" id="tk106" x="7" y="13" z="0"/>
+    <tk type="straight" ori="east" id="tk107" x="8" y="13" z="0"/>
+    <tk type="straight" ori="east" id="tk108" x="13" y="13" z="0"/>
+    <tk type="straight" ori="east" id="tk109" x="14" y="13" z="0"/>
+    <tk type="curve" id="tk110" x="15" y="13" z="0" ori="south"/>
+    <tk type="curve" id="tk111" x="16" y="12" z="0" ori="south"/>
+    <tk type="curve" ori="south" id="tk112" x="17" y="11" z="0"/>
+    <tk type="straight" id="tk113" x="13" y="10" z="0"/>
+    <tk type="straight" ori="west" id="tk114" x="14" y="10" z="0"/>
+    <tk type="straight" ori="west" id="tk115" x="15" y="10" z="0"/>
+    <tk type="straight" ori="west" id="tk116" x="16" y="10" z="0"/>
+    <tk type="straight" ori="west" id="tk117" x="15" y="11" z="0"/>
+    <tk type="straight" ori="west" id="tk118" x="13" y="11" z="0"/>
+    <tk type="straight" ori="west" id="tk119" x="14" y="11" z="0"/>
+    <tk type="straight" ori="west" id="tk120" x="14" y="12" z="0"/>
+    <tk type="straight" ori="west" id="tk121" x="13" y="12" z="0"/>
+    <tk type="straight" ori="west" id="tk122" x="13" y="14" z="0"/>
+    <tk type="straight" ori="west" id="tk123" x="14" y="14" z="0"/>
+    <tk type="curve" id="tk124" x="15" y="14" z="0"/>
+    <tk type="straight" id="tk125" x="13" y="18" z="0"/>
+    <tk type="straight" ori="west" id="tk126" x="14" y="18" z="0"/>
+    <tk type="straight" ori="west" id="tk127" x="15" y="18" z="0"/>
+    <tk type="straight" ori="west" id="tk128" x="17" y="20" z="0"/>
+    <tk type="straight" ori="west" id="tk129" x="17" y="18" z="0"/>
+    <tk type="straight" ori="west" id="tk130" x="13" y="17" z="0"/>
+    <tk type="straight" ori="west" id="tk131" x="14" y="17" z="0"/>
+    <tk type="straight" ori="west" id="tk132" x="15" y="17" z="0"/>
+    <tk type="straight" ori="west" id="tk133" x="16" y="17" z="0"/>
+    <tk type="straight" ori="west" id="tk134" x="15" y="16" z="0"/>
+    <tk type="straight" ori="west" id="tk135" x="14" y="16" z="0"/>
+    <tk type="straight" ori="west" id="tk136" x="13" y="16" z="0"/>
+    <tk type="straight" ori="west" id="tk137" x="13" y="15" z="0"/>
+    <tk type="straight" ori="west" id="tk138" x="14" y="15" z="0"/>
+    <tk type="curve" id="tk139" x="16" y="15" z="0"/>
+    <tk type="curve" ori="west" id="tk140" x="17" y="16" z="0"/>
+    <tk type="curve" ori="west" id="tk141" x="19" y="10" z="0"/>
+    <tk type="straight" id="tk142" x="19" y="11" z="0" ori="north"/>
+    <tk type="straight" ori="north" id="tk143" x="19" y="12" z="0"/>
+    <tk type="straight" ori="north" id="tk144" x="19" y="13" z="0"/>
+    <tk type="straight" ori="north" id="tk145" x="19" y="14" z="0"/>
+    <tk type="straight" ori="north" id="tk146" x="19" y="15" z="0"/>
+    <tk type="straight" ori="north" id="tk147" x="19" y="16" z="0"/>
+    <tk type="straight" ori="east" id="tk148" x="18" y="18" z="0"/>
+    <tk type="straight" ori="east" id="tk149" x="18" y="17" z="0"/>
+    <tk type="straight" ori="east" id="tk150" x="18" y="10" z="0"/>
+    <tk type="straight" ori="south" id="tk151" x="20" y="19" z="0"/>
+    <tk type="curve" id="tk152" x="2" y="21" z="0" ori="south"/>
+    <tk type="straight" id="tk153" x="0" y="20" z="0" ori="north"/>
+    <tk type="curve" id="tk154" x="0" y="21" z="0" ori="east"/>
+    <tk type="straight" id="tk155" x="0" y="19" z="0" ori="north"/>
+    <tk type="straight" ori="north" id="tk156" x="0" y="18" z="0"/>
+    <tk type="straight" ori="north" id="tk157" x="0" y="4" z="0"/>
+    <tk type="straight" ori="north" id="tk158" x="0" y="5" z="0"/>
+    <tk type="straight" ori="north" id="tk159" x="0" y="6" z="0"/>
+    <tk type="straight" ori="north" id="tk160" x="0" y="7" z="0"/>
+    <tk type="straight" ori="north" id="tk161" x="0" y="8" z="0"/>
+    <tk type="straight" ori="north" id="tk162" x="0" y="9" z="0"/>
+    <tk type="straight" ori="north" id="tk163" x="0" y="10" z="0"/>
+    <tk type="straight" ori="north" id="tk164" x="0" y="11" z="0"/>
+    <tk type="straight" ori="north" id="tk165" x="0" y="12" z="0"/>
+    <tk type="straight" ori="north" id="tk166" x="0" y="13" z="0"/>
+    <tk type="straight" ori="north" id="tk167" x="0" y="14" z="0"/>
+    <tk type="straight" ori="north" id="tk168" x="0" y="15" z="0"/>
+    <tk type="straight" ori="north" id="tk169" x="0" y="16" z="0"/>
+    <tk type="straight" ori="north" id="tk170" x="0" y="17" z="0"/>
+    <tk type="curve" id="tk171" x="0" y="3" z="0" ori="north"/>
+    <tk type="straight" id="tk172" x="17" y="19" z="0"/>
+    <tk type="curve" id="tk173" x="23" y="4" z="0"/>
+    <tk type="curve" ori="south" id="tk174" x="20" y="21" z="0"/>
+    <tk type="curve" id="tk175" x="19" y="20" z="0" ori="south"/>
+    <tk type="curve" id="tk176" x="16" y="21" z="0" ori="east"/>
+    <tk type="straight" id="tk178" x="18" y="19" z="0"/>
+    <tk type="straight" ori="east" id="tk179" x="18" y="20" z="0"/>
+    <tk type="straight" id="tk180" x="20" y="18" z="0" ori="north"/>
+    <tk type="straight" id="tk181" x="21" y="4" z="0"/>
+    <tk type="straight" ori="east" id="tk182" x="22" y="4" z="0"/>
+    <tk type="straight" ori="south" id="tk183" x="23" y="5" z="0"/>
+    <tk type="straight" ori="south" id="tk184" x="23" y="6" z="0"/>
+    <tk type="straight" ori="south" id="tk185" x="36" y="7" z="0"/>
+    <tk type="straight" ori="south" id="tk186" x="20" y="8" z="0"/>
+    <tk type="straight" ori="south" id="tk187" x="20" y="9" z="0"/>
+    <tk type="straight" ori="south" id="tk189" x="20" y="10" z="0"/>
+    <tk type="straight" ori="south" id="tk190" x="20" y="11" z="0"/>
+    <tk type="straight" ori="south" id="tk191" x="20" y="12" z="0"/>
+    <tk type="straight" ori="south" id="tk194" x="20" y="20" z="0"/>
+    <tk type="straight" ori="south" id="tk195" x="20" y="13" z="0"/>
+    <tk type="straight" ori="south" id="tk196" x="20" y="14" z="0"/>
+    <tk type="straight" ori="south" id="tk198" x="20" y="17" z="0"/>
+    <tk type="straight" ori="south" id="tk199" x="20" y="15" z="0"/>
+    <tk type="straight" ori="south" id="tk200" x="20" y="16" z="0"/>
+    <tk type="straight" id="tk201" x="17" y="21" z="0"/>
+    <tk type="straight" ori="west" id="tk202" x="18" y="21" z="0"/>
+    <tk type="straight" ori="west" id="tk203" x="19" y="21" z="0"/>
+    <tk type="straight" ori="west" id="tk204" x="35" y="3" z="0"/>
+    <tk type="straight" ori="west" id="tk206" x="35" y="11" z="0"/>
+    <tk type="straight" ori="west" id="tk207" x="22" y="7" z="0"/>
+    <tk type="straight" ori="east" id="tk208" x="31" y="2" z="0"/>
+    <tk type="straight" ori="east" id="tk209" x="32" y="3" z="0"/>
+    <tk type="straight" ori="east" id="tk210" x="31" y="3" z="0"/>
+    <tk type="straight" ori="east" id="tk211" x="26" y="3" z="0"/>
+    <tk type="curve" id="tk212" x="20" y="7" z="0" ori="north"/>
+    <tk type="curve" id="tk213" x="23" y="7" z="0" ori="south"/>
+    <tk type="curve" id="tk214" x="36" y="11" z="0" ori="south"/>
+    <tk type="straight" id="tk215" x="36" y="9" z="0" ori="north"/>
+    <tk type="straight" ori="north" id="tk217" x="36" y="4" z="0"/>
+    <tk type="curve" id="tk218" x="36" y="3" z="0"/>
+    <tk type="straight" id="tk219" x="34" y="9" z="0" ori="north"/>
+    <tk type="buffer" id="tk220" x="34" y="8" z="0" ori="north"/>
+    <tk type="straight" id="tk221" x="34" y="12" z="0"/>
+    <tk type="buffer" id="tk222" x="35" y="12" z="0"/>
+    <tk type="straight" id="tk223" x="33" y="10" z="0"/>
+    <tk type="straight" id="tk241" x="27" y="10" z="0"/>
+    <tk type="straight" ori="east" id="tk242" x="27" y="11" z="0"/>
+    <tk type="straight" ori="east" id="tk243" x="27" y="12" z="0"/>
+    <tk type="buffer" id="tk244" x="23" y="10" z="0" ori="east"/>
+    <tk type="buffer" ori="east" id="tk245" x="23" y="11" z="0"/>
+    <tk type="buffer" ori="east" id="tk246" x="23" y="12" z="0"/>
+  </tklist>
+  <bklist>
+    <bk embeddedfb="true" id="Hauptbhf_4" x="11" y="7" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Hauptbhf_4" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk1+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk1+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk1-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk1-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" ori="west" id="Hauptbhf_3" x="11" y="6" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Hauptbhf_3" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk2+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk2+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk2-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk2-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" ori="west" id="Hauptbhf_2" x="11" y="5" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Hauptbhf_2" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk3+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk3+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk3-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk3-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" ori="west" id="Hauptbhf_1" x="11" y="4" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Hauptbhf_1" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk4+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk4+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk4-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk4-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" id="Nebenbhf_A_1" x="11" y="1" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Nebenbhf_A_1" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk5+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk5+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk5-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk5-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" ori="west" id="Nebenbhf_A_2" x="11" y="2" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Nebenbhf_A_2" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk6+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk6+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk6-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk6-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" id="Schattenbhf_C_2" x="27" y="3" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" ori="east" prev_id="Schattenbhf_C_2" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk7+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk7+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk7-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk7-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" ori="east" id="Schattenbhf_C_1" x="27" y="2" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Schattenbhf_C_1" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk8+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk8+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk8-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk8-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" id="Schattenbhf_A_01" x="9" y="10" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Schattenbhf_A_01" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk9+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk9+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk9-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk9-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" ori="east" id="Schattenbhf_A_02" x="9" y="11" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Schattenbhf_A_02" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk10+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk10+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk10-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk10-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" ori="east" id="Schattenbhf_A_03" x="9" y="12" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Schattenbhf_A_03" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk11+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk11+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk11-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk11-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" ori="east" id="Schattenbhf_A_04" x="9" y="13" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Schattenbhf_A_04" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk12+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk12+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk12-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk12-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" ori="east" id="Schattenbhf_B_01" x="9" y="14" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Schattenbhf_B_01" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk13+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk13+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk13-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk13-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" ori="east" id="Schattenbhf_B_02" x="9" y="15" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Schattenbhf_B_02" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk14+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk14+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk14-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk14-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" ori="east" id="Schattenbhf_B_03" x="9" y="16" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Schattenbhf_B_03" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk15+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk15+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk15-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk15-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" ori="east" id="Schattenbhf_B_04" x="9" y="17" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Schattenbhf_B_04" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk16+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk16+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk16-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk16-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" ori="east" id="Paradestopp" x="9" y="18" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Paradestopp" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk17+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk17+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk17-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk17-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" id="Nebenbhf_B_1" x="28" y="10" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Nebenbhf_B_1" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk18+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk18+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk18-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk18-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" id="Nebenbhf_B_2" x="28" y="11" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Nebenbhf_B_2" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk19+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk19+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk19-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk19-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+    <bk embeddedfb="true" id="Nebenbhf_B_3" x="28" y="12" z="0" entering="false" managerid="" shunting="false" fifoids="" embeddedfbplus="false" embeddedfbmin="false" locid="" state="open" prev_id="Nebenbhf_B_3" trackingID="" transferID="" transferEnterSide="true" desc="" platform="" len="0" lenenter2in="0" radius="0" offsetplus="0" offsetminus="0" departdelay="0" fifosize="0" fifogap="0" randomrate="10" showlocoimage="true" electrified="false" gomanual="true" acceptghost="false" acceptident="false" terminalstation="false" wait="true" road="false" allowchgdir="true" smallsymbol="false" extstop="false" allowbbt="false" bbtfix="0" mainline="false" sleeponclosed="false" freeblockonenter="false" freeblockonentermaxlen="0" freeblockonenterplus="true" freeblockonentermin="true" freeblockonenterroute="true" allowaccessoncars="true" centertrain="false" secondnextblock4wait="false" polarisation="true" rearprotection="false" check2in="true" commuter="yes" train="yes" show="true" virtual="false" slaveblocks="" ttid="" codesen="" signal="" wsignal="" signalR="" wsignalR="" statesignal="" openblocksignal="false" openblockid="" openblocksignalR="false" openblockidR="" resetsignalonexit="false" speed="cruise" exitspeed="cruise" noreduceonexit="false" stopspeed="mid" type="none" nonewaittype="" incline="0" waitmode="random" waitside="0" maxkmh="0" minwaittime="1" maxwaittime="30" waittime="10" mvdistance="0" mvmph="false" mvrecord="false" evttimer="0" evttimer2="0" forceblocktimer="false" selectshortestblock="false" reservedevents="false" iid="" bus="0" addr="0" port="0" td="false" tdV0="false" tdlinkblocks="true" ctcOutput="" ctcColorFree="0" ctcColorReserved="0" ctcColorEnter="0" ctcColorOccupied="0" ctcDisplayIID="" ctcDisplayBus="0" ctcDisplayNr="0" ctcDisplayText="" engine="" typeperm="" class="" era="0" minlen="0">
+      <fbevent id="bk20+" action="enter" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+      <fbevent id="bk20+" action="in" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk20-" action="enter" from="all-reverse" byroute="all-reverse"/>
+      <fbevent id="bk20-" action="in" from="all" byroute="all" endpuls="false" use_timer2="false"/>
+    </bk>
+  </bklist>
+  <fblist>
+    <fb id="bk1+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk1-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk2+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk2-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk3+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk3-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk4+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk4-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk5+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk5-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk6+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk6-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk7+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk7-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk8+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk8-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk9+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk9-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk10+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk10-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk11+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk11-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk12+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk12-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk13+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk13-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk14+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk14-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk15+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk15-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk16+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk16-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk17+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk17-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk18+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk18-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk19+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk19-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk20+" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+    <fb id="bk20-" show="false" state="false" identifier="" regval="0" gpssid="0"/>
+  </fblist>
+  <swlist>
+    <sw type="dcrossing" rectcrossing="false" id="sw1" x="17" y="6" z="0" testing="false" switched="13" porttype="0" frogporttype="0" prev_id="sw1" useshortid="false" shortid="" nr="0" desc="" decid="" blockid="" routeids="" manual="false" outoforder="false" operable="true" staticuse="false" exclude="false" accnr="0" subtype="default" savepos="none" dir="false" swtype="default" road="false" show="true" showid="true" sod="true" swapstraight="false" remark="" iid="ecos" uidname="" bus="0" addr1="7" port1="3" gate1="0" inv="false" singlegate="false" accessory="true" addr2="7" port2="2" gate2="0" inv2="true" actdelay="true" syncdelay="false" delay="500" param1="0" value1="1" param2="0" value2="1" addr1remark="" addr2remark="" param="0" prot="D" tdiid="" tdaddr="0" tdport="0" td="false" fbR="" fbG="" fb2R="" fb2G="" fbOcc="" fbOcc2="" fbRinv="false" fbGinv="false" fb2Rinv="false" fb2Ginv="false" fbset="false" fbusefield="false" ctciid1="" ctciid2="" ctcuid1="" ctcuid2="" ctcbus1="0" ctcbus2="0" ctcaddr1="0" ctcaddr2="0" ctccmdon1="false" ctccmdon2="false" ctcflip1="true" ctcflip2="true" ctciidled1="" ctciidled2="" ctcbusled1="0" ctcbusled2="0" ctcaddrled1="0" ctcaddrled2="0" ctcportled1="0" ctcportled2="0" ctcgateled1="0" ctcgateled2="0" ctcasswitchled1="false" ctcasswitchled2="false" ctcOutputStraight="" ctcOutputThrown="" ctcOutputPoint="" ctcColorStraight="0" ctcColorThrown="0" ctcColorPoint="0" ctcColorStraightOcc="0" ctcColorThrownOcc="0" ctcColorPointLock="0" frogiid="" buspol="0" frogtimer="0" addr0pol1="0" port0pol1="0" gate0pol1="0" addr0pol2="0" port0pol2="0" gate0pol2="0" addr1pol1="0" port1pol1="0" gate1pol1="0" addr1pol2="0" port1pol2="0" gate1pol2="0" frogaccessory="true" frogswitch="false" froginvert="false" actor="user" state="right" wantedstate="right" fieldstate="right">
+      <accessoryctrl active="false" invert="false" automode="false" interval="0" delay="0" lockroutes="" freeblocks=""/>
+    </sw>
+    <sw type="left" id="sw2" x="18" y="5" z="0" testing="false" switched="0"/>
+    <sw type="left" ori="west" id="sw3" x="19" y="4" z="0" testing="false" switched="0"/>
+    <sw type="accessory" accnr="12" id="sw4" x="21" y="2" z="0" testing="false" switched="0"/>
+    <sw type="right" id="sw5" x="8" y="6" z="0" testing="false"/>
+    <sw type="right" ori="west" id="sw6" x="7" y="5" z="0" testing="false" switched="0"/>
+    <sw type="right" id="sw7" x="7" y="3" z="0" testing="false" switched="0"/>
+    <sw type="right" ori="west" id="sw8" x="5" y="3" z="0" testing="false" switched="0"/>
+    <sw type="dcrossing" rectcrossing="false" id="sw9" x="8" y="2" z="0" testing="false"/>
+    <sw type="right" id="sw10" x="19" y="2" z="0" testing="false" switched="0" ori="east"/>
+    <sw type="right" id="sw11" x="25" y="2" z="0" testing="false" switched="0"/>
+    <sw type="right" id="sw12" x="33" y="3" z="0" testing="false" switched="0" ori="east"/>
+    <sw type="left" id="sw13" x="2" y="19" z="0" testing="false" switched="0" ori="north"/>
+    <sw type="right" id="sw14" x="2" y="18" z="0" testing="false" switched="0" ori="north"/>
+    <sw type="left" id="sw15" x="7" y="18" z="0" testing="false" switched="0"/>
+    <sw type="right" id="sw16" x="2" y="14" z="0" testing="false" switched="0" ori="north"/>
+    <sw type="right" id="sw17" x="4" y="14" z="0" testing="false"/>
+    <sw type="right" id="sw19" x="5" y="15" z="0" testing="false"/>
+    <sw type="right" ori="west" id="sw20" x="6" y="16" z="0" testing="false" switched="0"/>
+    <sw type="left" id="sw21" x="5" y="11" z="0" testing="false" switched="0" ori="east"/>
+    <sw type="left" ori="east" id="sw22" x="4" y="12" z="0" testing="false"/>
+    <sw type="left" ori="east" id="sw23" x="3" y="13" z="0" testing="false"/>
+    <sw type="left" id="sw24" x="15" y="12" z="0" testing="false"/>
+    <sw type="left" ori="west" id="sw25" x="16" y="11" z="0" testing="false" switched="0"/>
+    <sw type="left" ori="west" id="sw26" x="17" y="10" z="0" testing="false"/>
+    <sw type="right" id="sw27" x="15" y="15" z="0" testing="false" switched="0" ori="east"/>
+    <sw type="right" ori="east" id="sw28" x="16" y="16" z="0" testing="false"/>
+    <sw type="right" ori="east" id="sw29" x="17" y="17" z="0" testing="false"/>
+    <sw type="left" id="sw30" x="19" y="18" z="0" testing="false" switched="0" ori="south"/>
+    <sw type="left" id="sw31" x="19" y="17" z="0" testing="false" switched="0" ori="south"/>
+    <sw type="right" id="sw32" x="16" y="18" z="0" testing="false"/>
+    <sw type="right" id="sw33" x="19" y="19" z="0" testing="false" switched="0" ori="south"/>
+    <sw type="left" id="sw34" x="16" y="19" z="0" testing="false" switched="0" ori="north"/>
+    <sw type="right" id="sw35" x="16" y="20" z="0" testing="false" switched="0" ori="north"/>
+    <sw type="right" id="sw36" x="34" y="11" z="0" testing="false" switched="0" ori="east"/>
+    <sw type="left" id="sw38" x="34" y="10" z="0" testing="false" switched="0" ori="south"/>
+    <sw type="left" id="sw39" x="33" y="11" z="0" testing="false"/>
+    <sw type="left" id="sw40" x="33" y="12" z="0" testing="false" switched="0" ori="east"/>
+    <sw type="decoupler" id="sw41" x="26" y="10" z="0" testing="false" switched="0"/>
+    <sw type="decoupler" id="sw42" x="26" y="11" z="0" testing="false" switched="0"/>
+    <sw type="decoupler" ori="east" id="sw43" x="26" y="12" z="0" testing="false" switched="0"/>
+  </swlist>
+  <lclist/>
+  <sglist>
+    <sg type="light" signal="main" aspects="2" id="sg1" x="16" y="4" z="0" addr1="0" state="red" manual="false" aspect="0" ori="east"/>
+    <sg type="light" signal="main" id="sg2" x="16" y="5" z="0" addr1="0" state="red" manual="false" aspect="0" ori="east"/>
+    <sg type="light" signal="main" ori="east" id="sg3" x="16" y="6" z="0" addr1="0" state="red"/>
+    <sg type="light" signal="main" ori="east" id="sg4" x="16" y="7" z="0" addr1="0" state="red"/>
+    <sg type="light" signal="main" id="sg5" x="9" y="4" z="0" addr1="0" state="red"/>
+    <sg type="light" signal="main" ori="west" id="sg6" x="9" y="5" z="0" addr1="0" state="red" manual="false" aspect="0"/>
+    <sg type="light" signal="main" ori="west" id="sg7" x="9" y="6" z="0" addr1="0" state="red"/>
+    <sg type="light" signal="main" ori="west" id="sg8" x="9" y="7" z="0" addr1="0" state="red"/>
+    <sg type="light" signal="main" aspects="2" id="sg9" x="4" y="18" z="0" addr1="0" state="red"/>
+    <sg type="light" signal="distant" id="sg10" x="36" y="10" z="0" addr1="0" state="red" manual="false" aspect="0" ori="south"/>
+    <sg type="light" signal="main" dwarf="true" id="sg11" x="32" y="12" z="0" addr1="0" state="red" manual="false" aspect="0" ori="east"/>
+    <sg type="light" signal="main" dwarf="true" ori="east" id="sg12" x="32" y="11" z="0" addr1="0" state="red"/>
+    <sg type="light" signal="main" dwarf="true" ori="east" id="sg13" x="32" y="10" z="0" addr1="0" state="red"/>
+  </sglist>
+  <txlist>
+    <tx id="tx1" text="Schattenbahnhof" x="6" y="9" z="0" block="" sliderval="0" prev_id="tx1" desc="" pointsize="0" html="false" bold="true" center="false" fixed="false" underlined="false" border="false" italic="false" mirror="false" show="true" reset="false" refresh="0" webcam="false" manualinput="false" clock="false" slider="false" toggle="false" slidermin="0" slidermax="255" ori="west" iid="" bus="0" addr="0" display="1" speak="false" cx="5" cy="1"/>
+    <tx id="tx2" text="Hauptbahnhof" x="9" y="3" z="0" block="" sliderval="0" prev_id="tx2" desc="" pointsize="0" html="false" bold="true" center="false" fixed="false" underlined="false" border="false" italic="false" mirror="false" show="true" reset="false" refresh="0" webcam="false" manualinput="false" clock="false" slider="false" toggle="false" slidermin="0" slidermax="255" ori="west" iid="" bus="0" addr="0" display="1" speak="false" cx="4" cy="1"/>
+  </txlist>
+  <colist>
+    <co svgtype="4" id="co1" x="25" y="10" z="0" ori="east"/>
+    <co svgtype="4" ori="east" id="co2" x="25" y="11" z="0"/>
+    <co svgtype="4" ori="east" id="co3" x="25" y="12" z="0"/>
+    <co id="co4" x="24" y="10" z="0"/>
+    <co id="co5" x="24" y="11" z="0"/>
+    <co ori="east" id="co6" x="24" y="12" z="0"/>
+  </colist>
+</plan>
