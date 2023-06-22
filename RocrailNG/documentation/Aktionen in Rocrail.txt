@@ -2,23 +2,23 @@ Aktionen in Rocrail
 
 AktionLichtMorgens
 Befehl: 	C:\git\privateProjekte\modeling\RocrailNG\tools\SkyLightMqtt\SkyLightMqtt\bin\Debug\rocrailMqtt.exe
-Parameter: 	sky "rgba(255, 255, 255, 300)"
+Parameter: 	sky "rgba(252, 209, 77, 300)"
 
 AktionLichtTag
 Befehl: 	C:\git\privateProjekte\modeling\RocrailNG\tools\SkyLightMqtt\SkyLightMqtt\bin\Debug\rocrailMqtt.exe
-Parameter: 	sky "rgba(255, 255, 255, 1023)"
+Parameter: 	sky "rgba(64, 156, 255, 1023)"
 
 AktionLichtNachmittag
 Befehl: 	C:\git\privateProjekte\modeling\RocrailNG\tools\SkyLightMqtt\SkyLightMqtt\bin\Debug\rocrailMqtt.exe
-Parameter: 	sky "rgba(255, 255, 255, 500)"
+Parameter: 	sky "rgba(255, 210, 127, 500)"
 
 AktionLichtAbend
 Befehl: 	C:\git\privateProjekte\modeling\RocrailNG\tools\SkyLightMqtt\SkyLightMqtt\bin\Debug\rocrailMqtt.exe
-Parameter: 	sky "rgba(255, 255, 255, 250)"
+Parameter: 	sky "rgba(67, 67, 103, 250)"
 
 AktionLichtNacht
 Befehl: 	C:\git\privateProjekte\modeling\RocrailNG\tools\SkyLightMqtt\SkyLightMqtt\bin\Debug\rocrailMqtt.exe
-Parameter: 	sky "rgba(255, 255, 255, 100)"
+Parameter: 	sky "rgba(30, 30, 50, 100)"
 
 
 Befehl: 	C:\git\privateProjekte\modeling\RocrailNG\tools\SkyLightMqtt\SkyLightMqtt\bin\Debug\rocrailMqtt.exe

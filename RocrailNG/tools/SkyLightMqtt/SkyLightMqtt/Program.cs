@@ -85,12 +85,25 @@ namespace SkyLightMqtt
         {
             var values = input.Replace("rgba(", string.Empty).Replace(")", string.Empty).Split(',');
 
+            var wint = 0;
+
+            var w = values[3].Trim();
+            if (w.IndexOf(".", StringComparison.Ordinal) == -1)
+            {
+                wint = int.Parse(w);
+            }
+            else
+            {
+                wint = (int) (float.Parse(w) * 1023);
+            }
+
+
             return new Color
             {
                 Red = int.Parse(values[0].Trim()),
                 Green = int.Parse(values[1].Trim()),
                 Blue = int.Parse(values[2].Trim()),
-                White = (int)(float.Parse(values[3].Trim()) * 1023)
+                White = wint
             };
         }
 
@@ -138,6 +151,8 @@ namespace SkyLightMqtt
                             await Mqtt.Instance(_mqttConfiguration).Send(TopicColorWhite, $"{c.White}");
                             // cancel execution if call failed
                             if (Mqtt.Instance(_mqttConfiguration).HasFailed) return;
+
+                            await Task.Delay(TimeSpan.FromSeconds(1));
                         }
                         break;
 
@@ -146,6 +161,8 @@ namespace SkyLightMqtt
                             var topic = args[1].Trim().Trim(new[] { '"' });
                             var state = args[2].Trim();
                             await Mqtt.Instance(_mqttConfiguration).Send(topic, $"{state}");
+
+                            await Task.Delay(TimeSpan.FromSeconds(1));
                         }
                         break;
                 }
@@ -156,6 +173,8 @@ namespace SkyLightMqtt
 
                 Log($"{ex.Message}", LogLevel.Error);
             }
+
+            Environment.Exit(0);
         }
     }
 }

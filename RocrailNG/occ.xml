@@ -20,11 +20,11 @@
   <occ bkid="bk18" arrivetime="1687415199" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="bk19" arrivetime="1687415201" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="bk20" arrivetime="1687415228" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Paradestopp" arrivetime="1687447860" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Schattenbhf_B_01" arrivetime="1687447709" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Schattenbhf_B_02" arrivetime="1687447756" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Schattenbhf_B_03" arrivetime="1687447791" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Schattenbhf_B_04" arrivetime="1687447821" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="Block_Paradestopp" arrivetime="1687455608" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="Block_Schattenbhf_B_01" arrivetime="1687453256" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="Block_Schattenbhf_B_02" arrivetime="1687453451" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="Block_Schattenbhf_B_03" arrivetime="1687455711" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="Block_Schattenbhf_B_04" arrivetime="1687455698" lcid="V16 101 (blau)" auto="false" closed="false" placing="2" blockenterside="2"/>
   <occ bkid="bk1" arrivetime="1687415060" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="bk2" arrivetime="1687414927" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="bk3" arrivetime="1687414926" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
@@ -34,20 +34,20 @@
   <occ bkid="bk7" arrivetime="1687414926" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="bk8" arrivetime="1687414925" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="bk9" arrivetime="1687407499" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Nebenbhf_B_1" arrivetime="1687448626" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Nebenbhf_B_2" arrivetime="1687448311" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="Block_Nebenbhf_B_1" arrivetime="1687449190" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="Block_Nebenbhf_B_2" arrivetime="1687449190" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="Paradestopp" arrivetime="1687416594" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Nebenbhf_B_3" arrivetime="1687448337" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="Block_Nebenbhf_B_3" arrivetime="1687449188" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="Hauptbhf_1" arrivetime="1687416694" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="Hauptbhf_2" arrivetime="1687416713" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="Hauptbhf_3" arrivetime="1687416693" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="Hauptbhf_4" arrivetime="1687416693" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Nebenbhf_A_1" arrivetime="1687447896" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Nebenbhf_A_2" arrivetime="1687447923" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Hauptbhf_1" arrivetime="1687448100" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Hauptbhf_2" arrivetime="1687448126" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Hauptbhf_3" arrivetime="1687448154" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Hauptbhf_4" arrivetime="1687448181" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="Block_Nebenbhf_A_1" arrivetime="1687451752" lcid="74 854 DB" auto="false" closed="true" placing="1" blockenterside="2"/>
+  <occ bkid="Block_Nebenbhf_A_2" arrivetime="1687451755" lcid="BR 75 057" auto="false" closed="true" placing="1" blockenterside="2"/>
+  <occ bkid="Block_Hauptbhf_1" arrivetime="1687453996" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="Block_Hauptbhf_2" arrivetime="1687455711" lcid="BR41 354" auto="false" closed="false" placing="1" blockenterside="1"/>
+  <occ bkid="Block_Hauptbhf_3" arrivetime="1687455881" lcid="BR 86 130" auto="false" closed="true" placing="0" blockenterside="0"/>
+  <occ bkid="Block_Hauptbhf_4" arrivetime="1687455858" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="Schattenbhf01" arrivetime="1687414942" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="Schattenbhf02" arrivetime="1687414947" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="Schattenbhf03" arrivetime="1687414948" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
@@ -56,12 +56,12 @@
   <occ bkid="Schattenbhf_A_02" arrivetime="1687416571" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="Schattenbhf_A_03" arrivetime="1687416574" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="Schattenbhf_A_04" arrivetime="1687416576" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Schattenbhf_A_01" arrivetime="1687447534" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Schattenbhf_A_02" arrivetime="1687447588" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Schattenbhf_A_03" arrivetime="1687447633" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Schattenbhf_A_04" arrivetime="1687447680" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Schattenbhf_C_1" arrivetime="1687448215" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
-  <occ bkid="Block_Schattenbhf_C_2" arrivetime="1687448246" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="Block_Schattenbhf_A_01" arrivetime="1687453939" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="Block_Schattenbhf_A_02" arrivetime="1687452715" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="Block_Schattenbhf_A_03" arrivetime="1687455638" lcid="BR10" auto="false" closed="false" placing="1" blockenterside="1"/>
+  <occ bkid="Block_Schattenbhf_A_04" arrivetime="1687451937" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="Block_Schattenbhf_C_1" arrivetime="1687449175" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="Block_Schattenbhf_C_2" arrivetime="1687449174" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="Schattenbhf_B_01" arrivetime="1687416579" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="Schattenbhf_B_02" arrivetime="1687416582" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
   <occ bkid="Schattenbhf_B_03" arrivetime="1687416585" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
